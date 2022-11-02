@@ -1,0 +1,27 @@
+{
+  "name": "nimbus-patterns",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "prepare-husky": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiendaNube/nimbus-patterns.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
+  },
+  "homepage": "https://github.com/TiendaNube/nimbus-patterns#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
+    "husky": "^8.0.1"
+  },
+  "engines": {
+    "node": ">=14.17 <=16.x",
+    "yarn": ">=3.2.0"
+  },
+  "packageManager": "yarn@3.2.2"
+}
