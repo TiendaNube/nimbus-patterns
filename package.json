@@ -17,6 +17,7 @@
     "test:watch": "yarn test --watch",
     "types:check": "tsc --skipLibCheck --noEmit",
     "pre-commit": "lint-staged",
+    "pre-push": "yarn test:coverage && yarn lint && yarn types:check",
     "prepare-husky": "husky install"
   },
   "repository": {
