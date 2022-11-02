@@ -1,0 +1,96 @@
+{
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      },
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "babel-module": {}
+    },
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "testing-library", "spellcheck", "jest"],
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:mdx/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:jest/recommended",
+    "@tiendanube/eslint-config",
+    "airbnb",
+    "prettier"
+  ],
+  "overrides": [
+    {
+      "files": ["*.md"],
+      "rules": {
+        "prettier/prettier": [
+          2,
+          {
+            "parser": "markdown"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.mdx"],
+      "extends": ["plugin:mdx/overrides"]
+    }
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "varsIgnorePattern": "^_" }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx", ".tsx"]
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
+    "react/jsx-props-no-spreading": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": ["arrow-function", "function-declaration"],
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "prettier/prettier": [
+      "warn",
+      {
+        "singleQuote": true,
+        "semi": true,
+        "trailingComma": "none"
+      }
+    ],
+    "no-console": "warn"
+  }
+}
