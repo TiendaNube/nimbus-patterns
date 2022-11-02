@@ -63,6 +63,12 @@
     "import/no-unresolved": "off",
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "packageDir": ["."]
+      }
+    ],
     "@typescript-eslint/no-unused-vars": [
       "warn",
       { "varsIgnorePattern": "^_" }
