@@ -108,7 +108,7 @@ The step by step to perform a release release can be found at the [link](https:/
 ## 🔗 Useful links
 
 - [Nimbus Components](https://github.com/TiendaNube/nimbus-design-system). Atomic and Composite component libraries.
-- [Design Tokens](https://github.com/TiendaNube/nimbus-patterns/tree/master/packages/tokens). We use tokens to store all our primitives (colors, spacing values, grid system, etc.).
+- [Nimbus Tokens](https://github.com/TiendaNube/nimbus-design-system/tree/master/packages/tokens). We use tokens to store all our primitives (colors, spacing values, grid system, etc.).
 - [Nimbus Icons](https://github.com/TiendaNube/nimbus-icons). Our very own open-source icon library.
 
 ## 🤝 Contributing
