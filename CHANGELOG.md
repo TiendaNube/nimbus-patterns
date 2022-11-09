@@ -3,6 +3,13 @@
 This is the log of notable changes to the Nimbus Patterns that are developer-facing.
 Package-specific changes not released in any package will be added here just before the release. Until then, you can find them in changelogs of the individual packages (see [packages](./packages) directory).
 
+## 2022-11-09
+
+### 🎉 New features
+
+- Added github action responsible for validating the versions to be published of each component. ([#3](https://github.com/TiendaNube/nimbus-patterns/pull/3) by [@juniorconquista](https://github.com/juniorconquista))
+- Added github action responsible for ensuring the quality of open pull requests. ([#3](https://github.com/TiendaNube/nimbus-patterns/pull/3) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2022-11-07
 
 ### 📚 3rd party library updates
@@ -68,7 +75,7 @@ Package-specific changes not released in any package will be added here just bef
 - Added `lint-staged@13.0.3`. ([#1](https://github.com/TiendaNube/nimbus-patterns/pull/1) by [@juniorconquista](https://github.com/juniorconquista))
 - Added `prettier@2.7.1`. ([#1](https://github.com/TiendaNube/nimbus-patterns/pull/1) by [@juniorconquista](https://github.com/juniorconquista))
 - Added `ts-jest@29.0.3`. ([#1](https://github.com/TiendaNube/nimbus-patterns/pull/1) by [@juniorconquista](https://github.com/juniorconquista))
-- Added `typescript@4.8.4`. ([#1](https://github.com/TiendaNube/nimbus-patterns/pull/1) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `typescript@4.7.4`. ([#1](https://github.com/TiendaNube/nimbus-patterns/pull/1) by [@juniorconquista](https://github.com/juniorconquista))
 
 ### 🎉 New features
 
