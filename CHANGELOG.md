@@ -10,6 +10,10 @@ Package-specific changes not released in any package will be added here just bef
 - Added github action responsible for validating the versions to be published of each component. ([#3](https://github.com/TiendaNube/nimbus-patterns/pull/3) by [@juniorconquista](https://github.com/juniorconquista))
 - Added github action responsible for ensuring the quality of open pull requests. ([#3](https://github.com/TiendaNube/nimbus-patterns/pull/3) by [@juniorconquista](https://github.com/juniorconquista))
 
+### 📚 3rd party library updates
+
+- Added `ts-node@10.9.1`. ([#3](https://github.com/TiendaNube/nimbus-patterns/pull/3) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2022-11-07
 
 ### 📚 3rd party library updates
