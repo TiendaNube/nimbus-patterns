@@ -11,6 +11,7 @@ Package-specific changes not released in any package will be added here just bef
 - Added github action responsible for ensuring the quality of open pull requests. ([#3](https://github.com/TiendaNube/nimbus-patterns/pull/3) by [@juniorconquista](https://github.com/juniorconquista))
 - Added github action responsible for sending the coverage code to codecov. ([#3](https://github.com/TiendaNube/nimbus-patterns/pull/3) by [@juniorconquista](https://github.com/juniorconquista))
 - Added github action responsible for publishing nbo packages npm package manager. ([#3](https://github.com/TiendaNube/nimbus-patterns/pull/3) by [@juniorconquista](https://github.com/juniorconquista))
+- Added github action responsible for updating `storybook` documentation. ([#3](https://github.com/TiendaNube/nimbus-patterns/pull/3) by [@juniorconquista](https://github.com/juniorconquista))
 - Added `parcel` configuration to generate the builds of each package. ([#3](https://github.com/TiendaNube/nimbus-patterns/pull/3) by [@juniorconquista](https://github.com/juniorconquista))
 
 ### 📚 3rd party library updates
