@@ -8,7 +8,9 @@
     ]
   },
   "scripts": {
+    "build": "yarn clean && yarn build:packages",
     "clean": "yarn workspaces foreach -pv -pt --exclude nimbus-patterns run clean",
+    "reset": "yarn clean && rm -rf node_modules .yarn/cache",
     "lint": "eslint packages --ext .jsx,.js,.ts,.tsx --quiet",
     "lint:fix": "yarn lint --fix",
     "test": "jest --passWithNoTests --no-cache --runInBand --watchAll=false",
@@ -23,10 +25,12 @@
     "storybook": "start-storybook -p 6006",
     "prepare-husky": "husky install",
     "build:packages": "parcel build 'packages/*/*/' --no-cache",
-    "build:storybook": "build-storybook",
+    "build:storybook": "build-storybook -c .storybook -o .build-storybook",
     "bump:check": "yarn version check",
     "bump:next": "yarn version apply --all --prerelease",
-    "bump:stable": "yarn version apply --all"
+    "bump:stable": "yarn version apply --all",
+    "publish:next": "yarn bump:next && yarn build && yarn workspaces foreach -pv -pt --exclude nimbus-patterns npm publish --tolerate-republish --access public --tag next",
+    "publish:stable": "yarn bump:stable && yarn build && yarn workspaces foreach -pv -pt --exclude nimbus-patterns npm publish --tolerate-republish --access public"
   },
   "repository": {
     "type": "git",
