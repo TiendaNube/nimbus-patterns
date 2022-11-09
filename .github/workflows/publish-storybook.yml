@@ -1,0 +1,30 @@
+name: "Publish Storybook"
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish-storybook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: build storybook
+        run: yarn build:storybook
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          branch: gh-pages
+          folder: .build-storybook
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ".build-storybook"
