@@ -1,0 +1,39 @@
+{
+  "name": "@nimbus-ds/callout-card",
+  "version": "0.0.0",
+  "license": "MIT",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf dist",
+    "version": "yarn version"
+  },
+  "peerDependencies": {
+    "react": "^16.8 || ^17.0 || ^18.0",
+    "react-dom": "^16.8 || ^17.0 || ^18.0"
+  },
+  "homepage": "https://nimbus.nuvemshop.com.br/documentation",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiendaNube/nimbus-patterns.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
+  },
+  "dependencies": {
+    "@nimbus-ds/box": "^1.0.1",
+    "@nimbus-ds/card": "^1.0.0",
+    "@nimbus-ds/icon": "^1.4.0",
+    "@nimbus-ds/link": "^1.0.0",
+    "@nimbus-ds/stack": "^1.0.1",
+    "@nimbus-ds/text": "^4.2.0",
+    "@tiendanube/icons": "^0.2.9"
+  }
+}
