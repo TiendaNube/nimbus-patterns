@@ -1,5 +1,0 @@
-releases:
-  "@nimbus-ds/callout-card": major
-
-declined:
-  - nimbus-patterns
