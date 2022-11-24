@@ -2594,9 +2594,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/side-modal@workspace:packages/react/SideModal":
+"@nimbus-ds/sidebar@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@nimbus-ds/sidebar@npm:1.1.0"
+  dependencies:
+    "@nimbus-ds/styles": 4.18.0
+    "@nimbus-ds/title": 1.5.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 2c2b53997c7448f8d197ef5e351c1ad5b749af8678b8d42da89e11b29a61fbab02a8d947a19b8a8a650973984dbd561b53f782e90b86f499fe3e0fa5e3bb6111
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/sidemodal@workspace:packages/react/SideModal":
   version: 0.0.0-use.local
-  resolution: "@nimbus-ds/side-modal@workspace:packages/react/SideModal"
+  resolution: "@nimbus-ds/sidemodal@workspace:packages/react/SideModal"
   dependencies:
     "@nimbus-ds/box": ^1.1.0
     "@nimbus-ds/button": ^1.1.0
@@ -2611,19 +2624,6 @@ __metadata:
     react-dom: ^16.8 || ^17.0 || ^18.0
   languageName: unknown
   linkType: soft
-
-"@nimbus-ds/sidebar@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@nimbus-ds/sidebar@npm:1.1.0"
-  dependencies:
-    "@nimbus-ds/styles": 4.18.0
-    "@nimbus-ds/title": 1.5.0
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 2c2b53997c7448f8d197ef5e351c1ad5b749af8678b8d42da89e11b29a61fbab02a8d947a19b8a8a650973984dbd561b53f782e90b86f499fe3e0fa5e3bb6111
-  languageName: node
-  linkType: hard
 
 "@nimbus-ds/skeleton@npm:1.1.1":
   version: 1.1.1

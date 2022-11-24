@@ -1,6 +1,6 @@
 {
-  "name": "@nimbus-ds/side-modal",
-  "version": "0.0.0",
+  "name": "@nimbus-ds/sidemodal",
+  "version": "1.0.0-rc.1",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -38,5 +38,6 @@
     "@nimbus-ds/icon": "^1.5.0",
     "@nimbus-ds/text": "^4.2.0",
     "@tiendanube/icons": "^0.3.1"
-  }
+  },
+  "stableVersion": "0.0.0"
 }
