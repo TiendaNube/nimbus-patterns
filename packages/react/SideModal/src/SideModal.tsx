@@ -20,7 +20,7 @@ const SideModal: React.FC<SideModalProps> = ({
   ...rest
 }) => (
   <Sidebar {...rest}>
-    <Sidebar.Header padding={(paddingHeader as "base" | "none") || "base"}>
+    <Sidebar.Header padding={paddingHeader || "base"}>
       <Box mb="4">
         <Stack
           display="flex"
@@ -38,11 +38,9 @@ const SideModal: React.FC<SideModalProps> = ({
         {titleAction}
       </Stack>
     </Sidebar.Header>
-    <Sidebar.Body padding={paddingBody as "base" | "none"}>
-      {children}
-    </Sidebar.Body>
+    <Sidebar.Body padding={paddingBody}>{children}</Sidebar.Body>
     {!!footer && (
-      <Sidebar.Footer padding={(paddingFooter as "base" | "none") || "base"}>
+      <Sidebar.Footer padding={paddingFooter || "base"}>
         <Button {...footer.primaryAction} />
         <Button {...footer.secondaryAction} />
       </Sidebar.Footer>

@@ -8,6 +8,8 @@ type Extends = Pick<
 > &
   HTMLAttributes<HTMLElement>;
 
+export type Padding = "none" | "base";
+
 export interface SideModalProps extends Extends {
   /** Title */
   title?: string;
@@ -20,11 +22,11 @@ export interface SideModalProps extends Extends {
   /** Body Content (ReactNode) */
   children?: ReactNode;
   /** Header padding */
-  paddingHeader?: Pick<SidebarProps, "padding">;
+  paddingHeader?: Padding;
   /** Body padding */
-  paddingBody?: Pick<SidebarProps, "padding">;
+  paddingBody?: Padding;
   /** Footer padding */
-  paddingFooter?: Pick<SidebarProps, "padding">;
+  paddingFooter?: Padding;
   /** Footer element actions */
   footer?: {
     primaryAction: ButtonProps;
