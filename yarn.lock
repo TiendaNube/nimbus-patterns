@@ -2500,6 +2500,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nimbus-ds/box@npm:^1.1.0-rc.1":
+  version: 1.1.0-rc.1
+  resolution: "@nimbus-ds/box@npm:1.1.0-rc.1"
+  dependencies:
+    "@nimbus-ds/styles": 4.18.0-rc.3
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: ddde99974889c8b0a5af044d7c431d20137187f55ab5b3e36c2bad904b95e1bfd7097ad3cb3c059f32da1d169ae8d580d32fb90dce0e9d3121346ab814972500
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/button@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@nimbus-ds/button@npm:1.1.0"
+  dependencies:
+    "@nimbus-ds/skeleton": 1.1.1
+    "@nimbus-ds/styles": 4.17.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 38a55e6eb3ef2b9ed64722302574b11737be2a26c98ba3e270be98ccb73e75bc7781f19a6fd905e53100db9d559d01d266fba730ccbdc101fe1f0a63c02e6372
+  languageName: node
+  linkType: hard
+
 "@nimbus-ds/callout-card@workspace:packages/react/CalloutCard":
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/callout-card@workspace:packages/react/CalloutCard"
@@ -2543,6 +2568,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nimbus-ds/icon@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "@nimbus-ds/icon@npm:1.5.0"
+  dependencies:
+    "@nimbus-ds/skeleton": 1.1.1
+    "@nimbus-ds/styles": 4.17.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 073e6938f7a3e3a23905ec0701f6d5c62db1a4e4d883adffc7bf29d321039e778463e4f4f43f62003ae4ede6b53b0b64030d7744a5d3bca4a96a0d5a006ebf1d
+  languageName: node
+  linkType: hard
+
 "@nimbus-ds/link@npm:^1.0.0":
   version: 1.0.0
   resolution: "@nimbus-ds/link@npm:1.0.0"
@@ -2553,6 +2591,37 @@ __metadata:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
   checksum: 9a3e4b8669158193045bd689cbfd5020020183ebf587d7467fb7517c5ac8f16992561e830c7ea78fd88967160f55667ce613c0bd9cd2beb2f5e1069e0b805be6
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/side-modal@workspace:packages/react/SideModal":
+  version: 0.0.0-use.local
+  resolution: "@nimbus-ds/side-modal@workspace:packages/react/SideModal"
+  dependencies:
+    "@nimbus-ds/box": ^1.1.0-rc.1
+    "@nimbus-ds/button": ^1.1.0
+    "@nimbus-ds/icon": ^1.5.0
+    "@nimbus-ds/sidebar": ^1.1.0-rc.4
+    "@nimbus-ds/stack": ^1.0.1
+    "@nimbus-ds/text": ^4.2.0
+    "@nimbus-ds/title": ^1.4.0
+    "@tiendanube/icons": ^0.3.1
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  languageName: unknown
+  linkType: soft
+
+"@nimbus-ds/sidebar@npm:^1.1.0-rc.4":
+  version: 1.1.0-rc.4
+  resolution: "@nimbus-ds/sidebar@npm:1.1.0-rc.4"
+  dependencies:
+    "@nimbus-ds/styles": 4.18.0-rc.4
+    "@nimbus-ds/title": 1.5.0-rc.4
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: df6686c85a8f6777bdcc2f06123216936d2b2ffb42f97c0bcc46c03461bfbd7b6a7effc4b056714520b35ab0143acd7893503898172c14dc18ab4dad79b5777d
   languageName: node
   linkType: hard
 
@@ -2607,6 +2676,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nimbus-ds/styles@npm:4.17.0":
+  version: 4.17.0
+  resolution: "@nimbus-ds/styles@npm:4.17.0"
+  dependencies:
+    "@nimbus-ds/tokens": 5.0.0
+  checksum: 3681f6711f4e14f5132b586a8b5e8f29cd4e0ed4f6b01070b17b7bc0d2ffb749ca297803bb8add2146eacecb3ba0fc2796637ea14fab9d66ec569e6f1aef01ba
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/styles@npm:4.18.0-rc.3":
+  version: 4.18.0-rc.3
+  resolution: "@nimbus-ds/styles@npm:4.18.0-rc.3"
+  dependencies:
+    "@nimbus-ds/tokens": 5.0.0
+  checksum: ed053e13f0129bf1088fb970164de73f55a91cab1a1dc14169dba72d961aa4d9587d74cc8b354b852d371c936d69a5d770c93bb1b4bdd82edc52a2c33adce4d3
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/styles@npm:4.18.0-rc.4":
+  version: 4.18.0-rc.4
+  resolution: "@nimbus-ds/styles@npm:4.18.0-rc.4"
+  dependencies:
+    "@nimbus-ds/tokens": 5.0.0
+  checksum: 5d5a1c26b33d793fd9ac93ea2925febc64b550cc1c97e60922bdb7a60eb5ac2c71d4a89008d31faa1c6e54251073ae3dbd29757c43d1e97ea069a95d675dc80f
+  languageName: node
+  linkType: hard
+
 "@nimbus-ds/styles@npm:4.3.0":
   version: 4.3.0
   resolution: "@nimbus-ds/styles@npm:4.3.0"
@@ -2638,7 +2734,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/title@npm:1.4.0":
+"@nimbus-ds/title@npm:1.4.0, @nimbus-ds/title@npm:^1.4.0":
   version: 1.4.0
   resolution: "@nimbus-ds/title@npm:1.4.0"
   dependencies:
@@ -2648,6 +2744,19 @@ __metadata:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
   checksum: 842600a21ab09a27ff11ae14f91efcbd93fc1362957df1f1dc4a455f1df20723790e71282fd0cb83d58236ca92e2fef85ae1f4ed48812cba8c1c24dc1fd4e6ee
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/title@npm:1.5.0-rc.4":
+  version: 1.5.0-rc.4
+  resolution: "@nimbus-ds/title@npm:1.5.0-rc.4"
+  dependencies:
+    "@nimbus-ds/skeleton": 1.1.1
+    "@nimbus-ds/styles": 4.18.0-rc.4
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 227e32c37efe755faa6903e7d9f637995fd25eff183ab702934d7cae3bad133570a07e2e3687b176dab4c74646b363f8bc2b6ade7077e7d06d0984d6aa474bb0
   languageName: node
   linkType: hard
 
@@ -5065,6 +5174,21 @@ __metadata:
     trim-newlines: 3.0.1
     yargs: 15.3.1
   checksum: 73bab4a470ecd06fd212cf6efb96784752a14ff673ba023a30dfa7b06438f9b10c4de9deb15046a44feba56a8e5a15922dfd8265db45aa1e7da91c505500e1b3
+  languageName: node
+  linkType: hard
+
+"@tiendanube/icons@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "@tiendanube/icons@npm:0.3.1"
+  dependencies:
+    cheerio: 1.0.0-rc.12
+    globby: 11.0.1
+    lodash.merge: 4.6.2
+    path: 0.12.7
+    svgo: 3.0.1
+    trim-newlines: 3.0.1
+    yargs: 15.3.1
+  checksum: a5b610db89e50a6b725922f0ac7762f4f038b389cee7e33736bd7702a7afb53bc6b8a4ae3d30e927491ef2dca93812b7de4375dde6c7a27559b3e57934ab5dd2
   languageName: node
   linkType: hard
 
@@ -8627,6 +8751,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"css-tree@npm:^2.2.1, css-tree@npm:~2.2.0":
+  version: 2.2.1
+  resolution: "css-tree@npm:2.2.1"
+  dependencies:
+    mdn-data: 2.0.28
+    source-map-js: ^1.0.1
+  checksum: b94aa8cc2f09e6f66c91548411fcf74badcbad3e150345074715012d16333ce573596ff5dfca03c2a87edf1924716db765120f94247e919d72753628ba3aba27
+  languageName: node
+  linkType: hard
+
 "css-what@npm:^3.2.1":
   version: 3.4.2
   resolution: "css-what@npm:3.4.2"
@@ -8656,6 +8790,15 @@ __metadata:
   dependencies:
     css-tree: ^1.1.2
   checksum: 380ba9663da3bcea58dee358a0d8c4468bb6539be3c439dc266ac41c047217f52fd698fb7e4b6b6ccdfb8cf53ef4ceed8cc8ceccb8dfca2aa628319826b5b998
+  languageName: node
+  linkType: hard
+
+"csso@npm:^5.0.5":
+  version: 5.0.5
+  resolution: "csso@npm:5.0.5"
+  dependencies:
+    css-tree: ~2.2.0
+  checksum: 0ad858d36bf5012ed243e9ec69962a867509061986d2ee07cc040a4b26e4d062c00d4c07e5ba8d430706ceb02dd87edd30a52b5937fd45b1b6f2119c4993d59a
   languageName: node
   linkType: hard
 
@@ -14158,6 +14301,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mdn-data@npm:2.0.28":
+  version: 2.0.28
+  resolution: "mdn-data@npm:2.0.28"
+  checksum: f51d587a6ebe8e426c3376c74ea6df3e19ec8241ed8e2466c9c8a3904d5d04397199ea4f15b8d34d14524b5de926d8724ae85207984be47e165817c26e49e0aa
+  languageName: node
+  linkType: hard
+
 "mdn-data@npm:2.0.4":
   version: 2.0.4
   resolution: "mdn-data@npm:2.0.4"
@@ -18080,7 +18230,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source-map-js@npm:^1.0.2":
+"source-map-js@npm:^1.0.1, source-map-js@npm:^1.0.2":
   version: 1.0.2
   resolution: "source-map-js@npm:1.0.2"
   checksum: c049a7fc4deb9a7e9b481ae3d424cc793cb4845daa690bc5a05d428bf41bf231ced49b4cf0c9e77f9d42fdb3d20d6187619fc586605f5eabe995a316da8d377c
@@ -18654,6 +18804,22 @@ __metadata:
   bin:
     svgo: ./bin/svgo
   checksum: 28a5680a61245eb4a1603bc03459095bb01ad5ebd23e95882d886c3c81752313c0a9a9fe48dd0bcbb9a27c52e11c603640df952971573b2b550d9e15a9ee6116
+  languageName: node
+  linkType: hard
+
+"svgo@npm:3.0.1":
+  version: 3.0.1
+  resolution: "svgo@npm:3.0.1"
+  dependencies:
+    "@trysound/sax": 0.2.0
+    commander: ^7.2.0
+    css-select: ^5.1.0
+    css-tree: ^2.2.1
+    csso: ^5.0.5
+    picocolors: ^1.0.0
+  bin:
+    svgo: ./bin/svgo
+  checksum: cccc99c3fcc56ba21808ae9427a2905f182cdde0b59d417489c50377e1e3eb3aa1328d080e077e9d831e4122a886a71b8cf547e65817cbb115619af76d23d565
   languageName: node
   linkType: hard
 
