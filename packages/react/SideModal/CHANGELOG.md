@@ -1,0 +1,18 @@
+# Changelog
+
+Sidemodal navigation provides access to the parts within its application. The side sections have the supplementary content that is linked on the left or right side of the screen.
+
+## 2022-11-24 `1.0.0`
+
+### 📚 3rd party library updates
+
+- Added `@nimbus-ds/box@1.1.0`. ([#4](https://github.com/TiendaNube/nimbus-patterns/pull/4) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `@nimbus-ds/button@1.1.0`. ([#4](https://github.com/TiendaNube/nimbus-patterns/pull/4) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `@nimbus-ds/sidebar@1.1.0`. ([#4](https://github.com/TiendaNube/nimbus-patterns/pull/4) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `@nimbus-ds/stack@1.1.0`. ([#4](https://github.com/TiendaNube/nimbus-patterns/pull/4) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `@nimbus-ds/title@1.5.0`. ([#4](https://github.com/TiendaNube/nimbus-patterns/pull/4) by [@juniorconquista](https://github.com/juniorconquista))
+
+### 🎉 New features
+
+- Added `title`, `titleAction`, `headerAction`, `headerIcon`, `children`, `paddingHeader`, `paddingBody`, `paddingFooter`, and `footer` properties to the Component. ([#4](https://github.com/TiendaNube/nimbus-patterns/pull/4) by [@juniorconquista](https://github.com/juniorconquista))
+- Added story documentation in the storybook. ([#4](https://github.com/TiendaNube/nimbus-patterns/pull/4) by [@juniorconquista](https://github.com/juniorconquista))

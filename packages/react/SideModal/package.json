@@ -1,0 +1,43 @@
+{
+  "name": "@nimbus-ds/sidemodal",
+  "version": "1.0.0-rc.1",
+  "license": "MIT",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf dist",
+    "version": "yarn version"
+  },
+  "peerDependencies": {
+    "react": "^16.8 || ^17.0 || ^18.0",
+    "react-dom": "^16.8 || ^17.0 || ^18.0"
+  },
+  "homepage": "https://nimbus.nuvemshop.com.br/documentation",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiendaNube/nimbus-patterns.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
+  },
+  "dependencies": {
+    "@nimbus-ds/box": "^1.1.0",
+    "@nimbus-ds/button": "^1.1.0",
+    "@nimbus-ds/sidebar": "^1.1.0",
+    "@nimbus-ds/stack": "^1.1.0",
+    "@nimbus-ds/title": "^1.5.0"
+  },
+  "devDependencies": {
+    "@nimbus-ds/icon": "^1.5.0",
+    "@nimbus-ds/text": "^4.2.0",
+    "@tiendanube/icons": "^0.3.1"
+  },
+  "stableVersion": "0.0.0"
+}
