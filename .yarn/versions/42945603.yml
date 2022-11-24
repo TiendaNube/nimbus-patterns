@@ -1,5 +1,5 @@
 releases:
-  "@nimbus-ds/side-modal": major
+  "@nimbus-ds/sidemodal": major
 
 declined:
   - nimbus-patterns
