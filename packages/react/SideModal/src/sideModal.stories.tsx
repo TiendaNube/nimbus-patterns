@@ -27,6 +27,48 @@ export default {
     headerAction: { control: { disable: true } },
     headerIcon: { control: { disable: true } },
     children: { control: { disable: true } },
+    padding: {
+      control: "radio",
+      options: ["none", "base"],
+      description: "SideModal padding",
+      defaultValue: "none",
+      table: {
+        type: { summary: '"none" | "base"' },
+        defaultValue: { summary: '"none"' },
+      },
+    },
+    position: {
+      control: "radio",
+      options: ["left", "right"],
+      description: "SideModal position",
+      defaultValue: "right",
+      table: {
+        type: { summary: '"left" | "right"' },
+        defaultValue: { summary: '"right"' },
+      },
+    },
+    open: {
+      control: "boolean",
+      description: "Controls the menu display",
+      defaultValue: false,
+      table: {
+        type: { summary: "boolean" },
+      },
+    },
+    onRemove: {
+      control: { disable: true },
+      description: "Function to be passed on actioning the dismiss button",
+      table: {
+        type: { summary: "(() => void)" },
+        defaultValue: { summary: '"right"' },
+      },
+    },
+    maxWidth: {
+      table: {
+        type: { summary: "string | Conditions<string>" },
+        defaultValue: { summary: "375px" },
+      },
+    },
   },
 } as ComponentMeta<typeof SideModal>;
 
@@ -46,6 +88,7 @@ base.args = {
   maxWidth: { xs: "100%", md: "340px", lg: "540px" },
   title: "Instalar Kangu",
   headerIcon: <Icon color="primary.textHigh" source={<CheckCircleIcon />} />,
+  padding: "base",
   paddingHeader: "none",
   paddingBody: "none",
   paddingFooter: "none",
@@ -87,6 +130,8 @@ export const withTitle = Template.bind({});
 withTitle.args = {
   maxWidth: { xs: "100%", md: "340px", lg: "540px" },
   title: "Instalar Kangu",
+  padding: "base",
+  paddingHeader: "none",
   children: (
     <Box
       borderStyle="dashed"
@@ -117,6 +162,8 @@ export const withTitleAction = Template.bind({});
 withTitleAction.args = {
   maxWidth: { xs: "100%", md: "340px", lg: "540px" },
   title: "Instalar Kangu",
+  padding: "base",
+  paddingHeader: "none",
   titleAction: (
     <Stack display="flex" gap="2">
       <Icon color="primary.textHigh" source={<ChevronLeftIcon />} />
@@ -153,6 +200,8 @@ export const withHeaderAction = Template.bind({});
 withHeaderAction.args = {
   maxWidth: { xs: "100%", md: "340px", lg: "540px" },
   title: "Instalar Kangu",
+  padding: "base",
+  paddingHeader: "none",
   headerAction: (
     <Stack display="flex" alignItems="center" gap="1">
       <Icon color="primary.textHigh" source={<ChevronLeftIcon />} />
@@ -191,6 +240,8 @@ export const withHeaderIcon = Template.bind({});
 withHeaderIcon.args = {
   maxWidth: { xs: "100%", md: "340px", lg: "540px" },
   title: "Instalar Kangu",
+  padding: "base",
+  paddingHeader: "none",
   headerIcon: <Icon color="primary.textHigh" source={<CheckCircleIcon />} />,
   headerAction: (
     <Stack display="flex" alignItems="center" gap="1">
@@ -230,6 +281,8 @@ export const withFooter = Template.bind({});
 withFooter.args = {
   maxWidth: { xs: "100%", md: "340px", lg: "540px" },
   title: "Instalar Kangu",
+  padding: "base",
+  paddingHeader: "none",
   headerIcon: <Icon color="primary.textHigh" source={<CheckCircleIcon />} />,
   headerAction: (
     <Stack display="flex" alignItems="center" gap="1">
