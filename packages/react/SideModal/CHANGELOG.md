@@ -2,6 +2,12 @@
 
 Sidemodal navigation provides access to the parts within its application. The side sections have the supplementary content that is linked on the left or right side of the screen.
 
+## 2022-12-02 `1.1.0`
+
+### 🎉 New features
+
+- Added `zIndex` property to the component. ([#5](https://github.com/TiendaNube/nimbus-design-system/pull/5) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2022-11-24 `1.0.0`
 
 ### 📚 3rd party library updates

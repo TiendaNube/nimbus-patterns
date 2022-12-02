@@ -69,6 +69,11 @@ export default {
         defaultValue: { summary: "375px" },
       },
     },
+    zIndex: {
+      table: {
+        type: { summary: "number | Conditions<number>" },
+      },
+    },
   },
 } as ComponentMeta<typeof SideModal>;
 
