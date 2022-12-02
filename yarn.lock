@@ -2555,6 +2555,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nimbus-ds/icon-button@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@nimbus-ds/icon-button@npm:2.0.0"
+  dependencies:
+    "@nimbus-ds/icon": 1.5.0
+    "@nimbus-ds/skeleton": 1.1.1
+    "@nimbus-ds/styles": 4.19.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 59e675debd4f36925b70dc38d28639265f763c685fdd3169e07128bdd6b97a2bbb7dd43b1319be0423efb2a03838488175d31d7627a3bc7357aca551ea3a8b5f
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/icon@npm:1.5.0, @nimbus-ds/icon@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "@nimbus-ds/icon@npm:1.5.0"
+  dependencies:
+    "@nimbus-ds/skeleton": 1.1.1
+    "@nimbus-ds/styles": 4.17.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 073e6938f7a3e3a23905ec0701f6d5c62db1a4e4d883adffc7bf29d321039e778463e4f4f43f62003ae4ede6b53b0b64030d7744a5d3bca4a96a0d5a006ebf1d
+  languageName: node
+  linkType: hard
+
 "@nimbus-ds/icon@npm:^1.4.0":
   version: 1.4.0
   resolution: "@nimbus-ds/icon@npm:1.4.0"
@@ -2565,19 +2592,6 @@ __metadata:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
   checksum: 6670ab67f4baa8cb9eec5912ac7a9c01f1c73824dcaf2dc3898c37e3865f4c56eed0bb2e02ceec9f5491234631665af0d9afbf3750cd588f1782c56e46bc56e3
-  languageName: node
-  linkType: hard
-
-"@nimbus-ds/icon@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "@nimbus-ds/icon@npm:1.5.0"
-  dependencies:
-    "@nimbus-ds/skeleton": 1.1.1
-    "@nimbus-ds/styles": 4.17.0
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 073e6938f7a3e3a23905ec0701f6d5c62db1a4e4d883adffc7bf29d321039e778463e4f4f43f62003ae4ede6b53b0b64030d7744a5d3bca4a96a0d5a006ebf1d
   languageName: node
   linkType: hard
 
@@ -2594,16 +2608,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/sidebar@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@nimbus-ds/sidebar@npm:1.1.0"
+"@nimbus-ds/sidebar@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@nimbus-ds/sidebar@npm:1.2.0"
   dependencies:
-    "@nimbus-ds/styles": 4.18.0
+    "@nimbus-ds/styles": 4.19.0
     "@nimbus-ds/title": 1.5.0
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 2c2b53997c7448f8d197ef5e351c1ad5b749af8678b8d42da89e11b29a61fbab02a8d947a19b8a8a650973984dbd561b53f782e90b86f499fe3e0fa5e3bb6111
+  checksum: 8887ef59e8dad889278f742ce9b5f2014db1fe605804041059096464b4513532a8dc37821023b2c6154937c165aadcb1d467055ae05ef1656f39e967cf4352c3
   languageName: node
   linkType: hard
 
@@ -2614,7 +2628,7 @@ __metadata:
     "@nimbus-ds/box": ^1.1.0
     "@nimbus-ds/button": ^1.1.0
     "@nimbus-ds/icon": ^1.5.0
-    "@nimbus-ds/sidebar": ^1.1.0
+    "@nimbus-ds/sidebar": ^1.2.0
     "@nimbus-ds/stack": ^1.1.0
     "@nimbus-ds/text": ^4.2.0
     "@nimbus-ds/title": ^1.5.0
@@ -2703,6 +2717,15 @@ __metadata:
   dependencies:
     "@nimbus-ds/tokens": 5.0.0
   checksum: ea3c07bf5504382f0a9a39b78185b20ca01c9d47408d5245f711cd7d758b60f30071e83eb1814b8228db4d713ca76e3cef549fe938b917314e69f4d915646a1b
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/styles@npm:4.19.0":
+  version: 4.19.0
+  resolution: "@nimbus-ds/styles@npm:4.19.0"
+  dependencies:
+    "@nimbus-ds/tokens": 5.0.0
+  checksum: f67f252d9b57a1af43efd3b66a4e543d3dea3c8b042cb372d6a8bb1743b171350227720090faaf1bdc66a5681e21fa2d807153527a7262bf966b0fa998c260f9
   languageName: node
   linkType: hard
 
@@ -15265,6 +15288,7 @@ __metadata:
     "@commitlint/config-conventional": ^17.2.0
     "@jest/types": ^29.2.1
     "@mdx-js/react": ^1.6.22
+    "@nimbus-ds/icon-button": ^2.0.0
     "@parcel/packager-ts": 2.8.0
     "@parcel/transformer-typescript-tsc": ^2.8.0
     "@parcel/transformer-typescript-types": 2.8.0

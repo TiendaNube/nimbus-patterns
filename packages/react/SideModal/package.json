@@ -30,7 +30,7 @@
   "dependencies": {
     "@nimbus-ds/box": "^1.1.0",
     "@nimbus-ds/button": "^1.1.0",
-    "@nimbus-ds/sidebar": "^1.1.0",
+    "@nimbus-ds/sidebar": "^1.2.0",
     "@nimbus-ds/stack": "^1.1.0",
     "@nimbus-ds/title": "^1.5.0"
   },
