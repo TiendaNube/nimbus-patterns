@@ -1,0 +1,6 @@
+releases:
+  "@nimbus-ds/callout-card": minor
+  "@nimbus-ds/sidemodal": minor
+
+declined:
+  - nimbus-patterns

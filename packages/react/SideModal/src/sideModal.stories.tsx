@@ -60,7 +60,6 @@ export default {
       description: "Function to be passed on actioning the dismiss button",
       table: {
         type: { summary: "(() => void)" },
-        defaultValue: { summary: '"right"' },
       },
     },
     maxWidth: {
@@ -70,6 +69,7 @@ export default {
       },
     },
     zIndex: {
+      control: { type: "number" },
       table: {
         type: { summary: "number | Conditions<number>" },
       },
