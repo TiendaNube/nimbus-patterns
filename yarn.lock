@@ -2561,7 +2561,7 @@ __metadata:
     "@nimbus-ds/box": ^1.2.0
     "@nimbus-ds/card": ^1.2.0
     "@nimbus-ds/icon": ^1.6.0
-    "@nimbus-ds/link": ^2.1.4
+    "@nimbus-ds/link": ^2.1.5
     "@nimbus-ds/stack": ^1.2.0
     "@nimbus-ds/text": ^4.3.0
     "@tiendanube/icons": ^0.3.2
@@ -2624,7 +2624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/link@npm:^2.1.4":
+"@nimbus-ds/link@npm:^2.1.5":
   version: 2.1.5
   resolution: "@nimbus-ds/link@npm:2.1.5"
   dependencies:
