@@ -9,7 +9,7 @@ This component is used to provide the user with useful information, tips, tutori
 - Added `@nimbus-ds/box@1.2.0`. ([#6](https://github.com/TiendaNube/nimbus-patterns/pull/6) by [@juniorconquista](https://github.com/juniorconquista))
 - Added `@nimbus-ds/card@1.2.0`. ([#6](https://github.com/TiendaNube/nimbus-patterns/pull/6) by [@juniorconquista](https://github.com/juniorconquista))
 - Added `@nimbus-ds/icon@1.6.0`. ([#6](https://github.com/TiendaNube/nimbus-patterns/pull/6) by [@juniorconquista](https://github.com/juniorconquista))
-- Added `@nimbus-ds/link@2.1.4`. ([#6](https://github.com/TiendaNube/nimbus-patterns/pull/6) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `@nimbus-ds/link@2.1.5`. ([#6](https://github.com/TiendaNube/nimbus-patterns/pull/6) by [@juniorconquista](https://github.com/juniorconquista))
 - Added `@nimbus-ds/stack@1.2.0`. ([#6](https://github.com/TiendaNube/nimbus-patterns/pull/6) by [@juniorconquista](https://github.com/juniorconquista))
 - Added `@nimbus-ds/text@4.3.0`. ([#6](https://github.com/TiendaNube/nimbus-patterns/pull/6) by [@juniorconquista](https://github.com/juniorconquista))
 - Added `@tiendanube/icons@0.3.2`. ([#6](https://github.com/TiendaNube/nimbus-patterns/pull/6) by [@juniorconquista](https://github.com/juniorconquista))
