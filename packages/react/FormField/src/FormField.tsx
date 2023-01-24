@@ -8,7 +8,11 @@ import { Label } from "@nimbus-ds/label";
 import { FormFieldProps, FormFieldComponents } from "./formField.types";
 import { helpTextAppearance } from "./formField.definitions";
 
-import { FormFieldSelect, FormFieldTextarea, FormFieldInput } from "./components";
+import {
+  FormFieldSelect,
+  FormFieldTextarea,
+  FormFieldInput
+} from "./components";
 
 const FormField: React.FC<FormFieldProps> & FormFieldComponents = ({
   label,

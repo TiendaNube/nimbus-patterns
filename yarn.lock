@@ -2541,6 +2541,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nimbus-ds/box@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@nimbus-ds/box@npm:2.0.0"
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: e7f4340fc1b239329673384257d500dfaa10db5a2fde497df4f4a0e11a8af37c62129ad9d2dbda45aa020e5816f0ed1f84aa5e29c12a8407bfd26c06d5b51779
+  languageName: node
+  linkType: hard
+
 "@nimbus-ds/button@npm:^1.6.0":
   version: 1.6.0
   resolution: "@nimbus-ds/button@npm:1.6.0"
@@ -2588,7 +2598,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/formfield@workspace:packages/react/FormField"
   dependencies:
-    "@nimbus-ds/box": ^1.2.0
+    "@nimbus-ds/box": ^2.0.0
     "@nimbus-ds/icon": ^2.0.0
     "@nimbus-ds/input": ^2.0.0
     "@nimbus-ds/label": ^2.0.0
