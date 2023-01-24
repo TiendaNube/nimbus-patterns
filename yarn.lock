@@ -2584,6 +2584,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nimbus-ds/formfield@workspace:packages/react/FormField":
+  version: 0.0.0-use.local
+  resolution: "@nimbus-ds/formfield@workspace:packages/react/FormField"
+  dependencies:
+    "@nimbus-ds/box": ^1.2.0
+    "@nimbus-ds/icon": ^2.0.0
+    "@nimbus-ds/input": ^2.0.0
+    "@nimbus-ds/label": ^2.0.0
+    "@nimbus-ds/radio": ^2.0.0
+    "@nimbus-ds/select": ^2.0.0
+    "@nimbus-ds/stack": ^2.0.0
+    "@nimbus-ds/styles": ^6.0.2
+    "@nimbus-ds/text": ^5.0.0
+    "@nimbus-ds/textarea": ^2.0.0
+    "@tiendanube/icons": ^0.3.2
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  languageName: unknown
+  linkType: soft
+
 "@nimbus-ds/icon-button@npm:^2.0.0":
   version: 2.0.0
   resolution: "@nimbus-ds/icon-button@npm:2.0.0"
@@ -2624,6 +2645,44 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nimbus-ds/icon@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@nimbus-ds/icon@npm:2.0.0"
+  dependencies:
+    "@nimbus-ds/skeleton": ^2.0.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: edef917591f0066ad2e974a20b3fa044c9c43ec08b46c2a0e6740f836594b3f7f5a563f29103936966cc9ed406057ec716f5dfaf335413be47553f2d908bea53
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/input@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@nimbus-ds/input@npm:2.0.0"
+  dependencies:
+    "@nimbus-ds/icon": ^2.0.0
+    "@nimbus-ds/skeleton": ^2.0.0
+    "@tiendanube/icons": ^0.3.1
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 073244dc0cb82853a657a39b8ccc5507aed5a642f180257ad42744bb247b85c1d8213f3dc15b2f5e4abfd55c9b3b9ff74406f34ec47672f40de08a1d9b1eedcb
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/label@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@nimbus-ds/label@npm:2.0.0"
+  dependencies:
+    "@nimbus-ds/skeleton": ^2.0.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 412350a542a8ca344fd77f492e7983b6033b0320bf135d0682140db151d042f9c4bb7dede631441cbbd9427b084a68282a0ba7e3e0b0a47160240938abe66b22
+  languageName: node
+  linkType: hard
+
 "@nimbus-ds/link@npm:^2.1.5":
   version: 2.1.5
   resolution: "@nimbus-ds/link@npm:2.1.5"
@@ -2634,6 +2693,31 @@ __metadata:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
   checksum: 9c5fe8f43ab98305669f8c73714549afd63c17d4520e5723ce0c4909e525f81891084e401188bd6d6145ff970adc6b3508a820d224c5b98bebb7f788d863eb9d
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/radio@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@nimbus-ds/radio@npm:2.0.0"
+  dependencies:
+    "@nimbus-ds/skeleton": ^2.0.0
+    "@nimbus-ds/text": ^5.0.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: a184a2f5b6fd5fb47fcaf890ad8a0c8249a38a0e6918478c0339e13d4face7cd1a8feb282804b20d0712ae47db71c3b484f8784832d828c26aa8ce9e5c1c2c3e
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/select@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@nimbus-ds/select@npm:2.0.0"
+  dependencies:
+    "@nimbus-ds/skeleton": ^2.0.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: e4fc7b6d05eba5c44c6b1f6008966e9f7c2700c2441fe657a7e04d71e87e7a3191f2e45d3c781bbb7fe47dc05e5c0b0143d4941a6ee12619331847bed36ebe37
   languageName: node
   linkType: hard
 
@@ -2693,6 +2777,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nimbus-ds/skeleton@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@nimbus-ds/skeleton@npm:2.0.0"
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: cabf6ac9c2d4167e1f6d4c97fe26a1df4d8f0dae8084f471c205f9b448fef48e6e84bdb47dd5abb1961f858c292832ea95c20d867f2619a507ff64d66236cf71
+  languageName: node
+  linkType: hard
+
 "@nimbus-ds/stack@npm:^1.2.0":
   version: 1.2.0
   resolution: "@nimbus-ds/stack@npm:1.2.0"
@@ -2702,6 +2796,16 @@ __metadata:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
   checksum: ecbf3fbf956f9356dd1fc2ce47870f658406ed448ba48400cf50fa8e2665c2c609c8765e91f0665bdecd5ffc366fd073004999be01530eca602d7520c7bcec8a
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/stack@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@nimbus-ds/stack@npm:2.0.0"
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 09dfd0acd4cef7f867f62bb7d0500e63b815d977d12d6336b78c4842c6f53ae2c949762c57fa40a982b4c72556469760b4866771fcba1e6fdabdc0c688bd7a6a
   languageName: node
   linkType: hard
 
@@ -2741,6 +2845,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nimbus-ds/styles@npm:^6.0.2":
+  version: 6.0.2
+  resolution: "@nimbus-ds/styles@npm:6.0.2"
+  checksum: b9cd279c4da3b0177cdc79db9c493ef8fe3aa3daa71e5e6e037511c836e8ddece5a7e5cd977c43ea2e2cdcf74dad5dd199900144e1000aa6b6d1ebdb882ec58c
+  languageName: node
+  linkType: hard
+
 "@nimbus-ds/text@npm:^4.3.0":
   version: 4.3.0
   resolution: "@nimbus-ds/text@npm:4.3.0"
@@ -2751,6 +2862,30 @@ __metadata:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
   checksum: ff677bc18cecee907d4d8f2bb3ea6ea229bbc00be8494623955040886f7f41fedee43047d88bb2585c48f2f7ccf35d2fcbaafe13e64d9b9d018b7ba7858f5234
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/text@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@nimbus-ds/text@npm:5.0.0"
+  dependencies:
+    "@nimbus-ds/skeleton": ^2.0.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 6bca34a0f62ea52949c8230c61df69a40a7385cc153ff45d60ee229ec0cd3d88fd919fc90ae7fae0be12a2069797913740a16419caaa4e44e936a0c511ac54c1
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/textarea@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@nimbus-ds/textarea@npm:2.0.0"
+  dependencies:
+    "@nimbus-ds/skeleton": ^2.0.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 3b1c8b9c7687a4e2fa9959556a218b722d54e418f10aa7ac9d049498d4553ad1400fd969453ce57f3314f7e6b7f1ea91fae7f565d750b404f41e61518b2929ed
   languageName: node
   linkType: hard
 
@@ -5176,7 +5311,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiendanube/icons@npm:^0.3.2":
+"@tiendanube/icons@npm:^0.3.1, @tiendanube/icons@npm:^0.3.2":
   version: 0.3.2
   resolution: "@tiendanube/icons@npm:0.3.2"
   dependencies:
