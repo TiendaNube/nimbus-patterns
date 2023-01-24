@@ -1,0 +1,5 @@
+releases:
+  "@nimbus-ds/formfield": major
+
+declined:
+  - nimbus-patterns
