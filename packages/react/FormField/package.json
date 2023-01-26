@@ -1,0 +1,46 @@
+{
+  "name": "@nimbus-ds/formfield",
+  "version": "1.0.0-rc.1",
+  "license": "MIT",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf dist",
+    "version": "yarn version"
+  },
+  "peerDependencies": {
+    "react": "^16.8 || ^17.0 || ^18.0",
+    "react-dom": "^16.8 || ^17.0 || ^18.0"
+  },
+  "homepage": "https://nimbus.nuvemshop.com.br/documentation",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiendaNube/nimbus-patterns.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
+  },
+  "dependencies": {
+    "@nimbus-ds/box": "^2.0.0",
+    "@nimbus-ds/icon": "^2.0.0",
+    "@nimbus-ds/input": "^2.0.0",
+    "@nimbus-ds/label": "^2.0.0",
+    "@nimbus-ds/select": "^2.0.0",
+    "@nimbus-ds/stack": "^2.0.0",
+    "@nimbus-ds/text": "^5.0.0",
+    "@nimbus-ds/textarea": "^2.0.0"
+  },
+  "devDependencies": {
+    "@nimbus-ds/radio": "^2.0.0",
+    "@nimbus-ds/styles": "^6.0.2",
+    "@tiendanube/icons": "^0.3.2"
+  },
+  "stableVersion": "0.0.0"
+}
