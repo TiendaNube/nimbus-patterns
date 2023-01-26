@@ -26,4 +26,6 @@ const FormFieldSelect: React.FC<FormFieldSelectProps> = ({
   </FormField>
 );
 
+FormFieldSelect.displayName = "FormField.Select";
+
 export { FormFieldSelect };

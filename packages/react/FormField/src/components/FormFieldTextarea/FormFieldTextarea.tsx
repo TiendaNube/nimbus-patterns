@@ -26,4 +26,6 @@ const FormFieldTextarea: React.FC<FormFieldTextareaProps> = ({
   </FormField>
 );
 
+FormFieldTextarea.displayName = "FormField.Textarea";
+
 export { FormFieldTextarea };

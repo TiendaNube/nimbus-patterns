@@ -26,4 +26,6 @@ const FormFieldInput: React.FC<FormFieldInputProps> = ({
   </FormField>
 );
 
+FormFieldInput.displayName = "FormField.Input";
+
 export { FormFieldInput };
