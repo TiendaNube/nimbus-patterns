@@ -69,7 +69,8 @@
         "packageDir": [
           ".",
           "./packages/react/CalloutCard",
-          "./packages/react/SideModal"
+          "./packages/react/SideModal",
+          "./packages/react/FormField"
         ]
       }
     ],
