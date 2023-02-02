@@ -3,6 +3,16 @@
 This is the log of notable changes to the Nimbus Patterns that are developer-facing.
 Package-specific changes not released in any package will be added here just before the release. Until then, you can find them in changelogs of the individual packages (see [packages](./packages) directory).
 
+## 2023-02-02
+
+### 📚 3rd party library updates
+
+- Added `@nimbus-ds/styles` as dependency. ([#8](https://github.com/TiendaNube/nimbus-patterns/pull/8) by [@juanchigallego](https://github.com/juanchigallego))
+
+### 💡 Others
+
+- Added `CentraNube-Medium` font to Storybook. ([#8](https://github.com/TiendaNube/nimbus-patterns/pull/8) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2022-11-09
 
 ### 🎉 New features
