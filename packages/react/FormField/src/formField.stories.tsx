@@ -9,8 +9,6 @@ import { Radio } from "@nimbus-ds/radio";
 
 import { ExclamationCircleIcon } from "@tiendanube/icons";
 
-import "@nimbus-ds/styles/dist/index.css";
-
 import { FormField } from "./FormField";
 
 export default {
