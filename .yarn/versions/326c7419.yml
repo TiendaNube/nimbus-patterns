@@ -1,8 +1,0 @@
-releases:
-  "@nimbus-ds/callout-card": minor
-  "@nimbus-ds/formfield": minor
-  "@nimbus-ds/productupdates": major
-  "@nimbus-ds/sidemodal": minor
-
-declined:
-  - nimbus-patterns

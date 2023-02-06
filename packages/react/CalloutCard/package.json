@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/callout-card",
-  "version": "1.2.0-rc.5",
+  "version": "1.2.0",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -35,6 +35,5 @@
     "@nimbus-ds/stack": "^2.0.0",
     "@nimbus-ds/text": "^5.0.0",
     "@tiendanube/icons": "^0.3.2"
-  },
-  "stableVersion": "1.1.0"
+  }
 }
