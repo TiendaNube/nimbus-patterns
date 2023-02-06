@@ -39,9 +39,13 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
     <Stack display="flex" flexDirection="column" gap="4" width="100%">
       {productUpdatesContent}
       {bodyContent}
-      <Link onClick={handleVisibility} appearance="neutral.background" size="base">
+      <Link.Button
+        onClick={handleVisibility}
+        appearance="neutral.background"
+        size="base"
+      >
         {dismissLink}
-      </Link>
+      </Link.Button>
     </Stack>
   ) : (
     <Stack display="flex" flexDirection="column" gap="4" width="100%">
@@ -67,7 +71,10 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
       appearance="primary.interactiveHover"
       content={hasDismissLink}
       visible={visible}
-      onVisibility={rest.onVisibility || ((newVisible: boolean) => setVisibility(newVisible))}
+      onVisibility={
+        rest.onVisibility ||
+        ((newVisible: boolean) => setVisibility(newVisible))
+      }
       enabledDismiss={false}
     />
   );
