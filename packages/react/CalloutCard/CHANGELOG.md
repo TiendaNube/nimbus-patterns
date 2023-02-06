@@ -2,6 +2,17 @@
 
 This component is used to provide the user with useful information, tips, tutorials or shortcuts to other parts of the product. It is a visual component specially designed to be used in contexts such as integration, tutorials or dashboards, where we need to show different relevant information in the same space.
 
+## 2023-02-02 `1.2.0`
+
+### 📚 3rd party library updates
+
+- Updated `@nimbus-ds/box` to version `2.1.0`. ([#8](https://github.com/TiendaNube/nimbus-patterns/pull/8) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/card` to version `2.0.0`. ([#8](https://github.com/TiendaNube/nimbus-patterns/pull/8) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/icon` to version `2.0.0`. ([#8](https://github.com/TiendaNube/nimbus-patterns/pull/8) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/link` to version `3.1.0`. ([#8](https://github.com/TiendaNube/nimbus-patterns/pull/8) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/stack` to version `2.0.0`. ([#8](https://github.com/TiendaNube/nimbus-patterns/pull/8) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/text` to version `5.0.0`. ([#8](https://github.com/TiendaNube/nimbus-patterns/pull/8) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2022-12-16 `1.1.0`
 
 ### 📚 3rd party library updates

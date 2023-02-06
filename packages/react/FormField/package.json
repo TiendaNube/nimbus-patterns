@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/formfield",
-  "version": "1.0.0",
+  "version": "1.1.0-rc.5",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -28,7 +28,7 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "dependencies": {
-    "@nimbus-ds/box": "^2.0.0",
+    "@nimbus-ds/box": "^2.1.0",
     "@nimbus-ds/icon": "^2.0.0",
     "@nimbus-ds/input": "^2.0.0",
     "@nimbus-ds/label": "^2.0.0",
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@nimbus-ds/radio": "^2.0.0",
-    "@nimbus-ds/styles": "^6.0.2",
     "@tiendanube/icons": "^0.3.2"
-  }
+  },
+  "stableVersion": "1.0.0"
 }

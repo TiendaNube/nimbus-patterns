@@ -2,6 +2,16 @@
 
 Sidemodal navigation provides access to the parts within its application. The side sections have the supplementary content that is linked on the left or right side of the screen.
 
+## 2023-02-02 `1.3.0`
+
+### 📚 3rd party library updates
+
+- Updated `@nimbus-ds/box` to version `2.1.0`. ([#8](https://github.com/TiendaNube/nimbus-patterns/pull/8) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/button` to version `2.0.0`. ([#8](https://github.com/TiendaNube/nimbus-patterns/pull/8) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/sidebar` to version `2.0.0`. ([#8](https://github.com/TiendaNube/nimbus-patterns/pull/8) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/stack` to version `2.0.0`. ([#8](https://github.com/TiendaNube/nimbus-patterns/pull/8) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/title` to version `2.0.0`. ([#8](https://github.com/TiendaNube/nimbus-patterns/pull/8) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2022-12-16 `1.2.0`
 
 ### 📚 3rd party library updates

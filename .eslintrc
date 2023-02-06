@@ -70,7 +70,8 @@
           ".",
           "./packages/react/CalloutCard",
           "./packages/react/SideModal",
-          "./packages/react/FormField"
+          "./packages/react/FormField",
+          "./packages/react/ProductUpdates"
         ]
       }
     ],
