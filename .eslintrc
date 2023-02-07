@@ -71,7 +71,9 @@
           "./packages/react/CalloutCard",
           "./packages/react/SideModal",
           "./packages/react/FormField",
-          "./packages/react/ProductUpdates"
+          "./packages/react/ProductUpdates",
+          "./packages/react/Menu",
+          "./packages/react/MenuButton"
         ]
       }
     ],
