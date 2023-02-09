@@ -2529,13 +2529,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/box@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@nimbus-ds/box@npm:2.1.0"
+"@nimbus-ds/box@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "@nimbus-ds/box@npm:2.3.0"
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: e36806b1f7405d8726256c601c2f2eb123277da81ac264db7451c6c1ad2d73913d62c5463e1eac85238ad1244018c02cc51bf75082f32868dbf353f75cbd25f1
+  checksum: f935e1371202fbdaf67b84b46058a8f587d33984a63f61ef3994aa3ffdfeec1f553cc40c971dcbf7d2461c0a8ad23eba778e9ebddbda576590944424261eed97
   languageName: node
   linkType: hard
 
@@ -2556,7 +2556,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/callout-card@workspace:packages/react/CalloutCard"
   dependencies:
-    "@nimbus-ds/box": ^2.1.0
+    "@nimbus-ds/box": ^2.3.0
     "@nimbus-ds/card": ^2.0.0
     "@nimbus-ds/icon": ^2.0.0
     "@nimbus-ds/link": ^3.1.0
@@ -2584,7 +2584,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/formfield@workspace:packages/react/FormField"
   dependencies:
-    "@nimbus-ds/box": ^2.1.0
+    "@nimbus-ds/box": ^2.3.0
     "@nimbus-ds/icon": ^2.0.0
     "@nimbus-ds/input": ^2.0.0
     "@nimbus-ds/label": ^2.0.0
@@ -2691,7 +2691,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/productupdates@workspace:packages/react/ProductUpdates"
   dependencies:
-    "@nimbus-ds/box": ^2.1.0
+    "@nimbus-ds/box": ^2.3.0
     "@nimbus-ds/icon": ^2.0.0
     "@nimbus-ds/icon-button": ^3.3.0
     "@nimbus-ds/link": ^3.2.0
@@ -2748,7 +2748,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/sidemodal@workspace:packages/react/SideModal"
   dependencies:
-    "@nimbus-ds/box": ^2.1.0
+    "@nimbus-ds/box": ^2.3.0
     "@nimbus-ds/button": ^2.0.0
     "@nimbus-ds/icon": ^2.0.0
     "@nimbus-ds/sidebar": ^2.0.0

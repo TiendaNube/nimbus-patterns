@@ -28,7 +28,7 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "dependencies": {
-    "@nimbus-ds/box": "^2.1.0",
+    "@nimbus-ds/box": "^2.3.0",
     "@nimbus-ds/button": "^2.0.0",
     "@nimbus-ds/sidebar": "^2.0.0",
     "@nimbus-ds/stack": "^2.0.0",
