@@ -1,0 +1,6 @@
+releases:
+  "@nimbus-ds/menu": minor
+  "@nimbus-ds/sidemodal": minor
+
+declined:
+  - nimbus-patterns
