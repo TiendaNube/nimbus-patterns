@@ -14,18 +14,23 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
       - uses: actions/cache@v1
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
       - name: Install dependencies
         if: steps.yarn-cache-dir-path.outputs.cache-hit != 'true'
         run: yarn
+
       - name: Auto versioning
         run: yarn bump:packages
+        
       - name: Commit versioning
         uses: stefanzweifel/git-auto-commit-action@v4
         with:

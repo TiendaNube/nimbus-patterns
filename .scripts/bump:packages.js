@@ -4,7 +4,7 @@ const glob = require("glob");
 const { execSync } = require("child_process");
 
 const run = () => {
-  execSync("git diff --name-only master > ./.scripts/diff.txt");
+  execSync("git diff --name-only origin/master > ./.scripts/diff.txt");
   const diff = glob.sync(path.join("./.scripts/diff.txt"));
   if (!diff.length) {
     throw new Error(
