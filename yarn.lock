@@ -2588,7 +2588,7 @@ __metadata:
     "@nimbus-ds/icon": ^2.0.0
     "@nimbus-ds/input": ^2.0.0
     "@nimbus-ds/label": ^2.0.0
-    "@nimbus-ds/radio": ^2.0.0
+    "@nimbus-ds/radio": ^2.0.1
     "@nimbus-ds/select": ^2.0.0
     "@nimbus-ds/text": ^5.0.0
     "@nimbus-ds/textarea": ^2.0.0
@@ -2742,16 +2742,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/radio@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@nimbus-ds/radio@npm:2.0.0"
+"@nimbus-ds/radio@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@nimbus-ds/radio@npm:2.0.1"
   dependencies:
     "@nimbus-ds/skeleton": ^2.0.0
     "@nimbus-ds/text": ^5.0.0
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: a184a2f5b6fd5fb47fcaf890ad8a0c8249a38a0e6918478c0339e13d4face7cd1a8feb282804b20d0712ae47db71c3b484f8784832d828c26aa8ce9e5c1c2c3e
+  checksum: 8f6278a26ece9d09ffdf4832fecd4da9f896b3fc74ed4882539a5d14cea63495caf8c4d8db9a6bf32a8e7a051a3bea20614c25716ed6d6a25ed04d2218ef9bf3
   languageName: node
   linkType: hard
 

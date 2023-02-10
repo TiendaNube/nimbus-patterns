@@ -37,7 +37,7 @@
     "@nimbus-ds/textarea": "^2.0.0"
   },
   "devDependencies": {
-    "@nimbus-ds/radio": "^2.0.0",
+    "@nimbus-ds/radio": "^2.0.1",
     "@tiendanube/icons": "^0.3.2"
   }
 }
