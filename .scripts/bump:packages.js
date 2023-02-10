@@ -14,6 +14,7 @@ const run = () => {
   const content = fs.readFileSync(diff[0], "utf8");
   console.log(`\x1b[32m 🏃‍♂️ Generating versions for packages... \x1b[0m`);
 
+  execSync("yarn version -d decline");
   content
     .match(/packages\/react\/\w+?-?\w+\/package\.json/gm)
     .reduce((prev, curr) => {
