@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@nimbus-ds/box": "^2.4.0",
-    "@nimbus-ds/button": "^2.0.0",
+    "@nimbus-ds/button": "^2.1.0",
     "@nimbus-ds/sidebar": "^2.0.0",
     "@nimbus-ds/title": "^2.0.0"
   },

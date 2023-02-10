@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@nimbus-ds/badge": "^3.0.0",
-    "@nimbus-ds/button": "^2.0.0",
+    "@nimbus-ds/button": "^2.1.0",
     "@nimbus-ds/icon-button": "^3.3.0",
     "@nimbus-ds/sidebar": "^2.0.0",
     "@nimbus-ds/tag": "^2.0.0"

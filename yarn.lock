@@ -2552,16 +2552,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/button@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@nimbus-ds/button@npm:2.0.0"
+"@nimbus-ds/button@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@nimbus-ds/button@npm:2.1.0"
   dependencies:
     "@nimbus-ds/skeleton": ^2.0.0
   peerDependencies:
-    "@nimbus-ds/styles": ^6.0.0
+    "@nimbus-ds/styles": ^6.5.0
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: d7fca1b7c9fb7c1ca4e74d950c7c77750d97302d929a4a54c058a7e0bb51ceff19409f7070c05bda2f3fb4584679a6021bb3dd4f44a29b39b4a1bc8273df48e8
+  checksum: 760f4bf8b8fb6754aa61cfb0cdba41603721c8e5482023321d2527ac8b8ef1bf624dbcdf1a610fd91658e43552fabd03c568a1e11c993ff0fd42d356662d4eba
   languageName: node
   linkType: hard
 
@@ -2680,7 +2680,7 @@ __metadata:
   dependencies:
     "@nimbus-ds/badge": ^3.0.0
     "@nimbus-ds/box": ^2.4.0
-    "@nimbus-ds/button": ^2.0.0
+    "@nimbus-ds/button": ^2.1.0
     "@nimbus-ds/icon": ^2.0.0
     "@nimbus-ds/icon-button": ^3.3.0
     "@nimbus-ds/menubutton": "workspace:^"
@@ -2785,7 +2785,7 @@ __metadata:
   resolution: "@nimbus-ds/sidemodal@workspace:packages/react/SideModal"
   dependencies:
     "@nimbus-ds/box": ^2.4.0
-    "@nimbus-ds/button": ^2.0.0
+    "@nimbus-ds/button": ^2.1.0
     "@nimbus-ds/icon": ^2.0.0
     "@nimbus-ds/sidebar": ^2.0.0
     "@nimbus-ds/text": ^5.0.0
