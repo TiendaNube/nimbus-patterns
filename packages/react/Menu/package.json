@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@nimbus-ds/box": "^2.4.0",
-    "@nimbus-ds/menubutton": "1.0.0-rc.1",
+    "@nimbus-ds/menubutton": "workspace:^",
     "@nimbus-ds/text": "^5.0.0",
     "@nimbus-ds/tokens": "^6.0.1",
     "@tiendanube/icons": "^0.3.2"
