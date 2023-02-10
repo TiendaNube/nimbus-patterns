@@ -40,5 +40,8 @@ jobs:
         with:
           commit_message: "feat: updated versions"
 
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Check
         run: yarn bump:check
