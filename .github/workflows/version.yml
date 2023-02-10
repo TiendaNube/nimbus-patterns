@@ -31,19 +31,6 @@ jobs:
       - name: Auto versioning
         run: yarn bump:packages
 
-      - name: Branch protection OFF
-        run: |
-          curl --request PUT \
-          --url 'https://api.github.com/repos/tiendanube/nimbus-patterns/branches/${BRANCH_NAME}/protection' \
-          --header 'Authorization: token ${{ secrets.PAT_CHANGE_BRANCH_PROTECTION_RULES_FROM_JUNIOR_CONQUISTA }}' \
-          --data '{"enforce_admins":false,"required_pull_request_reviews":null,"required_status_checks":null,"required_conversation_resolution":false,"restrictions":null,"required_linear_history":false}'
-
-      - name: Commit versioning
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          branch: ${BRANCH_NAME}
-          commit_message: "feat: updated versions"
-
   check:
     needs: generate-auto-versioning
     runs-on: ubuntu-latest

@@ -22,6 +22,9 @@ const run = () => {
       return prev;
     }, "");
   execSync("rm -rf ./.scripts/diff.txt");
+  execSync("git add .");
+  execSync('git commit -m "feat: updated versions');
+  execSync("git push --no-verify");
 };
 
 try {
