@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Text } from "@nimbus-ds/text";
-import { Stack } from "@nimbus-ds/stack";
 import { Box } from "@nimbus-ds/box";
 
 import { MenuSectionProps } from "./menuSection.types";
@@ -13,7 +12,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   children,
   ...rest
 }: MenuSectionProps) => (
-  <Stack display="flex" flexDirection="column" gap="2">
+  <Box {...rest} display="flex" flexDirection="column" gap="2">
     {title && (
       <Box pl="2" pt="2">
         <Text color="neutral.textHigh" fontSize="caption">
@@ -22,7 +21,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
       </Box>
     )}
     {children}
-  </Stack>
+  </Box>
 );
 
 MenuSection.displayName = "Menu.Section";

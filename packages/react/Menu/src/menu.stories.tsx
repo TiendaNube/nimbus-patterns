@@ -23,7 +23,6 @@ import { Sidebar } from "@nimbus-ds/sidebar";
 import { Button } from "@nimbus-ds/button";
 import { MenuButton } from "@nimbus-ds/menubutton";
 import { Box } from "@nimbus-ds/box";
-import { Stack } from "@nimbus-ds/stack";
 import { Badge } from "@nimbus-ds/badge";
 import { Tag } from "@nimbus-ds/tag";
 import { IconButton } from "@nimbus-ds/icon-button";
@@ -51,18 +50,18 @@ export default {
 const SampleMenu = (
   <Menu>
     <Menu.Header>
-      <Stack display="flex" gap="2" alignItems="center">
+      <Box display="flex" gap="2" alignItems="center" width="100%">
         <Icon
           color="neutral.textHigh"
           source={<TiendanubeIcon size="medium" />}
         />
-        <Stack display="inline-flex" flex="1">
+        <Box display="inline-flex" flex="1">
           <Text fontSize="base" color="neutral.textHigh" fontWeight="bold">
             Tienda demo
           </Text>
-        </Stack>
+        </Box>
         <IconButton source={<ExternalLinkIcon />} size="2rem" />
-      </Stack>
+      </Box>
     </Menu.Header>
     <Menu.Body>
       <Menu.Section>
@@ -128,35 +127,35 @@ const TemplateWithSidebar: ComponentStory<typeof Menu> = (args) => {
 };
 
 const TemplateWithFixedBar: ComponentStory<typeof Menu> = () => (
-  <Stack display="flex" gap="4">
-    <Stack display="flex" flex="0 1 auto">
-      <Box
-        width="15rem"
-        height="100vh"
-        borderColor="neutral.surfaceHighlight"
-        borderStyle="solid"
-        borderWidth="0 1px 0 0"
-        position="sticky"
-        left="0"
-        top="0"
-        overflow="hidden"
-      >
-        {SampleMenu}
-      </Box>
-    </Stack>
-    <Stack display="flex" flex="1 1 auto">
-      <Box
-        backgroundColor="primary.surface"
-        borderColor="primary.interactive"
-        borderStyle="dashed"
-        borderWidth="1px"
-        borderRadius=".5rem"
-        height="2000px"
-        width="100%"
-        padding="4"
-      />
-    </Stack>
-  </Stack>
+  <Box display="flex" gap="4">
+    <Box
+      display="flex"
+      flex="0 1 auto"
+      width="20rem"
+      height="100vh"
+      borderColor="neutral.surfaceHighlight"
+      borderStyle="solid"
+      borderWidth="0 1px 0 0"
+      position="sticky"
+      left="0"
+      top="0"
+      overflow="hidden"
+    >
+      {SampleMenu}
+    </Box>
+    <Box
+      display="flex"
+      flex="1 1 auto"
+      backgroundColor="primary.surface"
+      borderColor="primary.interactive"
+      borderStyle="dashed"
+      borderWidth="1px"
+      borderRadius=".5rem"
+      height="2000px"
+      width="100%"
+      padding="4"
+    />
+  </Box>
 );
 
 export const sampleAppMenu = Template.bind({});

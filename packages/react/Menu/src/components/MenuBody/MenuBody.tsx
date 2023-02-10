@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Box } from "@nimbus-ds/box";
-import { Stack } from "@nimbus-ds/stack";
 
 import { MenuBodyProps } from "./menuBody.types";
 
@@ -11,13 +10,20 @@ const MenuBody: React.FC<MenuBodyProps> = ({
   children,
   ...rest
 }: MenuBodyProps) => (
-  <Stack {...rest} display="flex" flex="1 1 auto">
-    <Box paddingX="2" paddingY="4" width="100%">
-      <Stack display="flex" flexDirection="column" gap="2" flex="1">
-        {children}
-      </Stack>
-    </Box>
-  </Stack>
+  <Box
+    {...rest}
+    display="flex"
+    flexDirection="column"
+    flex="1 1 auto"
+    gap="2"
+    paddingX="2"
+    paddingY="4"
+    width="100%"
+    overflowY="auto"
+    boxSizing="border-box"
+  >
+    {children}
+  </Box>
 );
 
 MenuBody.displayName = "Menu.Body";
