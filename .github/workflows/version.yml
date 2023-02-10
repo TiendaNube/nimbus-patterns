@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -29,9 +31,17 @@ jobs:
       - name: Auto versioning
         run: yarn bump:packages
 
+      - name: Branch protection OFF
+        run: |
+          curl --request PUT \
+          --url 'https://api.github.com/repos/tiendanube/nimbus-patterns/branches/${GITHUB_REF##*/}/protection' \
+          --header 'Authorization: token ${{ secrets.PAT_CHANGE_BRANCH_PROTECTION_RULES_FROM_JUNIOR_CONQUISTA }}' \
+          --data '{"enforce_admins":false,"required_pull_request_reviews":null,"required_status_checks":null,"required_conversation_resolution":false,"restrictions":null,"required_linear_history":false}'
+        
       - name: Commit versioning
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          branch: ${GITHUB_REF##*/}
           commit_message: "feat: updated versions"
 
   check:
