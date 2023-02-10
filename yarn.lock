@@ -2683,7 +2683,7 @@ __metadata:
     "@nimbus-ds/button": ^2.0.0
     "@nimbus-ds/icon": ^2.0.0
     "@nimbus-ds/icon-button": ^3.3.0
-    "@nimbus-ds/menubutton": 1.0.0-rc.1
+    "@nimbus-ds/menubutton": "workspace:^"
     "@nimbus-ds/sidebar": ^2.0.0
     "@nimbus-ds/tag": ^2.0.0
     "@nimbus-ds/text": ^5.0.0
@@ -2695,7 +2695,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/menubutton@1.0.0-rc.1, @nimbus-ds/menubutton@workspace:packages/react/MenuButton":
+"@nimbus-ds/menubutton@workspace:^, @nimbus-ds/menubutton@workspace:packages/react/MenuButton":
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/menubutton@workspace:packages/react/MenuButton"
   dependencies:
