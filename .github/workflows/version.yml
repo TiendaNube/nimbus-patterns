@@ -5,10 +5,13 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+
 jobs:
   generate-auto-versioning:
     runs-on: ubuntu-latest
-    # if: ${{ github.actor == 'dependabot[bot]' }}
+    if: ${{ github.actor == 'dependabot[bot]' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
