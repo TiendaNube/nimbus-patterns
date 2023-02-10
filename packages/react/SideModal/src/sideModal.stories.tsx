@@ -6,7 +6,6 @@ import { useArgs } from "@storybook/client-api";
 import { Icon } from "@nimbus-ds/icon";
 import { Text } from "@nimbus-ds/text";
 import { Box } from "@nimbus-ds/box";
-import { Stack } from "@nimbus-ds/stack";
 import { Button } from "@nimbus-ds/button";
 import {
   ChevronLeftIcon,
@@ -98,12 +97,12 @@ base.args = {
   paddingBody: "none",
   paddingFooter: "none",
   headerAction: (
-    <Stack display="flex" alignItems="center" gap="1">
+    <Box display="flex" alignItems="center" gap="1">
       <Icon color="primary.textHigh" source={<ChevronLeftIcon />} />
       <Text fontWeight="bold" fontSize="highlight">
         Formas de entrega
       </Text>
-    </Stack>
+    </Box>
   ),
   children: (
     <Box
@@ -112,17 +111,13 @@ base.args = {
       borderColor="neutral.interactive"
       height="100%"
       boxSizing="border-box"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
     >
-      <Stack
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        height="100%"
-      >
-        <Text textAlign="center" fontSize="base">
-          Replace me with your content
-        </Text>
-      </Stack>
+      <Text textAlign="center" fontSize="base">
+        Replace me with your content
+      </Text>
     </Box>
   ),
   footer: {
@@ -144,17 +139,13 @@ withTitle.args = {
       borderColor="neutral.interactive"
       height="100%"
       boxSizing="border-box"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
     >
-      <Stack
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        height="100%"
-      >
-        <Text textAlign="center" fontSize="base">
-          Replace me with your content
-        </Text>
-      </Stack>
+      <Text textAlign="center" fontSize="base">
+        Replace me with your content
+      </Text>
     </Box>
   ),
   footer: {
@@ -170,10 +161,10 @@ withTitleAction.args = {
   padding: "base",
   paddingHeader: "none",
   titleAction: (
-    <Stack display="flex" gap="2">
+    <Box display="flex" gap="2">
       <Icon color="primary.textHigh" source={<ChevronLeftIcon />} />
       <Icon color="primary.textHigh" source={<ChevronRightIcon />} />
-    </Stack>
+    </Box>
   ),
   children: (
     <Box
@@ -182,17 +173,13 @@ withTitleAction.args = {
       borderColor="neutral.interactive"
       height="100%"
       boxSizing="border-box"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
     >
-      <Stack
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        height="100%"
-      >
-        <Text textAlign="center" fontSize="base">
-          Replace me with your content
-        </Text>
-      </Stack>
+      <Text textAlign="center" fontSize="base">
+        Replace me with your content
+      </Text>
     </Box>
   ),
   footer: {
@@ -208,12 +195,12 @@ withHeaderAction.args = {
   padding: "base",
   paddingHeader: "none",
   headerAction: (
-    <Stack display="flex" alignItems="center" gap="1">
+    <Box display="flex" alignItems="center" gap="1">
       <Icon color="primary.textHigh" source={<ChevronLeftIcon />} />
       <Text fontWeight="bold" fontSize="highlight">
         Formas de entrega
       </Text>
-    </Stack>
+    </Box>
   ),
   children: (
     <Box
@@ -222,17 +209,13 @@ withHeaderAction.args = {
       borderColor="neutral.interactive"
       height="100%"
       boxSizing="border-box"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
     >
-      <Stack
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        height="100%"
-      >
-        <Text textAlign="center" fontSize="base">
-          Replace me with your content
-        </Text>
-      </Stack>
+      <Text textAlign="center" fontSize="base">
+        Replace me with your content
+      </Text>
     </Box>
   ),
   footer: {
@@ -249,12 +232,12 @@ withHeaderIcon.args = {
   paddingHeader: "none",
   headerIcon: <Icon color="primary.textHigh" source={<CheckCircleIcon />} />,
   headerAction: (
-    <Stack display="flex" alignItems="center" gap="1">
+    <Box display="flex" alignItems="center" gap="1">
       <Icon color="primary.textHigh" source={<ChevronLeftIcon />} />
       <Text fontWeight="bold" fontSize="highlight">
         Formas de entrega
       </Text>
-    </Stack>
+    </Box>
   ),
   children: (
     <Box
@@ -263,17 +246,13 @@ withHeaderIcon.args = {
       borderColor="neutral.interactive"
       height="100%"
       boxSizing="border-box"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
     >
-      <Stack
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        height="100%"
-      >
-        <Text textAlign="center" fontSize="base">
-          Replace me with your content
-        </Text>
-      </Stack>
+      <Text textAlign="center" fontSize="base">
+        Replace me with your content
+      </Text>
     </Box>
   ),
   footer: {
@@ -290,12 +269,12 @@ withFooter.args = {
   paddingHeader: "none",
   headerIcon: <Icon color="primary.textHigh" source={<CheckCircleIcon />} />,
   headerAction: (
-    <Stack display="flex" alignItems="center" gap="1">
+    <Box display="flex" alignItems="center" gap="1">
       <Icon color="primary.textHigh" source={<ChevronLeftIcon />} />
       <Text fontWeight="bold" fontSize="highlight">
         Formas de entrega
       </Text>
-    </Stack>
+    </Box>
   ),
   children: (
     <Box
@@ -304,17 +283,13 @@ withFooter.args = {
       borderColor="neutral.interactive"
       height="100%"
       boxSizing="border-box"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
     >
-      <Stack
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        height="100%"
-      >
-        <Text textAlign="center" fontSize="base">
-          Replace me with your content
-        </Text>
-      </Stack>
+      <Text textAlign="center" fontSize="base">
+        Replace me with your content
+      </Text>
     </Box>
   ),
   footer: {
@@ -330,12 +305,12 @@ withoutFooter.args = {
   headerIcon: <Icon color="primary.textHigh" source={<CheckCircleIcon />} />,
   paddingBody: "base",
   headerAction: (
-    <Stack display="flex" alignItems="center" gap="1">
+    <Box display="flex" alignItems="center" gap="1">
       <Icon color="primary.textHigh" source={<ChevronLeftIcon />} />
       <Text fontWeight="bold" fontSize="highlight">
         Formas de entrega
       </Text>
-    </Stack>
+    </Box>
   ),
   children: (
     <Box
@@ -344,17 +319,13 @@ withoutFooter.args = {
       borderColor="neutral.interactive"
       height="100%"
       boxSizing="border-box"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
     >
-      <Stack
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        height="100%"
-      >
-        <Text textAlign="center" fontSize="base">
-          Replace me with your content
-        </Text>
-      </Stack>
+      <Text textAlign="center" fontSize="base">
+        Replace me with your content
+      </Text>
     </Box>
   ),
 };

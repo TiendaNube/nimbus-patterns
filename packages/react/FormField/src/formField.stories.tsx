@@ -4,8 +4,8 @@ import { withA11y } from "@storybook/addon-a11y";
 // eslint-disable-next-line
 import { useArgs } from "@storybook/client-api";
 import { Select } from "@nimbus-ds/select";
-import { Stack } from "@nimbus-ds/stack";
 import { Radio } from "@nimbus-ds/radio";
+import { Box } from "@nimbus-ds/box";
 
 import { ExclamationCircleIcon } from "@tiendanube/icons";
 
@@ -59,12 +59,12 @@ const TemplateWithState: ComponentStory<typeof FormField.Input> = (args) => {
 
 const CustomTemplate: ComponentStory<typeof FormField> = (args) => (
   <FormField {...args}>
-    <Stack display="flex" gap="1">
+    <Box display="flex" gap="1">
       <Radio as="button" checked name="radio" id="radio-1" label="Radio 1" />
       <Radio as="button" name="radio" id="radio-2" label="Radio 2" />
       <Radio as="button" name="radio" id="radio-3" label="Radio 3" />
       <Radio as="button" name="radio" id="radio-4" label="Radio 4" />
-    </Stack>
+    </Box>
   </FormField>
 );
 

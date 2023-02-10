@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Stack } from "@nimbus-ds/stack";
+import { Box } from "@nimbus-ds/box";
 import { Text } from "@nimbus-ds/text";
 import { Icon } from "@nimbus-ds/icon";
 import { Label } from "@nimbus-ds/label";
@@ -23,11 +23,11 @@ const FormField: React.FC<FormFieldProps> & FormFieldComponents = ({
   children,
   ...rest
 }: FormFieldProps) => (
-  <Stack display="flex" flexDirection="column" gap="2" width="100%">
+  <Box display="flex" flexDirection="column" gap="2" width="100%">
     {label && <Label htmlFor={rest.id}>{label}</Label>}
     {children}
     {showHelpText && (
-      <Stack display="inline-flex" gap="1">
+      <Box display="inline-flex" gap="1">
         {IconSrc && (
           <Icon
             color={helpTextAppearance[appearance]}
@@ -39,9 +39,9 @@ const FormField: React.FC<FormFieldProps> & FormFieldComponents = ({
             {helpText}
           </Text>
         )}
-      </Stack>
+      </Box>
     )}
-  </Stack>
+  </Box>
 );
 
 FormField.Select = FormFieldSelect;

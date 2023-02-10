@@ -1,7 +1,6 @@
 import React from "react";
 import { Sidebar } from "@nimbus-ds/sidebar";
 import { Box } from "@nimbus-ds/box";
-import { Stack } from "@nimbus-ds/stack";
 import { Title } from "@nimbus-ds/title";
 import { Button } from "@nimbus-ds/button";
 
@@ -21,22 +20,21 @@ const SideModal: React.FC<SideModalProps> = ({
 }) => (
   <Sidebar {...rest}>
     <Sidebar.Header padding={paddingHeader || "base"}>
-      <Box mb="4">
-        <Stack
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          {headerAction}
-          {headerIcon}
-        </Stack>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        mb="4"
+      >
+        {headerAction}
+        {headerIcon}
       </Box>
-      <Stack display="flex" justifyContent="space-between" alignItems="center">
+      <Box display="flex" justifyContent="space-between" alignItems="center">
         <Title color="primary.textHigh" as="h1">
           {title}
         </Title>
         {titleAction}
-      </Stack>
+      </Box>
     </Sidebar.Header>
     <Sidebar.Body padding={paddingBody}>{children}</Sidebar.Body>
     {!!footer && (
