@@ -2,6 +2,11 @@
 
 The FormField component allows the user to enter or edit information in text format. Additionally, it provides a label, and a conditional help text that can be used to provide additional context on a validation scenario.
 
+## 2023-02-10 `1.2.0`
+
+- Removed `@nimbus-ds/stack`. ([#14](https://github.com/TiendaNube/nimbus-patterns/pull/14) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/box@2.4.0`. ([#14](https://github.com/TiendaNube/nimbus-patterns/pull/14) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-02-02 `1.1.0`
 
 ### 📚 3rd party library updates

@@ -1,6 +1,6 @@
 {
-  "name": "@nimbus-ds/callout-card",
-  "version": "1.3.0-rc.4",
+  "name": "@nimbus-ds/menubutton",
+  "version": "1.0.0-rc.4",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -30,9 +30,13 @@
   "dependencies": {
     "@nimbus-ds/box": "^2.4.0",
     "@nimbus-ds/icon": "^2.0.0",
-    "@nimbus-ds/link": "^3.1.0",
     "@nimbus-ds/text": "^5.0.0",
+    "@nimbus-ds/tokens": "^6.0.1",
     "@tiendanube/icons": "^0.3.2"
   },
-  "stableVersion": "1.2.0"
+  "devDependencies": {
+    "@nimbus-ds/badge": "^3.0.0",
+    "@nimbus-ds/tag": "^2.0.0"
+  },
+  "stableVersion": "0.0.0"
 }

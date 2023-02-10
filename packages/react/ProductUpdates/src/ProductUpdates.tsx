@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import { Popover } from "@nimbus-ds/popover";
 import { Text } from "@nimbus-ds/text";
-import { Stack } from "@nimbus-ds/stack";
 import { Link } from "@nimbus-ds/link";
 import { Box } from "@nimbus-ds/box";
 import { IconButton } from "@nimbus-ds/icon-button";
@@ -25,18 +24,18 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
   const handleVisibility = () => setVisibility(!visible);
 
   const productUpdatesContent = (
-    <Stack display="flex" flexDirection="column" gap="2" width="100%">
+    <Box display="flex" flexDirection="column" gap="2" width="100%">
       <Text color="neutral.background" fontSize="base" fontWeight="bold">
         {title}
       </Text>
       <Text color="neutral.background" fontSize="base">
         {text}
       </Text>
-    </Stack>
+    </Box>
   );
 
   const hasDismissLink = dismissLink ? (
-    <Stack display="flex" flexDirection="column" gap="4" width="100%">
+    <Box display="flex" flexDirection="column" gap="4" width="100%">
       {productUpdatesContent}
       {bodyContent}
       <Link.Button
@@ -46,9 +45,9 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
       >
         {dismissLink}
       </Link.Button>
-    </Stack>
+    </Box>
   ) : (
-    <Stack display="flex" flexDirection="column" gap="4" width="100%">
+    <Box display="flex" flexDirection="column" gap="4" width="100%">
       <Box pr="8" position="relative">
         {productUpdatesContent}
         <Box position="absolute" top="-16px" right="-16px">
@@ -62,7 +61,7 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
         </Box>
       </Box>
       {bodyContent}
-    </Stack>
+    </Box>
   );
 
   return (

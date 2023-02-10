@@ -34,6 +34,9 @@
     "strictPropertyInitialization": true,
     "stripInternal": true,
     "types": ["node", "jest"],
-    "typeRoots": ["./node_modules/@types", "./types"]
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "paths": {
+      "@nimbus-ds/menubutton": ["./packages/react/MenuButton/src"]
+    }
   }
 }

@@ -2,6 +2,11 @@
 
 This component is used to provide the user with useful information, tips, tutorials or shortcuts to other parts of the product. It is a visual component specially designed to be used in contexts such as integration, tutorials or dashboards, where we need to show different relevant information in the same space.
 
+## 2023-02-10 `1.3.0`
+
+- Removed `@nimbus-ds/stack`. ([#14](https://github.com/TiendaNube/nimbus-patterns/pull/14) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/box@2.4.0`. ([#14](https://github.com/TiendaNube/nimbus-patterns/pull/14) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-02-02 `1.2.0`
 
 ### 📚 3rd party library updates
