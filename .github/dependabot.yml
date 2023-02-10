@@ -6,9 +6,10 @@
 version: 2
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/packages" # Location of package manifests
+    directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
     allow:
       - dependency-name: "@nimbus-ds*"
       - dependency-name: "@tiendanube*"
+    open-pull-requests-limit: 1

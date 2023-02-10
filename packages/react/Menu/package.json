@@ -1,0 +1,45 @@
+{
+  "name": "@nimbus-ds/menu",
+  "version": "1.0.0",
+  "license": "MIT",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf dist",
+    "version": "yarn version"
+  },
+  "peerDependencies": {
+    "react": "^16.8 || ^17.0 || ^18.0",
+    "react-dom": "^16.8 || ^17.0 || ^18.0"
+  },
+  "homepage": "https://nimbus.nuvemshop.com.br/documentation",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiendaNube/nimbus-patterns.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
+  },
+  "dependencies": {
+    "@nimbus-ds/box": "^2.4.0",
+    "@nimbus-ds/icon": "^2.0.0",
+    "@nimbus-ds/menubutton": "workspace:^",
+    "@nimbus-ds/text": "^5.0.0",
+    "@nimbus-ds/tokens": "^6.0.1",
+    "@tiendanube/icons": "^0.3.2"
+  },
+  "devDependencies": {
+    "@nimbus-ds/badge": "^3.0.0",
+    "@nimbus-ds/button": "^2.0.0",
+    "@nimbus-ds/icon-button": "^3.3.0",
+    "@nimbus-ds/sidebar": "^2.0.0",
+    "@nimbus-ds/tag": "^2.0.0"
+  }
+}

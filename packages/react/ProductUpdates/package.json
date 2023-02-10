@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/productupdates",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -28,12 +28,11 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "dependencies": {
-    "@nimbus-ds/box": "^2.1.0",
+    "@nimbus-ds/box": "^2.4.0",
     "@nimbus-ds/icon": "^2.0.0",
     "@nimbus-ds/icon-button": "^3.3.0",
     "@nimbus-ds/link": "^3.2.0",
     "@nimbus-ds/popover": "^2.1.0",
-    "@nimbus-ds/stack": "^2.0.0",
     "@nimbus-ds/text": "^5.0.0",
     "@tiendanube/icons": "^0.3.2"
   },

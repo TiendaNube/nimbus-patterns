@@ -1,19 +1,4 @@
 export const cardBackground = {
-  primary: "primary.surfaceHighlight",
-  success: "success.surfaceHighlight",
-  warning: "warning.surfaceHighlight",
-  danger: "danger.surfaceHighlight",
-  neutral: "neutral.surfaceHighlight",
-} as {
-  [key: string]:
-    | "primary.surfaceHighlight"
-    | "success.surfaceHighlight"
-    | "warning.surfaceHighlight"
-    | "danger.surfaceHighlight"
-    | "neutral.surfaceHighlight";
-};
-
-export const iconBackground = {
   primary: "primary.surface",
   success: "success.surface",
   warning: "warning.surface",
@@ -26,6 +11,36 @@ export const iconBackground = {
     | "warning.surface"
     | "danger.surface"
     | "neutral.surface";
+};
+
+export const cardBorder = {
+  primary: "primary.interactive",
+  success: "success.interactive",
+  warning: "warning.interactive",
+  danger: "danger.interactive",
+  neutral: "neutral.interactive",
+} as {
+  [key: string]:
+    | "primary.interactive"
+    | "success.interactive"
+    | "warning.interactive"
+    | "danger.interactive"
+    | "neutral.interactive";
+};
+
+export const iconBackground = {
+  primary: "primary.surfaceHighlight",
+  success: "success.surfaceHighlight",
+  warning: "warning.surfaceHighlight",
+  danger: "danger.surfaceHighlight",
+  neutral: "neutral.surfaceHighlight",
+} as {
+  [key: string]:
+    | "primary.surfaceHighlight"
+    | "success.surfaceHighlight"
+    | "warning.surfaceHighlight"
+    | "danger.surfaceHighlight"
+    | "neutral.surfaceHighlight";
 };
 
 export const iconColor = {
