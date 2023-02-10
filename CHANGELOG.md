@@ -3,6 +3,12 @@
 This is the log of notable changes to the Nimbus Patterns that are developer-facing.
 Package-specific changes not released in any package will be added here just before the release. Until then, you can find them in changelogs of the individual packages (see [packages](./packages) directory).
 
+## 2023-02-10
+
+### 📚 3rd party library updates
+
+- Updated `@nimbus-ds/styles@6.9.0`. ([#9](https://github.com/TiendaNube/nimbus-patterns/pull/9) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-02-02
 
 ### 📚 3rd party library updates

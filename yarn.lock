@@ -2542,13 +2542,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/box@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@nimbus-ds/box@npm:2.1.0"
+"@nimbus-ds/box@npm:^2.4.0-rc.2":
+  version: 2.4.0-rc.2
+  resolution: "@nimbus-ds/box@npm:2.4.0-rc.2"
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: e36806b1f7405d8726256c601c2f2eb123277da81ac264db7451c6c1ad2d73913d62c5463e1eac85238ad1244018c02cc51bf75082f32868dbf353f75cbd25f1
+  checksum: 932e0fe69fb8a462ab403bb379c8bbd475039d13f28730fac7643093a8daebb5c886c9c246b06ccc49af678f9dbdd084691a84775423806db008cc12bcb0d4db
   languageName: node
   linkType: hard
 
@@ -2569,11 +2569,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/callout-card@workspace:packages/react/CalloutCard"
   dependencies:
-    "@nimbus-ds/box": ^2.1.0
-    "@nimbus-ds/card": ^2.0.0
+    "@nimbus-ds/box": ^2.4.0-rc.2
     "@nimbus-ds/icon": ^2.0.0
     "@nimbus-ds/link": ^3.1.0
-    "@nimbus-ds/stack": ^2.0.0
     "@nimbus-ds/text": ^5.0.0
     "@tiendanube/icons": ^0.3.2
   peerDependencies:
@@ -2582,28 +2580,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/card@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@nimbus-ds/card@npm:2.0.0"
-  peerDependencies:
-    "@nimbus-ds/title": ^2.0.0
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: ebf3b2f1d5725fc395d76bb15c69ceed7d36dc32ba20d20496a3e6bfb7e4fd0d67c1baa1b4b4e921f546825cbe83dafee2af0cbde6d7008e279a2d6b4a43ce93
-  languageName: node
-  linkType: hard
-
 "@nimbus-ds/formfield@workspace:packages/react/FormField":
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/formfield@workspace:packages/react/FormField"
   dependencies:
-    "@nimbus-ds/box": ^2.1.0
+    "@nimbus-ds/box": ^2.4.0-rc.2
     "@nimbus-ds/icon": ^2.0.0
     "@nimbus-ds/input": ^2.0.0
     "@nimbus-ds/label": ^2.0.0
     "@nimbus-ds/radio": ^2.0.0
     "@nimbus-ds/select": ^2.0.0
-    "@nimbus-ds/stack": ^2.0.0
     "@nimbus-ds/text": ^5.0.0
     "@nimbus-ds/textarea": ^2.0.0
     "@tiendanube/icons": ^0.3.2
@@ -2693,13 +2679,12 @@ __metadata:
   resolution: "@nimbus-ds/menu@workspace:packages/react/Menu"
   dependencies:
     "@nimbus-ds/badge": ^3.0.0
-    "@nimbus-ds/box": ^2.1.0
+    "@nimbus-ds/box": ^2.4.0-rc.2
     "@nimbus-ds/button": ^2.0.0
     "@nimbus-ds/icon": ^2.0.0
     "@nimbus-ds/icon-button": ^3.3.0
     "@nimbus-ds/menubutton": 0.0.0
     "@nimbus-ds/sidebar": ^2.0.0
-    "@nimbus-ds/stack": ^2.0.0
     "@nimbus-ds/tag": ^2.0.0
     "@nimbus-ds/text": ^5.0.0
     "@nimbus-ds/tokens": ^6.0.1
@@ -2715,9 +2700,8 @@ __metadata:
   resolution: "@nimbus-ds/menubutton@workspace:packages/react/MenuButton"
   dependencies:
     "@nimbus-ds/badge": ^3.0.0
-    "@nimbus-ds/box": ^2.1.0
+    "@nimbus-ds/box": ^2.4.0-rc.2
     "@nimbus-ds/icon": ^2.0.0
-    "@nimbus-ds/stack": ^2.0.0
     "@nimbus-ds/tag": ^2.0.0
     "@nimbus-ds/text": ^5.0.0
     "@nimbus-ds/tokens": ^6.0.1
@@ -2744,12 +2728,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/productupdates@workspace:packages/react/ProductUpdates"
   dependencies:
-    "@nimbus-ds/box": ^2.1.0
+    "@nimbus-ds/box": ^2.4.0-rc.2
     "@nimbus-ds/icon": ^2.0.0
     "@nimbus-ds/icon-button": ^3.3.0
     "@nimbus-ds/link": ^3.2.0
     "@nimbus-ds/popover": ^2.1.0
-    "@nimbus-ds/stack": ^2.0.0
     "@nimbus-ds/text": ^5.0.0
     "@nimbus-ds/thumbnail": ^2.0.0
     "@tiendanube/icons": ^0.3.2
@@ -2801,11 +2784,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/sidemodal@workspace:packages/react/SideModal"
   dependencies:
-    "@nimbus-ds/box": ^2.1.0
+    "@nimbus-ds/box": ^2.4.0-rc.2
     "@nimbus-ds/button": ^2.0.0
     "@nimbus-ds/icon": ^2.0.0
     "@nimbus-ds/sidebar": ^2.0.0
-    "@nimbus-ds/stack": ^2.0.0
     "@nimbus-ds/text": ^5.0.0
     "@nimbus-ds/title": ^2.0.0
     "@tiendanube/icons": ^0.3.2
@@ -2825,20 +2807,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/stack@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@nimbus-ds/stack@npm:2.0.0"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 09dfd0acd4cef7f867f62bb7d0500e63b815d977d12d6336b78c4842c6f53ae2c949762c57fa40a982b4c72556469760b4866771fcba1e6fdabdc0c688bd7a6a
-  languageName: node
-  linkType: hard
-
-"@nimbus-ds/styles@npm:^6.5.0":
-  version: 6.5.0
-  resolution: "@nimbus-ds/styles@npm:6.5.0"
-  checksum: 9922d6d83b926dd80cad1d1284df0702a15a5de583fd6a040ed4369b502f98bddc8197bb4e438bcdbaf3a6dbc67041fe32745c8ea2c37a553977f3c4e96be391
+"@nimbus-ds/styles@npm:^6.9.0-rc.4":
+  version: 6.9.0-rc.4
+  resolution: "@nimbus-ds/styles@npm:6.9.0-rc.4"
+  checksum: 3ac557b81f50c441bc13bd114332f0e94747c06568c06c835459f7e636709ceabe9777e5aa5a2e36477b22aa2c0c451f9091bd1af4dfc612ff6d9f9701195031
   languageName: node
   linkType: hard
 
@@ -15485,7 +15457,7 @@ __metadata:
     "@commitlint/config-conventional": ^17.2.0
     "@jest/types": ^29.2.1
     "@mdx-js/react": ^1.6.22
-    "@nimbus-ds/styles": ^6.5.0
+    "@nimbus-ds/styles": ^6.9.0-rc.4
     "@parcel/packager-ts": 2.8.3
     "@parcel/transformer-typescript-tsc": ^2.8.0
     "@parcel/transformer-typescript-types": 2.8.3
