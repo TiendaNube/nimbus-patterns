@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -30,7 +28,7 @@ jobs:
 
       - name: Auto versioning
         run: yarn bump:packages
-        
+
       - name: Commit versioning
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
