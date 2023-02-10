@@ -7,8 +7,13 @@ import { Text } from "@nimbus-ds/text";
 import { Button } from "@nimbus-ds/button";
 import { Icon } from "@nimbus-ds/icon";
 import { Page } from "@nimbus-ds/page";
+import { Badge } from "@nimbus-ds/badge";
+import { Tag } from "@nimbus-ds/tag";
+import { IconButton } from "@nimbus-ds/icon-button";
+import { Menu } from "@nimbus-ds/menu";
+import { MenuButton } from "@nimbus-ds/menubutton";
 
-import { ChevronLeftIcon, GiftBoxIcon, UserIcon } from "@tiendanube/icons";
+import { AppsIcon, CashIcon, ChevronLeftIcon, CogIcon, DiscountCircleIcon, EcosystemIcon, ExternalLinkIcon, GiftBoxIcon, HomeIcon, StatsIcon, TagIcon, TiendanubeIcon, ToolsIcon, UserIcon } from "@tiendanube/icons";
 
 import { AppShell } from "./AppShell";
 
@@ -51,6 +56,70 @@ const buttonStack = (
       Mi cuenta
     </Button>
   </>
+);
+
+const AppMenu = (
+  <Menu>
+    <Menu.Header>
+      <Box display="flex" gap="2" alignItems="center" width="100%">
+        <Icon
+          color="neutral.textHigh"
+          source={<TiendanubeIcon size="medium" />}
+        />
+        <Box display="inline-flex" flex="1">
+          <Text fontSize="base" color="neutral.textHigh" fontWeight="bold">
+            Tienda demo
+          </Text>
+        </Box>
+        <IconButton source={<ExternalLinkIcon />} size="2rem" />
+      </Box>
+    </Menu.Header>
+    <Menu.Body>
+      <Menu.Section>
+        <MenuButton startIcon={HomeIcon} label="Inicio" />
+        <MenuButton startIcon={StatsIcon} label="Estadísticas" />
+      </Menu.Section>
+      <Menu.Section title="Administrar">
+        <Box backgroundColor="primary.surface" borderRadius=".5rem">
+          <MenuButton
+            id="control-1"
+            aria-expanded
+            aria-controls="content-1"
+            startIcon={CashIcon}
+            label="Ventas"
+          >
+            <Badge appearance="primary" count="1299" />
+          </MenuButton>
+          <Box
+            id="content-1"
+            aria-hidden={false}
+            height="auto"
+            overflow="hidden"
+            pl="6"
+            pt="1"
+            pb="1"
+            pr="1"
+          >
+            <MenuButton label="Lista de ventas" active />
+            <MenuButton label="Exportar lista" />
+          </Box>
+        </Box>
+        <MenuButton startIcon={TagIcon} label="Productos" />
+        <MenuButton startIcon={UserIcon} label="Clientes">
+          <Tag appearance="primary">¡Nuevo!</Tag>
+        </MenuButton>
+        <MenuButton startIcon={DiscountCircleIcon} label="Marketing"/>
+      </Menu.Section>
+      <Menu.Section title="Personalizar">
+        <MenuButton startIcon={ToolsIcon} label="Mi Tiendanube" />
+      </Menu.Section>
+      <Menu.Section title="Potenciar">
+        <MenuButton startIcon={AppsIcon} label="Mis aplicaciones" />
+        <MenuButton startIcon={EcosystemIcon} label="Canales de venta" />
+      </Menu.Section>
+    </Menu.Body>
+    <Menu.Footer label="Configuración" startIcon={CogIcon} />
+  </Menu>
 );
 
 const Template: ComponentStory<typeof AppShell> = (args) => {
@@ -97,7 +166,7 @@ const Template: ComponentStory<typeof AppShell> = (args) => {
 };
 
 const PageTemplate: ComponentStory<typeof AppShell> = (args) => (
-  <AppShell {...args}>
+  <AppShell {...args} menu={AppMenu}>
     <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
     <Page maxWidth="800px">
       <Page.Header title="Page demo" />
