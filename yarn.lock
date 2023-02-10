@@ -2571,7 +2571,7 @@ __metadata:
   dependencies:
     "@nimbus-ds/box": ^2.4.0
     "@nimbus-ds/icon": ^2.0.0
-    "@nimbus-ds/link": ^3.1.0
+    "@nimbus-ds/link": ^3.2.0
     "@nimbus-ds/text": ^5.0.0
     "@tiendanube/icons": ^0.3.2
   peerDependencies:
@@ -2647,18 +2647,6 @@ __metadata:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
   checksum: 412350a542a8ca344fd77f492e7983b6033b0320bf135d0682140db151d042f9c4bb7dede631441cbbd9427b084a68282a0ba7e3e0b0a47160240938abe66b22
-  languageName: node
-  linkType: hard
-
-"@nimbus-ds/link@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "@nimbus-ds/link@npm:3.1.0"
-  dependencies:
-    "@nimbus-ds/skeleton": ^2.0.0
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 220b4430fab61a97674997aedd9e0d08b524a36a26509b7dedcbbc395621be0283eab865df8e20210ba038d934abfe3934cb3d962b22098b2117555b397a10b9
   languageName: node
   linkType: hard
 
