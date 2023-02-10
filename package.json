@@ -26,6 +26,7 @@
     "prepare-husky": "husky install",
     "build:packages": "parcel build 'packages/*/*/' --no-cache",
     "build:storybook": "build-storybook -c .storybook -o .build-storybook",
+    "bump:packages": "node ./.scripts/bump:packages",
     "bump:check": "yarn version check",
     "bump:next": "yarn version apply --all --prerelease",
     "bump:stable": "yarn version apply --all",

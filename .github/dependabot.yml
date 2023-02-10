@@ -12,3 +12,4 @@ updates:
     allow:
       - dependency-name: "@nimbus-ds*"
       - dependency-name: "@tiendanube*"
+    open-pull-requests-limit: 1
