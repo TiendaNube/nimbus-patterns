@@ -12,6 +12,7 @@ const run = () => {
     );
   }
   const content = fs.readFileSync(diff[0], "utf8");
+  execSync("rm -rf .yarn/versions");
   console.log(`\x1b[32m 🏃‍♂️ Generating versions for packages... \x1b[0m`);
 
   execSync("yarn version -d decline");
@@ -23,6 +24,8 @@ const run = () => {
       return prev;
     }, "");
   execSync("rm -rf ./.scripts/diff.txt");
+  console.log(`\x1b[32m 🏃‍♂️ Checking versions... \x1b[0m`);
+  execSync("yarn bump:check");
 };
 
 try {
