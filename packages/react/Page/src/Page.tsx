@@ -12,7 +12,7 @@ const Page: React.FC<PageProps> & PageComponents = ({
   maxWidth = "1200px",
   ...rest
 }: PageProps) => (
-  <Box as="main" {...rest} maxWidth={maxWidth} marginX="auto">
+  <Box as="main" {...rest} width="100%" maxWidth={maxWidth} marginX="auto">
     {children}
   </Box>
 );
