@@ -1,4 +1,4 @@
-name: Version
+name: Auto versioning
 
 on:
   pull_request:
