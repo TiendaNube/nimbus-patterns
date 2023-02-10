@@ -20,13 +20,6 @@ describe("GIVEN <MenuButton />", () => {
       expect(screen.getByText(labelText)).toBeDefined();
     });
 
-    it("SHOULD be active when active is toggled", () => {
-      makeSut({ active: true });
-      expect(
-        screen.getByRole<HTMLButtonElement>("button").getAttribute("class")
-      ).toContain("menu__button--active");
-    });
-
     it("SHOULD render children correctly", () => {
       makeSut({ children: "My children" });
       expect(screen.getByText("My children")).toBeDefined();

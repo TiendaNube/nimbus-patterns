@@ -1,9 +1,8 @@
 import React from "react";
-import "./menuButton.css";
 
 import { Text } from "@nimbus-ds/text";
 import { Icon } from "@nimbus-ds/icon";
-import { Stack } from "@nimbus-ds/stack";
+import { Box } from "@nimbus-ds/box";
 
 import { MenuButtonProps } from "./menuButton.types";
 
@@ -17,24 +16,47 @@ const MenuButton: React.FC<MenuButtonProps> = ({
   active = false,
   ...rest
 }: MenuButtonProps) => {
-  const buttonClass = [
-    "menu__button",
-    `${active ? "menu__button--active" : ""}`
-  ].join(" ");
-
   const activeColor = active ? "primary.interactive" : "primary.textHigh";
   const disabledColor = rest.disabled ? "neutral.textDisabled" : activeColor;
 
   return (
-    <button {...rest} type="button" onClick={onClick} className={buttonClass}>
+    <Box
+      {...rest}
+      as="button"
+      type="button"
+      onClick={onClick}
+      alignItems="center"
+      backgroundColor={{
+        xs: active ? "primary.surface" : "transparent",
+        hover: "primary.surface",
+        active: "primary.surfaceHighlight",
+        disabled: "neutral.surfaceDisabled"
+      }}
+      boxShadow={{
+        focus: "focusRing"
+      }}
+      borderRadius=".5rem"
+      borderWidth="0"
+      cursor={{
+        xs: "pointer",
+        disabled: "not-allowed"
+      }}
+      display="flex"
+      gap="2"
+      padding="2"
+      width="100%"
+      transitionProperty="all"
+      transitionDuration="base"
+      transitionTimingFunction="ease-in-out"
+    >
       {IconSrc && <Icon color={disabledColor} source={<IconSrc />} />}
-      <Stack display="inline-flex" flex="1">
+      <Box display="inline-flex" flex="1">
         <Text fontSize="base" color={disabledColor}>
           {label}
         </Text>
-      </Stack>
+      </Box>
       {children}
-    </button>
+    </Box>
   );
 };
 

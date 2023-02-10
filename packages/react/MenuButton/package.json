@@ -28,15 +28,14 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "dependencies": {
+    "@nimbus-ds/box": "^2.4.0-rc.2",
     "@nimbus-ds/icon": "^2.0.0",
-    "@nimbus-ds/stack": "^2.0.0",
     "@nimbus-ds/text": "^5.0.0",
     "@nimbus-ds/tokens": "^6.0.1",
     "@tiendanube/icons": "^0.3.2"
   },
   "devDependencies": {
     "@nimbus-ds/badge": "^3.0.0",
-    "@nimbus-ds/box": "^2.1.0",
     "@nimbus-ds/tag": "^2.0.0"
   }
 }
