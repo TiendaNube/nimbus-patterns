@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   core: {
     builder: {
@@ -19,4 +21,38 @@ module.exports = {
     "@storybook/addon-controls",
   ],
   framework: "@storybook/react",
+  // we need to add aliases to webpack so it knows how to follow
+  // to the source of the packages rather than the built version (dist)
+  webpackFinal: async (baseConfig) => {
+    const { module = {}, plugins = {}, resolve = {} } = baseConfig;
+
+    return {
+      ...baseConfig,
+      plugins: [
+        ...plugins,
+      ],
+      resolve: {
+        ...resolve,
+        alias: {
+          ...resolve.alias,
+          ...convertTsConfigPathsToWebpackAliases(),
+        },
+      },
+    };
+  },
+};
+
+const convertTsConfigPathsToWebpackAliases = () => {
+  const rootDir = path.resolve(__dirname, "../");
+  const tsconfig = require("../tsconfig.json");
+  const tsconfigPaths = Object.entries(tsconfig.compilerOptions.paths);
+
+  const paths = tsconfigPaths.reduce((aliases, [realPath, mappedPath]) => {
+    const packageName = mappedPath[0].split("/")[3];
+    const alias = `${mappedPath[0]}/${packageName}.tsx`;
+    aliases[realPath] = path.join(rootDir, alias);
+    return aliases;
+  }, {});
+
+  return paths;
 };
