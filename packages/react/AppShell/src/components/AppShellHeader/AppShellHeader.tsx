@@ -2,7 +2,7 @@ import React from "react";
 
 import { Box } from "@nimbus-ds/box";
 
-import { AppShellHeaderProps } from "./dasdasdappShellHeader.types";
+import { AppShellHeaderProps } from "./appShellHeader.types";
 
 const AppShellHeader: React.FC<AppShellHeaderProps> = ({
   className: _className,
