@@ -36,7 +36,9 @@
     "types": ["node", "jest"],
     "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
-      "@nimbus-ds/menubutton": ["./packages/react/MenuButton/src"]
+      "@nimbus-ds/menubutton": ["./packages/react/MenuButton/src"],
+      "@nimbus-ds/menu": ["./packages/react/Menu/src"],
+      "@nimbus-ds/page": ["./packages/react/Page/src"]
     }
   }
 }

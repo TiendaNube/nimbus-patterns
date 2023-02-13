@@ -8,6 +8,11 @@ Package-specific changes not released in any package will be added here just bef
 ### 📚 3rd party library updates
 
 - Updated `@nimbus-ds/styles@6.9.0`. ([#9](https://github.com/TiendaNube/nimbus-patterns/pull/9) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/styles@6.10.0`. ([#16](https://github.com/TiendaNube/nimbus-patterns/pull/16) by [@juanchigallego](https://github.com/juanchigallego))
+
+### 💡 Others
+
+- Update Storybook Webpack configuration to resolve local imports. ([#16](https://github.com/TiendaNube/nimbus-patterns/pull/16) by [@juanchigallego](https://github.com/juanchigallego))
 
 ## 2023-02-02
 
