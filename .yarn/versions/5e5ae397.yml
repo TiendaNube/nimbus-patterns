@@ -1,6 +1,0 @@
-releases:
-  "@nimbus-ds/app-shell": patch
-  "@nimbus-ds/layout": major
-
-declined:
-  - nimbus-patterns
