@@ -12,6 +12,7 @@ const config: Config.InitialOptions = {
     "@nimbus-ds/menubutton": "<rootDir>/packages/react/MenuButton/src",
     "@nimbus-ds/menu": "<rootDir>/packages/react/Menu/src",
     "@nimbus-ds/page": "<rootDir>/packages/react/Page/src",
+    "@nimbus-ds/layout": "<rootDir>/packages/react/Layout/src",
   },
 };
 
