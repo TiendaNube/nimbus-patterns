@@ -1,10 +1,10 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { BoxProps } from "@nimbus-ds/box";
+import { BoxProps } from "@nimbus-ds/components";
 
 type Extend = Omit<
-BoxProps,
-"children" | "boxSizing" | "display" | "flexDirection"
+  BoxProps,
+  "children" | "boxSizing" | "display" | "flexDirection"
 > &
   HTMLAttributes<HTMLElement>;
 
