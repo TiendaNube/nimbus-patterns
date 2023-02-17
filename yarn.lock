@@ -2533,7 +2533,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/app-shell@workspace:packages/react/AppShell"
   dependencies:
-    "@nimbus-ds/box": ^2.5.0
     "@nimbus-ds/components": ^2.8.0
     "@nimbus-ds/icons": ^1.0.0
     "@nimbus-ds/menu": "workspace:^"
@@ -2545,16 +2544,6 @@ __metadata:
     react-dom: ^16.8 || ^17.0 || ^18.0
   languageName: unknown
   linkType: soft
-
-"@nimbus-ds/box@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "@nimbus-ds/box@npm:2.5.0"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: deab3c3466fcb361ef66f54268b02d4c2ef167382c87245b9d5d911e6311552cd32b5a98f96ddcf065d532cb4bb3b862fdd08c97e0eedf35878b276ed34c9f6e
-  languageName: node
-  linkType: hard
 
 "@nimbus-ds/callout-card@workspace:packages/react/CalloutCard":
   version: 0.0.0-use.local
