@@ -7,11 +7,11 @@ Package-specific changes not released in any package will be added here just bef
 
 ### 🎉 New features
 
-- Added dark mode support to storybook documentation. ([#18](https://github.com/TiendaNube/nimbus-design-system/pull/18) by [@juniorconquista](https://github.com/juniorconquista))
+- Added dark mode support to storybook documentation. ([#19](https://github.com/TiendaNube/nimbus-design-system/pull/18) by [@juniorconquista](https://github.com/juniorconquista))
 
 ### 💡 Others
 
-- Remove deprecated set-output usage in github actions. ([#18](https://github.com/TiendaNube/nimbus-design-system/pull/18) by [@juniorconquista](https://github.com/juniorconquista))
+- Remove deprecated set-output usage in github actions. ([#19](https://github.com/TiendaNube/nimbus-design-system/pull/18) by [@juniorconquista](https://github.com/juniorconquista))
 
 ## 2023-02-10
 
