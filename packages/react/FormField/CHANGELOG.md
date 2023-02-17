@@ -10,17 +10,17 @@ The FormField component allows the user to enter or edit information in text for
 
 ### 📚 3rd party library updates
 
-- Added `@nimbus-ds/components@2.8.0`. ([#19](https://github.com/TiendaNube/nimbus-patterns/pull/19) by [@juniorconquista](https://github.com/juniorconquista))
-- Added `@nimbus-ds/styles@6.11.0`. ([#19](https://github.com/TiendaNube/nimbus-patterns/pull/19) by [@juniorconquista](https://github.com/juniorconquista))
-- Added `@nimbus-ds/icons@1.0.0`. ([#19](https://github.com/TiendaNube/nimbus-patterns/pull/19) by [@juniorconquista](https://github.com/juniorconquista))
-- Removed `@nimbus-ds/input@2.0.0`. ([#19](https://github.com/TiendaNube/nimbus-patterns/pull/19) by [@juniorconquista](https://github.com/juniorconquista))
-- Removed `@nimbus-ds/icon@2.0.0`. ([#19](https://github.com/TiendaNube/nimbus-patterns/pull/19) by [@juniorconquista](https://github.com/juniorconquista))
-- Removed `@nimbus-ds/text@5.0.0`. ([#19](https://github.com/TiendaNube/nimbus-patterns/pull/19) by [@juniorconquista](https://github.com/juniorconquista))
-- Removed `@nimbus-ds/box@2.4.0`. ([#19](https://github.com/TiendaNube/nimbus-patterns/pull/19) by [@juniorconquista](https://github.com/juniorconquista))
-- Removed `@nimbus-ds/textarea@2.0.0`. ([#19](https://github.com/TiendaNube/nimbus-patterns/pull/19) by [@juniorconquista](https://github.com/juniorconquista))
-- Removed `@nimbus-ds/label@2.0.0`. ([#19](https://github.com/TiendaNube/nimbus-patterns/pull/19) by [@juniorconquista](https://github.com/juniorconquista))
-- Removed `@nimbus-ds/select@2.0.0`. ([#19](https://github.com/TiendaNube/nimbus-patterns/pull/19) by [@juniorconquista](https://github.com/juniorconquista))
-- Removed `@tiendanube/icons@0.3.1`. ([#19](https://github.com/TiendaNube/nimbus-patterns/pull/19) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `@nimbus-ds/components@2.8.0`. ([#20](https://github.com/TiendaNube/nimbus-patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `@nimbus-ds/styles@6.11.0`. ([#20](https://github.com/TiendaNube/nimbus-patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `@nimbus-ds/icons@1.0.0`. ([#20](https://github.com/TiendaNube/nimbus-patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/input@2.0.0`. ([#20](https://github.com/TiendaNube/nimbus-patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/icon@2.0.0`. ([#20](https://github.com/TiendaNube/nimbus-patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/text@5.0.0`. ([#20](https://github.com/TiendaNube/nimbus-patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/box@2.4.0`. ([#20](https://github.com/TiendaNube/nimbus-patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/textarea@2.0.0`. ([#20](https://github.com/TiendaNube/nimbus-patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/label@2.0.0`. ([#20](https://github.com/TiendaNube/nimbus-patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/select@2.0.0`. ([#20](https://github.com/TiendaNube/nimbus-patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@tiendanube/icons@0.3.1`. ([#20](https://github.com/TiendaNube/nimbus-patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
 
 ## 2023-02-10 `1.2.0`
 

@@ -6,9 +6,9 @@ The Layout component is intended for building single or multi-column layouts usi
 
 ### 📚 3rd party library updates
 
-- Added `@nimbus-ds/components@2.8.0`. ([#19](https://github.com/TiendaNube/nimbus-patterns/pull/19) by [@juniorconquista](https://github.com/juniorconquista))
-- Added `@nimbus-ds/styles@6.11.0`. ([#19](https://github.com/TiendaNube/nimbus-patterns/pull/19) by [@juniorconquista](https://github.com/juniorconquista))
-- Removed `@nimbus-ds/box@2.5.0`. ([#19](https://github.com/TiendaNube/nimbus-patterns/pull/19) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `@nimbus-ds/components@2.8.0`. ([#20](https://github.com/TiendaNube/nimbus-patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `@nimbus-ds/styles@6.11.0`. ([#20](https://github.com/TiendaNube/nimbus-patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/box@2.5.0`. ([#20](https://github.com/TiendaNube/nimbus-patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
 
 ## 2023-02-14 `1.0.0`
 
