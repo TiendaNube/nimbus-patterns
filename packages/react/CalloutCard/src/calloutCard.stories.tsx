@@ -29,6 +29,8 @@ base.args = {
   icon: BoxUnpackedIcon,
   link: {
     children: "Link",
+    // eslint-disable-next-line
+    // @ts-ignore
     target: "_blank",
     href: "https://nimbus.nuvemshop.com.br/",
   },
