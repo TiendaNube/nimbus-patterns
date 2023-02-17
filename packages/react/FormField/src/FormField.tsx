@@ -1,9 +1,6 @@
 import React from "react";
 
-import { Box } from "@nimbus-ds/box";
-import { Text } from "@nimbus-ds/text";
-import { Icon } from "@nimbus-ds/icon";
-import { Label } from "@nimbus-ds/label";
+import { Box, Text, Icon, Label } from "@nimbus-ds/components";
 
 import { FormFieldProps, FormFieldComponents } from "./formField.types";
 import { helpTextAppearance } from "./formField.definitions";
@@ -11,7 +8,7 @@ import { helpTextAppearance } from "./formField.definitions";
 import {
   FormFieldSelect,
   FormFieldTextarea,
-  FormFieldInput
+  FormFieldInput,
 } from "./components";
 
 const FormField: React.FC<FormFieldProps> & FormFieldComponents = ({

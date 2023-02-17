@@ -30,6 +30,8 @@ describe("GIVEN <CalloutCard />", () => {
         icon: () => <svg data-testid="icon-element" />,
         link: {
           children: "My link",
+          // eslint-disable-next-line
+          // @ts-ignore
           href: "http://localhost:3000/",
         },
       });

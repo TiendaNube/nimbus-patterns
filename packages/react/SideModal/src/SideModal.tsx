@@ -1,8 +1,5 @@
 import React from "react";
-import { Sidebar } from "@nimbus-ds/sidebar";
-import { Box } from "@nimbus-ds/box";
-import { Title } from "@nimbus-ds/title";
-import { Button } from "@nimbus-ds/button";
+import { Sidebar, Box, Title, Button } from "@nimbus-ds/components";
 
 import { SideModalProps } from "./sideModal.types";
 

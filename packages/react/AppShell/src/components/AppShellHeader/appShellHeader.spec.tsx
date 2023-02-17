@@ -13,12 +13,12 @@ const makeSut = (rest: AppShellHeaderProps) => {
 
 describe("GIVEN <AppShellHeader />", () => {
   describe("WHEN rendered", () => {
-    it("SHOULD render left slot content correctly", () => {
+    it("THEAN should render left slot content correctly", () => {
       makeSut({ leftSlot: leftSlotContent });
       expect(screen.getByText(leftSlotContent)).toBeDefined();
     });
 
-    it("SHOULD render right slot content correctly", () => {
+    it("AND should render right slot content correctly", () => {
       makeSut({ rightSlot: rightSlotContent });
       expect(screen.getByText(rightSlotContent)).toBeDefined();
     });

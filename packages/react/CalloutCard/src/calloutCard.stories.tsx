@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { withA11y } from "@storybook/addon-a11y";
-import { BoxUnpackedIcon } from "@tiendanube/icons";
+import { BoxUnpackedIcon } from "@nimbus-ds/icons";
 
 import { CalloutCard } from "./CalloutCard";
 
@@ -29,6 +29,8 @@ base.args = {
   icon: BoxUnpackedIcon,
   link: {
     children: "Link",
+    // eslint-disable-next-line
+    // @ts-ignore
     target: "_blank",
     href: "https://nimbus.nuvemshop.com.br/",
   },

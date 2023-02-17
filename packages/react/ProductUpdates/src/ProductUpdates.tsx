@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
-import { Popover } from "@nimbus-ds/popover";
-import { Text } from "@nimbus-ds/text";
-import { Link } from "@nimbus-ds/link";
-import { Box } from "@nimbus-ds/box";
-import { IconButton } from "@nimbus-ds/icon-button";
-import { Icon } from "@nimbus-ds/icon";
-
-import { CloseIcon } from "@tiendanube/icons";
+import {
+  Popover,
+  Text,
+  Link,
+  Box,
+  IconButton,
+  Icon,
+} from "@nimbus-ds/components";
+import { CloseIcon } from "@nimbus-ds/icons";
 import { ProductUpdatesProps } from "./productUpdates.types";
 
 const ProductUpdates: React.FC<ProductUpdatesProps> = ({
@@ -38,13 +39,14 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
     <Box display="flex" flexDirection="column" gap="4" width="100%">
       {productUpdatesContent}
       {bodyContent}
-      <Link.Button
+      <Link
+        as="button"
         onClick={handleVisibility}
         appearance="neutral.background"
         size="base"
       >
         {dismissLink}
-      </Link.Button>
+      </Link>
     </Box>
   ) : (
     <Box display="flex" flexDirection="column" gap="4" width="100%">

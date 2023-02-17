@@ -3,11 +3,8 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { withA11y } from "@storybook/addon-a11y";
 // eslint-disable-next-line
 import { useArgs } from "@storybook/client-api";
-import { Select } from "@nimbus-ds/select";
-import { Radio } from "@nimbus-ds/radio";
-import { Box } from "@nimbus-ds/box";
-
-import { ExclamationCircleIcon } from "@tiendanube/icons";
+import { Select, Radio, Box } from "@nimbus-ds/components";
+import { ExclamationCircleIcon } from "@nimbus-ds/icons";
 
 import { FormField } from "./FormField";
 
@@ -27,8 +24,8 @@ export default {
     helpText: { control: "text" },
     helpIcon: { control: { disable: true } },
     children: { control: { disable: true } },
-    showHelpText: { defaultValue: false }
-  }
+    showHelpText: { defaultValue: false },
+  },
 } as ComponentMeta<typeof FormField>;
 
 const InputTemplate: ComponentStory<typeof FormField.Input> = (args) => (
@@ -73,7 +70,7 @@ asInput.args = {
   label: "Label text",
   helpText: "Help text",
   id: "input-id",
-  helpIcon: ExclamationCircleIcon
+  helpIcon: ExclamationCircleIcon,
 };
 
 export const asSelect = SelectTemplate.bind({});
@@ -89,7 +86,7 @@ asSelect.args = {
       <Select.Option label="Option 4" value="option-4" />
     </>
   ),
-  helpIcon: ExclamationCircleIcon
+  helpIcon: ExclamationCircleIcon,
 };
 
 export const asTextarea = TextareaTemplate.bind({});
@@ -97,7 +94,7 @@ asTextarea.args = {
   label: "Label text",
   helpText: "Help text",
   id: "textarea-id",
-  helpIcon: ExclamationCircleIcon
+  helpIcon: ExclamationCircleIcon,
 };
 
 export const showHelpTextOnFocus = TemplateWithState.bind({});
@@ -105,12 +102,12 @@ showHelpTextOnFocus.args = {
   label: "Click the input to display the help text",
   helpText: "Help text",
   id: "input-id",
-  helpIcon: ExclamationCircleIcon
+  helpIcon: ExclamationCircleIcon,
 };
 
 export const customContent = CustomTemplate.bind({});
 customContent.args = {
   label: "Label text",
   helpText: "Help text",
-  helpIcon: ExclamationCircleIcon
+  helpIcon: ExclamationCircleIcon,
 };

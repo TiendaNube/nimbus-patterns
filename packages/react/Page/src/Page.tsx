@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box } from "@nimbus-ds/box";
+import { Box } from "@nimbus-ds/components";
 
 import { PageComponents, PageProps } from "./page.types";
 import { PageBody, PageHeader } from "./components";

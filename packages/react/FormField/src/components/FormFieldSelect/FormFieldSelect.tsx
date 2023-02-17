@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Select } from "@nimbus-ds/select";
+import { Select } from "@nimbus-ds/components";
 
 import { FormField } from "../../FormField";
 import { FormFieldSelectProps } from "./formFieldSelect.types";

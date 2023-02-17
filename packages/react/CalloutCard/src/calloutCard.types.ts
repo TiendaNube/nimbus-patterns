@@ -1,12 +1,12 @@
-import { HTMLAttributes, MouseEventHandler } from "react";
-import { Icon as IconType } from "@tiendanube/icons";
-import { LinkProps } from "@nimbus-ds/link";
+import { HTMLAttributes, MouseEventHandler, FC } from "react";
+import { IconProps } from "@nimbus-ds/icons";
+import { LinkProps } from "@nimbus-ds/components";
 
 export interface CalloutCardProps extends HTMLAttributes<HTMLElement> {
   /** CalloutCard color */
   appearance: "primary" | "success" | "warning" | "danger" | "neutral";
   /** Icon SVG */
-  icon: IconType;
+  icon: FC<IconProps>;
   /** Title */
   title: string;
   /** Subtitle */

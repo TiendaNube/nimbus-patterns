@@ -1,8 +1,6 @@
 import React from "react";
 
-import { Box } from "@nimbus-ds/box";
-import { Title } from "@nimbus-ds/title";
-import { Text } from "@nimbus-ds/text";
+import { Box, Title, Text } from "@nimbus-ds/components";
 
 import { PageHeaderProps } from "./pageHeader.types";
 

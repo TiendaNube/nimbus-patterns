@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box } from "@nimbus-ds/box";
+import { Box } from "@nimbus-ds/components";
 
 import { AppShellHeader } from "./components";
 
@@ -26,7 +26,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         borderColor="neutral.surfaceHighlight"
         display={{
           xs: "none",
-          md: "block"
+          md: "block",
         }}
       >
         {menu}

@@ -2,20 +2,22 @@ import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { Button } from "@nimbus-ds/button";
-import { Icon } from "@nimbus-ds/icon";
-import { Box } from "@nimbus-ds/box";
-import { Text } from "@nimbus-ds/text";
-import { Alert } from "@nimbus-ds/alert";
-import { Tag } from "@nimbus-ds/tag";
-import { IconButton } from "@nimbus-ds/icon-button";
+import {
+  Button,
+  Icon,
+  Box,
+  Text,
+  Alert,
+  Tag,
+  IconButton,
+} from "@nimbus-ds/components";
 import {
   ChevronDownIcon,
   DownloadIcon,
   PlusCircleIcon,
   ChevronLeftIcon,
-  ChevronRightIcon
-} from '@tiendanube/icons';
+  ChevronRightIcon,
+} from "@nimbus-ds/icons";
 
 import { Page } from "./Page";
 
@@ -27,18 +29,19 @@ export default {
   },
   subcomponents: {
     "Page.Header": Page.Header,
-    "Page.Body": Page.Body
+    "Page.Body": Page.Body,
   },
   argTypes: {
     children: {
       control: { disable: true },
-      description: "Content to be rendered inside the page body."
+      description: "Content to be rendered inside the page body.",
     },
     maxWidth: {
       control: "text",
-      description: "Optional parameter to define a maximum width of the page content."
-    }
-  }
+      description:
+        "Optional parameter to define a maximum width of the page content.",
+    },
+  },
 } as ComponentMeta<typeof Page>;
 
 const Template: ComponentStory<typeof Page> = (args) => {

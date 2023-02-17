@@ -28,16 +28,10 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "dependencies": {
-    "@nimbus-ds/box": "^2.5.0",
-    "@nimbus-ds/text": "^5.0.0",
-    "@nimbus-ds/title": "^2.0.0"
+    "@nimbus-ds/components": "^2.8.0",
+    "@nimbus-ds/styles": "^6.11.0"
   },
   "devDependencies": {
-    "@nimbus-ds/alert": "^2.0.0",
-    "@nimbus-ds/button": "^2.1.0",
-    "@nimbus-ds/icon": "^2.0.0",
-    "@nimbus-ds/icon-button": "^3.3.0",
-    "@nimbus-ds/tag": "^2.0.0",
-    "@tiendanube/icons": "^0.3.2"
+    "@nimbus-ds/icons": "^1.0.0"
   }
 }

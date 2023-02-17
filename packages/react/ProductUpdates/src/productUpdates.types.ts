@@ -1,6 +1,6 @@
 import { HTMLAttributes, ReactNode } from "react";
 
-import { PopoverProps } from "@nimbus-ds/popover";
+import { PopoverProps } from "@nimbus-ds/components";
 
 type Extend = Omit<
   PopoverProps,

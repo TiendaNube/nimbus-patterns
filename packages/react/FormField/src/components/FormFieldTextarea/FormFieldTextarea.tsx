@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Textarea } from "@nimbus-ds/textarea";
+import { Textarea } from "@nimbus-ds/components";
 
 import { FormField } from "../../FormField";
 import { FormFieldTextareaProps } from "./formFieldTextarea.types";
