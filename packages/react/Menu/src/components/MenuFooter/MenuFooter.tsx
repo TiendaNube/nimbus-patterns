@@ -1,8 +1,7 @@
 import React from "react";
 
-import { ChevronRightIcon } from "@tiendanube/icons";
-import { Box } from "@nimbus-ds/box";
-import { Icon } from "@nimbus-ds/icon";
+import { ChevronRightIcon } from "@nimbus-ds/icons";
+import { Box, Icon } from "@nimbus-ds/components";
 import { MenuButton } from "@nimbus-ds/menubutton";
 
 import { MenuFooterProps } from "./menuFooter.types";

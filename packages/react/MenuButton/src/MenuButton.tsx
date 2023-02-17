@@ -1,8 +1,6 @@
 import React from "react";
 
-import { Text } from "@nimbus-ds/text";
-import { Icon } from "@nimbus-ds/icon";
-import { Box } from "@nimbus-ds/box";
+import { Text, Icon, Box } from "@nimbus-ds/components";
 
 import { MenuButtonProps } from "./menuButton.types";
 
@@ -30,16 +28,16 @@ const MenuButton: React.FC<MenuButtonProps> = ({
         xs: active ? "primary.surface" : "transparent",
         hover: "primary.surface",
         active: "primary.surfaceHighlight",
-        disabled: "neutral.surfaceDisabled"
+        disabled: "neutral.surfaceDisabled",
       }}
       boxShadow={{
-        focus: "focusRing"
+        focus: "focusRing",
       }}
       borderRadius=".5rem"
       borderWidth="0"
       cursor={{
         xs: "pointer",
-        disabled: "not-allowed"
+        disabled: "not-allowed",
       }}
       display="flex"
       gap="2"

@@ -1,6 +1,10 @@
-import { HTMLAttributes, ReactNode } from "react";
-import { Icon as IconType } from "@tiendanube/icons";
-import { FormFieldSelect, FormFieldTextarea, FormFieldInput } from "./components";
+import { HTMLAttributes, ReactNode, FC } from "react";
+import { IconProps } from "@nimbus-ds/icons";
+import {
+  FormFieldSelect,
+  FormFieldTextarea,
+  FormFieldInput,
+} from "./components";
 
 type Extend = HTMLAttributes<HTMLElement>;
 
@@ -13,7 +17,7 @@ export interface FormFieldComponents {
 export interface FormFieldProps extends Extend {
   label?: ReactNode;
   helpText?: string;
-  helpIcon?: IconType;
+  helpIcon?: FC<IconProps>;
   appearance?: "danger" | "warning" | "success" | "none";
   showHelpText?: boolean;
   children: ReactNode;

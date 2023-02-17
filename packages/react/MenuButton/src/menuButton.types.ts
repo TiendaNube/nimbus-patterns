@@ -1,12 +1,11 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
-
-import { Icon as IconType } from "@tiendanube/icons";
+import { ButtonHTMLAttributes, ReactNode, FC } from "react";
+import { IconProps } from "@nimbus-ds/icons";
 
 export interface MenuButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
   onClick?: () => void;
-  startIcon?: IconType;
+  startIcon?: FC<IconProps>;
   active?: boolean;
   children?: ReactNode;
 }

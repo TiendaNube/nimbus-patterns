@@ -16,18 +16,20 @@ import {
   EcosystemIcon,
   CogIcon,
   ExternalLinkIcon,
-  TiendanubeIcon
-} from "@tiendanube/icons";
+  TiendanubeIcon,
+} from "@nimbus-ds/icons";
 
-import { Sidebar } from "@nimbus-ds/sidebar";
-import { Button } from "@nimbus-ds/button";
+import {
+  Sidebar,
+  Button,
+  Box,
+  Badge,
+  Tag,
+  IconButton,
+  Icon,
+  Text,
+} from "@nimbus-ds/components";
 import { MenuButton } from "@nimbus-ds/menubutton";
-import { Box } from "@nimbus-ds/box";
-import { Badge } from "@nimbus-ds/badge";
-import { Tag } from "@nimbus-ds/tag";
-import { IconButton } from "@nimbus-ds/icon-button";
-import { Icon } from "@nimbus-ds/icon";
-import { Text } from "@nimbus-ds/text";
 
 import { Menu } from "./Menu";
 
@@ -42,9 +44,9 @@ export default {
     "Menu.Button": MenuButton,
     "Menu.Footer": Menu.Footer,
     "Menu.Header": Menu.Header,
-    "Menu.Section": Menu.Section
+    "Menu.Section": Menu.Section,
   },
-  argTypes: {}
+  argTypes: {},
 } as ComponentMeta<typeof Menu>;
 
 const SampleMenu = (
@@ -97,7 +99,7 @@ const SampleMenu = (
         <Menu.Button startIcon={UserIcon} label="Clientes">
           <Tag appearance="primary">¡Nuevo!</Tag>
         </Menu.Button>
-        <Menu.Button startIcon={DiscountCircleIcon} label="Marketing"/>
+        <Menu.Button startIcon={DiscountCircleIcon} label="Marketing" />
       </Menu.Section>
       <Menu.Section title="Personalizar">
         <Menu.Button startIcon={ToolsIcon} label="Mi Tiendanube" />

@@ -16,7 +16,7 @@ const makeSut = (rest: Omit<AppShellProps, "children">) => {
 
 describe("GIVEN <AppShell />", () => {
   describe("WHEN rendered", () => {
-    it("SHOULD render children correctly", () => {
+    it("THEN should render children correctly", () => {
       makeSut({});
       expect(screen.getByText(bodyChildren)).toBeDefined();
     });

@@ -1,12 +1,12 @@
 import { HTMLAttributes, ReactNode } from "react";
 
-import { BoxProps } from "@nimbus-ds/box";
+import { BoxProps } from "@nimbus-ds/components";
 
 import { LayoutSection } from "./components";
 
 type Extend = Omit<
-BoxProps,
-"children" | "boxSizing" | "display" | "gridTemplateColumns"
+  BoxProps,
+  "children" | "boxSizing" | "display" | "gridTemplateColumns"
 > &
   HTMLAttributes<HTMLElement>;
 

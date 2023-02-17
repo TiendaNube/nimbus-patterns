@@ -1,9 +1,6 @@
 import React from "react";
-import { ChevronRightIcon } from "@tiendanube/icons";
-import { Box } from "@nimbus-ds/box";
-import { Icon } from "@nimbus-ds/icon";
-import { Text } from "@nimbus-ds/text";
-import { Link } from "@nimbus-ds/link";
+import { ChevronRightIcon } from "@nimbus-ds/icons";
+import { Box, Icon, Text, Link } from "@nimbus-ds/components";
 
 import {
   cardBackground,

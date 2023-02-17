@@ -2,6 +2,24 @@
 
 ProductUpdates component allows the user to showcase new features or updates in a non-distractive way by displaying the information in a floating popover with a high-contrast setting that catches the eye of the user.
 
+## 2023-02-17 `1.2.0`
+
+### 🎉 New features
+
+- Removed external dependency from `@tiendanube/icons` package to now use internal `@nimbus-ds/icons` package. ([#18](https://github.com/TiendaNube/nimbus-design-system/pull/#18) by [@juniorconquista](https://github.com/juniorconquista))
+
+### 📚 3rd party library updates
+
+- Added `@nimbus-ds/components@2.8.0`. ([#18](https://github.com/TiendaNube/nimbus-patterns/pull/18) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `@nimbus-ds/styles@6.11.0`. ([#18](https://github.com/TiendaNube/nimbus-patterns/pull/18) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `@nimbus-ds/icons@1.0.0`. ([#18](https://github.com/TiendaNube/nimbus-patterns/pull/18) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/box@2.4.0`. ([#18](https://github.com/TiendaNube/nimbus-patterns/pull/18) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/icon-button@3.3.0`. ([#18](https://github.com/TiendaNube/nimbus-patterns/pull/18) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/link@3.1.0`. ([#18](https://github.com/TiendaNube/nimbus-patterns/pull/18) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/popover@2.1.0`. ([#18](https://github.com/TiendaNube/nimbus-patterns/pull/18) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/text@5.0.0`. ([#18](https://github.com/TiendaNube/nimbus-patterns/pull/18) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@tiendanube/icons@0.3.1`. ([#18](https://github.com/TiendaNube/nimbus-design-system/pull/#18) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-02-10 `1.1.0`
 
 - Removed `@nimbus-ds/stack`. ([#14](https://github.com/TiendaNube/nimbus-patterns/pull/14) by [@juanchigallego](https://github.com/juanchigallego))

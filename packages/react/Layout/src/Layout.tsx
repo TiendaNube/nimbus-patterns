@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box } from "@nimbus-ds/box";
+import { Box } from "@nimbus-ds/components";
 
 import { LayoutSection } from "./components";
 
@@ -21,7 +21,7 @@ const Layout: React.FC<LayoutProps> & LayoutComponents = ({
     display="grid"
     gridTemplateColumns={{
       xs: "1fr",
-      md: colQuantity[columns]
+      md: colQuantity[columns],
     }}
     gridGap={rest.gap || "4"}
   >

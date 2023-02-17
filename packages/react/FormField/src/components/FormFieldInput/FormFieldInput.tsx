@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Input } from "@nimbus-ds/input";
+import { Input } from "@nimbus-ds/components";
 
 import { FormField } from "../../FormField";
 import { FormFieldInputProps } from "./formFieldInput.types";

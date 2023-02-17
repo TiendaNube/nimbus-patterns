@@ -2,8 +2,7 @@ import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { Box } from "@nimbus-ds/box";
-import { Text } from "@nimbus-ds/text";
+import { Box, Text } from "@nimbus-ds/components";
 
 import { Layout } from "./Layout";
 
@@ -14,18 +13,18 @@ export default {
     withA11y: { decorators: [withA11y] },
   },
   subcomponents: {
-    "Layout.Section": Layout.Section
+    "Layout.Section": Layout.Section,
   },
   argTypes: {
     children: {
       control: { disable: true },
-      description: "Content to be rendered inside the layout."
+      description: "Content to be rendered inside the layout.",
     },
     columns: {
       control: "select",
-      description: "Number of columns to be rendered for the children"
-    }
-  }
+      description: "Number of columns to be rendered for the children",
+    },
+  },
 } as ComponentMeta<typeof Layout>;
 
 interface ExampleBoxProps {
@@ -77,20 +76,20 @@ const Template: ComponentStory<typeof Layout> = (args) => (
 
 export const oneColumn = Template.bind({});
 oneColumn.args = {
-  columns: "1"
+  columns: "1",
 };
 
 export const twoColumnsAsymmetric = Template.bind({});
 twoColumnsAsymmetric.args = {
-  columns: "2 - asymmetric"
+  columns: "2 - asymmetric",
 };
 
 export const twoColumnsSymmetric = Template.bind({});
 twoColumnsSymmetric.args = {
-  columns: "2 - symmetric"
+  columns: "2 - symmetric",
 };
 
 export const threeColumns = Template.bind({});
 threeColumns.args = {
-  columns: "3"
+  columns: "3",
 };

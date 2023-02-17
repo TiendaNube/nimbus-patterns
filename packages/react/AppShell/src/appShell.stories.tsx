@@ -2,18 +2,36 @@ import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { Box } from "@nimbus-ds/box";
-import { Text } from "@nimbus-ds/text";
-import { Button } from "@nimbus-ds/button";
-import { Icon } from "@nimbus-ds/icon";
-import { Page } from "@nimbus-ds/page";
-import { Badge } from "@nimbus-ds/badge";
-import { Tag } from "@nimbus-ds/tag";
-import { IconButton } from "@nimbus-ds/icon-button";
+import {
+  Box,
+  Text,
+  Button,
+  Icon,
+  Badge,
+  Tag,
+  IconButton,
+} from "@nimbus-ds/components";
+
 import { Menu } from "@nimbus-ds/menu";
 import { MenuButton } from "@nimbus-ds/menubutton";
+import { Page } from "@nimbus-ds/page";
 
-import { AppsIcon, CashIcon, ChevronLeftIcon, CogIcon, DiscountCircleIcon, EcosystemIcon, ExternalLinkIcon, GiftBoxIcon, HomeIcon, StatsIcon, TagIcon, TiendanubeIcon, ToolsIcon, UserIcon } from "@tiendanube/icons";
+import {
+  AppsIcon,
+  CashIcon,
+  ChevronLeftIcon,
+  CogIcon,
+  DiscountCircleIcon,
+  EcosystemIcon,
+  ExternalLinkIcon,
+  GiftBoxIcon,
+  HomeIcon,
+  StatsIcon,
+  TagIcon,
+  TiendanubeIcon,
+  ToolsIcon,
+  UserIcon,
+} from "@nimbus-ds/icons";
 
 import { AppShell } from "./AppShell";
 
@@ -24,18 +42,18 @@ export default {
     withA11y: { decorators: [withA11y] },
   },
   subcomponents: {
-    "AppShell.Header": AppShell.Header
+    "AppShell.Header": AppShell.Header,
   },
   argTypes: {
     children: {
       control: { disable: true },
-      description: "Content to be rendered inside the app body."
+      description: "Content to be rendered inside the app body.",
     },
     menu: {
       control: { disable: true },
-      description: "Optional menu component to be rendered on a left sidebar."
-    }
-  }
+      description: "Optional menu component to be rendered on a left sidebar.",
+    },
+  },
 } as ComponentMeta<typeof AppShell>;
 
 const backButton = (
@@ -108,7 +126,7 @@ const AppMenu = (
         <MenuButton startIcon={UserIcon} label="Clientes">
           <Tag appearance="primary">¡Nuevo!</Tag>
         </MenuButton>
-        <MenuButton startIcon={DiscountCircleIcon} label="Marketing"/>
+        <MenuButton startIcon={DiscountCircleIcon} label="Marketing" />
       </Menu.Section>
       <Menu.Section title="Personalizar">
         <MenuButton startIcon={ToolsIcon} label="Mi Tiendanube" />

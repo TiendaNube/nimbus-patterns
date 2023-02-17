@@ -1,7 +1,6 @@
 import React from "react";
 
-import { Text } from "@nimbus-ds/text";
-import { Box } from "@nimbus-ds/box";
+import { Text, Box } from "@nimbus-ds/components";
 
 import { MenuSectionProps } from "./menuSection.types";
 

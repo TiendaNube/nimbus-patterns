@@ -3,15 +3,13 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { withA11y } from "@storybook/addon-a11y";
 // eslint-disable-next-line
 import { useArgs } from "@storybook/client-api";
-import { Icon } from "@nimbus-ds/icon";
-import { Text } from "@nimbus-ds/text";
-import { Box } from "@nimbus-ds/box";
-import { Button } from "@nimbus-ds/button";
+import { Icon, Text, Button, Box } from "@nimbus-ds/components";
+
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   CheckCircleIcon,
-} from "@tiendanube/icons";
+} from "@nimbus-ds/icons";
 
 import { SideModal } from "./SideModal";
 

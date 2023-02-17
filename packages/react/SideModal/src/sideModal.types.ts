@@ -1,6 +1,5 @@
 import { HTMLAttributes, ReactNode } from "react";
-import { SidebarProps } from "@nimbus-ds/sidebar";
-import { ButtonProps } from "@nimbus-ds/button";
+import { SidebarProps, ButtonProps } from "@nimbus-ds/components";
 
 type Extends = Pick<
   SidebarProps,

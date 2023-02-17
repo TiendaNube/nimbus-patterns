@@ -28,9 +28,7 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "dependencies": {
-    "@nimbus-ds/box": "^2.5.0"
-  },
-  "devDependencies": {
-    "@nimbus-ds/text": "^5.0.0"
+    "@nimbus-ds/components": "^2.8.0",
+    "@nimbus-ds/styles": "^6.11.0"
   }
 }
