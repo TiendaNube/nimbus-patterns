@@ -3,6 +3,12 @@
 This is the log of notable changes to the Nimbus Patterns that are developer-facing.
 Package-specific changes not released in any package will be added here just before the release. Until then, you can find them in changelogs of the individual packages (see [packages](./packages) directory).
 
+## 2023-02-17
+
+### 🎉 New features
+
+- Added dark mode support to storybook documentation. ([#18](https://github.com/TiendaNube/nimbus-design-system/pull/18) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-02-10
 
 ### 📚 3rd party library updates
