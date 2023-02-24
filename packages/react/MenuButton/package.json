@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@nimbus-ds/components": "^2.8.0",
-    "@nimbus-ds/icons": "^1.0.0",
+    "@nimbus-ds/icons": "^1.1.0",
     "@nimbus-ds/styles": "^6.11.0"
   }
 }
