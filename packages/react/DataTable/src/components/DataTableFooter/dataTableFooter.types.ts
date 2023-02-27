@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react";
 
-import { PaginationProps } from "@nimbus-ds/pagination";
+import { PaginationProps } from "@nimbus-ds/components";
 
 export interface DataTableFooterProps extends HTMLAttributes<HTMLElement> {
   /** Left-hand side text intended for displaying an item count */

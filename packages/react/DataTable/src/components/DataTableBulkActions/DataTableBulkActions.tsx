@@ -1,9 +1,6 @@
 import React from "react";
 
-import { Box } from "@nimbus-ds/box";
-import { Checkbox } from "@nimbus-ds/checkbox";
-import { Label } from "@nimbus-ds/label";
-import { Text } from "@nimbus-ds/text";
+import { Box, Checkbox, Label, Text } from "@nimbus-ds/components";
 
 import { DataTableBulkActionsProps } from "./dataTableBulkActions.types";
 

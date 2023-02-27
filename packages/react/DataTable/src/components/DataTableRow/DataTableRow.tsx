@@ -1,7 +1,6 @@
 import React from "react";
 
-import { Table } from "@nimbus-ds/table";
-import { Checkbox } from "@nimbus-ds/checkbox";
+import { Table, Checkbox } from "@nimbus-ds/components";
 
 import { DataTableRowProps } from "./dataTableRow.types";
 

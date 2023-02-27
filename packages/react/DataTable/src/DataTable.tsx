@@ -1,7 +1,6 @@
 import React from "react";
 
-import { Box } from "@nimbus-ds/box";
-import { Table } from "@nimbus-ds/table";
+import { Box, Table } from "@nimbus-ds/components";
 
 import {
   DataTableBulkActions,

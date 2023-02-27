@@ -9,11 +9,7 @@ import {
   ChevronDownIcon
 } from "@nimbus-ds/icons";
 
-import { Table } from "@nimbus-ds/table";
-import { Tag } from "@nimbus-ds/tag";
-import { Box } from "@nimbus-ds/box";
-import { Chip } from "@nimbus-ds/chip";
-import { IconButton } from "@nimbus-ds/icon-button";
+import { Table, Tag, Box, Chip, IconButton } from "@nimbus-ds/components";
 
 import { DataTable } from "./DataTable";
 

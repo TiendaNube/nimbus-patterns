@@ -1,7 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { CheckboxProps } from "@nimbus-ds/checkbox";
-import { TableRowProps } from "@nimbus-ds/table";
+import { CheckboxProps, TableRowProps } from "@nimbus-ds/components";
 
 type DataTableRowExtends = TableRowProps & HTMLAttributes<HTMLElement>
 

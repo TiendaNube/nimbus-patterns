@@ -1,8 +1,6 @@
 import React from "react";
 
-import { Text } from "@nimbus-ds/text";
-import { Pagination } from "@nimbus-ds/pagination";
-import { Box } from "@nimbus-ds/box";
+import { Text, Pagination, Box } from "@nimbus-ds/components";
 
 import { DataTableFooterProps } from "./dataTableFooter.types";
 

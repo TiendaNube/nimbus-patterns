@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/data-table",
-  "version": "0.0.0",
+  "version": "1.0.0-rc.5",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -28,10 +28,11 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "dependencies": {
-    "@nimbus-ds/components": "^2.10.0-rc.4",
-    "@nimbus-ds/styles": "^6.13.0-rc.4"
+    "@nimbus-ds/components": "^2.10.0-rc.6",
+    "@nimbus-ds/styles": "^6.13.0-rc.6"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0"
-  }
+  },
+  "stableVersion": "0.0.0"
 }

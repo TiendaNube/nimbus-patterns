@@ -1,6 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { TableProps } from "@nimbus-ds/table";
+import { TableProps } from "@nimbus-ds/components";
 
 import {
   DataTableBulkActions,

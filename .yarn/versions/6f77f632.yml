@@ -1,0 +1,5 @@
+releases:
+  "@nimbus-ds/data-table": major
+
+declined:
+  - nimbus-patterns

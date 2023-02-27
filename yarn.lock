@@ -2565,16 +2565,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/components@npm:^2.10.0-rc.4":
-  version: 2.10.0-rc.4
-  resolution: "@nimbus-ds/components@npm:2.10.0-rc.4"
+"@nimbus-ds/components@npm:^2.10.0-rc.6":
+  version: 2.10.0-rc.6
+  resolution: "@nimbus-ds/components@npm:2.10.0-rc.6"
   dependencies:
     "@floating-ui/react-dom-interactions": ^0.10.1
     "@nimbus-ds/icons": ^1.1.0
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: edefd46cdeac796a6c40c08912e8d0bc4db12683765ecf2c4e7d6c01cd977ff973f60ce1b717b780d0047e3c58d1f854e0871e5da759fc3245ce422ea2558757
+  checksum: 6c3a6c67a9272e12d9f560d979b9e938cb5623e8449defa499cc1d696a047c05b6335909b3a1f7a28212cce102b4fa07d783fbf75fa7ff64d530da3b87d40433
   languageName: node
   linkType: hard
 
@@ -2596,8 +2596,8 @@ __metadata:
   resolution: "@nimbus-ds/data-table@workspace:packages/react/DataTable"
   dependencies:
     "@faker-js/faker": ^7.6.0
-    "@nimbus-ds/components": ^2.10.0-rc.4
-    "@nimbus-ds/styles": ^6.13.0-rc.4
+    "@nimbus-ds/components": ^2.10.0-rc.6
+    "@nimbus-ds/styles": ^6.13.0-rc.6
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
@@ -2716,17 +2716,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/styles@npm:^6.13.0-rc.4":
-  version: 6.13.0-rc.4
-  resolution: "@nimbus-ds/styles@npm:6.13.0-rc.4"
-  checksum: 43aeac6aff25599f36ebb40e9df52bf32d43d8767beeddd1776cf841e5ab6a4ae0a5fa0d9fa18b5d71e2fd0fc4d4594299d838bf32cc3d9922be86d72339a2a8
+"@nimbus-ds/styles@npm:^6.13.0-rc.6":
+  version: 6.13.0-rc.6
+  resolution: "@nimbus-ds/styles@npm:6.13.0-rc.6"
+  checksum: b30669efd557c2f42c015427e61581433cb06ae8944e7610a70a1945d825e9ff853b515576bec0d6cb597c2f27dcfdc08debc5e4f08d232d0f80addb0d4600d5
   languageName: node
   linkType: hard
 
-"@nimbus-ds/tokens@npm:^6.0.2-rc.4":
-  version: 6.0.2-rc.4
-  resolution: "@nimbus-ds/tokens@npm:6.0.2-rc.4"
-  checksum: 40c35fe3301699c526378e8db8efe0973b2a40c61e106919042f3eb200fd02a3f796939a74ae81a90f5fd988764539b1755f337dc41e36ad281e872cdc8696b3
+"@nimbus-ds/tokens@npm:^6.0.2-rc.6":
+  version: 6.0.2-rc.6
+  resolution: "@nimbus-ds/tokens@npm:6.0.2-rc.6"
+  checksum: 25f71bfd3cf0055793f569a95bec21eb6c9955d24765af8fcdb7f78f78d71fad510299f8ab77e02f88e3dc3241f21681c5d17a4940f597a0f3bb41a7e244929d
   languageName: node
   linkType: hard
 
@@ -15143,8 +15143,8 @@ __metadata:
     "@commitlint/config-conventional": ^17.2.0
     "@jest/types": ^29.2.1
     "@mdx-js/react": ^1.6.22
-    "@nimbus-ds/styles": ^6.13.0-rc.4
-    "@nimbus-ds/tokens": ^6.0.2-rc.4
+    "@nimbus-ds/styles": ^6.13.0-rc.6
+    "@nimbus-ds/tokens": ^6.0.2-rc.6
     "@parcel/packager-ts": 2.8.3
     "@parcel/transformer-typescript-tsc": ^2.8.0
     "@parcel/transformer-typescript-types": 2.8.3
