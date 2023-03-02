@@ -2,6 +2,13 @@
 
 ProductUpdates component allows the user to showcase new features or updates in a non-distractive way by displaying the information in a floating popover with a high-contrast setting that catches the eye of the user.
 
+## 2023-03-02 `1.2.1`
+
+### 📚 3rd party library updates
+
+- Updated `@nimbus-ds/components@2.10.0`. ([#22](https://github.com/TiendaNube/nimbus-patterns/pull/22) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/styles@6.13.0`. ([#22](https://github.com/TiendaNube/nimbus-patterns/pull/22) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-02-17 `1.2.0`
 
 ### 🎉 New features
