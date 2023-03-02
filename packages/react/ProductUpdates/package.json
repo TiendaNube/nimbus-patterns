@@ -28,8 +28,8 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "dependencies": {
-    "@nimbus-ds/components": "^2.8.0",
+    "@nimbus-ds/components": "^2.10.0-rc.6",
     "@nimbus-ds/icons": "^1.0.0",
-    "@nimbus-ds/styles": "^6.11.0"
+    "@nimbus-ds/styles": "^6.13.0-rc.6"
   }
 }

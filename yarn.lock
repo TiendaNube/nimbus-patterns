@@ -2556,9 +2556,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/callout-card@workspace:packages/react/CalloutCard"
   dependencies:
-    "@nimbus-ds/components": ^2.8.0
+    "@nimbus-ds/components": ^2.10.0-rc.6
     "@nimbus-ds/icons": ^1.0.0
-    "@nimbus-ds/styles": ^6.11.0
+    "@nimbus-ds/styles": ^6.13.0-rc.6
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
@@ -2687,9 +2687,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/productupdates@workspace:packages/react/ProductUpdates"
   dependencies:
-    "@nimbus-ds/components": ^2.8.0
+    "@nimbus-ds/components": ^2.10.0-rc.6
     "@nimbus-ds/icons": ^1.0.0
-    "@nimbus-ds/styles": ^6.11.0
+    "@nimbus-ds/styles": ^6.13.0-rc.6
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0

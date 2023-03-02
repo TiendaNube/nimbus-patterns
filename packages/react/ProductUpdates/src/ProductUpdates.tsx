@@ -43,7 +43,6 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
         as="button"
         onClick={handleVisibility}
         appearance="neutral.background"
-        size="base"
       >
         {dismissLink}
       </Link>
