@@ -1,6 +1,6 @@
 {
-  "name": "@nimbus-ds/callout-card",
-  "version": "1.4.0",
+  "name": "@nimbus-ds/data-table",
+  "version": "1.0.0-rc.5",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -29,7 +29,10 @@
   },
   "dependencies": {
     "@nimbus-ds/components": "^2.10.0",
-    "@nimbus-ds/icons": "^1.0.0",
     "@nimbus-ds/styles": "^6.13.0"
-  }
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0"
+  },
+  "stableVersion": "0.0.0"
 }

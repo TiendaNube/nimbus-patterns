@@ -53,7 +53,6 @@ const CalloutCard: React.FC<CalloutCardProps> = ({
         data-testid="callout-card-title"
         color={textColor[appearance]}
         fontSize="caption"
-        lineHeight="base"
         fontWeight="bold"
       >
         {title}

@@ -2,7 +2,8 @@ import { HTMLAttributes, MouseEventHandler, FC } from "react";
 import { IconProps } from "@nimbus-ds/icons";
 import { LinkProps } from "@nimbus-ds/components";
 
-export interface CalloutCardProps extends HTMLAttributes<HTMLElement> {
+export interface CalloutCardProps
+  extends Omit<HTMLAttributes<HTMLElement>, "color"> {
   /** CalloutCard color */
   appearance: "primary" | "success" | "warning" | "danger" | "neutral";
   /** Icon SVG */

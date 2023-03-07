@@ -43,7 +43,6 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
         as="button"
         onClick={handleVisibility}
         appearance="neutral.background"
-        size="base"
       >
         {dismissLink}
       </Link>
@@ -69,7 +68,7 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
   return (
     <Popover
       {...rest}
-      appearance="primary.interactiveHover"
+      backgroundColor="primary.interactiveHover"
       content={hasDismissLink}
       visible={visible}
       onVisibility={
