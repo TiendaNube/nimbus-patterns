@@ -1,7 +1,0 @@
-releases:
-  "@nimbus-ds/callout-card": patch
-  "@nimbus-ds/data-table": major
-  "@nimbus-ds/productupdates": patch
-
-declined:
-  - nimbus-patterns
