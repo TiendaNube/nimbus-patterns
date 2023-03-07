@@ -68,7 +68,7 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
   return (
     <Popover
       {...rest}
-      appearance="primary.interactiveHover"
+      backgroundColor="primary.interactiveHover"
       content={hasDismissLink}
       visible={visible}
       onVisibility={

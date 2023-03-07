@@ -20,7 +20,7 @@ const DataTable: React.FC<DataTableProps> & DataTableComponents = ({
   children,
   ...rest
 }: DataTableProps) => (
-  <Box {...rest}>
+  <Box>
     <Box
       position="relative"
       borderRadius=".5rem"
@@ -29,7 +29,7 @@ const DataTable: React.FC<DataTableProps> & DataTableComponents = ({
       borderWidth="1px"
     >
       {bulkActions}
-      <Table>
+      <Table {...rest}>
         {header}
         <Table.Body>{children}</Table.Body>
       </Table>
