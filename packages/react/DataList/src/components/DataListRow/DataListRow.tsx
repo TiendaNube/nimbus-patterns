@@ -1,9 +1,10 @@
 import React from "react";
 
-import { DataListRowProps } from "./dataListRow.types";
-import { rowPadding } from "./dataListRow.definitions";
-
 import { Box } from "@nimbus-ds/components";
+
+import { DataListRowProps } from "./dataListRow.types";
+
+import { rowPadding } from "./dataListRow.definitions";
 
 const DataListRow: React.FC<DataListRowProps> = ({
   className: _className,

@@ -1,10 +1,11 @@
 import React from "react";
 
+import { Box } from "@nimbus-ds/components";
+
 import { DataListProps, DataListComponents } from "./dataList.types";
 
 import { DataListRow } from "./components";
 
-import { Box } from "@nimbus-ds/components";
 
 const DataList: React.FC<DataListProps> & DataListComponents = ({
   className: _className,
