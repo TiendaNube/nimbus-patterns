@@ -1,8 +1,8 @@
 import React from "react";
 
-import { NavTabsItemProps } from "./navTabsItem.types";
-
 import { Icon, Box } from "@nimbus-ds/components";
+
+import { NavTabsItemProps } from "./navTabsItem.types";
 
 const NavTabsItem: React.FC<NavTabsItemProps> = ({
   className: _className,

@@ -2,9 +2,9 @@ import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { NavTabs } from "./NavTabs";
-
 import { HomeIcon, MoneyIcon, TagIcon, MenuIcon } from "@nimbus-ds/icons";
+
+import { NavTabs } from "./NavTabs";
 
 export default {
   title: "Patterns/NavTabs",

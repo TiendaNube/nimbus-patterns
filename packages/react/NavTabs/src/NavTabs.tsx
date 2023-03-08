@@ -1,10 +1,10 @@
 import React from "react";
 
+import { Box } from "@nimbus-ds/components";
+
 import { NavTabsProps, NavTabsComponents } from "./navTabs.types";
 
 import { NavTabsItem } from "./components";
-
-import { Box } from "@nimbus-ds/components";
 
 const NavTabs: React.FC<NavTabsProps> & NavTabsComponents = ({
   className: _className,
