@@ -2723,6 +2723,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nimbus-ds/thumbnail-with-action@workspace:packages/react/ThumbnailWithAction":
+  version: 0.0.0-use.local
+  resolution: "@nimbus-ds/thumbnail-with-action@workspace:packages/react/ThumbnailWithAction"
+  dependencies:
+    "@nimbus-ds/components": ^2.10.0
+    "@nimbus-ds/styles": ^6.13.0
+    "@nimbus-ds/tokens": ^6.0.2
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  languageName: unknown
+  linkType: soft
+
 "@nimbus-ds/tokens@npm:^6.0.2":
   version: 6.0.2
   resolution: "@nimbus-ds/tokens@npm:6.0.2"
