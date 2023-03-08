@@ -8,5 +8,6 @@ export interface DataListComponents {
 
 export interface DataListProps
   extends Omit<HTMLAttributes<HTMLElement>, "color"> {
+  /** Content of the List component */
   children: ReactNode;
 }
