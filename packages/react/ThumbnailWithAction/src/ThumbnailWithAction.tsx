@@ -17,7 +17,12 @@ const ThumbnailWithAction: React.FC<ThumbnailWithActionProps> = ({
   const { top, left, right, bottom } = contentPositions[contentPosition];
 
   return (
-    <Box position="relative" width="fit-content">
+    <Box
+      position="relative"
+      width="fit-content"
+      borderRadius=".5rem"
+      overflow="hidden"
+    >
       <Box
         {...rest}
         style={_style}
@@ -36,5 +41,7 @@ const ThumbnailWithAction: React.FC<ThumbnailWithActionProps> = ({
     </Box>
   );
 };
+
+ThumbnailWithAction.displayName = "ThumbnailWithAction";
 
 export { ThumbnailWithAction };
