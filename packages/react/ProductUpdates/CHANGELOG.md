@@ -38,6 +38,8 @@ ProductUpdates component allows the user to showcase new features or updates in 
 
 ## 2023-01-24 `1.0.0`
 
+### 📚 Documentation
+
 ### 📚 3rd party library updates
 
 - Added `@nimbus-ds/box@2.1.0`. ([#8](https://github.com/TiendaNube/nimbus-patterns/pull/8) by [@juanchigallego](https://github.com/juanchigallego))

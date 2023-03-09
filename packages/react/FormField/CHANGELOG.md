@@ -4,6 +4,8 @@ The FormField component allows the user to enter or edit information in text for
 
 ## 2023-03-13 `1.3.1`
 
+### 📚 Documentation
+
 - Add props documentation. ([#26](https://github.com/TiendaNube/nimbus-patterns/pull/26) by [@juanchigallego](https://github.com/juanchigallego))
 
 ## 2023-02-17 `1.3.0`

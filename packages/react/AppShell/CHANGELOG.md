@@ -4,6 +4,8 @@ The AppShell component is the main outer frame of an application. It provides th
 
 ## 2023-03-13 `1.1.1`
 
+### 📚 Documentation
+
 - Add props documentation. ([#26](https://github.com/TiendaNube/nimbus-patterns/pull/26) by [@juanchigallego](https://github.com/juanchigallego))
 
 ## 2023-02-17 `1.1.0`
