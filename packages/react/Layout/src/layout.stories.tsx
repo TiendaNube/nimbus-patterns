@@ -16,14 +16,8 @@ export default {
     "Layout.Section": Layout.Section,
   },
   argTypes: {
-    children: {
-      control: { disable: true },
-      description: "Content to be rendered inside the layout.",
-    },
-    columns: {
-      control: "select",
-      description: "Number of columns to be rendered for the children",
-    },
+    children: { control: { disable: true } },
+    columns: { control: "select" },
   },
 } as ComponentMeta<typeof Layout>;
 

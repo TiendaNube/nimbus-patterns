@@ -19,6 +19,9 @@ const Page: React.FC<PageProps> & PageComponents = ({
 
 Page.Header = PageHeader;
 Page.Body = PageBody;
+
 Page.displayName = "Page";
+Page.Header.displayName = "Page.Header";
+Page.Body.displayName = "Page.Body";
 
 export { Page };

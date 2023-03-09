@@ -15,12 +15,9 @@ export default {
   argTypes: {
     bodyContent: {
       control: { disable: true },
-      description: "Optional content for the body of the Popover",
     },
     dismissLink: {
       control: "text",
-      description:
-        "Optional bottom link to dismiss the Popover. If unset, an IconButton with an X will appear on the superior right corner.",
     },
     visible: { control: { disable: true } },
   },

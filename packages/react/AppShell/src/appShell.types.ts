@@ -7,6 +7,8 @@ export interface AppShellComponents {
 }
 
 export interface AppShellProps extends HTMLAttributes<HTMLElement> {
+  /** Content for the body of the application */
   children: ReactNode;
+  /** Optional slot for left sidebar menu */
   menu?: ReactNode;
 }

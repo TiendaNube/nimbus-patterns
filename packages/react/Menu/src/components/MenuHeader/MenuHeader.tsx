@@ -22,6 +22,4 @@ const MenuHeader: React.FC<MenuHeaderProps> = ({
   </Box>
 );
 
-MenuHeader.displayName = "Menu.Header";
-
 export { MenuHeader };

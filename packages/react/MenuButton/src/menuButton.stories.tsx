@@ -18,25 +18,19 @@ export default {
   argTypes: {
     label: {
       control: "text",
-      description: "Text label for the button",
     },
     onClick: {
       control: { disable: true },
-      description: "Function executed when clicking the button",
     },
     startIcon: {
       control: { disable: true },
-      description: "Sets an icon element on the left of the button",
     },
     children: {
       control: { disable: true },
-      description:
-        "Inner components displayed on the right of the button component",
     },
     active: {
       control: "boolean",
       defaultValue: false,
-      description: "Sets the state of the button as active/inactive",
     },
     disabled: {
       control: "boolean",

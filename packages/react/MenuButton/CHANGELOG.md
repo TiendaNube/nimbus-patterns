@@ -2,6 +2,10 @@
 
 MenuButton component is meant to be used inside Menus and navigation, and allows the user to navigate between different sections of an application.
 
+## 2023-03-13 `1.1.1`
+
+- Add props documentation. ([#26](https://github.com/TiendaNube/nimbus-patterns/pull/26) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-02-17 `1.1.0`
 
 ### 🎉 New features

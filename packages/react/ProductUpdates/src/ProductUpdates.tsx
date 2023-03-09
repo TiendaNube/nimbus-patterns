@@ -80,4 +80,6 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
   );
 };
 
+ProductUpdates.displayName = "ProductUpdates";
+
 export { ProductUpdates };

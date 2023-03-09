@@ -9,5 +9,6 @@ type Extend = Omit<
   HTMLAttributes<HTMLElement>;
 
 export interface LayoutSectionProps extends Extend {
+  /** Content of the section body */
   children: ReactNode;
 }

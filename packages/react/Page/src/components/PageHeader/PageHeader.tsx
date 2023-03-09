@@ -37,6 +37,4 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   </Box>
 );
 
-PageHeader.displayName = "Page.Header";
-
 export { PageHeader };

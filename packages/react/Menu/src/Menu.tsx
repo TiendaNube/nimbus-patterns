@@ -34,5 +34,10 @@ Menu.Body = MenuBody;
 Menu.Footer = MenuFooter;
 
 Menu.displayName = "Menu";
+Menu.Section.displayName = "Menu.Section";
+Menu.Button.displayName = "Menu.Button";
+Menu.Header.displayName = "Menu.Header";
+Menu.Body.displayName = "Menu.Body";
+Menu.Footer.displayName = "Menu.Footer";
 
 export { Menu };

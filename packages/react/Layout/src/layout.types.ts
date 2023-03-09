@@ -15,6 +15,8 @@ export interface LayoutComponents {
 }
 
 export interface LayoutProps extends Extend {
+  /** Content to be rendered inside the layout. */
   children: ReactNode;
+  /** Number of columns to be rendered for the children */
   columns?: "1" | "2 - symmetric" | "2 - asymmetric" | "3";
 }

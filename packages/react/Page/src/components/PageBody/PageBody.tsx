@@ -15,6 +15,4 @@ const PageBody: React.FC<PageBodyProps> = ({
   </Box>
 );
 
-PageBody.displayName = "Page.Body";
-
 export { PageBody };

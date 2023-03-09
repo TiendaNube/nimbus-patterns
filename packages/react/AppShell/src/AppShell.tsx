@@ -45,6 +45,8 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
 );
 
 AppShell.Header = AppShellHeader;
+
 AppShell.displayName = "AppShell";
+AppShell.Header.displayName = "AppShell.Header";
 
 export { AppShell };

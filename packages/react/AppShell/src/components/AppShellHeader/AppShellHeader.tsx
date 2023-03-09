@@ -28,6 +28,4 @@ const AppShellHeader: React.FC<AppShellHeaderProps> = ({
   </Box>
 );
 
-AppShellHeader.displayName = "AppShell.Header";
-
 export { AppShellHeader };
