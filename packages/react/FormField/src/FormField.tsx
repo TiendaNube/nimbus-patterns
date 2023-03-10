@@ -41,13 +41,10 @@ const FormField: React.FC<FormFieldProps> & FormFieldComponents = ({
   </Box>
 );
 
+FormField.displayName = "FormField";
+
 FormField.Select = FormFieldSelect;
 FormField.Textarea = FormFieldTextarea;
 FormField.Input = FormFieldInput;
-
-FormField.displayName = "FormField";
-FormField.Input.displayName = "FormField.Input";
-FormField.Select.displayName = "FormField.Select";
-FormField.Textarea.displayName = "FormField.Textarea";
 
 export { FormField };
