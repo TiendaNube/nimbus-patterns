@@ -23,6 +23,4 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   </Box>
 );
 
-MenuSection.displayName = "Menu.Section";
-
 export { MenuSection };

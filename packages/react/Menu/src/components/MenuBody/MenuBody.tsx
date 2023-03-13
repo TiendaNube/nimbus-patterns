@@ -26,6 +26,4 @@ const MenuBody: React.FC<MenuBodyProps> = ({
   </Box>
 );
 
-MenuBody.displayName = "Menu.Body";
-
 export { MenuBody };

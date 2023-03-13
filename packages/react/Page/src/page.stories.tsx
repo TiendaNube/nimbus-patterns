@@ -34,12 +34,9 @@ export default {
   argTypes: {
     children: {
       control: { disable: true },
-      description: "Content to be rendered inside the page body.",
     },
     maxWidth: {
       control: "text",
-      description:
-        "Optional parameter to define a maximum width of the page content.",
     },
   },
 } as ComponentMeta<typeof Page>;

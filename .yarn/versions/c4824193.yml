@@ -1,0 +1,11 @@
+releases:
+  "@nimbus-ds/app-shell": patch
+  "@nimbus-ds/formfield": patch
+  "@nimbus-ds/layout": patch
+  "@nimbus-ds/menu": patch
+  "@nimbus-ds/menubutton": patch
+  "@nimbus-ds/page": patch
+  "@nimbus-ds/productupdates": patch
+
+declined:
+  - nimbus-patterns

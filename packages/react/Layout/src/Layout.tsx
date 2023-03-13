@@ -30,6 +30,8 @@ const Layout: React.FC<LayoutProps> & LayoutComponents = ({
 );
 
 Layout.Section = LayoutSection;
+
 Layout.displayName = "Layout";
+Layout.Section.displayName = "Layout.Section";
 
 export { Layout };

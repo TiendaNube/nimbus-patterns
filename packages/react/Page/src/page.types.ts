@@ -8,6 +8,8 @@ export interface PageComponents {
 }
 
 export interface PageProps extends HTMLAttributes<HTMLElement> {
+  /** Content to be rendered inside the page body. */
   children: ReactNode;
+  /** Optional parameter to define a maximum width of the page content. */
   maxWidth?: string;
 }

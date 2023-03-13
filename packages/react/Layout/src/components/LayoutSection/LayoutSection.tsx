@@ -21,6 +21,4 @@ const LayoutSection: React.FC<LayoutSectionProps> = ({
   </Box>
 );
 
-LayoutSection.displayName = "Layout.Section";
-
 export { LayoutSection };

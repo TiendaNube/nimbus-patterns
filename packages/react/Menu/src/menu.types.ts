@@ -13,5 +13,6 @@ export interface MenuComponents {
 }
 
 export interface MenuProps extends HTMLAttributes<HTMLElement> {
+  /** Content of the menu */
   children: ReactNode;
 }

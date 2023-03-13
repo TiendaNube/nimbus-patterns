@@ -30,6 +30,4 @@ const MenuFooter: React.FC<MenuFooterProps> = ({
   );
 };
 
-MenuFooter.displayName = "Menu.Footer";
-
 export { MenuFooter };

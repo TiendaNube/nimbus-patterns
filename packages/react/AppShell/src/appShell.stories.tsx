@@ -47,11 +47,9 @@ export default {
   argTypes: {
     children: {
       control: { disable: true },
-      description: "Content to be rendered inside the app body.",
     },
     menu: {
       control: { disable: true },
-      description: "Optional menu component to be rendered on a left sidebar.",
     },
   },
 } as ComponentMeta<typeof AppShell>;
