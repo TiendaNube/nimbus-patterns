@@ -1,0 +1,5 @@
+releases:
+  "@nimbus-ds/nav-tabs": major
+
+declined:
+  - nimbus-patterns

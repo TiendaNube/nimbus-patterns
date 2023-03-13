@@ -2683,6 +2683,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@nimbus-ds/nav-tabs@workspace:packages/react/NavTabs":
+  version: 0.0.0-use.local
+  resolution: "@nimbus-ds/nav-tabs@workspace:packages/react/NavTabs"
+  dependencies:
+    "@nimbus-ds/components": ^2.10.0
+    "@nimbus-ds/icons": ^1.1.0
+    "@nimbus-ds/styles": ^6.13.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  languageName: unknown
+  linkType: soft
+
 "@nimbus-ds/page@workspace:^, @nimbus-ds/page@workspace:packages/react/Page":
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/page@workspace:packages/react/Page"

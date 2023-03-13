@@ -1,0 +1,36 @@
+{
+  "name": "@nimbus-ds/nav-tabs",
+  "version": "1.0.0-rc.2",
+  "license": "MIT",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf dist",
+    "version": "yarn version"
+  },
+  "peerDependencies": {
+    "react": "^16.8 || ^17.0 || ^18.0",
+    "react-dom": "^16.8 || ^17.0 || ^18.0"
+  },
+  "homepage": "https://nimbus.nuvemshop.com.br/documentation",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiendaNube/nimbus-patterns.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
+  },
+  "dependencies": {
+    "@nimbus-ds/components": "^2.10.0",
+    "@nimbus-ds/icons": "^1.1.0",
+    "@nimbus-ds/styles": "^6.13.0"
+  },
+  "stableVersion": "0.0.0"
+}
