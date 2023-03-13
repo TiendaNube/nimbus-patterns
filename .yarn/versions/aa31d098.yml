@@ -1,0 +1,5 @@
+releases:
+  "@nimbus-ds/thumbnail-with-action": major
+
+declined:
+  - nimbus-patterns
