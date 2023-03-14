@@ -89,14 +89,14 @@ export const base = Template.bind({});
 base.args = {
   maxWidth: { xs: "100%", md: "340px", lg: "540px" },
   title: "Instalar Kangu",
-  headerIcon: <Icon color="primary.textHigh" source={<CheckCircleIcon />} />,
+  headerIcon: <Icon color="primary-textHigh" source={<CheckCircleIcon />} />,
   padding: "base",
   paddingHeader: "none",
   paddingBody: "none",
   paddingFooter: "none",
   headerAction: (
     <Box display="flex" alignItems="center" gap="1">
-      <Icon color="primary.textHigh" source={<ChevronLeftIcon />} />
+      <Icon color="primary-textHigh" source={<ChevronLeftIcon />} />
       <Text fontWeight="bold" fontSize="highlight">
         Formas de entrega
       </Text>
@@ -106,7 +106,7 @@ base.args = {
     <Box
       borderStyle="dashed"
       borderWidth="1px"
-      borderColor="neutral.interactive"
+      borderColor="neutral-interactive"
       height="100%"
       boxSizing="border-box"
       display="flex"
@@ -134,7 +134,7 @@ withTitle.args = {
     <Box
       borderStyle="dashed"
       borderWidth="1px"
-      borderColor="neutral.interactive"
+      borderColor="neutral-interactive"
       height="100%"
       boxSizing="border-box"
       display="flex"
@@ -160,15 +160,15 @@ withTitleAction.args = {
   paddingHeader: "none",
   titleAction: (
     <Box display="flex" gap="2">
-      <Icon color="primary.textHigh" source={<ChevronLeftIcon />} />
-      <Icon color="primary.textHigh" source={<ChevronRightIcon />} />
+      <Icon color="primary-textHigh" source={<ChevronLeftIcon />} />
+      <Icon color="primary-textHigh" source={<ChevronRightIcon />} />
     </Box>
   ),
   children: (
     <Box
       borderStyle="dashed"
       borderWidth="1px"
-      borderColor="neutral.interactive"
+      borderColor="neutral-interactive"
       height="100%"
       boxSizing="border-box"
       display="flex"
@@ -194,7 +194,7 @@ withHeaderAction.args = {
   paddingHeader: "none",
   headerAction: (
     <Box display="flex" alignItems="center" gap="1">
-      <Icon color="primary.textHigh" source={<ChevronLeftIcon />} />
+      <Icon color="primary-textHigh" source={<ChevronLeftIcon />} />
       <Text fontWeight="bold" fontSize="highlight">
         Formas de entrega
       </Text>
@@ -204,7 +204,7 @@ withHeaderAction.args = {
     <Box
       borderStyle="dashed"
       borderWidth="1px"
-      borderColor="neutral.interactive"
+      borderColor="neutral-interactive"
       height="100%"
       boxSizing="border-box"
       display="flex"
@@ -228,10 +228,10 @@ withHeaderIcon.args = {
   title: "Instalar Kangu",
   padding: "base",
   paddingHeader: "none",
-  headerIcon: <Icon color="primary.textHigh" source={<CheckCircleIcon />} />,
+  headerIcon: <Icon color="primary-textHigh" source={<CheckCircleIcon />} />,
   headerAction: (
     <Box display="flex" alignItems="center" gap="1">
-      <Icon color="primary.textHigh" source={<ChevronLeftIcon />} />
+      <Icon color="primary-textHigh" source={<ChevronLeftIcon />} />
       <Text fontWeight="bold" fontSize="highlight">
         Formas de entrega
       </Text>
@@ -241,7 +241,7 @@ withHeaderIcon.args = {
     <Box
       borderStyle="dashed"
       borderWidth="1px"
-      borderColor="neutral.interactive"
+      borderColor="neutral-interactive"
       height="100%"
       boxSizing="border-box"
       display="flex"
@@ -265,10 +265,10 @@ withFooter.args = {
   title: "Instalar Kangu",
   padding: "base",
   paddingHeader: "none",
-  headerIcon: <Icon color="primary.textHigh" source={<CheckCircleIcon />} />,
+  headerIcon: <Icon color="primary-textHigh" source={<CheckCircleIcon />} />,
   headerAction: (
     <Box display="flex" alignItems="center" gap="1">
-      <Icon color="primary.textHigh" source={<ChevronLeftIcon />} />
+      <Icon color="primary-textHigh" source={<ChevronLeftIcon />} />
       <Text fontWeight="bold" fontSize="highlight">
         Formas de entrega
       </Text>
@@ -278,7 +278,7 @@ withFooter.args = {
     <Box
       borderStyle="dashed"
       borderWidth="1px"
-      borderColor="neutral.interactive"
+      borderColor="neutral-interactive"
       height="100%"
       boxSizing="border-box"
       display="flex"
@@ -300,11 +300,11 @@ export const withoutFooter = Template.bind({});
 withoutFooter.args = {
   maxWidth: { xs: "100%", md: "340px", lg: "540px" },
   title: "Instalar Kangu",
-  headerIcon: <Icon color="primary.textHigh" source={<CheckCircleIcon />} />,
+  headerIcon: <Icon color="primary-textHigh" source={<CheckCircleIcon />} />,
   paddingBody: "base",
   headerAction: (
     <Box display="flex" alignItems="center" gap="1">
-      <Icon color="primary.textHigh" source={<ChevronLeftIcon />} />
+      <Icon color="primary-textHigh" source={<ChevronLeftIcon />} />
       <Text fontWeight="bold" fontSize="highlight">
         Formas de entrega
       </Text>
@@ -314,7 +314,7 @@ withoutFooter.args = {
     <Box
       borderStyle="dashed"
       borderWidth="1px"
-      borderColor="neutral.interactive"
+      borderColor="neutral-interactive"
       height="100%"
       boxSizing="border-box"
       display="flex"

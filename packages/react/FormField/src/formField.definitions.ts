@@ -8,14 +8,14 @@ export const inputAppearance = {
 };
 
 export const helpTextAppearance = {
-  danger: "danger.textLow",
-  warning: "warning.textLow",
-  success: "success.textLow",
-  none: "neutral.textLow"
+  danger: "danger-textLow",
+  warning: "warning-textLow",
+  success: "success-textLow",
+  none: "neutral-textLow"
 } as {
   [key: string]:
-    | "danger.textLow"
-    | "warning.textLow"
-    | "success.textLow"
-    | "neutral.textLow";
+    | "danger-textLow"
+    | "warning-textLow"
+    | "success-textLow"
+    | "neutral-textLow";
 };

@@ -79,11 +79,11 @@ const AppMenu = (
     <Menu.Header>
       <Box display="flex" gap="2" alignItems="center" width="100%">
         <Icon
-          color="neutral.textHigh"
+          color="neutral-textHigh"
           source={<TiendanubeIcon size="medium" />}
         />
         <Box display="inline-flex" flex="1">
-          <Text fontSize="base" color="neutral.textHigh" fontWeight="bold">
+          <Text fontSize="base" color="neutral-textHigh" fontWeight="bold">
             Tienda demo
           </Text>
         </Box>
@@ -96,7 +96,7 @@ const AppMenu = (
         <MenuButton startIcon={StatsIcon} label="Estadísticas" />
       </Menu.Section>
       <Menu.Section title="Administrar">
-        <Box backgroundColor="primary.surface" borderRadius=".5rem">
+        <Box backgroundColor="primary-surface" borderRadius=".5rem">
           <MenuButton
             id="control-1"
             aria-expanded
@@ -141,8 +141,8 @@ const AppMenu = (
 const Template: ComponentStory<typeof AppShell> = (args) => {
   const sampleMenu = (
     <Box
-      backgroundColor="primary.surface"
-      borderColor="primary.interactive"
+      backgroundColor="primary-surface"
+      borderColor="primary-interactive"
       borderStyle="dashed"
       borderWidth="1px"
       borderRadius=".5rem"
@@ -152,7 +152,7 @@ const Template: ComponentStory<typeof AppShell> = (args) => {
       alignItems="center"
       justifyContent="center"
     >
-      <Text fontSize="base" color="primary.interactive">
+      <Text fontSize="base" color="primary-interactive">
         Menu content
       </Text>
     </Box>
@@ -162,8 +162,8 @@ const Template: ComponentStory<typeof AppShell> = (args) => {
     <AppShell {...args} menu={sampleMenu}>
       <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
       <Box
-        backgroundColor="primary.surface"
-        borderColor="primary.interactive"
+        backgroundColor="primary-surface"
+        borderColor="primary-interactive"
         borderStyle="dashed"
         borderWidth="1px"
         borderRadius=".5rem"
@@ -173,7 +173,7 @@ const Template: ComponentStory<typeof AppShell> = (args) => {
         alignItems="center"
         justifyContent="center"
       >
-        <Text fontSize="base" color="primary.interactive">
+        <Text fontSize="base" color="primary-interactive">
           Children content
         </Text>
       </Box>
@@ -188,8 +188,8 @@ const PageTemplate: ComponentStory<typeof AppShell> = (args) => (
       <Page.Header title="Page demo" />
       <Page.Body>
         <Box
-          backgroundColor="primary.surface"
-          borderColor="primary.interactive"
+          backgroundColor="primary-surface"
+          borderColor="primary-interactive"
           borderStyle="dashed"
           borderWidth="1px"
           borderRadius=".5rem"
@@ -199,7 +199,7 @@ const PageTemplate: ComponentStory<typeof AppShell> = (args) => (
           alignItems="center"
           justifyContent="center"
         >
-          <Text fontSize="base" color="primary.interactive">
+          <Text fontSize="base" color="primary-interactive">
             Body content
           </Text>
         </Box>

@@ -23,7 +23,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         left="0"
         borderStyle="solid"
         borderWidth="0 1px 0 0"
-        borderColor="neutral.surfaceHighlight"
+        borderColor="neutral-surfaceHighlight"
         display={{
           xs: "none",
           md: "block",
@@ -36,7 +36,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       display="flex"
       flexDirection="column"
       flex="1 1 auto"
-      backgroundColor="neutral.surface"
+      backgroundColor="neutral-surface"
       width="100%"
     >
       {children}

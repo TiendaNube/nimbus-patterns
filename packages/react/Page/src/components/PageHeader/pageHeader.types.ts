@@ -1,6 +1,7 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-export interface PageHeaderProps extends HTMLAttributes<HTMLElement> {
+export interface PageHeaderProps
+  extends Omit<HTMLAttributes<HTMLElement>, "color"> {
   /** Main title of the page. Corresponds to an h1 HTML tag */
   title: string;
   /** Optional subtitle for the page */

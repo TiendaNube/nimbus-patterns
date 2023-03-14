@@ -29,7 +29,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
       {buttonStack}
     </Box>
     {subtitle && (
-      <Text color="neutral.textHigh" fontSize="base">
+      <Text color="neutral-textHigh" fontSize="base">
         {subtitle}
       </Text>
     )}

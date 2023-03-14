@@ -26,10 +26,10 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
 
   const productUpdatesContent = (
     <Box display="flex" flexDirection="column" gap="2" width="100%">
-      <Text color="neutral.background" fontSize="base" fontWeight="bold">
+      <Text color="neutral-background" fontSize="base" fontWeight="bold">
         {title}
       </Text>
-      <Text color="neutral.background" fontSize="base">
+      <Text color="neutral-background" fontSize="base">
         {text}
       </Text>
     </Box>
@@ -42,7 +42,7 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
       <Link
         as="button"
         onClick={handleVisibility}
-        appearance="neutral.background"
+        appearance="neutral-background"
       >
         {dismissLink}
       </Link>
@@ -55,7 +55,7 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
           <IconButton
             onClick={handleVisibility}
             size="2.75rem"
-            source={<Icon color="neutral.background" source={<CloseIcon />} />}
+            source={<Icon color="neutral-background" source={<CloseIcon />} />}
             borderColor="transparent"
             backgroundColor="transparent"
           />
@@ -68,7 +68,7 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
   return (
     <Popover
       {...rest}
-      backgroundColor="primary.interactiveHover"
+      backgroundColor="primary-interactiveHover"
       content={hasDismissLink}
       visible={visible}
       onVisibility={

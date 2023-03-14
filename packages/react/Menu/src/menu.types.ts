@@ -12,7 +12,7 @@ export interface MenuComponents {
   Footer: typeof MenuFooter;
 }
 
-export interface MenuProps extends HTMLAttributes<HTMLElement> {
+export interface MenuProps extends Omit<HTMLAttributes<HTMLElement>, "color"> {
   /** Content of the menu */
   children: ReactNode;
 }

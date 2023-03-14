@@ -14,7 +14,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   <Box {...rest} display="flex" flexDirection="column" gap="2">
     {title && (
       <Box pl="2" pt="2">
-        <Text color="neutral.textHigh" fontSize="caption">
+        <Text color="neutral-textHigh" fontSize="caption">
           {title}
         </Text>
       </Box>

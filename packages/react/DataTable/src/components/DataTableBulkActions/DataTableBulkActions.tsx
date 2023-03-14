@@ -19,7 +19,7 @@ const DataTableBulkActions: React.FC<DataTableBulkActionsProps> = ({
     top="0"
     left="0"
     width="100%"
-    backgroundColor="neutral.surface"
+    backgroundColor="neutral-surface"
     display="flex"
     alignItems="center"
     gap="4"
@@ -29,7 +29,7 @@ const DataTableBulkActions: React.FC<DataTableBulkActionsProps> = ({
   >
     <Checkbox {...checkbox} id="select-all" />
     <Label htmlFor="select-all">
-      <Text color="neutral.textLow" fontSize="base">
+      <Text color="neutral-textLow" fontSize="base">
         {label}
       </Text>
     </Label>

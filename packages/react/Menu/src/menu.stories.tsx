@@ -54,11 +54,11 @@ const SampleMenu = (
     <Menu.Header>
       <Box display="flex" gap="2" alignItems="center" width="100%">
         <Icon
-          color="neutral.textHigh"
+          color="neutral-textHigh"
           source={<TiendanubeIcon size="medium" />}
         />
         <Box display="inline-flex" flex="1">
-          <Text fontSize="base" color="neutral.textHigh" fontWeight="bold">
+          <Text fontSize="base" color="neutral-textHigh" fontWeight="bold">
             Tienda demo
           </Text>
         </Box>
@@ -71,7 +71,7 @@ const SampleMenu = (
         <Menu.Button startIcon={StatsIcon} label="Estadísticas" />
       </Menu.Section>
       <Menu.Section title="Administrar">
-        <Box backgroundColor="primary.surface" borderRadius=".5rem">
+        <Box backgroundColor="primary-surface" borderRadius=".5rem">
           <Menu.Button
             id="control-1"
             aria-expanded
@@ -135,7 +135,7 @@ const TemplateWithFixedBar: ComponentStory<typeof Menu> = () => (
       flex="0 1 auto"
       width="20rem"
       height="100vh"
-      borderColor="neutral.surfaceHighlight"
+      borderColor="neutral-surfaceHighlight"
       borderStyle="solid"
       borderWidth="0 1px 0 0"
       position="sticky"
@@ -148,8 +148,8 @@ const TemplateWithFixedBar: ComponentStory<typeof Menu> = () => (
     <Box
       display="flex"
       flex="1 1 auto"
-      backgroundColor="primary.surface"
-      borderColor="primary.interactive"
+      backgroundColor="primary-surface"
+      borderColor="primary-interactive"
       borderStyle="dashed"
       borderWidth="1px"
       borderRadius=".5rem"

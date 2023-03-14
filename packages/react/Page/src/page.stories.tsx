@@ -55,7 +55,7 @@ const Template: ComponentStory<typeof Page> = (args) => {
         <Icon source={<DownloadIcon />} />
       </Button>
       <Button appearance="primary">
-        <Icon color="neutral.background" source={<PlusCircleIcon />} />
+        <Icon color="neutral-background" source={<PlusCircleIcon />} />
         Agregar orden de compra
       </Button>
     </>
@@ -78,8 +78,8 @@ const Template: ComponentStory<typeof Page> = (args) => {
       </Page.Header>
       <Page.Body>
         <Box
-          backgroundColor="primary.surface"
-          borderColor="primary.interactive"
+          backgroundColor="primary-surface"
+          borderColor="primary-interactive"
           borderStyle="dashed"
           borderWidth="1px"
           borderRadius=".5rem"
@@ -89,7 +89,7 @@ const Template: ComponentStory<typeof Page> = (args) => {
           alignItems="center"
           justifyContent="center"
         >
-          <Text fontSize="base" color="primary.interactive">
+          <Text fontSize="base" color="primary-interactive">
             Body content
           </Text>
         </Box>
