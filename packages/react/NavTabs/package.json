@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/nav-tabs",
-  "version": "1.0.0",
+  "version": "1.0.1-rc.1",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -31,5 +31,6 @@
     "@nimbus-ds/components": "^3.0.0-rc.3",
     "@nimbus-ds/icons": "^1.1.0",
     "@nimbus-ds/styles": "^7.0.0-rc.3"
-  }
+  },
+  "stableVersion": "1.0.0"
 }

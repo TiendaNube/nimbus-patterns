@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/thumbnail-with-action",
-  "version": "1.0.0",
+  "version": "1.0.1-rc.1",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -33,5 +33,6 @@
   },
   "devDependencies": {
     "@nimbus-ds/tokens": "^6.0.2"
-  }
+  },
+  "stableVersion": "1.0.0"
 }
