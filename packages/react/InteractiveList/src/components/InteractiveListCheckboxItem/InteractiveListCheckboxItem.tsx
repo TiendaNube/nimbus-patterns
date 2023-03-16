@@ -3,7 +3,7 @@ import React from "react";
 import { Checkbox } from "@nimbus-ds/components";
 
 import { InteractiveListCheckboxItemProps } from "./interactiveListCheckboxItem.types";
-import { InteractiveListStructure, InteractiveListRow } from "../";
+import { InteractiveListStructure, InteractiveListRow } from "..";
 import { generateID } from "../../interactiveList.definitions";
 
 const InteractiveListCheckboxItem: React.FC<InteractiveListCheckboxItemProps> = ({

@@ -2,9 +2,9 @@ import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { InteractiveList } from "./InteractiveList";
-
 import { Tag, Box } from "@nimbus-ds/components";
+
+import { InteractiveList } from "./InteractiveList";
 
 export default {
   title: "Patterns/InteractiveList",

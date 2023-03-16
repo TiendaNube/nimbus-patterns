@@ -1,8 +1,8 @@
 import { HTMLAttributes } from "react";
 
-import { InteractiveListStructureProps } from "../InteractiveListStructure/interactiveListStructure.types";
-
 import { IconButtonProps } from "@nimbus-ds/components";
+
+import { InteractiveListStructureProps } from "../InteractiveListStructure/interactiveListStructure.types";
 
 type Extend = Omit<HTMLAttributes<HTMLElement>, "color"> &
   InteractiveListStructureProps;

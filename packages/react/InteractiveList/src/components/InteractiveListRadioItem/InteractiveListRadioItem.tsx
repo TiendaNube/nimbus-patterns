@@ -3,7 +3,7 @@ import React from "react";
 import { Radio } from "@nimbus-ds/components";
 
 import { InteractiveListRadioItemProps } from "./interactiveListRadioItem.types";
-import { InteractiveListStructure, InteractiveListRow } from "../";
+import { InteractiveListStructure, InteractiveListRow } from "..";
 import { generateID } from "../../interactiveList.definitions";
 
 const InteractiveListRadioItem: React.FC<InteractiveListRadioItemProps> = ({

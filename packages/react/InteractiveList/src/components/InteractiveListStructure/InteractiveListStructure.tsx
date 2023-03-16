@@ -1,8 +1,8 @@
 import React from "react";
 
-import { InteractiveListStructureProps } from "./interactiveListStructure.types";
-
 import { Box, Text } from "@nimbus-ds/components";
+
+import { InteractiveListStructureProps } from "./interactiveListStructure.types";
 
 const InteractiveListStructure: React.FC<InteractiveListStructureProps> = ({
   className: _className,

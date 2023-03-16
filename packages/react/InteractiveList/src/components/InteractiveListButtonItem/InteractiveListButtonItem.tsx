@@ -4,7 +4,7 @@ import { IconButton } from "@nimbus-ds/components";
 import { ChevronRightIcon } from "@nimbus-ds/icons";
 
 import { InteractiveListButtonItemProps } from "./interactiveListButtonItem.types";
-import { InteractiveListStructure, InteractiveListRow } from "../";
+import { InteractiveListStructure, InteractiveListRow } from "..";
 import { generateID } from "../../interactiveList.definitions";
 
 const InteractiveListButtonItem: React.FC<InteractiveListButtonItemProps> = ({
