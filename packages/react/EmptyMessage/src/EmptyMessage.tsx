@@ -1,7 +1,8 @@
 import React from "react";
-import { EmptyMessageProps } from "./emptyMessage.types";
 
 import { Box, Icon as NimbusIcon, Title, Text } from "@nimbus-ds/components";
+
+import { EmptyMessageProps } from "./emptyMessage.types";
 
 const EmptyMessage: React.FC<EmptyMessageProps> = ({
   className: _className,
