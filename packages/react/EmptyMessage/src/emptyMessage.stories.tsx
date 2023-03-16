@@ -2,7 +2,6 @@ import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { withA11y } from "@storybook/addon-a11y";
 // eslint-disable-next-line
-import { useArgs } from "@storybook/client-api";
 import { SearchIcon, RedoIcon } from "@nimbus-ds/icons";
 import { Button, Link, Icon } from "@nimbus-ds/components";
 
