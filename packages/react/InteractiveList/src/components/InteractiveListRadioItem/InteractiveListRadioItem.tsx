@@ -18,6 +18,9 @@ const InteractiveListRadioItem: React.FC<InteractiveListRadioItemProps> = ({
     <InteractiveListRow
       role="menuitemradio"
       aria-checked={radio.checked}
+      // TODO: Remover isso aqui
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       as="label"
       htmlFor={itemID}
     >

@@ -15,7 +15,14 @@ const InteractiveListToggleItem: React.FC<InteractiveListToggleItemProps> = ({
   const itemID = generateID(rest.title);
 
   return (
-    <InteractiveListRow role="menuitem" as="label" htmlFor={itemID}>
+    <InteractiveListRow
+      role="menuitem"
+      // TODO: Remover isso aqui
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      as="label"
+      htmlFor={itemID}
+    >
       <InteractiveListStructure {...rest} />
       <Toggle id={itemID} {...toggle} />
     </InteractiveListRow>

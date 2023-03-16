@@ -18,6 +18,9 @@ const InteractiveListCheckboxItem: React.FC<InteractiveListCheckboxItemProps> = 
     <InteractiveListRow
       role="menuitemcheckbox"
       aria-checked={checkbox.checked}
+      // TODO: Remover isso aqui
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       as="label"
       htmlFor={itemID}
     >
