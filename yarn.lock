@@ -2617,6 +2617,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@nimbus-ds/empty-message@workspace:packages/react/EmptyMessage":
+  version: 0.0.0-use.local
+  resolution: "@nimbus-ds/empty-message@workspace:packages/react/EmptyMessage"
+  dependencies:
+    "@nimbus-ds/components": ^2.10.0
+    "@nimbus-ds/icons": ^1.1.0
+    "@nimbus-ds/styles": ^6.13.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  languageName: unknown
+  linkType: soft
+
 "@nimbus-ds/formfield@workspace:packages/react/FormField":
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/formfield@workspace:packages/react/FormField"
