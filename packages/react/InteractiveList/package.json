@@ -28,10 +28,10 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "dependencies": {
-    "@nimbus-ds/components": "^3.0.0-rc.3",
+    "@nimbus-ds/components": "^3.0.0",
     "@nimbus-ds/data-list": "workspace:^",
     "@nimbus-ds/icons": "^1.1.0",
-    "@nimbus-ds/styles": "^7.0.0-rc.3"
+    "@nimbus-ds/styles": "^7.0.0"
   },
   "stableVersion": "0.0.0"
 }
