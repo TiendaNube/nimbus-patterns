@@ -217,12 +217,12 @@ const Template: ComponentStory<typeof DataTable> = (args) => {
             backgroundColor={
               checkedRows.includes(id)
                 ? {
-                    rest: "primary.surface",
-                    hover: "primary.surfaceHighlight",
+                    rest: "primary-surface",
+                    hover: "primary-surfaceHighlight",
                   }
                 : {
-                    rest: "neutral.background",
-                    hover: "neutral.surface",
+                    rest: "neutral-background",
+                    hover: "neutral-surface",
                   }
             }
             checkbox={{

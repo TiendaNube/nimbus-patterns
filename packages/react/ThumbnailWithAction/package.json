@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/thumbnail-with-action",
-  "version": "1.0.0",
+  "version": "1.0.1-rc.1",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -28,10 +28,11 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "dependencies": {
-    "@nimbus-ds/components": "^2.10.0",
-    "@nimbus-ds/styles": "^6.13.0"
+    "@nimbus-ds/components": "^3.0.0",
+    "@nimbus-ds/styles": "^7.0.0"
   },
   "devDependencies": {
     "@nimbus-ds/tokens": "^6.0.2"
-  }
+  },
+  "stableVersion": "1.0.0"
 }

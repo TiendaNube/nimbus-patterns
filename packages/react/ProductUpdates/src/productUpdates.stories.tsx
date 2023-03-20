@@ -25,7 +25,7 @@ export default {
 
 const Template: ComponentStory<typeof ProductUpdates> = (args) => (
   <ProductUpdates {...args}>
-    <Text fontSize="base" color="primary.interactive" textAlign="center">
+    <Text fontSize="base" color="primary-interactive" textAlign="center">
       This is a new feature that is being showcased by our Product Updates
       component
     </Text>

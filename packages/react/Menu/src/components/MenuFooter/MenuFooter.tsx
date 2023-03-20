@@ -11,8 +11,8 @@ const MenuFooter: React.FC<MenuFooterProps> = ({
   style: _style,
   ...rest
 }: MenuFooterProps) => {
-  const activeColor = rest.active ? "primary.interactive" : "primary.textHigh";
-  const disabledColor = rest.disabled ? "neutral.textDisabled" : activeColor;
+  const activeColor = rest.active ? "primary-interactive" : "primary-textHigh";
+  const disabledColor = rest.disabled ? "neutral-textDisabled" : activeColor;
 
   return (
     <Box

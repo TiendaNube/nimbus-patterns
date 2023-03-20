@@ -18,7 +18,7 @@ const DataTableFooter: React.FC<DataTableFooterProps> = ({
     justifyContent="space-between"
     p="2"
   >
-    <Text fontSize="caption" color="neutral.textLow">
+    <Text fontSize="caption" color="neutral-textLow">
       {itemCount}
     </Text>
     {pagination && <Pagination {...pagination} />}

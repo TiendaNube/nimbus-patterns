@@ -17,7 +17,7 @@ const NavTabsItem: React.FC<NavTabsItemProps> = ({
     {...rest}
     className={_className}
     style={_style}
-    backgroundColor={active ? "primary.surface" : "transparent"}
+    backgroundColor={active ? "primary-surface" : "transparent"}
     borderColor="transparent"
     borderRadius=".5rem"
     cursor="pointer"
@@ -29,12 +29,12 @@ const NavTabsItem: React.FC<NavTabsItemProps> = ({
   >
     <Icon
       source={icon}
-      color={active ? "primary.interactive" : "primary.textLow"}
+      color={active ? "primary-interactive" : "primary-textLow"}
     />
     {badge && (
       <Box
         borderRadius="100%"
-        backgroundColor="primary.interactive"
+        backgroundColor="primary-interactive"
         height=".25rem"
         position="absolute"
         right=".25rem"

@@ -39,7 +39,8 @@
       "@nimbus-ds/menubutton": ["./packages/react/MenuButton/src"],
       "@nimbus-ds/menu": ["./packages/react/Menu/src"],
       "@nimbus-ds/page": ["./packages/react/Page/src"],
-      "@nimbus-ds/layout": ["./packages/react/Layout/src"]
+      "@nimbus-ds/layout": ["./packages/react/Layout/src"],
+      "@nimbus-ds/data-list": ["./packages/react/DataList/src"]
     }
   }
 }
