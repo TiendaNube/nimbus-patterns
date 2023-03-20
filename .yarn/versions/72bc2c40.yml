@@ -1,5 +1,0 @@
-releases:
-  "@nimbus-ds/empty-message": major
-
-declined:
-  - nimbus-patterns
