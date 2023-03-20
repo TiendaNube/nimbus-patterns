@@ -24,7 +24,7 @@ const DataTable: React.FC<DataTableProps> & DataTableComponents = ({
     <Box
       position="relative"
       borderRadius=".5rem"
-      borderColor="neutral.surfaceHighlight"
+      borderColor="neutral-surfaceHighlight"
       borderStyle="solid"
       borderWidth="1px"
     >

@@ -35,7 +35,7 @@ const Template: ComponentStory<typeof DataList.Row> = (args) => {
       {rows.map((row) => (
         <DataList.Row {...args} key={row.id} gap="1">
           <Box display="flex" justifyContent="space-between">
-            <Text fontWeight="medium" color="primary.interactive">
+            <Text fontWeight="medium" color="primary-interactive">
               #{row.id}
             </Text>
             <Text>{formatDate(row.date)}</Text>

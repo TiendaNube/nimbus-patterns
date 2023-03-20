@@ -30,8 +30,8 @@ const ExampleBox: React.FC<ExampleBoxProps> = ({ text }: ExampleBoxProps) => (
     display="flex"
     alignItems="center"
     justifyContent="center"
-    backgroundColor="primary.surface"
-    borderColor="primary.interactive"
+    backgroundColor="primary-surface"
+    borderColor="primary-interactive"
     borderStyle="dashed"
     borderWidth="1px"
     borderRadius=".5rem"
@@ -39,7 +39,7 @@ const ExampleBox: React.FC<ExampleBoxProps> = ({ text }: ExampleBoxProps) => (
     padding="4"
     boxSizing="border-box"
   >
-    <Text fontSize="caption" textAlign="center" color="primary.interactive">
+    <Text fontSize="caption" textAlign="center" color="primary-interactive">
       {text}
     </Text>
   </Box>

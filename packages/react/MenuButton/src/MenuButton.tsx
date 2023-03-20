@@ -14,8 +14,8 @@ const MenuButton: React.FC<MenuButtonProps> = ({
   active = false,
   ...rest
 }: MenuButtonProps) => {
-  const activeColor = active ? "primary.interactive" : "primary.textHigh";
-  const disabledColor = rest.disabled ? "neutral.textDisabled" : activeColor;
+  const activeColor = active ? "primary-interactive" : "primary-textHigh";
+  const disabledColor = rest.disabled ? "neutral-textDisabled" : activeColor;
 
   return (
     <Box
@@ -25,10 +25,10 @@ const MenuButton: React.FC<MenuButtonProps> = ({
       onClick={onClick}
       alignItems="center"
       backgroundColor={{
-        xs: active ? "primary.surface" : "transparent",
-        hover: "primary.surface",
-        active: "primary.surfaceHighlight",
-        disabled: "neutral.surfaceDisabled",
+        xs: active ? "primary-surface" : "transparent",
+        hover: "primary-surface",
+        active: "primary-surfaceHighlight",
+        disabled: "neutral-surfaceDisabled",
       }}
       boxShadow={{
         focus: "focusRing",

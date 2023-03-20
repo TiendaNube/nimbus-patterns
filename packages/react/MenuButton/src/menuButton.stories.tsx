@@ -52,7 +52,7 @@ const AccordionTemplate: ComponentStory<typeof MenuButton> = (args) => {
 
   return (
     <Box
-      backgroundColor={active ? "primary.surface" : "neutral.background"}
+      backgroundColor={active ? "primary-surface" : "neutral-background"}
       borderRadius=".5rem"
     >
       <MenuButton

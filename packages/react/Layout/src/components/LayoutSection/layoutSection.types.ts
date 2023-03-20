@@ -6,7 +6,7 @@ type Extend = Omit<
   BoxProps,
   "children" | "boxSizing" | "display" | "flexDirection"
 > &
-  HTMLAttributes<HTMLElement>;
+  Omit<HTMLAttributes<HTMLElement>, "color">;
 
 export interface LayoutSectionProps extends Extend {
   /** Content of the section body */

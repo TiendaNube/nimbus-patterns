@@ -19,7 +19,7 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
     flexDirection="column"
     flex="0 0 auto"
     height="100%"
-    backgroundColor="neutral.background"
+    backgroundColor="neutral-background"
     width="100%"
     boxSizing="border-box"
   >
