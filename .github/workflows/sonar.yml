@@ -1,19 +1,18 @@
-name: create-coverage-report
-
+name: sonarcloud
 on:
   push:
     branches:
       - master
-    paths-ignore:
-      - "**/package.json"
-      - ".yarn/versions/**"
-
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs:
-  publish-codecov:
+  sonarcloud:
+    name: Analyze SonarCloud
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set Node version
         uses: actions/setup-node@v3
@@ -36,7 +35,8 @@ jobs:
       - name: Run tests
         run: yarn test:ci
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_AUTOMATION_FROM_JUNIOR_CONQUISTA }}
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

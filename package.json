@@ -26,7 +26,7 @@
     "prepare-husky": "husky install",
     "build:packages": "parcel build 'packages/*/*/' --no-cache",
     "build:storybook": "build-storybook -c .storybook -o .build-storybook",
-    "bump:packages": "node ./.scripts/bump:packages",
+    "bump:packages": "babel-node -x .ts ./.scripts/bump-packages",
     "bump:check": "yarn version check",
     "bump:next": "yarn version apply --all --prerelease",
     "bump:stable": "yarn version apply --all",
@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
+    "@babel/node": "^7.20.7",
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
     "@jest/types": "^29.2.1",

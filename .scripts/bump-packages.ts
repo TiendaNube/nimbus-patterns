@@ -17,8 +17,8 @@ const run = () => {
 
   execSync("yarn version -d decline");
   content
-    .match(/packages\/react\/\w+?-?\w+\/package\.json/gm)
-    .reduce((prev, curr) => {
+    ?.match(/packages\/react\/\w+?-?\w+\/package\.json/gm)
+    ?.reduce((prev, curr) => {
       const packageDir = curr.replace("/package.json", "");
       execSync("yarn version -d minor", { cwd: packageDir });
       return prev;

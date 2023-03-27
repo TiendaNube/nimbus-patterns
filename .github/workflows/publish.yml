@@ -1,4 +1,4 @@
-name: "Publish Release"
+name: "publish-release"
 
 on:
   push:
@@ -13,21 +13,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Read Node version
-        id: node_version
-        run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
+        uses: actions/checkout@v3
 
       - name: Set Node version
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: "${{ steps.node_version.outputs.NVMRC }}"
-          registry-url: "https://registry.npmjs.org"
+          node-version-file: ".nvmrc"
+          cache: "yarn"
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: yarn
-
+      
       - name: Publish
         run: |
           export NODE_OPTIONS="--max_old_space_size=4096"
@@ -83,7 +88,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.calver.outputs.release }}
           release_name: ${{ steps.calver.outputs.release }}
@@ -92,10 +97,36 @@ jobs:
           draft: false
           prerelease: false
           
-      # - name: Send Slack Notification
-      #   id: slack
-      #   uses: slackapi/slack-github-action@v1.23.0
-      #   with:
-      #     payload-file-path: "./payload-slack-content.json"
-      #   env:
-      #    SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  send-slack-notifications:
+    needs: [publish-packages-npm, create-github-relase]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Send slack notification on chanel Ninbus updates
+        id: slack-nimbus-updates
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          payload-file-path: ./.github/resources/payload-notification.json
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_NIMBUS_UPDATES }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
+      - name: Send slack notification on chanel Ninbus deploying
+        id: slack-deploying
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          payload-file-path: ./.github/resources/payload-notification.json
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_DEPLOYING }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
+      - name: Send slack notification on chanel Tech product updates
+        id: slack-tech-product-updates
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          payload-file-path: ./.github/resources/payload-notification.json
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_TECH_PRODUCT_UPDATES }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
