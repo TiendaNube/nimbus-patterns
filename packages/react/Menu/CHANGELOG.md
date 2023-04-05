@@ -23,9 +23,9 @@ The Menu component allows the user to create in-app menus that navigate through 
 
 #### 📚 3rd party library updates
 
-- Updated `@nimbus-ds/components@4.x`. ([#29](https://github.com/TiendaNube/nimbus-patterns/pull/29) by [@juniorconquista](https://github.com/juniorconquista))
-- Updated `@nimbus-ds/icons@1.x`. ([#29](https://github.com/TiendaNube/nimbus-patterns/pull/29) by [@juniorconquista](https://github.com/juniorconquista))
-- Removed `@nimbus-ds/styles@7.0.0`. ([#29](https://github.com/TiendaNube/nimbus-patterns/pull/29) by [@juniorconquista](https://github.com/juniorconquista))
+- Updated `@nimbus-ds/components@4.x`. ([#32](https://github.com/TiendaNube/nimbus-patterns/pull/32) by [@juniorconquista](https://github.com/juniorconquista))
+- Updated `@nimbus-ds/icons@1.x`. ([#32](https://github.com/TiendaNube/nimbus-patterns/pull/32) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/styles@7.0.0`. ([#32](https://github.com/TiendaNube/nimbus-patterns/pull/32) by [@juniorconquista](https://github.com/juniorconquista))
 
 ## 2023-02-17 `1.1.0`
 

@@ -7,9 +7,9 @@ Package-specific changes not released in any package will be added here just bef
 
 #### 📚 3rd party library updates
 
-- Updated `@nimbus-ds/components@4.0.0`. ([#29](https://github.com/TiendaNube/nimbus-patterns/pull/29) by [@juniorconquista](https://github.com/juniorconquista))
-- Updated `@nimbus-ds/styles@8.0.0`. ([#29](https://github.com/TiendaNube/nimbus-patterns/pull/29) by [@juniorconquista](https://github.com/juniorconquista))
-- Updated `@nimbus-ds/tokens@7.0.0`. ([#29](https://github.com/TiendaNube/nimbus-patterns/pull/29) by [@juniorconquista](https://github.com/juniorconquista))
+- Updated `@nimbus-ds/components@4.0.0`. ([#32](https://github.com/TiendaNube/nimbus-patterns/pull/32) by [@juniorconquista](https://github.com/juniorconquista))
+- Updated `@nimbus-ds/styles@8.0.0`. ([#32](https://github.com/TiendaNube/nimbus-patterns/pull/32) by [@juniorconquista](https://github.com/juniorconquista))
+- Updated `@nimbus-ds/tokens@7.0.0`. ([#32](https://github.com/TiendaNube/nimbus-patterns/pull/32) by [@juniorconquista](https://github.com/juniorconquista))
 
 ## 2023-03-20
 
