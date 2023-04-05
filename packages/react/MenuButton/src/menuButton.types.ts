@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, ReactNode, FC } from "react";
 import { IconProps } from "@nimbus-ds/icons";
 
-export interface MenuButtonProps
+export interface MenuButtonBaseProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color"> {
   /** Text label for the button */
   label: string;

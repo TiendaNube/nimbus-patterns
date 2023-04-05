@@ -7,6 +7,7 @@ import { NavTabsItemProps } from "./navTabsItem.types";
 const NavTabsItem: React.FC<NavTabsItemProps> = ({
   className: _className,
   style: _style,
+  ref: _ref,
   icon,
   active = false,
   badge = false,

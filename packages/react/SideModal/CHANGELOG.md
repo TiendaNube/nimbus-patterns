@@ -2,6 +2,13 @@
 
 Sidemodal navigation provides access to the parts within its application. The side sections have the supplementary content that is linked on the left or right side of the screen.
 
+## 2023-04-04 `1.6.0`
+
+#### 📚 3rd party library updates
+
+- Updated `@nimbus-ds/components@4.x`. ([#29](https://github.com/TiendaNube/nimbus-patterns/pull/29) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/styles@7.0.0`. ([#29](https://github.com/TiendaNube/nimbus-patterns/pull/29) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-03-20 `1.5.1`
 
 ### 📚 3rd party library updates
@@ -17,7 +24,7 @@ Sidemodal navigation provides access to the parts within its application. The si
 
 ### 🎉 New features
 
-- Removed external dependency from `@tiendanube/icons` package to now use internal `@nimbus-ds/icons` package. ([#15](https://github.com/TiendaNube/nimbus-design-system/pull/#15) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed external dependency from `@tiendanube/icons` package to now use internal `@nimbus-ds/icons` package. ([#20](https://github.com/TiendaNube/patterns/pull/20) by [@juniorconquista](https://github.com/juniorconquista))
 
 ### 📚 3rd party library updates
 
@@ -60,7 +67,7 @@ Sidemodal navigation provides access to the parts within its application. The si
 
 ### 🎉 New features
 
-- Added `zIndex` property to the component. ([#5](https://github.com/TiendaNube/nimbus-design-system/pull/5) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `zIndex` property to the component. ([#5](https://github.com/TiendaNube/patterns/pull/5) by [@juniorconquista](https://github.com/juniorconquista))
 
 ## 2022-11-24 `1.0.0`
 

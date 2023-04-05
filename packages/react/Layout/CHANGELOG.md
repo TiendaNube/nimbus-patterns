@@ -2,6 +2,13 @@
 
 The Layout component is intended for building single or multi-column layouts using predefined typologies.
 
+## 2023-04-04 `1.2.0`
+
+#### 📚 3rd party library updates
+
+- Updated `@nimbus-ds/components@4.x`. ([#29](https://github.com/TiendaNube/nimbus-patterns/pull/29) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/styles@7.0.0`. ([#29](https://github.com/TiendaNube/nimbus-patterns/pull/29) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-03-20 `1.1.2`
 
 ### 📚 3rd party library updates
