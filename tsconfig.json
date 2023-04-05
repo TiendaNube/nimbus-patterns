@@ -36,11 +36,23 @@
     "types": ["node", "jest"],
     "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
-      "@nimbus-ds/menubutton": ["./packages/react/MenuButton/src"],
-      "@nimbus-ds/menu": ["./packages/react/Menu/src"],
-      "@nimbus-ds/page": ["./packages/react/Page/src"],
+      "@nimbus-ds/app-shell": ["./packages/react/AppShell/src"],
+      "@nimbus-ds/callout-card": ["./packages/react/CalloutCard/src"],
+      "@nimbus-ds/data-list": ["./packages/react/DataList/src"],
+      "@nimbus-ds/data-table": ["./packages/react/DataTable/src"],
+      "@nimbus-ds/empty-message": ["./packages/react/EmptyMessage/src"],
+      "@nimbus-ds/formfield": ["./packages/react/FormField/src"],
+      "@nimbus-ds/interactive-list": ["./packages/react/InteractiveList/src"],
       "@nimbus-ds/layout": ["./packages/react/Layout/src"],
-      "@nimbus-ds/data-list": ["./packages/react/DataList/src"]
+      "@nimbus-ds/menu": ["./packages/react/Menu/src"],
+      "@nimbus-ds/menubutton": ["./packages/react/MenuButton/src"],
+      "@nimbus-ds/nav-tabs": ["./packages/react/NavTabs/src"],
+      "@nimbus-ds/page": ["./packages/react/Page/src"],
+      "@nimbus-ds/productupdates": ["./packages/react/ProductUpdates/src"],
+      "@nimbus-ds/sidemodal": ["./packages/react/SideModal/src"],
+      "@nimbus-ds/thumbnail-with-action": [
+        "./packages/react/ThumbnailWithAction/src"
+      ]
     }
   }
 }

@@ -2,6 +2,13 @@
 
 Page component allows the user to build application pages with all the necessary attributes for constructing a variety of layouts.
 
+## 2023-04-04 `1.2.0`
+
+#### 📚 3rd party library updates
+
+- Updated `@nimbus-ds/components@4.x`. ([#32](https://github.com/TiendaNube/nimbus-patterns/pull/32) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@nimbus-ds/styles@7.0.0`. ([#32](https://github.com/TiendaNube/nimbus-patterns/pull/32) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-03-20 `1.1.2`
 
 ### 📚 3rd party library updates

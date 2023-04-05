@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/empty-message",
-  "version": "1.0.0",
+  "version": "1.1.0-rc.4",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -16,6 +16,7 @@
     "version": "yarn version"
   },
   "peerDependencies": {
+    "@nimbus-ds/components": "4.x",
     "react": "^16.8 || ^17.0 || ^18.0",
     "react-dom": "^16.8 || ^17.0 || ^18.0"
   },
@@ -27,9 +28,8 @@
   "bugs": {
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
-  "dependencies": {
-    "@nimbus-ds/components": "^3.0.0",
-    "@nimbus-ds/icons": "^1.1.0",
-    "@nimbus-ds/styles": "^7.0.0"
-  }
+  "devDependencies": {
+    "@nimbus-ds/icons": "^1.1.0"
+  },
+  "stableVersion": "1.0.0"
 }

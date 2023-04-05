@@ -1,8 +1,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import { MenuButton } from "./MenuButton";
-import { MenuButtonProps } from "./menuButton.types";
+import { MenuButton, MenuButtonProps } from "./MenuButton";
 
 const labelText = "Button label";
 const mockedClickFunction = jest.fn();

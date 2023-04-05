@@ -22,11 +22,18 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
       gap="1"
       alignItems={{
         xs: "center",
-        md: illustration ? "flex-start" : "center"
+        md: illustration ? "flex-start" : "center",
       }}
     >
       {icon && <NimbusIcon source={icon} />}
-      <Title as="h4">{title}</Title>
+      <Title
+        as="h6"
+        textAlign="center"
+        color="primary-textLow"
+        fontWeight="bold"
+      >
+        {title}
+      </Title>
       {text && <Text textAlign="center">{text}</Text>}
       {actions && (
         <Box
@@ -46,7 +53,7 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
       display="flex"
       flexDirection={{
         xs: "column",
-        md: "row"
+        md: "row",
       }}
       justifyContent="center"
       alignItems="center"

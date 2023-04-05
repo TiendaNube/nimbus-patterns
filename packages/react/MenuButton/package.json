@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/menubutton",
-  "version": "1.1.2",
+  "version": "1.2.0-rc.7",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -16,6 +16,7 @@
     "version": "yarn version"
   },
   "peerDependencies": {
+    "@nimbus-ds/components": "4.x",
     "react": "^16.8 || ^17.0 || ^18.0",
     "react-dom": "^16.8 || ^17.0 || ^18.0"
   },
@@ -28,8 +29,10 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "dependencies": {
-    "@nimbus-ds/components": "^3.0.0",
-    "@nimbus-ds/icons": "^1.0.0",
-    "@nimbus-ds/styles": "^7.0.0"
-  }
+    "@nimbus-ds/typings": "^1.1.0"
+  },
+  "devDependencies": {
+    "@nimbus-ds/icons": "^1.1.0"
+  },
+  "stableVersion": "1.1.2"
 }
