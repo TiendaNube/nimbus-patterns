@@ -36,22 +36,35 @@
     "types": ["node", "jest"],
     "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
-      "@nimbus-ds/app-shell": ["./packages/react/AppShell/src"],
-      "@nimbus-ds/callout-card": ["./packages/react/CalloutCard/src"],
-      "@nimbus-ds/data-list": ["./packages/react/DataList/src"],
-      "@nimbus-ds/data-table": ["./packages/react/DataTable/src"],
-      "@nimbus-ds/empty-message": ["./packages/react/EmptyMessage/src"],
-      "@nimbus-ds/formfield": ["./packages/react/FormField/src"],
-      "@nimbus-ds/interactive-list": ["./packages/react/InteractiveList/src"],
-      "@nimbus-ds/layout": ["./packages/react/Layout/src"],
-      "@nimbus-ds/menu": ["./packages/react/Menu/src"],
-      "@nimbus-ds/menubutton": ["./packages/react/MenuButton/src"],
-      "@nimbus-ds/nav-tabs": ["./packages/react/NavTabs/src"],
-      "@nimbus-ds/page": ["./packages/react/Page/src"],
-      "@nimbus-ds/productupdates": ["./packages/react/ProductUpdates/src"],
-      "@nimbus-ds/sidemodal": ["./packages/react/SideModal/src"],
+      "@nimbus-ds/patterns-webpack": ["./packages/core/webpack/src"],
+      "@nimbus-ds/app-shell": ["./packages/react/src/components/AppShell/src"],
+      "@nimbus-ds/callout-card": [
+        "./packages/react/src/components/CalloutCard/src"
+      ],
+      "@nimbus-ds/data-list": ["./packages/react/src/components/DataList/src"],
+      "@nimbus-ds/data-table": [
+        "./packages/react/src/components/DataTable/src"
+      ],
+      "@nimbus-ds/empty-message": [
+        "./packages/react/src/components/EmptyMessage/src"
+      ],
+      "@nimbus-ds/formfield": ["./packages/react/src/components/FormField/src"],
+      "@nimbus-ds/interactive-list": [
+        "./packages/react/src/components/InteractiveList/src"
+      ],
+      "@nimbus-ds/layout": ["./packages/react/src/components/Layout/src"],
+      "@nimbus-ds/menu": ["./packages/react/src/components/Menu/src"],
+      "@nimbus-ds/menubutton": [
+        "./packages/react/src/components/MenuButton/src"
+      ],
+      "@nimbus-ds/nav-tabs": ["./packages/react/src/components/NavTabs/src"],
+      "@nimbus-ds/page": ["./packages/react/src/components/Page/src"],
+      "@nimbus-ds/productupdates": [
+        "./packages/react/src/components/ProductUpdates/src"
+      ],
+      "@nimbus-ds/sidemodal": ["./packages/react/src/components/SideModal/src"],
       "@nimbus-ds/thumbnail-with-action": [
-        "./packages/react/ThumbnailWithAction/src"
+        "./packages/react/src/components/ThumbnailWithAction/src"
       ]
     }
   }
