@@ -3,6 +3,23 @@
 This is the log of notable changes to the Nimbus Patterns that are developer-facing.
 Package-specific changes not released in any package will be added here just before the release. Until then, you can find them in changelogs of the individual packages (see [packages](./packages) directory).
 
+## 2023-04-06
+
+#### 🎉 New features
+
+- Added and configured turborepo to project. ([#33](https://github.com/TiendaNube/nimbus-patterns/pull/33) by [@juniorconquista](https://github.com/juniorconquista))
+- Creating build script for building packages to parts of release versions. ([#33](https://github.com/TiendaNube/nimbus-patterns/pull/#33) by [@juniorconquista](https://github.com/juniorconquista))
+
+#### 📚 3rd party library updates
+
+- Updated `@nimbus-ds/components@4.1.0`. ([#33](https://github.com/TiendaNube/nimbus-patterns/pull/33) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `ts-loader@9.4.2`. ([#33](https://github.com/TiendaNube/nimbus-patterns/pull/33) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `turbo@1.8.8`. ([#33](https://github.com/TiendaNube/nimbus-patterns/pull/33) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@parcel/packager-ts@2.8.3`. ([#33](https://github.com/TiendaNube/nimbus-patterns/pull/33) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@parcel/transformer-typescript-tsc@2.8.0`. ([#33](https://github.com/TiendaNube/nimbus-patterns/pull/33) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `@parcel/transformer-typescript-types@2.8.3`. ([#33](https://github.com/TiendaNube/nimbus-patterns/pull/33) by [@juniorconquista](https://github.com/juniorconquista))
+- Removed `parcel@2.8.0`. ([#33](https://github.com/TiendaNube/nimbus-patterns/pull/33) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-04-04
 
 #### 📚 3rd party library updates
