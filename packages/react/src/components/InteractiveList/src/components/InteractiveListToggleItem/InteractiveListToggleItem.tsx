@@ -17,7 +17,6 @@ const InteractiveListToggleItem: React.FC<InteractiveListToggleItemProps> = ({
   return (
     <InteractiveListRow
       role="menuitem"
-      // TODO: Remover isso aqui
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       as="label"
