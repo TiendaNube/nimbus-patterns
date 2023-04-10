@@ -21,11 +21,11 @@ You can browse through our [playground](https://tiendanube.github.io/nimbus-patt
 - **Install**
 
   ```shell
-  $ npm install @nimbus-ds/name-component
+  $ npm install @nimbus-ds/name-package
 
   // or
 
-  $ yarn add @nimbus-ds/name-component
+  $ yarn add @nimbus-ds/name-package
   ```
 
 ## 💻 Start developing
@@ -108,8 +108,9 @@ The step by step to perform a release release can be found at the [link](https:/
 ## 🔗 Useful links
 
 - [Nimbus Components](https://github.com/TiendaNube/nimbus-design-system). Atomic and Composite component libraries.
-- [Nimbus Tokens](https://github.com/TiendaNube/nimbus-design-system/tree/master/packages/tokens). We use tokens to store all our primitives (colors, spacing values, grid system, etc.).
-- [Nimbus Icons](https://github.com/TiendaNube/nimbus-icons). Our very own open-source icon library.
+- [Nimbus Patterns](https://github.com/TiendaNube/nimbus-patterns). Atomic and Composite component libraries.
+- [Nimbus Tokens](https://github.com/TiendaNube/nimbus-design-system/tree/master/packages/tokens). We use tokens to store all our primitives (colors, spacing values, grid system, etc).
+- [Nimbus Icons](https://github.com/TiendaNube/nimbus-design-system/tree/master/packages/icons). Our very own open-source icon library.
 
 ## 🤝 Contributing
 

@@ -1,2 +1,4 @@
 dist
 index.d.ts
+webpack.config.ts
+alias.ts

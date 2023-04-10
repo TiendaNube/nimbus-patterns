@@ -8,12 +8,34 @@ const config: Config.InitialOptions = {
   },
   coveragePathIgnorePatterns: ["dist"],
   moduleNameMapper: {
-    // atomics
-    "@nimbus-ds/menubutton": "<rootDir>/packages/react/MenuButton/src",
-    "@nimbus-ds/menu": "<rootDir>/packages/react/Menu/src",
-    "@nimbus-ds/page": "<rootDir>/packages/react/Page/src",
-    "@nimbus-ds/layout": "<rootDir>/packages/react/Layout/src",
-    "@nimbus-ds/data-list": "<rootDir>/packages/react/DataList/src",
+    // components
+    "@nimbus-ds/app-shell":
+      "<rootDir>/packages/react/src/components/AppShell/src",
+    "@nimbus-ds/callout-card":
+      "<rootDir>/packages/react/src/components/CalloutCard/src",
+    "@nimbus-ds/data-list":
+      "<rootDir>/packages/react/src/components/DataList/src",
+    "@nimbus-ds/data-table":
+      "<rootDir>/packages/react/src/components/DataTable/src",
+    "@nimbus-ds/empty-message":
+      "<rootDir>/packages/react/src/components/EmptyMessage/src",
+    "@nimbus-ds/formfield":
+      "<rootDir>/packages/react/src/components/FormField/src",
+    "@nimbus-ds/interactive-list":
+      "<rootDir>/packages/react/src/components/InteractiveList/src",
+    "@nimbus-ds/layout": "<rootDir>/packages/react/src/components/Layout/src",
+    "@nimbus-ds/menu": "<rootDir>/packages/react/src/components/Menu/src",
+    "@nimbus-ds/menubutton":
+      "<rootDir>/packages/react/src/components/MenuButton/src",
+    "@nimbus-ds/nav-tabs":
+      "<rootDir>/packages/react/src/components/NavTabs/src",
+    "@nimbus-ds/page": "<rootDir>/packages/react/src/components/Page/src",
+    "@nimbus-ds/productupdates":
+      "<rootDir>/packages/react/src/components/ProductUpdates/src",
+    "@nimbus-ds/sidemodal":
+      "<rootDir>/packages/react/src/components/SideModal/src",
+    "@nimbus-ds/thumbnail-with-action":
+      "<rootDir>/packages/react/src/components/ThumbnailWithAction/src",
   },
 };
 
