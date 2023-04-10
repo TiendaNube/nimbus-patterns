@@ -6,8 +6,12 @@ export interface NavTabsComponents {
   Item: typeof NavTabsItem;
 }
 
-export interface NavTabsProps
-  extends Omit<HTMLAttributes<HTMLElement>, "color"> {
-  /** Content to be rendered inside the Nav element  */
+export interface NavTabsProperties {
+  /**
+   * Content to be rendered inside the Nav element.
+   */
   children: ReactNode;
 }
+
+export type NavTabsProps = NavTabsProperties &
+  Omit<HTMLAttributes<HTMLElement>, "color">;

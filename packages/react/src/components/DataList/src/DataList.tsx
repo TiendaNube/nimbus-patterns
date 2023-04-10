@@ -28,8 +28,8 @@ const DataList: React.FC<DataListProps> & DataListComponents = ({
 );
 
 DataList.Row = DataListRow;
-
 DataList.displayName = "DataList";
 DataListRow.displayName = "DataList.Row";
+DataList.Row.displayName = "DataList.Row";
 
 export { DataList };

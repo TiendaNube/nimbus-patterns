@@ -1,12 +1,18 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { CheckboxProps, TableRowProps } from "@nimbus-ds/components";
+import { CheckboxProperties, TableRowProperties } from "@nimbus-ds/components";
 
-type DataTableRowExtends = TableRowProps & HTMLAttributes<HTMLElement>;
-
-export interface DataTableRowProps extends DataTableRowExtends {
-  /** Checkbox element rendered on the row that controls whether the row is selected */
-  checkbox: CheckboxProps;
-  /** Content of the row */
+export interface DataTableRowProperties {
+  /**
+   * Checkbox element rendered on the row that controls whether the row is selected.
+   */
+  checkbox: CheckboxProperties;
+  /**
+   * Content of the row.
+   */
   children: ReactNode;
 }
+
+export type DataTableRowProps = DataTableRowProperties &
+  TableRowProperties &
+  HTMLAttributes<HTMLElement>;

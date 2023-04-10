@@ -1,8 +1,9 @@
 import { HTMLAttributes } from "react";
+import { InputProperties } from "@nimbus-ds/components";
+import { FormFieldProperties } from "../../formField.types";
 
-import { InputProps } from "@nimbus-ds/components";
-import { FormFieldProps } from "../../formField.types";
+export type FormFieldInputProperties = Omit<FormFieldProperties, "children"> &
+  Omit<InputProperties, "appearance">;
 
-export type FormFieldInputProps = Omit<FormFieldProps, "children"> &
-  Omit<InputProps, "appearance"> &
+export type FormFieldInputProps = FormFieldInputProperties &
   HTMLAttributes<HTMLElement>;

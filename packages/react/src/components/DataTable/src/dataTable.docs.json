@@ -1,0 +1,273 @@
+{
+  "id": "dataTable",
+  "name": "DataTable",
+  "totalProps": 4,
+  "props": [
+    {
+      "$ref": "#/definitions/React.ReactNode",
+      "description": "Bulk actions component rendered with a sticky position over the top of the table element.",
+      "title": "bulkActions",
+      "required": false
+    },
+    {
+      "$ref": "#/definitions/React.ReactNode",
+      "description": "Table header content.",
+      "title": "header",
+      "required": false
+    },
+    {
+      "$ref": "#/definitions/React.ReactNode",
+      "description": "Optional table footer content.",
+      "title": "footer",
+      "required": false
+    },
+    {
+      "$ref": "#/definitions/React.ReactNode",
+      "description": "Table body content.",
+      "title": "children",
+      "required": false
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "DataTable.BulkActions",
+      "totalProps": 4,
+      "props": [
+        {
+          "description": "Properties of the checkbox element rendered in the Bulk Actions component.",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "The name of the input element.",
+              "type": "string",
+              "title": "name"
+            },
+            "appearance": {
+              "description": "Change the visual style of the checkbox.",
+              "default": "neutral",
+              "enum": ["danger", "primary"],
+              "type": "string",
+              "title": "appearance"
+            },
+            "disabled": {
+              "description": "Modifies the native disabled state of the native checkbox.",
+              "type": "boolean",
+              "title": "disabled"
+            },
+            "checked": {
+              "description": "Modifies true/false value of the native checkbox.",
+              "type": "boolean",
+              "title": "checked"
+            },
+            "indeterminate": {
+              "description": "If true, the component appears indeterminate. This does not set the native input element to indeterminate due to inconsistent behavior across browsers. However, we set a data-indeterminate attribute on the input.",
+              "default": false,
+              "type": "boolean",
+              "title": "indeterminate"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": [
+            "name",
+            "appearance",
+            "disabled",
+            "checked",
+            "indeterminate"
+          ],
+          "required": true,
+          "title": "checkbox"
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Optional link element rendered next to the Bulk Actions controller.",
+          "title": "link",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Action component that controls the Bulk Actions.",
+          "title": "action",
+          "required": false
+        },
+        {
+          "description": "Lable for the checkbox element.",
+          "type": "string",
+          "title": "label",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "DataTable.Header",
+      "totalProps": 2,
+      "props": [
+        {
+          "description": "Checkbox element rendered on the table header that controls all rows.",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "The name of the input element.",
+              "type": "string",
+              "title": "name"
+            },
+            "appearance": {
+              "description": "Change the visual style of the checkbox.",
+              "default": "neutral",
+              "enum": ["danger", "primary"],
+              "type": "string",
+              "title": "appearance"
+            },
+            "checked": {
+              "description": "Modifies true/false value of the native checkbox.",
+              "type": "boolean",
+              "title": "checked"
+            },
+            "disabled": {
+              "description": "Modifies the native disabled state of the native checkbox.",
+              "type": "boolean",
+              "title": "disabled"
+            },
+            "indeterminate": {
+              "description": "If true, the component appears indeterminate. This does not set the native input element to indeterminate due to inconsistent behavior across browsers. However, we set a data-indeterminate attribute on the input.",
+              "default": false,
+              "type": "boolean",
+              "title": "indeterminate"
+            },
+            "label": {
+              "description": "Text to be rendered inside the component.",
+              "type": "string",
+              "title": "label"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": [
+            "name",
+            "appearance",
+            "checked",
+            "disabled",
+            "indeterminate",
+            "label"
+          ],
+          "required": true,
+          "title": "checkbox"
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Row content.",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "DataTable.Footer",
+      "totalProps": 2,
+      "props": [
+        {
+          "description": "Left-hand side text intended for displaying an item count.",
+          "type": "string",
+          "title": "itemCount",
+          "required": true
+        },
+        {
+          "description": "Pagination element rendered on the right-side of the footer.",
+          "type": "object",
+          "properties": {
+            "activePage": {
+              "description": "The currently selected page.",
+              "type": "number",
+              "title": "activePage"
+            },
+            "pageCount": {
+              "description": "The total number of pages.",
+              "type": "number",
+              "title": "pageCount"
+            },
+            "onPageChange": {
+              "description": "Called with event and page number when a page is clicked.",
+              "type": "(page: number) => void;",
+              "title": "onPageChange"
+            },
+            "showNumbers": {
+              "description": "Determines whether page numbers should be shown.",
+              "default": true,
+              "type": "boolean",
+              "title": "showNumbers"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": [
+            "activePage",
+            "pageCount",
+            "onPageChange",
+            "showNumbers"
+          ],
+          "required": false,
+          "title": "pagination"
+        }
+      ]
+    },
+    {
+      "name": "DataTable.Row",
+      "totalProps": 2,
+      "props": [
+        {
+          "description": "Checkbox element rendered on the row that controls whether the row is selected.",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "The name of the input element.",
+              "type": "string",
+              "title": "name"
+            },
+            "appearance": {
+              "description": "Change the visual style of the checkbox.",
+              "default": "neutral",
+              "enum": ["danger", "primary"],
+              "type": "string",
+              "title": "appearance"
+            },
+            "checked": {
+              "description": "Modifies true/false value of the native checkbox.",
+              "type": "boolean",
+              "title": "checked"
+            },
+            "disabled": {
+              "description": "Modifies the native disabled state of the native checkbox.",
+              "type": "boolean",
+              "title": "disabled"
+            },
+            "indeterminate": {
+              "description": "If true, the component appears indeterminate. This does not set the native input element to indeterminate due to inconsistent behavior across browsers. However, we set a data-indeterminate attribute on the input.",
+              "default": false,
+              "type": "boolean",
+              "title": "indeterminate"
+            },
+            "label": {
+              "description": "Text to be rendered inside the component.",
+              "type": "string",
+              "title": "label"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": [
+            "name",
+            "appearance",
+            "checked",
+            "disabled",
+            "indeterminate",
+            "label"
+          ],
+          "required": true,
+          "title": "checkbox"
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Content of the row.",
+          "title": "children",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,11 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-export interface MenuBodyProps
-  extends Omit<HTMLAttributes<HTMLElement>, "color"> {
-  /** Content of the menu body */
+export interface MenuBodyProperties {
+  /**
+   * Content of the menu body.
+   */
   children: ReactNode;
 }
+
+export type MenuBodyProps = MenuBodyProperties &
+  Omit<HTMLAttributes<HTMLElement>, "color">;

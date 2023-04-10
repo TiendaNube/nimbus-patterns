@@ -1,0 +1,294 @@
+{
+  "id": "interactiveList",
+  "name": "InteractiveList",
+  "totalProps": 1,
+  "props": [
+    {
+      "$ref": "#/definitions/React.ReactNode",
+      "description": "Content of the InteractiveList",
+      "title": "children",
+      "required": false
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "InteractiveList.Structure",
+      "totalProps": 4,
+      "props": [
+        {
+          "description": "Title of the list item element. Also used to generate the ID for the interactive element.",
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "description": "Determines if the title is visible or not.",
+          "type": "boolean",
+          "title": "showTitle",
+          "required": false
+        },
+        {
+          "description": "Description of the list item element.",
+          "type": "string",
+          "title": "description",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Custom content for the list item element.",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "InteractiveList.ButtonItem",
+      "totalProps": 5,
+      "props": [
+        {
+          "description": "Button props inherited from Nimbus components",
+          "type": "object",
+          "properties": {
+            "as": {
+              "description": "Type of html tag to create for the Icon Button component.",
+              "default": "button",
+              "enum": ["button", "div"],
+              "type": "string",
+              "title": "as"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": ["as"],
+          "title": "iconButton",
+          "required": true
+        },
+        {
+          "description": "Title of the list item element. Also used to generate the ID for the interactive element.",
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "description": "Determines if the title is visible or not.",
+          "type": "boolean",
+          "title": "showTitle",
+          "required": false
+        },
+        {
+          "description": "Description of the list item element.",
+          "type": "string",
+          "title": "description",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Custom content for the list item element.",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "InteractiveList.CheckboxItem",
+      "totalProps": 5,
+      "props": [
+        {
+          "description": "Checkbox props inherited from Nimbus components",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "The name of the input element.",
+              "type": "string",
+              "title": "name"
+            },
+            "appearance": {
+              "description": "Change the visual style of the checkbox.",
+              "default": "neutral",
+              "enum": ["danger", "primary"],
+              "type": "string",
+              "title": "appearance"
+            },
+            "checked": {
+              "description": "Modifies true/false value of the native checkbox.",
+              "type": "boolean",
+              "title": "checked"
+            },
+            "disabled": {
+              "description": "Modifies the native disabled state of the native checkbox.",
+              "type": "boolean",
+              "title": "disabled"
+            },
+            "indeterminate": {
+              "description": "If true, the component appears indeterminate. This does not set the native input element to indeterminate due to inconsistent behavior across browsers. However, we set a data-indeterminate attribute on the input.",
+              "default": false,
+              "type": "boolean",
+              "title": "indeterminate"
+            },
+            "label": {
+              "description": "Text to be rendered inside the component.",
+              "type": "string",
+              "title": "label"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": [
+            "name",
+            "appearance",
+            "checked",
+            "disabled",
+            "indeterminate",
+            "label"
+          ],
+          "required": true,
+          "title": "checkbox"
+        },
+        {
+          "description": "Title of the list item element. Also used to generate the ID for the interactive element.",
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "description": "Determines if the title is visible or not.",
+          "type": "boolean",
+          "title": "showTitle",
+          "required": false
+        },
+        {
+          "description": "Description of the list item element.",
+          "type": "string",
+          "title": "description",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Custom content for the list item element.",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "InteractiveList.RadioItem",
+      "totalProps": 5,
+      "props": [
+        {
+          "description": "Radio props inherited from Nimbus components.",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "Name attribute of the input element.",
+              "type": "string",
+              "title": "name"
+            },
+            "as": {
+              "description": "Change the visual style of the radio.",
+              "default": "radio",
+              "enum": ["button", "radio"],
+              "type": "string",
+              "title": "as"
+            },
+            "checked": {
+              "description": "Modifies true/false value of the native radio.",
+              "type": "boolean",
+              "title": "checked"
+            },
+            "disabled": {
+              "description": "Modifies the native disabled state of the native radio.",
+              "type": "boolean",
+              "title": "disabled"
+            },
+            "label": {
+              "description": "Text to be rendered inside the component.",
+              "type": "string",
+              "title": "label"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": ["name", "as", "checked", "disabled", "label"],
+          "required": true,
+          "title": "radio"
+        },
+        {
+          "description": "Title of the list item element. Also used to generate the ID for the interactive element.",
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "description": "Determines if the title is visible or not.",
+          "type": "boolean",
+          "title": "showTitle",
+          "required": false
+        },
+        {
+          "description": "Description of the list item element.",
+          "type": "string",
+          "title": "description",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Custom content for the list item element.",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "InteractiveList.ToggleItem",
+      "totalProps": 5,
+      "props": [
+        {
+          "description": "Toggle props inherited from Nimbus components.",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "The name of the input element.",
+              "type": "string",
+              "title": "name"
+            },
+            "active": {
+              "description": "Sets toggle state to activated or deactivated.",
+              "type": "boolean",
+              "title": "active"
+            },
+            "label": {
+              "description": "Text to be rendered inside the component",
+              "type": "string",
+              "title": "label"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": ["name", "active", "label"],
+          "required": true,
+          "title": "toggle"
+        },
+        {
+          "description": "Title of the list item element. Also used to generate the ID for the interactive element.",
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "description": "Determines if the title is visible or not.",
+          "type": "boolean",
+          "title": "showTitle",
+          "required": false
+        },
+        {
+          "description": "Description of the list item element.",
+          "type": "string",
+          "title": "description",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Custom content for the list item element.",
+          "title": "children",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

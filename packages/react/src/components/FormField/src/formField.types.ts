@@ -12,17 +12,34 @@ export interface FormFieldComponents {
   Input: typeof FormFieldInput;
 }
 
-export interface FormFieldProps extends HTMLAttributes<HTMLElement> {
-  /** Optional label for the field component */
+export interface FormFieldProperties {
+  /**
+   * Optional label for the field component.
+   */
   label?: ReactNode;
-  /** Help text displaying optional hints or validation messages under the field */
+  /**
+   * Help text displaying optional hints or validation messages under the field.
+   */
   helpText?: string;
-  /** Icon supporting the help text message */
+  /**
+   * Icon supporting the help text message.
+   * @TJS-type React.FC<IconProps>
+   */
   helpIcon?: FC<IconProps>;
-  /** Appearance of the field and help text elements */
+  /**
+   * Appearance of the field and help text elements.
+   * @default none
+   */
   appearance?: "danger" | "warning" | "success" | "none";
-  /** Control to conditionally show the help text and icon */
+  /**
+   * Control to conditionally show the help text and icon.
+   * @default false
+   */
   showHelpText?: boolean;
-  /** Content of the field */
+  /**
+   * Content of the field.
+   */
   children: ReactNode;
 }
+
+export type FormFieldProps = FormFieldProperties & HTMLAttributes<HTMLElement>;

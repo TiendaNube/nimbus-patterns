@@ -1,0 +1,47 @@
+{
+  "id": "navTabs",
+  "name": "NavTabs",
+  "totalProps": 1,
+  "props": [
+    {
+      "$ref": "#/definitions/React.ReactNode",
+      "description": "Content to be rendered inside the Nav element.",
+      "title": "children",
+      "required": false
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "NavTabs.Item",
+      "totalProps": 4,
+      "props": [
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Icon element to be rendered inside the button.",
+          "title": "icon",
+          "required": false
+        },
+        {
+          "description": "Controls whether the button is active or not.",
+          "type": "boolean",
+          "title": "active",
+          "required": false
+        },
+        {
+          "description": "Displays a small badge on top of the button.",
+          "type": "boolean",
+          "title": "badge",
+          "required": false
+        },
+        {
+          "description": "Function executed on click.",
+          "type": "object",
+          "additionalProperties": false,
+          "propertyOrder": [],
+          "title": "onClick",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

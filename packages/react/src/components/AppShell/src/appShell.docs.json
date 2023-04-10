@@ -1,0 +1,39 @@
+{
+  "id": "appShell",
+  "name": "AppShell",
+  "totalProps": 2,
+  "props": [
+    {
+      "$ref": "#/definitions/React.ReactNode",
+      "description": "Content for the body of the application.",
+      "title": "children",
+      "required": false
+    },
+    {
+      "$ref": "#/definitions/React.ReactNode",
+      "description": "Optional slot for left sidebar menu.",
+      "title": "menu",
+      "required": false
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "AppShell.Header",
+      "totalProps": 2,
+      "props": [
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Optional content for the left-hand-side slot.",
+          "title": "leftSlot",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Optional content for the right-hand-side slot.",
+          "title": "rightSlot",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

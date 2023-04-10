@@ -1,6 +1,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 
+import { Link } from "@nimbus-ds/components";
 import { CalloutCard } from "./CalloutCard";
 import { CalloutCardProps } from "./calloutCard.types";
 
@@ -28,12 +29,11 @@ describe("GIVEN <CalloutCard />", () => {
         subtitle: "My subtitle",
         appearance: "primary",
         icon: () => <svg data-testid="icon-element" />,
-        link: {
-          children: "My link",
-          // eslint-disable-next-line
-          // @ts-ignore
-          href: "http://localhost:3000/",
-        },
+        link: (
+          <Link as="a" target="_link" href="http://localhost:3000/">
+            My link
+          </Link>
+        ),
       });
       const link = screen.getByText<HTMLAnchorElement>("My link");
       expect(link).toBeDefined();

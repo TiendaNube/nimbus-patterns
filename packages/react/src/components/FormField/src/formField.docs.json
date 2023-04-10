@@ -1,0 +1,216 @@
+{
+  "id": "formField",
+  "name": "FormField",
+  "totalProps": 6,
+  "props": [
+    {
+      "$ref": "#/definitions/React.ReactNode",
+      "description": "Optional label for the field component.",
+      "title": "label",
+      "required": false
+    },
+    {
+      "description": "Help text displaying optional hints or validation messages under the field.",
+      "type": "string",
+      "title": "helpText",
+      "required": false
+    },
+    {
+      "description": "Icon supporting the help text message.",
+      "type": "React.FC<IconProps>",
+      "title": "helpIcon",
+      "required": false
+    },
+    {
+      "description": "Appearance of the field and help text elements.",
+      "default": "none",
+      "enum": ["danger", "none", "success", "warning"],
+      "type": "string",
+      "title": "appearance",
+      "required": false
+    },
+    {
+      "description": "Control to conditionally show the help text and icon.",
+      "default": false,
+      "type": "boolean",
+      "title": "showHelpText",
+      "required": false
+    },
+    {
+      "$ref": "#/definitions/React.ReactNode",
+      "description": "Content of the field.",
+      "title": "children",
+      "required": false
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "FormField.Select",
+      "totalProps": 8,
+      "props": [
+        {
+          "description": "Appearance of the field and help text elements.",
+          "default": "none",
+          "enum": ["danger", "none", "success", "warning"],
+          "type": "string",
+          "title": "appearance",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Optional label for the field component.",
+          "title": "label",
+          "required": false
+        },
+        {
+          "description": "Help text displaying optional hints or validation messages under the field.",
+          "type": "string",
+          "title": "helpText",
+          "required": false
+        },
+        {
+          "description": "Icon supporting the help text message.",
+          "type": "React.FC<IconProps>",
+          "title": "helpIcon",
+          "required": false
+        },
+        {
+          "description": "Control to conditionally show the help text and icon.",
+          "default": false,
+          "type": "boolean",
+          "title": "showHelpText",
+          "required": false
+        },
+        {
+          "description": "The id of the wrapper element or the select element when native.",
+          "type": "string",
+          "title": "id",
+          "required": true
+        },
+        {
+          "description": "The name of the wrapper element or the select element when native.",
+          "type": "string",
+          "title": "name",
+          "required": true
+        },
+        {
+          "description": "The content of the select.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "FormField.Textarea",
+      "totalProps": 7,
+      "props": [
+        {
+          "description": "Appearance of the field and help text elements.",
+          "default": "none",
+          "enum": ["danger", "none", "success", "warning"],
+          "type": "string",
+          "title": "appearance",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Optional label for the field component.",
+          "title": "label",
+          "required": false
+        },
+        {
+          "description": "Help text displaying optional hints or validation messages under the field.",
+          "type": "string",
+          "title": "helpText",
+          "required": false
+        },
+        {
+          "description": "Icon supporting the help text message.",
+          "type": "React.FC<IconProps>",
+          "title": "helpIcon",
+          "required": false
+        },
+        {
+          "description": "Control to conditionally show the help text and icon.",
+          "default": false,
+          "type": "boolean",
+          "title": "showHelpText",
+          "required": false
+        },
+        {
+          "description": "ID of the textarea",
+          "type": "string",
+          "title": "id",
+          "required": true
+        },
+        {
+          "description": "Number of lines to be rendered for the user to input text",
+          "default": 2,
+          "type": "number",
+          "title": "lines",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "FormField.Input",
+      "totalProps": 8,
+      "props": [
+        {
+          "description": "Appearance of the field and help text elements.",
+          "default": "none",
+          "enum": ["danger", "none", "success", "warning"],
+          "type": "string",
+          "title": "appearance",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Optional label for the field component.",
+          "title": "label",
+          "required": false
+        },
+        {
+          "description": "Help text displaying optional hints or validation messages under the field.",
+          "type": "string",
+          "title": "helpText",
+          "required": false
+        },
+        {
+          "description": "Icon supporting the help text message.",
+          "type": "React.FC<IconProps>",
+          "title": "helpIcon",
+          "required": false
+        },
+        {
+          "description": "Control to conditionally show the help text and icon.",
+          "default": false,
+          "type": "boolean",
+          "title": "showHelpText",
+          "required": false
+        },
+        {
+          "description": "SVG icon to be displayed on input.",
+          "type": "React.ReactNode",
+          "title": "append",
+          "required": false
+        },
+        {
+          "description": "Disables the input, disallowing user interaction.",
+          "type": "boolean",
+          "title": "disabled",
+          "required": false
+        },
+        {
+          "description": "Sent icon display position",
+          "default": "start",
+          "enum": ["end", "start"],
+          "type": "string",
+          "title": "appendPosition",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

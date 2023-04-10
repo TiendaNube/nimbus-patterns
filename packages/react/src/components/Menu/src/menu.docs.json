@@ -1,0 +1,89 @@
+{
+  "id": "menu",
+  "name": "Menu",
+  "totalProps": 1,
+  "props": [
+    {
+      "$ref": "#/definitions/React.ReactNode",
+      "description": "Content of the menu.",
+      "title": "children",
+      "required": false
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "Menu.Section",
+      "totalProps": 2,
+      "props": [
+        {
+          "description": "Optional title of the section.",
+          "type": "string",
+          "title": "title",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Content of the menu section.",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "Menu.Header",
+      "totalProps": 1,
+      "props": [
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Content of the menu header.",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "Menu.Body",
+      "totalProps": 1,
+      "props": [
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Content of the menu body.",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "Menu.Footer",
+      "totalProps": 4,
+      "props": [
+        {
+          "description": "Sets the state of the button as active/inactive.",
+          "type": "boolean",
+          "title": "active",
+          "required": false
+        },
+        {
+          "description": "Text label for the button.",
+          "type": "string",
+          "title": "label",
+          "required": true
+        },
+        {
+          "description": "Function executed when clicking the button.",
+          "type": "object",
+          "additionalProperties": false,
+          "propertyOrder": [],
+          "title": "onClick",
+          "required": false
+        },
+        {
+          "description": "Sets an icon element on the left of the button.",
+          "type": "React.FC<IconProps>",
+          "title": "startIcon",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

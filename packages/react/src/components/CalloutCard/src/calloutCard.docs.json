@@ -1,0 +1,47 @@
+{
+  "id": "calloutCard",
+  "name": "CalloutCard",
+  "totalProps": 6,
+  "props": [
+    {
+      "description": "CalloutCard color.",
+      "enum": ["danger", "neutral", "primary", "success", "warning"],
+      "type": "string",
+      "title": "appearance",
+      "required": true
+    },
+    {
+      "description": "The SVG contents to display in the Icon.",
+      "type": "React.FC<IconProps>",
+      "title": "icon",
+      "required": true
+    },
+    {
+      "description": "Title.",
+      "type": "string",
+      "title": "title",
+      "required": true
+    },
+    {
+      "description": "Subtitle.",
+      "type": "string",
+      "title": "subtitle",
+      "required": true
+    },
+    {
+      "description": "Slot intended to position the Callout Card link correctly.",
+      "type": "Nimbus Link",
+      "title": "link",
+      "required": false
+    },
+    {
+      "description": "Event fired when clicking the component.",
+      "type": "object",
+      "additionalProperties": false,
+      "propertyOrder": [],
+      "title": "onClick",
+      "required": false
+    }
+  ],
+  "subComponents": []
+}
