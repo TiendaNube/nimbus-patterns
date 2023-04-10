@@ -11,5 +11,4 @@ const baseConfig = {
 const config = configuration.getConfiguration(baseConfig);
 Reflect.deleteProperty(config, "externals");
 config.externals = configuration.externalLibs;
-console.log(config);
 export default () => config;

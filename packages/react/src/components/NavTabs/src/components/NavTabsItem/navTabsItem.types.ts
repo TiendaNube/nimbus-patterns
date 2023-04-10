@@ -1,7 +1,7 @@
 import { ReactNode, HTMLAttributes } from "react";
-import { BoxProps } from "@nimbus-ds/components";
+import { BoxProperties } from "@nimbus-ds/components";
 
-export interface NavTabsItemProperties {
+export interface NavTabsItemProperties extends BoxProperties {
   /**
    * Icon element to be rendered inside the button.
    */
@@ -21,5 +21,4 @@ export interface NavTabsItemProperties {
 }
 
 export type NavTabsItemProps = NavTabsItemProperties &
-  Omit<HTMLAttributes<HTMLElement>, "color"> &
-  BoxProps;
+  Omit<HTMLAttributes<HTMLElement>, "color">;
