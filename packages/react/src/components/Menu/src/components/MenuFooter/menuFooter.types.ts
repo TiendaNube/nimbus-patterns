@@ -1,3 +1,3 @@
-import { MenuButtonProps } from "packages/react/src/components/MenuButton/src";
+import { MenuButtonProps } from "@nimbus-ds/menubutton";
 
 export type MenuFooterProps = Omit<MenuButtonProps, "children">;

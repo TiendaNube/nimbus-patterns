@@ -1,6 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { MenuButton } from "packages/react/src/components/MenuButton/src";
+import { MenuButton } from "@nimbus-ds/menubutton";
 
 import { MenuSection, MenuHeader, MenuBody, MenuFooter } from "./components";
 

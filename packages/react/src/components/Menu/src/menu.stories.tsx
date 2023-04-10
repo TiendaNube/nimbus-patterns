@@ -29,7 +29,7 @@ import {
   Icon,
   Text,
 } from "@nimbus-ds/components";
-import { MenuButton } from "packages/react/src/components/MenuButton/src";
+import { MenuButton } from "@nimbus-ds/menubutton";
 
 import { Menu } from "./Menu";
 
