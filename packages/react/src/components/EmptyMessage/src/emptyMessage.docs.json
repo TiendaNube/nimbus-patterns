@@ -1,0 +1,38 @@
+{
+  "id": "emptyMessage",
+  "name": "EmptyMessage",
+  "totalProps": 5,
+  "props": [
+    {
+      "description": "Optional node that contains an illustration for the component. Will stack vertically on mobile and horizontally on desktop.",
+      "type": "React.ReactNode",
+      "title": "illustration",
+      "required": false
+    },
+    {
+      "description": "Optional icon to display on top of the text.",
+      "type": "React.ReactNode",
+      "title": "icon",
+      "required": false
+    },
+    {
+      "description": "Title of the component.",
+      "type": "string",
+      "title": "title",
+      "required": true
+    },
+    {
+      "description": "Optional content text for additional context.",
+      "type": "string",
+      "title": "text",
+      "required": false
+    },
+    {
+      "description": "Optional node to showcase buttons or actions.",
+      "type": "React.ReactNode",
+      "title": "actions",
+      "required": false
+    }
+  ],
+  "subComponents": []
+}

@@ -1,0 +1,188 @@
+{
+  "id": "sideModal",
+  "name": "SideModal",
+  "totalProps": 14,
+  "props": [
+    {
+      "description": "Title.",
+      "type": "string",
+      "title": "title",
+      "required": false
+    },
+    {
+      "description": "Action Title",
+      "type": "React.ReactNode",
+      "title": "titleAction",
+      "required": false
+    },
+    {
+      "description": "Action Header",
+      "type": "React.ReactNode",
+      "title": "headerAction",
+      "required": false
+    },
+    {
+      "description": "Icon Header",
+      "type": "React.ReactNode",
+      "title": "headerIcon",
+      "required": false
+    },
+    {
+      "description": "Body Content",
+      "type": "React.ReactNode",
+      "title": "children",
+      "required": false
+    },
+    {
+      "description": "Header padding.",
+      "enum": ["base", "none"],
+      "type": "string",
+      "title": "paddingHeader",
+      "required": false
+    },
+    {
+      "description": "Body padding.",
+      "enum": ["base", "none"],
+      "type": "string",
+      "title": "paddingBody",
+      "required": false
+    },
+    {
+      "description": "Footer padding.",
+      "enum": ["base", "none"],
+      "type": "string",
+      "title": "paddingFooter",
+      "required": false
+    },
+    {
+      "description": "Footer element actions.",
+      "type": "object",
+      "properties": {
+        "primaryAction": {
+          "type": "object",
+          "properties": {
+            "children": {
+              "description": "The content of the button.",
+              "type": "React.ReactNode",
+              "title": "children"
+            },
+            "appearance": {
+              "description": "Change the visual style of the button.",
+              "default": "neutral",
+              "enum": ["danger", "neutral", "primary", "transparent"],
+              "type": "string",
+              "title": "appearance"
+            },
+            "disabled": {
+              "description": "Disables the button, disallowing user interaction.",
+              "default": false,
+              "type": "boolean",
+              "title": "disabled"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": ["children", "appearance", "disabled"],
+          "required": ["children"],
+          "title": "primaryAction"
+        },
+        "secondaryAction": {
+          "type": "object",
+          "properties": {
+            "children": {
+              "description": "The content of the button.",
+              "type": "React.ReactNode",
+              "title": "children"
+            },
+            "appearance": {
+              "description": "Change the visual style of the button.",
+              "default": "neutral",
+              "enum": ["danger", "neutral", "primary", "transparent"],
+              "type": "string",
+              "title": "appearance"
+            },
+            "disabled": {
+              "description": "Disables the button, disallowing user interaction.",
+              "default": false,
+              "type": "boolean",
+              "title": "disabled"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": ["children", "appearance", "disabled"],
+          "required": ["children"],
+          "title": "secondaryAction"
+        }
+      },
+      "additionalProperties": false,
+      "propertyOrder": ["primaryAction", "secondaryAction"],
+      "required": false,
+      "title": "footer"
+    },
+    {
+      "description": "Determines if the sidebar is shown or not.",
+      "default": true,
+      "type": "boolean",
+      "title": "open",
+      "required": false
+    },
+    {
+      "description": "The maxWidth property specifies the maxWidth of a sidebar's content area.",
+      "default": "375px",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "xs": {
+              "type": "string",
+              "title": "xs"
+            },
+            "md": {
+              "type": "string",
+              "title": "md"
+            },
+            "lg": {
+              "type": "string",
+              "title": "lg"
+            },
+            "xl": {
+              "type": "string",
+              "title": "xl"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": ["xs", "md", "lg", "xl"]
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "maxWidth",
+      "required": false
+    },
+    {
+      "description": "The padding properties are used to generate space around an sidebar's content area.",
+      "default": "base",
+      "enum": ["base", "none", "small"],
+      "type": "string",
+      "title": "padding",
+      "required": false
+    },
+    {
+      "description": "Side from which the sidebar will appear.",
+      "default": "right",
+      "enum": ["left", "right"],
+      "type": "string",
+      "title": "position",
+      "required": false
+    },
+    {
+      "description": "Callback fired when the component requests to be closed.\n() => void;",
+      "type": "object",
+      "additionalProperties": false,
+      "propertyOrder": [],
+      "title": "onRemove",
+      "required": false
+    }
+  ],
+  "subComponents": []
+}

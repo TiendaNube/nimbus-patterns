@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { withA11y } from "@storybook/addon-a11y";
 import { BoxUnpackedIcon } from "@nimbus-ds/icons";
 
+import { Link } from "@nimbus-ds/components";
 import { CalloutCard } from "./CalloutCard";
 
 export default {
@@ -27,13 +28,16 @@ base.args = {
   title: "Title",
   subtitle: "Description",
   icon: BoxUnpackedIcon,
-  link: {
-    children: "Link",
-    // eslint-disable-next-line
-    // @ts-ignore
-    target: "_blank",
-    href: "https://nimbus.nuvemshop.com.br/",
-  },
+  link: (
+    <Link
+      appearance="primary"
+      as="a"
+      target="_link"
+      href="https://nimbus.nuvemshop.com.br"
+    >
+      Link
+    </Link>
+  ),
 };
 
 export const neutral = Template.bind({});

@@ -1,12 +1,14 @@
 import { ReactNode, HTMLAttributes } from "react";
+import { BoxProperties } from "@nimbus-ds/components";
 
-import { BoxProps } from "@nimbus-ds/components";
-
-export interface InteractiveListRowProperties {
-  /** Content of the row */
+export interface InteractiveListRowProperties
+  extends Omit<BoxProperties, "padding"> {
+  /**
+   * Content of the row.
+   * @TJS-type React.ReactNode
+   */
   children: ReactNode;
 }
 
 export type InteractiveListRowProps = InteractiveListRowProperties &
-  Omit<BoxProps, "padding"> &
   Omit<HTMLAttributes<HTMLElement>, "color">;

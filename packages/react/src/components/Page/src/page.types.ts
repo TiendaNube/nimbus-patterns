@@ -7,9 +7,17 @@ export interface PageComponents {
   Body: typeof PageBody;
 }
 
-export interface PageProps extends Omit<HTMLAttributes<HTMLElement>, "color"> {
-  /** Content to be rendered inside the page body. */
+export interface PageProperties {
+  /**
+   * Content to be rendered inside the page body.
+   * @TJS-type React.ReactNode
+   */
   children: ReactNode;
-  /** Optional parameter to define a maximum width of the page content. */
+  /**
+   * Optional parameter to define a maximum width of the page content.
+   */
   maxWidth?: string;
 }
+
+export type PageProps = PageProperties &
+  Omit<HTMLAttributes<HTMLElement>, "color">;

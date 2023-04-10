@@ -1,0 +1,63 @@
+{
+  "id": "page",
+  "name": "Page",
+  "totalProps": 2,
+  "props": [
+    {
+      "description": "Content to be rendered inside the page body.",
+      "type": "React.ReactNode",
+      "title": "children",
+      "required": true
+    },
+    {
+      "description": "Optional parameter to define a maximum width of the page content.",
+      "type": "string",
+      "title": "maxWidth",
+      "required": false
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "Page.Header",
+      "totalProps": 4,
+      "props": [
+        {
+          "description": "Main title of the page. Corresponds to an h1 HTML tag.",
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "description": "Optional subtitle for the page.",
+          "type": "string",
+          "title": "subtitle",
+          "required": false
+        },
+        {
+          "description": "Button stack that appears on the right-hand side of the title.",
+          "type": "React.ReactNode",
+          "title": "buttonStack",
+          "required": false
+        },
+        {
+          "description": "Optional header content that appears underneath the title and button stack.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "Page.Body",
+      "totalProps": 1,
+      "props": [
+        {
+          "description": "Content of the page body.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

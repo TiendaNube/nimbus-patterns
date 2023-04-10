@@ -1,8 +1,13 @@
 import { HTMLAttributes } from "react";
 
-import { TextareaProps } from "@nimbus-ds/components";
-import { FormFieldProps } from "../../formField.types";
+import { TextareaProperties } from "@nimbus-ds/components";
+import { FormFieldProperties } from "../../formField.types";
 
-export type FormFieldTextareaProps = Omit<FormFieldProps, "children"> &
-  Omit<TextareaProps, "appearance"> &
+export type FormFieldTextareaProperties = Omit<
+  FormFieldProperties,
+  "children"
+> &
+  Omit<TextareaProperties, "appearance">;
+
+export type FormFieldTextareaProps = FormFieldTextareaProperties &
   HTMLAttributes<HTMLElement>;

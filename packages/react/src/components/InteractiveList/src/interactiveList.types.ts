@@ -16,7 +16,13 @@ export interface InteractiveListComponents {
   RadioItem: typeof InteractiveListRadioItem;
 }
 
-export interface InteractiveListProps extends HTMLAttributes<HTMLElement> {
-  /** Content of the InteractiveList */
+export interface InteractiveListProperties {
+  /**
+   * Content of the InteractiveList
+   * @TJS-type React.ReactNode
+   */
   children: ReactNode;
 }
+
+export type InteractiveListProps = InteractiveListProperties &
+  HTMLAttributes<HTMLElement>;

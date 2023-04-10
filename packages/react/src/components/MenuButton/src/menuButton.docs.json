@@ -1,0 +1,38 @@
+{
+  "id": "menuButton",
+  "name": "MenuButton",
+  "totalProps": 5,
+  "props": [
+    {
+      "description": "Text label for the button.",
+      "type": "string",
+      "title": "label",
+      "required": true
+    },
+    {
+      "description": "Function executed when clicking the button.",
+      "type": "() => void;",
+      "title": "onClick",
+      "required": false
+    },
+    {
+      "description": "Sets an icon element on the left of the button.",
+      "type": "React.FC<IconProps>",
+      "title": "startIcon",
+      "required": false
+    },
+    {
+      "description": "Sets the state of the button as active/inactive.",
+      "type": "boolean",
+      "title": "active",
+      "required": false
+    },
+    {
+      "description": "Inner components displayed on the right of the button component.",
+      "type": "React.ReactNode",
+      "title": "children",
+      "required": false
+    }
+  ],
+  "subComponents": []
+}

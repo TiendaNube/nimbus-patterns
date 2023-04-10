@@ -1,0 +1,87 @@
+{
+  "id": "menu",
+  "name": "Menu",
+  "totalProps": 1,
+  "props": [
+    {
+      "description": "Content of the menu.",
+      "type": "React.ReactNode",
+      "title": "children",
+      "required": true
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "Menu.Section",
+      "totalProps": 2,
+      "props": [
+        {
+          "description": "Optional title of the section.",
+          "type": "string",
+          "title": "title",
+          "required": false
+        },
+        {
+          "description": "Content of the menu section.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "Menu.Header",
+      "totalProps": 1,
+      "props": [
+        {
+          "description": "Content of the menu header.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "Menu.Body",
+      "totalProps": 1,
+      "props": [
+        {
+          "description": "Content of the menu body.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "Menu.Footer",
+      "totalProps": 4,
+      "props": [
+        {
+          "description": "Sets the state of the button as active/inactive.",
+          "type": "boolean",
+          "title": "active",
+          "required": false
+        },
+        {
+          "description": "Text label for the button.",
+          "type": "string",
+          "title": "label",
+          "required": true
+        },
+        {
+          "description": "Function executed when clicking the button.",
+          "type": "() => void;",
+          "title": "onClick",
+          "required": false
+        },
+        {
+          "description": "Sets an icon element on the left of the button.",
+          "type": "React.FC<IconProps>",
+          "title": "startIcon",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

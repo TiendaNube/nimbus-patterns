@@ -1,6 +1,6 @@
 import React from "react";
 import { ChevronRightIcon } from "@nimbus-ds/icons";
-import { Box, Icon, Text, Link } from "@nimbus-ds/components";
+import { Box, Icon, Text } from "@nimbus-ds/components";
 
 import {
   cardBackground,
@@ -64,11 +64,7 @@ const CalloutCard: React.FC<CalloutCardProps> = ({
       >
         {subtitle}
       </Text>
-      {link && (
-        <Box mt="2">
-          <Link {...link} appearance="primary" />
-        </Box>
-      )}
+      {link && <Box mt="2">{link}</Box>}
     </Box>
     {!link && (
       <Icon

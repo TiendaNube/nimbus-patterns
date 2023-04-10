@@ -1,7 +1,5 @@
 import { ReactNode, HTMLAttributes } from "react";
-
 import { MenuButton } from "@nimbus-ds/menubutton";
-
 import { MenuSection, MenuHeader, MenuBody, MenuFooter } from "./components";
 
 export interface MenuComponents {
@@ -12,7 +10,13 @@ export interface MenuComponents {
   Footer: typeof MenuFooter;
 }
 
-export interface MenuProps extends Omit<HTMLAttributes<HTMLElement>, "color"> {
-  /** Content of the menu */
+export interface MenuProperties {
+  /**
+   * Content of the menu.
+   * @TJS-type React.ReactNode
+   */
   children: ReactNode;
 }
+
+export type MenuProps = MenuProperties &
+  Omit<HTMLAttributes<HTMLElement>, "color">;

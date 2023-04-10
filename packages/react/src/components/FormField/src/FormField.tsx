@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Box, Text, Icon, Label } from "@nimbus-ds/components";
 
 import { FormFieldProps, FormFieldComponents } from "./formField.types";
@@ -46,5 +45,8 @@ FormField.displayName = "FormField";
 FormField.Select = FormFieldSelect;
 FormField.Textarea = FormFieldTextarea;
 FormField.Input = FormFieldInput;
+FormField.Select.displayName = "FormField.Select";
+FormField.Textarea.displayName = "FormField.Textarea";
+FormField.Input.displayName = "FormField.Input";
 
 export { FormField };

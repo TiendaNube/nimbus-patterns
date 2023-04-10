@@ -41,12 +41,13 @@ const DataTable: React.FC<DataTableProps> & DataTableComponents = ({
 export { DataTable };
 
 DataTable.displayName = "DataTable";
-DataTableBulkActions.displayName = "DataTable.BulkActions";
-DataTableHeader.displayName = "DataTable.Header";
-DataTableFooter.displayName = "DataTable.Footer";
-DataTableRow.displayName = "DataTable.Row";
 
 DataTable.BulkActions = DataTableBulkActions;
 DataTable.Header = DataTableHeader;
 DataTable.Footer = DataTableFooter;
 DataTable.Row = DataTableRow;
+
+DataTable.BulkActions.displayName = "DataTable.BulkActions";
+DataTable.Header.displayName = "DataTable.Header";
+DataTable.Footer.displayName = "DataTable.Footer";
+DataTable.Row.displayName = "DataTable.Row";

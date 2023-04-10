@@ -1,6 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { TableProps } from "@nimbus-ds/components";
+import { TableProperties } from "@nimbus-ds/components";
 
 import {
   DataTableBulkActions,
@@ -9,8 +9,6 @@ import {
   DataTableRow,
 } from "./components";
 
-type DataTableExtend = TableProps & HTMLAttributes<HTMLElement>;
-
 export interface DataTableComponents {
   BulkActions: typeof DataTableBulkActions;
   Header: typeof DataTableHeader;
@@ -18,13 +16,29 @@ export interface DataTableComponents {
   Row: typeof DataTableRow;
 }
 
-export interface DataTableProps extends DataTableExtend {
-  /** Bulk actions component rendered with a sticky position over the top of the table element */
+export interface DataTableProperties {
+  /**
+   * Bulk actions component rendered with a sticky position over the top of the table element.
+   * @TJS-type React.ReactNode
+   */
   bulkActions?: ReactNode;
-  /** Table header content */
+  /**
+   * Table header content.
+   * @TJS-type React.ReactNode
+   */
   header: ReactNode;
-  /** Optional table footer content */
+  /**
+   * Optional table footer content.
+   * @TJS-type React.ReactNode
+   */
   footer?: ReactNode;
-  /** Table body content */
+  /**
+   * Table body content.
+   * @TJS-type React.ReactNode
+   */
   children: ReactNode;
 }
+
+export type DataTableProps = DataTableProperties &
+  TableProperties &
+  HTMLAttributes<HTMLElement>;

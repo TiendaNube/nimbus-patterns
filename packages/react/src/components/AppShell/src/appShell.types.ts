@@ -6,10 +6,18 @@ export interface AppShellComponents {
   Header: typeof AppShellHeader;
 }
 
-export interface AppShellProps
-  extends Omit<HTMLAttributes<HTMLElement>, "color"> {
-  /** Content for the body of the application */
+export interface AppShellProperties {
+  /**
+   * Content for the body of the application.
+   * @TJS-type React.ReactNode
+   */
   children: ReactNode;
-  /** Optional slot for left sidebar menu */
+  /**
+   * Optional slot for left sidebar menu.
+   * @TJS-type React.ReactNode
+   */
   menu?: ReactNode;
 }
+
+export type AppShellProps = AppShellProperties &
+  Omit<HTMLAttributes<HTMLElement>, "color">;

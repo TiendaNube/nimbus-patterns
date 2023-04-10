@@ -11,6 +11,7 @@
   },
   "scripts": {
     "build": "yarn clean && yarn build:packages",
+    "build:docs": "babel-node -x .ts ./.scripts/json-documentation",
     "build:packages": "babel-node -x .ts ./.scripts/build-packages",
     "build:storybook": "build-storybook -c .storybook -o .build-storybook",
     "bump:packages": "babel-node -x .ts ./.scripts/bump-packages",
@@ -56,6 +57,7 @@
     "@jest/types": "^29.2.1",
     "@mdx-js/react": "^1.6.22",
     "@nimbus-ds/components": "^4.1.0-rc.1",
+    "@nimbus-ds/scripts": "1.2.0-rc.2",
     "@nimbus-ds/styles": "^8.0.0",
     "@nimbus-ds/tokens": "^7.0.0",
     "@storybook/addon-a11y": "^6.5.13",

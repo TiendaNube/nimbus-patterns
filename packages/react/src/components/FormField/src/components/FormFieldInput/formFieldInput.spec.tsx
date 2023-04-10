@@ -1,17 +1,17 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 
-import { FormFieldInput } from "./FormFieldInput";
+import { FormField } from "../../FormField";
 import { FormFieldInputProps } from "./formFieldInput.types";
 
-const makeSut = (rest: FormFieldInputProps) => {
-  render(<FormFieldInput {...rest} data-testid="form-field-element" />);
+const makeSut = (rest?: FormFieldInputProps) => {
+  render(<FormField.Input {...rest} data-testid="form-field-element" />);
 };
 
 describe("GIVEN <FormFieldInput />", () => {
   describe("WHEN rendered", () => {
     it("SHOULD render the input element correctly", () => {
-      makeSut({});
+      makeSut();
       expect(screen.getByRole("textbox")).toBeDefined();
     });
   });

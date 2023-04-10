@@ -1,0 +1,73 @@
+name: "generate-documentation"
+
+on: workflow_dispatch
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set Node version
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: ".nvmrc"
+          cache: "yarn"
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: yarn
+
+  generate-documents:
+    needs: [setup]
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: yarn
+
+      - name: Generate documents
+        run: yarn build:docs
+
+      - name: Branch protection OFF
+        run: |
+          curl --request PUT \
+          --url 'https://api.github.com/repos/tiendanube/nimbus-patterns/branches/master/protection' \
+          --header 'Authorization: token ${{ secrets.PAT_CHANGE_BRANCH_PROTECTION_RULES_FROM_JUNIOR_CONQUISTA }}' \
+          --data '{"enforce_admins":false,"required_pull_request_reviews":null,"required_status_checks":null,"required_conversation_resolution":false,"restrictions":null,"required_linear_history":false}'
+
+      - name: Commit documents
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: updated documentation for components and subcomponents"
+
+      - name: Branch protection ON
+        run: |
+          curl --request PUT \
+          --url 'https://api.github.com/repos/tiendanube/nimbus-patterns/branches/master/protection' \
+          --header 'Authorization: token ${{ secrets.PAT_CHANGE_BRANCH_PROTECTION_RULES_FROM_JUNIOR_CONQUISTA }}' \
+          --header 'Accept: application/vnd.github.luke-cage-preview+json' \
+          --data '{"enforce_admins":true,"required_pull_request_reviews":{"dismiss_stale_reviews":true,"require_code_owner_reviews":true,"required_approving_review_count":1},"required_conversation_resolution":true,"required_status_checks":null,"restrictions":null,"required_linear_history":true}'

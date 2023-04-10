@@ -1,12 +1,17 @@
 import { ReactNode, HTMLAttributes } from "react";
+import { BoxProperties } from "@nimbus-ds/components";
 
-import { BoxProps } from "@nimbus-ds/components";
-
-export interface LayoutSectionProperties {
-  /** Content of the section body */
+export interface LayoutSectionProperties
+  extends Omit<
+    BoxProperties,
+    "children" | "boxSizing" | "display" | "flexDirection"
+  > {
+  /**
+   * Content of the section body.
+   * @TJS-type React.ReactNode
+   */
   children: ReactNode;
 }
 
 export type LayoutSectionProps = LayoutSectionProperties &
-  Omit<BoxProps, "children" | "boxSizing" | "display" | "flexDirection"> &
   Omit<HTMLAttributes<HTMLElement>, "color">;
