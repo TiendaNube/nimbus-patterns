@@ -9,6 +9,7 @@ export interface DataListRowProperties extends Omit<BoxProperties, "padding"> {
   padding?: "small" | "base" | "none";
   /**
    * Content of the row.
+   * @TJS-type React.ReactNode
    */
   children: ReactNode;
 }

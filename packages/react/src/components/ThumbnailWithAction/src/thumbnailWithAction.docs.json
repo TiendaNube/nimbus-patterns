@@ -37,10 +37,10 @@
       "title": "thumbnail"
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Element to be rendered inside the Thumbnail.",
+      "type": "React.ReactNode",
       "title": "children",
-      "required": false
+      "required": true
     },
     {
       "description": "Optional position of the element.",

@@ -3,10 +3,12 @@ import { HTMLAttributes, ReactNode } from "react";
 export interface EmptyMessageProperties {
   /**
    * Optional node that contains an illustration for the component. Will stack vertically on mobile and horizontally on desktop.
+   * @TJS-type React.ReactNode
    */
   illustration?: ReactNode;
   /**
    * Optional icon to display on top of the text.
+   * @TJS-type React.ReactNode
    */
   icon?: ReactNode;
   /**
@@ -19,6 +21,7 @@ export interface EmptyMessageProperties {
   text?: string;
   /**
    * Optional node to showcase buttons or actions.
+   * @TJS-type React.ReactNode
    */
   actions?: ReactNode;
 }

@@ -9,10 +9,12 @@ export interface DataTableBulkActionsProperties {
   checkbox: Omit<CheckboxProperties, "label" | "id">;
   /**
    * Optional link element rendered next to the Bulk Actions controller.
+   * @TJS-type <Link />
    */
   link?: ReactNode;
   /**
    * Action component that controls the Bulk Actions.
+   * @TJS-type React.ReactNode
    */
   action: ReactNode;
   /**

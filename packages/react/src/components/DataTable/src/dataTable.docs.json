@@ -4,28 +4,28 @@
   "totalProps": 4,
   "props": [
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Bulk actions component rendered with a sticky position over the top of the table element.",
+      "type": "React.ReactNode",
       "title": "bulkActions",
       "required": false
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Table header content.",
+      "type": "React.ReactNode",
       "title": "header",
-      "required": false
+      "required": true
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Optional table footer content.",
+      "type": "React.ReactNode",
       "title": "footer",
       "required": false
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Table body content.",
+      "type": "React.ReactNode",
       "title": "children",
-      "required": false
+      "required": true
     }
   ],
   "subComponents": [
@@ -78,16 +78,16 @@
           "title": "checkbox"
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Optional link element rendered next to the Bulk Actions controller.",
+          "type": "<Link />",
           "title": "link",
           "required": false
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Action component that controls the Bulk Actions.",
+          "type": "React.ReactNode",
           "title": "action",
-          "required": false
+          "required": true
         },
         {
           "description": "Lable for the checkbox element.",
@@ -152,10 +152,10 @@
           "title": "checkbox"
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Row content.",
+          "type": "React.ReactNode",
           "title": "children",
-          "required": false
+          "required": true
         }
       ]
     },
@@ -262,10 +262,10 @@
           "title": "checkbox"
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Content of the row.",
+          "type": "React.ReactNode",
           "title": "children",
-          "required": false
+          "required": true
         }
       ]
     }

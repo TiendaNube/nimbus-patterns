@@ -8,6 +8,7 @@ export interface ThumbnailWithActionProperties extends BoxProperties {
   thumbnail: ThumbnailProperties;
   /**
    * Element to be rendered inside the Thumbnail.
+   * @TJS-type React.ReactNode
    */
   children: ReactNode;
   /**

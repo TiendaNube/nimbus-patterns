@@ -9,6 +9,7 @@ export interface NavTabsComponents {
 export interface NavTabsProperties {
   /**
    * Content to be rendered inside the Nav element.
+   * @TJS-type React.ReactNode
    */
   children: ReactNode;
 }

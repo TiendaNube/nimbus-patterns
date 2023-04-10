@@ -10,26 +10,26 @@
       "required": false
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
-      "description": "Action Title (ReactNode).",
+      "description": "Action Title",
+      "type": "React.ReactNode",
       "title": "titleAction",
       "required": false
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
-      "description": "Action Header (ReactNode).",
+      "description": "Action Header",
+      "type": "React.ReactNode",
       "title": "headerAction",
       "required": false
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
-      "description": "Icon Header (ReactNode)",
+      "description": "Icon Header",
+      "type": "React.ReactNode",
       "title": "headerIcon",
       "required": false
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
-      "description": "Body Content (ReactNode).",
+      "description": "Body Content",
+      "type": "React.ReactNode",
       "title": "children",
       "required": false
     },

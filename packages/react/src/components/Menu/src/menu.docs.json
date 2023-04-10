@@ -4,10 +4,10 @@
   "totalProps": 1,
   "props": [
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Content of the menu.",
+      "type": "React.ReactNode",
       "title": "children",
-      "required": false
+      "required": true
     }
   ],
   "subComponents": [
@@ -22,10 +22,10 @@
           "required": false
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Content of the menu section.",
+          "type": "React.ReactNode",
           "title": "children",
-          "required": false
+          "required": true
         }
       ]
     },
@@ -34,10 +34,10 @@
       "totalProps": 1,
       "props": [
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Content of the menu header.",
+          "type": "React.ReactNode",
           "title": "children",
-          "required": false
+          "required": true
         }
       ]
     },
@@ -46,10 +46,10 @@
       "totalProps": 1,
       "props": [
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Content of the menu body.",
+          "type": "React.ReactNode",
           "title": "children",
-          "required": false
+          "required": true
         }
       ]
     },
@@ -71,9 +71,7 @@
         },
         {
           "description": "Function executed when clicking the button.",
-          "type": "object",
-          "additionalProperties": false,
-          "propertyOrder": [],
+          "type": "() => void;",
           "title": "onClick",
           "required": false
         },

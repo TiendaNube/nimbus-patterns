@@ -15,6 +15,7 @@ export interface InteractiveListStructureProperties {
   description?: string;
   /**
    * Custom content for the list item element.
+   * @TJS-type React.ReactNode
    */
   children?: ReactNode;
 }

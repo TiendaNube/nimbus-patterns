@@ -4,14 +4,14 @@
   "totalProps": 2,
   "props": [
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Content for the body of the application.",
+      "type": "React.ReactNode",
       "title": "children",
-      "required": false
+      "required": true
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Optional slot for left sidebar menu.",
+      "type": "React.ReactNode",
       "title": "menu",
       "required": false
     }
@@ -22,14 +22,14 @@
       "totalProps": 2,
       "props": [
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Optional content for the left-hand-side slot.",
+          "type": "React.ReactNode",
           "title": "leftSlot",
           "required": false
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Optional content for the right-hand-side slot.",
+          "type": "React.ReactNode",
           "title": "rightSlot",
           "required": false
         }

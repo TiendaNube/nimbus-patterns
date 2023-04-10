@@ -13,6 +13,7 @@ export interface LayoutProperties
   > {
   /**
    * Content to be rendered inside the layout.
+   * @TJS-type React.ReactNode
    */
   children: ReactNode;
   /**

@@ -4,10 +4,10 @@
   "totalProps": 1,
   "props": [
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Content of the InteractiveList",
+      "type": "React.ReactNode",
       "title": "children",
-      "required": false
+      "required": true
     }
   ],
   "subComponents": [
@@ -34,8 +34,8 @@
           "required": false
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Custom content for the list item element.",
+          "type": "React.ReactNode",
           "title": "children",
           "required": false
         }
@@ -81,8 +81,8 @@
           "required": false
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Custom content for the list item element.",
+          "type": "React.ReactNode",
           "title": "children",
           "required": false
         }
@@ -161,8 +161,8 @@
           "required": false
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Custom content for the list item element.",
+          "type": "React.ReactNode",
           "title": "children",
           "required": false
         }
@@ -228,8 +228,8 @@
           "required": false
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Custom content for the list item element.",
+          "type": "React.ReactNode",
           "title": "children",
           "required": false
         }
@@ -283,8 +283,8 @@
           "required": false
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Custom content for the list item element.",
+          "type": "React.ReactNode",
           "title": "children",
           "required": false
         }

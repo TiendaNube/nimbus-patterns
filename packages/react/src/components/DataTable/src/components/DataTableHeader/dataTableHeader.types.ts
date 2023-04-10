@@ -9,6 +9,7 @@ export interface DataTableHeaderProperties {
   checkbox: CheckboxProperties;
   /**
    * Row content.
+   * @TJS-type React.ReactNode
    */
   children: ReactNode;
 }

@@ -4,10 +4,10 @@
   "totalProps": 1,
   "props": [
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Content of the List component.",
+      "type": "React.ReactNode",
       "title": "children",
-      "required": false
+      "required": true
     }
   ],
   "subComponents": [
@@ -24,10 +24,10 @@
           "required": false
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Content of the row.",
+          "type": "React.ReactNode",
           "title": "children",
-          "required": false
+          "required": true
         },
         {
           "description": "The height property specifies the height of a box's content area.",

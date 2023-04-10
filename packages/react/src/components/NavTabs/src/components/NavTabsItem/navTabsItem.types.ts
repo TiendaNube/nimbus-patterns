@@ -4,6 +4,7 @@ import { BoxProperties } from "@nimbus-ds/components";
 export interface NavTabsItemProperties extends BoxProperties {
   /**
    * Icon element to be rendered inside the button.
+   * @TJS-type React.ReactNode
    */
   icon: ReactNode;
   /**
@@ -16,6 +17,7 @@ export interface NavTabsItemProperties extends BoxProperties {
   badge?: boolean;
   /**
    * Function executed on click.
+   * @TJS-type onClick: () => void;
    */
   onClick: () => void;
 }

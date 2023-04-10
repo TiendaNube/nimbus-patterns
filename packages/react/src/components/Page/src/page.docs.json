@@ -4,10 +4,10 @@
   "totalProps": 2,
   "props": [
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Content to be rendered inside the page body.",
+      "type": "React.ReactNode",
       "title": "children",
-      "required": false
+      "required": true
     },
     {
       "description": "Optional parameter to define a maximum width of the page content.",
@@ -34,14 +34,14 @@
           "required": false
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Button stack that appears on the right-hand side of the title.",
+          "type": "React.ReactNode",
           "title": "buttonStack",
           "required": false
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Optional header content that appears underneath the title and button stack.",
+          "type": "React.ReactNode",
           "title": "children",
           "required": false
         }
@@ -52,10 +52,10 @@
       "totalProps": 1,
       "props": [
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Content of the page body.",
+          "type": "React.ReactNode",
           "title": "children",
-          "required": false
+          "required": true
         }
       ]
     }

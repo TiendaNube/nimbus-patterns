@@ -9,6 +9,7 @@ export interface DataListComponents {
 export interface DataListProperties {
   /**
    * Content of the List component.
+   * @TJS-type React.ReactNode
    */
   children: ReactNode;
 }

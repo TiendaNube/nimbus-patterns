@@ -4,14 +4,14 @@
   "totalProps": 5,
   "props": [
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Optional node that contains an illustration for the component. Will stack vertically on mobile and horizontally on desktop.",
+      "type": "React.ReactNode",
       "title": "illustration",
       "required": false
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Optional icon to display on top of the text.",
+      "type": "React.ReactNode",
       "title": "icon",
       "required": false
     },
@@ -28,8 +28,8 @@
       "required": false
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Optional node to showcase buttons or actions.",
+      "type": "React.ReactNode",
       "title": "actions",
       "required": false
     }

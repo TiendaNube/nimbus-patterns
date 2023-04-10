@@ -11,9 +11,7 @@
     },
     {
       "description": "Function executed when clicking the button.",
-      "type": "object",
-      "additionalProperties": false,
-      "propertyOrder": [],
+      "type": "() => void;",
       "title": "onClick",
       "required": false
     },
@@ -30,8 +28,8 @@
       "required": false
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Inner components displayed on the right of the button component.",
+      "type": "React.ReactNode",
       "title": "children",
       "required": false
     }

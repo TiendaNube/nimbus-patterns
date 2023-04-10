@@ -8,6 +8,7 @@ export interface LayoutSectionProperties
   > {
   /**
    * Content of the section body.
+   * @TJS-type React.ReactNode
    */
   children: ReactNode;
 }

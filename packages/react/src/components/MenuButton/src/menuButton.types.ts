@@ -8,6 +8,7 @@ export interface MenuButtonProperties {
   label: string;
   /**
    * Function executed when clicking the button.
+   * @TJS-type () => void;
    */
   onClick?: () => void;
   /**
@@ -21,6 +22,7 @@ export interface MenuButtonProperties {
   active?: boolean;
   /**
    * Inner components displayed on the right of the button component.
+   * @TJS-type React.ReactNode
    */
   children?: ReactNode;
 }

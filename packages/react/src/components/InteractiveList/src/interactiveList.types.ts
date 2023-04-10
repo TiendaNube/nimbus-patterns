@@ -17,7 +17,10 @@ export interface InteractiveListComponents {
 }
 
 export interface InteractiveListProperties {
-  /** Content of the InteractiveList */
+  /**
+   * Content of the InteractiveList
+   * @TJS-type React.ReactNode
+   */
   children: ReactNode;
 }
 

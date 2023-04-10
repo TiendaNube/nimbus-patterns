@@ -11,10 +11,12 @@ export interface PageHeaderProperties {
   subtitle?: string;
   /**
    * Button stack that appears on the right-hand side of the title.
+   * @TJS-type React.ReactNode
    */
   buttonStack?: ReactNode;
   /**
    * Optional header content that appears underneath the title and button stack.
+   * @TJS-type React.ReactNode
    */
   children?: ReactNode;
 }

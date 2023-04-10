@@ -16,14 +16,14 @@
       "required": true
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Optional content for the body of the Popover.",
+      "type": "React.ReactNode",
       "title": "bodyContent",
       "required": false
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Optional bottom link to dismiss the Popover. If unset, an IconButton with an X will appear on the superior right corner.",
+      "type": "React.ReactNode",
       "title": "dismissLink",
       "required": false
     },

@@ -15,6 +15,7 @@ export interface FormFieldComponents {
 export interface FormFieldProperties {
   /**
    * Optional label for the field component.
+   * @TJS-type React.ReactNode
    */
   label?: ReactNode;
   /**
@@ -38,6 +39,7 @@ export interface FormFieldProperties {
   showHelpText?: boolean;
   /**
    * Content of the field.
+   * @TJS-type React.ReactNode
    */
   children: ReactNode;
 }

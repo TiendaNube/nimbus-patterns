@@ -10,6 +10,7 @@ export interface PageComponents {
 export interface PageProperties {
   /**
    * Content to be rendered inside the page body.
+   * @TJS-type React.ReactNode
    */
   children: ReactNode;
   /**

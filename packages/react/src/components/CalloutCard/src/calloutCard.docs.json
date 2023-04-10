@@ -30,15 +30,13 @@
     },
     {
       "description": "Slot intended to position the Callout Card link correctly.",
-      "type": "Nimbus Link",
+      "type": "<Link />",
       "title": "link",
       "required": false
     },
     {
       "description": "Event fired when clicking the component.",
-      "type": "object",
-      "additionalProperties": false,
-      "propertyOrder": [],
+      "type": "() => void;",
       "title": "onClick",
       "required": false
     }

@@ -5,6 +5,7 @@ export interface InteractiveListRowProperties
   extends Omit<BoxProperties, "padding"> {
   /**
    * Content of the row.
+   * @TJS-type React.ReactNode
    */
   children: ReactNode;
 }

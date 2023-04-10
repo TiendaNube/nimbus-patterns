@@ -7,6 +7,7 @@ export interface MenuSectionProperties {
   title?: string;
   /**
    * Content of the menu section.
+   * @TJS-type React.ReactNode
    */
   children: ReactNode;
 }

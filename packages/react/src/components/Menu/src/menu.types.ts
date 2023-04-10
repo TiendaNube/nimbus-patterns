@@ -13,6 +13,7 @@ export interface MenuComponents {
 export interface MenuProperties {
   /**
    * Content of the menu.
+   * @TJS-type React.ReactNode
    */
   children: ReactNode;
 }

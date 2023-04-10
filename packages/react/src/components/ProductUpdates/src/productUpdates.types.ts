@@ -16,10 +16,12 @@ export interface ProductUpdatesProperties
   text: string;
   /**
    * Optional content for the body of the Popover.
+   * @TJS-type React.ReactNode
    */
   bodyContent?: ReactNode;
   /**
    * Optional bottom link to dismiss the Popover. If unset, an IconButton with an X will appear on the superior right corner.
+   * @TJS-type React.ReactNode
    */
   dismissLink?: ReactNode;
 }

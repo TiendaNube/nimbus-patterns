@@ -13,17 +13,23 @@ export interface SideModalProperties
    */
   title?: string;
   /**
-   * Action Title (ReactNode).
+   * Action Title
+   * @TJS-type React.ReactNode
    */
   titleAction?: ReactNode;
   /**
-   * Action Header (ReactNode).
+   * Action Header
+   * @TJS-type React.ReactNode
    */
   headerAction?: ReactNode;
-  /** Icon Header (ReactNode) */
+  /**
+   * Icon Header
+   * @TJS-type React.ReactNode
+   */
   headerIcon?: ReactNode;
   /**
-   * Body Content (ReactNode).
+   * Body Content
+   * @TJS-type React.ReactNode
    */
   children?: ReactNode;
   /**

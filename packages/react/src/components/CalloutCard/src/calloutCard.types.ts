@@ -21,11 +21,12 @@ export interface CalloutCardProperties {
   subtitle: string;
   /**
    * Slot intended to position the Callout Card link correctly.
-   * @TJS-type Nimbus Link
+   * @TJS-type <Link />
    */
   link?: ReactNode;
   /**
    * Event fired when clicking the component.
+   * @TJS-type () => void;
    */
   onClick?: MouseEventHandler<HTMLElement>;
 }

@@ -19,18 +19,22 @@ export interface DataTableComponents {
 export interface DataTableProperties {
   /**
    * Bulk actions component rendered with a sticky position over the top of the table element.
+   * @TJS-type React.ReactNode
    */
   bulkActions?: ReactNode;
   /**
    * Table header content.
+   * @TJS-type React.ReactNode
    */
   header: ReactNode;
   /**
    * Optional table footer content.
+   * @TJS-type React.ReactNode
    */
   footer?: ReactNode;
   /**
    * Table body content.
+   * @TJS-type React.ReactNode
    */
   children: ReactNode;
 }

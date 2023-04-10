@@ -4,10 +4,10 @@
   "totalProps": 78,
   "props": [
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Content to be rendered inside the layout.",
+      "type": "React.ReactNode",
       "title": "children",
-      "required": false
+      "required": true
     },
     {
       "description": "Number of columns to be rendered for the children.",
@@ -11097,10 +11097,10 @@
       "totalProps": 77,
       "props": [
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Content of the section body.",
+          "type": "React.ReactNode",
           "title": "children",
-          "required": false
+          "required": true
         },
         {
           "description": "The height property specifies the height of a box's content area.",

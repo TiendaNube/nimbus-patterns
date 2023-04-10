@@ -4,8 +4,8 @@
   "totalProps": 6,
   "props": [
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Optional label for the field component.",
+      "type": "React.ReactNode",
       "title": "label",
       "required": false
     },
@@ -37,10 +37,10 @@
       "required": false
     },
     {
-      "$ref": "#/definitions/React.ReactNode",
       "description": "Content of the field.",
+      "type": "React.ReactNode",
       "title": "children",
-      "required": false
+      "required": true
     }
   ],
   "subComponents": [
@@ -57,8 +57,8 @@
           "required": false
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Optional label for the field component.",
+          "type": "React.ReactNode",
           "title": "label",
           "required": false
         },
@@ -114,8 +114,8 @@
           "required": false
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Optional label for the field component.",
+          "type": "React.ReactNode",
           "title": "label",
           "required": false
         },
@@ -166,8 +166,8 @@
           "required": false
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
           "description": "Optional label for the field component.",
+          "type": "React.ReactNode",
           "title": "label",
           "required": false
         },
