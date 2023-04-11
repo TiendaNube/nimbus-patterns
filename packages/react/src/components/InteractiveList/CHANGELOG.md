@@ -2,6 +2,20 @@
 
 Interactive List allows users to build lists with multiple options that have some kind of interaction. It can be, and is not limited to, checkboxes, radios, toggles and buttons. This component is built on top of the DataList component that allows the creation of scrollable lists with multiple entries of different kinds of data.
 
+## 2023-04-11 `1.2.0`
+
+#### 🎉 New features
+
+- Added new `InteractiveList.StructureSkeleton` subcomponent. ([#38](https://github.com/TiendaNube/nimbus-patterns/pull/38) by [@juniorconquista](https://github.com/juniorconquista))
+- Added new `InteractiveList.ButtonItemSkeleton` subcomponent. ([#38](https://github.com/TiendaNube/nimbus-patterns/pull/38) by [@juniorconquista](https://github.com/juniorconquista))
+- Added new `InteractiveList.CheckboxItemSkeleton` subcomponent. ([#38](https://github.com/TiendaNube/nimbus-patterns/pull/38) by [@juniorconquista](https://github.com/juniorconquista))
+- Added new `InteractiveList.RadioItemSkeleton` subcomponent. ([#38](https://github.com/TiendaNube/nimbus-patterns/pull/38) by [@juniorconquista](https://github.com/juniorconquista))
+- Added new `InteractiveList.ToggleItemSkeleton` subcomponent. ([#38](https://github.com/TiendaNube/nimbus-patterns/pull/38) by [@juniorconquista](https://github.com/juniorconquista))
+
+#### 🐛 Bug fixes
+
+- Fixed bug using Crypto library when generating unique id's for `InteractiveListItem`. ([#38](https://github.com/TiendaNube/nimbus-patterns/pull/38) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-04-04 `1.1.0`
 
 #### 📚 3rd party library updates

@@ -93,7 +93,7 @@
       "totalProps": 5,
       "props": [
         {
-          "description": "Checkbox props inherited from Nimbus components",
+          "description": "Checkbox props inherited from Nimbus components.",
           "type": "object",
           "properties": {
             "name": {
@@ -237,6 +237,181 @@
     },
     {
       "name": "InteractiveList.ToggleItem",
+      "totalProps": 5,
+      "props": [
+        {
+          "description": "Toggle props inherited from Nimbus components.",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "The name of the input element.",
+              "type": "string",
+              "title": "name"
+            },
+            "active": {
+              "description": "Sets toggle state to activated or deactivated.",
+              "type": "boolean",
+              "title": "active"
+            },
+            "label": {
+              "description": "Text to be rendered inside the component",
+              "type": "string",
+              "title": "label"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": ["name", "active", "label"],
+          "required": true,
+          "title": "toggle"
+        },
+        {
+          "description": "Title of the list item element. Also used to generate the ID for the interactive element.",
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "description": "Determines if the title is visible or not.",
+          "type": "boolean",
+          "title": "showTitle",
+          "required": false
+        },
+        {
+          "description": "Description of the list item element.",
+          "type": "string",
+          "title": "description",
+          "required": false
+        },
+        {
+          "description": "Custom content for the list item element.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "InteractiveList.StructureSkeleton",
+      "totalProps": 4,
+      "props": [
+        {
+          "description": "Title of the list item element. Also used to generate the ID for the interactive element.",
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "description": "Determines if the title is visible or not.",
+          "type": "boolean",
+          "title": "showTitle",
+          "required": false
+        },
+        {
+          "description": "Description of the list item element.",
+          "type": "string",
+          "title": "description",
+          "required": false
+        },
+        {
+          "description": "Custom content for the list item element.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "InteractiveList.ButtonItemSkeleton",
+      "totalProps": 4,
+      "props": [
+        {
+          "description": "Title of the list item element. Also used to generate the ID for the interactive element.",
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "description": "Determines if the title is visible or not.",
+          "type": "boolean",
+          "title": "showTitle",
+          "required": false
+        },
+        {
+          "description": "Description of the list item element.",
+          "type": "string",
+          "title": "description",
+          "required": false
+        },
+        {
+          "description": "Custom content for the list item element.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "InteractiveList.CheckboxItemSkeleton",
+      "totalProps": 4,
+      "props": [
+        {
+          "description": "Title of the list item element. Also used to generate the ID for the interactive element.",
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "description": "Determines if the title is visible or not.",
+          "type": "boolean",
+          "title": "showTitle",
+          "required": false
+        },
+        {
+          "description": "Description of the list item element.",
+          "type": "string",
+          "title": "description",
+          "required": false
+        },
+        {
+          "description": "Custom content for the list item element.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "InteractiveList.RadioItemSkeleton",
+      "totalProps": 4,
+      "props": [
+        {
+          "description": "Title of the list item element. Also used to generate the ID for the interactive element.",
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "description": "Determines if the title is visible or not.",
+          "type": "boolean",
+          "title": "showTitle",
+          "required": false
+        },
+        {
+          "description": "Description of the list item element.",
+          "type": "string",
+          "title": "description",
+          "required": false
+        },
+        {
+          "description": "Custom content for the list item element.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "InteractiveList.ToggleItemSkeleton",
       "totalProps": 5,
       "props": [
         {

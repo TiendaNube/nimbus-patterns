@@ -4,7 +4,9 @@ import { InteractiveListStructureProperties } from "../InteractiveListStructure/
 
 export interface InteractiveListButtonItemProperties
   extends InteractiveListStructureProperties {
-  /** Button props inherited from Nimbus components */
+  /**
+   * Button props inherited from Nimbus components
+   */
   iconButton: Omit<
     IconButtonProperties,
     "backgroundColor" | "borderColor" | "size" | "source"
