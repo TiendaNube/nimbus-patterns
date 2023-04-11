@@ -1,6 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { CheckboxProperties } from "@nimbus-ds/components";
+import { CheckboxProps, CheckboxProperties } from "@nimbus-ds/components";
 
 export interface DataTableHeaderProperties {
   /**
@@ -14,5 +14,6 @@ export interface DataTableHeaderProperties {
   children: ReactNode;
 }
 
-export type DataTableHeaderProps = DataTableHeaderProperties &
-  HTMLAttributes<HTMLElement>;
+export type DataTableHeaderProps = DataTableHeaderProperties & {
+  checkbox: CheckboxProps;
+} & HTMLAttributes<HTMLElement>;
