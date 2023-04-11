@@ -2,6 +2,20 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2022-04-11 `1.1.0`
+
+#### 🎉 New features
+
+- Added new subcomponent `InteractiveList.StructureSkeleton` in component `InteractiveList`. ([#38](https://github.com/TiendaNube/nimbus-patterns/pull/38) by [@juniorconquista](https://github.com/juniorconquista))
+- Added new subcomponent `InteractiveList.ButtonItemSkeleton` in component `InteractiveList`. ([#38](https://github.com/TiendaNube/nimbus-patterns/pull/38) by [@juniorconquista](https://github.com/juniorconquista))
+- Added new subcomponent `InteractiveList.CheckboxItemSkeleton` in component `InteractiveList`. ([#38](https://github.com/TiendaNube/nimbus-patterns/pull/38) by [@juniorconquista](https://github.com/juniorconquista))
+- Added new subcomponent `InteractiveList.RadioItemSkeleton` in component `InteractiveList`. ([#38](https://github.com/TiendaNube/nimbus-patterns/pull/38) by [@juniorconquista](https://github.com/juniorconquista))
+- Added new subcomponent `InteractiveList.ToggleItemSkeleton` in component `InteractiveList`. ([#38](https://github.com/TiendaNube/nimbus-patterns/pull/38) by [@juniorconquista](https://github.com/juniorconquista))
+
+#### 🐛 Bug fixes
+
+- Fixed bug using Crypto library when generating unique id's for `InteractiveListItem`. ([#38](https://github.com/TiendaNube/nimbus-patterns/pull/38) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2022-04-06 `1.0.0`
 
 #### 🎉 New features

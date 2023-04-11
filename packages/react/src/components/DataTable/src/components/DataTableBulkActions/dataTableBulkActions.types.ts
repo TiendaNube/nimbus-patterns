@@ -1,6 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { CheckboxProperties } from "@nimbus-ds/components";
+import { CheckboxProperties, CheckboxProps } from "@nimbus-ds/components";
 
 export interface DataTableBulkActionsProperties {
   /**
@@ -23,5 +23,6 @@ export interface DataTableBulkActionsProperties {
   label: string;
 }
 
-export type DataTableBulkActionsProps = DataTableBulkActionsProperties &
-  Omit<HTMLAttributes<HTMLElement>, "color">;
+export type DataTableBulkActionsProps = DataTableBulkActionsProperties & {
+  checkbox: Omit<CheckboxProps, "label" | "id">;
+} & Omit<HTMLAttributes<HTMLElement>, "color">;

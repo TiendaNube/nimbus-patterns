@@ -1,0 +1,9 @@
+releases:
+  "@nimbus-ds/interactive-list": minor
+  "@nimbus-ds/patterns": minor
+
+declined:
+  - nimbus-patterns
+  - "@nimbus-ds/patterns-webpack"
+  - "@nimbus-ds/data-table"
+  - "@nimbus-ds/thumbnail-with-action"

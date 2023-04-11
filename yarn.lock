@@ -2970,16 +2970,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/components@npm:^4.1.0-rc.1":
-  version: 4.1.0-rc.1
-  resolution: "@nimbus-ds/components@npm:4.1.0-rc.1"
+"@nimbus-ds/components@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@nimbus-ds/components@npm:4.1.0"
   dependencies:
     "@floating-ui/react-dom-interactions": ^0.10.1
     "@nimbus-ds/icons": ^1.1.0
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 974b156a362b05f90257af499e6eab3684d0be0fe991440779d3ae6319b314f5f0e0c36558e8d4187aef4f37508969e78a5e5668516d65c7ac2f2b4c96de1a37
+  checksum: 3afffaa7557d8e7b70e1825d4423a5fd08e30ce62a2a80b01ebb9c94acfdcceb28b1590335a4fa7087418e29d53012acc695938ce0928b552166ecc3cd08b040
   languageName: node
   linkType: hard
 
@@ -3122,7 +3122,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/patterns-webpack@workspace:packages/core/webpack"
   dependencies:
-    "@nimbus-ds/webpack": ^1.3.0-rc.3
+    "@nimbus-ds/webpack": ^1.3.0
     "@types/webpack": ^5.28.0
     "@vanilla-extract/webpack-plugin": ^2.2.0
     css-minimizer-webpack-plugin: ^4.2.2
@@ -3162,13 +3162,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/scripts@npm:1.2.0-rc.2":
-  version: 1.2.0-rc.2
-  resolution: "@nimbus-ds/scripts@npm:1.2.0-rc.2"
+"@nimbus-ds/scripts@npm:1.2.1":
+  version: 1.2.1
+  resolution: "@nimbus-ds/scripts@npm:1.2.1"
   dependencies:
     change-case: ^4.1.2
     typescript-json-schema: ^0.55.0
-  checksum: dff751c27c8e58ca933e2ba457529eb1577a83a63488b193920cd96e42bb5a3c777f71ecae4b222727b993403661ca1328591dddcb2c87d5cfdc4d04d3a64892
+  checksum: 842030890c9c12f115a4d8f2a61bbdc277d7380ccc0ca41d773b37ab90363dfb61b1de5ed5909f3e67ded97a47c1a895870401041fc7fbd054fbb39e8947cb3a
   languageName: node
   linkType: hard
 
@@ -3217,10 +3217,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/webpack@npm:^1.3.0-rc.3":
-  version: 1.3.0-rc.3
-  resolution: "@nimbus-ds/webpack@npm:1.3.0-rc.3"
-  checksum: 651baafdb1c49f0931f5af1f688cfca488d42acaf8c580f3356e3f1d0a24cc9a5040e3efc9877d32bf01762238a463336bda25b90894d3fc84a7606549f78569
+"@nimbus-ds/webpack@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "@nimbus-ds/webpack@npm:1.3.0"
+  checksum: 5516932cc8ebcc4a9665685f14f747fd72802e62473266d88ecf72014be0edbfaa37391ec69fcbb2b81aacaf5c4894398e5612589a3b93649e71d04d4b3435a5
   languageName: node
   linkType: hard
 
@@ -15260,8 +15260,8 @@ __metadata:
     "@commitlint/config-conventional": ^17.2.0
     "@jest/types": ^29.2.1
     "@mdx-js/react": ^1.6.22
-    "@nimbus-ds/components": ^4.1.0-rc.1
-    "@nimbus-ds/scripts": 1.2.0-rc.2
+    "@nimbus-ds/components": ^4.1.0
+    "@nimbus-ds/scripts": 1.2.1
     "@nimbus-ds/styles": ^8.0.0
     "@nimbus-ds/tokens": ^7.0.0
     "@storybook/addon-a11y": ^6.5.13

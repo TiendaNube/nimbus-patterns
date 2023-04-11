@@ -4,7 +4,9 @@ import { InteractiveListStructureProperties } from "../InteractiveListStructure/
 
 export interface InteractiveListCheckboxItemProperties
   extends InteractiveListStructureProperties {
-  /** Checkbox props inherited from Nimbus components */
+  /**
+   * Checkbox props inherited from Nimbus components.
+   */
   checkbox: CheckboxProperties;
 }
 

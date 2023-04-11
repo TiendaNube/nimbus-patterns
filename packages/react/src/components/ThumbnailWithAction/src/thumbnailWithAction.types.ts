@@ -1,5 +1,9 @@
 import { HTMLAttributes, ReactNode } from "react";
-import { BoxProperties, ThumbnailProperties } from "@nimbus-ds/components";
+import {
+  BoxProperties,
+  ThumbnailProperties,
+  ThumbnailProps,
+} from "@nimbus-ds/components";
 
 export interface ThumbnailWithActionProperties extends BoxProperties {
   /**
@@ -17,5 +21,6 @@ export interface ThumbnailWithActionProperties extends BoxProperties {
   contentPosition?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
 }
 
-export type ThumbnailWithActionProps = ThumbnailWithActionProperties &
-  Omit<HTMLAttributes<HTMLElement>, "color">;
+export type ThumbnailWithActionProps = ThumbnailWithActionProperties & {
+  thumbnail: ThumbnailProps;
+} & Omit<HTMLAttributes<HTMLElement>, "color">;

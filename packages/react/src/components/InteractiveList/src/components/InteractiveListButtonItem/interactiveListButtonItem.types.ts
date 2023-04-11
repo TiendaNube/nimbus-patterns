@@ -1,10 +1,12 @@
 import { HTMLAttributes } from "react";
-import { IconButtonProperties } from "@nimbus-ds/components";
+import { IconButtonProperties, IconButtonProps } from "@nimbus-ds/components";
 import { InteractiveListStructureProperties } from "../InteractiveListStructure/interactiveListStructure.types";
 
 export interface InteractiveListButtonItemProperties
   extends InteractiveListStructureProperties {
-  /** Button props inherited from Nimbus components */
+  /**
+   * Button props inherited from Nimbus components
+   */
   iconButton: Omit<
     IconButtonProperties,
     "backgroundColor" | "borderColor" | "size" | "source"
@@ -12,5 +14,9 @@ export interface InteractiveListButtonItemProperties
 }
 
 export type InteractiveListButtonItemProps =
-  InteractiveListButtonItemProperties &
-    Omit<HTMLAttributes<HTMLElement>, "color">;
+  InteractiveListButtonItemProperties & {
+    iconButton: Omit<
+      IconButtonProps,
+      "backgroundColor" | "borderColor" | "size" | "source"
+    >;
+  } & Omit<HTMLAttributes<HTMLElement>, "color">;
