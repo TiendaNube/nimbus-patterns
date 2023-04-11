@@ -3122,7 +3122,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/patterns-webpack@workspace:packages/core/webpack"
   dependencies:
-    "@nimbus-ds/webpack": ^1.3.0-rc.3
+    "@nimbus-ds/webpack": ^1.3.0
     "@types/webpack": ^5.28.0
     "@vanilla-extract/webpack-plugin": ^2.2.0
     css-minimizer-webpack-plugin: ^4.2.2
@@ -3217,10 +3217,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/webpack@npm:^1.3.0-rc.3":
-  version: 1.3.0-rc.3
-  resolution: "@nimbus-ds/webpack@npm:1.3.0-rc.3"
-  checksum: 651baafdb1c49f0931f5af1f688cfca488d42acaf8c580f3356e3f1d0a24cc9a5040e3efc9877d32bf01762238a463336bda25b90894d3fc84a7606549f78569
+"@nimbus-ds/webpack@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "@nimbus-ds/webpack@npm:1.3.0"
+  checksum: 5516932cc8ebcc4a9665685f14f747fd72802e62473266d88ecf72014be0edbfaa37391ec69fcbb2b81aacaf5c4894398e5612589a3b93649e71d04d4b3435a5
   languageName: node
   linkType: hard
 
