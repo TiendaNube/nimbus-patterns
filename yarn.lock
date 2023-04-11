@@ -2970,16 +2970,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/components@npm:^4.1.0-rc.1":
-  version: 4.1.0-rc.1
-  resolution: "@nimbus-ds/components@npm:4.1.0-rc.1"
+"@nimbus-ds/components@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@nimbus-ds/components@npm:4.1.0"
   dependencies:
     "@floating-ui/react-dom-interactions": ^0.10.1
     "@nimbus-ds/icons": ^1.1.0
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 974b156a362b05f90257af499e6eab3684d0be0fe991440779d3ae6319b314f5f0e0c36558e8d4187aef4f37508969e78a5e5668516d65c7ac2f2b4c96de1a37
+  checksum: 3afffaa7557d8e7b70e1825d4423a5fd08e30ce62a2a80b01ebb9c94acfdcceb28b1590335a4fa7087418e29d53012acc695938ce0928b552166ecc3cd08b040
   languageName: node
   linkType: hard
 
@@ -15260,7 +15260,7 @@ __metadata:
     "@commitlint/config-conventional": ^17.2.0
     "@jest/types": ^29.2.1
     "@mdx-js/react": ^1.6.22
-    "@nimbus-ds/components": ^4.1.0-rc.1
+    "@nimbus-ds/components": ^4.1.0
     "@nimbus-ds/scripts": 1.2.0-rc.2
     "@nimbus-ds/styles": ^8.0.0
     "@nimbus-ds/tokens": ^7.0.0
