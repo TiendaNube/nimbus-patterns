@@ -71,30 +71,20 @@ const SampleMenu = (
         <Menu.Button startIcon={StatsIcon} label="Estadísticas" />
       </Menu.Section>
       <Menu.Section title="Administrar">
-        <Box backgroundColor="primary-surface" borderRadius=".5rem">
-          <Menu.Button
-            id="control-1"
-            aria-expanded
-            aria-controls="content-1"
-            startIcon={CashIcon}
-            label="Ventas"
-          >
-            <Badge appearance="primary" count="1299" />
-          </Menu.Button>
-          <Box
-            id="content-1"
-            aria-hidden={false}
-            height="auto"
-            overflow="hidden"
-            pl="6"
-            pt="1"
-            pb="1"
-            pr="1"
-          >
-            <Menu.Button label="Lista de ventas" active />
-            <Menu.Button label="Exportar lista" />
-          </Box>
-        </Box>
+        <Menu.ButtonAccordion
+          controlled
+          contentId="content-1"
+          menuButton={{
+            id: "control-1",
+            startIcon: CashIcon,
+            label: "Ventas",
+            children: <Badge appearance="primary" count="1299" />,
+            "aria-controls": "content-1",
+          }}
+        >
+          <Menu.Button label="Lista de ventas" active />
+          <Menu.Button label="Exportar lista" />
+        </Menu.ButtonAccordion>
         <Menu.Button startIcon={TagIcon} label="Productos" />
         <Menu.Button startIcon={UserIcon} label="Clientes">
           <Tag appearance="primary">¡Nuevo!</Tag>

@@ -2,6 +2,13 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2023-04-12 `1.2.0`
+
+#### 🎉 New features
+
+- Added `Menu.ButtonAccordion` subcomponent of `Menu` component. ([#39](https://github.com/TiendaNube/nimbus-patterns/pull/39) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `MenuButton.Accordion` subcomponent of `MenuButton` component. ([#39](https://github.com/TiendaNube/nimbus-patterns/pull/39) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2022-04-11 `1.1.0`
 
 #### 🎉 New features
