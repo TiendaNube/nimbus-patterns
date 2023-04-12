@@ -1,5 +1,10 @@
 import { ButtonHTMLAttributes, ReactNode, FC } from "react";
 import { IconProps } from "@nimbus-ds/icons";
+import { MenuButtonAccordion } from "./components";
+
+export interface MenuButtonComponents {
+  Accordion: typeof MenuButtonAccordion;
+}
 
 export interface MenuButtonProperties {
   /**
