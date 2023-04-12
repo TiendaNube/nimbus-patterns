@@ -16,7 +16,7 @@ export interface MenuButtonAccordionProperties {
   /**
    * Required ID used to maintain correct component accessibility, it will be passed on to MenuButtonAccordion's children.
    */
-  contentId: string;
+  contentid: string;
   /**
    * Changes the component usage so that control of open and close is controlled from outside the component.
    * @default false

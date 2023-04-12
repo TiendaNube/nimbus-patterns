@@ -48,7 +48,7 @@ const Template: ComponentStory<typeof MenuButton> = (args) => {
 
 const AccordionTemplate: ComponentStory<typeof MenuButton> = (args) => (
   <MenuButton.Accordion
-    contentId="content-1"
+    contentid="content-1"
     menuButton={{
       ...args,
       id: "control-1",

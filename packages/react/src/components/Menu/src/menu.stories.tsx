@@ -73,7 +73,7 @@ const SampleMenu = (
       <Menu.Section title="Administrar">
         <Menu.ButtonAccordion
           controlled
-          contentId="content-1"
+          contentid="content-1"
           menuButton={{
             id: "control-1",
             startIcon: CashIcon,

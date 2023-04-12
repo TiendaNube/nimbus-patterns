@@ -17,7 +17,7 @@ const MenuButtonAccordion: React.FC<MenuButtonAccordionPros> = ({
   return (
     <Box
       {...rest}
-      backgroundColor={open ? "primary-surface" : "neutral-background"}
+      backgroundColor={open ? "primary-surface" : "transparent"}
       borderRadius=".5rem"
     >
       <MenuButton
