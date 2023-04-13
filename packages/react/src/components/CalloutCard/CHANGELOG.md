@@ -2,6 +2,15 @@
 
 This component is used to provide the user with useful information, tips, tutorials or shortcuts to other parts of the product. It is a visual component specially designed to be used in contexts such as integration, tutorials or dashboards, where we need to show different relevant information in the same space.
 
+## 2023-04-17 `1.5.1`
+
+### 🐛 Bug fixes
+
+- Fixed a bug where the icon would incorrectly stretch and warp when the text was too long. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+
+### 💡 Others
+
+- Added `stressed` story to stories documentation. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
 ## 2023-04-04 `1.5.0`
 
 #### 📚 3rd party library updates
