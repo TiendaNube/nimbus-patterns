@@ -9,7 +9,7 @@ import {
   ChevronDownIcon,
 } from "@nimbus-ds/icons";
 
-import { Table, Tag, Box, Chip, IconButton } from "@nimbus-ds/components";
+import { Tag, Box, Chip, IconButton } from "@nimbus-ds/components";
 
 import { DataTable } from "./DataTable";
 
@@ -26,6 +26,7 @@ export default {
     "DataTable.Footer": DataTable.Footer,
     "DataTable.Header": DataTable.Header,
     "DataTable.Row": DataTable.Row,
+    "DataTable.Cell": DataTable.Cell,
   },
   argTypes: {
     bulkActions: { control: { disable: true } },
@@ -136,7 +137,7 @@ const Template: ComponentStory<typeof DataTable> = (args) => {
         indeterminate: headerIndeterminateStatus,
       }}
     >
-      <Table.Cell width="120px">
+      <DataTable.Cell width="120px">
         <Box display="flex" gap="2" alignItems="center">
           Order no.
           <IconButton
@@ -151,11 +152,11 @@ const Template: ComponentStory<typeof DataTable> = (args) => {
             onClick={() => handleSort("id")}
           />
         </Box>
-      </Table.Cell>
-      <Table.Cell width="auto">Client name</Table.Cell>
-      <Table.Cell width="120px">Total</Table.Cell>
-      <Table.Cell width="120px">Qty. of products</Table.Cell>
-      <Table.Cell width="120px">Order status</Table.Cell>
+      </DataTable.Cell>
+      <DataTable.Cell width="auto">Client name</DataTable.Cell>
+      <DataTable.Cell width="120px">Total</DataTable.Cell>
+      <DataTable.Cell width="120px">Qty. of products</DataTable.Cell>
+      <DataTable.Cell width="120px">Order status</DataTable.Cell>
     </DataTable.Header>
   );
 
@@ -214,7 +215,6 @@ const Template: ComponentStory<typeof DataTable> = (args) => {
         return (
           <DataTable.Row
             key={id}
-            onClick={() => handleRowClick(id)}
             backgroundColor={
               checkedRows.includes(id)
                 ? {
@@ -232,16 +232,16 @@ const Template: ComponentStory<typeof DataTable> = (args) => {
               onClick: () => handleRowClick(id),
             }}
           >
-            <Table.Cell>#{row.id}</Table.Cell>
-            <Table.Cell>{row.clientName}</Table.Cell>
-            <Table.Cell>{row.total}</Table.Cell>
-            <Table.Cell>{row.qty}</Table.Cell>
-            <Table.Cell>
+            <DataTable.Cell>#{row.id}</DataTable.Cell>
+            <DataTable.Cell>{row.clientName}</DataTable.Cell>
+            <DataTable.Cell>{row.total}</DataTable.Cell>
+            <DataTable.Cell>{row.qty}</DataTable.Cell>
+            <DataTable.Cell>
               <Tag appearance={statusAppearance}>
                 {statusIcon}
                 {statusMsg}
               </Tag>
-            </Table.Cell>
+            </DataTable.Cell>
           </DataTable.Row>
         );
       })}

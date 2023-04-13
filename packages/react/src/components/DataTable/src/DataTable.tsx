@@ -7,6 +7,7 @@ import {
   DataTableFooter,
   DataTableHeader,
   DataTableRow,
+  DataTableCell,
 } from "./components";
 
 import { DataTableProps, DataTableComponents } from "./dataTable.types";
@@ -46,8 +47,10 @@ DataTable.BulkActions = DataTableBulkActions;
 DataTable.Header = DataTableHeader;
 DataTable.Footer = DataTableFooter;
 DataTable.Row = DataTableRow;
+DataTable.Cell = DataTableCell;
 
 DataTable.BulkActions.displayName = "DataTable.BulkActions";
 DataTable.Header.displayName = "DataTable.Header";
 DataTable.Footer.displayName = "DataTable.Footer";
 DataTable.Row.displayName = "DataTable.Row";
+DataTable.Cell.displayName = "DataTable.Cell";

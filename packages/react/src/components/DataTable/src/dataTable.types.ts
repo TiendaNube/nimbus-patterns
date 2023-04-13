@@ -7,6 +7,7 @@ import {
   DataTableHeader,
   DataTableFooter,
   DataTableRow,
+  DataTableCell,
 } from "./components";
 
 export interface DataTableComponents {
@@ -14,6 +15,7 @@ export interface DataTableComponents {
   Header: typeof DataTableHeader;
   Footer: typeof DataTableFooter;
   Row: typeof DataTableRow;
+  Cell: typeof DataTableCell;
 }
 
 export interface DataTableProperties {
