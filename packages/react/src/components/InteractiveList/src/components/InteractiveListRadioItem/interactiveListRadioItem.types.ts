@@ -1,6 +1,7 @@
 import { HTMLAttributes } from "react";
 import { RadioProperties } from "@nimbus-ds/components";
 import { InteractiveListStructureProperties } from "../InteractiveListStructure/interactiveListStructure.types";
+import { InteractiveListRowProps } from "../InteractiveListRow/interactiveListRow.types";
 
 export interface InteractiveListRadioItemProperties
   extends InteractiveListStructureProperties {
@@ -11,4 +12,5 @@ export interface InteractiveListRadioItemProperties
 }
 
 export type InteractiveListRadioItemProps = InteractiveListRadioItemProperties &
-  Omit<HTMLAttributes<HTMLElement>, "color">;
+  Omit<HTMLAttributes<HTMLElement>, "color">&
+  Pick<InteractiveListRowProps, "topDivider">;

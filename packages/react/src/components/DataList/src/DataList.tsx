@@ -10,12 +10,13 @@ const DataList: React.FC<DataListProps> & DataListComponents = ({
   className: _className,
   style: _style,
   children,
+  bottomDivider = true,
   ...rest
 }: DataListProps) => (
   <Box
     role="list"
     borderStyle="solid"
-    borderWidth="0 0 1px 0"
+    borderWidth={bottomDivider ? "0 0 1px 0" : "0"}
     borderColor="neutral-surfaceHighlight"
     backgroundColor="neutral-background"
     display="flex"

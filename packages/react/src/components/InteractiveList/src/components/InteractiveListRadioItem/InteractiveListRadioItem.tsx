@@ -22,6 +22,7 @@ const InteractiveListRadioItem: React.FC<InteractiveListRadioItemProps> = ({
       // @ts-ignore
       as="label"
       htmlFor={itemID}
+      topDivider={rest.topDivider}
     >
       <Radio id={itemID} {...radio} />
       <InteractiveListStructure {...rest} />

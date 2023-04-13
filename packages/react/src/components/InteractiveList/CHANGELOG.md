@@ -2,6 +2,16 @@
 
 Interactive List allows users to build lists with multiple options that have some kind of interaction. It can be, and is not limited to, checkboxes, radios, toggles and buttons. This component is built on top of the DataList component that allows the creation of scrollable lists with multiple entries of different kinds of data.
 
+## 2023-04-17 `1.2.1`
+
+### 🎉 New features
+
+- Extend `DataList` properties inside `InteractiveList` component API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+- Extend `topDivider` property from `DataList.Row` subcomponent inside `InteractiveList.CheckboxItem` subcomponent API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+- Extend `topDivider` property from `DataList.Row` subcomponent inside `InteractiveList.RadioItem` subcomponent API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+- Extend `topDivider` property from `DataList.Row` subcomponent inside `InteractiveList.ToggleItem` subcomponent API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+- Extend `topDivider` property from `DataList.Row` subcomponent inside `InteractiveList.ButtonItem` subcomponent API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-04-11 `1.2.0`
 
 #### 🎉 New features

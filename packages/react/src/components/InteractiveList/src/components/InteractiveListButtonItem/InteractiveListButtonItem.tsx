@@ -23,6 +23,7 @@ const InteractiveListButtonItem: React.FC<InteractiveListButtonItemProps> = ({
       // @ts-ignore
       as="label"
       htmlFor={itemID}
+      topDivider={rest.topDivider}
     >
       <InteractiveListStructure {...rest} />
       <IconButton
