@@ -1,0 +1,13 @@
+releases:
+  "@nimbus-ds/app-shell": patch
+  "@nimbus-ds/callout-card": patch
+  "@nimbus-ds/data-list": patch
+  "@nimbus-ds/data-table": patch
+  "@nimbus-ds/help-link": major
+  "@nimbus-ds/interactive-list": patch
+  "@nimbus-ds/nav-tabs": patch
+  "@nimbus-ds/page": patch
+  "@nimbus-ds/patterns": patch
+
+declined:
+  - nimbus-patterns
