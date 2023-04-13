@@ -7,6 +7,7 @@ DataTable is a highly versatile component used to organize large quantities of t
 ### 🎉 New features
 
 - Added new `DataTable.Cell` subcomponent. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+- Added `children` property to `DataTable.Cell` subcomponent API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
 
 ## 2023-04-04 `1.1.0`
 
