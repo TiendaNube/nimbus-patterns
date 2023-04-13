@@ -2,6 +2,16 @@
 
 The AppShell component is the main outer frame of an application. It provides the basic architecture to build an application inside of our admin.
 
+## 2023-04-13 `1.2.1`
+
+### 💡 Others
+
+- Extend `Box` properties inside `AppShell.Header` subcomponent API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+
+### 🐛 Bug fixes
+
+- Fixed a bug on `AppShell.Header` subcomponent where content on `rightSlot` would fall off to the left when `leftSlot` property was empty. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-04-04 `1.2.0`
 
 #### 📚 3rd party library updates

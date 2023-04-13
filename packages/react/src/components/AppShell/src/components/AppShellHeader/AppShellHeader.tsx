@@ -16,7 +16,7 @@ const AppShellHeader: React.FC<AppShellHeaderProps> = ({
     paddingX="2"
     paddingY="4"
     display="flex"
-    justifyContent="space-between"
+    justifyContent={leftSlot ? "space-between" : "flex-end"}
     gap="2"
   >
     {leftSlot}
