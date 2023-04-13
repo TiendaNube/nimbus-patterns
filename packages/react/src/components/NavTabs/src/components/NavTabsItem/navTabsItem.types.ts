@@ -20,6 +20,10 @@ export interface NavTabsItemProperties extends BoxProperties {
    * @TJS-type onClick: () => void;
    */
   onClick: () => void;
+  /**
+   * Text label used for accessibility.
+   */
+  ariaLabel: string;
 }
 
 export type NavTabsItemProps = NavTabsItemProperties &

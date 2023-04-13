@@ -31,14 +31,24 @@ const Template: ComponentStory<typeof NavTabs> = (args) => {
         active
         icon={<HomeIcon size="medium" />}
         onClick={handleClick}
+        ariaLabel="Home"
       />
       <NavTabs.Item
         badge
         icon={<MoneyIcon size="medium" />}
         onClick={handleClick}
+        ariaLabel="Orders"
       />
-      <NavTabs.Item icon={<TagIcon size="medium" />} onClick={handleClick} />
-      <NavTabs.Item icon={<MenuIcon size="medium" />} onClick={handleClick} />
+      <NavTabs.Item
+        icon={<TagIcon size="medium" />}
+        onClick={handleClick}
+        ariaLabel="Products"
+      />
+      <NavTabs.Item
+        icon={<MenuIcon size="medium" />}
+        onClick={handleClick}
+        ariaLabel="Menu"
+      />
     </NavTabs>
   );
 };
