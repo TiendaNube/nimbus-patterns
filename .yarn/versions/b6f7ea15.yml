@@ -11,3 +11,11 @@ releases:
 
 declined:
   - nimbus-patterns
+  - "@nimbus-ds/empty-message"
+  - "@nimbus-ds/formfield"
+  - "@nimbus-ds/layout"
+  - "@nimbus-ds/menu"
+  - "@nimbus-ds/menubutton"
+  - "@nimbus-ds/productupdates"
+  - "@nimbus-ds/sidemodal"
+  - "@nimbus-ds/thumbnail-with-action"
