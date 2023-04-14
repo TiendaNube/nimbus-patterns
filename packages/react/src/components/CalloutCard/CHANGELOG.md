@@ -11,6 +11,7 @@ This component is used to provide the user with useful information, tips, tutori
 ### 💡 Others
 
 - Added `stressed` story to stories documentation. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-04-04 `1.5.0`
 
 #### 📚 3rd party library updates

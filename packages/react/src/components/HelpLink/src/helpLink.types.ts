@@ -1,12 +1,14 @@
 import { HTMLAttributes } from "react";
-import { LinkProps } from "@nimbus-ds/components";
+import { LinkProperties, LinkProps } from "@nimbus-ds/components";
 
 export interface HelpLinkProperties {
   /**
    * Link to be rendered inside the HelpLink component.
+   * @TJS-type Link
    */
-  link: Omit<LinkProps, "appearance" | "textDecoration">;
+  link: Omit<LinkProperties, "appearance" | "textDecoration">;
 }
 
-export type HelpLinkProps = HelpLinkProperties &
-  Omit<HTMLAttributes<HTMLElement>, "color">;
+export type HelpLinkProps = HelpLinkProperties & {
+  link: Omit<LinkProps, "appearance" | "textDecoration">;
+} & Omit<HTMLAttributes<HTMLElement>, "color">;
