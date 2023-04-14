@@ -49,6 +49,7 @@
         "./packages/react/src/components/EmptyMessage/src"
       ],
       "@nimbus-ds/formfield": ["./packages/react/src/components/FormField/src"],
+      "@nimbus-ds/help-link": ["./packages/react/src/components/HelpLink/src"],
       "@nimbus-ds/interactive-list": [
         "./packages/react/src/components/InteractiveList/src"
       ],
