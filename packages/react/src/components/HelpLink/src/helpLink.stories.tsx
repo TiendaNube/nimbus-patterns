@@ -2,9 +2,10 @@ import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { HelpLink } from "./HelpLink";
 import { Icon } from "@nimbus-ds/components";
 import { ExternalLinkIcon } from "@nimbus-ds/icons";
+
+import { HelpLink } from "./HelpLink";
 
 export default {
   title: "Patterns/HelpLink",
