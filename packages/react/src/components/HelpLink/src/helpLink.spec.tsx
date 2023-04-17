@@ -13,7 +13,7 @@ const makeSut = (rest: HelpLinkProps) => {
 describe("GIVEN <HelpLink />", () => {
   describe("WHEN rendered", () => {
     it("SHOULD render the link correctly", () => {
-      makeSut({ link: { children: linkChildren } });
+      makeSut({ children: linkChildren });
       expect(screen.getByText(linkChildren)).toBeDefined();
     });
   });
