@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/callout-card",
-  "version": "1.5.1-rc.2",
+  "version": "1.5.1-rc.3",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
