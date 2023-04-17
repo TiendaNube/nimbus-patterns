@@ -21,6 +21,7 @@ export default {
   },
   argTypes: {
     children: { control: { disable: true } },
+    topDivider: { control: "boolean" },
   },
 } as ComponentMeta<typeof InteractiveList>;
 
@@ -96,6 +97,24 @@ const ButtonTemplate: ComponentStory<typeof InteractiveList.ButtonItem> = (
   </InteractiveList>
 );
 
+const NoDividersTemplate: ComponentStory<typeof InteractiveList.ButtonItem> = (
+  args
+) => (
+  <InteractiveList bottomDivider={false}>
+    <InteractiveList.ButtonItem {...args} />
+    <InteractiveList.ButtonItem
+      {...args}
+      title="Second element"
+      description="Description of the second element"
+    />
+    <InteractiveList.ButtonItem
+      {...args}
+      title="Third element"
+      description="Description of the third element"
+    />
+  </InteractiveList>
+);
+
 export const asCheckbox = CheckboxTemplate.bind({});
 asCheckbox.args = {
   title: "Title",
@@ -143,6 +162,21 @@ asButton.args = {
   title: "Title",
   description: "Description",
   iconButton: { onClick: () => console.log("clicked") },
+  children: (
+    <Box display="flex" gap="1" mt="2">
+      <Tag>Text</Tag>
+      <Tag>Text</Tag>
+      <Tag>Text</Tag>
+    </Box>
+  ),
+};
+
+export const noDividers = NoDividersTemplate.bind({});
+noDividers.args = {
+  title: "Title",
+  description: "Description",
+  iconButton: { onClick: () => console.log("clicked") },
+  topDivider: false,
   children: (
     <Box display="flex" gap="1" mt="2">
       <Tag>Text</Tag>

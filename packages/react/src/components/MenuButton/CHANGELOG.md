@@ -6,7 +6,7 @@ MenuButton component is meant to be used inside Menus and navigation, and allows
 
 #### 🎉 New features
 
-- Added `MenuButton.Accordion` subcomponent. ([#39](https://github.com/TiendaNube/nimbus-patterns/pull/39) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `MenuButton.Accordion` subcomponent. ([#44](https://github.com/TiendaNube/nimbus-patterns/pull/44) by [@juniorconquista](https://github.com/juniorconquista))
 
 ## 2023-04-04 `1.2.0`
 

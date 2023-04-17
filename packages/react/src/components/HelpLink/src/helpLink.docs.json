@@ -1,0 +1,14 @@
+{
+  "id": "helpLink",
+  "name": "HelpLink",
+  "totalProps": 1,
+  "props": [
+    {
+      "description": "Content to be rendered inside the HelpLink component.",
+      "type": "ReactNode",
+      "title": "children",
+      "required": true
+    }
+  ],
+  "subComponents": []
+}

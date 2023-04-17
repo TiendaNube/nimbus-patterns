@@ -11,6 +11,7 @@ const NavTabsItem: React.FC<NavTabsItemProps> = ({
   active = false,
   badge = false,
   onClick,
+  ariaLabel,
   ...rest
 }: NavTabsItemProps) => (
   <Box
@@ -26,6 +27,7 @@ const NavTabsItem: React.FC<NavTabsItemProps> = ({
     p="2,5"
     position="relative"
     onClick={onClick}
+    aria-label={ariaLabel}
   >
     <Icon
       source={icon}

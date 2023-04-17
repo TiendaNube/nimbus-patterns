@@ -1,5 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
 
+import { BoxProperties } from "@nimbus-ds/components";
 import { PageHeader, PageBody } from "./components";
 
 export interface PageComponents {
@@ -20,4 +21,5 @@ export interface PageProperties {
 }
 
 export type PageProps = PageProperties &
-  Omit<HTMLAttributes<HTMLElement>, "color">;
+  Omit<HTMLAttributes<HTMLElement>, "color"> &
+  Omit<BoxProperties, "width" | "maxWidth" | "marginX">;

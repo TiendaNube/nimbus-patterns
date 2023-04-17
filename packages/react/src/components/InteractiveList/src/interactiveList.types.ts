@@ -1,5 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
 
+import { DataListProps } from "@nimbus-ds/data-list";
 import {
   InteractiveListStructure,
   InteractiveListStructureSkeleton,
@@ -26,7 +27,7 @@ export interface InteractiveListComponents {
   RadioItemSkeleton: typeof InteractiveListRadioItemSkeleton;
 }
 
-export interface InteractiveListProperties {
+export interface InteractiveListProperties extends DataListProps {
   /**
    * Content of the InteractiveList
    * @TJS-type React.ReactNode

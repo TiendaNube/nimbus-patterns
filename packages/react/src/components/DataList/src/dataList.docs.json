@@ -1,19 +1,26 @@
 {
   "id": "dataList",
   "name": "DataList",
-  "totalProps": 1,
+  "totalProps": 2,
   "props": [
     {
       "description": "Content of the List component.",
       "type": "React.ReactNode",
       "title": "children",
       "required": true
+    },
+    {
+      "description": "Defines whether the List has a bottom border.",
+      "default": true,
+      "type": "boolean",
+      "title": "bottomDivider",
+      "required": false
     }
   ],
   "subComponents": [
     {
       "name": "DataList.Row",
-      "totalProps": 80,
+      "totalProps": 81,
       "props": [
         {
           "description": "Optional padding for the row.",
@@ -28,6 +35,13 @@
           "type": "React.ReactNode",
           "title": "children",
           "required": true
+        },
+        {
+          "description": "Determines if the row has a top border.",
+          "default": true,
+          "type": "boolean",
+          "title": "topDivider",
+          "required": false
         },
         {
           "description": "The height property specifies the height of a box's content area.",

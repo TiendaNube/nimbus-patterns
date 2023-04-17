@@ -12,6 +12,11 @@ export interface DataListRowProperties extends Omit<BoxProperties, "padding"> {
    * @TJS-type React.ReactNode
    */
   children: ReactNode;
+  /**
+   * Determines if the row has a top border.
+   * @default true
+   */
+  topDivider?: boolean;
 }
 
 export type DataListRowProps = DataListRowProperties &

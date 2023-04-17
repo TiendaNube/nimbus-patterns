@@ -21,6 +21,8 @@ const config: Config.InitialOptions = {
       "<rootDir>/packages/react/src/components/EmptyMessage/src",
     "@nimbus-ds/formfield":
       "<rootDir>/packages/react/src/components/FormField/src",
+    "@nimbus-ds/help-link":
+      "<rootDir>/packages/react/src/components/HelpLink/src",
     "@nimbus-ds/interactive-list":
       "<rootDir>/packages/react/src/components/InteractiveList/src",
     "@nimbus-ds/layout": "<rootDir>/packages/react/src/components/Layout/src",

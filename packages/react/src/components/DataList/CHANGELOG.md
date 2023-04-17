@@ -2,6 +2,13 @@
 
 DataList is a flexible list-style component that enables the organization of customizable row elements in a vertical manner, with visual separators between rows.
 
+## 2023-04-17 `1.1.1`
+
+### 🎉 New features
+
+- Added `bottomDivider` property to `DataList` component API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+- Added `topDivider` property to `DataList.Row` subcomponent API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-04-04 `1.1.0`
 
 #### 📚 3rd party library updates

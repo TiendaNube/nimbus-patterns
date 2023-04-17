@@ -13,7 +13,7 @@
   "subComponents": [
     {
       "name": "NavTabs.Item",
-      "totalProps": 84,
+      "totalProps": 85,
       "props": [
         {
           "description": "Icon element to be rendered inside the button.",
@@ -37,6 +37,12 @@
           "description": "Function executed on click.",
           "type": "onClick: () => void;",
           "title": "onClick",
+          "required": true
+        },
+        {
+          "description": "Text label used for accessibility.",
+          "type": "string",
+          "title": "ariaLabel",
           "required": true
         },
         {

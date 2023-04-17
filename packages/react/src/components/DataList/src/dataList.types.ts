@@ -12,6 +12,11 @@ export interface DataListProperties {
    * @TJS-type React.ReactNode
    */
   children: ReactNode;
+  /**
+   * Defines whether the List has a bottom border.
+   * @default true
+   */
+  bottomDivider?: boolean;
 }
 
 export type DataListProps = DataListProperties &

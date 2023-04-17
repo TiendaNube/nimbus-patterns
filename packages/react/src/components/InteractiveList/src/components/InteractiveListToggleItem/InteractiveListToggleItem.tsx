@@ -21,6 +21,7 @@ const InteractiveListToggleItem: React.FC<InteractiveListToggleItemProps> = ({
       // @ts-ignore
       as="label"
       htmlFor={itemID}
+      topDivider={rest.topDivider}
     >
       <InteractiveListStructure {...rest} />
       <Toggle id={itemID} {...toggle} />

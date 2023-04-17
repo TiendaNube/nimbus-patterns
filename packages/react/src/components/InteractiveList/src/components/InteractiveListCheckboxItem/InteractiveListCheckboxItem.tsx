@@ -24,6 +24,7 @@ const InteractiveListCheckboxItem: React.FC<
       // @ts-ignore
       as="label"
       htmlFor={itemID}
+      topDivider={rest.topDivider}
     >
       <Checkbox id={itemID} {...checkbox} />
       <InteractiveListStructure {...rest} />

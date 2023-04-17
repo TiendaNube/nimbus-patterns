@@ -1,6 +1,7 @@
 import { HTMLAttributes } from "react";
 import { CheckboxProperties } from "@nimbus-ds/components";
 import { InteractiveListStructureProperties } from "../InteractiveListStructure/interactiveListStructure.types";
+import { InteractiveListRowProps } from "../InteractiveListRow/interactiveListRow.types";
 
 export interface InteractiveListCheckboxItemProperties
   extends InteractiveListStructureProperties {
@@ -12,4 +13,5 @@ export interface InteractiveListCheckboxItemProperties
 
 export type InteractiveListCheckboxItemProps =
   InteractiveListCheckboxItemProperties &
-    Omit<HTMLAttributes<HTMLElement>, "color">;
+    Omit<HTMLAttributes<HTMLElement>, "color"> &
+    Pick<InteractiveListRowProps, "topDivider">;

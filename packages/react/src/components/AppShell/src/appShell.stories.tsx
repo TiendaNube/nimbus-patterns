@@ -138,48 +138,46 @@ const AppMenu = (
   </Menu>
 );
 
-const Template: ComponentStory<typeof AppShell> = (args) => {
-  const sampleMenu = (
+const sampleMenu = (
+  <Box
+    backgroundColor="primary-surface"
+    borderColor="primary-interactive"
+    borderStyle="dashed"
+    borderWidth="1px"
+    borderRadius=".5rem"
+    width="15rem"
+    height="100vh"
+    display="flex"
+    alignItems="center"
+    justifyContent="center"
+  >
+    <Text fontSize="base" color="primary-interactive">
+      Menu content
+    </Text>
+  </Box>
+);
+
+const Template: ComponentStory<typeof AppShell> = (args) => (
+  <AppShell {...args} menu={sampleMenu}>
+    <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
     <Box
       backgroundColor="primary-surface"
       borderColor="primary-interactive"
       borderStyle="dashed"
       borderWidth="1px"
       borderRadius=".5rem"
-      width="15rem"
+      width="100%"
       height="100vh"
       display="flex"
       alignItems="center"
       justifyContent="center"
     >
       <Text fontSize="base" color="primary-interactive">
-        Menu content
+        Children content
       </Text>
     </Box>
-  );
-
-  return (
-    <AppShell {...args} menu={sampleMenu}>
-      <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
-      <Box
-        backgroundColor="primary-surface"
-        borderColor="primary-interactive"
-        borderStyle="dashed"
-        borderWidth="1px"
-        borderRadius=".5rem"
-        width="100%"
-        height="100vh"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Text fontSize="base" color="primary-interactive">
-          Children content
-        </Text>
-      </Box>
-    </AppShell>
-  );
-};
+  </AppShell>
+);
 
 const PageTemplate: ComponentStory<typeof AppShell> = (args) => (
   <AppShell {...args} menu={AppMenu}>
@@ -208,8 +206,33 @@ const PageTemplate: ComponentStory<typeof AppShell> = (args) => (
   </AppShell>
 );
 
+const NoLeftSlotTemplate: ComponentStory<typeof AppShell> = (args) => (
+  <AppShell {...args} menu={sampleMenu}>
+    <AppShell.Header rightSlot={buttonStack} />
+    <Box
+      backgroundColor="primary-surface"
+      borderColor="primary-interactive"
+      borderStyle="dashed"
+      borderWidth="1px"
+      borderRadius=".5rem"
+      width="100%"
+      height="500px"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Text fontSize="base" color="primary-interactive">
+        Body content
+      </Text>
+    </Box>
+  </AppShell>
+);
+
 export const base = Template.bind({});
 base.args = {};
 
 export const demoApp = PageTemplate.bind({});
 demoApp.args = {};
+
+export const noLeftSlot = NoLeftSlotTemplate.bind({});
+base.args = {};

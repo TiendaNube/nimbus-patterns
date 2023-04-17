@@ -8,6 +8,11 @@ export interface InteractiveListRowProperties
    * @TJS-type React.ReactNode
    */
   children: ReactNode;
+  /**
+   * Determines if the row has a top border.
+   * @default true
+   */
+  topDivider?: boolean;
 }
 
 export type InteractiveListRowProps = InteractiveListRowProperties &
