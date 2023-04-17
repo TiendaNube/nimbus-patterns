@@ -8,6 +8,7 @@ const InteractiveListRow: React.FC<InteractiveListRowProps> = ({
   className: _className,
   style: _style,
   children,
+  topDivider = true,
   ...rest
 }: InteractiveListRowProps) => (
   <DataList.Row
@@ -20,6 +21,7 @@ const InteractiveListRow: React.FC<InteractiveListRowProps> = ({
     transitionProperty="background-color"
     transitionTimingFunction="ease-in-out"
     boxShadow={{ focusWithin: "focusRing" }}
+    borderWidth={topDivider ? "1px 0 0 0" : "0"}
     {...rest}
   >
     {children}

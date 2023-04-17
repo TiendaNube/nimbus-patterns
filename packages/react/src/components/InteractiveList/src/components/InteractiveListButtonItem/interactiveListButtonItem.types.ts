@@ -1,6 +1,7 @@
 import { HTMLAttributes } from "react";
 import { IconButtonProperties, IconButtonProps } from "@nimbus-ds/components";
 import { InteractiveListStructureProperties } from "../InteractiveListStructure/interactiveListStructure.types";
+import { InteractiveListRowProps } from "../InteractiveListRow/interactiveListRow.types";
 
 export interface InteractiveListButtonItemProperties
   extends InteractiveListStructureProperties {
@@ -19,4 +20,5 @@ export type InteractiveListButtonItemProps =
       IconButtonProps,
       "backgroundColor" | "borderColor" | "size" | "source"
     >;
-  } & Omit<HTMLAttributes<HTMLElement>, "color">;
+  } & Omit<HTMLAttributes<HTMLElement>, "color"> &
+    Pick<InteractiveListRowProps, "topDivider">;

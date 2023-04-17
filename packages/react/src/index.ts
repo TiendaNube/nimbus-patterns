@@ -5,6 +5,7 @@ export * from "@nimbus-ds/data-list";
 export * from "@nimbus-ds/data-table";
 export * from "@nimbus-ds/empty-message";
 export * from "@nimbus-ds/formfield";
+export * from "@nimbus-ds/help-link";
 export * from "@nimbus-ds/interactive-list";
 export * from "@nimbus-ds/layout";
 export * from "@nimbus-ds/menu";

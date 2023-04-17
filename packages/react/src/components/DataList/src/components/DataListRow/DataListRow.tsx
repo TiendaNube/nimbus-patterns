@@ -11,12 +11,13 @@ const DataListRow: React.FC<DataListRowProps> = ({
   style: _style,
   children,
   padding = "base",
+  topDivider = true,
   ...rest
 }: DataListRowProps) => (
   <Box
     role="listitem"
     borderStyle="solid"
-    borderWidth="1px 0 0 0"
+    borderWidth={topDivider ? "1px 0 0 0" : "0"}
     borderColor="neutral-surfaceHighlight"
     display="flex"
     flexDirection="column"

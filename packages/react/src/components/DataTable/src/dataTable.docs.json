@@ -45,7 +45,10 @@
             "appearance": {
               "description": "Change the visual style of the checkbox.",
               "default": "neutral",
-              "enum": ["danger", "primary"],
+              "enum": [
+                "danger",
+                "primary"
+              ],
               "type": "string",
               "title": "appearance"
             },
@@ -113,7 +116,10 @@
             "appearance": {
               "description": "Change the visual style of the checkbox.",
               "default": "neutral",
-              "enum": ["danger", "primary"],
+              "enum": [
+                "danger",
+                "primary"
+              ],
               "type": "string",
               "title": "appearance"
             },
@@ -223,7 +229,10 @@
             "appearance": {
               "description": "Change the visual style of the checkbox.",
               "default": "neutral",
-              "enum": ["danger", "primary"],
+              "enum": [
+                "danger",
+                "primary"
+              ],
               "type": "string",
               "title": "appearance"
             },
@@ -263,6 +272,18 @@
         },
         {
           "description": "Content of the row.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "DataTable.Cell",
+      "totalProps": 1,
+      "props": [
+        {
+          "description": "Content of the List component.",
           "type": "React.ReactNode",
           "title": "children",
           "required": true

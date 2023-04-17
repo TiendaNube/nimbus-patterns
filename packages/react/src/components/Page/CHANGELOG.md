@@ -2,6 +2,14 @@
 
 Page component allows the user to build application pages with all the necessary attributes for constructing a variety of layouts.
 
+## 2023-04-17 `1.2.1`
+
+### 💡 Others
+
+- Extend `Box` properties inside `Page` component API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+- Extend `Box` properties inside `Page.Header` subcomponent API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+- Extend `Box` properties inside `Page.Body` subcomponent API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-04-04 `1.2.0`
 
 #### 📚 3rd party library updates
