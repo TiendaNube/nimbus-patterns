@@ -4,9 +4,9 @@
   "totalProps": 1,
   "props": [
     {
-      "description": "Link to be rendered inside the HelpLink component.",
-      "type": "Link",
-      "title": "link",
+      "description": "Content to be rendered inside the HelpLink component.",
+      "type": "ReactNode",
+      "title": "children",
       "required": true
     }
   ],
