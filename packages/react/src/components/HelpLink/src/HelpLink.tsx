@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Icon, Link } from "@nimbus-ds/components";
+import { Box, Icon } from "@nimbus-ds/components";
 import { QuestionCircleIcon } from "@nimbus-ds/icons";
 
 import { HelpLinkProps } from "./helpLink.types";
@@ -8,7 +8,7 @@ import { HelpLinkProps } from "./helpLink.types";
 const HelpLink: React.FC<HelpLinkProps> = ({
   className: _className,
   style: _style,
-  link,
+  children,
   ...rest
 }: HelpLinkProps) => (
   <Box
@@ -31,7 +31,7 @@ const HelpLink: React.FC<HelpLinkProps> = ({
     >
       <Icon source={<QuestionCircleIcon />} color="primary-textLow" />
     </Box>
-    <Link {...link} appearance="primary" textDecoration="none" />
+    {children}
   </Box>
 );
 

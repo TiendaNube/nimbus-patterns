@@ -15,7 +15,7 @@ Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s tea
 - Extend `topDivider` property from `DataList.Row` subcomponent inside `InteractiveList.ToggleItem` subcomponent API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
 - Extend `topDivider` property from `DataList.Row` subcomponent inside `InteractiveList.ButtonItem` subcomponent API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
 - Added new `HelpLink` component. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
-- Added `link` property to the `HelpLink` component API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
+- Added `children` property to the `HelpLink` component API. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
 - Added stories documentation for `HelpLink` component. ([#45](https://github.com/TiendaNube/nimbus-patterns/pull/45) by [@juanchigallego](https://github.com/juanchigallego))
 
 #### 💡 Others
