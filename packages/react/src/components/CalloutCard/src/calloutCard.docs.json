@@ -5,7 +5,13 @@
   "props": [
     {
       "description": "CalloutCard color.",
-      "enum": ["danger", "neutral", "primary", "success", "warning"],
+      "enum": [
+        "danger",
+        "neutral",
+        "primary",
+        "success",
+        "warning"
+      ],
       "type": "string",
       "title": "appearance",
       "required": true

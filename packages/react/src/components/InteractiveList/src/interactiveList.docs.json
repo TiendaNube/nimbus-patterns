@@ -22,7 +22,10 @@
       "required": false
     },
     {
-      "enum": ["no", "yes"],
+      "enum": [
+        "no",
+        "yes"
+      ],
       "type": "string",
       "title": "translate",
       "required": false
@@ -1058,7 +1061,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "backgroundPositionX"
@@ -1072,7 +1078,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "backgroundPositionY"
@@ -1114,7 +1123,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "backgroundSize"
@@ -1152,7 +1164,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "blockSize"
@@ -1582,7 +1597,10 @@
         },
         "borderBlockEndWidth": {
           "description": "The **`border-block-end-width`** CSS property defines the width of the logical block-end border of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. It corresponds to the `border-top-width`, `border-right-width`, `border-bottom-width`, or `border-left-width` property depending on the values defined for `writing-mode`, `direction`, and `text-orientation`.\n\n**Syntax**: `<'border-top-width'>`\n\n**Initial value**: `medium`\n\n| Chrome | Firefox |  Safari  | Edge | IE  |\n| :----: | :-----: | :------: | :--: | :-: |\n| **69** | **41**  | **12.1** | n/a  | No  |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "borderBlockEndWidth"
         },
         "borderBlockStartColor": {
@@ -1810,7 +1828,10 @@
         },
         "borderBlockStartWidth": {
           "description": "The **`border-block-start-width`** CSS property defines the width of the logical block-start border of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. It corresponds to the `border-top-width`, `border-right-width`, `border-bottom-width`, or `border-left-width` property depending on the values defined for `writing-mode`, `direction`, and `text-orientation`.\n\n**Syntax**: `<'border-top-width'>`\n\n**Initial value**: `medium`\n\n| Chrome | Firefox |  Safari  | Edge | IE  |\n| :----: | :-----: | :------: | :--: | :-: |\n| **69** | **41**  | **12.1** | n/a  | No  |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "borderBlockStartWidth"
         },
         "borderBlockStyle": {
@@ -1838,7 +1859,10 @@
         },
         "borderBlockWidth": {
           "description": "The **`border-block-width`** CSS property defines the width of the logical block borders of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. It corresponds to the `border-top-width` and `border-bottom-width`, or `border-left-width`, and `border-right-width` property depending on the values defined for `writing-mode`, `direction`, and `text-orientation`.\n\n**Syntax**: `<'border-top-width'>`\n\n**Initial value**: `medium`\n\n| Chrome | Firefox |  Safari  | Edge | IE  |\n| :----: | :-----: | :------: | :--: | :-: |\n| **87** | **66**  | **14.1** | n/a  | No  |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "borderBlockWidth"
         },
         "borderBottomColor": {
@@ -2050,7 +2074,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderBottomLeftRadius"
@@ -2064,7 +2091,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderBottomRightRadius"
@@ -2094,7 +2124,10 @@
         },
         "borderBottomWidth": {
           "description": "The **`border-bottom-width`** CSS property sets the width of the bottom border of an element.\n\n**Syntax**: `<line-width>`\n\n**Initial value**: `medium`\n\n| Chrome | Firefox | Safari |  Edge  |  IE   |\n| :----: | :-----: | :----: | :----: | :---: |\n| **1**  |  **1**  | **1**  | **12** | **4** |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "borderBottomWidth"
         },
         "borderCollapse": {
@@ -2121,7 +2154,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderEndEndRadius"
@@ -2135,7 +2171,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderEndStartRadius"
@@ -2154,7 +2193,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderImageOutset"
@@ -2249,7 +2291,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderImageWidth"
@@ -2679,7 +2724,10 @@
         },
         "borderInlineEndWidth": {
           "description": "The **`border-inline-end-width`** CSS property defines the width of the logical inline-end border of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. It corresponds to the `border-top-width`, `border-right-width`, `border-bottom-width`, or `border-left-width` property depending on the values defined for `writing-mode`, `direction`, and `text-orientation`.\n\n**Syntax**: `<'border-top-width'>`\n\n**Initial value**: `medium`\n\n| Chrome |           Firefox           |  Safari  | Edge | IE  |\n| :----: | :-------------------------: | :------: | :--: | :-: |\n| **69** |           **41**            | **12.1** | n/a  | No  |\n|        | 3 _(-moz-border-end-width)_ |          |      |     |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "borderInlineEndWidth"
         },
         "borderInlineStartColor": {
@@ -2907,7 +2955,10 @@
         },
         "borderInlineStartWidth": {
           "description": "The **`border-inline-start-width`** CSS property defines the width of the logical inline-start border of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. It corresponds to the `border-top-width`, `border-right-width`, `border-bottom-width`, or `border-left-width` property depending on the values defined for `writing-mode`, `direction`, and `text-orientation`.\n\n**Syntax**: `<'border-top-width'>`\n\n**Initial value**: `medium`\n\n| Chrome | Firefox |  Safari  | Edge | IE  |\n| :----: | :-----: | :------: | :--: | :-: |\n| **69** | **41**  | **12.1** | n/a  | No  |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "borderInlineStartWidth"
         },
         "borderInlineStyle": {
@@ -2935,7 +2986,10 @@
         },
         "borderInlineWidth": {
           "description": "The **`border-inline-width`** CSS property defines the width of the logical inline borders of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. It corresponds to the `border-top-width` and `border-bottom-width`, or `border-left-width`, and `border-right-width` property depending on the values defined for `writing-mode`, `direction`, and `text-orientation`.\n\n**Syntax**: `<'border-top-width'>`\n\n**Initial value**: `medium`\n\n| Chrome | Firefox |  Safari  | Edge | IE  |\n| :----: | :-----: | :------: | :--: | :-: |\n| **87** | **66**  | **14.1** | n/a  | No  |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "borderInlineWidth"
         },
         "borderLeftColor": {
@@ -3163,7 +3217,10 @@
         },
         "borderLeftWidth": {
           "description": "The **`border-left-width`** CSS property sets the width of the left border of an element.\n\n**Syntax**: `<line-width>`\n\n**Initial value**: `medium`\n\n| Chrome | Firefox | Safari |  Edge  |  IE   |\n| :----: | :-----: | :----: | :----: | :---: |\n| **1**  |  **1**  | **1**  | **12** | **4** |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "borderLeftWidth"
         },
         "borderRightColor": {
@@ -3391,7 +3448,10 @@
         },
         "borderRightWidth": {
           "description": "The **`border-right-width`** CSS property sets the width of the right border of an element.\n\n**Syntax**: `<line-width>`\n\n**Initial value**: `medium`\n\n| Chrome | Firefox | Safari |  Edge  |  IE   |\n| :----: | :-----: | :----: | :----: | :---: |\n| **1**  |  **1**  | **1**  | **12** | **4** |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "borderRightWidth"
         },
         "borderSpacing": {
@@ -3403,7 +3463,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderSpacing"
@@ -3417,7 +3480,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderStartEndRadius"
@@ -3431,7 +3497,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderStartStartRadius"
@@ -3645,7 +3714,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderTopLeftRadius"
@@ -3659,7 +3731,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderTopRightRadius"
@@ -3689,7 +3764,10 @@
         },
         "borderTopWidth": {
           "description": "The **`border-top-width`** CSS property sets the width of the top border of an element.\n\n**Syntax**: `<line-width>`\n\n**Initial value**: `medium`\n\n| Chrome | Firefox | Safari |  Edge  |  IE   |\n| :----: | :-----: | :----: | :----: | :---: |\n| **1**  |  **1**  | **1**  | **12** | **4** |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "borderTopWidth"
         },
         "bottom": {
@@ -3701,7 +3779,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "bottom"
@@ -4393,7 +4474,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "columnGap"
@@ -4639,7 +4723,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "columnRuleWidth"
@@ -4661,7 +4748,10 @@
         },
         "columnWidth": {
           "description": "The **`column-width`** CSS property sets the ideal column width in a multi-column layout. The container will have as many columns as can fit without any of them having a width less than the `column-width` value. If the width of the container is narrower than the specified value, the single column's width will be smaller than the declared column width.\n\n**Syntax**: `<length> | auto`\n\n**Initial value**: `auto`\n\n| Chrome  | Firefox | Safari  |  Edge  |   IE   |\n| :-----: | :-----: | :-----: | :----: | :----: |\n| **50**  | **50**  |  **9**  | **12** | **10** |\n| 1 _-x-_ |         | 3 _-x-_ |        |        |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "columnWidth"
         },
         "contain": {
@@ -4987,7 +5077,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "flexBasis"
@@ -5210,7 +5303,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "fontSize"
@@ -5246,7 +5342,10 @@
         },
         "fontSmooth": {
           "description": "The **`font-smooth`** CSS property controls the application of anti-aliasing when fonts are rendered.\n\n**Syntax**: `auto | never | always | <absolute-size> | <length>`\n\n**Initial value**: `auto`\n\n|              Chrome              |              Firefox               |              Safari              | Edge | IE  |\n| :------------------------------: | :--------------------------------: | :------------------------------: | :--: | :-: |\n| **5** _(-webkit-font-smoothing)_ | **25** _(-moz-osx-font-smoothing)_ | **4** _(-webkit-font-smoothing)_ | n/a  | No  |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "fontSmooth"
         },
         "fontStretch": {
@@ -5620,7 +5719,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "gridAutoColumns"
@@ -5659,7 +5761,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "gridAutoRows"
@@ -5808,7 +5913,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "gridTemplateColumns"
@@ -5822,7 +5930,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "gridTemplateRows"
@@ -5863,7 +5974,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "height"
@@ -6009,7 +6123,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "inlineSize"
@@ -6038,7 +6155,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "inset"
@@ -6052,7 +6172,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "insetBlock"
@@ -6066,7 +6189,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "insetBlockEnd"
@@ -6080,7 +6206,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "insetBlockStart"
@@ -6094,7 +6223,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "insetInline"
@@ -6108,7 +6240,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "insetInlineEnd"
@@ -6122,7 +6257,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "insetInlineStart"
@@ -6289,14 +6427,20 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "left"
         },
         "letterSpacing": {
           "description": "The **`letter-spacing`** CSS property sets the horizontal spacing behavior between text characters. This value is added to the natural spacing between characters while rendering the text. Positive values of `letter-spacing` causes characters to spread farther apart, while negative values of `letter-spacing` bring characters closer together.\n\n**Syntax**: `normal | <length>`\n\n**Initial value**: `normal`\n\n| Chrome | Firefox | Safari |  Edge  |  IE   |\n| :----: | :-----: | :----: | :----: | :---: |\n| **1**  |  **1**  | **1**  | **12** | **4** |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "letterSpacing"
         },
         "lineBreak": {
@@ -6331,14 +6475,20 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "lineHeight"
         },
         "lineHeightStep": {
           "description": "The **`line-height-step`** CSS property sets the step unit for line box heights. When the property is set, line box heights are rounded up to the closest multiple of the unit.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`\n\n| Chrome | Firefox | Safari | Edge | IE  |\n| :----: | :-----: | :----: | :--: | :-: |\n|  n/a   |   No    |   No   | n/a  | No  |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "lineHeightStep"
         },
         "listStyleImage": {
@@ -6411,7 +6561,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "marginBlock"
@@ -6425,7 +6578,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "marginBlockEnd"
@@ -6439,7 +6595,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "marginBlockStart"
@@ -6453,7 +6612,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "marginBottom"
@@ -6467,7 +6629,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "marginInline"
@@ -6481,7 +6646,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "marginInlineEnd"
@@ -6495,7 +6663,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "marginInlineStart"
@@ -6509,7 +6680,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "marginLeft"
@@ -6523,7 +6697,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "marginRight"
@@ -6537,7 +6714,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "marginTop"
@@ -6571,7 +6751,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "maskBorderOutset"
@@ -6666,7 +6849,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "maskBorderWidth"
@@ -6813,7 +6999,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "maskPosition"
@@ -6855,7 +7044,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "maskSize"
@@ -6942,7 +7134,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "maxBlockSize"
@@ -6956,7 +7151,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "maxHeight"
@@ -6970,7 +7168,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "maxInlineSize"
@@ -7012,7 +7213,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "maxWidth"
@@ -7026,7 +7230,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "minBlockSize"
@@ -7040,7 +7247,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "minHeight"
@@ -7054,7 +7264,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "minInlineSize"
@@ -7068,7 +7281,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "minWidth"
@@ -7112,7 +7328,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "motionDistance"
@@ -7198,7 +7417,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "objectPosition"
@@ -7212,7 +7434,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "offsetAnchor"
@@ -7226,7 +7451,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "offsetDistance"
@@ -7593,7 +7821,10 @@
         },
         "outlineOffset": {
           "description": "The **`outline-offset`** CSS property sets the amount of space between an outline and the edge or border of an element.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`\n\n| Chrome | Firefox | Safari  |  Edge  | IE  |\n| :----: | :-----: | :-----: | :----: | :-: |\n| **1**  | **1.5** | **1.2** | **15** | No  |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "outlineOffset"
         },
         "outlineStyle": {
@@ -7631,7 +7862,10 @@
         },
         "outlineWidth": {
           "description": "The CSS **`outline-width`** property sets the thickness of an element's outline. An outline is a line that is drawn around an element, outside the `border`.\n\n**Syntax**: `<line-width>`\n\n**Initial value**: `medium`\n\n| Chrome | Firefox | Safari  |  Edge  |  IE   |\n| :----: | :-----: | :-----: | :----: | :---: |\n| **1**  | **1.5** | **1.2** | **12** | **8** |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "outlineWidth"
         },
         "overflowAnchor": {
@@ -7691,7 +7925,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "overflowClipMargin"
@@ -7841,7 +8078,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "paddingBlock"
@@ -7855,7 +8095,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "paddingBlockEnd"
@@ -7869,7 +8112,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "paddingBlockStart"
@@ -7883,7 +8129,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "paddingBottom"
@@ -7897,7 +8146,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "paddingInline"
@@ -7911,7 +8163,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "paddingInlineEnd"
@@ -7925,7 +8180,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "paddingInlineStart"
@@ -7939,7 +8197,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "paddingLeft"
@@ -7953,7 +8214,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "paddingRight"
@@ -7967,7 +8231,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "paddingTop"
@@ -8055,7 +8322,10 @@
         },
         "perspective": {
           "description": "The **`perspective`** CSS property determines the distance between the z=0 plane and the user in order to give a 3D-positioned element some perspective.\n\n**Syntax**: `none | <length>`\n\n**Initial value**: `none`\n\n|  Chrome  | Firefox  | Safari  |  Edge  |   IE   |\n| :------: | :------: | :-----: | :----: | :----: |\n|  **36**  |  **16**  |  **9**  | **12** | **10** |\n| 12 _-x-_ | 10 _-x-_ | 4 _-x-_ |        |        |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "perspective"
         },
         "perspectiveOrigin": {
@@ -8067,7 +8337,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "perspectiveOrigin"
@@ -8214,7 +8487,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "right"
@@ -8251,7 +8527,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "rowGap"
@@ -8367,7 +8646,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollMargin"
@@ -8381,24 +8663,36 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollMarginBlock"
         },
         "scrollMarginBlockEnd": {
           "description": "The `scroll-margin-block-end` property defines the margin of the scroll snap area at the end of the block dimension that is used for snapping this box to the snapport. The scroll snap area is determined by taking the transformed border box, finding its rectangular bounding box (axis-aligned in the scroll container's coordinate space), then adding the specified outsets.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`\n\n| Chrome | Firefox |  Safari  | Edge | IE  |\n| :----: | :-----: | :------: | :--: | :-: |\n| **69** | **68**  | **14.1** | n/a  | No  |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "scrollMarginBlockEnd"
         },
         "scrollMarginBlockStart": {
           "description": "The `scroll-margin-block-start` property defines the margin of the scroll snap area at the start of the block dimension that is used for snapping this box to the snapport. The scroll snap area is determined by taking the transformed border box, finding its rectangular bounding box (axis-aligned in the scroll container's coordinate space), then adding the specified outsets.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`\n\n| Chrome | Firefox |  Safari  | Edge | IE  |\n| :----: | :-----: | :------: | :--: | :-: |\n| **69** | **68**  | **14.1** | n/a  | No  |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "scrollMarginBlockStart"
         },
         "scrollMarginBottom": {
           "description": "The `scroll-margin-bottom` property defines the bottom margin of the scroll snap area that is used for snapping this box to the snapport. The scroll snap area is determined by taking the transformed border box, finding its rectangular bounding box (axis-aligned in the scroll container's coordinate space), then adding the specified outsets.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`\n\n| Chrome | Firefox |              Safari              | Edge | IE  |\n| :----: | :-----: | :------------------------------: | :--: | :-: |\n| **69** | **68**  |             **14.1**             | n/a  | No  |\n|        |         | 11 _(scroll-snap-margin-bottom)_ |      |     |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "scrollMarginBottom"
         },
         "scrollMarginInline": {
@@ -8410,34 +8704,52 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollMarginInline"
         },
         "scrollMarginInlineEnd": {
           "description": "The `scroll-margin-inline-end` property defines the margin of the scroll snap area at the end of the inline dimension that is used for snapping this box to the snapport. The scroll snap area is determined by taking the transformed border box, finding its rectangular bounding box (axis-aligned in the scroll container's coordinate space), then adding the specified outsets.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`\n\n| Chrome | Firefox |  Safari  | Edge | IE  |\n| :----: | :-----: | :------: | :--: | :-: |\n| **69** | **68**  | **14.1** | n/a  | No  |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "scrollMarginInlineEnd"
         },
         "scrollMarginInlineStart": {
           "description": "The `scroll-margin-inline-start` property defines the margin of the scroll snap area at the start of the inline dimension that is used for snapping this box to the snapport. The scroll snap area is determined by taking the transformed border box, finding its rectangular bounding box (axis-aligned in the scroll container's coordinate space), then adding the specified outsets.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`\n\n| Chrome | Firefox |  Safari  | Edge | IE  |\n| :----: | :-----: | :------: | :--: | :-: |\n| **69** | **68**  | **14.1** | n/a  | No  |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "scrollMarginInlineStart"
         },
         "scrollMarginLeft": {
           "description": "The `scroll-margin-left` property defines the left margin of the scroll snap area that is used for snapping this box to the snapport. The scroll snap area is determined by taking the transformed border box, finding its rectangular bounding box (axis-aligned in the scroll container's coordinate space), then adding the specified outsets.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`\n\n| Chrome | Firefox |             Safari             | Edge | IE  |\n| :----: | :-----: | :----------------------------: | :--: | :-: |\n| **69** | **68**  |            **14.1**            | n/a  | No  |\n|        |         | 11 _(scroll-snap-margin-left)_ |      |     |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "scrollMarginLeft"
         },
         "scrollMarginRight": {
           "description": "The `scroll-margin-right` property defines the right margin of the scroll snap area that is used for snapping this box to the snapport. The scroll snap area is determined by taking the transformed border box, finding its rectangular bounding box (axis-aligned in the scroll container's coordinate space), then adding the specified outsets.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`\n\n| Chrome | Firefox |             Safari              | Edge | IE  |\n| :----: | :-----: | :-----------------------------: | :--: | :-: |\n| **69** | **68**  |            **14.1**             | n/a  | No  |\n|        |         | 11 _(scroll-snap-margin-right)_ |      |     |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "scrollMarginRight"
         },
         "scrollMarginTop": {
           "description": "The `scroll-margin-top` property defines the top margin of the scroll snap area that is used for snapping this box to the snapport. The scroll snap area is determined by taking the transformed border box, finding its rectangular bounding box (axis-aligned in the scroll container's coordinate space), then adding the specified outsets.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`\n\n| Chrome | Firefox |            Safari             | Edge | IE  |\n| :----: | :-----: | :---------------------------: | :--: | :-: |\n| **69** | **68**  |           **14.1**            | n/a  | No  |\n|        |         | 11 _(scroll-snap-margin-top)_ |      |     |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "scrollMarginTop"
         },
         "scrollPadding": {
@@ -8449,7 +8761,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollPadding"
@@ -8463,7 +8778,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollPaddingBlock"
@@ -8477,7 +8795,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollPaddingBlockEnd"
@@ -8491,7 +8812,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollPaddingBlockStart"
@@ -8505,7 +8829,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollPaddingBottom"
@@ -8519,7 +8846,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollPaddingInline"
@@ -8533,7 +8863,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollPaddingInlineEnd"
@@ -8547,7 +8880,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollPaddingInlineStart"
@@ -8561,7 +8897,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollPaddingLeft"
@@ -8575,7 +8914,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollPaddingRight"
@@ -8589,7 +8931,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollPaddingTop"
@@ -8629,29 +8974,44 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollSnapMargin"
         },
         "scrollSnapMarginBottom": {
           "description": "The `scroll-margin-bottom` property defines the bottom margin of the scroll snap area that is used for snapping this box to the snapport. The scroll snap area is determined by taking the transformed border box, finding its rectangular bounding box (axis-aligned in the scroll container's coordinate space), then adding the specified outsets.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`\n\n| Chrome | Firefox |              Safari              | Edge | IE  |\n| :----: | :-----: | :------------------------------: | :--: | :-: |\n| **69** | **68**  |             **14.1**             | n/a  | No  |\n|        |         | 11 _(scroll-snap-margin-bottom)_ |      |     |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "scrollSnapMarginBottom"
         },
         "scrollSnapMarginLeft": {
           "description": "The `scroll-margin-left` property defines the left margin of the scroll snap area that is used for snapping this box to the snapport. The scroll snap area is determined by taking the transformed border box, finding its rectangular bounding box (axis-aligned in the scroll container's coordinate space), then adding the specified outsets.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`\n\n| Chrome | Firefox |             Safari             | Edge | IE  |\n| :----: | :-----: | :----------------------------: | :--: | :-: |\n| **69** | **68**  |            **14.1**            | n/a  | No  |\n|        |         | 11 _(scroll-snap-margin-left)_ |      |     |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "scrollSnapMarginLeft"
         },
         "scrollSnapMarginRight": {
           "description": "The `scroll-margin-right` property defines the right margin of the scroll snap area that is used for snapping this box to the snapport. The scroll snap area is determined by taking the transformed border box, finding its rectangular bounding box (axis-aligned in the scroll container's coordinate space), then adding the specified outsets.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`\n\n| Chrome | Firefox |             Safari              | Edge | IE  |\n| :----: | :-----: | :-----------------------------: | :--: | :-: |\n| **69** | **68**  |            **14.1**             | n/a  | No  |\n|        |         | 11 _(scroll-snap-margin-right)_ |      |     |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "scrollSnapMarginRight"
         },
         "scrollSnapMarginTop": {
           "description": "The `scroll-margin-top` property defines the top margin of the scroll snap area that is used for snapping this box to the snapport. The scroll snap area is determined by taking the transformed border box, finding its rectangular bounding box (axis-aligned in the scroll container's coordinate space), then adding the specified outsets.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`\n\n| Chrome | Firefox |            Safari             | Edge | IE  |\n| :----: | :-----: | :---------------------------: | :--: | :-: |\n| **69** | **68**  |           **14.1**            | n/a  | No  |\n|        |         | 11 _(scroll-snap-margin-top)_ |      |     |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "scrollSnapMarginTop"
         },
         "scrollSnapStop": {
@@ -8796,7 +9156,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "shapeMargin"
@@ -8842,7 +9205,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "tabSize"
@@ -9227,7 +9593,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "textDecorationThickness"
@@ -9493,7 +9862,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "textIndent"
@@ -9647,7 +10019,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "textUnderlineOffset"
@@ -9688,7 +10063,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "top"
@@ -9778,7 +10156,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "transformOrigin"
@@ -9904,7 +10285,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "translate"
@@ -9963,7 +10347,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "verticalAlign"
@@ -10040,7 +10427,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "width"
@@ -10089,7 +10479,10 @@
         },
         "wordSpacing": {
           "description": "The **`word-spacing`** CSS property sets the length of space between words and between tags.\n\n**Syntax**: `normal | <length>`\n\n**Initial value**: `normal`\n\n| Chrome | Firefox | Safari |  Edge  |  IE   |\n| :----: | :-----: | :----: | :----: | :---: |\n| **1**  |  **1**  | **1**  | **12** | **6** |",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "wordSpacing"
         },
         "wordWrap": {
@@ -10249,7 +10642,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "background"
@@ -10263,7 +10659,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "backgroundPosition"
@@ -10277,7 +10676,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "border"
@@ -10291,7 +10693,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderBlock"
@@ -10305,7 +10710,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderBlockEnd"
@@ -10319,7 +10727,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderBlockStart"
@@ -10333,7 +10744,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderBottom"
@@ -10579,7 +10993,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderInline"
@@ -10593,7 +11010,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderInlineEnd"
@@ -10607,7 +11027,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderInlineStart"
@@ -10621,7 +11044,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderLeft"
@@ -10635,7 +11061,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderRadius"
@@ -10649,7 +11078,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderRight"
@@ -10695,7 +11127,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderTop"
@@ -10709,7 +11144,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "borderWidth"
@@ -10723,7 +11161,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "columnRule"
@@ -10742,7 +11183,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "columns"
@@ -10761,7 +11205,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "flex"
@@ -10832,7 +11279,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "gap"
@@ -11029,7 +11479,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "margin"
@@ -11043,7 +11496,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "mask"
@@ -11091,7 +11547,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "motion"
@@ -11105,7 +11564,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "offset"
@@ -11119,7 +11581,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "outline"
@@ -11186,7 +11651,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "padding"
@@ -11265,7 +11733,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "textDecoration"
@@ -12273,7 +12744,10 @@
         },
         "MozBorderEndWidth": {
           "description": "The **`border-inline-end-width`** CSS property defines the width of the logical inline-end border of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. It corresponds to the `border-top-width`, `border-right-width`, `border-bottom-width`, or `border-left-width` property depending on the values defined for `writing-mode`, `direction`, and `text-orientation`.\n\n**Syntax**: `<'border-top-width'>`\n\n**Initial value**: `medium`",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "MozBorderEndWidth"
         },
         "MozBorderLeftColors": {
@@ -13402,14 +13876,20 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozColumnRuleWidth"
         },
         "MozColumnWidth": {
           "description": "The **`column-width`** CSS property sets the ideal column width in a multi-column layout. The container will have as many columns as can fit without any of them having a width less than the `column-width` value. If the width of the container is narrower than the specified value, the single column's width will be smaller than the declared column width.\n\n**Syntax**: `<length> | auto`\n\n**Initial value**: `auto`",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "MozColumnWidth"
         },
         "MozContextProperties": {
@@ -13533,7 +14013,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozMarginEnd"
@@ -13547,7 +14030,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozMarginStart"
@@ -13571,7 +14057,10 @@
         },
         "MozOsxFontSmoothing": {
           "description": "The **`font-smooth`** CSS property controls the application of anti-aliasing when fonts are rendered.\n\n**Syntax**: `auto | never | always | <absolute-size> | <length>`\n\n**Initial value**: `auto`",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "MozOsxFontSmoothing"
         },
         "MozPaddingEnd": {
@@ -13583,7 +14072,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozPaddingEnd"
@@ -13597,14 +14089,20 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozPaddingStart"
         },
         "MozPerspective": {
           "description": "The **`perspective`** CSS property determines the distance between the z=0 plane and the user in order to give a 3D-positioned element some perspective.\n\n**Syntax**: `none | <length>`\n\n**Initial value**: `none`",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "MozPerspective"
         },
         "MozPerspectiveOrigin": {
@@ -13616,7 +14114,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozPerspectiveOrigin"
@@ -13650,7 +14151,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozTabSize"
@@ -13703,7 +14207,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozTransformOrigin"
@@ -14175,7 +14682,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "msGridColumns"
@@ -14189,7 +14699,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "msGridRows"
@@ -14274,7 +14787,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "msHyphenateLimitZone"
@@ -14427,22 +14943,34 @@
         },
         "msScrollLimitXMax": {
           "description": "The `**-ms-scroll-limit-x-max**` CSS property is a Microsoft extension that specifies the maximum value for the `Element.scrollLeft` property.\n\n**Syntax**: `auto | <length>`\n\n**Initial value**: `auto`",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "msScrollLimitXMax"
         },
         "msScrollLimitXMin": {
           "description": "The **`-ms-scroll-limit-x-min`** CSS property is a Microsoft extension that specifies the minimum value for the `Element.scrollLeft` property.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "msScrollLimitXMin"
         },
         "msScrollLimitYMax": {
           "description": "The **`-ms-scroll-limit-y-max`** CSS property is a Microsoft extension that specifies the maximum value for the `Element.scrollTop` property.\n\n**Syntax**: `auto | <length>`\n\n**Initial value**: `auto`",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "msScrollLimitYMax"
         },
         "msScrollLimitYMin": {
           "description": "The **`-ms-scroll-limit-y-min`** CSS property is a Microsoft extension that specifies the minimum value for the `Element.scrollTop` property.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "msScrollLimitYMin"
         },
         "msScrollRails": {
@@ -16283,7 +16811,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "msTransformOrigin"
@@ -16439,7 +16970,10 @@
         },
         "msWrapMargin": {
           "description": "The **`-ms-wrap-margin`** CSS property is a Microsoft extension that specifies a margin that offsets the inner wrap shape from other shapes.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "msWrapMargin"
         },
         "msWrapThrough": {
@@ -16932,7 +17466,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitBackgroundSize"
@@ -17178,7 +17715,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitBorderBeforeWidth"
@@ -17192,7 +17732,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitBorderBottomLeftRadius"
@@ -17206,7 +17749,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitBorderBottomRightRadius"
@@ -17247,7 +17793,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitBorderTopLeftRadius"
@@ -17261,7 +17810,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitBorderTopRightRadius"
@@ -17290,7 +17842,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitBoxReflect"
@@ -17648,7 +18203,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitColumnRuleWidth"
@@ -17670,7 +18228,10 @@
         },
         "WebkitColumnWidth": {
           "description": "The **`column-width`** CSS property sets the ideal column width in a multi-column layout. The container will have as many columns as can fit without any of them having a width less than the `column-width` value. If the width of the container is narrower than the specified value, the single column's width will be smaller than the declared column width.\n\n**Syntax**: `<length> | auto`\n\n**Initial value**: `auto`",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "WebkitColumnWidth"
         },
         "WebkitFilter": {
@@ -17705,7 +18266,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitFlexBasis"
@@ -17838,7 +18402,10 @@
         },
         "WebkitFontSmoothing": {
           "description": "The **`font-smooth`** CSS property controls the application of anti-aliasing when fonts are rendered.\n\n**Syntax**: `auto | never | always | <absolute-size> | <length>`\n\n**Initial value**: `auto`",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "WebkitFontSmoothing"
         },
         "WebkitFontVariantLigatures": {
@@ -18029,7 +18596,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitMarginEnd"
@@ -18043,7 +18613,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitMarginStart"
@@ -18087,7 +18660,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitMaskBoxImageOutset"
@@ -18182,7 +18758,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitMaskBoxImageWidth"
@@ -18309,7 +18888,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitMaskPosition"
@@ -18323,7 +18905,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitMaskPositionX"
@@ -18337,7 +18922,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitMaskPositionY"
@@ -18413,7 +19001,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitMaskSize"
@@ -18427,7 +19018,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitMaxInlineSize"
@@ -18483,7 +19077,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitPaddingEnd"
@@ -18497,14 +19094,20 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitPaddingStart"
         },
         "WebkitPerspective": {
           "description": "The **`perspective`** CSS property determines the distance between the z=0 plane and the user in order to give a 3D-positioned element some perspective.\n\n**Syntax**: `none | <length>`\n\n**Initial value**: `none`",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "WebkitPerspective"
         },
         "WebkitPerspectiveOrigin": {
@@ -18516,7 +19119,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitPerspectiveOrigin"
@@ -18599,7 +19205,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitShapeMargin"
@@ -19798,7 +20407,10 @@
         },
         "WebkitTextStrokeWidth": {
           "description": "The **`-webkit-text-stroke-width`** CSS property specifies the width of the stroke for text.\n\n**Syntax**: `<length>`\n\n**Initial value**: `0`",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "WebkitTextStrokeWidth"
         },
         "WebkitTextUnderlinePosition": {
@@ -19875,7 +20487,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitTransformOrigin"
@@ -20132,7 +20747,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozColumnRule"
@@ -20151,7 +20769,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozColumns"
@@ -20248,7 +20869,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "msFlex"
@@ -20404,7 +21028,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitBorderBefore"
@@ -20450,7 +21077,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitBorderRadius"
@@ -20464,7 +21094,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitColumnRule"
@@ -20483,7 +21116,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitColumns"
@@ -20502,7 +21138,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitFlex"
@@ -20545,7 +21184,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitMask"
@@ -20801,7 +21443,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "WebkitTextStroke"
@@ -21066,7 +21711,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "gridColumnGap"
@@ -21080,7 +21728,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "gridGap"
@@ -21094,7 +21745,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "gridRowGap"
@@ -21126,7 +21780,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "offsetBlock"
@@ -21140,7 +21797,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "offsetBlockEnd"
@@ -21154,7 +21814,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "offsetBlockStart"
@@ -21168,7 +21831,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "offsetInline"
@@ -21182,7 +21848,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "offsetInlineEnd"
@@ -21196,7 +21865,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "offsetInlineStart"
@@ -21210,7 +21882,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollSnapCoordinate"
@@ -21224,7 +21899,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "scrollSnapDestination"
@@ -21609,7 +22287,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozBackgroundSize"
@@ -21646,7 +22327,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozBorderRadius"
@@ -21660,7 +22344,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozBorderRadiusBottomleft"
@@ -21674,7 +22361,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozBorderRadiusBottomright"
@@ -21688,7 +22378,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozBorderRadiusTopleft"
@@ -21702,7 +22395,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozBorderRadiusTopright"
@@ -21927,7 +22623,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozOutline"
@@ -22142,7 +22841,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozOutlineRadius"
@@ -22156,7 +22858,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozOutlineRadiusBottomleft"
@@ -22170,7 +22875,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozOutlineRadiusBottomright"
@@ -22184,7 +22892,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozOutlineRadiusTopleft"
@@ -22198,7 +22909,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "MozOutlineRadiusTopright"
@@ -22238,7 +22952,10 @@
         },
         "MozOutlineWidth": {
           "description": "The CSS **`outline-width`** property sets the thickness of an element's outline. An outline is a line that is drawn around an element, outside the `border`.\n\n**Syntax**: `<line-width>`\n\n**Initial value**: `medium`",
-          "type": ["string", "number"],
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "MozOutlineWidth"
         },
         "MozTextAlignLast": {
@@ -22797,7 +23514,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "OBackgroundSize"
@@ -22861,7 +23581,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "OObjectPosition"
@@ -22880,7 +23603,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "OTabSize"
@@ -22941,7 +23667,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "OTransformOrigin"
@@ -23315,7 +24044,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "baselineShift"
@@ -24630,7 +25362,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "strokeDasharray"
@@ -24643,7 +25378,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "strokeDashoffset"
@@ -24738,7 +25476,10 @@
               "properties": {}
             },
             {
-              "type": ["string", "number"]
+              "type": [
+                "string",
+                "number"
+              ]
             }
           ],
           "title": "strokeWidth"
@@ -25583,7 +26324,12 @@
       "required": false
     },
     {
-      "enum": [false, "false", true, "true"],
+      "enum": [
+        false,
+        "false",
+        true,
+        "true"
+      ],
       "title": "draggable",
       "required": false
     },
@@ -25603,7 +26349,13 @@
       "required": false
     },
     {
-      "enum": [false, "false", "inherit", true, "true"],
+      "enum": [
+        false,
+        "false",
+        "inherit",
+        true,
+        "true"
+      ],
       "title": "contentEditable",
       "required": false
     },
@@ -25647,7 +26399,10 @@
           }
         },
         {
-          "type": ["string", "number"]
+          "type": [
+            "string",
+            "number"
+          ]
         }
       ],
       "title": "defaultValue",
@@ -25674,7 +26429,12 @@
       "required": false
     },
     {
-      "enum": [false, "false", true, "true"],
+      "enum": [
+        false,
+        "false",
+        true,
+        "true"
+      ],
       "title": "spellCheck",
       "required": false
     },
@@ -25853,7 +26613,10 @@
       "required": false
     },
     {
-      "enum": ["off", "on"],
+      "enum": [
+        "off",
+        "on"
+      ],
       "type": "string",
       "title": "unselectable",
       "required": false
@@ -25872,26 +26635,47 @@
     },
     {
       "description": "Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute.",
-      "enum": [false, "false", true, "true"],
+      "enum": [
+        false,
+        "false",
+        true,
+        "true"
+      ],
       "title": "aria-atomic",
       "required": false
     },
     {
       "description": "Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be\npresented if they are made.",
-      "enum": ["both", "inline", "list", "none"],
+      "enum": [
+        "both",
+        "inline",
+        "list",
+        "none"
+      ],
       "type": "string",
       "title": "aria-autocomplete",
       "required": false
     },
     {
       "description": "Indicates an element is being modified and that assistive technologies MAY want to wait until the modifications are complete before exposing them to the user.",
-      "enum": [false, "false", true, "true"],
+      "enum": [
+        false,
+        "false",
+        true,
+        "true"
+      ],
       "title": "aria-busy",
       "required": false
     },
     {
       "description": "Indicates the current \"checked\" state of checkboxes, radio buttons, and other widgets.",
-      "enum": [false, "false", "mixed", true, "true"],
+      "enum": [
+        false,
+        "false",
+        "mixed",
+        true,
+        "true"
+      ],
       "title": "aria-checked",
       "required": false
     },
@@ -25949,13 +26733,25 @@
     },
     {
       "description": "Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.",
-      "enum": [false, "false", true, "true"],
+      "enum": [
+        false,
+        "false",
+        true,
+        "true"
+      ],
       "title": "aria-disabled",
       "required": false
     },
     {
       "description": "Indicates what functions can be performed when a dragged object is released on the drop target.",
-      "enum": ["copy", "execute", "link", "move", "none", "popup"],
+      "enum": [
+        "copy",
+        "execute",
+        "link",
+        "move",
+        "none",
+        "popup"
+      ],
       "type": "string",
       "title": "aria-dropeffect",
       "required": false
@@ -25968,7 +26764,12 @@
     },
     {
       "description": "Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed.",
-      "enum": [false, "false", true, "true"],
+      "enum": [
+        false,
+        "false",
+        true,
+        "true"
+      ],
       "title": "aria-expanded",
       "required": false
     },
@@ -25980,7 +26781,12 @@
     },
     {
       "description": "Indicates an element's \"grabbed\" state in a drag-and-drop operation.",
-      "enum": [false, "false", true, "true"],
+      "enum": [
+        false,
+        "false",
+        true,
+        "true"
+      ],
       "title": "aria-grabbed",
       "required": false
     },
@@ -26002,13 +26808,25 @@
     },
     {
       "description": "Indicates whether the element is exposed to an accessibility API.",
-      "enum": [false, "false", true, "true"],
+      "enum": [
+        false,
+        "false",
+        true,
+        "true"
+      ],
       "title": "aria-hidden",
       "required": false
     },
     {
       "description": "Indicates the entered value does not conform to the format expected by the application.",
-      "enum": [false, "false", "grammar", "spelling", true, "true"],
+      "enum": [
+        false,
+        "false",
+        "grammar",
+        "spelling",
+        true,
+        "true"
+      ],
       "title": "aria-invalid",
       "required": false
     },
@@ -26038,32 +26856,54 @@
     },
     {
       "description": "Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.",
-      "enum": ["assertive", "off", "polite"],
+      "enum": [
+        "assertive",
+        "off",
+        "polite"
+      ],
       "type": "string",
       "title": "aria-live",
       "required": false
     },
     {
       "description": "Indicates whether an element is modal when displayed.",
-      "enum": [false, "false", true, "true"],
+      "enum": [
+        false,
+        "false",
+        true,
+        "true"
+      ],
       "title": "aria-modal",
       "required": false
     },
     {
       "description": "Indicates whether a text box accepts multiple lines of input or only a single line.",
-      "enum": [false, "false", true, "true"],
+      "enum": [
+        false,
+        "false",
+        true,
+        "true"
+      ],
       "title": "aria-multiline",
       "required": false
     },
     {
       "description": "Indicates that the user may select more than one item from the current selectable descendants.",
-      "enum": [false, "false", true, "true"],
+      "enum": [
+        false,
+        "false",
+        true,
+        "true"
+      ],
       "title": "aria-multiselectable",
       "required": false
     },
     {
       "description": "Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.",
-      "enum": ["horizontal", "vertical"],
+      "enum": [
+        "horizontal",
+        "vertical"
+      ],
       "type": "string",
       "title": "aria-orientation",
       "required": false
@@ -26088,13 +26928,24 @@
     },
     {
       "description": "Indicates the current \"pressed\" state of toggle buttons.",
-      "enum": [false, "false", "mixed", true, "true"],
+      "enum": [
+        false,
+        "false",
+        "mixed",
+        true,
+        "true"
+      ],
       "title": "aria-pressed",
       "required": false
     },
     {
       "description": "Indicates that the element is not editable, but is otherwise operable.",
-      "enum": [false, "false", true, "true"],
+      "enum": [
+        false,
+        "false",
+        true,
+        "true"
+      ],
       "title": "aria-readonly",
       "required": false
     },
@@ -26118,7 +26969,12 @@
     },
     {
       "description": "Indicates that user input is required on the element before a form may be submitted.",
-      "enum": [false, "false", true, "true"],
+      "enum": [
+        false,
+        "false",
+        true,
+        "true"
+      ],
       "title": "aria-required",
       "required": false
     },
@@ -26148,7 +27004,12 @@
     },
     {
       "description": "Indicates the current \"selected\" state of various widgets.",
-      "enum": [false, "false", true, "true"],
+      "enum": [
+        false,
+        "false",
+        true,
+        "true"
+      ],
       "title": "aria-selected",
       "required": false
     },
@@ -26160,7 +27021,12 @@
     },
     {
       "description": "Indicates if items in a table or grid are sorted in ascending or descending order.",
-      "enum": ["ascending", "descending", "none", "other"],
+      "enum": [
+        "ascending",
+        "descending",
+        "none",
+        "other"
+      ],
       "type": "string",
       "title": "aria-sort",
       "required": false
@@ -26198,7 +27064,9 @@
         }
       },
       "additionalProperties": false,
-      "propertyOrder": ["__html"],
+      "propertyOrder": [
+        "__html"
+      ],
       "required": false,
       "title": "dangerouslySetInnerHTML"
     },
@@ -27379,13 +28247,18 @@
             "as": {
               "description": "Type of html tag to create for the Icon Button component.",
               "default": "button",
-              "enum": ["button", "div"],
+              "enum": [
+                "button",
+                "div"
+              ],
               "type": "string",
               "title": "as"
             }
           },
           "additionalProperties": false,
-          "propertyOrder": ["as"],
+          "propertyOrder": [
+            "as"
+          ],
           "title": "iconButton",
           "required": true
         },
@@ -27431,7 +28304,10 @@
             "appearance": {
               "description": "Change the visual style of the checkbox.",
               "default": "neutral",
-              "enum": ["danger", "primary"],
+              "enum": [
+                "danger",
+                "primary"
+              ],
               "type": "string",
               "title": "appearance"
             },
@@ -27511,7 +28387,10 @@
             "as": {
               "description": "Change the visual style of the radio.",
               "default": "radio",
-              "enum": ["button", "radio"],
+              "enum": [
+                "button",
+                "radio"
+              ],
               "type": "string",
               "title": "as"
             },
@@ -27532,7 +28411,13 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": ["name", "as", "checked", "disabled", "label"],
+          "propertyOrder": [
+            "name",
+            "as",
+            "checked",
+            "disabled",
+            "label"
+          ],
           "required": true,
           "title": "radio"
         },
@@ -27587,7 +28472,11 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": ["name", "active", "label"],
+          "propertyOrder": [
+            "name",
+            "active",
+            "label"
+          ],
           "required": true,
           "title": "toggle"
         },
@@ -27762,7 +28651,11 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": ["name", "active", "label"],
+          "propertyOrder": [
+            "name",
+            "active",
+            "label"
+          ],
           "required": true,
           "title": "toggle"
         },

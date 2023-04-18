@@ -58,7 +58,12 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": ["xs", "md", "lg", "xl"]
+          "propertyOrder": [
+            "xs",
+            "md",
+            "lg",
+            "xl"
+          ]
         },
         {
           "type": "string"
@@ -92,7 +97,12 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": ["xs", "md", "lg", "xl"]
+          "propertyOrder": [
+            "xs",
+            "md",
+            "lg",
+            "xl"
+          ]
         },
         {
           "type": "string"
@@ -163,7 +173,12 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": ["xs", "md", "lg", "xl"]
+          "propertyOrder": [
+            "xs",
+            "md",
+            "lg",
+            "xl"
+          ]
         },
         {
           "enum": [
@@ -242,7 +257,12 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": ["xs", "md", "lg", "xl"]
+          "propertyOrder": [
+            "xs",
+            "md",
+            "lg",
+            "xl"
+          ]
         },
         {
           "enum": [
@@ -305,7 +325,12 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": ["xs", "md", "lg", "xl"]
+          "propertyOrder": [
+            "xs",
+            "md",
+            "lg",
+            "xl"
+          ]
         },
         {
           "type": "number"
@@ -322,7 +347,7 @@
     },
     {
       "description": "An HTML element, or a function that returns one. It's used to set the position of the popover.",
-      "type": "React.ReactNode",
+      "type": "React.ReactNode | ((data: { open: boolean, setVisibility: (visibility: boolean) => void }) => React.ReactNode);",
       "title": "children",
       "required": true
     },
