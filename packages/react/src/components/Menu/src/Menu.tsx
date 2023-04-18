@@ -11,22 +11,23 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
   children,
   ...rest
 }: MenuProps) => (
-  <Box
-    {...rest}
-    display="flex"
-    flexDirection="column"
-    flex="0 0 auto"
-    height="100%"
-    backgroundColor="neutral-background"
-    width="100%"
-    boxSizing="border-box"
-  >
-    {children}
-  </Box>
-);
+    <Box
+      {...rest}
+      display="flex"
+      flexDirection="column"
+      flex="0 0 auto"
+      height="100%"
+      backgroundColor="neutral-background"
+      width="100%"
+      boxSizing="border-box"
+    >
+      {children}
+    </Box>
+  );
 
 Menu.Section = MenuSection;
 Menu.Button = MenuButton;
+Menu.ButtonAccordion = MenuButton?.Accordion;
 Menu.Header = MenuHeader;
 Menu.Body = MenuBody;
 Menu.Footer = MenuFooter;

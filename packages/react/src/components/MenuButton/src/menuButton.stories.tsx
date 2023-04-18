@@ -5,7 +5,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { useArgs } from "@storybook/client-api";
 
 import { ChevronRightIcon, HomeIcon } from "@nimbus-ds/icons";
-import { Box, Tag, Badge, Icon } from "@nimbus-ds/components";
+import { Tag, Badge, Icon } from "@nimbus-ds/components";
 
 import { MenuButton } from "./MenuButton";
 
@@ -46,41 +46,19 @@ const Template: ComponentStory<typeof MenuButton> = (args) => {
   return <MenuButton {...args} onClick={handleActive} active={active} />;
 };
 
-const AccordionTemplate: ComponentStory<typeof MenuButton> = (args) => {
-  const [{ active }, updateArgs] = useArgs();
-  const handleActive = () => updateArgs({ active: !active });
-
-  return (
-    <Box
-      backgroundColor={active ? "primary-surface" : "neutral-background"}
-      borderRadius=".5rem"
-    >
-      <MenuButton
-        {...args}
-        onClick={handleActive}
-        active={active}
-        id="control-1"
-        aria-expanded={active}
-        aria-controls="content-1"
-      />
-      {active && (
-        <Box
-          id="content-1"
-          aria-hidden={!active}
-          height={active ? "auto" : "0"}
-          overflow="hidden"
-          pl="6"
-          pt="1"
-          pb="1"
-          pr="1"
-        >
-          <MenuButton label="First item" />
-          <MenuButton label="Second item" />
-        </Box>
-      )}
-    </Box>
-  );
-};
+const AccordionTemplate: ComponentStory<typeof MenuButton> = (args) => (
+  <MenuButton.Accordion
+    contentid="content-1"
+    menuButton={{
+      ...args,
+      id: "control-1",
+      "aria-controls": "content-1",
+    }}
+  >
+    <MenuButton label="First item" />
+    <MenuButton label="Second item" />
+  </MenuButton.Accordion>
+);
 
 export const sampleAppMenuButton = Template.bind({});
 sampleAppMenuButton.args = {

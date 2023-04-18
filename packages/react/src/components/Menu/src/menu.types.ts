@@ -5,6 +5,7 @@ import { MenuSection, MenuHeader, MenuBody, MenuFooter } from "./components";
 export interface MenuComponents {
   Section: typeof MenuSection;
   Button: typeof MenuButton;
+  ButtonAccordion: typeof MenuButton.Accordion;
   Header: typeof MenuHeader;
   Body: typeof MenuBody;
   Footer: typeof MenuFooter;

@@ -11,4 +11,5 @@ export interface PageBodyProperties {
 }
 
 export type PageBodyProps = PageBodyProperties &
-  Omit<HTMLAttributes<HTMLElement>, "color"> & BoxProperties;
+  Omit<HTMLAttributes<HTMLElement>, "color"> &
+  BoxProperties;

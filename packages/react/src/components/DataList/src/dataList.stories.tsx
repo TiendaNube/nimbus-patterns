@@ -99,12 +99,12 @@ const NoDividersTemplate: ComponentStory<typeof DataList.Row> = (args) => {
       ))}
     </DataList>
   );
-}
+};
 
 export const base = Template.bind({});
 base.args = {};
 
 export const noDividers = NoDividersTemplate.bind({});
 noDividers.args = {
-  topDivider: false
+  topDivider: false,
 };

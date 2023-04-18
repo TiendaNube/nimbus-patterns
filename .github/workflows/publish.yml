@@ -130,3 +130,18 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_TECH_PRODUCT_UPDATES }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
+  trigger-action-update-generate-documentation:
+    needs:
+      [publish-packages-npm, create-github-relase, send-slack-notifications]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Trigger github action update documentation
+        run: |
+          curl --request POST \
+          --url 'https://api.github.com/repos/tiendanube/nimbus-patterns/actions/workflows/53869409/dispatches' \
+          --header 'Authorization: token ${{ secrets.PAT_CHANGE_BRANCH_PROTECTION_RULES_FROM_JUNIOR_CONQUISTA }}' \
+          --data '{"ref":"master"}'

@@ -8,7 +8,7 @@ const iconElement = "Icon element";
 const mockedClickFunction = jest.fn();
 
 const makeSut = (
-  rest: Omit<NavTabsItemProps, 'icon' | 'onClick' | 'ariaLabel'>
+  rest: Omit<NavTabsItemProps, "icon" | "onClick" | "ariaLabel">
 ) => {
   render(
     <NavTabsItem

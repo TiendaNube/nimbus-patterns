@@ -226,7 +226,7 @@ const NoLeftSlotTemplate: ComponentStory<typeof AppShell> = (args) => (
       </Text>
     </Box>
   </AppShell>
-)
+);
 
 export const base = Template.bind({});
 base.args = {};

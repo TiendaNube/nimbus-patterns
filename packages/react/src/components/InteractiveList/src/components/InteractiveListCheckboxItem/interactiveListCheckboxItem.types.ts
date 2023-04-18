@@ -13,5 +13,5 @@ export interface InteractiveListCheckboxItemProperties
 
 export type InteractiveListCheckboxItemProps =
   InteractiveListCheckboxItemProperties &
-    Omit<HTMLAttributes<HTMLElement>, "color">&
+    Omit<HTMLAttributes<HTMLElement>, "color"> &
     Pick<InteractiveListRowProps, "topDivider">;

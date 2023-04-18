@@ -13,5 +13,5 @@ export interface InteractiveListToggleItemProperties
 
 export type InteractiveListToggleItemProps =
   InteractiveListToggleItemProperties &
-    Omit<HTMLAttributes<HTMLElement>, "color">&
+    Omit<HTMLAttributes<HTMLElement>, "color"> &
     Pick<InteractiveListRowProps, "topDivider">;

@@ -21,7 +21,7 @@ export default {
   },
   argTypes: {
     children: { control: { disable: true } },
-    topDivider: { control: "boolean" }
+    topDivider: { control: "boolean" },
   },
 } as ComponentMeta<typeof InteractiveList>;
 

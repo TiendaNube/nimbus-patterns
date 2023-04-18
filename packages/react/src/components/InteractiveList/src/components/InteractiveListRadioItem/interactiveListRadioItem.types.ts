@@ -12,5 +12,5 @@ export interface InteractiveListRadioItemProperties
 }
 
 export type InteractiveListRadioItemProps = InteractiveListRadioItemProperties &
-  Omit<HTMLAttributes<HTMLElement>, "color">&
+  Omit<HTMLAttributes<HTMLElement>, "color"> &
   Pick<InteractiveListRowProps, "topDivider">;

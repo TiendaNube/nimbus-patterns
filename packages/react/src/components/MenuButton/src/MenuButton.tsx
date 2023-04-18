@@ -3,7 +3,8 @@ import React, { ComponentPropsWithRef, forwardRef } from "react";
 import { Text, Icon, Box } from "@nimbus-ds/components";
 import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
-import { MenuButtonBaseProps } from "./menuButton.types";
+import { MenuButtonBaseProps, MenuButtonComponents } from "./menuButton.types";
+import { MenuButtonAccordion } from "./components";
 
 const MenuButton = forwardRef(
   (
@@ -65,9 +66,13 @@ const MenuButton = forwardRef(
       </Box>
     );
   }
-) as PolymorphicForwardRefComponent<"button" | "a", MenuButtonBaseProps>;
+) as PolymorphicForwardRefComponent<"button" | "a", MenuButtonBaseProps> &
+  MenuButtonComponents;
+
+MenuButton.Accordion = MenuButtonAccordion;
 
 MenuButton.displayName = "MenuButton";
+MenuButton.Accordion.displayName = "MenuButton.Accordion";
 
 export type MenuButtonProps = ComponentPropsWithRef<typeof MenuButton>;
 export { MenuButton };

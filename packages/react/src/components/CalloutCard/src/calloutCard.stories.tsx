@@ -84,7 +84,9 @@ danger.args = {
 export const stressed = Template.bind({});
 stressed.args = {
   appearance: "neutral",
-  title: "This is a stressed version of the component. It includes a very long title and extra long description.",
-  subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel tincidunt nunc, in porttitor erat. Sed tristique mauris porttitor, lobortis nibh nec, vulputate tellus. Donec lacinia massa vitae lectus congue venenatis. Nulla facilisi. Maecenas fermentum pretium diam id aliquet.",
+  title:
+    "This is a stressed version of the component. It includes a very long title and extra long description.",
+  subtitle:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel tincidunt nunc, in porttitor erat. Sed tristique mauris porttitor, lobortis nibh nec, vulputate tellus. Donec lacinia massa vitae lectus congue venenatis. Nulla facilisi. Maecenas fermentum pretium diam id aliquet.",
   icon: BoxUnpackedIcon,
 };
