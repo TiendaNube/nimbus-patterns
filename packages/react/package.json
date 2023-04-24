@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/patterns",
-  "version": "1.2.1-rc.3",
+  "version": "1.2.1",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -29,6 +29,5 @@
   },
   "bugs": {
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
-  },
-  "stableVersion": "1.2.0"
+  }
 }
