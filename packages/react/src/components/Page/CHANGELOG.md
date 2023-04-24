@@ -2,6 +2,13 @@
 
 Page component allows the user to build application pages with all the necessary attributes for constructing a variety of layouts.
 
+## 2023-04-24 `1.2.2`
+
+#### 🐛 Bug fixes
+
+- Fixed typing of `Page`, `Page.Header` and `Page.Body` components to correctly extend `Box` properties. ([#48](https://github.com/TiendaNube/nimbus-patterns/pull/48) by [@juniorconquista](https://github.com/juniorconquista))
+- Fixed bug where it was not possible to change the paddings of the `Page.Header` and `Page.Body` components. ([#48](https://github.com/TiendaNube/nimbus-patterns/pull/48) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-04-17 `1.2.1`
 
 ### 💡 Others

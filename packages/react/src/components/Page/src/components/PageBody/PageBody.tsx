@@ -10,7 +10,7 @@ const PageBody: React.FC<PageBodyProps> = ({
   children,
   ...rest
 }: PageBodyProps) => (
-  <Box as="section" {...rest} paddingY="4" paddingX="6">
+  <Box as="section" paddingY="4" paddingX="6" {...rest}>
     {children}
   </Box>
 );
