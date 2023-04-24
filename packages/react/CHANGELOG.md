@@ -2,6 +2,15 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2023-04-24 `1.2.1`
+
+#### 🐛 Bug fixes
+
+- Fixed typing of `Page`, `Page.Header` and `Page.Body` components to correctly extend `Box` properties. ([#48](https://github.com/TiendaNube/nimbus-patterns/pull/48) by [@juniorconquista](https://github.com/juniorconquista))
+- Fixed bug where it was not possible to change the paddings of the `Page.Header` and `Page.Body` components. ([#48](https://github.com/TiendaNube/nimbus-patterns/pull/48) by [@juniorconquista](https://github.com/juniorconquista))
+- Renamed `controlled` property to `open` in `MenuButton.Accordion` component API. ([#48](https://github.com/TiendaNube/nimbus-patterns/pull/48) by [@juniorconquista](https://github.com/juniorconquista))
+- Changed the background color of the `MenuButton.Accordion` component when it is open. ([#48](https://github.com/TiendaNube/nimbus-patterns/pull/48) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-04-18 `1.2.0`
 
 #### 🎉 New features

@@ -2,6 +2,13 @@
 
 MenuButton component is meant to be used inside Menus and navigation, and allows the user to navigate between different sections of an application.
 
+## 2023-04-24 `1.3.1`
+
+#### 🐛 Bug fixes
+
+- Renamed `controlled` property to `open` in `MenuButton.Accordion` component API. ([#48](https://github.com/TiendaNube/nimbus-patterns/pull/48) by [@juniorconquista](https://github.com/juniorconquista))
+- Changed the background color of the `MenuButton.Accordion` component when it is open. ([#48](https://github.com/TiendaNube/nimbus-patterns/pull/48) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-04-12 `1.3.0`
 
 #### 🎉 New features

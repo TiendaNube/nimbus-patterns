@@ -72,7 +72,7 @@ const SampleMenu = (
       </Menu.Section>
       <Menu.Section title="Administrar">
         <Menu.ButtonAccordion
-          controlled
+          open
           contentid="content-1"
           menuButton={{
             id: "control-1",
@@ -82,7 +82,7 @@ const SampleMenu = (
             "aria-controls": "content-1",
           }}
         >
-          <Menu.Button label="Lista de ventas" active />
+          <Menu.Button label="Lista de ventas" />
           <Menu.Button label="Exportar lista" />
         </Menu.ButtonAccordion>
         <Menu.Button startIcon={TagIcon} label="Productos" />

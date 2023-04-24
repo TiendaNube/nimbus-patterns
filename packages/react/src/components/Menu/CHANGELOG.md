@@ -2,6 +2,13 @@
 
 The Menu component allows the user to create in-app menus that navigate through different sections of an application.
 
+## 2023-04-24 `1.2.1`
+
+#### 🐛 Bug fixes
+
+- Renamed `controlled` property to `open` in `MenuButton.Accordion` component API. ([#48](https://github.com/TiendaNube/nimbus-patterns/pull/48) by [@juniorconquista](https://github.com/juniorconquista))
+- Changed the background color of the `MenuButton.Accordion` component when it is open. ([#48](https://github.com/TiendaNube/nimbus-patterns/pull/48) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-04-18 `1.2.0`
 
 #### 🎉 New features

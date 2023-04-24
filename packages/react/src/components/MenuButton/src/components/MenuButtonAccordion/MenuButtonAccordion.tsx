@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Box } from "@nimbus-ds/components";
 
 import { MenuButtonAccordionPros } from "./menuButtonAccordion.types";
@@ -7,23 +7,38 @@ import { MenuButton } from "../../MenuButton";
 const MenuButtonAccordion: React.FC<MenuButtonAccordionPros> = ({
   className: _className,
   style: _style,
-  controlled = false,
+  open: controlledOpen,
+  active,
   menuButton,
   children,
   ...rest
 }) => {
-  const [open, setOpen] = useState(controlled ?? false);
+  const [isOpen, setOpen] = useState(false);
   const handleOpen = () => setOpen((prevState) => !prevState);
+
+  const open = useMemo(
+    () => (controlledOpen === undefined ? isOpen : controlledOpen),
+    [controlledOpen, isOpen]
+  );
+
+  const getBackgroundColor = () => {
+    if (active) {
+      return "primary-surface";
+    }
+    return open ? "neutral-surface" : "transparent";
+  };
+
   return (
     <Box
       {...rest}
-      backgroundColor={open ? "primary-surface" : "transparent"}
+      backgroundColor={getBackgroundColor()}
       borderRadius=".5rem"
+      zIndex={open ? 1 : 0}
     >
       <MenuButton
         {...menuButton}
-        onClick={controlled ? menuButton.onClick : handleOpen}
-        active={open}
+        onClick={controlledOpen !== undefined ? menuButton.onClick : handleOpen}
+        active={active}
         aria-expanded={open}
       />
       {open && (
