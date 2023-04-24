@@ -1,8 +1,8 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { BoxProperties } from "@nimbus-ds/components";
+import { BoxProperties, BoxProps } from "@nimbus-ds/components";
 
-export interface PageBodyProperties {
+export interface PageBodyProperties extends BoxProperties {
   /**
    * Content of the page body.
    * @TJS-type React.ReactNode
@@ -12,4 +12,4 @@ export interface PageBodyProperties {
 
 export type PageBodyProps = PageBodyProperties &
   Omit<HTMLAttributes<HTMLElement>, "color"> &
-  BoxProperties;
+  BoxProps;

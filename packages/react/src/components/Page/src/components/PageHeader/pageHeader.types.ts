@@ -1,8 +1,9 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { BoxProperties } from "@nimbus-ds/components";
+import { BoxProperties, BoxProps } from "@nimbus-ds/components";
 
-export interface PageHeaderProperties {
+export interface PageHeaderProperties
+  extends Omit<BoxProperties, "display" | "flexDirection"> {
   /**
    * Main title of the page. Corresponds to an h1 HTML tag.
    */
@@ -25,4 +26,4 @@ export interface PageHeaderProperties {
 
 export type PageHeaderProps = PageHeaderProperties &
   Omit<HTMLAttributes<HTMLElement>, "color"> &
-  Omit<BoxProperties, "display" | "flexDirection">;
+  Omit<BoxProps, "display" | "flexDirection">;
