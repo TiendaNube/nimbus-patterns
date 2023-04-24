@@ -15,12 +15,12 @@ const PageHeader: React.FC<PageHeaderProps> = ({
 }: PageHeaderProps) => (
   <Box
     as="header"
-    {...rest}
     paddingY="4"
     paddingX="6"
     display="flex"
     flexDirection="column"
     gap="4"
+    {...rest}
   >
     <Box display="flex" alignItems="center" gap="2">
       <Box display="inline-flex" flex="1">

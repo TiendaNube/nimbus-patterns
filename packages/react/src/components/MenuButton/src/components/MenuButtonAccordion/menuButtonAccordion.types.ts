@@ -19,9 +19,12 @@ export interface MenuButtonAccordionProperties {
   contentid: string;
   /**
    * Changes the component usage so that control of open and close is controlled from outside the component.
-   * @default false
    */
-  controlled?: boolean;
+  open?: boolean;
+  /**
+   * Sets the state of the button as active/inactive.
+   */
+  active?: boolean;
 }
 
 export type MenuButtonAccordionPros = MenuButtonAccordionProperties & {
