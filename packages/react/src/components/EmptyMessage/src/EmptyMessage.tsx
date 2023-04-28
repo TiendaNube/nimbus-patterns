@@ -27,10 +27,11 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
     >
       {icon && <NimbusIcon source={icon} />}
       <Title
-        as="h6"
-        textAlign="center"
-        color="primary-textLow"
-        fontWeight="bold"
+        as={illustration ? "h1" : "h4"}
+        textAlign={{
+          xs: "center",
+          md: "left"
+        }}
       >
         {title}
       </Title>
@@ -40,7 +41,7 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
           display="flex"
           justifyContent="center"
           gap="4"
-          mt="2"
+          mt={illustration ? "4" : "2"}
           flexWrap="wrap"
         >
           {actions}
