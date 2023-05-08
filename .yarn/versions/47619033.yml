@@ -4,4 +4,5 @@ releases:
   "@nimbus-ds/patterns": minor
 
 declined:
+  - nimbus-patterns
   - "@nimbus-ds/app-shell"
