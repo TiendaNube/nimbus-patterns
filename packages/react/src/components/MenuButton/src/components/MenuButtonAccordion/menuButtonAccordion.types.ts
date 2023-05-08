@@ -27,6 +27,6 @@ export interface MenuButtonAccordionProperties {
   active?: boolean;
 }
 
-export type MenuButtonAccordionPros = MenuButtonAccordionProperties & {
+export type MenuButtonAccordionBaseProps = MenuButtonAccordionProperties & {
   menuButton: MenuButtonProps;
 } & Omit<HTMLAttributes<HTMLElement>, "color">;
