@@ -2,6 +2,12 @@
 
 MenuButton component is meant to be used inside Menus and navigation, and allows the user to navigate between different sections of an application.
 
+## 2023-05-08 `1.4.0`
+
+### 🎉 New features
+
+- Added `as` property to the `MenuButton.Accordion` component API. ([#50](https://github.com/TiendaNube/nimbus-patterns/pull/50) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-04-24 `1.3.1`
 
 #### 🐛 Bug fixes
