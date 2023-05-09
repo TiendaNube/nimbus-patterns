@@ -3195,10 +3195,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/styles@npm:^8.1.1":
-  version: 8.1.1
-  resolution: "@nimbus-ds/styles@npm:8.1.1"
-  checksum: b0f4c2d26102951a1b3a606765b81b5d7ce7147c4fab08ac56911049916211161023770af3b536b2890651e5d8525c963bef1bed310336ff074dd988bee2b997
+"@nimbus-ds/styles@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "@nimbus-ds/styles@npm:8.2.0"
+  checksum: 449dd02ceac646aaa4e8e268a138dadb06c79f8faae6914a9c5d5ccda33bc9e8a680e2df7f51bea3215c6c21299ab1dbc0a41b8c7c045c0f7e58e6bd29e65f8a
   languageName: node
   linkType: hard
 
@@ -15273,7 +15273,7 @@ __metadata:
     "@mdx-js/react": ^1.6.22
     "@nimbus-ds/components": ^4.2.1
     "@nimbus-ds/scripts": 1.2.1
-    "@nimbus-ds/styles": ^8.1.1
+    "@nimbus-ds/styles": ^8.2.0
     "@nimbus-ds/tokens": ^7.0.0
     "@storybook/addon-a11y": ^6.5.13
     "@storybook/addon-actions": ^6.5.13

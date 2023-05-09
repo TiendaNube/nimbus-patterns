@@ -58,7 +58,7 @@
     "@mdx-js/react": "^1.6.22",
     "@nimbus-ds/components": "^4.2.1",
     "@nimbus-ds/scripts": "1.2.1",
-    "@nimbus-ds/styles": "^8.1.1",
+    "@nimbus-ds/styles": "^8.2.0",
     "@nimbus-ds/tokens": "^7.0.0",
     "@storybook/addon-a11y": "^6.5.13",
     "@storybook/addon-actions": "^6.5.13",
