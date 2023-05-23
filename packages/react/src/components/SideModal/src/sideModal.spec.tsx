@@ -5,7 +5,7 @@ import { SideModal } from "./SideModal";
 import { SideModalProps } from "./sideModal.types";
 
 const makeSut = (rest: SideModalProps) => {
-  render(<SideModal {...rest} data-testid="callout-card-element" />);
+  render(<SideModal {...rest} open data-testid="callout-card-element" />);
 };
 
 describe("GIVEN <SideModal />", () => {
@@ -14,6 +14,7 @@ describe("GIVEN <SideModal />", () => {
       makeSut({
         title: "My tittle",
       });
+
       expect(screen.getByText("My tittle")).toBeDefined();
     });
 
