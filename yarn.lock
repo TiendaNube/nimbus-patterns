@@ -3206,7 +3206,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/thumbnail-with-action@workspace:packages/react/src/components/ThumbnailWithAction"
   dependencies:
-    "@nimbus-ds/tokens": ^7.0.0
+    "@nimbus-ds/tokens": ^8.0.0
   peerDependencies:
     "@nimbus-ds/components": 4.x
     react: ^16.8 || ^17.0 || ^18.0
@@ -3214,10 +3214,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/tokens@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "@nimbus-ds/tokens@npm:7.0.0"
-  checksum: 411c41f524ba510c457fd8570b0085e9710a0c4754c5e9b5da597028e96f615c82d5f4f0791fa4db742938b7f88c710748ce4233f5de6f7db3ee957674613ddc
+"@nimbus-ds/tokens@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "@nimbus-ds/tokens@npm:8.0.0"
+  checksum: 8edc56e2072e720503893886f635d8cf0c2eabc3980fcea545fa118b8a70a6df02590bed7856b6161d884e3a28031d6076c3e5d668f778d9a27689f4c6f4b736
   languageName: node
   linkType: hard
 
@@ -15274,7 +15274,7 @@ __metadata:
     "@nimbus-ds/components": ^4.2.1
     "@nimbus-ds/scripts": 1.2.1
     "@nimbus-ds/styles": ^8.1.1
-    "@nimbus-ds/tokens": ^7.0.0
+    "@nimbus-ds/tokens": ^8.0.0
     "@storybook/addon-a11y": ^6.5.13
     "@storybook/addon-actions": ^6.5.13
     "@storybook/addon-docs": ^6.5.13
