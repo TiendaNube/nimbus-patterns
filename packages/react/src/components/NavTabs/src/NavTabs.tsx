@@ -19,7 +19,8 @@ const NavTabs: React.FC<NavTabsProps> & NavTabsComponents = ({
     alignItems="center"
     backgroundColor="neutral-background"
     borderStyle="solid"
-    borderWidth="1px 0 0 0"
+    borderWidth="none"
+    borderTopWidth="1"
     borderColor="neutral-surfaceHighlight"
     bottom="0"
     display="flex"
@@ -29,7 +30,7 @@ const NavTabs: React.FC<NavTabsProps> & NavTabsComponents = ({
     px="4"
     py="2"
     width="100%"
-    zIndex={500}
+    zIndex="500"
   >
     {children}
   </Box>

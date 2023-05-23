@@ -2,6 +2,12 @@
 
 This component is used to provide the user with useful information, tips, tutorials or shortcuts to other parts of the product. It is a visual component specially designed to be used in contexts such as integration, tutorials or dashboards, where we need to show different relevant information in the same space.
 
+## 2023-05-23 `1.6.0`
+
+#### 📚 3rd party library updates
+
+- Updated `@nimbus-ds/components@4.x` to `@nimbus-ds/components@5.x`. ([#56](https://github.com/TiendaNube/nimbus-patterns/pull/56) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-04-17 `1.5.1`
 
 ### 🐛 Bug fixes

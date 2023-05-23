@@ -45,8 +45,8 @@ const MenuButtonAccordion = forwardRef(
         ref={ref}
         as={as}
         backgroundColor={getBackgroundColor()}
-        borderRadius=".5rem"
-        zIndex={open ? 1 : 0}
+        borderRadius="2"
+        zIndex={open ? "100" : undefined}
         textDecoration="none"
       >
         <MenuButton

@@ -22,7 +22,8 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         top="0"
         left="0"
         borderStyle="solid"
-        borderWidth="0 1px 0 0"
+        borderWidth="none"
+        borderRightWidth="1"
         borderColor="neutral-surfaceHighlight"
         display={{
           xs: "none",

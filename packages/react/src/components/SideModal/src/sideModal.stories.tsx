@@ -105,7 +105,7 @@ base.args = {
   children: (
     <Box
       borderStyle="dashed"
-      borderWidth="1px"
+      borderWidth="1"
       borderColor="neutral-interactive"
       height="100%"
       boxSizing="border-box"
@@ -133,7 +133,7 @@ withTitle.args = {
   children: (
     <Box
       borderStyle="dashed"
-      borderWidth="1px"
+      borderWidth="1"
       borderColor="neutral-interactive"
       height="100%"
       boxSizing="border-box"
@@ -167,7 +167,7 @@ withTitleAction.args = {
   children: (
     <Box
       borderStyle="dashed"
-      borderWidth="1px"
+      borderWidth="1"
       borderColor="neutral-interactive"
       height="100%"
       boxSizing="border-box"
@@ -203,7 +203,7 @@ withHeaderAction.args = {
   children: (
     <Box
       borderStyle="dashed"
-      borderWidth="1px"
+      borderWidth="1"
       borderColor="neutral-interactive"
       height="100%"
       boxSizing="border-box"
@@ -240,7 +240,7 @@ withHeaderIcon.args = {
   children: (
     <Box
       borderStyle="dashed"
-      borderWidth="1px"
+      borderWidth="1"
       borderColor="neutral-interactive"
       height="100%"
       boxSizing="border-box"
@@ -277,7 +277,7 @@ withFooter.args = {
   children: (
     <Box
       borderStyle="dashed"
-      borderWidth="1px"
+      borderWidth="1"
       borderColor="neutral-interactive"
       height="100%"
       boxSizing="border-box"
@@ -313,7 +313,7 @@ withoutFooter.args = {
   children: (
     <Box
       borderStyle="dashed"
-      borderWidth="1px"
+      borderWidth="1"
       borderColor="neutral-interactive"
       height="100%"
       boxSizing="border-box"

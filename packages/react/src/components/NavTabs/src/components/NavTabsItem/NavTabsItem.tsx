@@ -20,11 +20,11 @@ const NavTabsItem: React.FC<NavTabsItemProps> = ({
     style={_style}
     backgroundColor={active ? "primary-surface" : "transparent"}
     borderColor="transparent"
-    borderRadius=".5rem"
+    borderRadius="2"
     cursor="pointer"
     as="button"
     type="button"
-    p="2,5"
+    p="2-5"
     position="relative"
     onClick={onClick}
     aria-label={ariaLabel}
@@ -35,7 +35,7 @@ const NavTabsItem: React.FC<NavTabsItemProps> = ({
     />
     {badge && (
       <Box
-        borderRadius="100%"
+        borderRadius="full"
         backgroundColor="primary-interactive"
         height=".25rem"
         position="absolute"

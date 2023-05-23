@@ -20,7 +20,7 @@ const ThumbnailWithAction: React.FC<ThumbnailWithActionProps> = ({
     <Box
       position="relative"
       width="fit-content"
-      borderRadius=".5rem"
+      borderRadius="2"
       overflow="hidden"
     >
       <Box
@@ -28,7 +28,7 @@ const ThumbnailWithAction: React.FC<ThumbnailWithActionProps> = ({
         style={_style}
         className={_className}
         position="absolute"
-        zIndex={50}
+        zIndex="100"
         top={top}
         left={left}
         right={right}

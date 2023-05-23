@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/data-table",
-  "version": "1.1.1",
+  "version": "1.2.0-rc.1",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -17,7 +17,7 @@
     "version": "yarn version"
   },
   "peerDependencies": {
-    "@nimbus-ds/components": "4.x",
+    "@nimbus-ds/components": "^5",
     "react": "^16.8 || ^17.0 || ^18.0",
     "react-dom": "^16.8 || ^17.0 || ^18.0"
   },
@@ -31,5 +31,6 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0"
-  }
+  },
+  "stableVersion": "1.1.1"
 }

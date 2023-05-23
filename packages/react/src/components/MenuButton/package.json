@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/menubutton",
-  "version": "1.4.0",
+  "version": "1.5.0-rc.1",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -17,7 +17,7 @@
     "version": "yarn version"
   },
   "peerDependencies": {
-    "@nimbus-ds/components": "4.x",
+    "@nimbus-ds/components": "^5",
     "react": "^16.8 || ^17.0 || ^18.0",
     "react-dom": "^16.8 || ^17.0 || ^18.0"
   },
@@ -34,5 +34,6 @@
   },
   "devDependencies": {
     "@nimbus-ds/icons": "^1.1.0"
-  }
+  },
+  "stableVersion": "1.4.0"
 }
