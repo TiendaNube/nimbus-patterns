@@ -2,15 +2,25 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2023-05-23 `1.4.0`
+
+#### 💡 Others
+
+- Some patterns extend the properties of the `Box` component which has undergone some significant changes, so you should consult the `Box` component documentation when performing this update. ([#56](https://github.com/TiendaNube/nimbus-patterns/pull/56) by [@juniorconquista](https://github.com/juniorconquista))
+
+#### 📚 3rd party library updates
+
+- Updated `@nimbus-ds/components@4.x` to `@nimbus-ds/components@5.x`. ([#56](https://github.com/TiendaNube/nimbus-patterns/pull/56) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-05-08 `1.3.0`
 
-### 🎉 New features
+#### 🎉 New features
 
 - Added `as` property to the `MenuButton.Accordion` component API. ([#50](https://github.com/TiendaNube/nimbus-patterns/pull/50) by [@juniorconquista](https://github.com/juniorconquista))
 
 ## 2023-05-02 `1.2.2`
 
-### 🎉 New features
+#### 🎉 New features
 
 - Update component design styles on `EmptyMessage` component. ([#49](https://github.com/TiendaNube/nimbus-design-system/pull/49) by [@juanchigallego](https://github.com/juanchigallego))
 

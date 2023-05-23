@@ -42,8 +42,8 @@ const MenuButton = forwardRef(
         boxShadow={{
           focus: "focusRing",
         }}
-        borderRadius=".5rem"
-        borderWidth="0"
+        borderRadius="2"
+        borderWidth="none"
         cursor={{
           xs: "pointer",
           disabled: "not-allowed",

@@ -16,7 +16,8 @@ const DataList: React.FC<DataListProps> & DataListComponents = ({
   <Box
     role="list"
     borderStyle="solid"
-    borderWidth={bottomDivider ? "0 0 1px 0" : "0"}
+    borderWidth="none"
+    borderBottomWidth={bottomDivider ? "1" : "none"}
     borderColor="neutral-surfaceHighlight"
     backgroundColor="neutral-background"
     display="flex"

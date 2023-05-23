@@ -21,7 +21,8 @@ const InteractiveListRow: React.FC<InteractiveListRowProps> = ({
     transitionProperty="background-color"
     transitionTimingFunction="ease-in-out"
     boxShadow={{ focusWithin: "focusRing" }}
-    borderWidth={topDivider ? "1px 0 0 0" : "0"}
+    borderWidth="none"
+    borderTopWidth={topDivider ? "1" : "none"}
     {...rest}
   >
     {children}

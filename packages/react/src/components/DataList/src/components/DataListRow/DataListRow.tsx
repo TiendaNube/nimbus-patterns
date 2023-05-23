@@ -17,7 +17,8 @@ const DataListRow: React.FC<DataListRowProps> = ({
   <Box
     role="listitem"
     borderStyle="solid"
-    borderWidth={topDivider ? "1px 0 0 0" : "0"}
+    borderWidth="none"
+    borderTopWidth={topDivider ? "1" : "none"}
     borderColor="neutral-surfaceHighlight"
     display="flex"
     flexDirection="column"

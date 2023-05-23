@@ -24,10 +24,11 @@ const DataTable: React.FC<DataTableProps> & DataTableComponents = ({
   <Box>
     <Box
       position="relative"
-      borderRadius=".5rem"
+      borderRadius="2"
       borderColor="neutral-surfaceHighlight"
       borderStyle="solid"
-      borderWidth="1px"
+      borderWidth="1"
+      // overflow="hidden"
     >
       {bulkActions}
       <Table {...rest}>

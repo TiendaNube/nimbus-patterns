@@ -25,7 +25,8 @@ const DataTableBulkActions: React.FC<DataTableBulkActionsProps> = ({
     gap="4"
     p="2"
     boxSizing="border-box"
-    borderRadius=".5rem .5rem 0 0"
+    borderRadius="2"
+    zIndex="100"
   >
     <Checkbox {...checkbox} id="select-all" />
     <Label htmlFor="select-all">

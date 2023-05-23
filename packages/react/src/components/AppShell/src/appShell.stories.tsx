@@ -96,7 +96,7 @@ const AppMenu = (
         <MenuButton startIcon={StatsIcon} label="Estadísticas" />
       </Menu.Section>
       <Menu.Section title="Administrar">
-        <Box backgroundColor="primary-surface" borderRadius=".5rem">
+        <Box backgroundColor="primary-surface" borderRadius="2">
           <MenuButton
             id="control-1"
             aria-expanded
@@ -143,8 +143,8 @@ const sampleMenu = (
     backgroundColor="primary-surface"
     borderColor="primary-interactive"
     borderStyle="dashed"
-    borderWidth="1px"
-    borderRadius=".5rem"
+    borderWidth="1"
+    borderRadius="2"
     width="15rem"
     height="100vh"
     display="flex"
@@ -164,8 +164,8 @@ const Template: ComponentStory<typeof AppShell> = (args) => (
       backgroundColor="primary-surface"
       borderColor="primary-interactive"
       borderStyle="dashed"
-      borderWidth="1px"
-      borderRadius=".5rem"
+      borderWidth="1"
+      borderRadius="2"
       width="100%"
       height="100vh"
       display="flex"
@@ -189,8 +189,8 @@ const PageTemplate: ComponentStory<typeof AppShell> = (args) => (
           backgroundColor="primary-surface"
           borderColor="primary-interactive"
           borderStyle="dashed"
-          borderWidth="1px"
-          borderRadius=".5rem"
+          borderWidth="1"
+          borderRadius="2"
           width="100%"
           height="500px"
           display="flex"
@@ -213,8 +213,8 @@ const NoLeftSlotTemplate: ComponentStory<typeof AppShell> = (args) => (
       backgroundColor="primary-surface"
       borderColor="primary-interactive"
       borderStyle="dashed"
-      borderWidth="1px"
-      borderRadius=".5rem"
+      borderWidth="1"
+      borderRadius="2"
       width="100%"
       height="500px"
       display="flex"
