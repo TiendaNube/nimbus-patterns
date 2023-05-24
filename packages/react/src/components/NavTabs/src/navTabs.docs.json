@@ -2,6 +2,8 @@
   "id": "navTabs",
   "name": "NavTabs",
   "totalProps": 1,
+  "packageName": "@nimbus-ds/nav-tabs",
+  "version": "1.2.0",
   "props": [
     {
       "description": "Content to be rendered inside the Nav element.",

@@ -2,6 +2,8 @@
   "id": "dataTable",
   "name": "DataTable",
   "totalProps": 4,
+  "packageName": "@nimbus-ds/data-table",
+  "version": "1.2.0",
   "props": [
     {
       "description": "Bulk actions component rendered with a sticky position over the top of the table element.",

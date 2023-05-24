@@ -2,6 +2,8 @@
   "id": "helpLink",
   "name": "HelpLink",
   "totalProps": 1,
+  "packageName": "@nimbus-ds/help-link",
+  "version": "1.1.0",
   "props": [
     {
       "description": "Content to be rendered inside the HelpLink component.",

@@ -2,6 +2,8 @@
   "id": "calloutCard",
   "name": "CalloutCard",
   "totalProps": 6,
+  "packageName": "@nimbus-ds/callout-card",
+  "version": "1.6.0",
   "props": [
     {
       "description": "CalloutCard color.",

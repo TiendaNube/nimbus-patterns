@@ -2,6 +2,8 @@
   "id": "formField",
   "name": "FormField",
   "totalProps": 6,
+  "packageName": "@nimbus-ds/formfield",
+  "version": "1.5.0",
   "props": [
     {
       "description": "Optional label for the field component.",

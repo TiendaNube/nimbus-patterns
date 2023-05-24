@@ -2,6 +2,8 @@
   "id": "menu",
   "name": "Menu",
   "totalProps": 1,
+  "packageName": "@nimbus-ds/menu",
+  "version": "1.5.0",
   "props": [
     {
       "description": "Content of the menu.",

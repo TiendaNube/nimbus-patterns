@@ -2,6 +2,8 @@
   "id": "menuButton",
   "name": "MenuButton",
   "totalProps": 6,
+  "packageName": "@nimbus-ds/menubutton",
+  "version": "1.5.0",
   "props": [
     {
       "default": "",

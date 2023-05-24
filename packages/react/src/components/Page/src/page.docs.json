@@ -2,6 +2,8 @@
   "id": "page",
   "name": "Page",
   "totalProps": 84,
+  "packageName": "@nimbus-ds/page",
+  "version": "1.3.0",
   "props": [
     {
       "description": "Content to be rendered inside the page body.",

@@ -2,6 +2,8 @@
   "id": "emptyMessage",
   "name": "EmptyMessage",
   "totalProps": 5,
+  "packageName": "@nimbus-ds/empty-message",
+  "version": "1.2.0",
   "props": [
     {
       "description": "Optional node that contains an illustration for the component. Will stack vertically on mobile and horizontally on desktop.",

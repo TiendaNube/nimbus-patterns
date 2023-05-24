@@ -2,6 +2,8 @@
   "id": "productUpdates",
   "name": "ProductUpdates",
   "totalProps": 17,
+  "packageName": "@nimbus-ds/productupdates",
+  "version": "1.4.0",
   "props": [
     {
       "description": "Title of the Popover.",

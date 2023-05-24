@@ -2,6 +2,8 @@
   "id": "interactiveList",
   "name": "InteractiveList",
   "totalProps": 257,
+  "packageName": "@nimbus-ds/interactive-list",
+  "version": "1.3.0",
   "props": [
     {
       "description": "Content of the InteractiveList",
