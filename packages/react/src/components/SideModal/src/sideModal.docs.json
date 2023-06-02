@@ -1,7 +1,7 @@
 {
   "id": "sideModal",
   "name": "SideModal",
-  "totalProps": 14,
+  "totalProps": 15,
   "packageName": "@nimbus-ds/sidemodal",
   "version": "1.7.0",
   "props": [
@@ -221,6 +221,99 @@
       ],
       "type": "string",
       "title": "position",
+      "required": false
+    },
+    {
+      "description": "The zIndex property specifies the stack order of the sidebar.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "xs": {
+              "enum": [
+                "100",
+                "200",
+                "300",
+                "400",
+                "500",
+                "600",
+                "700",
+                "800",
+                "900"
+              ],
+              "type": "string",
+              "title": "xs"
+            },
+            "md": {
+              "enum": [
+                "100",
+                "200",
+                "300",
+                "400",
+                "500",
+                "600",
+                "700",
+                "800",
+                "900"
+              ],
+              "type": "string",
+              "title": "md"
+            },
+            "lg": {
+              "enum": [
+                "100",
+                "200",
+                "300",
+                "400",
+                "500",
+                "600",
+                "700",
+                "800",
+                "900"
+              ],
+              "type": "string",
+              "title": "lg"
+            },
+            "xl": {
+              "enum": [
+                "100",
+                "200",
+                "300",
+                "400",
+                "500",
+                "600",
+                "700",
+                "800",
+                "900"
+              ],
+              "type": "string",
+              "title": "xl"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": [
+            "xs",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        {
+          "enum": [
+            "100",
+            "200",
+            "300",
+            "400",
+            "500",
+            "600",
+            "700",
+            "800",
+            "900"
+          ],
+          "type": "string"
+        }
+      ],
+      "title": "zIndex",
       "required": false
     },
     {
