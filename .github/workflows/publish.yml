@@ -70,7 +70,7 @@ jobs:
       - name: Trigger github action create github tag
         run: |
           curl --request POST \
-          --url 'https://api.github.com/repos/tiendanube/nimbus-patterns/actions/workflows/58856079/dispatches' \
+          --url 'https://api.github.com/repos/tiendanube/nimbus-patterns/actions/workflows/59054497/dispatches' \
           --header 'Authorization: token ${{ secrets.PAT_CHANGE_BRANCH_PROTECTION_RULES_FROM_JUNIOR_CONQUISTA }}' \
           --data '{"ref":"master"}'
 
@@ -84,7 +84,7 @@ jobs:
       - name: Trigger github action send slack notifications
         run: |
           curl --request POST \
-          --url 'https://api.github.com/repos/tiendanube/nimbus-patterns/actions/workflows/58847410/dispatches' \
+          --url 'https://api.github.com/repos/tiendanube/nimbus-patterns/actions/workflows/59054498/dispatches' \
           --header 'Authorization: token ${{ secrets.PAT_CHANGE_BRANCH_PROTECTION_RULES_FROM_JUNIOR_CONQUISTA }}' \
           --data '{"ref":"master"}'
 
