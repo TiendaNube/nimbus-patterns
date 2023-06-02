@@ -6,7 +6,7 @@ export type SideModalPadding = "none" | "base";
 export interface SideModalProperties
   extends Pick<
     SidebarProperties,
-    "position" | "onRemove" | "open" | "padding" | "maxWidth"
+    "position" | "onRemove" | "open" | "padding" | "maxWidth" | "zIndex"
   > {
   /**
    * Title.

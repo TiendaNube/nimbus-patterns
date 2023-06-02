@@ -1,187 +1,198 @@
 import React from "react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { withA11y } from "@storybook/addon-a11y";
-
+import type { Meta, StoryObj } from "@storybook/react";
 import { Tag, Box } from "@nimbus-ds/components";
 
 import { InteractiveList } from "./InteractiveList";
 
-export default {
+const meta: Meta<typeof InteractiveList> = {
   title: "Patterns/InteractiveList",
   component: InteractiveList,
-  parameters: {
-    withA11y: { decorators: [withA11y] },
-  },
-  subcomponents: {
-    "InteractiveList.Structure": InteractiveList.Structure,
-    "InteractiveList.ButtonItem": InteractiveList.ButtonItem,
-    "InteractiveList.CheckboxItem": InteractiveList.CheckboxItem,
-    "InteractiveList.RadioItem": InteractiveList.RadioItem,
-    "InteractiveList.ToggleItem": InteractiveList.ToggleItem,
-  },
   argTypes: {
     children: { control: { disable: true } },
-    topDivider: { control: "boolean" },
   },
-} as ComponentMeta<typeof InteractiveList>;
-
-const CheckboxTemplate: ComponentStory<typeof InteractiveList.CheckboxItem> = (
-  args
-) => (
-  <InteractiveList>
-    <InteractiveList.CheckboxItem {...args} />
-    <InteractiveList.CheckboxItem
-      {...args}
-      title="Second element"
-      description="Description of the second element"
-    />
-    <InteractiveList.CheckboxItem
-      {...args}
-      title="Third element"
-      description="Description of the third element"
-    />
-  </InteractiveList>
-);
-
-const RadioTemplate: ComponentStory<typeof InteractiveList.RadioItem> = (
-  args
-) => (
-  <InteractiveList>
-    <InteractiveList.RadioItem {...args} />
-    <InteractiveList.RadioItem
-      {...args}
-      title="Second element"
-      description="Description of the second element"
-    />
-    <InteractiveList.RadioItem
-      {...args}
-      title="Third element"
-      description="Description of the third element"
-    />
-  </InteractiveList>
-);
-
-const ToggleTemplate: ComponentStory<typeof InteractiveList.ToggleItem> = (
-  args
-) => (
-  <InteractiveList>
-    <InteractiveList.ToggleItem {...args} />
-    <InteractiveList.ToggleItem
-      {...args}
-      title="Second element"
-      description="Description of the second element"
-    />
-    <InteractiveList.ToggleItem
-      {...args}
-      title="Third element"
-      description="Description of the third element"
-    />
-  </InteractiveList>
-);
-
-const ButtonTemplate: ComponentStory<typeof InteractiveList.ButtonItem> = (
-  args
-) => (
-  <InteractiveList>
-    <InteractiveList.ButtonItem {...args} />
-    <InteractiveList.ButtonItem
-      {...args}
-      title="Second element"
-      description="Description of the second element"
-    />
-    <InteractiveList.ButtonItem
-      {...args}
-      title="Third element"
-      description="Description of the third element"
-    />
-  </InteractiveList>
-);
-
-const NoDividersTemplate: ComponentStory<typeof InteractiveList.ButtonItem> = (
-  args
-) => (
-  <InteractiveList bottomDivider={false}>
-    <InteractiveList.ButtonItem {...args} />
-    <InteractiveList.ButtonItem
-      {...args}
-      title="Second element"
-      description="Description of the second element"
-    />
-    <InteractiveList.ButtonItem
-      {...args}
-      title="Third element"
-      description="Description of the third element"
-    />
-  </InteractiveList>
-);
-
-export const asCheckbox = CheckboxTemplate.bind({});
-asCheckbox.args = {
-  title: "Title",
-  description: "Description",
-  checkbox: { name: "InteractiveList elements" },
-  children: (
-    <Box display="flex" gap="1" mt="2">
-      <Tag>Text</Tag>
-      <Tag>Text</Tag>
-      <Tag>Text</Tag>
-    </Box>
-  ),
+  tags: ["autodocs"],
 };
 
-export const asRadio = RadioTemplate.bind({});
-asRadio.args = {
-  title: "Title",
-  description: "Description",
-  radio: { name: "InteractiveList elements" },
-  children: (
-    <Box display="flex" gap="1" mt="2">
-      <Tag>Text</Tag>
-      <Tag>Text</Tag>
-      <Tag>Text</Tag>
-    </Box>
-  ),
+export default meta;
+type Story = StoryObj<typeof InteractiveList>;
+
+export const basic: Story = {
+  args: {
+    title: "Title",
+    bottomDivider: false,
+    children: (
+      <InteractiveList.ButtonItem
+        title="First element"
+        description="Description of the first element"
+        iconButton={{
+          onClick: () => console.log("clicked"),
+        }}
+        topDivider={false}
+      >
+        <Box display="flex" gap="1" mt="2">
+          <Tag>Text</Tag>
+          <Tag>Text</Tag>
+          <Tag>Text</Tag>
+        </Box>
+      </InteractiveList.ButtonItem>
+    ),
+  },
 };
 
-export const asToggle = ToggleTemplate.bind({});
-asToggle.args = {
-  title: "Title",
-  description: "Description",
-  toggle: { name: "InteractiveList elements" },
-  children: (
-    <Box display="flex" gap="1" mt="2">
-      <Tag>Text</Tag>
-      <Tag>Text</Tag>
-      <Tag>Text</Tag>
-    </Box>
+export const asCheckbox: Story = {
+  render: ({ children, ...args }) => (
+    <InteractiveList {...args}>
+      <InteractiveList.CheckboxItem
+        title="First element"
+        description="Description of the first element"
+        checkbox={{
+          name: "InteractiveList elements",
+        }}
+      >
+        {children}
+      </InteractiveList.CheckboxItem>
+      <InteractiveList.CheckboxItem
+        title="Second element"
+        description="Description of the second element"
+        checkbox={{
+          name: "InteractiveList elements",
+        }}
+      >
+        {children}
+      </InteractiveList.CheckboxItem>
+      <InteractiveList.CheckboxItem
+        title="Third element"
+        description="Description of the third element"
+        checkbox={{
+          name: "InteractiveList elements",
+        }}
+      >
+        {children}
+      </InteractiveList.CheckboxItem>
+    </InteractiveList>
   ),
+  args: {
+    title: "Title",
+    children: (
+      <Box display="flex" gap="1" mt="2">
+        <Tag>Text</Tag>
+        <Tag>Text</Tag>
+        <Tag>Text</Tag>
+      </Box>
+    ),
+  },
 };
 
-export const asButton = ButtonTemplate.bind({});
-asButton.args = {
-  title: "Title",
-  description: "Description",
-  iconButton: { onClick: () => console.log("clicked") },
-  children: (
-    <Box display="flex" gap="1" mt="2">
-      <Tag>Text</Tag>
-      <Tag>Text</Tag>
-      <Tag>Text</Tag>
-    </Box>
+export const asRadio: Story = {
+  render: ({ children, ...args }) => (
+    <InteractiveList {...args}>
+      <InteractiveList.RadioItem
+        title="First element"
+        description="Description of the first element"
+        radio={{ name: "InteractiveList elements" }}
+      >
+        {children}
+      </InteractiveList.RadioItem>
+      <InteractiveList.RadioItem
+        title="Second element"
+        description="Description of the second element"
+        radio={{ name: "InteractiveList elements" }}
+      >
+        {children}
+      </InteractiveList.RadioItem>
+      <InteractiveList.RadioItem
+        title="Third element"
+        description="Description of the third element"
+        radio={{ name: "InteractiveList elements" }}
+      >
+        {children}
+      </InteractiveList.RadioItem>
+    </InteractiveList>
   ),
+  args: {
+    title: "Title",
+    children: (
+      <Box display="flex" gap="1" mt="2">
+        <Tag>Text</Tag>
+        <Tag>Text</Tag>
+        <Tag>Text</Tag>
+      </Box>
+    ),
+  },
 };
 
-export const noDividers = NoDividersTemplate.bind({});
-noDividers.args = {
-  title: "Title",
-  description: "Description",
-  iconButton: { onClick: () => console.log("clicked") },
-  topDivider: false,
-  children: (
-    <Box display="flex" gap="1" mt="2">
-      <Tag>Text</Tag>
-      <Tag>Text</Tag>
-      <Tag>Text</Tag>
-    </Box>
+export const asToggle: Story = {
+  render: ({ children, ...args }) => (
+    <InteractiveList {...args}>
+      <InteractiveList.ToggleItem
+        title="First element"
+        description="Description of the first element"
+        toggle={{ name: "InteractiveList elements" }}
+      >
+        {children}
+      </InteractiveList.ToggleItem>
+      <InteractiveList.ToggleItem
+        title="Second element"
+        description="Description of the second element"
+        toggle={{ name: "InteractiveList elements" }}
+      >
+        {children}
+      </InteractiveList.ToggleItem>
+      <InteractiveList.ToggleItem
+        title="Third element"
+        description="Description of the third element"
+        toggle={{ name: "InteractiveList elements" }}
+      >
+        {children}
+      </InteractiveList.ToggleItem>
+    </InteractiveList>
   ),
+  args: {
+    title: "Title",
+    children: (
+      <Box display="flex" gap="1" mt="2">
+        <Tag>Text</Tag>
+        <Tag>Text</Tag>
+        <Tag>Text</Tag>
+      </Box>
+    ),
+  },
+};
+
+export const asButton: Story = {
+  render: ({ children, ...args }) => (
+    <InteractiveList {...args}>
+      <InteractiveList.ButtonItem
+        title="First element"
+        description="Description of the first element"
+        iconButton={{ onClick: () => console.log("clicked") }}
+      >
+        {children}
+      </InteractiveList.ButtonItem>
+      <InteractiveList.ButtonItem
+        title="Second element"
+        description="Description of the second element"
+        iconButton={{ onClick: () => console.log("clicked") }}
+      >
+        {children}
+      </InteractiveList.ButtonItem>
+      <InteractiveList.ButtonItem
+        title="Third element"
+        description="Description of the third element"
+        iconButton={{ onClick: () => console.log("clicked") }}
+      >
+        {children}
+      </InteractiveList.ButtonItem>
+    </InteractiveList>
+  ),
+  args: {
+    title: "Title",
+    children: (
+      <Box display="flex" gap="1" mt="2">
+        <Tag>Text</Tag>
+        <Tag>Text</Tag>
+        <Tag>Text</Tag>
+      </Box>
+    ),
+  },
 };

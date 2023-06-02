@@ -25,6 +25,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "plugin:jest/recommended",
+    "plugin:storybook/recommended",
     "@tiendanube/eslint-config",
     "airbnb",
     "prettier"
@@ -39,6 +40,12 @@
             "parser": "markdown"
           }
         ]
+      }
+    },
+    {
+      "files": ["*.stories.*"],
+      "rules": {
+        "react-hooks/rules-of-hooks": "off"
       }
     },
     {

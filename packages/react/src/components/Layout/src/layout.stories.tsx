@@ -1,31 +1,10 @@
 import React from "react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { withA11y } from "@storybook/addon-a11y";
-
+import type { Meta, StoryObj } from "@storybook/react";
 import { Box, Text } from "@nimbus-ds/components";
 
 import { Layout } from "./Layout";
 
-export default {
-  title: "Patterns/Layout",
-  component: Layout,
-  parameters: {
-    withA11y: { decorators: [withA11y] },
-  },
-  subcomponents: {
-    "Layout.Section": Layout.Section,
-  },
-  argTypes: {
-    children: { control: { disable: true } },
-    columns: { control: "select" },
-  },
-} as ComponentMeta<typeof Layout>;
-
-interface ExampleBoxProps {
-  text: string;
-}
-
-const ExampleBox: React.FC<ExampleBoxProps> = ({ text }: ExampleBoxProps) => (
+const ExampleBox: React.FC<{ text: string }> = ({ text }: { text: string }) => (
   <Box
     display="flex"
     alignItems="center"
@@ -45,45 +24,65 @@ const ExampleBox: React.FC<ExampleBoxProps> = ({ text }: ExampleBoxProps) => (
   </Box>
 );
 
-const Template: ComponentStory<typeof Layout> = (args) => (
-  <Layout {...args}>
-    <Layout.Section>
-      <ExampleBox text="1st content" />
-    </Layout.Section>
-    <Layout.Section>
-      <ExampleBox text="2nd content" />
-    </Layout.Section>
-    <Layout.Section>
-      <ExampleBox text="3rd content" />
-    </Layout.Section>
-    <Layout.Section>
-      <ExampleBox text="4th content" />
-    </Layout.Section>
-    <Layout.Section>
-      <ExampleBox text="5th content" />
-    </Layout.Section>
-    <Layout.Section>
-      <ExampleBox text="6th content" />
-    </Layout.Section>
-  </Layout>
-);
-
-export const oneColumn = Template.bind({});
-oneColumn.args = {
-  columns: "1",
+const meta: Meta<typeof Layout> = {
+  title: "Patterns/Layout",
+  component: Layout,
+  argTypes: {
+    children: { control: { disable: true } },
+    columns: { control: "select" },
+  },
+  tags: ["autodocs"],
+  render: (args) => (
+    <Layout {...args}>
+      <Layout.Section>
+        <ExampleBox text="1st content" />
+      </Layout.Section>
+      <Layout.Section>
+        <ExampleBox text="2nd content" />
+      </Layout.Section>
+      <Layout.Section>
+        <ExampleBox text="3rd content" />
+      </Layout.Section>
+      <Layout.Section>
+        <ExampleBox text="4th content" />
+      </Layout.Section>
+      <Layout.Section>
+        <ExampleBox text="5th content" />
+      </Layout.Section>
+      <Layout.Section>
+        <ExampleBox text="6th content" />
+      </Layout.Section>
+    </Layout>
+  ),
 };
 
-export const twoColumnsAsymmetric = Template.bind({});
-twoColumnsAsymmetric.args = {
-  columns: "2 - asymmetric",
+export default meta;
+type Story = StoryObj<typeof Layout>;
+
+export const basic: Story = {
+  args: {},
 };
 
-export const twoColumnsSymmetric = Template.bind({});
-twoColumnsSymmetric.args = {
-  columns: "2 - symmetric",
+export const oneColumn: Story = {
+  args: {
+    columns: "1",
+  },
 };
 
-export const threeColumns = Template.bind({});
-threeColumns.args = {
-  columns: "3",
+export const twoColumnsAsymmetric: Story = {
+  args: {
+    columns: "2 - asymmetric",
+  },
+};
+
+export const twoColumnsSymmetric: Story = {
+  args: {
+    columns: "2 - symmetric",
+  },
+};
+
+export const threeColumns: Story = {
+  args: {
+    columns: "3",
+  },
 };

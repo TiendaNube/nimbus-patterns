@@ -1,6 +1,5 @@
 import React from "react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { withA11y } from "@storybook/addon-a11y";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import {
   Box,
@@ -35,15 +34,9 @@ import {
 
 import { AppShell } from "./AppShell";
 
-export default {
+const meta: Meta<typeof AppShell> = {
   title: "Patterns/AppShell",
   component: AppShell,
-  parameters: {
-    withA11y: { decorators: [withA11y] },
-  },
-  subcomponents: {
-    "AppShell.Header": AppShell.Header,
-  },
   argTypes: {
     children: {
       control: { disable: true },
@@ -52,7 +45,11 @@ export default {
       control: { disable: true },
     },
   },
-} as ComponentMeta<typeof AppShell>;
+  tags: ["autodocs"],
+};
+
+export default meta;
+type Story = StoryObj<typeof AppShell>;
 
 const backButton = (
   <Button appearance="transparent">
@@ -157,82 +154,82 @@ const sampleMenu = (
   </Box>
 );
 
-const Template: ComponentStory<typeof AppShell> = (args) => (
-  <AppShell {...args} menu={sampleMenu}>
-    <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
-    <Box
-      backgroundColor="primary-surface"
-      borderColor="primary-interactive"
-      borderStyle="dashed"
-      borderWidth="1"
-      borderRadius="2"
-      width="100%"
-      height="100vh"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-    >
-      <Text fontSize="base" color="primary-interactive">
-        Children content
-      </Text>
-    </Box>
-  </AppShell>
-);
+export const basic: Story = {
+  render: (args) => (
+    <AppShell {...args} menu={sampleMenu}>
+      <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
+      <Box
+        backgroundColor="primary-surface"
+        borderColor="primary-interactive"
+        borderStyle="dashed"
+        borderWidth="1"
+        borderRadius="2"
+        width="100%"
+        height="100vh"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Text fontSize="base" color="primary-interactive">
+          Children content
+        </Text>
+      </Box>
+    </AppShell>
+  ),
+  args: {},
+};
 
-const PageTemplate: ComponentStory<typeof AppShell> = (args) => (
-  <AppShell {...args} menu={AppMenu}>
-    <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
-    <Page maxWidth="800px">
-      <Page.Header title="Page demo" />
-      <Page.Body>
-        <Box
-          backgroundColor="primary-surface"
-          borderColor="primary-interactive"
-          borderStyle="dashed"
-          borderWidth="1"
-          borderRadius="2"
-          width="100%"
-          height="500px"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Text fontSize="base" color="primary-interactive">
-            Body content
-          </Text>
-        </Box>
-      </Page.Body>
-    </Page>
-  </AppShell>
-);
+export const demoApp: Story = {
+  render: (args) => (
+    <AppShell {...args} menu={AppMenu}>
+      <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
+      <Page maxWidth="800px">
+        <Page.Header title="Page demo" />
+        <Page.Body>
+          <Box
+            backgroundColor="primary-surface"
+            borderColor="primary-interactive"
+            borderStyle="dashed"
+            borderWidth="1"
+            borderRadius="2"
+            width="100%"
+            height="500px"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Text fontSize="base" color="primary-interactive">
+              Body content
+            </Text>
+          </Box>
+        </Page.Body>
+      </Page>
+    </AppShell>
+  ),
+  args: {},
+};
 
-const NoLeftSlotTemplate: ComponentStory<typeof AppShell> = (args) => (
-  <AppShell {...args} menu={sampleMenu}>
-    <AppShell.Header rightSlot={buttonStack} />
-    <Box
-      backgroundColor="primary-surface"
-      borderColor="primary-interactive"
-      borderStyle="dashed"
-      borderWidth="1"
-      borderRadius="2"
-      width="100%"
-      height="500px"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-    >
-      <Text fontSize="base" color="primary-interactive">
-        Body content
-      </Text>
-    </Box>
-  </AppShell>
-);
-
-export const base = Template.bind({});
-base.args = {};
-
-export const demoApp = PageTemplate.bind({});
-demoApp.args = {};
-
-export const noLeftSlot = NoLeftSlotTemplate.bind({});
-base.args = {};
+export const noLeftSlot: Story = {
+  render: (args) => (
+    <AppShell {...args} menu={sampleMenu}>
+      <AppShell.Header rightSlot={buttonStack} />
+      <Box
+        backgroundColor="primary-surface"
+        borderColor="primary-interactive"
+        borderStyle="dashed"
+        borderWidth="1"
+        borderRadius="2"
+        width="100%"
+        height="500px"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Text fontSize="base" color="primary-interactive">
+          Body content
+        </Text>
+      </Box>
+    </AppShell>
+  ),
+  args: {},
+};
