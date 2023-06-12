@@ -4,7 +4,7 @@ import { VanillaExtractPlugin } from "@vanilla-extract/webpack-plugin";
 import { convertTsConfigPathsToWebpackAliases } from "./utils";
 
 const config: StorybookConfig = {
-  stories: ["../packages/react/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ["../packages/react/**/*.stories.@(js|jsx|ts|tsx)", "stories/templates/*.stories.@(js|jsx|ts|tsx)"],
   refs: {
     components: {
       title: "@nimbus-ds/components",
