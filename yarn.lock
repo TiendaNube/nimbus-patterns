@@ -3891,7 +3891,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/app-shell@workspace:packages/react/src/components/AppShell"
   dependencies:
-    "@nimbus-ds/icons": ^1.1.0
+    "@nimbus-ds/icons": ^1
     "@nimbus-ds/menu": "workspace:^"
     "@nimbus-ds/menubutton": "workspace:^"
     "@nimbus-ds/page": "workspace:^"
@@ -3954,7 +3954,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/empty-message@workspace:packages/react/src/components/EmptyMessage"
   dependencies:
-    "@nimbus-ds/icons": ^1.1.0
+    "@nimbus-ds/icons": ^1
   peerDependencies:
     "@nimbus-ds/components": ^5
     react: ^16.8 || ^17.0 || ^18.0
@@ -3966,7 +3966,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/formfield@workspace:packages/react/src/components/FormField"
   dependencies:
-    "@nimbus-ds/icons": ^1.1.0
+    "@nimbus-ds/icons": ^1
   peerDependencies:
     "@nimbus-ds/components": ^5
     react: ^16.8 || ^17.0 || ^18.0
@@ -3985,10 +3985,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/icons@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@nimbus-ds/icons@npm:1.0.0"
-  checksum: 51662079b207ea67ea0e6940393426c20ea7e2f52ca6d4902de402a9957c58741f4d5c5aee3eb001457b28318069018d1f35805e85918faacea038ed8cf727f1
+"@nimbus-ds/icons@npm:^1":
+  version: 1.2.0
+  resolution: "@nimbus-ds/icons@npm:1.2.0"
+  checksum: 24b9452d3f45a16e1abae11eef49b8d623de5f24583566fd8fdc6c10ae9961819647f8a590f7712fb9718f5e1cee2c5513a2b134044559b99ddfbc152ecaa01b
   languageName: node
   linkType: hard
 
@@ -4039,7 +4039,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/menubutton@workspace:packages/react/src/components/MenuButton"
   dependencies:
-    "@nimbus-ds/icons": ^1.1.0
+    "@nimbus-ds/icons": ^1
     "@nimbus-ds/typings": ^1.1.0
   peerDependencies:
     "@nimbus-ds/components": ^5
@@ -4052,7 +4052,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/nav-tabs@workspace:packages/react/src/components/NavTabs"
   dependencies:
-    "@nimbus-ds/icons": ^1.1.0
+    "@nimbus-ds/icons": ^1
   peerDependencies:
     "@nimbus-ds/components": ^5
     react: ^16.8 || ^17.0 || ^18.0
@@ -4064,7 +4064,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/page@workspace:packages/react/src/components/Page"
   dependencies:
-    "@nimbus-ds/icons": ^1.0.0
+    "@nimbus-ds/icons": ^1
   peerDependencies:
     "@nimbus-ds/components": ^5
     react: ^16.8 || ^17.0 || ^18.0
@@ -4130,7 +4130,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/sidemodal@workspace:packages/react/src/components/SideModal"
   dependencies:
-    "@nimbus-ds/icons": ^1.1.0
+    "@nimbus-ds/icons": ^1
   peerDependencies:
     "@nimbus-ds/components": ^5
     react: ^16.8 || ^17.0 || ^18.0
