@@ -4,7 +4,6 @@
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
-  "module": "dist/index.module.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
@@ -33,6 +32,6 @@
     "@nimbus-ds/typings": "^1.1.0"
   },
   "devDependencies": {
-    "@nimbus-ds/icons": "^1.1.0"
+    "@nimbus-ds/icons": "^1"
   }
 }

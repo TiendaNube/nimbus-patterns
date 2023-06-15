@@ -2,6 +2,12 @@
 
 The AppShell component is the main outer frame of an application. It provides the basic architecture to build an application inside of our admin.
 
+## 2023-06-15 `1.3.1`
+
+#### 💡 Others
+
+- Removed module key from `package.json`. ([#62](https://github.com/TiendaNube/nimbus-patterns/pull/62) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-05-23 `1.3.0`
 
 #### 💡 Others
