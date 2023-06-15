@@ -2,6 +2,12 @@
 
 Help Link component is intended for adding helpful links with tutorials or educational content on the UI.
 
+## 2023-06-15 `1.1.1`
+
+#### 💡 Others
+
+- Removed module key from `package.json`. ([#62](https://github.com/TiendaNube/nimbus-patterns/pull/62) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-05-23 `1.1.0`
 
 #### 📚 3rd party library updates

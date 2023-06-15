@@ -2,6 +2,12 @@
 
 The NavTabs component represents the main navigation dock for an application on a mobile device, including up to 5 tabs or buttons for different sections. The component has a fixed position on the bottom of the screen.
 
+## 2023-06-15 `1.2.1`
+
+#### 💡 Others
+
+- Removed module key from `package.json`. ([#62](https://github.com/TiendaNube/nimbus-patterns/pull/62) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-05-23 `1.2.0`
 
 #### 💡 Others

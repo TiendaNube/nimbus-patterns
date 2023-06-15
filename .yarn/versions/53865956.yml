@@ -1,0 +1,18 @@
+releases:
+  "@nimbus-ds/app-shell": patch
+  "@nimbus-ds/callout-card": patch
+  "@nimbus-ds/data-list": patch
+  "@nimbus-ds/data-table": patch
+  "@nimbus-ds/empty-message": patch
+  "@nimbus-ds/formfield": patch
+  "@nimbus-ds/help-link": patch
+  "@nimbus-ds/interactive-list": patch
+  "@nimbus-ds/layout": patch
+  "@nimbus-ds/menu": patch
+  "@nimbus-ds/menubutton": patch
+  "@nimbus-ds/nav-tabs": patch
+  "@nimbus-ds/page": patch
+  "@nimbus-ds/patterns": patch
+  "@nimbus-ds/productupdates": patch
+  "@nimbus-ds/sidemodal": patch
+  "@nimbus-ds/thumbnail-with-action": patch
