@@ -2,7 +2,7 @@
 
 The Layout component is intended for building single or multi-column layouts using predefined typologies.
 
-## 2023-06-15 `1.3.1`
+## 2023-06-15 `1.3.2`
 
 #### 💡 Others
 

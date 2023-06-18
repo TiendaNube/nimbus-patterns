@@ -2,7 +2,7 @@
 
 The Thumbnail With Action pattern allows you to add interactive elements to image thumbnails. By overlaying custom content onto a thumbnail component in one of the four corners, you can embed atomic components such as buttons, icons, or links that enable users to perform specific actions related to the image.
 
-## 2023-06-15 `1.2.1`
+## 2023-06-15 `1.2.2`
 
 #### 💡 Others
 

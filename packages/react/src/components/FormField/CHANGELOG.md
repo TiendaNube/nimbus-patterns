@@ -2,7 +2,7 @@
 
 The FormField component allows the user to enter or edit information in text format. Additionally, it provides a label, and a conditional help text that can be used to provide additional context on a validation scenario.
 
-## 2023-06-15 `1.5.1`
+## 2023-06-15 `1.5.2`
 
 #### 💡 Others
 

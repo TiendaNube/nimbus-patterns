@@ -2,7 +2,7 @@
 
 The Menu component allows the user to create in-app menus that navigate through different sections of an application.
 
-## 2023-06-15 `1.5.1`
+## 2023-06-15 `1.5.2`
 
 #### 💡 Others
 

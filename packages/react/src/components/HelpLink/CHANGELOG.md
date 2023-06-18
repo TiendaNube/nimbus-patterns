@@ -2,7 +2,7 @@
 
 Help Link component is intended for adding helpful links with tutorials or educational content on the UI.
 
-## 2023-06-15 `1.1.1`
+## 2023-06-15 `1.1.2`
 
 #### 💡 Others
 

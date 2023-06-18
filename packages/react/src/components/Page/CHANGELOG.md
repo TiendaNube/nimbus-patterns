@@ -2,7 +2,7 @@
 
 Page component allows the user to build application pages with all the necessary attributes for constructing a variety of layouts.
 
-## 2023-06-15 `1.3.1`
+## 2023-06-15 `1.3.2`
 
 #### 💡 Others
 

@@ -10,7 +10,7 @@
     ]
   },
   "scripts": {
-    "build": "yarn clean && yarn build:packages",
+    "build": "yarn build:packages",
     "build:docs": "babel-node -x .ts ./.scripts/json-documentation",
     "build:packages": "babel-node -x .ts ./.scripts/build-packages",
     "build:storybook": "storybook build -c .storybook -o .build-storybook",

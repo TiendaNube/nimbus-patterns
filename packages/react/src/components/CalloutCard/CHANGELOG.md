@@ -2,7 +2,7 @@
 
 This component is used to provide the user with useful information, tips, tutorials or shortcuts to other parts of the product. It is a visual component specially designed to be used in contexts such as integration, tutorials or dashboards, where we need to show different relevant information in the same space.
 
-## 2023-06-15 `1.6.1`
+## 2023-06-15 `1.6.2`
 
 #### 💡 Others
 
