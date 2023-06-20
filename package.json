@@ -56,7 +56,7 @@
     "@commitlint/config-conventional": "^17.2.0",
     "@jest/types": "^29.2.1",
     "@mdx-js/react": "^1.6.22",
-    "@nimbus-ds/components": "^5.0.0",
+    "@nimbus-ds/components": "^5.1.0",
     "@nimbus-ds/scripts": "1.3.0",
     "@nimbus-ds/styles": "^9.0.0",
     "@nimbus-ds/tokens": "^8.0.0",
