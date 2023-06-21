@@ -3,7 +3,7 @@
   "name": "AppShell",
   "totalProps": 2,
   "packageName": "@nimbus-ds/app-shell",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "props": [
     {
       "description": "Content for the body of the application.",

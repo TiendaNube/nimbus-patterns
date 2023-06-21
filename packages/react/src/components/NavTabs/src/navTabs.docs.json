@@ -3,7 +3,7 @@
   "name": "NavTabs",
   "totalProps": 1,
   "packageName": "@nimbus-ds/nav-tabs",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "props": [
     {
       "description": "Content to be rendered inside the Nav element.",
@@ -48,7 +48,7 @@
           "required": true
         },
         {
-          "description": "Element to be rendered inside the Box component. Meu teste",
+          "description": "Element to be rendered inside the Box component.",
           "type": "React.ReactNode",
           "title": "children",
           "required": false

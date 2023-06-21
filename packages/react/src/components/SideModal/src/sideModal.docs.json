@@ -3,7 +3,7 @@
   "name": "SideModal",
   "totalProps": 15,
   "packageName": "@nimbus-ds/sidemodal",
-  "version": "1.7.0",
+  "version": "1.7.2",
   "props": [
     {
       "description": "Title.",

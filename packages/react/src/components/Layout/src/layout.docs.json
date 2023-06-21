@@ -3,7 +3,7 @@
   "name": "Layout",
   "totalProps": 84,
   "packageName": "@nimbus-ds/layout",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "props": [
     {
       "description": "Content to be rendered inside the layout.",

@@ -3,7 +3,7 @@
   "name": "DataList",
   "totalProps": 2,
   "packageName": "@nimbus-ds/data-list",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "props": [
     {
       "description": "Content of the List component.",
