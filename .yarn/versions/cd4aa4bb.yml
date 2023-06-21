@@ -1,6 +1,0 @@
-releases:
-  "@nimbus-ds/interactive-list": patch
-  "@nimbus-ds/patterns": patch
-
-declined:
-  - nimbus-patterns
