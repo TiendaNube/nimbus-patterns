@@ -1,5 +1,5 @@
 import { HTMLAttributes } from "react";
-import { CheckboxProperties } from "@nimbus-ds/components";
+import { CheckboxProps } from "@nimbus-ds/components";
 import { InteractiveListStructureProperties } from "../InteractiveListStructure/interactiveListStructure.types";
 import { InteractiveListRowProps } from "../InteractiveListRow/interactiveListRow.types";
 
@@ -8,7 +8,7 @@ export interface InteractiveListCheckboxItemProperties
   /**
    * Checkbox props inherited from Nimbus components.
    */
-  checkbox: CheckboxProperties;
+  checkbox: CheckboxProps;
 }
 
 export type InteractiveListCheckboxItemProps =

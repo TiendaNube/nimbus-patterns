@@ -1,5 +1,5 @@
 import { HTMLAttributes } from "react";
-import { RadioProperties } from "@nimbus-ds/components";
+import { RadioProps } from "@nimbus-ds/components";
 import { InteractiveListStructureProperties } from "../InteractiveListStructure/interactiveListStructure.types";
 import { InteractiveListRowProps } from "../InteractiveListRow/interactiveListRow.types";
 
@@ -8,7 +8,7 @@ export interface InteractiveListRadioItemProperties
   /**
    * Radio props inherited from Nimbus components.
    */
-  radio: RadioProperties;
+  radio: RadioProps;
 }
 
 export type InteractiveListRadioItemProps = InteractiveListRadioItemProperties &
