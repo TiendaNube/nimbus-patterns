@@ -1,5 +1,5 @@
 import { HTMLAttributes } from "react";
-import { ToggleProperties } from "@nimbus-ds/components";
+import { ToggleProps } from "@nimbus-ds/components";
 import { InteractiveListStructureProperties } from "../InteractiveListStructure/interactiveListStructure.types";
 import { InteractiveListRowProps } from "../InteractiveListRow/interactiveListRow.types";
 
@@ -8,7 +8,7 @@ export interface InteractiveListToggleItemProperties
   /**
    * Toggle props inherited from Nimbus components.
    */
-  toggle: ToggleProperties;
+  toggle: ToggleProps;
 }
 
 export type InteractiveListToggleItemProps =

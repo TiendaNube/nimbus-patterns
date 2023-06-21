@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2023-06-21 `1.4.3`
+
+#### 🐛 Bug fixes
+
+- Fixed typing of `InteractiveList.CheckboxItem`, `InteractiveList.ButtonItem`, `InteractiveList.RadioItem` and `InteractiveList.ToggleItem` internal components to extend native HTML props. ([#66](https://github.com/TiendaNube/nimbus-patterns/pull/66) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-06-15 `1.4.2`
 
 #### 💡 Others
