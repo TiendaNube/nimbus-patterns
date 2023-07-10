@@ -57,7 +57,7 @@
     "@jest/types": "^29.2.1",
     "@mdx-js/react": "^1.6.22",
     "@nimbus-ds/components": "^5.x",
-    "@nimbus-ds/scripts": "1.3.0",
+    "@nimbus-ds/scripts": "1.4.0",
     "@nimbus-ds/styles": "^9.x",
     "@nimbus-ds/tokens": "^8.x",
     "@storybook/addon-docs": "^7.0.18",
