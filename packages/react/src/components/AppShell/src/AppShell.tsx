@@ -11,11 +11,18 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   style: _style,
   children,
   menu,
+  menuProperties = {
+    display: {
+      xs: "none",
+      md: "block",
+    },
+  },
   ...rest
 }: AppShellProps) => (
   <Box {...rest} display="flex">
     {menu && (
       <Box
+        {...menuProperties}
         width="18rem"
         height="100vh"
         position="sticky"
@@ -25,10 +32,6 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         borderWidth="none"
         borderRightWidth="1"
         borderColor="neutral-surfaceHighlight"
-        display={{
-          xs: "none",
-          md: "block",
-        }}
       >
         {menu}
       </Box>
