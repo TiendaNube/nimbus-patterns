@@ -2,7 +2,7 @@
 
 Sidemodal navigation provides access to the parts within its application. The side sections have the supplementary content that is linked on the left or right side of the screen.
 
-## 2023-06-15 `1.7.3`
+## 2023-07-18 `1.7.3`
 
 #### 🐛 Bug fixes
 
