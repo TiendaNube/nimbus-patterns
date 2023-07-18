@@ -1,0 +1,10 @@
+releases:
+  "@nimbus-ds/app-shell": minor
+  "@nimbus-ds/data-table": patch
+  "@nimbus-ds/formfield": minor
+  "@nimbus-ds/interactive-list": patch
+  "@nimbus-ds/patterns": minor
+  "@nimbus-ds/sidemodal": patch
+
+declined:
+  - nimbus-patterns
