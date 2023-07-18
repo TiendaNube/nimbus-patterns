@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react";
 
-import { PaginationProperties } from "@nimbus-ds/components";
+import { PaginationProperties, PaginationProps } from "@nimbus-ds/components";
 
 export interface DataTableFooterProperties {
   /**
@@ -13,5 +13,6 @@ export interface DataTableFooterProperties {
   pagination?: PaginationProperties;
 }
 
-export type DataTableFooterProps = DataTableFooterProperties &
-  Omit<HTMLAttributes<HTMLElement>, "color">;
+export type DataTableFooterProps = DataTableFooterProperties & {
+  pagination?: PaginationProps;
+} & Omit<HTMLAttributes<HTMLElement>, "color">;

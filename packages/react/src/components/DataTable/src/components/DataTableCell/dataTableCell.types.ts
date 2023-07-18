@@ -1,6 +1,6 @@
 import { HTMLAttributes, ReactNode } from "react";
 
-import { TableCellProperties } from "@nimbus-ds/components";
+import { TableCellProps } from "@nimbus-ds/components";
 
 export interface DataTableCellProperties {
   /**
@@ -12,4 +12,4 @@ export interface DataTableCellProperties {
 
 export type DataTableCellProps = DataTableCellProperties &
   Omit<HTMLAttributes<HTMLElement>, "color"> &
-  TableCellProperties;
+  TableCellProps;
