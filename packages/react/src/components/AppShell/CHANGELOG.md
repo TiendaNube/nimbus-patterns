@@ -6,7 +6,7 @@ The AppShell component is the main outer frame of an application. It provides th
 
 #### 🎉 New features
 
-- Added new `menuProperties` prop to control menu responsiveness. ([#62](https://github.com/TiendaNube/nimbus-patterns/pull/62) by [@juniorconquista](https://github.com/juniorconquista))
+- Added new `menuProperties` prop to control menu responsiveness. ([#69](https://github.com/TiendaNube/nimbus-patterns/pull/69) by [@juniorconquista](https://github.com/juniorconquista))
 
 ## 2023-06-15 `1.3.2`
 
