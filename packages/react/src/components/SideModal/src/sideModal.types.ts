@@ -1,5 +1,9 @@
 import { HTMLAttributes, ReactNode } from "react";
-import { SidebarProperties, ButtonProperties } from "@nimbus-ds/components";
+import {
+  SidebarProperties,
+  ButtonProperties,
+  ButtonProps,
+} from "@nimbus-ds/components";
 
 export type SideModalPadding = "none" | "base";
 
@@ -53,4 +57,9 @@ export interface SideModalProperties
   };
 }
 
-export type SideModalProps = SideModalProperties & HTMLAttributes<HTMLElement>;
+export type SideModalProps = SideModalProperties & {
+  footer?: {
+    primaryAction: ButtonProps;
+    secondaryAction: ButtonProps;
+  };
+} & HTMLAttributes<HTMLElement>;

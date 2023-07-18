@@ -2,6 +2,12 @@
 
 Sidemodal navigation provides access to the parts within its application. The side sections have the supplementary content that is linked on the left or right side of the screen.
 
+## 2023-06-15 `1.7.3`
+
+#### 🐛 Bug fixes
+
+- Adjusted property typing of footer buttons to contain all available properties. ([#69](https://github.com/TiendaNube/nimbus-patterns/pull/69) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-06-15 `1.7.2`
 
 #### 💡 Others
