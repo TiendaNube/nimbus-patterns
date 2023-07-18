@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/data-table",
-  "version": "1.2.2",
+  "version": "1.2.3-rc.1",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -30,5 +30,6 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0"
-  }
+  },
+  "stableVersion": "1.2.2"
 }
