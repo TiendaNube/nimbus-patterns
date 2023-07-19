@@ -2,6 +2,21 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2023-07-18 `1.5.0`
+
+#### 🎉 New features
+
+- Added new `menuProperties` prop to `AppShell` component to control menu responsiveness. ([#69](https://github.com/TiendaNube/nimbus-patterns/pull/69) by [@juniorconquista](https://github.com/juniorconquista))
+- Added `ref` property to `FormField.Input` component API. ([#69](https://github.com/TiendaNube/nimbus-patterns/pull/69) by [@juniorconquista](https://github.com/juniorconquista)).
+- Added `ref` property to `FormField.Select` component API. ([#69](https://github.com/TiendaNube/nimbus-patterns/pull/69) by [@juniorconquista](https://github.com/juniorconquista)).
+- Added `ref` property to `Input.Textarea` component API. ([#69](https://github.com/TiendaNube/nimbus-patterns/pull/69) by [@juniorconquista](https://github.com/juniorconquista)).
+
+#### 🐛 Bug fixes
+
+- Adjusted the property typing of the footer buttons so that they contain all the properties available in the `SideModal` component. ([#69](https://github.com/TiendaNube/nimbus-patterns/pull/69) by [@juniorconquista](https://github.com/juniorconquista))
+- Adjusted the `toggle` property to contain all properties available in the `InteractiveList.ToggleItemSkeleton` component. ([#69](https://github.com/TiendaNube/nimbus-patterns/pull/69) by [@juniorconquista](https://github.com/juniorconquista))
+- Adjusted the `pagination` property to contain all properties available in the `DataTable.Footer` component. ([#69](https://github.com/TiendaNube/nimbus-patterns/pull/69) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-06-21 `1.4.3`
 
 #### 🐛 Bug fixes

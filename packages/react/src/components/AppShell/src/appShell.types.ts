@@ -1,5 +1,6 @@
 import { HTMLAttributes, ReactNode } from "react";
 
+import { BoxBaseProps } from "@nimbus-ds/components";
 import { AppShellHeader } from "./components";
 
 export interface AppShellComponents {
@@ -17,6 +18,10 @@ export interface AppShellProperties {
    * @TJS-type React.ReactNode
    */
   menu?: ReactNode;
+  /**
+   * Can be used to control the responsive properties of the AppShell menu so you can change which breakpoint the menu hides under.
+   */
+  menuProperties?: Pick<BoxBaseProps, "display">;
 }
 
 export type AppShellProps = AppShellProperties &
