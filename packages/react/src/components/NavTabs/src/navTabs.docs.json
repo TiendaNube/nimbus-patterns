@@ -4,6 +4,7 @@
   "totalProps": 1,
   "packageName": "@nimbus-ds/nav-tabs",
   "version": "1.2.2",
+  "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/nav-tabs",
   "props": [
     {
       "description": "Content to be rendered inside the Nav element.",

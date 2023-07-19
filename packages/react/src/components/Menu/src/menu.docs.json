@@ -4,6 +4,7 @@
   "totalProps": 1,
   "packageName": "@nimbus-ds/menu",
   "version": "1.5.2",
+  "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/menu",
   "props": [
     {
       "description": "Content of the menu.",

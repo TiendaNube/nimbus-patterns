@@ -4,6 +4,7 @@
   "totalProps": 6,
   "packageName": "@nimbus-ds/menubutton",
   "version": "1.5.2",
+  "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/menu-button",
   "props": [
     {
       "default": "",

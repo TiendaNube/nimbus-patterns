@@ -4,6 +4,7 @@
   "totalProps": 84,
   "packageName": "@nimbus-ds/layout",
   "version": "1.3.2",
+  "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/layout",
   "props": [
     {
       "description": "Content to be rendered inside the layout.",

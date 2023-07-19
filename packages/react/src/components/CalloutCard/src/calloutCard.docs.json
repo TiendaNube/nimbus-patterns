@@ -4,6 +4,7 @@
   "totalProps": 6,
   "packageName": "@nimbus-ds/callout-card",
   "version": "1.6.2",
+  "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/callout-card",
   "props": [
     {
       "description": "CalloutCard color.",
