@@ -1,0 +1,6 @@
+releases:
+  "@nimbus-ds/callout-card": patch
+  "@nimbus-ds/patterns": patch
+
+declined:
+  - nimbus-patterns

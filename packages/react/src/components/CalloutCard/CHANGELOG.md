@@ -2,6 +2,12 @@
 
 This component is used to provide the user with useful information, tips, tutorials or shortcuts to other parts of the product. It is a visual component specially designed to be used in contexts such as integration, tutorials or dashboards, where we need to show different relevant information in the same space.
 
+## 2023-07-21 `1.6.3`
+
+### 🐛 Bug fixes
+
+- Fixed a bug where `onClick` attribute would only work when clicking the chevron icon instead of the whole component. ([#72](https://github.com/TiendaNube/nimbus-patterns/pull/72) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-06-15 `1.6.2`
 
 #### 💡 Others
