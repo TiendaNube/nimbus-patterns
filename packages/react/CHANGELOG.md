@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2023-07-21 `1.5.1`
+
+#### 🐛 Bug fixes
+
+- Fixed a bug on `CalloutCard` where `onClick` attribute would only work when clicking the chevron icon instead of the whole component. ([#72](https://github.com/TiendaNube/nimbus-patterns/pull/72) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-07-18 `1.5.0`
 
 #### 🎉 New features

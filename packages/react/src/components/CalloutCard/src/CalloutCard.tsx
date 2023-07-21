@@ -7,7 +7,7 @@ import {
   iconBackground,
   cardBorder,
   iconColor,
-  textColor,
+  textColor
 } from "./calloutCard.definitions";
 import { CalloutCardProps } from "./calloutCard.types";
 
@@ -28,10 +28,13 @@ const CalloutCard: React.FC<CalloutCardProps> = ({
     borderStyle="solid"
     borderWidth="1"
     borderRadius="2"
-    cursor="pointer"
+    cursor={link ? "auto" : "pointer"}
     flex="0 1 auto"
     gap="2"
     p="2"
+    as={link ? "div" : "button"}
+    onClick={onClick}
+    width="100%"
   >
     <Box
       backgroundColor={iconBackground[appearance]}
@@ -69,13 +72,14 @@ const CalloutCard: React.FC<CalloutCardProps> = ({
       {link && <Box mt="2">{link}</Box>}
     </Box>
     {!link && (
-      <Icon
-        data-testid="callout-card-open-icon"
-        cursor="pointer"
-        onClick={onClick}
-        color={iconColor[appearance]}
-        source={<ChevronRightIcon size="small" />}
-      />
+      <Box alignSelf="center">
+        <Icon
+          data-testid="callout-card-open-icon"
+          cursor="pointer"
+          color={iconColor[appearance]}
+          source={<ChevronRightIcon size="small" />}
+        />
+      </Box>
     )}
   </Box>
 );
