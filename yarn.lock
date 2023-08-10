@@ -4132,9 +4132,9 @@ __metadata:
   linkType: soft
 
 "@nimbus-ds/styles@npm:^9.x":
-  version: 9.1.0
-  resolution: "@nimbus-ds/styles@npm:9.1.0"
-  checksum: 367e58dea9478d909e8ae742fa22559cd249a0384b20ecedf4c1646a59b8ec5cdbf1751b93dbdc927e1a9e67067913387d37840b616fb7022d5e015f5d39bea5
+  version: 9.2.0
+  resolution: "@nimbus-ds/styles@npm:9.2.0"
+  checksum: 7239ab27558c56e305e7996619cfb7bdd6324ecd81689082299b25330bb36be20ecedcec2b7dddf778340271c89274d241187ab2b70da8c3667200efdfa6cdde
   languageName: node
   linkType: hard
 
