@@ -29,6 +29,6 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "devDependencies": {
-    "@nimbus-ds/tokens": "^7.0.0"
+    "@nimbus-ds/tokens": "^8.1.0"
   }
 }

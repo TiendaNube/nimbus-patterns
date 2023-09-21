@@ -4167,7 +4167,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/thumbnail-with-action@workspace:packages/react/src/components/ThumbnailWithAction"
   dependencies:
-    "@nimbus-ds/tokens": ^7.0.0
+    "@nimbus-ds/tokens": ^8.1.0
   peerDependencies:
     "@nimbus-ds/components": ^5
     react: ^16.8 || ^17.0 || ^18.0
@@ -4175,10 +4175,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/tokens@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "@nimbus-ds/tokens@npm:7.0.0"
-  checksum: 411c41f524ba510c457fd8570b0085e9710a0c4754c5e9b5da597028e96f615c82d5f4f0791fa4db742938b7f88c710748ce4233f5de6f7db3ee957674613ddc
+"@nimbus-ds/tokens@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "@nimbus-ds/tokens@npm:8.1.0"
+  checksum: e6cb0192640aeca58dd667290ab9e63308c9f8e4b3a2166d9ca7b400e20dbde19214da23cece0c288d175cbb916acdf28452127ab5b4dd7659522f0e52dadb6e
   languageName: node
   linkType: hard
 
