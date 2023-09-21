@@ -38,6 +38,8 @@ const config: Config.InitialOptions = {
       "<rootDir>/packages/react/src/components/SideModal/src",
     "@nimbus-ds/thumbnail-with-action":
       "<rootDir>/packages/react/src/components/ThumbnailWithAction/src",
+    "@nimbus-ds/calendar":
+      "<rootDir>/packages/react/src/components/Calendar/src",
   },
 };
 

@@ -270,7 +270,6 @@ export const ScrollingDatePickerModal = (args: any) => {
     if (date) {
       setSelectedDate(date);
       setSelectedRange("Custom");
-      setMonth(addMonths(date, -11));
     }
   };
 
@@ -278,10 +277,6 @@ export const ScrollingDatePickerModal = (args: any) => {
     if (range) {
       setSelectedDateRange(range);
       setSelectedRange("Custom");
-
-      if (range.from) {
-        setMonth(addMonths(range.from, -11));
-      }
     }
   };
 

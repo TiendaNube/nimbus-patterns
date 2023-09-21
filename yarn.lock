@@ -3916,12 +3916,12 @@ __metadata:
   resolution: "@nimbus-ds/calendar@workspace:packages/react/src/components/Calendar"
   dependencies:
     "@nimbus-ds/menubutton": "workspace:^"
-    "@nimbus-ds/tokens": ^8.1.0
     date-fns: ^2.30.0
     react-day-picker: ^8.8.2
   peerDependencies:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
+    "@nimbus-ds/tokens": ^8.1.0
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
   languageName: unknown
@@ -4157,9 +4157,9 @@ __metadata:
   linkType: soft
 
 "@nimbus-ds/styles@npm:^9.x":
-  version: 9.1.0
-  resolution: "@nimbus-ds/styles@npm:9.1.0"
-  checksum: 367e58dea9478d909e8ae742fa22559cd249a0384b20ecedf4c1646a59b8ec5cdbf1751b93dbdc927e1a9e67067913387d37840b616fb7022d5e015f5d39bea5
+  version: 9.4.0
+  resolution: "@nimbus-ds/styles@npm:9.4.0"
+  checksum: ebd94c15e183bba4afad00544d8db6f0acc5c1f300edc69fb18c2a1d8233025d3e4c20f2c8ae155fa6929ddd9e78a3aaa5bbfad047acdfec2c44ef6e51a73293
   languageName: node
   linkType: hard
 
@@ -4179,13 +4179,6 @@ __metadata:
   version: 7.0.0
   resolution: "@nimbus-ds/tokens@npm:7.0.0"
   checksum: 411c41f524ba510c457fd8570b0085e9710a0c4754c5e9b5da597028e96f615c82d5f4f0791fa4db742938b7f88c710748ce4233f5de6f7db3ee957674613ddc
-  languageName: node
-  linkType: hard
-
-"@nimbus-ds/tokens@npm:^8.1.0":
-  version: 8.1.0
-  resolution: "@nimbus-ds/tokens@npm:8.1.0"
-  checksum: e6cb0192640aeca58dd667290ab9e63308c9f8e4b3a2166d9ca7b400e20dbde19214da23cece0c288d175cbb916acdf28452127ab5b4dd7659522f0e52dadb6e
   languageName: node
   linkType: hard
 

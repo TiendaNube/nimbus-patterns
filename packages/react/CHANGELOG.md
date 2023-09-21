@@ -2,6 +2,18 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2023-09-25 `1.6.0`
+
+#### 🎉 New features
+
+- Added new `Calendar` component. ([#76](https://github.com/TiendaNube/nimbus-patterns/pull/76) by [@juanchigallego](https://github.com/juanchigallego))
+- Added `hideBorder`, `containerProps`, `stickyWeekdays` and `fullWidthDays` properties to the `Calendar` component API. ([#76](https://github.com/TiendaNube/nimbus-patterns/pull/76) by [@juanchigallego](https://github.com/juanchigallego))
+- Added new `CustomCaptionLabel` subcomponent. ([#76](https://github.com/TiendaNube/nimbus-patterns/pull/76) by [@juanchigallego](https://github.com/juanchigallego))
+- Added new `CustomDay` subcomponent. ([#76](https://github.com/TiendaNube/nimbus-patterns/pull/76) by [@juanchigallego](https://github.com/juanchigallego))
+- Added new `Weekdays` subcomponent. ([#76](https://github.com/TiendaNube/nimbus-patterns/pull/76) by [@juanchigallego](https://github.com/juanchigallego))
+- Added new `Wrapper` subcomponent. ([#76](https://github.com/TiendaNube/nimbus-patterns/pull/76) by [@juanchigallego](https://github.com/juanchigallego))
+- Added `children` property to the `Wrapper` subcomponent API. ([#76](https://github.com/TiendaNube/nimbus-patterns/pull/76) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-07-21 `1.5.1`
 
 #### 🐛 Bug fixes

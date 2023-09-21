@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/calendar",
-  "version": "0.0.0",
+  "version": "1.0.0-rc.2",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -36,5 +36,6 @@
   },
   "devDependencies": {
     "@nimbus-ds/menubutton": "workspace:^"
-  }
+  },
+  "stableVersion": "0.0.0"
 }

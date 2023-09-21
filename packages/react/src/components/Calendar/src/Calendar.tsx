@@ -1,9 +1,8 @@
 import React from "react";
 
-import "./calendar.css";
-
 import { Box } from "@nimbus-ds/components";
 import { ChevronLeftIcon, ChevronRightIcon } from "@nimbus-ds/icons";
+import { calendar } from "@nimbus-ds/styles";
 import { DayPicker } from "react-day-picker";
 import { CalendarProps } from "./calendar.types";
 import { CustomCaptionLabel, CustomDay, Weekdays, Wrapper } from "./components";
@@ -34,32 +33,32 @@ const Calendar: React.FC<CalendarProps> = ({
       <DayPicker
         {...rest}
         classNames={{
-          table: "nimbus-calendar-table",
-          row: "nimbus-calendar-row",
-          cell: "nimbus-calendar-cell",
-          caption: "nimbus-calendar-caption",
-          caption_start: "nimbus-calendar-caption--start",
-          caption_between: "nimbus-calendar-caption--between",
-          caption_end: "nimbus-calendar-caption--end",
-          head: `nimbus-calendar-head ${stickyWeekdays && "sticky-weekdays"}`,
-          head_row: "nimbus-calendar-row",
-          head_cell: "nimbus-calendar-cell nimbus-calendar-cell--head",
-          tbody: "nimbus-calendar-body",
-          nav: "nimbus-calendar-nav",
-          nav_button_previous:
-            "nimbus-calendar-nav-button nimbus-calendar-nav-button--left",
-          nav_button_next:
-            "nimbus-calendar-nav-button nimbus-calendar-nav-button--right",
-          day: `nimbus-calendar-day ${fullWidthDays && "full-width"}`,
-          day_selected: "nimbus-calendar-day--selected",
-          day_today: "nimbus-calendar-day--today",
-          day_outside: "nimbus-calendar-day--outside",
-          day_disabled: "nimbus-calendar-day--disabled",
-          day_range_middle: "nimbus-calendar-day--range-middle",
-          day_range_start: "nimbus-calendar-day--range-start",
-          day_range_end: "nimbus-calendar-day--range-end",
-          months: "nimbus-calendar-months",
-          month: "nimbus-calendar-month",
+          table: calendar.classnames.table,
+          row: calendar.classnames.row,
+          cell: calendar.classnames.cell,
+          caption: calendar.classnames.caption,
+          caption_start: calendar.classnames.caption_start,
+          caption_end: calendar.classnames.caption_end,
+          head: stickyWeekdays
+            ? calendar.classnames.head_stickyWeekdays
+            : calendar.classnames.head,
+          head_row: calendar.classnames.row,
+          head_cell: calendar.classnames.cell__head,
+          tbody: calendar.classnames.body,
+          nav: calendar.classnames.nav,
+          nav_button_previous: calendar.classnames.nav__button,
+          nav_button_next: calendar.classnames.nav__button,
+          day: fullWidthDays
+            ? calendar.classnames.day_fullWidth
+            : calendar.classnames.day,
+          day_selected: calendar.classnames.day_selected,
+          day_today: calendar.classnames.day_today,
+          day_outside: calendar.classnames.day_outside,
+          day_disabled: calendar.classnames.day_disabled,
+          day_range_middle: calendar.classnames.day__middle,
+          day_range_start: calendar.classnames.day__start,
+          day_range_end: calendar.classnames.day__end,
+          months: calendar.classnames.months,
         }}
         components={{
           CaptionLabel: CustomCaptionLabel,
