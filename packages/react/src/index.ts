@@ -15,3 +15,4 @@ export * from "@nimbus-ds/page";
 export * from "@nimbus-ds/productupdates";
 export * from "@nimbus-ds/sidemodal";
 export * from "@nimbus-ds/thumbnail-with-action";
+export * from "@nimbus-ds/calendar";

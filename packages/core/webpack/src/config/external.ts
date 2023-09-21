@@ -9,6 +9,8 @@ export const externalLibs = {
   "@nimbus-ds/icons": "@nimbus-ds/icons",
   react: "react",
   "react-dom": "react-dom",
+  "react-day-picker": "react-day-picker",
+  "date-fns": "date-fns",
 };
 
 export const externalPackages = {

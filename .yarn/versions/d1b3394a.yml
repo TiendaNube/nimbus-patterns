@@ -1,0 +1,7 @@
+releases:
+  "@nimbus-ds/calendar": major
+  "@nimbus-ds/patterns": minor
+  "@nimbus-ds/patterns-webpack": patch
+
+declined:
+  - nimbus-patterns

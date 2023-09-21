@@ -2,6 +2,12 @@
 
 This package is intended for internal use in generating builds of each design system package. It contains all the necessary settings and dependencies to optimize the creation of our builds.
 
+## 2023-09-25 `0.1.1`
+
+### 📚 3rd party library updates
+
+- Added external packages `date-fns` and `react-day-picker` to externalLibs definition. ([#76](https://github.com/TiendaNube/nimbus-patterns/pull/76) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2022-04-06 `0.0.0`
 
 ### 📚 3rd party library updates
