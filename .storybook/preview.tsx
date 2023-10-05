@@ -4,6 +4,7 @@ import type { Preview } from "@storybook/react";
 import { light, dark, ThemeDocsProvider, ThemeNimbusProvider } from "./theme";
 import "@nimbus-ds/styles/dist/index.css";
 import "./static/style.css";
+import "./static/editor.css";
 
 const preview: Preview = {
   parameters: {

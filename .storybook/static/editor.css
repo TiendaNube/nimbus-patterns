@@ -1,0 +1,68 @@
+@import url("@nimbus-ds/tokens/dist/css/variables.css");
+
+/* Theme */
+.nimbus-editor__textItalic {
+  font-style: italic;
+}
+
+.nimbus-editor__nestedListItem {
+  list-style-type: none;
+}
+.nimbus-editor__nestedListItem:before,
+.nimbus-editor__nestedListItem:after {
+  display: none;
+}
+
+/* Toolbar */
+.toolbar {
+  padding: var(--spacing-2);
+  vertical-align: middle;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  position: sticky;
+  top: 0;
+  border-style: solid;
+  border-color: var(--color-light-neutral-interactive);
+  border-radius: var(--shape-border-radius-2);
+  border-width: var(--shape-border-width-1);
+  border-bottom-width: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0px -2px 0px 0px var(--color-light-neutral-surface-disabled) inset;
+}
+
+/* Placeholder */
+.placeholder {
+  font-size: var(--font-size-body-highlight);
+  font-family: var(--font-family);
+  color: var(--color-light-neutral-text-disabled);
+  overflow: hidden;
+  position: absolute;
+  text-overflow: ellipsis;
+  top: var(--spacing-2-5);
+  left: var(--spacing-2-5);
+  user-select: none;
+  white-space: nowrap;
+  display: inline-block;
+  pointer-events: none;
+}
+
+/* Content  */
+.content {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-highlight);
+  min-height: 150px;
+  border-style: solid;
+  border-radius: var(--shape-border-radius-2);
+  border-width: var(--shape-border-width-1);
+  border-top-width: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-color: var(--color-light-neutral-interactive);
+  padding: var(--spacing-2-5);
+  overflow: auto;
+  resize: vertical;
+  outline: none;
+}
