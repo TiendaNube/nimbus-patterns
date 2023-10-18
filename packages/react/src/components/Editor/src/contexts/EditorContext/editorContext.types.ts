@@ -10,12 +10,12 @@ export enum EditorActionKind {
   IS_LINK = "IS_LINK",
 }
 
-export type Dispatch = (action: {
+export interface EditorAction {
   type: EditorActionKind;
   payload: any;
-}) => void;
+}
 
 export interface EditorContextProps {
   state: typeof initialContext.state;
-  dispatch: Dispatch;
+  dispatch: (action: EditorAction) => void;
 }
