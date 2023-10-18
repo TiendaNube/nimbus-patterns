@@ -20,3 +20,4 @@ It extends the properties of the ReactDayPicker component. Refer to the [documen
 - Added new `Link` plugin to the editor. ([#77](https://github.com/TiendaNube/nimbus-patterns/pull/77) by [@juniorconquista](https://github.com/juniorconquista))
 - Added new `OrderedList` plugin to the editor. ([#77](https://github.com/TiendaNube/nimbus-patterns/pull/77) by [@juniorconquista](https://github.com/juniorconquista))
 - Added new `UnorderedList` plugin to the editor. ([#77](https://github.com/TiendaNube/nimbus-patterns/pull/77) by [@juniorconquista](https://github.com/juniorconquista))
+- Added new `Video` plugin to the editor. ([#77](https://github.com/TiendaNube/nimbus-patterns/pull/77) by [@juniorconquista](https://github.com/juniorconquista))

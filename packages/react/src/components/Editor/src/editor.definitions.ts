@@ -1,7 +1,7 @@
 import { link, text, list, title, editor } from "@nimbus-ds/styles";
 import { EditorThemeClasses } from "lexical";
 import { HeadingNode } from "@lexical/rich-text";
-import { LinkNode } from "@lexical/link";
+import { AutoLinkNode, LinkNode } from "@lexical/link";
 import { ListItemNode, ListNode } from "@lexical/list";
 
 import {
@@ -15,8 +15,9 @@ import {
   Link,
   Video,
 } from "./actions";
-import { Module } from "./editor.types";
 import { Divider } from "./components";
+import { YouTubeNode } from "./nodes";
+import { Module } from "./editor.types";
 
 const joinClassNames = (classNames: string[]) => classNames.join(" ");
 
@@ -120,4 +121,11 @@ export const editorAppearance = {
   [key: string]: "danger" | "warning" | "success" | "neutral";
 };
 
-export const nodes = [HeadingNode, ListNode, ListItemNode, LinkNode];
+export const nodes = [
+  AutoLinkNode,
+  HeadingNode,
+  ListNode,
+  ListItemNode,
+  LinkNode,
+  YouTubeNode,
+];

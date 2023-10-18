@@ -26,6 +26,8 @@ import {
   CustomParagraphPlugin,
   CustomClearFormattingPlugin,
   DefaultPlugins,
+  CustomYouTubePlugin,
+  CustomAutoEmbedPlugin,
 } from "./plugins";
 
 import { useEditor } from "./hooks";
@@ -105,9 +107,11 @@ const Editor: React.FC<EditorProps> = ({
           </Box>
         )}
         <DefaultPlugins />
+        <CustomAutoEmbedPlugin />
         <CustomHeadingPlugin />
         <CustomParagraphPlugin />
         <CustomClearFormattingPlugin />
+        <CustomYouTubePlugin />
         <OnChangePlugin
           onChange={(editorState: EditorState, editor: LexicalEditor) => {
             onChangeEditor(editorState, editor);
