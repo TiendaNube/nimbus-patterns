@@ -4,13 +4,13 @@ import { LinkIcon } from "@nimbus-ds/icons";
 import { TOGGLE_LINK_COMMAND } from "@lexical/link";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import { TollbarButton } from "../../components";
-import { useToolbar } from "../../hooks";
+import { Button } from "../../components";
+import { useEditorState } from "../../hooks";
 import { sanitizeUrl } from "./link.definitions";
 
 const Link: React.FC = () => {
   const [editor] = useLexicalComposerContext();
-  const { state } = useToolbar();
+  const { state } = useEditorState();
 
   const insertLink = useCallback(() => {
     if (!state.isLink) {
@@ -21,9 +21,9 @@ const Link: React.FC = () => {
   }, [editor, state.isLink]);
 
   return (
-    <TollbarButton aria-label="Undo" onClick={insertLink}>
+    <Button aria-label="Undo" onClick={insertLink}>
       <Icon source={<LinkIcon />} color="currentColor" />
-    </TollbarButton>
+    </Button>
   );
 };
 
