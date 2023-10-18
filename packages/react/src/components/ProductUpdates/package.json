@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/productupdates",
-  "version": "1.4.3-rc.4",
+  "version": "1.4.3-rc.5",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",

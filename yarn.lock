@@ -4384,6 +4384,11 @@ __metadata:
 "@nimbus-ds/patterns@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/patterns@workspace:packages/react"
+  dependencies:
+    "@lexical/react": ^0.12.2
+    date-fns: ^2.30.0
+    lexical: ^0.12.2
+    react-day-picker: ^8.8.2
   peerDependencies:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
