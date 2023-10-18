@@ -11,6 +11,8 @@ export const externalLibs = {
   "react-dom": "react-dom",
   "react-day-picker": "react-day-picker",
   "date-fns": "date-fns",
+  "@lexical/react": "@lexical/react",
+  lexical: "lexical",
 };
 
 export const externalPackages = {
