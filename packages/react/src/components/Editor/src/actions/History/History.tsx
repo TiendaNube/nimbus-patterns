@@ -1,31 +1,67 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Icon } from "@nimbus-ds/components";
 import { RedoIcon, UndoIcon } from "@nimbus-ds/icons";
+import { mergeRegister } from "@lexical/utils";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { REDO_COMMAND, UNDO_COMMAND } from "lexical";
+import {
+  CAN_REDO_COMMAND,
+  CAN_UNDO_COMMAND,
+  COMMAND_PRIORITY_CRITICAL,
+  REDO_COMMAND,
+  UNDO_COMMAND,
+} from "lexical";
 
-import { TollbarButton } from "../../components";
-import { useToolbar } from "../../hooks";
+import { EditorActionKind } from "../../contexts";
+import { Button } from "../../components";
+import { useEditorState } from "../../hooks";
 
 const History: React.FC = () => {
   const [editor] = useLexicalComposerContext();
-  const { state } = useToolbar();
+  const { state, dispatch } = useEditorState();
+
+  useEffect(() => {
+    mergeRegister(
+      editor.registerCommand<boolean>(
+        CAN_UNDO_COMMAND,
+        (payload) => {
+          dispatch({
+            type: EditorActionKind.CAN_UNDO,
+            payload,
+          });
+          return false;
+        },
+        COMMAND_PRIORITY_CRITICAL
+      ),
+      editor.registerCommand<boolean>(
+        CAN_REDO_COMMAND,
+        (payload) => {
+          dispatch({
+            type: EditorActionKind.CAN_REDO,
+            payload,
+          });
+          return false;
+        },
+        COMMAND_PRIORITY_CRITICAL
+      )
+    );
+  }, [editor, dispatch]);
+
   return (
     <>
-      <TollbarButton
+      <Button
         aria-label="Undo"
         disabled={!state.canUndo}
         onClick={() => editor.dispatchCommand(UNDO_COMMAND, undefined)}
       >
         <Icon source={<UndoIcon />} color="currentColor" />
-      </TollbarButton>
-      <TollbarButton
+      </Button>
+      <Button
         aria-label="Redo"
         disabled={!state.canRedo}
         onClick={() => editor.dispatchCommand(REDO_COMMAND, undefined)}
       >
         <Icon source={<RedoIcon />} color="currentColor" />
-      </TollbarButton>
+      </Button>
     </>
   );
 };
