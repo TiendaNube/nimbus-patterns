@@ -1,152 +1,135 @@
-import React, { useEffect, useReducer, useState, useCallback } from "react";
-// import { $findMatchingParent, $isRootOrShadowRoot } from "lexical/LexicalUtils";
-import {
-  $getSelection,
-  $isRangeSelection,
-  RangeSelection,
-  COMMAND_PRIORITY_CRITICAL,
-  SELECTION_CHANGE_COMMAND,
-  CAN_REDO_COMMAND,
-  CAN_UNDO_COMMAND,
-} from "lexical";
-import { $isLinkNode } from "@lexical/link";
-import { $isHeadingNode } from "@lexical/rich-text";
-import { mergeRegister, $getNearestNodeOfType } from "@lexical/utils";
-import { $isListNode, ListNode } from "@lexical/list";
+import React, { useEffect, useState, useRef } from "react";
+import { COMMAND_PRIORITY_CRITICAL, SELECTION_CHANGE_COMMAND } from "lexical";
+import { Box, Icon, Text, Popover } from "@nimbus-ds/components";
+import { EllipsisIcon } from "@nimbus-ds/icons";
+import { mergeRegister } from "@lexical/utils";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import {
-  Heading,
-  FormatList,
-  FormatText,
-  History,
-  Link,
-  ClearFormatting,
-} from "../../actions";
-import { ToolbarContext, initialContext } from "../../contexts";
-import { ToolbarDivider } from "../ToolbarDivider";
+import { headerTranslations } from "../../actions/Header/header.definitions";
+import { EditorContext } from "../../contexts";
+import { useToolbar } from "../../hooks";
+import { Button } from "../Button";
+import { ToolbarProps } from "./toolbar.types";
+import { ELIPSIS_BUTTON, PADDING } from "./toolbar.definitions";
 
-import { getSelectedNode, reducer } from "./toolbar.definitions";
-import { ToolbarActionKind } from "./toolbar.types";
+const Toolbar: React.FC<ToolbarProps> = ({ children, className }) => {
+  const toolbarRef = useRef<HTMLDivElement>(null);
+  const buttonRefs = useRef<HTMLDivElement[]>([]);
 
-const Toolbar: React.FC = () => {
-  const [state, dispatch] = useReducer(reducer, initialContext.state);
+  const { calcButtonWidths, calcVisibleButtons, updateToolbar, context } =
+    useToolbar();
+
   const [editor] = useLexicalComposerContext();
   const [activeEditor, setActiveEditor] = useState(editor);
 
-  const updateToolbar = useCallback(() => {
-    const selection = $getSelection();
-    if ($isRangeSelection(selection)) {
-      const anchorNode = selection.anchor.getNode();
-      const element =
-        anchorNode.getKey() === "root"
-          ? anchorNode
-          : anchorNode.getTopLevelElementOrThrow();
-      const elementKey = element.getKey();
-      const elementDOM = editor.getElementByKey(elementKey);
-
-      dispatch({
-        type: ToolbarActionKind.IS_BOLD,
-        payload: (selection as RangeSelection)?.hasFormat?.("bold"),
-      });
-      dispatch({
-        type: ToolbarActionKind.IS_ITALIC,
-        payload: (selection as RangeSelection)?.hasFormat?.("italic"),
-      });
-
-      const node = getSelectedNode(selection);
-      const parent = node.getParent();
-
-      dispatch({
-        type: ToolbarActionKind.IS_LINK,
-        payload: !!($isLinkNode(parent) || $isLinkNode(node)) ?? false,
-      });
-
-      if (elementDOM !== null) {
-        if ($isListNode(element)) {
-          const parentList = $getNearestNodeOfType(anchorNode, ListNode);
-          const type = parentList ? parentList.getTag() : element.getTag();
-          dispatch({
-            type: ToolbarActionKind.BLOCK_TYPE,
-            payload: type,
-          });
-        } else {
-          const type = $isHeadingNode(element)
-            ? element.getTag()
-            : element.getType();
-
-          dispatch({
-            type: ToolbarActionKind.BLOCK_TYPE,
-            payload: type,
-          });
-        }
-      }
-    }
-  }, [activeEditor]);
+  const [visibleButtons, setVisibleButtons] = useState<React.ReactNode[]>(
+    React.Children.toArray(children)
+  );
+  const [buttonWidths, setButtonWidths] = useState<number[]>([]);
+  const [hiddenButtons, setHiddenButtons] = useState<React.ReactNode[]>([]);
 
   useEffect(() => {
-    return editor.registerCommand(
-      SELECTION_CHANGE_COMMAND,
-      (_payload, newEditor) => {
-        updateToolbar();
-        setActiveEditor(newEditor);
-        return false;
-      },
-      COMMAND_PRIORITY_CRITICAL
-    );
-  }, [editor, updateToolbar]);
+    setButtonWidths(calcButtonWidths(buttonRefs));
+  }, [buttonRefs, calcButtonWidths]);
+
+  const availableWidth =
+    (toolbarRef.current?.clientWidth ?? 0) - (PADDING + ELIPSIS_BUTTON);
 
   useEffect(() => {
-    return mergeRegister(
-      activeEditor.registerUpdateListener(({ editorState }) => {
-        editorState.read(() => {
+    const maxVisibleButtons = calcVisibleButtons(buttonWidths, availableWidth);
+    const buttons = React.Children.toArray(children);
+    setVisibleButtons(buttons.slice(0, maxVisibleButtons));
+    setHiddenButtons(buttons.slice(maxVisibleButtons));
+  }, [buttonWidths, availableWidth, calcVisibleButtons, children]);
+
+  useEffect(
+    () =>
+      editor.registerCommand(
+        SELECTION_CHANGE_COMMAND,
+        (_payload, newEditor) => {
           updateToolbar();
-        });
-      }),
-      activeEditor.registerCommand<boolean>(
-        CAN_UNDO_COMMAND,
-        (payload) => {
-          dispatch({
-            type: ToolbarActionKind.CAN_UNDO,
-            payload,
-          });
+          setActiveEditor(newEditor);
           return false;
         },
         COMMAND_PRIORITY_CRITICAL
       ),
-      activeEditor.registerCommand<boolean>(
-        CAN_REDO_COMMAND,
-        (payload) => {
-          dispatch({
-            type: ToolbarActionKind.CAN_REDO,
-            payload,
-          });
-          return false;
-        },
-        COMMAND_PRIORITY_CRITICAL
-      )
-    );
-  }, [updateToolbar, activeEditor, editor]);
+    [editor, updateToolbar]
+  );
 
-  const context = {
-    state,
-  };
+  useEffect(() => {
+    mergeRegister(
+      activeEditor.registerUpdateListener(({ editorState }) => {
+        editorState.read(() => {
+          updateToolbar();
+        });
+      })
+    );
+  }, [updateToolbar, activeEditor]);
 
   return (
-    <div className="toolbar">
-      <ToolbarContext.Provider value={context}>
-        <History />
-        <ToolbarDivider />
-        <Heading />
-        <ToolbarDivider />
-        <FormatList />
-        <ToolbarDivider />
-        <FormatText />
-        <Link />
-        <ToolbarDivider />
-        <ClearFormatting />
-      </ToolbarContext.Provider>
-    </div>
+    <>
+      <div ref={toolbarRef} className={className}>
+        <EditorContext.Provider value={context}>
+          <Box display="flex" alignItems="center" gap="2" flexWrap="wrap">
+            {visibleButtons.map((button, index) => (
+              <div
+                key={`button-toolbar-${index}`} // eslint-disable-line react/no-array-index-key
+                ref={(ref) => {
+                  if (ref) buttonRefs.current[index] = ref;
+                }}
+              >
+                {button}
+              </div>
+            ))}
+          </Box>
+          {!!hiddenButtons.length && (
+            <Popover
+              width="fit-content"
+              maxWidth={`${(toolbarRef.current?.clientWidth ?? 0) - PADDING}px`}
+              padding="small"
+              offset={8}
+              content={
+                <Box
+                  display="flex"
+                  gap="2"
+                  flexWrap="wrap"
+                  justifyContent="flex-end"
+                >
+                  {hiddenButtons.filter(
+                    (child) =>
+                      !(child as unknown as { key: string })?.key.includes(
+                        "divider"
+                      )
+                  )}
+                </Box>
+              }
+              arrow={false}
+              position="bottom-end"
+            >
+              <Button>
+                <Icon source={<EllipsisIcon />} color="currentColor" />
+              </Button>
+            </Popover>
+          )}
+        </EditorContext.Provider>
+      </div>
+      <Box
+        display={{ xs: "block", md: "none" }}
+        position="absolute"
+        bottom="0"
+        py="1"
+        px="2"
+        width="100%"
+        borderWidth="none"
+        borderTopWidth="1"
+        borderColor="neutral-surfaceHighlight"
+        borderStyle="solid"
+      >
+        <Text fontSize="caption" lineHeight="caption">
+          {headerTranslations[context.state.blockType]}
+        </Text>
+      </Box>
+    </>
   );
 };
 

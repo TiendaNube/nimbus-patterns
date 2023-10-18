@@ -1,17 +1,11 @@
-import { initialContext } from "../../contexts";
+import { HTMLAttributes, ReactNode } from "react";
 
-export enum ToolbarActionKind {
-  BLOCK_TYPE = "BLOCK_TYPE",
-  CAN_UNDO = "CAN_UNDO",
-  CAN_REDO = "CAN_REDO",
-  IS_BOLD = "IS_BOLD",
-  IS_ITALIC = "IS_ITALIC",
-  IS_LINK = "IS_LINK",
+export interface ToolbarProperties {
+  /**
+   * The content of the alert.
+   * @TJS-type React.ReactNode
+   */
+  children: ReactNode | ReactNode[];
 }
 
-export interface ToolbarAction {
-  type: ToolbarActionKind;
-  payload: any;
-}
-
-export type ToolbarState = typeof initialContext.state;
+export type ToolbarProps = ToolbarProperties & HTMLAttributes<HTMLElement>;

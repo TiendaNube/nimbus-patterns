@@ -1,4 +1,4 @@
 export * from "./Placeholder";
 export * from "./Toolbar";
-export * from "./ToolbarButton";
-export * from "./ToolbarDivider";
+export * from "./Button";
+export * from "./Divider";
