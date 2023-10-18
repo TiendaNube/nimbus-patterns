@@ -8,7 +8,7 @@ It extends the properties of the ReactDayPicker component. Refer to the [documen
 ## Installation
 
 ```sh
-$ yarn add @nimbus-ds/calendar
+$ yarn add @nimbus-ds/editor
 # or
-$ npm install @nimbus-ds/calendar
+$ npm install @nimbus-ds/editor
 ```
