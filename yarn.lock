@@ -4011,9 +4011,9 @@ __metadata:
   linkType: soft
 
 "@nimbus-ds/icons@npm:^1, @nimbus-ds/icons@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "@nimbus-ds/icons@npm:1.2.0"
-  checksum: 24b9452d3f45a16e1abae11eef49b8d623de5f24583566fd8fdc6c10ae9961819647f8a590f7712fb9718f5e1cee2c5513a2b134044559b99ddfbc152ecaa01b
+  version: 1.3.0
+  resolution: "@nimbus-ds/icons@npm:1.3.0"
+  checksum: 23c6f11146b0b45e099656958f85bff3346145dd6c3288dddde03f0ad23b4eba1ce1a20ea493c1a43cf06da16ef21c19a9517a68b581621d8163081e503db6d2
   languageName: node
   linkType: hard
 
