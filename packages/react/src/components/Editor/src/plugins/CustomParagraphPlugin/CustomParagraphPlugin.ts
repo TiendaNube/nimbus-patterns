@@ -25,7 +25,7 @@ const CustomParagraphPlugin = () => {
       },
       COMMAND_PRIORITY_NORMAL
     );
-  }, []);
+  }, [editor]);
 
   return null;
 };

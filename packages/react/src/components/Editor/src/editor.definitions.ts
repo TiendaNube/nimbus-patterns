@@ -1,9 +1,26 @@
-import { link, text, list, title } from "@nimbus-ds/styles";
+import { link, text, list, title, editor } from "@nimbus-ds/styles";
 import { EditorThemeClasses } from "lexical";
+import { HeadingNode } from "@lexical/rich-text";
+import { LinkNode } from "@lexical/link";
+import { ListItemNode, ListNode } from "@lexical/list";
+
+import {
+  Bold,
+  ClearFormatting,
+  UnorderedList,
+  OrderedList,
+  Header,
+  History,
+  Italic,
+  Link,
+  Video,
+} from "./actions";
+import { Module } from "./editor.types";
+import { Divider } from "./components";
 
 const joinClassNames = (classNames: string[]) => classNames.join(" ");
 
-export const theme = {
+export const defaultTheme: EditorThemeClasses = {
   heading: {
     h3: joinClassNames([
       title.classnames.base,
@@ -37,17 +54,70 @@ export const theme = {
   list: {
     listitem: list.classnames.container__item,
     nested: {
-      listitem: "nimbus-editor__nestedListItem",
+      listitem: editor.classnames.nested_list__item,
     },
     ul: list.classnames.container,
     ol: list.classnames.container,
   },
   text: {
-    italic: "nimbus-editor__textItalic",
+    italic: editor.classnames.text__italic,
     bold: joinClassNames([
       text.sprinkle({
         fontWeight: "bold" as "$bold",
       })?.className ?? "",
     ]),
   },
-} satisfies EditorThemeClasses;
+};
+
+export const aliasModules = {
+  bold: Bold,
+  clearFormating: ClearFormatting,
+  orderedList: OrderedList,
+  unorderedList: UnorderedList,
+  header: Header,
+  history: History,
+  italic: Italic,
+  link: Link,
+  video: Video,
+  divider: Divider,
+};
+
+export const defaultModules: Module[] = [
+  "history",
+  "divider",
+  "header",
+  "divider",
+  "orderedList",
+  "unorderedList",
+  "divider",
+  "bold",
+  "italic",
+  "link",
+  "video",
+  "divider",
+  "clearFormating",
+];
+
+export const helpTextAppearance = {
+  danger: "danger-textLow",
+  warning: "warning-textLow",
+  success: "success-textLow",
+  none: "neutral-textLow",
+} as {
+  [key: string]:
+    | "danger-textLow"
+    | "warning-textLow"
+    | "success-textLow"
+    | "neutral-textLow";
+};
+
+export const editorAppearance = {
+  danger: "danger",
+  warning: "warning",
+  success: "success",
+  none: "neutral",
+} as {
+  [key: string]: "danger" | "warning" | "success" | "neutral";
+};
+
+export const nodes = [HeadingNode, ListNode, ListItemNode, LinkNode];

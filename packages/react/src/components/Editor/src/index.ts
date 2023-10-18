@@ -1,5 +1,5 @@
-import { Calendar } from "./Editor";
+import { Editor } from "./Editor";
 
-export { Calendar } from "./Editor";
-export type { CalendarProps } from "./editor.types";
-export default Calendar;
+export { Editor } from "./Editor";
+export type { EditorProps } from "./editor.types";
+export default Editor;

@@ -24,7 +24,7 @@ const CustomHeadingPlugin = () => {
       },
       COMMAND_PRIORITY_NORMAL
     );
-  }, []);
+  }, [editor]);
 
   return null;
 };
