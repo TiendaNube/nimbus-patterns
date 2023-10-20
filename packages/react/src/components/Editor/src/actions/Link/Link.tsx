@@ -21,7 +21,7 @@ const Link: React.FC = () => {
   }, [editor, state.isLink]);
 
   return (
-    <Button aria-label="Undo" onClick={insertLink}>
+    <Button aria-label="Undo" onClick={insertLink} selected={state.isLink}>
       <Icon source={<LinkIcon />} color="currentColor" />
     </Button>
   );

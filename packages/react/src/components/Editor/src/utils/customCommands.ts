@@ -6,7 +6,7 @@ export const FORMAT_HEADING_COMMAND: LexicalCommand<string> = createCommand(
 export const FORMAT_PARAGRAPH_COMMAND: LexicalCommand<string> = createCommand(
   "FORMAT_PARAGRAPH_COMMAND"
 );
-export const CLEAR_FORMATTING_COMMAND: LexicalCommand<string> = createCommand(
+export const CLEAR_FORMATTING_COMMAND = createCommand(
   "CLEAR_FORMATING_COMMAND"
 );
 export const INSERT_YOUTUBE_COMMAND: LexicalCommand<string> = createCommand(

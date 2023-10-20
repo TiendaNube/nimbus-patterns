@@ -25,9 +25,10 @@ import {
   CustomHeadingPlugin,
   CustomParagraphPlugin,
   CustomClearFormattingPlugin,
-  DefaultPlugins,
   CustomYouTubePlugin,
   CustomAutoEmbedPlugin,
+  CustomFloatingLinkEditor,
+  DefaultPlugins,
 } from "./plugins";
 
 import { useEditor } from "./hooks";
@@ -60,18 +61,21 @@ const Editor: React.FC<EditorProps> = ({
   };
 
   return (
-    <Box position="relative" {...rest}>
+    <div
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+      tabIndex={0}
+      className={
+        editorStyles.classnames.container[editorAppearance[appearance]]
+      }
+      {...rest}
+    >
       <Box
         as={LexicalComposer}
         initialConfig={initialConfig}
         position="relative"
         backgroundColor="danger-interactive"
       >
-        <Toolbar
-          className={
-            editorStyles.classnames.toolbar[editorAppearance[appearance]]
-          }
-        >
+        <Toolbar className={editorStyles.classnames.toolbar}>
           {modules ??
             defaultModules.map((defaultModule) => {
               const Module = aliasModules[defaultModule] ?? null;
@@ -81,11 +85,7 @@ const Editor: React.FC<EditorProps> = ({
         <Box position="relative">
           <RichTextPlugin
             contentEditable={
-              <ContentEditable
-                className={
-                  editorStyles.classnames.content[editorAppearance[appearance]]
-                }
-              />
+              <ContentEditable className={editorStyles.classnames.content} />
             }
             placeholder={<Placeholder text={placeholder} />}
             ErrorBoundary={LexicalErrorBoundary}
@@ -110,6 +110,7 @@ const Editor: React.FC<EditorProps> = ({
         <CustomAutoEmbedPlugin />
         <CustomHeadingPlugin />
         <CustomParagraphPlugin />
+        <CustomFloatingLinkEditor />
         <CustomClearFormattingPlugin />
         <CustomYouTubePlugin />
         <OnChangePlugin
@@ -118,7 +119,7 @@ const Editor: React.FC<EditorProps> = ({
           }}
         />
       </Box>
-    </Box>
+    </div>
   );
 };
 
