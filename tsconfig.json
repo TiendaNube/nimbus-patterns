@@ -42,6 +42,7 @@
         "./packages/react/src/components/CalloutCard/src"
       ],
       "@nimbus-ds/data-list": ["./packages/react/src/components/DataList/src"],
+      "@nimbus-ds/editor": ["./packages/react/src/components/Editor/src"],
       "@nimbus-ds/data-table": [
         "./packages/react/src/components/DataTable/src"
       ],
@@ -67,9 +68,7 @@
       "@nimbus-ds/thumbnail-with-action": [
         "./packages/react/src/components/ThumbnailWithAction/src"
       ],
-      "@nimbus-ds/calendar": [
-        "./packages/react/src/components/Calendar/src"
-      ]
+      "@nimbus-ds/calendar": ["./packages/react/src/components/Calendar/src"]
     }
   }
 }

@@ -54,6 +54,7 @@ export const withCustomContent: Story = {
     title: "Title",
     text: "Content text",
     visible: true,
+    maxWidth: "300px",
     bodyContent: (
       <Thumbnail
         aspectRatio="2/1"

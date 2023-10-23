@@ -65,6 +65,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "no-underscore-dangle": "off",
     "import/extensions": "off",
     "import/prefer-default-export": "off",
     "import/no-unresolved": "off",

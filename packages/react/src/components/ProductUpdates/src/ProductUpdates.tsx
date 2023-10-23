@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 import {
-  Popover,
   Text,
   Link,
   Box,
   IconButton,
   Icon,
+  Popover,
 } from "@nimbus-ds/components";
 import { CloseIcon } from "@nimbus-ds/icons";
 import { ProductUpdatesProps } from "./productUpdates.types";
@@ -20,7 +20,7 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
   dismissLink,
   ...rest
 }: ProductUpdatesProps) => {
-  const [visible, setVisibility] = useState(rest.visible);
+  const [visible, setVisibility] = useState(!!rest.visible);
 
   const handleVisibility = () => setVisibility(!visible);
 
@@ -41,7 +41,11 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
       {bodyContent}
       <Link
         as="button"
-        onClick={handleVisibility}
+        onClick={
+          rest?.onVisibility
+            ? () => rest?.onVisibility?.(false)
+            : handleVisibility
+        }
         appearance="neutral-background"
       >
         {dismissLink}
@@ -53,7 +57,11 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
         {productUpdatesContent}
         <Box position="absolute" top="-16px" right="-16px">
           <IconButton
-            onClick={handleVisibility}
+            onClick={
+              rest?.onVisibility
+                ? () => rest?.onVisibility?.(false)
+                : handleVisibility
+            }
             size="2.75rem"
             source={<Icon color="neutral-background" source={<CloseIcon />} />}
             borderColor="transparent"
@@ -70,12 +78,13 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
       {...rest}
       backgroundColor="primary-interactiveHover"
       content={hasDismissLink}
-      visible={visible}
+      visible={rest.visible === undefined ? visible : rest.visible}
       onVisibility={
         rest.onVisibility ||
         ((newVisible: boolean) => setVisibility(newVisible))
       }
       enabledDismiss={false}
+      enabledClick={false}
     />
   );
 };

@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/patterns",
-  "version": "1.6.0",
+  "version": "1.7.0-rc.6",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -15,6 +15,12 @@
     "clean": "rm -rf dist",
     "version": "yarn version"
   },
+  "dependencies": {
+    "@lexical/react": "^0.12.2",
+    "date-fns": "^2.30.0",
+    "lexical": "^0.12.2",
+    "react-day-picker": "^8.8.2"
+  },
   "peerDependencies": {
     "@nimbus-ds/components": "^5",
     "@nimbus-ds/icons": "^1",
@@ -28,5 +34,6 @@
   },
   "bugs": {
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
-  }
+  },
+  "stableVersion": "1.6.0"
 }

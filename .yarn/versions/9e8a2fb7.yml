@@ -1,0 +1,8 @@
+releases:
+  "@nimbus-ds/editor": major
+  "@nimbus-ds/patterns": minor
+  "@nimbus-ds/productupdates": patch
+
+declined:
+  - nimbus-patterns
+  - "@nimbus-ds/patterns-webpack"

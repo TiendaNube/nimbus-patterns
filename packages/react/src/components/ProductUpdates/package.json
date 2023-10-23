@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/productupdates",
-  "version": "1.4.2",
+  "version": "1.4.3-rc.10",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -28,5 +28,6 @@
   },
   "bugs": {
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
-  }
+  },
+  "stableVersion": "1.4.2"
 }
