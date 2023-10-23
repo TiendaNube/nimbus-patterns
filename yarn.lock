@@ -4446,10 +4446,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/styles@npm:9.6.0-rc.6":
-  version: 9.6.0-rc.6
-  resolution: "@nimbus-ds/styles@npm:9.6.0-rc.6"
-  checksum: 73e35286e6208e4cb0ad33d1dc807b0b619ca54d9cc431eb532f76e29a6e147fb95690c340925f0f2956119d337852f9f9323d797dd4b51b3a335a3a1d6d1419
+"@nimbus-ds/styles@npm:^9.x":
+  version: 9.6.0
+  resolution: "@nimbus-ds/styles@npm:9.6.0"
+  checksum: 07a733eff2c386d0fb4b5cbc96445e56e46d26714e791f471251e8a5714d6387b5c31fc38a5ce3f5522bb38aeadce5f39480cc6254a1995b535ac95d3b03078a
   languageName: node
   linkType: hard
 
@@ -14977,7 +14977,7 @@ __metadata:
     "@mdx-js/react": ^1.6.22
     "@nimbus-ds/components": ^5.x
     "@nimbus-ds/scripts": 1.4.0
-    "@nimbus-ds/styles": 9.6.0-rc.6
+    "@nimbus-ds/styles": ^9.x
     "@nimbus-ds/tokens": ^8.x
     "@storybook/addon-docs": ^7.0.18
     "@storybook/addon-essentials": ^7.0.18
