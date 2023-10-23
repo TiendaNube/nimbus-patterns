@@ -6,7 +6,7 @@ Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s tea
 
 #### 🎉 New features
 
-- Added new `Editor` component. ([#77](https://github.com/TiendaNube/nimbus-patterns/pull/77) by [@juniorconquista](https://github.com/juniorconquista))
+- Added new `Editor` component. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80) by [@juniorconquista](https://github.com/juniorconquista))
 
 #### 🐛 Bug fixes
 
