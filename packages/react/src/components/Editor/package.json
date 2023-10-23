@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/editor",
-  "version": "1.0.0-rc.13",
+  "version": "1.0.0",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -38,6 +38,5 @@
   },
   "devDependencies": {
     "@nimbus-ds/menubutton": "workspace:^"
-  },
-  "stableVersion": "0.0.0"
+  }
 }
