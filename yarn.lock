@@ -3447,6 +3447,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@floating-ui/react@npm:^0.26.1":
+  version: 0.26.1
+  resolution: "@floating-ui/react@npm:0.26.1"
+  dependencies:
+    "@floating-ui/react-dom": ^2.0.2
+    "@floating-ui/utils": ^0.1.5
+    tabbable: ^6.0.1
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: e89fda56735027dd635ca46baaec31c2c7abfbd772855db2f22dad9a320b67bb01cea8f75e1bdab8d82f8cb4a5dd3c60c608e1e242a23cdc781c8c5856634e4c
+  languageName: node
+  linkType: hard
+
 "@floating-ui/utils@npm:^0.1.3, @floating-ui/utils@npm:^0.1.5":
   version: 0.1.6
   resolution: "@floating-ui/utils@npm:0.1.6"
@@ -4232,6 +4246,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/editor@workspace:packages/react/src/components/Editor"
   dependencies:
+    "@floating-ui/react": ^0.26.1
+    "@floating-ui/react-dom": ^2.0.2
     "@lexical/react": ^0.12.2
     "@nimbus-ds/menubutton": "workspace:^"
     lexical: ^0.12.2
@@ -4430,10 +4446,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/styles@npm:9.6.0-rc.2":
-  version: 9.6.0-rc.2
-  resolution: "@nimbus-ds/styles@npm:9.6.0-rc.2"
-  checksum: 2da4fd9538cfc3888f95da8b0f06d6532763a10aade6475f14efafa422b0d94e7ae6ddcd7e286de4d8918fd213f1bdf015313f058a139c3e16ffe7c5b5ccef6a
+"@nimbus-ds/styles@npm:9.6.0-rc.6":
+  version: 9.6.0-rc.6
+  resolution: "@nimbus-ds/styles@npm:9.6.0-rc.6"
+  checksum: 73e35286e6208e4cb0ad33d1dc807b0b619ca54d9cc431eb532f76e29a6e147fb95690c340925f0f2956119d337852f9f9323d797dd4b51b3a335a3a1d6d1419
   languageName: node
   linkType: hard
 
@@ -14961,7 +14977,7 @@ __metadata:
     "@mdx-js/react": ^1.6.22
     "@nimbus-ds/components": ^5.x
     "@nimbus-ds/scripts": 1.4.0
-    "@nimbus-ds/styles": 9.6.0-rc.2
+    "@nimbus-ds/styles": 9.6.0-rc.6
     "@nimbus-ds/tokens": ^8.x
     "@storybook/addon-docs": ^7.0.18
     "@storybook/addon-essentials": ^7.0.18

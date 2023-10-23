@@ -1,7 +1,6 @@
 # Changelog
 
-The Calendar component allows the user to select a date or range of dates in a simple, straitforward and flexible UI thats based off of [ReactDayPicker](https://react-day-picker.js.org/).
-It extends the properties of the ReactDayPicker component. Refer to the [documentation site](https://react-day-picker.js.org/reference) for a complete reference of the component's API.
+The editor component was built using the [Lexical](https://lexical.dev) API and was developed to be used in rich text fields.
 
 ## 2023-10-17 `1.0.0`
 
