@@ -6,7 +6,7 @@ ProductUpdates component allows the user to showcase new features or updates in 
 
 #### 🐛 Bug fixes
 
-- Fixed externally controlled visibility working correctly. ([#76](https://github.com/TiendaNube/nimbus-patterns/pull/76) by [@juniorconquista](https://github.com/juniorconquista))
+- Fixed externally controlled visibility working correctly. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80)
 
 #### 💡 Others
 

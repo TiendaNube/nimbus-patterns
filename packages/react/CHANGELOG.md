@@ -10,7 +10,7 @@ Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s tea
 
 #### 🐛 Bug fixes
 
-- Fixed externally controlled visibility working correctly in the `ProductUpdate` component. ([#76](https://github.com/TiendaNube/nimbus-patterns/pull/76) by [@juniorconquista](https://github.com/juniorconquista))
+- Fixed externally controlled visibility working correctly in the `ProductUpdate` component. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80)
 
 ## 2023-09-25 `1.6.0`
 
