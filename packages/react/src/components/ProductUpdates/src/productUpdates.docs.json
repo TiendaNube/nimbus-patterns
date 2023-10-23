@@ -1,9 +1,9 @@
 {
   "id": "productUpdates",
   "name": "ProductUpdates",
-  "totalProps": 17,
+  "totalProps": 19,
   "packageName": "@nimbus-ds/productupdates",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/product-updates",
   "props": [
     {
@@ -61,12 +61,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "type": "string"
@@ -77,7 +72,7 @@
     },
     {
       "description": "The width property specifies the width of a popover's content area.",
-      "default": "17.5rem",
+      "default": "fit-content",
       "anyOf": [
         {
           "type": "object",
@@ -100,12 +95,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "type": "string"
@@ -176,12 +166,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "enum": [
@@ -260,12 +245,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "enum": [
@@ -281,6 +261,39 @@
         }
       ],
       "title": "color",
+      "required": false
+    },
+    {
+      "description": "The maxWidth property specifies the maximum width of a popover's content area.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "xs": {
+              "type": "string",
+              "title": "xs"
+            },
+            "md": {
+              "type": "string",
+              "title": "md"
+            },
+            "lg": {
+              "type": "string",
+              "title": "lg"
+            },
+            "xl": {
+              "type": "string",
+              "title": "xl"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": ["xs", "md", "lg", "xl"]
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "maxWidth",
       "required": false
     },
     {
@@ -372,12 +385,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "enum": [
@@ -420,6 +428,13 @@
       "default": true,
       "type": "boolean",
       "title": "arrow",
+      "required": false
+    },
+    {
+      "description": "A common feature of select dropdowns is that the dropdown matches the width of the reference regardless of its contents.",
+      "default": false,
+      "type": "boolean",
+      "title": "matchReferenceWidth",
       "required": false
     },
     {

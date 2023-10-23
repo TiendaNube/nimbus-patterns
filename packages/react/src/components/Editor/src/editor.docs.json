@@ -1,0 +1,436 @@
+{
+  "id": "editor",
+  "name": "Editor",
+  "totalProps": 10,
+  "packageName": "@nimbus-ds/editor",
+  "version": "1.0.0",
+  "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/editor",
+  "props": [
+    {
+      "enum": [
+        "bold",
+        "clearFormating",
+        "divider",
+        "header",
+        "history",
+        "italic",
+        "link",
+        "orderedList",
+        "unorderedList",
+        "video"
+      ],
+      "type": "string",
+      "title": "modules",
+      "required": false
+    },
+    {
+      "type": "string",
+      "title": "placeholder",
+      "required": false
+    },
+    {
+      "type": "string",
+      "title": "value",
+      "required": false
+    },
+    {
+      "enum": ["html", "json"],
+      "type": "string",
+      "title": "parser",
+      "required": false
+    },
+    {
+      "type": "object",
+      "additionalProperties": {},
+      "properties": {
+        "blockCursor": {
+          "type": "string",
+          "title": "blockCursor"
+        },
+        "characterLimit": {
+          "type": "string",
+          "title": "characterLimit"
+        },
+        "code": {
+          "type": "string",
+          "title": "code"
+        },
+        "codeHighlight": {
+          "type": "object",
+          "additionalProperties": false,
+          "propertyOrder": [],
+          "title": "codeHighlight"
+        },
+        "hashtag": {
+          "type": "string",
+          "title": "hashtag"
+        },
+        "heading": {
+          "type": "object",
+          "properties": {
+            "h1": {
+              "type": "string",
+              "title": "h1"
+            },
+            "h2": {
+              "type": "string",
+              "title": "h2"
+            },
+            "h3": {
+              "type": "string",
+              "title": "h3"
+            },
+            "h4": {
+              "type": "string",
+              "title": "h4"
+            },
+            "h5": {
+              "type": "string",
+              "title": "h5"
+            },
+            "h6": {
+              "type": "string",
+              "title": "h6"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": ["h1", "h2", "h3", "h4", "h5", "h6"],
+          "title": "heading"
+        },
+        "image": {
+          "type": "string",
+          "title": "image"
+        },
+        "link": {
+          "type": "string",
+          "title": "link"
+        },
+        "list": {
+          "type": "object",
+          "properties": {
+            "ul": {
+              "type": "string",
+              "title": "ul"
+            },
+            "ulDepth": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "title": "ulDepth"
+            },
+            "ol": {
+              "type": "string",
+              "title": "ol"
+            },
+            "olDepth": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "title": "olDepth"
+            },
+            "listitem": {
+              "type": "string",
+              "title": "listitem"
+            },
+            "listitemChecked": {
+              "type": "string",
+              "title": "listitemChecked"
+            },
+            "listitemUnchecked": {
+              "type": "string",
+              "title": "listitemUnchecked"
+            },
+            "nested": {
+              "type": "object",
+              "properties": {
+                "list": {
+                  "type": "string",
+                  "title": "list"
+                },
+                "listitem": {
+                  "type": "string",
+                  "title": "listitem"
+                }
+              },
+              "additionalProperties": false,
+              "propertyOrder": ["list", "listitem"],
+              "title": "nested"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": [
+            "ul",
+            "ulDepth",
+            "ol",
+            "olDepth",
+            "listitem",
+            "listitemChecked",
+            "listitemUnchecked",
+            "nested"
+          ],
+          "title": "list"
+        },
+        "ltr": {
+          "type": "string",
+          "title": "ltr"
+        },
+        "mark": {
+          "type": "string",
+          "title": "mark"
+        },
+        "markOverlap": {
+          "type": "string",
+          "title": "markOverlap"
+        },
+        "paragraph": {
+          "type": "string",
+          "title": "paragraph"
+        },
+        "quote": {
+          "type": "string",
+          "title": "quote"
+        },
+        "root": {
+          "type": "string",
+          "title": "root"
+        },
+        "rtl": {
+          "type": "string",
+          "title": "rtl"
+        },
+        "table": {
+          "type": "string",
+          "title": "table"
+        },
+        "tableAddColumns": {
+          "type": "string",
+          "title": "tableAddColumns"
+        },
+        "tableAddRows": {
+          "type": "string",
+          "title": "tableAddRows"
+        },
+        "tableCellActionButton": {
+          "type": "string",
+          "title": "tableCellActionButton"
+        },
+        "tableCellActionButtonContainer": {
+          "type": "string",
+          "title": "tableCellActionButtonContainer"
+        },
+        "tableCellPrimarySelected": {
+          "type": "string",
+          "title": "tableCellPrimarySelected"
+        },
+        "tableCellSelected": {
+          "type": "string",
+          "title": "tableCellSelected"
+        },
+        "tableCell": {
+          "type": "string",
+          "title": "tableCell"
+        },
+        "tableCellEditing": {
+          "type": "string",
+          "title": "tableCellEditing"
+        },
+        "tableCellHeader": {
+          "type": "string",
+          "title": "tableCellHeader"
+        },
+        "tableCellResizer": {
+          "type": "string",
+          "title": "tableCellResizer"
+        },
+        "tableCellSortedIndicator": {
+          "type": "string",
+          "title": "tableCellSortedIndicator"
+        },
+        "tableResizeRuler": {
+          "type": "string",
+          "title": "tableResizeRuler"
+        },
+        "tableRow": {
+          "type": "string",
+          "title": "tableRow"
+        },
+        "tableSelected": {
+          "type": "string",
+          "title": "tableSelected"
+        },
+        "text": {
+          "type": "object",
+          "properties": {
+            "base": {
+              "type": "string",
+              "title": "base"
+            },
+            "bold": {
+              "type": "string",
+              "title": "bold"
+            },
+            "code": {
+              "type": "string",
+              "title": "code"
+            },
+            "highlight": {
+              "type": "string",
+              "title": "highlight"
+            },
+            "italic": {
+              "type": "string",
+              "title": "italic"
+            },
+            "strikethrough": {
+              "type": "string",
+              "title": "strikethrough"
+            },
+            "subscript": {
+              "type": "string",
+              "title": "subscript"
+            },
+            "superscript": {
+              "type": "string",
+              "title": "superscript"
+            },
+            "underline": {
+              "type": "string",
+              "title": "underline"
+            },
+            "underlineStrikethrough": {
+              "type": "string",
+              "title": "underlineStrikethrough"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": [
+            "base",
+            "bold",
+            "code",
+            "highlight",
+            "italic",
+            "strikethrough",
+            "subscript",
+            "superscript",
+            "underline",
+            "underlineStrikethrough"
+          ],
+          "title": "text"
+        },
+        "embedBlock": {
+          "type": "object",
+          "properties": {
+            "base": {
+              "type": "string",
+              "title": "base"
+            },
+            "focus": {
+              "type": "string",
+              "title": "focus"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": ["base", "focus"],
+          "title": "embedBlock"
+        },
+        "indent": {
+          "type": "string",
+          "title": "indent"
+        }
+      },
+      "propertyOrder": [
+        "blockCursor",
+        "characterLimit",
+        "code",
+        "codeHighlight",
+        "hashtag",
+        "heading",
+        "image",
+        "link",
+        "list",
+        "ltr",
+        "mark",
+        "markOverlap",
+        "paragraph",
+        "quote",
+        "root",
+        "rtl",
+        "table",
+        "tableAddColumns",
+        "tableAddRows",
+        "tableCellActionButton",
+        "tableCellActionButtonContainer",
+        "tableCellPrimarySelected",
+        "tableCellSelected",
+        "tableCell",
+        "tableCellEditing",
+        "tableCellHeader",
+        "tableCellResizer",
+        "tableCellSortedIndicator",
+        "tableResizeRuler",
+        "tableRow",
+        "tableSelected",
+        "text",
+        "embedBlock",
+        "indent"
+      ],
+      "title": "theme",
+      "required": false
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "propertyOrder": [],
+      "title": "onChange",
+      "required": false
+    },
+    {
+      "description": "Icon supporting the help text message.",
+      "type": "React.FC<IconProps>",
+      "title": "helpIcon",
+      "required": false
+    },
+    {
+      "description": "Help text displaying optional hints or validation messages under the field.",
+      "type": "string",
+      "title": "helpText",
+      "required": false
+    },
+    {
+      "description": "Appearance of the field and help text elements.",
+      "default": "none",
+      "enum": ["danger", "none", "success", "warning"],
+      "type": "string",
+      "title": "appearance",
+      "required": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "h3": {
+          "type": "string",
+          "title": "h3"
+        },
+        "h4": {
+          "type": "string",
+          "title": "h4"
+        },
+        "paragraph": {
+          "type": "string",
+          "title": "paragraph"
+        },
+        "embed_youtube_video": {
+          "type": "string",
+          "title": "embed_youtube_video"
+        }
+      },
+      "additionalProperties": false,
+      "propertyOrder": ["h3", "h4", "paragraph", "embed_youtube_video"],
+      "title": "translations",
+      "required": false
+    }
+  ],
+  "subComponents": []
+}

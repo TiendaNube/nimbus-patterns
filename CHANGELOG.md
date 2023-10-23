@@ -3,6 +3,26 @@
 This is the log of notable changes to the Nimbus Patterns that are developer-facing.
 Package-specific changes not released in any package will be added here just before the release. Until then, you can find them in changelogs of the individual packages (see [packages](./packages) directory).
 
+## 2023-10-17
+
+### 🎉 New features
+
+- Updated storybook to new version. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80) by [@juniorconquista](https://github.com/juniorconquista))
+
+#### 📚 3rd party library updates
+
+Updated `@storybook/addon-docs@7.5.1`. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80) by [@juniorconquista](https://github.com/juniorconquista))
+Updated `@storybook/addon-essentials@7.5.1`. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80) by [@juniorconquista](https://github.com/juniorconquista))
+Updated `@storybook/addon-interactions@7.5.1`. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80) by [@juniorconquista](https://github.com/juniorconquista))
+Updated `@storybook/addon-links@7.5.1`. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80) by [@juniorconquista](https://github.com/juniorconquista))
+Updated `@storybook/addon-mdx-gfm@7.5.1`. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80) by [@juniorconquista](https://github.com/juniorconquista))
+Updated `@storybook/react@7.5.1`. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80) by [@juniorconquista](https://github.com/juniorconquista))
+Updated `@storybook/react-webpack5@7.5.1`. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80) by [@juniorconquista](https://github.com/juniorconquista))
+Updated `@storybook/testing-library@0.2.2`. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80) by [@juniorconquista](https://github.com/juniorconquista))
+Updated `eslint-plugin-storybook@0.6.15`. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80) by [@juniorconquista](https://github.com/juniorconquista))
+Updated `storybook@.5.1`. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80) by [@juniorconquista](https://github.com/juniorconquista))
+Updated `storybook-dark-mode@3.0.1`. ([#80](https://github.com/TiendaNube/nimbus-patterns/pull/80) by [@juniorconquista](https://github.com/juniorconquista))
+
 ## 2023-06-21
 
 #### 📚 3rd party library updates
