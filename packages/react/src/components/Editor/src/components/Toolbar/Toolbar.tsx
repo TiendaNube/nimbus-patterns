@@ -113,22 +113,24 @@ const Toolbar: React.FC<ToolbarProps> = ({ children, className }) => {
           )}
         </EditorContext.Provider>
       </div>
-      <Box
-        display={{ xs: "block", md: "none" }}
-        position="absolute"
-        bottom="0"
-        py="1"
-        px="2"
-        width="100%"
-        borderWidth="none"
-        borderTopWidth="1"
-        borderColor="neutral-surfaceHighlight"
-        borderStyle="solid"
-      >
-        <Text fontSize="caption" lineHeight="caption">
-          {headerTranslations[context.state.blockType]}
-        </Text>
-      </Box>
+      {headerTranslations[context.state.blockType] && (
+        <Box
+          display={{ xs: "block", md: "none" }}
+          position="absolute"
+          bottom="0"
+          py="1"
+          px="2"
+          width="100%"
+          borderWidth="none"
+          borderTopWidth="1"
+          borderColor="neutral-surfaceHighlight"
+          borderStyle="solid"
+        >
+          <Text fontSize="caption" lineHeight="caption">
+            {headerTranslations[context.state.blockType]}
+          </Text>
+        </Box>
+      )}
     </>
   );
 };

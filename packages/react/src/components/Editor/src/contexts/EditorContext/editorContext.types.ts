@@ -1,4 +1,4 @@
-import { initialContext } from "./editorContext.definitions";
+import { initialEditorContext } from "./editorContext.definitions";
 
 // eslint-disable-next-line no-shadow
 export enum EditorActionKind {
@@ -16,6 +16,6 @@ export interface EditorAction {
 }
 
 export interface EditorContextProps {
-  state: typeof initialContext.state;
+  state: typeof initialEditorContext.state;
   dispatch: (action: EditorAction) => void;
 }

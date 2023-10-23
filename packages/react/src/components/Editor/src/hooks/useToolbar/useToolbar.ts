@@ -13,12 +13,12 @@ import { $isHeadingNode } from "@lexical/rich-text";
 import { $getNearestNodeOfType } from "@lexical/utils";
 
 import { GAP, getSelectedNode, reducer } from "./useToolbar.definitions";
-import { EditorActionKind, initialContext } from "../../contexts";
+import { EditorActionKind, initialEditorContext } from "../../contexts";
 
 export const useToolbar = () => {
   const [editor] = useLexicalComposerContext();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [state, dispatch] = useReducer(reducer, initialContext.state);
+  const [state, dispatch] = useReducer(reducer, initialEditorContext.state);
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Box, Icon, Text } from "@nimbus-ds/components";
 import { editor as editorStyles } from "@nimbus-ds/styles";
 import { EditorState, LexicalEditor } from "lexical";
@@ -32,6 +32,7 @@ import {
 } from "./plugins";
 
 import { useEditor } from "./hooks";
+import { TranslateContext, initialTranslationContext } from "./contexts";
 
 const Editor: React.FC<EditorProps> = ({
   style: _style,
@@ -44,6 +45,7 @@ const Editor: React.FC<EditorProps> = ({
   helpText,
   helpIcon: IconSrc,
   appearance = "none",
+  translations,
   onChange,
   ...rest
 }) => {
@@ -60,66 +62,82 @@ const Editor: React.FC<EditorProps> = ({
     onError,
   };
 
+  const context = useMemo(
+    () => ({
+      translations: {
+        ...initialTranslationContext.translations,
+        ...translations,
+      },
+    }),
+    [translations]
+  );
+
   return (
-    <div
-      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-      tabIndex={0}
-      className={
-        editorStyles.classnames.container[editorAppearance[appearance]]
-      }
-      {...rest}
-    >
-      <Box
-        as={LexicalComposer}
-        initialConfig={initialConfig}
-        position="relative"
-        backgroundColor="danger-interactive"
+    <>
+      <div
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={0}
+        className={
+          editorStyles.classnames.container[editorAppearance[appearance]]
+        }
+        {...rest}
       >
-        <Toolbar className={editorStyles.classnames.toolbar}>
-          {modules ??
-            defaultModules.map((defaultModule) => {
-              const Module = aliasModules[defaultModule] ?? null;
-              return <Module key={defaultModule} />;
-            })}
-        </Toolbar>
-        <Box position="relative">
-          <RichTextPlugin
-            contentEditable={
-              <ContentEditable className={editorStyles.classnames.content} />
-            }
-            placeholder={<Placeholder text={placeholder} />}
-            ErrorBoundary={LexicalErrorBoundary}
-          />
-        </Box>
-        {helpText && (
-          <Box mt="2">
-            <Box display="inline-flex" gap="1">
-              {IconSrc && (
-                <Icon
-                  color={helpTextAppearance[appearance]}
-                  source={<IconSrc size={12} />}
-                />
-              )}
-              <Text color={helpTextAppearance[appearance]} fontSize="caption">
-                {helpText}
-              </Text>
+        <Box
+          as={LexicalComposer}
+          initialConfig={initialConfig}
+          position="relative"
+          backgroundColor="danger-interactive"
+        >
+          <TranslateContext.Provider value={context}>
+            <Toolbar className={editorStyles.classnames.toolbar}>
+              {modules ??
+                defaultModules.map((defaultModule) => {
+                  const Module = aliasModules[defaultModule] ?? null;
+                  return <Module key={defaultModule} />;
+                })}
+            </Toolbar>
+            <Box position="relative">
+              <RichTextPlugin
+                contentEditable={
+                  <ContentEditable
+                    className={editorStyles.classnames.content}
+                  />
+                }
+                placeholder={<Placeholder text={placeholder} />}
+                ErrorBoundary={LexicalErrorBoundary}
+              />
             </Box>
+            <DefaultPlugins />
+            <CustomAutoEmbedPlugin />
+            <CustomHeadingPlugin />
+            <CustomParagraphPlugin />
+            <CustomFloatingLinkEditor />
+            <CustomClearFormattingPlugin />
+            <CustomYouTubePlugin />
+            <OnChangePlugin
+              onChange={(editorState: EditorState, editor: LexicalEditor) => {
+                onChangeEditor(editorState, editor);
+              }}
+            />
+          </TranslateContext.Provider>
+        </Box>
+      </div>
+      {helpText && (
+        <Box mt="2">
+          <Box display="inline-flex" gap="1">
+            {IconSrc && (
+              <Icon
+                color={helpTextAppearance[appearance]}
+                source={<IconSrc size={12} />}
+              />
+            )}
+            <Text color={helpTextAppearance[appearance]} fontSize="caption">
+              {helpText}
+            </Text>
           </Box>
-        )}
-        <DefaultPlugins />
-        <CustomAutoEmbedPlugin />
-        <CustomHeadingPlugin />
-        <CustomParagraphPlugin />
-        <CustomFloatingLinkEditor />
-        <CustomClearFormattingPlugin />
-        <CustomYouTubePlugin />
-        <OnChangePlugin
-          onChange={(editorState: EditorState, editor: LexicalEditor) => {
-            onChangeEditor(editorState, editor);
-          }}
-        />
-      </Box>
-    </div>
+        </Box>
+      )}
+    </>
   );
 };
 

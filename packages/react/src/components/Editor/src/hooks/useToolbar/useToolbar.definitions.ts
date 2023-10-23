@@ -1,13 +1,17 @@
 import { ElementNode, RangeSelection, TextNode } from "lexical";
 import { $isAtNodeEnd } from "@lexical/selection";
-import { EditorAction, EditorActionKind, initialContext } from "../../contexts";
+import {
+  EditorAction,
+  EditorActionKind,
+  initialEditorContext,
+} from "../../contexts";
 
 export const GAP = 16;
 export const PADDING = 16;
 export const ELIPSIS_BUTTON = 32;
 
 export const reducer = (
-  state: typeof initialContext.state,
+  state: typeof initialEditorContext.state,
   action: EditorAction
 ) => {
   switch (action.type) {

@@ -3,12 +3,13 @@ import { Box, Icon, Text, Popover } from "@nimbus-ds/components";
 import { TextSizeIcon } from "@nimbus-ds/icons";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-import { useEditorState } from "../../hooks";
-import { headerTranslations, supportedHeaderTypes } from "./header.definitions";
+import { useEditorState, useTranslate } from "../../hooks";
+import { supportedHeaderTypes } from "./header.definitions";
 
 const Header: React.FC = () => {
   const [editor] = useLexicalComposerContext();
   const { state } = useEditorState();
+  const { translations } = useTranslate();
 
   return (
     <Popover
@@ -45,7 +46,7 @@ const Header: React.FC = () => {
             >
               <Icon source={<TextSizeIcon />} color="currentColor" />
               <Text color="currentColor">
-                {headerTranslations[supportedHeaderType.tag]}
+                {translations[supportedHeaderType.tag]}
               </Text>
             </Box>
           ))}
@@ -74,9 +75,9 @@ const Header: React.FC = () => {
       >
         <Icon source={<TextSizeIcon />} color="currentColor" />
         <Box display={{ xs: "none", md: "flex" }}>
-          {headerTranslations[state.blockType] && (
+          {translations[state.blockType] && (
             <Text as="span" color="currentColor">
-              {headerTranslations[state.blockType]}
+              {translations[state.blockType]}
             </Text>
           )}
         </Box>

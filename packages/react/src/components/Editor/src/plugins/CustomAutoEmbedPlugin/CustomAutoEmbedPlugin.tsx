@@ -8,12 +8,15 @@ import {
   URL_MATCHER,
 } from "@lexical/react/LexicalAutoEmbedPlugin";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+
 import { PlaygroundEmbedConfig } from "./customAutoEmbedPlugin.types";
 import { YoutubeEmbedConfig } from "./customAutoEmbedPlugin.definitions";
 import { debounce } from "../../utils";
+import { useTranslate } from "../../hooks";
 
 const CustomAutoEmbedPlugin: React.FC = () => {
   const [editor] = useLexicalComposerContext();
+  const { translations } = useTranslate();
 
   const [text, setText] = useState("");
   const [showModal, setShowModal] = useState(false);
@@ -69,7 +72,7 @@ const CustomAutoEmbedPlugin: React.FC = () => {
   return (
     <>
       <Modal open={showModal} onDismiss={handleModal}>
-        <Modal.Header title="Embed Youtube Video" />
+        <Modal.Header title={translations.embed_youtube_video} />
         <Modal.Body padding="none">
           <FormField.Input
             label="URL"

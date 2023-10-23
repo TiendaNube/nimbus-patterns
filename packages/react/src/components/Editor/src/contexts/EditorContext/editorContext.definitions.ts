@@ -1,4 +1,4 @@
-export const initialContext = {
+export const initialEditorContext = {
   state: {
     blockType: "paragraph",
     canUndo: false,

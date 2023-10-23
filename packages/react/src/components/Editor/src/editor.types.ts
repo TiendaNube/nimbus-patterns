@@ -1,6 +1,7 @@
 import { HTMLAttributes, FC } from "react";
 import { EditorThemeClasses } from "lexical";
 import { IconProps } from "@nimbus-ds/icons";
+import { initialTranslationContext } from "./contexts";
 
 export type Module =
   | "bold"
@@ -37,6 +38,7 @@ export interface EditorProperties {
    * @default none
    */
   appearance?: "danger" | "warning" | "success" | "none";
+  translations?: Partial<typeof initialTranslationContext.translations>;
 }
 
 export type EditorProps = EditorProperties &
