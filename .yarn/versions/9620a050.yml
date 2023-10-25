@@ -1,0 +1,6 @@
+releases:
+  "@nimbus-ds/empty-message": patch
+  "@nimbus-ds/patterns": patch
+
+declined:
+  - nimbus-patterns

@@ -24,7 +24,7 @@ export const basic: Story = {
     title: "This is an empty message component.",
     text: "This component has an icon.",
     actions: (
-      <Link appearance="primary">
+      <Link appearance="primary" textDecoration="none">
         <Icon color="currentColor" source={<RedoIcon />} />
         Reload page
       </Link>
@@ -53,7 +53,9 @@ export const withImage: Story = {
     actions: (
       <>
         <Button appearance="primary">Primary action</Button>
-        <Link appearance="primary">Secondary action</Link>
+        <Link appearance="primary" textDecoration="none">
+          Secondary action
+        </Link>
       </>
     ),
     illustration: (

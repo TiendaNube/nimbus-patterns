@@ -22,26 +22,36 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
       gap="1"
       alignItems={{
         xs: "center",
-        md: illustration ? "flex-start" : "center",
+        lg: illustration ? "flex-start" : "center",
       }}
+      justifyContent={illustration ? "center" : "flex-start"}
     >
       {icon && <NimbusIcon source={icon} />}
       <Title
-        as={illustration ? "h1" : "h4"}
+        as="h4"
         textAlign={{
           xs: "center",
-          md: "left"
+          lg: illustration ? "left" : "center"
         }}
       >
         {title}
       </Title>
-      {text && <Text textAlign="center">{text}</Text>}
+      {text && (
+        <Text
+          textAlign={{ xs: "center", lg: illustration ? "left" : "center" }}
+        >
+          {text}
+        </Text>
+      )}
       {actions && (
         <Box
           display="flex"
-          justifyContent="center"
-          gap="4"
-          mt={illustration ? "4" : "2"}
+          justifyContent={{
+            xs: "center",
+            lg: "flex-start"
+          }}
+          gap="2"
+          mt="1"
           flexWrap="wrap"
         >
           {actions}
@@ -51,15 +61,20 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
   );
   return illustration ? (
     <Box
-      display="flex"
-      flexDirection={{
-        xs: "column",
-        md: "row",
+      display="grid"
+      gridTemplateColumns={{
+        xs: "1fr",
+        lg: "1fr 1fr"
       }}
-      justifyContent="center"
-      alignItems="center"
+      gridTemplateAreas={{
+        xs: "auto auto",
+        lg: "auto"
+      }}
+      gap="4"
     >
-      {illustration}
+      <Box display="flex" alignItems="center" justifyContent="center">
+        {illustration}
+      </Box>
       {emptyMessageContent}
     </Box>
   ) : (
