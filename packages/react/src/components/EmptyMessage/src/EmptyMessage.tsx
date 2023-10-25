@@ -22,7 +22,7 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
       gap="1"
       alignItems={{
         xs: "center",
-        md: illustration ? "flex-start" : "center",
+        lg: illustration ? "flex-start" : "center",
       }}
       justifyContent={illustration ? "center" : "flex-start"}
     >
@@ -31,14 +31,14 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
         as="h4"
         textAlign={{
           xs: "center",
-          md: illustration ? "left" : "center"
+          lg: illustration ? "left" : "center"
         }}
       >
         {title}
       </Title>
       {text && (
         <Text
-          textAlign={{ xs: "center", md: illustration ? "left" : "center" }}
+          textAlign={{ xs: "center", lg: illustration ? "left" : "center" }}
         >
           {text}
         </Text>
@@ -46,8 +46,11 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
       {actions && (
         <Box
           display="flex"
-          justifyContent="center"
-          gap="4"
+          justifyContent={{
+            xs: "center",
+            lg: "flex-start"
+          }}
+          gap="2"
           mt="1"
           flexWrap="wrap"
         >
@@ -61,11 +64,11 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
       display="grid"
       gridTemplateColumns={{
         xs: "1fr",
-        md: "1fr 1fr"
+        lg: "1fr 1fr"
       }}
       gridTemplateAreas={{
         xs: "auto auto",
-        md: "auto"
+        lg: "auto"
       }}
       gap="4"
     >
