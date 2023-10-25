@@ -3,7 +3,7 @@
   "name": "EmptyMessage",
   "totalProps": 5,
   "packageName": "@nimbus-ds/empty-message",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/empty-message",
   "props": [
     {

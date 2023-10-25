@@ -34,7 +34,10 @@
       "required": false
     },
     {
-      "enum": ["html", "json"],
+      "enum": [
+        "html",
+        "json"
+      ],
       "type": "string",
       "title": "parser",
       "required": false
@@ -94,7 +97,14 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": ["h1", "h2", "h3", "h4", "h5", "h6"],
+          "propertyOrder": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
           "title": "heading"
         },
         "image": {
@@ -155,7 +165,10 @@
                 }
               },
               "additionalProperties": false,
-              "propertyOrder": ["list", "listitem"],
+              "propertyOrder": [
+                "list",
+                "listitem"
+              ],
               "title": "nested"
             }
           },
@@ -332,7 +345,10 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": ["base", "focus"],
+          "propertyOrder": [
+            "base",
+            "focus"
+          ],
           "title": "embedBlock"
         },
         "indent": {
@@ -401,7 +417,12 @@
     {
       "description": "Appearance of the field and help text elements.",
       "default": "none",
-      "enum": ["danger", "none", "success", "warning"],
+      "enum": [
+        "danger",
+        "none",
+        "success",
+        "warning"
+      ],
       "type": "string",
       "title": "appearance",
       "required": false
@@ -427,7 +448,12 @@
         }
       },
       "additionalProperties": false,
-      "propertyOrder": ["h3", "h4", "paragraph", "embed_youtube_video"],
+      "propertyOrder": [
+        "h3",
+        "h4",
+        "paragraph",
+        "embed_youtube_video"
+      ],
       "title": "translations",
       "required": false
     }
