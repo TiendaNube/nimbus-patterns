@@ -24,24 +24,31 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
         xs: "center",
         md: illustration ? "flex-start" : "center",
       }}
+      justifyContent={illustration ? "center" : "flex-start"}
     >
       {icon && <NimbusIcon source={icon} />}
       <Title
-        as={illustration ? "h1" : "h4"}
+        as="h4"
         textAlign={{
           xs: "center",
-          md: "left"
+          md: illustration ? "left" : "center"
         }}
       >
         {title}
       </Title>
-      {text && <Text textAlign="center">{text}</Text>}
+      {text && (
+        <Text
+          textAlign={{ xs: "center", md: illustration ? "left" : "center" }}
+        >
+          {text}
+        </Text>
+      )}
       {actions && (
         <Box
           display="flex"
           justifyContent="center"
           gap="4"
-          mt={illustration ? "4" : "2"}
+          mt="1"
           flexWrap="wrap"
         >
           {actions}
@@ -51,15 +58,20 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
   );
   return illustration ? (
     <Box
-      display="flex"
-      flexDirection={{
-        xs: "column",
-        md: "row",
+      display="grid"
+      gridTemplateColumns={{
+        xs: "1fr",
+        md: "1fr 1fr"
       }}
-      justifyContent="center"
-      alignItems="center"
+      gridTemplateAreas={{
+        xs: "auto auto",
+        md: "auto"
+      }}
+      gap="4"
     >
-      {illustration}
+      <Box display="flex" alignItems="center" justifyContent="center">
+        {illustration}
+      </Box>
       {emptyMessageContent}
     </Box>
   ) : (
