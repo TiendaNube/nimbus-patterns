@@ -4749,15 +4749,15 @@ __metadata:
   linkType: soft
 
 "@nimbus-ds/components@npm:^5.x":
-  version: 5.2.1
-  resolution: "@nimbus-ds/components@npm:5.2.1"
+  version: 5.3.0
+  resolution: "@nimbus-ds/components@npm:5.3.0"
   dependencies:
     "@floating-ui/react": ^0.26.0
     "@nimbus-ds/icons": ^1.3.0
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: e3bd3e75674e3a22c28ce63397ebc96eefa4689144a421fc861936aaa0007d33f7ef9fd96ba55619c386a48f92a673ca1fcc96147c4c02a0c293b885e6167cbc
+  checksum: 658394f1b4e9d50ef240a8c6beddbfac855ee6f0fd6547a355b24615d816ab92e533add97a04eac969a10d928a9f95c974d600784e03c7fd85df6a02feb9b9fb
   languageName: node
   linkType: hard
 
