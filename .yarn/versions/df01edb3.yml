@@ -1,0 +1,8 @@
+releases:
+  "@nimbus-ds/calendar": patch
+  "@nimbus-ds/editor": patch
+  "@nimbus-ds/patterns": patch
+  "@nimbus-ds/thumbnail-with-action": patch
+
+declined:
+  - nimbus-patterns
