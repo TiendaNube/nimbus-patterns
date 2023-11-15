@@ -61,7 +61,7 @@
     "@nimbus-ds/components": "^5.x",
     "@nimbus-ds/scripts": "1.4.0",
     "@nimbus-ds/styles": "^9.x",
-    "@nimbus-ds/tokens": "^8.x",
+    "@nimbus-ds/tokens": "^9.x",
     "@storybook/addon-docs": "^7.5.1",
     "@storybook/addon-essentials": "^7.5.1",
     "@storybook/addon-interactions": "^7.5.1",
