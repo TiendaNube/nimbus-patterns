@@ -2,6 +2,12 @@
 
 The editor component was built using the [Lexical](https://lexical.dev) API and was developed to be used in rich text fields.
 
+## 2023-11-15 `1.0.1`
+
+### 📚 3rd party library updates
+
+- Updated `@nimbus-ds/tokens@9.0.0`. ([#85](https://github.com/TiendaNube/nimbus-patterns/pull/85) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-10-17 `1.0.0`
 
 #### 📚 3rd party library updates

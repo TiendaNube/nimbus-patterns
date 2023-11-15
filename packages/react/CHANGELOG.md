@@ -2,6 +2,16 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2023-11-15 `1.7.2`
+
+#### 📚 3rd party library updates
+
+- Update packages. ([#85](https://github.com/TiendaNube/nimbus-patterns/pull/85) by [@juanchigallego](https://github.com/juanchigallego))
+
+#### 💡 Others
+
+- Changed `helpIcon` and `helpText` appearance to `neutral-textDisabled` on `FormField` component. ([#85](https://github.com/TiendaNube/nimbus-patterns/pull/85) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-10-25 `1.7.1`
 
 #### 🐛 Bug fixes
