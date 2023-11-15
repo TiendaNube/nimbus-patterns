@@ -18,7 +18,7 @@
   "peerDependencies": {
     "@nimbus-ds/components": "^5",
     "@nimbus-ds/icons": "^1",
-    "@nimbus-ds/tokens": "^8.1.0",
+    "@nimbus-ds/tokens": "^9.0.0",
     "react": "^16.8 || ^17.0 || ^18.0",
     "react-dom": "^16.8 || ^17.0 || ^18.0"
   },

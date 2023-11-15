@@ -3,6 +3,15 @@
 This is the log of notable changes to the Nimbus Patterns that are developer-facing.
 Package-specific changes not released in any package will be added here just before the release. Until then, you can find them in changelogs of the individual packages (see [packages](./packages) directory).
 
+## 2023-11-15
+
+#### 📚 3rd party library updates
+
+- Updated `@nimbus-ds/tokens@9.x`. ([#85](https://github.com/TiendaNube/nimbus-patterns/pull/85) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/styles@9.x`. ([#85](https://github.com/TiendaNube/nimbus-patterns/pull/85) by [@juanchigallego](https://github.com/juanchigallego))
+- Updated `@nimbus-ds/components@5.x`. ([#85](https://github.com/TiendaNube/nimbus-patterns/pull/85) by [@juanchigallego](https://github.com/juanchigallego))
+- Replaced `Centranube` font with `Geist`. ([#85](https://github.com/TiendaNube/nimbus-patterns/pull/85) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-10-17
 
 ### 🎉 New features
