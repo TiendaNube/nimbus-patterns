@@ -52,8 +52,8 @@ export const withCaption: Story = {
     const isLightTheme = useHasLightClass();
 
     const captionBackground = isLightTheme
-      ? tokens.color.sys.light.neutral.background.value
-      : tokens.color.sys.dark.neutral.background.value;
+      ? tokens.color.light.neutral.background.value
+      : tokens.color.dark.neutral.background.value;
 
     return (
       <ThumbnailWithAction
