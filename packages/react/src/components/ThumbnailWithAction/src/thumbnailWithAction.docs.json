@@ -3,7 +3,7 @@
   "name": "ThumbnailWithAction",
   "totalProps": 92,
   "packageName": "@nimbus-ds/thumbnail-with-action",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/thumbnail-with-action",
   "props": [
     {

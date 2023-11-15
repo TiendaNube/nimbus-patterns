@@ -3,7 +3,7 @@
   "name": "FormField",
   "totalProps": 6,
   "packageName": "@nimbus-ds/formfield",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/form-field",
   "props": [
     {

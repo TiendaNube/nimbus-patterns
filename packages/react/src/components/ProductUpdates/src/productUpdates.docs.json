@@ -1,7 +1,7 @@
 {
   "id": "productUpdates",
   "name": "ProductUpdates",
-  "totalProps": 19,
+  "totalProps": 20,
   "packageName": "@nimbus-ds/productupdates",
   "version": "1.4.3",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/product-updates",
@@ -319,6 +319,74 @@
         }
       ],
       "title": "maxWidth",
+      "required": false
+    },
+    {
+      "description": "The overflow shorthand property sets the desired behavior for an popover's content overflow.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "xs": {
+              "enum": [
+                "auto",
+                "hidden",
+                "scroll",
+                "visible"
+              ],
+              "type": "string",
+              "title": "xs"
+            },
+            "md": {
+              "enum": [
+                "auto",
+                "hidden",
+                "scroll",
+                "visible"
+              ],
+              "type": "string",
+              "title": "md"
+            },
+            "lg": {
+              "enum": [
+                "auto",
+                "hidden",
+                "scroll",
+                "visible"
+              ],
+              "type": "string",
+              "title": "lg"
+            },
+            "xl": {
+              "enum": [
+                "auto",
+                "hidden",
+                "scroll",
+                "visible"
+              ],
+              "type": "string",
+              "title": "xl"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": [
+            "xs",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        {
+          "enum": [
+            "auto",
+            "hidden",
+            "scroll",
+            "visible"
+          ],
+          "type": "string"
+        }
+      ],
+      "title": "overflow",
       "required": false
     },
     {

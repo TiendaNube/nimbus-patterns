@@ -3,7 +3,7 @@
   "name": "Editor",
   "totalProps": 10,
   "packageName": "@nimbus-ds/editor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/editor",
   "props": [
     {
