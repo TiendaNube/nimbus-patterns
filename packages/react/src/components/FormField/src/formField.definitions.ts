@@ -11,11 +11,11 @@ export const helpTextAppearance = {
   danger: "danger-textLow",
   warning: "warning-textLow",
   success: "success-textLow",
-  none: "neutral-textLow",
+  none: "neutral-textDisabled",
 } as {
   [key: string]:
     | "danger-textLow"
     | "warning-textLow"
     | "success-textLow"
-    | "neutral-textLow";
+    | "neutral-textDisabled";
 };
