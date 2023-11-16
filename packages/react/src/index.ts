@@ -3,7 +3,7 @@ export * from "@nimbus-ds/app-shell";
 export * from "@nimbus-ds/callout-card";
 export * from "@nimbus-ds/data-list";
 export * from "@nimbus-ds/data-table";
-export * from "@nimbus-ds/editor";
+// export * from "@nimbus-ds/editor"; Remove from package until lexical supports SSR
 export * from "@nimbus-ds/empty-message";
 export * from "@nimbus-ds/formfield";
 export * from "@nimbus-ds/help-link";
