@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2023-11-16 `1.7.3`
+
+#### 💡 Others
+
+- Remove `Editor` component from bundle until `lexical` supports SSR to prevent erros with server-side rendering projects. ([#86](https://github.com/TiendaNube/nimbus-patterns/pull/86) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-11-15 `1.7.2`
 
 #### 📚 3rd party library updates
