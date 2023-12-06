@@ -5,6 +5,6 @@ import { FormFieldProperties } from "../../formField.types";
 export type FormFieldSelectProperties = Omit<FormFieldProperties, "children"> &
   Omit<SelectProperties, "appearance">;
 
-export type FormFieldSelectProps = FormFieldSelectProperties &
+export type FormFieldSelectBaseProps = FormFieldSelectProperties &
   Omit<SelectProps, "appearance"> &
   HTMLAttributes<HTMLElement>;

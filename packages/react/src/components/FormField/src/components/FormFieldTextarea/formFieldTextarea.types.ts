@@ -9,6 +9,6 @@ export type FormFieldTextareaProperties = Omit<
 > &
   Omit<TextareaProperties, "appearance">;
 
-export type FormFieldTextareaProps = FormFieldTextareaProperties &
+export type FormFieldTextareaBaseProps = FormFieldTextareaProperties &
   Omit<TextareaProps, "appearance"> &
   HTMLAttributes<HTMLElement>;
