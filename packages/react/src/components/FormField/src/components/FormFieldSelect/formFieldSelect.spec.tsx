@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 
 import { FormField } from "../../FormField";
-import { FormFieldSelectProps } from "./formFieldSelect.types";
+import { FormFieldSelectProps } from "./FormFieldSelect";
 
 const makeSut = (
   rest?: Omit<FormFieldSelectProps, "children" | "id" | "name">

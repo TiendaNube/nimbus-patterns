@@ -4,8 +4,8 @@ import { Select, Radio, Box } from "@nimbus-ds/components";
 import { ExclamationCircleIcon } from "@nimbus-ds/icons";
 
 import { FormField } from "./FormField";
-import { FormFieldSelectProps } from "./components/FormFieldSelect/formFieldSelect.types";
-import { FormFieldTextareaProps } from "./components/FormFieldTextarea/formFieldTextarea.types";
+import { FormFieldSelectProps } from "./components/FormFieldSelect/FormFieldSelect";
+import { FormFieldTextareaProps } from "./components/FormFieldTextarea/FormFieldTextarea";
 
 const meta: Meta<typeof FormField> = {
   title: "Patterns/FormField",
