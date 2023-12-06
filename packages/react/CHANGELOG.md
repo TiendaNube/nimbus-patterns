@@ -2,6 +2,18 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2023-12-06 `1.7.4`
+
+#### 🐛 Bug fixes
+
+- Added possibility to forward ref of `FormField.Input` component. Fix [issue #88](https://github.com/TiendaNube/nimbus-patterns/issues/88) ([#89](https://github.com/TiendaNube/nimbus-patterns/pull/89) by [@hrchioest](https://github.com/hrchioest))
+- Added possibility to forward ref of `FormField.Select` component. Fix [issue #88](https://github.com/TiendaNube/nimbus-patterns/issues/88) ([#89](https://github.com/TiendaNube/nimbus-patterns/pull/89) by [@hrchioest](https://github.com/hrchioest))
+- Added possibility to forward ref of `FormField.Textarea` component. Fix [issue #88](https://github.com/TiendaNube/nimbus-patterns/issues/88) ([#89](https://github.com/TiendaNube/nimbus-patterns/pull/89) by [@hrchioest](https://github.com/hrchioest))
+
+#### 📚 3rd party library updates
+
+- Updated `@nimbus-ds/icons@1.x`. ([#89](https://github.com/TiendaNube/nimbus-patterns/pull/89) by [@hrchioest](https://github.com/hrchioest))
+
 ## 2023-11-16 `1.7.3`
 
 #### 💡 Others

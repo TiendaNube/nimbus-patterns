@@ -2,6 +2,14 @@
 
 The FormField component allows the user to enter or edit information in text format. Additionally, it provides a label, and a conditional help text that can be used to provide additional context on a validation scenario.
 
+## 2023-12-06 `1.6.2`
+
+#### 🐛 Bug fixes
+
+- Added possibility to forward ref of `FormField.Input` component. Fix [issue #88](https://github.com/TiendaNube/nimbus-patterns/issues/88) ([#89](https://github.com/TiendaNube/nimbus-patterns/pull/89) by [@hrchioest](https://github.com/hrchioest))
+- Added possibility to forward ref of `FormField.Select` component. Fix [issue #88](https://github.com/TiendaNube/nimbus-patterns/issues/88) ([#89](https://github.com/TiendaNube/nimbus-patterns/pull/89) by [@hrchioest](https://github.com/hrchioest))
+- Added possibility to forward ref of `FormField.Textarea` component. Fix [issue #88](https://github.com/TiendaNube/nimbus-patterns/issues/88) ([#89](https://github.com/TiendaNube/nimbus-patterns/pull/89) by [@hrchioest](https://github.com/hrchioest))
+
 ## 2023-11-15 `1.6.1`
 
 #### 💡 Others

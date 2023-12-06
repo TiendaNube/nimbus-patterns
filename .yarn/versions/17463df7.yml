@@ -1,2 +1,6 @@
 releases:
   "@nimbus-ds/formfield": patch
+  "@nimbus-ds/patterns": patch
+
+declined:
+  - nimbus-patterns
