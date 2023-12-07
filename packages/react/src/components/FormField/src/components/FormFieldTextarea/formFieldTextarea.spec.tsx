@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 
 import { FormField } from "../../FormField";
-import { FormFieldTextareaProps } from "./formFieldTextarea.types";
+import { FormFieldTextareaProps } from "./FormFieldTextarea";
 
 const makeSut = (rest?: Omit<FormFieldTextareaProps, "id">) => {
   render(
