@@ -2,6 +2,14 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2023-12-18 `1.7.5`
+
+- Adjust component padding and size of the icon child on `MenuButton` component. ([#90](https://github.com/TiendaNube/nimbus-patterns/pull/90) by [@juanchigallego](https://github.com/juanchigallego))
+- Adjust padding on `MenuButtonAccordion` subcomponent. ([#90](https://github.com/TiendaNube/nimbus-patterns/pull/90) by [@juanchigallego](https://github.com/juanchigallego))
+- Adjust padding of `MenuBody` subcomponent. ([#90](https://github.com/TiendaNube/nimbus-patterns/pull/90) by [@juanchigallego](https://github.com/juanchigallego))
+- Adjust padding and icon sizing on `MenuFooter` subcomponent. ([#90](https://github.com/TiendaNube/nimbus-patterns/pull/90) by [@juanchigallego](https://github.com/juanchigallego))
+- Adjust colors and padding on `MenuSection` subcomponent. ([#90](https://github.com/TiendaNube/nimbus-patterns/pull/90) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-12-06 `1.7.4`
 
 #### 🐛 Bug fixes

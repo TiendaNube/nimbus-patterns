@@ -63,8 +63,10 @@ const MenuButtonAccordion = forwardRef(
             aria-hidden={!open}
             height={open ? "auto" : "0"}
             overflow="hidden"
+            display="flex"
+            flexDirection="column"
+            gap="0-5"
             pl="6"
-            pt="1"
             pb="1"
             pr="1"
           >

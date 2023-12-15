@@ -2,6 +2,14 @@
 
 The Menu component allows the user to create in-app menus that navigate through different sections of an application.
 
+## 2023-12-18 `1.5.3`
+
+### 🎉 New features
+
+- Adjust padding of `MenuBody` subcomponent. ([#90](https://github.com/TiendaNube/nimbus-patterns/pull/90) by [@juanchigallego](https://github.com/juanchigallego))
+- Adjust padding and icon sizing on `MenuFooter` subcomponent. ([#90](https://github.com/TiendaNube/nimbus-patterns/pull/90) by [@juanchigallego](https://github.com/juanchigallego))
+- Adjust colors and padding on `MenuSection` subcomponent. ([#90](https://github.com/TiendaNube/nimbus-patterns/pull/90) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-06-15 `1.5.2`
 
 #### 💡 Others

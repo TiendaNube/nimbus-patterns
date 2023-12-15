@@ -21,7 +21,7 @@ const MenuButton = forwardRef(
     }: MenuButtonBaseProps & { as: any },
     ref
   ) => {
-    const activeColor = active ? "primary-interactive" : "primary-textHigh";
+    const activeColor = active ? "primary-interactive" : "neutral-textHigh";
     const disabledColor = rest.disabled ? "neutral-textDisabled" : activeColor;
 
     return (
@@ -50,15 +50,25 @@ const MenuButton = forwardRef(
         }}
         display="flex"
         gap="2"
-        padding="2"
+        px="2"
+        py={{
+          xs: "2",
+          md: "1"
+        }}
         width="100%"
         transitionProperty="all"
         transitionDuration="base"
         transitionTimingFunction="ease-in-out"
+        maxHeight={{
+          xs: "34px",
+          md: "26px"
+        }}
       >
-        {IconSrc && <Icon color={disabledColor} source={<IconSrc />} />}
+        {IconSrc && (
+          <Icon color={disabledColor} source={<IconSrc size={14} />} />
+        )}
         <Box display="inline-flex" flex="1">
-          <Text fontSize="base" color={disabledColor}>
+          <Text fontSize="base" color={disabledColor} lineClamp={1}>
             {label}
           </Text>
         </Box>

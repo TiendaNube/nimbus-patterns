@@ -10,7 +10,7 @@ const MenuFooter: React.FC<MenuFooterProps> = ({
   style: _style,
   ...rest
 }: MenuFooterProps) => {
-  const activeColor = rest.active ? "primary-interactive" : "primary-textHigh";
+  const activeColor = rest.active ? "primary-interactive" : "neutral-textHigh";
   const disabledColor = rest.disabled ? "neutral-textDisabled" : activeColor;
 
   return (
@@ -19,11 +19,11 @@ const MenuFooter: React.FC<MenuFooterProps> = ({
       display="flex"
       flex="0 1 auto"
       paddingX="2"
-      paddingY="4"
+      paddingY="3"
       width="100%"
     >
       <MenuButton {...rest}>
-        <Icon source={<ChevronRightIcon />} color={disabledColor} />
+        <Icon source={<ChevronRightIcon size={14} />} color={disabledColor} />
       </MenuButton>
     </Box>
   );
