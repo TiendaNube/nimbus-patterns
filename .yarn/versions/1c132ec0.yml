@@ -8,3 +8,4 @@ declined:
   - "@nimbus-ds/app-shell"
   - "@nimbus-ds/calendar"
   - "@nimbus-ds/editor"
+  - "@nimbus-ds/formfield"
