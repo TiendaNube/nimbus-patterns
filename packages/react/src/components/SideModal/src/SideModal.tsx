@@ -27,9 +27,7 @@ const SideModal: React.FC<SideModalProps> = ({
         {headerIcon}
       </Box>
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Title color="primary-textHigh" as="h1">
-          {title}
-        </Title>
+        <Title as="h2">{title}</Title>
         {titleAction}
       </Box>
     </Sidebar.Header>

@@ -31,7 +31,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         borderStyle="solid"
         borderWidth="none"
         borderRightWidth="1"
-        borderColor="neutral-surfaceHighlight"
+        borderColor="neutral-surfaceDisabled"
       >
         {menu}
       </Box>

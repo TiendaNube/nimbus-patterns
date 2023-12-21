@@ -78,7 +78,7 @@ export const withCaption: Story = {
     );
   },
   args: {
-    children: <Text>Image caption</Text>,
+    children: <Text color="neutral-textHigh">Image caption</Text>,
     contentPosition: "bottom-left",
     width: "100%",
   },

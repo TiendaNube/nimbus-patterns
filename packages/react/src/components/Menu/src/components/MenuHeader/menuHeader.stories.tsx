@@ -26,6 +26,7 @@ export const basic: Story = {
     children: (
       <Box display="flex" gap="2" alignItems="center" width="100%">
         <Icon
+          color="primary-interactive"
           source={
             <svg
               width="120"
