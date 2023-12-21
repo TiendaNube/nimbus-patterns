@@ -2,6 +2,13 @@
 
 MenuButton component is meant to be used inside Menus and navigation, and allows the user to navigate between different sections of an application.
 
+## 2023-12-18 `1.5.3`
+
+### 🎉 New features
+
+- Adjust component padding and size of the icon child. ([#90](https://github.com/TiendaNube/nimbus-patterns/pull/90) by [@juanchigallego](https://github.com/juanchigallego))
+- Adjust padding on `MenuButtonAccordion` subcomponent. ([#90](https://github.com/TiendaNube/nimbus-patterns/pull/90) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-06-15 `1.5.2`
 
 #### 💡 Others
