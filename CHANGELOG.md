@@ -3,6 +3,12 @@
 This is the log of notable changes to the Nimbus Patterns that are developer-facing.
 Package-specific changes not released in any package will be added here just before the release. Until then, you can find them in changelogs of the individual packages (see [packages](./packages) directory).
 
+## 2023-12-22
+
+### 🎉 New features
+
+- Changed `Geist-Bold` font to `SemiBold` variant. ([#91](https://github.com/TiendaNube/nimbus-patterns/pull/91) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-12-06
 
 #### 📚 3rd party library updates
