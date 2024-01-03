@@ -71,6 +71,13 @@ const meta: Meta<typeof SideModal> = {
 export default meta;
 type Story = StoryObj<typeof SideModal>;
 
+const headerActionButton = (
+  <Box display="flex" gap="1">
+    <Icon source={<ChevronLeftIcon />} />
+    <Text color="neutral-textHigh">Formas de entrega</Text>
+  </Box>
+);
+
 export const basic: Story = {
   args: {
     maxWidth: { xs: "100%", md: "340px", lg: "540px" },
@@ -80,14 +87,7 @@ export const basic: Story = {
     paddingHeader: "none",
     paddingBody: "none",
     paddingFooter: "none",
-    headerAction: (
-      <Box display="flex" alignItems="center" gap="1">
-        <Icon color="primary-textHigh" source={<ChevronLeftIcon />} />
-        <Text fontWeight="bold" fontSize="highlight">
-          Formas de entrega
-        </Text>
-      </Box>
-    ),
+    headerAction: headerActionButton,
     children: (
       <Box
         borderStyle="dashed"
@@ -195,14 +195,7 @@ export const withHeaderAction: Story = {
     title: "Instalar Kangu",
     padding: "base",
     paddingHeader: "none",
-    headerAction: (
-      <Box display="flex" alignItems="center" gap="1">
-        <Icon color="primary-textHigh" source={<ChevronLeftIcon />} />
-        <Text fontWeight="bold" fontSize="highlight">
-          Formas de entrega
-        </Text>
-      </Box>
-    ),
+    headerAction: headerActionButton,
     children: (
       <Box
         borderStyle="dashed"
@@ -234,14 +227,7 @@ export const withHeaderIcon: Story = {
     padding: "base",
     paddingHeader: "none",
     headerIcon: <Icon color="primary-textHigh" source={<CheckCircleIcon />} />,
-    headerAction: (
-      <Box display="flex" alignItems="center" gap="1">
-        <Icon color="primary-textHigh" source={<ChevronLeftIcon />} />
-        <Text fontWeight="bold" fontSize="highlight">
-          Formas de entrega
-        </Text>
-      </Box>
-    ),
+    headerAction: headerActionButton,
     children: (
       <Box
         borderStyle="dashed"
@@ -273,14 +259,7 @@ export const withFooter: Story = {
     padding: "base",
     paddingHeader: "none",
     headerIcon: <Icon color="primary-textHigh" source={<CheckCircleIcon />} />,
-    headerAction: (
-      <Box display="flex" alignItems="center" gap="1">
-        <Icon color="primary-textHigh" source={<ChevronLeftIcon />} />
-        <Text fontWeight="bold" fontSize="highlight">
-          Formas de entrega
-        </Text>
-      </Box>
-    ),
+    headerAction: headerActionButton,
     children: (
       <Box
         borderStyle="dashed"

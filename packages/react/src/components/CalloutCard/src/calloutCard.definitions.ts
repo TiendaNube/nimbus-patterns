@@ -48,14 +48,14 @@ export const iconColor = {
   success: "success-textLow",
   warning: "warning-textLow",
   danger: "danger-textLow",
-  neutral: "neutral-textLow",
+  neutral: "neutral-textHigh",
 } as {
   [key: string]:
     | "primary-textLow"
     | "success-textLow"
     | "warning-textLow"
     | "danger-textLow"
-    | "neutral-textLow";
+    | "neutral-textHigh";
 };
 
 export const textColor = iconColor;

@@ -1,8 +1,13 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, Icon } from "@nimbus-ds/components";
-import { ChevronLeftIcon, GiftBoxIcon, UserIcon } from "@nimbus-ds/icons";
+import { Button, Icon, Tooltip, IconButton } from "@nimbus-ds/components";
+import {
+  ChevronLeftIcon,
+  UserIcon,
+  NotificationIcon,
+  QuestionCircleIcon
+} from "@nimbus-ds/icons";
 import { AppShell } from "../../AppShell";
 
 const meta: Meta<typeof AppShell.Header> = {
@@ -10,13 +15,13 @@ const meta: Meta<typeof AppShell.Header> = {
   component: AppShell.Header,
   argTypes: {
     leftSlot: {
-      control: { disable: true },
+      control: { disable: true }
     },
     rightSlot: {
-      control: { disable: true },
-    },
+      control: { disable: true }
+    }
   },
-  tags: ["autodocs"],
+  tags: ["autodocs"]
 };
 
 export default meta;
@@ -31,10 +36,28 @@ const backButton = (
 
 const buttonStack = (
   <>
-    <Button appearance="transparent">
-      <Icon source={<GiftBoxIcon />} />
-      Novedades
-    </Button>
+    <Tooltip content="Novedades" arrow={false}>
+      <IconButton
+        size="2.125rem"
+        source={<NotificationIcon size={18} />}
+        backgroundColor="transparent"
+        borderColor={{
+          xs: "transparent",
+          hover: "neutral-interactiveHover"
+        }}
+      />
+    </Tooltip>
+    <Tooltip content="Ayuda" arrow={false}>
+      <IconButton
+        size="2.125rem"
+        source={<QuestionCircleIcon size={18} />}
+        backgroundColor="transparent"
+        borderColor={{
+          xs: "transparent",
+          hover: "neutral-interactiveHover"
+        }}
+      />
+    </Tooltip>
     <Button appearance="transparent">
       <Icon source={<UserIcon />} />
       Mi cuenta
@@ -52,5 +75,5 @@ export const basic: Story = {
       />
     </AppShell>
   ),
-  args: {},
+  args: {}
 };

@@ -183,7 +183,7 @@ export const basic: Story = {
             <Card padding="none">
               <Card.Header>
                 <Box px="4" pt="4">
-                  <Title as="h3">Inputs de stock</Title>
+                  <Title as="h4">Inputs de stock</Title>
                 </Box>
               </Card.Header>
               <Card.Body>

@@ -2,6 +2,12 @@
 
 This component is used to provide the user with useful information, tips, tutorials or shortcuts to other parts of the product. It is a visual component specially designed to be used in contexts such as integration, tutorials or dashboards, where we need to show different relevant information in the same space.
 
+## 2023-12-22 `1.6.4`
+
+#### 🎉 New features
+
+- Update `CalloutCard` component with new design requirements. ([#91](https://github.com/TiendaNube/nimbus-patterns/pull/91) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-07-21 `1.6.3`
 
 ### 🐛 Bug fixes

@@ -72,7 +72,7 @@ export const MenuStories = (
   <Menu>
     <Menu.Header>
       <Box display="flex" gap="2" alignItems="center" width="100%">
-        <Icon source={<TiendanubeLogo />} />
+        <Icon source={<TiendanubeLogo />} color="primary-interactive" />
       </Box>
     </Menu.Header>
     <Menu.Body>
@@ -97,7 +97,7 @@ export const MenuStories = (
         </Menu.ButtonAccordion>
         <Menu.Button startIcon={TagIcon} label="Productos" />
         <Menu.Button startIcon={UserIcon} label="Clientes">
-          <Tag appearance="primary">¡Nuevo!</Tag>
+          <Tag appearance="primary">Nuevo</Tag>
         </Menu.Button>
         <Menu.Button startIcon={DiscountCircleIcon} label="Marketing" />
       </Menu.Section>
