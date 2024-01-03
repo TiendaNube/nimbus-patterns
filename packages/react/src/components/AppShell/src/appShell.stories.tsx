@@ -23,13 +23,11 @@ import {
   CogIcon,
   DiscountCircleIcon,
   EcosystemIcon,
-  ExternalLinkIcon,
   HomeIcon,
   NotificationIcon,
   QuestionCircleIcon,
   StatsIcon,
   TagIcon,
-  TiendanubeIcon,
   ToolsIcon,
   UserIcon,
 } from "@nimbus-ds/icons";
