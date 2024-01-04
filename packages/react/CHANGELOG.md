@@ -2,7 +2,13 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
-## 2023-12-22 `1.7.6`
+## 2024-01-04 `1.7.6`
+
+#### 🐛 Bug fixes
+
+- Explicitly export type for `FormFieldInput` component. ([#92](https://github.com/TiendaNube/nimbus-patterns/pull/92) by [@juanchigallego](https://github.com/juanchigallego))
+- Explicitly export type for `FormFieldSelect` component. ([#92](https://github.com/TiendaNube/nimbus-patterns/pull/92) by [@juanchigallego](https://github.com/juanchigallego))
+- Explicitly export type for `FormFieldTextarea` component. ([#92](https://github.com/TiendaNube/nimbus-patterns/pull/92) by [@juanchigallego](https://github.com/juanchigallego))
 
 #### 🎉 New features
 

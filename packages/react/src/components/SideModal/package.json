@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/sidemodal",
-  "version": "1.7.4-rc.4",
+  "version": "1.7.4",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -30,6 +30,5 @@
   },
   "devDependencies": {
     "@nimbus-ds/icons": "^1"
-  },
-  "stableVersion": "1.7.3"
+  }
 }
