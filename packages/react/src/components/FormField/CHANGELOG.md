@@ -2,6 +2,14 @@
 
 The FormField component allows the user to enter or edit information in text format. Additionally, it provides a label, and a conditional help text that can be used to provide additional context on a validation scenario.
 
+## 2024-01-04 `1.6.4`
+
+#### 🐛 Bug fixes
+
+- Explicitly export type for `FormFieldInput` subcomponent. ([#92](https://github.com/TiendaNube/nimbus-patterns/pull/92) by [@juanchigallego](https://github.com/juanchigallego))
+- Explicitly export type for `FormFieldSelect` subcomponent. ([#92](https://github.com/TiendaNube/nimbus-patterns/pull/92) by [@juanchigallego](https://github.com/juanchigallego))
+- Explicitly export type for `FormFieldTextarea` subcomponent. ([#92](https://github.com/TiendaNube/nimbus-patterns/pull/92) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-12-06 `1.6.2`
 
 #### 🐛 Bug fixes

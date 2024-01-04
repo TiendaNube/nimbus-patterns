@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/formfield",
-  "version": "1.6.3-rc.4",
+  "version": "1.6.4-rc.1",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -31,5 +31,5 @@
   "devDependencies": {
     "@nimbus-ds/icons": "^1"
   },
-  "stableVersion": "1.6.2"
+  "stableVersion": "1.6.3"
 }

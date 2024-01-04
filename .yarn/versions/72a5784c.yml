@@ -1,0 +1,11 @@
+releases:
+  "@nimbus-ds/formfield": patch
+  "@nimbus-ds/patterns": patch
+
+declined:
+  - nimbus-patterns
+  - "@nimbus-ds/app-shell"
+  - "@nimbus-ds/callout-card"
+  - "@nimbus-ds/menu"
+  - "@nimbus-ds/menubutton"
+  - "@nimbus-ds/sidemodal"
