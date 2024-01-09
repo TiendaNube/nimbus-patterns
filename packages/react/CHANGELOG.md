@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2024-01-09 `1.7.7`
+
+#### 🐛 Bug fixes
+
+- Remove visual focus box-shadow from `MenuButton` component because it visually hints the element is on focus even after an action has been performed. ([#93](https://github.com/TiendaNube/nimbus-patterns/pull/93) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2024-01-04 `1.7.6`
 
 #### 🐛 Bug fixes
