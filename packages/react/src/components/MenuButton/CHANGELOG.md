@@ -2,6 +2,12 @@
 
 MenuButton component is meant to be used inside Menus and navigation, and allows the user to navigate between different sections of an application.
 
+## 2024-01-09 `1.5.4`
+
+#### 🐛 Bug fixes
+
+- Remove visual focus box-shadow from `MenuButton` component because it visually hints the element is on focus even after an action has been performed. ([#93](https://github.com/TiendaNube/nimbus-patterns/pull/93) by [@juanchigallego](https://github.com/juanchigallego))
+
 ## 2023-12-18 `1.5.3`
 
 ### 🎉 New features
