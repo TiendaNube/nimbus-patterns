@@ -39,9 +39,6 @@ const MenuButton = forwardRef(
           active: "primary-surfaceHighlight",
           disabled: "neutral-surfaceDisabled",
         }}
-        boxShadow={{
-          focus: "focusRing",
-        }}
         borderRadius="2"
         borderWidth="none"
         cursor={{
