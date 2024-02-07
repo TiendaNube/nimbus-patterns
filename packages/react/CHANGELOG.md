@@ -6,7 +6,7 @@ Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s tea
 
 ### 🎉 New features
 
-- Add `wordBreak="break-all"` property to `MenuButton` component to allow overflowing text to be trimmed at any position.
+- Add `wordBreak="break-all"` property to `MenuButton` component to allow overflowing text to be trimmed at any position. ([#94](https://github.com/TiendaNube/nimbus-patterns/pull/94) by [@juanchigallego](https://github.com/juanchigallego))
 
 ## 2024-01-09 `1.7.7`
 
