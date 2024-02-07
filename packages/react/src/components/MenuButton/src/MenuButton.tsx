@@ -65,7 +65,12 @@ const MenuButton = forwardRef(
           <Icon color={disabledColor} source={<IconSrc size={14} />} />
         )}
         <Box display="inline-flex" flex="1">
-          <Text fontSize="base" color={disabledColor} lineClamp={1}>
+          <Text
+            fontSize="base"
+            color={disabledColor}
+            lineClamp={1}
+            wordBreak="break-all"
+          >
             {label}
           </Text>
         </Box>
