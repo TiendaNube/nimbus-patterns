@@ -8,9 +8,7 @@ import { Tag, Badge, Icon } from "@nimbus-ds/components";
 import { MenuButton, MenuButtonProps } from "./MenuButton";
 
 export const Basic: React.FC<MenuButtonProps> = forwardRef(
-  ({ children = "Button", ...props }: MenuButtonProps) => (
-    <MenuButton {...props}>{children}</MenuButton>
-  )
+  ({ ...props }: MenuButtonProps) => <MenuButton {...props} />
 ) as React.FC<MenuButtonProps>;
 Basic.displayName = "MenuButton";
 
@@ -42,6 +40,14 @@ export const sampleAppMenuButton: Story = {
   args: {
     label: "Menu button",
     startIcon: HomeIcon,
+  },
+};
+
+export const stressedAppMenuButton: Story = {
+  args: {
+    label: "This is a very stressed menu button with a very long text to showcase what happens when the text overflows the button",
+    startIcon: HomeIcon,
+    children: <Tag appearance="primary">Children tag</Tag>
   },
 };
 
