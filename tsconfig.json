@@ -68,7 +68,8 @@
       "@nimbus-ds/thumbnail-with-action": [
         "./packages/react/src/components/ThumbnailWithAction/src"
       ],
-      "@nimbus-ds/calendar": ["./packages/react/src/components/Calendar/src"]
+      "@nimbus-ds/calendar": ["./packages/react/src/components/Calendar/src"],
+      "@nimbus-ds/empty-app": ["./packages/react/src/components/EmptyApp/src"]
     }
   }
 }

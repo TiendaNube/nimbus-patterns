@@ -40,6 +40,8 @@ const config: Config.InitialOptions = {
       "<rootDir>/packages/react/src/components/ThumbnailWithAction/src",
     "@nimbus-ds/calendar":
       "<rootDir>/packages/react/src/components/Calendar/src",
+    "@nimbus-ds/empty-app":
+      "<rootDir>/packages/react/src/components/EmptyApp/src",
   },
 };
 
