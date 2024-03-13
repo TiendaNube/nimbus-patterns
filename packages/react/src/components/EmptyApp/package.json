@@ -30,6 +30,7 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "dependencies": {
+    "@nimbus-ds/layout": "workspace:^",
     "@nimbus-ds/styles": "^9.11.0",
     "@nimbus-ds/tokens": "^9.1.0"
   },

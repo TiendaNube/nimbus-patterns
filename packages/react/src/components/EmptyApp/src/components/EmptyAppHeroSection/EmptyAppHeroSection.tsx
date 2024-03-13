@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Box, Title, Text, Thumbnail } from "@nimbus-ds/components";
-import { Layout } from "@nimbus-ds/patterns";
+import { Layout } from "@nimbus-ds/layout";
 import { useTheme } from "@nimbus-ds/styles";
 import tokens from "@nimbus-ds/tokens/dist/js/tokens";
 

@@ -4807,6 +4807,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/empty-app@workspace:packages/react/src/components/EmptyApp"
   dependencies:
+    "@nimbus-ds/layout": "workspace:^"
     "@nimbus-ds/styles": ^9.11.0
     "@nimbus-ds/tokens": ^9.1.0
   peerDependencies:
@@ -4879,7 +4880,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/layout@workspace:packages/react/src/components/Layout":
+"@nimbus-ds/layout@workspace:^, @nimbus-ds/layout@workspace:packages/react/src/components/Layout":
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/layout@workspace:packages/react/src/components/Layout"
   peerDependencies:
