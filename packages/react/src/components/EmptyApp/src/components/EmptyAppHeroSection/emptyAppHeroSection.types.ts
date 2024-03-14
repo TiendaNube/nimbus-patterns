@@ -4,6 +4,7 @@ import { BoxProps, ThumbnailProps } from "@nimbus-ds/components";
 export interface EmptyAppHeroSectionProperties
   extends Pick<ThumbnailProps, "src" | "alt"> {
   title: string;
+  titleChildren?: ReactNode;
   subtitle?: string;
   content: string;
   actions?: ReactNode;

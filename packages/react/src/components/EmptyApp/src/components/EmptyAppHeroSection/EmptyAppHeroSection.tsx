@@ -9,6 +9,7 @@ import { EmptyAppHeroSectionProps } from "./emptyAppHeroSection.types";
 
 const EmptyAppHeroSection: React.FC<EmptyAppHeroSectionProps> = ({
   title,
+  titleChildren,
   subtitle,
   content,
   actions,
@@ -51,9 +52,12 @@ const EmptyAppHeroSection: React.FC<EmptyAppHeroSectionProps> = ({
                   {subtitle}
                 </Title>
               )}
-              <Title as="h1" color="neutral-background">
-                {title}
-              </Title>
+              <Box display="flex" gap="2" alignItems="center">
+                <Title as="h1" color="neutral-background">
+                  {title}
+                </Title>
+                {titleChildren}
+              </Box>
               <Text color="neutral-background" fontSize="highlight">
                 {content}
               </Text>
