@@ -14,7 +14,7 @@ const EmptyAppContentSection: React.FC<EmptyAppContentSectionProps> = ({
   <Box
     display="flex"
     flexDirection="column"
-    px="4"
+    px={{ xs: "4", md: "6" }}
     py="12"
     gap="10"
     alignItems="center"

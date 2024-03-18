@@ -39,7 +39,8 @@ const EmptyAppHeroSection: React.FC<EmptyAppHeroSectionProps> = ({
         }}
         justifyContent="space-between"
         gap="8"
-        p="4"
+        py="4"
+        px={{ xs: "4", md: "6" }}
         mx="auto"
         maxWidth="1200px"
         height="100%"
