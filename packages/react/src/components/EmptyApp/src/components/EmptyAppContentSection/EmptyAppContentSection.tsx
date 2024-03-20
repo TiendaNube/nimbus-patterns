@@ -19,6 +19,7 @@ const EmptyAppContentSection: React.FC<EmptyAppContentSectionProps> = ({
     gap="10"
     alignItems="center"
     maxWidth="1200px"
+    width="100%"
     mx="auto"
     {...rest}
   >
