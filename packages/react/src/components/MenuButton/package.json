@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/menubutton",
-  "version": "1.5.5-rc.1",
+  "version": "1.5.5",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -33,6 +33,5 @@
   },
   "devDependencies": {
     "@nimbus-ds/icons": "^1"
-  },
-  "stableVersion": "1.5.4"
+  }
 }
