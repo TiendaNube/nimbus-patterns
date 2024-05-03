@@ -1,6 +1,6 @@
 {
-  "name": "@nimbus-ds/sidemodal",
-  "version": "1.7.5-rc.1",
+  "name": "@nimbus-ds/empty-app",
+  "version": "1.0.0-rc.5",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -17,6 +17,7 @@
   },
   "peerDependencies": {
     "@nimbus-ds/components": "^5",
+    "@nimbus-ds/icons": "^1",
     "react": "^16.8 || ^17.0 || ^18.0",
     "react-dom": "^16.8 || ^17.0 || ^18.0"
   },
@@ -28,8 +29,10 @@
   "bugs": {
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
-  "devDependencies": {
-    "@nimbus-ds/icons": "^1"
+  "dependencies": {
+    "@nimbus-ds/layout": "workspace:^",
+    "@nimbus-ds/styles": "^9.11.0",
+    "@nimbus-ds/tokens": "^9.1.0"
   },
-  "stableVersion": "1.7.4"
+  "stableVersion": "0.0.0"
 }

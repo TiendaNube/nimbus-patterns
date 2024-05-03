@@ -36,6 +36,7 @@
     "types": ["node", "jest"],
     "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
+      "@nimbus-ds/patterns": ["./packages/react/src"],
       "@nimbus-ds/patterns-webpack": ["./packages/core/webpack/src"],
       "@nimbus-ds/app-shell": ["./packages/react/src/components/AppShell/src"],
       "@nimbus-ds/callout-card": [
@@ -68,7 +69,8 @@
       "@nimbus-ds/thumbnail-with-action": [
         "./packages/react/src/components/ThumbnailWithAction/src"
       ],
-      "@nimbus-ds/calendar": ["./packages/react/src/components/Calendar/src"]
+      "@nimbus-ds/calendar": ["./packages/react/src/components/Calendar/src"],
+      "@nimbus-ds/empty-app": ["./packages/react/src/components/EmptyApp/src"]
     }
   }
 }
