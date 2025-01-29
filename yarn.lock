@@ -4880,6 +4880,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@nimbus-ds/landing-screen@workspace:packages/react/src/components/LandingScreen":
+  version: 0.0.0-use.local
+  resolution: "@nimbus-ds/landing-screen@workspace:packages/react/src/components/LandingScreen"
+  dependencies:
+    "@nimbus-ds/layout": "workspace:^"
+    "@nimbus-ds/styles": ^9.11.0
+    "@nimbus-ds/tokens": ^9.1.0
+  peerDependencies:
+    "@nimbus-ds/components": ^5
+    "@nimbus-ds/icons": ^1
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  languageName: unknown
+  linkType: soft
+
 "@nimbus-ds/layout@workspace:^, @nimbus-ds/layout@workspace:packages/react/src/components/Layout":
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/layout@workspace:packages/react/src/components/Layout"
