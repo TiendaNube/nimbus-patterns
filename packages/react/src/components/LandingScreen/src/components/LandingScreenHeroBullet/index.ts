@@ -1,8 +1,10 @@
 import {
-  LandingScreenheroBullet,
-  LandingScreenheroBulletProps,
+  LandingScreenHeroBullet,
+  LandingScreenHeroBulletProps,
 } from "./LandingScreenHeroBullet";
 
-export type { LandingScreenheroBulletProps };
+export type { LandingScreenHeroBulletProps };
 
-export default LandingScreenheroBullet;
+export { LandingScreenHeroBullet };
+
+export default LandingScreenHeroBullet;

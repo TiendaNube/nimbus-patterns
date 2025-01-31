@@ -1,103 +1,94 @@
-import React, { PropsWithChildren, ReactElement } from "react";
+import React, { PropsWithChildren } from "react";
 import { Box, Text, Thumbnail, Title } from "@nimbus-ds/components";
-import { Layout } from "@nimbus-ds/layout";
-import LandingScreenheroBullet, {
-  LandingScreenheroBulletProps,
-} from "../LandingScreenHeroBullet";
-
-type HeroImage = {
-  alt: string;
-  src: string;
-};
-
-type BaseHeroProps = {
-  title?: string;
-  subtitle?: string;
-  actions?: React.ReactNode;
-  image: HeroImage;
-  alt?: string;
-  src?: string;
-};
-
-type HeroWithDescription = BaseHeroProps & {
-  description: string;
-  bullets?: never;
-};
-
-type HeroWithBullets = BaseHeroProps & {
-  description?: never;
-  bullets: ReactElement<
-    LandingScreenheroBulletProps,
-    typeof LandingScreenheroBullet
-  >[];
-};
+import {
+  HeroWithBullets,
+  HeroWithDescription,
+} from "./landingScreenHero.types";
 
 /**
  * Only one of 'description' or 'bullets' can be used at the same time.
  */
 const LandingScreenHero: React.FC<
   PropsWithChildren<HeroWithDescription | HeroWithBullets>
-> = ({ title, subtitle, description, actions, bullets, image }) => {
-  return (
+> = ({ title, subtitle, description, actions, bullets, image, children }) => (
+  <Box
+    alignItems={{
+      md: "center",
+    }}
+    mx="auto"
+    height="100%"
+  >
     <Box
       display="flex"
-      flexDirection={{
-        xs: "column",
-        md: "row",
-      }}
-      alignItems={{
-        md: "center",
-      }}
-      justifyContent="space-between"
-      py="4"
-      paddingBottom="16"
-      px={{ xs: "4", md: "6" }}
-      mx="auto"
-      maxWidth="1200px"
-      height="100%"
+      flexDirection={{ md: "row", xs: "column" }}
+      gap={{ xs: "4", md: "12" }}
     >
-      <Layout columns="2 - symmetric" gap="12">
-        <Layout.Section position="relative" pt="5">
-          <Box
-            borderRadius="4"
-            overflow="hidden"
-            position="relative"
-            zIndex="200"
-          >
-            <Thumbnail
-              width="100%"
-              alt={image.alt ?? ""}
-              src={image.src}
-              aspectRatio="4/3"
-            />
-          </Box>
-        </Layout.Section>
-        <Layout.Section justifyContent="center" gap="9">
-          <Box display="flex" flexDirection="column" gap="2">
-            {subtitle && <Text color="neutral-textLow">{subtitle}</Text>}
-            <Box display="flex" flexDirection="column" gap="4">
-              <Box display="flex" gap="2" alignItems="center">
-                <Title as="h1">{title}</Title>
+      <Box
+        display="flex"
+        alignSelf="center"
+        boxSizing="border-box"
+        alignItems="center"
+      >
+        <Box
+          display="flex"
+          maxWidth={{ xs: "192px", md: "320px" }}
+          maxHeight={{ xs: "192px", md: "320px" }}
+          borderRadius="4"
+          overflow="hidden"
+          position="relative"
+          zIndex="200"
+        >
+          <Thumbnail
+            alt={image.alt ?? ""}
+            src={image.src}
+            // aspectRatio="4/3"
+          />
+        </Box>
+      </Box>
+
+      <Box
+        display="flex"
+        flexDirection="column"
+        boxSizing="border-box"
+        justifyContent="center"
+        // maxWidth="560px"
+        gap={{ xs: "4", md: "9" }}
+      >
+        <Box display="flex" flexDirection="column" gap="2">
+          {subtitle && <Text color="neutral-textLow">{subtitle}</Text>}
+          <Box display="flex" flexDirection="column" gap="4">
+            <Title
+              as="h1"
+              fontSize={{ md: "8", xs: "6" }}
+              lineHeight={{ xs: "6", md: "10" }}
+            >
+              {title}
+            </Title>
+            {description && <Text color="danger-textHigh">{description}</Text>}
+            {bullets && (
+              <Box display="flex" flexDirection="column" gap="3">
+                {bullets}
               </Box>
-              {description && (
-                <Text color="danger-textHigh">{description}</Text>
-              )}
-              {bullets && (
-                <Box display="flex" flexDirection="column" gap="3">
-                  {bullets}
-                </Box>
-              )}
-            </Box>
+            )}
           </Box>
-          {actions && (
-            <Box display="flex" gap="2">
-              {actions}
-            </Box>
-          )}
-        </Layout.Section>
-      </Layout>
+        </Box>
+        {actions && (
+          <Box
+            display="flex"
+            flexDirection={{ md: "row", xs: "column" }}
+            gap="2"
+            justifyContent={{ xs: "center", md: "flex-start" }}
+            alignItems={{ xs: "center", md: "flex-start" }}
+          >
+            {actions}
+          </Box>
+        )}
+
+        {/* For app modules, etc */}
+        {children && <Box paddingTop="3">{children}</Box>}
+      </Box>
     </Box>
-  );
-};
+  </Box>
+);
 
 export { LandingScreenHero };

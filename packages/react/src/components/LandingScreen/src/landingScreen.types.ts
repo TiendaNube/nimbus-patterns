@@ -2,14 +2,20 @@ import React from "react";
 
 import { BoxProps } from "@nimbus-ds/components";
 
-import { LandingScreenHero } from "./components";
-import LandingScreenheroBullet from "./components/LandingScreenHeroBullet";
-import LandingScreenSection from "./components/LandingScreenSection";
+import {
+  LandingScreenCard,
+  LandingScreenHero,
+  LandingScreenHeroBullet,
+  LandingScreenList,
+  LandingScreenSection,
+} from "./components";
 
 export interface LandingScreenComponents {
   Hero: typeof LandingScreenHero;
-  Bullet: typeof LandingScreenheroBullet;
+  Bullet: typeof LandingScreenHeroBullet;
   Section: typeof LandingScreenSection;
+  Card: typeof LandingScreenCard;
+  List: typeof LandingScreenList;
 }
 
 export interface LandingScreenBaseProps {
