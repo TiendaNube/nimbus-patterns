@@ -1,3 +1,5 @@
+releases:
+  "@nimbus-ds/landing-screen": major
+
 declined:
   - nimbus-patterns
-  - "@nimbus-ds/landing-screen"
