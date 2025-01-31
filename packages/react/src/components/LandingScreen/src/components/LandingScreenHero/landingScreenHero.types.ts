@@ -1,7 +1,7 @@
 import { ReactNode, ReactElement } from "react";
-import LandingScreenheroBullet, {
-  LandingScreenheroBulletProps,
-} from "../LandingScreenHeroBullet";
+import LandingScreenBullet, {
+  LandingScreenBulletProps,
+} from "../LandingScreenBullet";
 
 type HeroImage = {
   alt: string;
@@ -22,8 +22,5 @@ export type HeroWithDescription = BaseHeroProps & {
 
 export type HeroWithBullets = BaseHeroProps & {
   description?: never;
-  bullets: ReactElement<
-    LandingScreenheroBulletProps,
-    typeof LandingScreenheroBullet
-  >[];
+  bullets: ReactElement<LandingScreenBulletProps, typeof LandingScreenBullet>[];
 };

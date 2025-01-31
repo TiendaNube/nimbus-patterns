@@ -5,14 +5,14 @@ import { BoxProps } from "@nimbus-ds/components";
 import {
   LandingScreenCard,
   LandingScreenHero,
-  LandingScreenHeroBullet,
+  LandingScreenBullet,
   LandingScreenList,
   LandingScreenSection,
 } from "./components";
 
 export interface LandingScreenComponents {
   Hero: typeof LandingScreenHero;
-  Bullet: typeof LandingScreenHeroBullet;
+  Bullet: typeof LandingScreenBullet;
   Section: typeof LandingScreenSection;
   Card: typeof LandingScreenCard;
   List: typeof LandingScreenList;

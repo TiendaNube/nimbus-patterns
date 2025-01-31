@@ -20,7 +20,7 @@ import {
 import { CalloutCard } from "@nimbus-ds/callout-card";
 import { Layout } from "@nimbus-ds/layout";
 import { LandingScreen } from "./LandingScreen";
-import LandingScreenheroBullet from "./components/LandingScreenHeroBullet";
+import LandingScreenBullet from "./components/LandingScreenBullet";
 
 const meta: Meta<typeof LandingScreen> = {
   title: "Patterns/LandingScreen",
@@ -63,19 +63,19 @@ export const bullets: Story = {
         subtitle={"META".toUpperCase()} // Deberia ser responsabilidad del Hero hacer uppercase este subtitle?
         title="¡Vendé más con Instagram y Facebook!"
         bullets={[
-          <LandingScreenheroBullet
+          <LandingScreenBullet
             icon={<FireIcon />}
             text="Integración gratis y rápida"
           />,
-          <LandingScreenheroBullet
+          <LandingScreenBullet
             icon={<BagIcon />}
             text="Sincronización de catálogo en tiempo real"
           />,
-          <LandingScreenheroBullet
+          <LandingScreenBullet
             icon={<TagIcon />}
             text="Creación y seguimiento de campañas"
           />,
-          <LandingScreenheroBullet
+          <LandingScreenBullet
             icon={<TiendanubeIcon />}
             text="Medición de conversiones con API y píxel de Meta"
           />,

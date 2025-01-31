@@ -1,15 +1,17 @@
 import React from "react";
 
 import { Box } from "@nimbus-ds/components";
-import { LandingScreenHero } from "./components";
-import LandingScreenheroBullet from "./components/LandingScreenHeroBullet";
-import LandingScreenSection from "./components/LandingScreenSection";
+import {
+  LandingScreenBullet,
+  LandingScreenCard,
+  LandingScreenHero,
+  LandingScreenList,
+  LandingScreenSection,
+} from "./components";
 import {
   LandingScreenComponents,
   LandingScreenProps,
 } from "./landingScreen.types";
-import LandingScreenCard from "./components/LandingScreenCard";
-import LandingScreenList from "./components/LandingScreenList";
 
 const LandingScreen: React.FC<LandingScreenProps> & LandingScreenComponents = ({
   children,
@@ -27,14 +29,14 @@ const LandingScreen: React.FC<LandingScreenProps> & LandingScreenComponents = ({
 );
 
 LandingScreen.Hero = LandingScreenHero;
-LandingScreen.Bullet = LandingScreenheroBullet;
+LandingScreen.Bullet = LandingScreenBullet;
 LandingScreen.Section = LandingScreenSection;
 LandingScreen.Card = LandingScreenCard;
 LandingScreen.List = LandingScreenList;
 
 LandingScreen.displayName = "LandingScreen";
 LandingScreen.Hero.displayName = "LandingScreen.LandingScreenHero";
-LandingScreen.Bullet.displayName = "LandingScreen.LandingScreenheroBullet";
+LandingScreen.Bullet.displayName = "LandingScreen.LandingScreenBullet";
 LandingScreen.Section.displayName = "LandingScreen.LandingScreenSection";
 
 export { LandingScreen };

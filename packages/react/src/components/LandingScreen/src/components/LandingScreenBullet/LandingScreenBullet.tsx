@@ -1,13 +1,13 @@
 import React, { PropsWithChildren } from "react";
 import { Box, Icon, Text } from "@nimbus-ds/components";
 
-export type LandingScreenHeroBulletProps = {
+export type LandingScreenBulletProps = {
   icon: React.ReactNode;
   text: string;
 };
 
-const LandingScreenHeroBullet: React.FC<
-  PropsWithChildren<LandingScreenHeroBulletProps>
+const LandingScreenBullet: React.FC<
+  PropsWithChildren<LandingScreenBulletProps>
 > = ({ icon, text }) => (
   <Box display="flex" gap="3">
     <Icon color="primary-interactive" source={icon} />
@@ -15,4 +15,4 @@ const LandingScreenHeroBullet: React.FC<
   </Box>
 );
 
-export { LandingScreenHeroBullet };
+export { LandingScreenBullet };
