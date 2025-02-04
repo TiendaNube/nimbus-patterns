@@ -1,31 +1,17 @@
-import React, { PropsWithChildren } from "react";
-import { Box, BoxProps, Title } from "@nimbus-ds/components";
+import React from "react";
+import { Box, Title } from "@nimbus-ds/components";
+import { LandingScreenSectionProps } from "./landingScreenSection.types";
 
-type LandingScreenSectionProps = {
-  title: string;
-};
-
-const LandingScreenSection: React.FC<
-  PropsWithChildren<
-    LandingScreenSectionProps &
-      Omit<
-        BoxProps,
-        | "display"
-        | "flexDirection"
-        | "px"
-        | "py"
-        | "gap"
-        | "alignItems"
-        | "maxWidth"
-        | "mx"
-      >
-  >
-> = ({ title, children, ...rest }) => (
+const LandingScreenSection: React.FC<LandingScreenSectionProps> = ({
+  title,
+  children,
+  ...rest
+}) => (
   <Box
     display="flex"
     flexDirection="column"
     paddingTop="12"
-    gap="10"
+    gap="8"
     maxWidth="1200px"
     width="100%"
     mx="auto"

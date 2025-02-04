@@ -10,6 +10,7 @@ import {
   LandingScreenFeatureItem,
   LandingScreenFeatureImage,
   LandingScreenFeatureItemSpacing,
+  LandingScreenCardLayout,
 } from "./components";
 import {
   LandingScreenComponents,
@@ -35,6 +36,7 @@ LandingScreen.Hero = LandingScreenHero;
 LandingScreen.Bullet = LandingScreenBullet;
 LandingScreen.Section = LandingScreenSection;
 LandingScreen.Card = LandingScreenCard;
+LandingScreen.CardLayout = LandingScreenCardLayout;
 LandingScreen.Feature = LandingScreenFeature;
 LandingScreen.FeatureItem = LandingScreenFeatureItem;
 LandingScreen.FeatureImage = LandingScreenFeatureImage;

@@ -1,5 +1,8 @@
-import { LandingScreenCard } from "./LandingScreenCard";
+import {
+  LandingScreenCard,
+  LandingScreenCardLayout,
+} from "./LandingScreenCard";
 
-export { LandingScreenCard };
+export { LandingScreenCard, LandingScreenCardLayout };
 
 export default LandingScreenCard;

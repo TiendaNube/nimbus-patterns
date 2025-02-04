@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Button, Text, Thumbnail, Title } from "@nimbus-ds/components";
+import { Box, Button, Text, Thumbnail } from "@nimbus-ds/components";
 import {
   BagIcon,
   BoxPackedIcon,
@@ -102,10 +102,18 @@ export const sections: Story = {
       >
         {/* LandingScren.AppModule/ */}
         <Box display="flex" flexDirection="column" gap="4">
-          <Title as="h4">Title/Highlight text</Title>
-          <Text fontSize="caption">
-            Instale aplicaciones para vender productos
-          </Text>
+          <Box display="flex" flexDirection="column" gap="3">
+            <Text
+              fontSize="highlight"
+              fontWeight="medium"
+              color="neutral-textHigh"
+            >
+              Title/Highlight text
+            </Text>
+            <Text fontSize="caption">
+              Instale aplicaciones para vender productos
+            </Text>
+          </Box>
 
           {/* Module app card */}
           <CalloutCard
@@ -117,7 +125,7 @@ export const sections: Story = {
         </Box>
       </LandingScreen.Hero>
       <LandingScreen.Section title="Beneficios">
-        <Box display="flex" gap="3">
+        <LandingScreen.CardLayout>
           <LandingScreen.Card
             icon={<BoxPackedIcon size="large" />}
             title="Gestión unificada"
@@ -154,7 +162,7 @@ export const sections: Story = {
               </Button>
             </Box>
           </LandingScreen.Card>
-        </Box>
+        </LandingScreen.CardLayout>
       </LandingScreen.Section>
       <LandingScreen.Section title="Detalle">
         <LandingScreen.Feature
@@ -195,7 +203,7 @@ export const sections: Story = {
               />
             </LandingScreen.FeatureImage>
           }
-         />
+        />
       </LandingScreen.Section>
       <LandingScreen.Section title="Planes" />
     </LandingScreen>

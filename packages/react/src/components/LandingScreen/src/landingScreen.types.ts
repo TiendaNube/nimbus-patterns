@@ -11,6 +11,7 @@ import {
   LandingScreenFeatureItem,
   LandingScreenFeatureImage,
   LandingScreenFeatureItemSpacing,
+  LandingScreenCardLayout,
 } from "./components";
 
 export interface LandingScreenComponents {
@@ -18,6 +19,7 @@ export interface LandingScreenComponents {
   Bullet: typeof LandingScreenBullet;
   Section: typeof LandingScreenSection;
   Card: typeof LandingScreenCard;
+  CardLayout: typeof LandingScreenCardLayout;
   Feature: typeof LandingScreenFeature;
   FeatureItem: typeof LandingScreenFeatureItem;
   FeatureImage: typeof LandingScreenFeatureImage;

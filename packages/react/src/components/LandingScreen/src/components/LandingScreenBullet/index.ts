@@ -1,9 +1,6 @@
-import {
-  LandingScreenBullet,
-  LandingScreenBulletProps,
-} from "./LandingScreenBullet";
+import { LandingScreenBullet } from "./LandingScreenBullet";
 
-export type { LandingScreenBulletProps };
+export type { LandingScreenBulletProps } from "./landingScreenBullet.types.ts";
 
 export { LandingScreenBullet };
 

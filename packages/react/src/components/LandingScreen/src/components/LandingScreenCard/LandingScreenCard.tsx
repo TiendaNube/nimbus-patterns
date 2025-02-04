@@ -1,14 +1,15 @@
 import React from "react";
 import { Box, Icon, Title } from "@nimbus-ds/components";
+import {
+  LandingScreenCardProps,
+  LandingScreenLayoutProps,
+} from "./landingScreenCard.types";
 
-type LandingScreenCardProps = {
-  icon: React.ReactNode;
-  title: string;
-};
-
-const LandingScreenCard: React.FC<
-  React.PropsWithChildren<LandingScreenCardProps>
-> = ({ icon, title, children }) => (
+const LandingScreenCard: React.FC<LandingScreenCardProps> = ({
+  icon,
+  title,
+  children,
+}) => (
   <Box p="4" borderRadius="2" boxShadow="2">
     <Box
       backgroundColor="primary-surface"
@@ -26,4 +27,18 @@ const LandingScreenCard: React.FC<
   </Box>
 );
 
-export { LandingScreenCard };
+const LandingScreenCardLayout: React.FC<LandingScreenLayoutProps> = ({
+  children,
+  ...rest
+}) => (
+  <Box
+    display="flex"
+    flexDirection={{ xs: "column", md: "row" }}
+    gap="3"
+    {...rest}
+  >
+    {children}
+  </Box>
+);
+
+export { LandingScreenCard, LandingScreenCardLayout };

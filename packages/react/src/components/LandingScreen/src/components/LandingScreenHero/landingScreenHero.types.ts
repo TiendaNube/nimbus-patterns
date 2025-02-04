@@ -1,4 +1,5 @@
-import { ReactNode, ReactElement } from "react";
+import { ReactNode, ReactElement, PropsWithChildren } from "react";
+import { BoxProps } from "@nimbus-ds/components";
 import LandingScreenBullet, {
   LandingScreenBulletProps,
 } from "../LandingScreenBullet";
@@ -24,3 +25,8 @@ export type HeroWithBullets = BaseHeroProps & {
   description?: never;
   bullets: ReactElement<LandingScreenBulletProps, typeof LandingScreenBullet>[];
 };
+
+export type LandingScreenHeroProps = PropsWithChildren<
+  HeroWithDescription | HeroWithBullets
+> &
+  Omit<BoxProps, "alignItems" | "mx" | "height">;
