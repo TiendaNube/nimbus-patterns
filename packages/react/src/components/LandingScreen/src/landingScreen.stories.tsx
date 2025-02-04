@@ -1,13 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import {
-  Box,
-  Button,
-  List,
-  Text,
-  Thumbnail,
-  Title,
-} from "@nimbus-ds/components";
+import { Box, Button, Text, Thumbnail, Title } from "@nimbus-ds/components";
 import {
   BagIcon,
   BoxPackedIcon,
@@ -18,9 +11,8 @@ import {
 } from "@nimbus-ds/icons";
 
 import { CalloutCard } from "@nimbus-ds/callout-card";
-import { Layout } from "@nimbus-ds/layout";
 import { LandingScreen } from "./LandingScreen";
-import LandingScreenBullet from "./components/LandingScreenBullet";
+import { LandingScreenBullet } from "./components/LandingScreenBullet";
 
 const meta: Meta<typeof LandingScreen> = {
   title: "Patterns/LandingScreen",
@@ -165,26 +157,45 @@ export const sections: Story = {
         </Box>
       </LandingScreen.Section>
       <LandingScreen.Section title="Detalle">
-        <Layout columns="2 - symmetric" width="100%">
-          <Layout.Section>
-            <List as="ol">
-              <List.Item>
-                <Title>Cargá saldo</Title>
-                <Text>
-                  Podés hacerlo con tarjeta de crédito, débito o mercado pago.
-                </Text>
-              </List.Item>
-            </List>
-          </Layout.Section>
-          <Layout.Section>
-            <Thumbnail
-              width="100%"
-              alt="./static/mockup-perfit.jpg"
-              src="./static/mockup-perfit.jpg"
-              aspectRatio="4/3"
-            />
-          </Layout.Section>
-        </Layout>
+        <LandingScreen.Feature
+          content={
+            <>
+              <LandingScreen.FeatureItem
+                title="1. Cargá saldo"
+                description="Podés hacerlo con tarjeta de crédito, débito o mercado pago."
+              >
+                <LandingScreen.FeatureItemSpacing />
+              </LandingScreen.FeatureItem>
+
+              <LandingScreen.FeatureItem
+                title="2. Generá la etiqueta"
+                description="Revisá los datos y en simples pasos creá la etiqueta."
+              >
+                <LandingScreen.FeatureItemSpacing />
+              </LandingScreen.FeatureItem>
+              <LandingScreen.FeatureItem
+                title="3. Imprimí la etiqueta"
+                description="Una vez impresa colocala en el paquete a enviar."
+              >
+                <LandingScreen.FeatureItemSpacing />
+              </LandingScreen.FeatureItem>
+              <LandingScreen.FeatureItem
+                title="4. Despachá el paquete"
+                description="Podés despachar el paquete en cualquier sucursal de Correo Argentino o Andreani, o puntos de despacho."
+              />
+            </>
+          }
+          image={
+            <LandingScreen.FeatureImage>
+              <Thumbnail
+                // width="100%"
+                alt="./static/feature_img.png"
+                src="./static/feature_img.png"
+                aspectRatio="4/3"
+              />
+            </LandingScreen.FeatureImage>
+          }
+         />
       </LandingScreen.Section>
       <LandingScreen.Section title="Planes" />
     </LandingScreen>

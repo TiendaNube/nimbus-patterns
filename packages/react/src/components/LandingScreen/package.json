@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/landing-screen",
-  "version": "0.0.0",
+  "version": "1.0.0-rc.3",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -33,5 +33,6 @@
     "@nimbus-ds/layout": "workspace:^",
     "@nimbus-ds/styles": "^9.11.0",
     "@nimbus-ds/tokens": "^9.1.0"
-  }
+  },
+  "stableVersion": "0.0.0"
 }

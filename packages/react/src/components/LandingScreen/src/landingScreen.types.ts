@@ -6,8 +6,11 @@ import {
   LandingScreenCard,
   LandingScreenHero,
   LandingScreenBullet,
-  LandingScreenList,
+  LandingScreenFeature,
   LandingScreenSection,
+  LandingScreenFeatureItem,
+  LandingScreenFeatureImage,
+  LandingScreenFeatureItemSpacing,
 } from "./components";
 
 export interface LandingScreenComponents {
@@ -15,7 +18,10 @@ export interface LandingScreenComponents {
   Bullet: typeof LandingScreenBullet;
   Section: typeof LandingScreenSection;
   Card: typeof LandingScreenCard;
-  List: typeof LandingScreenList;
+  Feature: typeof LandingScreenFeature;
+  FeatureItem: typeof LandingScreenFeatureItem;
+  FeatureImage: typeof LandingScreenFeatureImage;
+  FeatureItemSpacing: typeof LandingScreenFeatureItemSpacing;
 }
 
 export interface LandingScreenBaseProps {

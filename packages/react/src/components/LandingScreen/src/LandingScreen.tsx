@@ -5,8 +5,11 @@ import {
   LandingScreenBullet,
   LandingScreenCard,
   LandingScreenHero,
-  LandingScreenList,
+  LandingScreenFeature,
   LandingScreenSection,
+  LandingScreenFeatureItem,
+  LandingScreenFeatureImage,
+  LandingScreenFeatureItemSpacing,
 } from "./components";
 import {
   LandingScreenComponents,
@@ -32,7 +35,10 @@ LandingScreen.Hero = LandingScreenHero;
 LandingScreen.Bullet = LandingScreenBullet;
 LandingScreen.Section = LandingScreenSection;
 LandingScreen.Card = LandingScreenCard;
-LandingScreen.List = LandingScreenList;
+LandingScreen.Feature = LandingScreenFeature;
+LandingScreen.FeatureItem = LandingScreenFeatureItem;
+LandingScreen.FeatureImage = LandingScreenFeatureImage;
+LandingScreen.FeatureItemSpacing = LandingScreenFeatureItemSpacing;
 
 LandingScreen.displayName = "LandingScreen";
 LandingScreen.Hero.displayName = "LandingScreen.LandingScreenHero";
