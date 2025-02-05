@@ -3,27 +3,29 @@ import React from "react";
 import { BoxProps } from "@nimbus-ds/components";
 
 import {
-  LandingScreenCard,
-  LandingScreenHero,
   LandingScreenBullet,
-  LandingScreenFeature,
-  LandingScreenSection,
-  LandingScreenFeatureItem,
-  LandingScreenFeatureImage,
-  LandingScreenFeatureItemSpacing,
+  LandingScreenCard,
   LandingScreenCardLayout,
+  LandingScreenFeature,
+  LandingScreenFeatureImage,
+  LandingScreenFeatureItem,
+  LandingScreenFeatureItemSpacing,
+  LandingScreenHero,
+  LandingScreenModule,
+  LandingScreenSection,
 } from "./components";
 
 export interface LandingScreenComponents {
-  Hero: typeof LandingScreenHero;
   Bullet: typeof LandingScreenBullet;
-  Section: typeof LandingScreenSection;
   Card: typeof LandingScreenCard;
   CardLayout: typeof LandingScreenCardLayout;
   Feature: typeof LandingScreenFeature;
-  FeatureItem: typeof LandingScreenFeatureItem;
   FeatureImage: typeof LandingScreenFeatureImage;
+  FeatureItem: typeof LandingScreenFeatureItem;
   FeatureItemSpacing: typeof LandingScreenFeatureItemSpacing;
+  Hero: typeof LandingScreenHero;
+  Module: typeof LandingScreenModule;
+  Section: typeof LandingScreenSection;
 }
 
 export interface LandingScreenBaseProps {

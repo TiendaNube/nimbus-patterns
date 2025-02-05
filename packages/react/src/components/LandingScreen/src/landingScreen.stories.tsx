@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Button, Text, Thumbnail } from "@nimbus-ds/components";
+import { Box, Button, Link, Text, Thumbnail } from "@nimbus-ds/components";
 import {
   BagIcon,
   BoxPackedIcon,
@@ -44,6 +44,46 @@ export const basic: Story = {
           src: "./static/mockup-perfit.jpg",
         }}
       />
+    </LandingScreen>
+  ),
+};
+
+export const appModule: Story = {
+  render: () => (
+    <LandingScreen>
+      <LandingScreen.Hero
+        subtitle={"Impulsá tus ventas con".toUpperCase()} // Deberia ser responsabilidad del Hero hacer uppercase este subtitle?
+        title="Marketing Automation"
+        description="Aumentá las visitas a tu sitio, captá nuevos suscriptores, optimizá las conversiones, recuperá y fidelizá clientes implementando email marketing y automation."
+        actions={
+          <>
+            <Button appearance="primary">Comenzar ahora</Button>
+            <Button appearance="neutral">Saber más</Button>
+          </>
+        }
+        image={{
+          alt: "hero image",
+          src: "./static/mockup-perfit.jpg",
+        }}
+      >
+        <LandingScreen.Module
+          title="¿Querés crear promociones?"
+          description="Instale aplicativos para fazer dropshipping e venda productos sem a necessidade de manter estoque."
+        >
+          <CalloutCard
+            appearance="primary"
+            title="Ali Express"
+            subtitle="This component is used to provide the user with useful information, tips, tutorials or shortcuts to other parts of the product."
+            link={
+              <Box display="flex" gap="3">
+                <Link appearance="primary">Instalar</Link>
+                <Link appearance="primary">Más apps de Ali express</Link>
+              </Box>
+            }
+            icon={BoxUnpackedIcon}
+          />
+        </LandingScreen.Module>
+      </LandingScreen.Hero>
     </LandingScreen>
   ),
 };
@@ -100,29 +140,23 @@ export const sections: Story = {
           src: "./static/mockup-perfit.jpg",
         }}
       >
-        {/* LandingScren.AppModule/ */}
-        <Box display="flex" flexDirection="column" gap="4">
-          <Box display="flex" flexDirection="column" gap="3">
-            <Text
-              fontSize="highlight"
-              fontWeight="medium"
-              color="neutral-textHigh"
-            >
-              Title/Highlight text
-            </Text>
-            <Text fontSize="caption">
-              Instale aplicaciones para vender productos
-            </Text>
-          </Box>
-
-          {/* Module app card */}
+        <LandingScreen.Module
+          title="¿Querés crear promociones?"
+          description="Instale aplicativos para fazer dropshipping e venda productos sem a necessidade de manter estoque."
+        >
           <CalloutCard
             appearance="primary"
-            title="Title app (link)"
-            subtitle="Promociones (mas de 15 opciones)..."
+            title="Ali Express"
+            subtitle="This component is used to provide the user with useful information, tips, tutorials or shortcuts to other parts of the product."
+            link={
+              <Box display="flex" gap="3">
+                <Link appearance="primary">Instalar</Link>
+                <Link appearance="primary">Más apps de Ali express</Link>
+              </Box>
+            }
             icon={BoxUnpackedIcon}
           />
-        </Box>
+        </LandingScreen.Module>
       </LandingScreen.Hero>
       <LandingScreen.Section title="Beneficios">
         <LandingScreen.CardLayout>
@@ -156,11 +190,6 @@ export const sections: Story = {
               poder generar, imprimir y pagar tus etiquetas, desde el
               administrador de tu tienda.
             </Text>
-            <Box marginTop="1">
-              <Button>
-                Más info <i>(prueba de flexibilidad)</i>
-              </Button>
-            </Box>
           </LandingScreen.Card>
         </LandingScreen.CardLayout>
       </LandingScreen.Section>

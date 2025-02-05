@@ -1,17 +1,8 @@
 import React from "react";
 
 import { Box } from "@nimbus-ds/components";
-import {
-  LandingScreenBullet,
-  LandingScreenCard,
-  LandingScreenHero,
-  LandingScreenFeature,
-  LandingScreenSection,
-  LandingScreenFeatureItem,
-  LandingScreenFeatureImage,
-  LandingScreenFeatureItemSpacing,
-  LandingScreenCardLayout,
-} from "./components";
+import * as Components from "./components";
+
 import {
   LandingScreenComponents,
   LandingScreenProps,
@@ -32,19 +23,28 @@ const LandingScreen: React.FC<LandingScreenProps> & LandingScreenComponents = ({
   </Box>
 );
 
-LandingScreen.Hero = LandingScreenHero;
-LandingScreen.Bullet = LandingScreenBullet;
-LandingScreen.Section = LandingScreenSection;
-LandingScreen.Card = LandingScreenCard;
-LandingScreen.CardLayout = LandingScreenCardLayout;
-LandingScreen.Feature = LandingScreenFeature;
-LandingScreen.FeatureItem = LandingScreenFeatureItem;
-LandingScreen.FeatureImage = LandingScreenFeatureImage;
-LandingScreen.FeatureItemSpacing = LandingScreenFeatureItemSpacing;
+LandingScreen.Bullet = Components.LandingScreenBullet;
+LandingScreen.Card = Components.LandingScreenCard;
+LandingScreen.CardLayout = Components.LandingScreenCardLayout;
+LandingScreen.Feature = Components.LandingScreenFeature;
+LandingScreen.FeatureImage = Components.LandingScreenFeatureImage;
+LandingScreen.FeatureItem = Components.LandingScreenFeatureItem;
+LandingScreen.FeatureItemSpacing = Components.LandingScreenFeatureItemSpacing;
+LandingScreen.Hero = Components.LandingScreenHero;
+LandingScreen.Module = Components.LandingScreenModule;
+LandingScreen.Section = Components.LandingScreenSection;
 
 LandingScreen.displayName = "LandingScreen";
-LandingScreen.Hero.displayName = "LandingScreen.LandingScreenHero";
 LandingScreen.Bullet.displayName = "LandingScreen.LandingScreenBullet";
-LandingScreen.Section.displayName = "LandingScreen.LandingScreenSection";
+LandingScreen.Card.displayName = "LandingScreen.Card";
+LandingScreen.CardLayout.displayName = "LandingScreen.CardLayout";
+LandingScreen.Feature.displayName = "LandingScreen.Feature";
+LandingScreen.FeatureImage.displayName = "LandingScreen.FeatureImage";
+LandingScreen.FeatureItem.displayName = "LandingScreen.FeatureItem";
+LandingScreen.FeatureItemSpacing.displayName =
+  "LandingScreen.FeatureItemSpacing";
+LandingScreen.Hero.displayName = "LandingScreen.Hero";
+LandingScreen.Module.displayName = "LandingScreen.Module";
+LandingScreen.Section.displayName = "LandingScreen.Section";
 
 export { LandingScreen };
