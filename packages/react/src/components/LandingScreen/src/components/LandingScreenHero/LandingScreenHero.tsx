@@ -3,7 +3,8 @@ import { Box, Text, Thumbnail, Title } from "@nimbus-ds/components";
 import { LandingScreenHeroProps } from "./landingScreenHero.types";
 
 /**
- * Only one of 'description' or 'bullets' can be used at the same time.
+ * Hero component for the LandingScreen. It is used to display a hero with a title, a subtitle, a description, actions, bullets
+ * and an image. It is generally used for the main content of the landing screen.
  */
 const LandingScreenHero: React.FC<LandingScreenHeroProps> = ({
   title,
@@ -41,11 +42,7 @@ const LandingScreenHero: React.FC<LandingScreenHeroProps> = ({
           minWidth={{ md: "280px", xl: "320px" }}
           minHeight={{ md: "280px", xl: "320px" }}
         >
-          <Thumbnail
-            alt={image.alt ?? ""}
-            src={image.src}
-            // aspectRatio="4/3"
-          />
+          <Thumbnail alt={image.alt ?? ""} src={image.src} aspectRatio="1/1" />
         </Box>
       </Box>
 
@@ -86,7 +83,6 @@ const LandingScreenHero: React.FC<LandingScreenHeroProps> = ({
           </Box>
         )}
 
-        {/* For app modules, etc */}
         {children && <Box paddingTop="3">{children}</Box>}
       </Box>
     </Box>

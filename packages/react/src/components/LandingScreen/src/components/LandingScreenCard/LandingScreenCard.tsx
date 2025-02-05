@@ -5,6 +5,10 @@ import {
   LandingScreenLayoutProps,
 } from "./landingScreenCard.types";
 
+/**
+ * Card component for the LandingScreen. It is used to display a card with an icon, a title and children, generally used for
+ * descriptive purposes.
+ */
 const LandingScreenCard: React.FC<LandingScreenCardProps> = ({
   icon,
   title,
@@ -27,6 +31,10 @@ const LandingScreenCard: React.FC<LandingScreenCardProps> = ({
   </Box>
 );
 
+/**
+ * Layout for the LandingScreenCard component. It is used to display multiple cards in a row or column, depending on the
+ * screen size, as it is a responsive component.
+ */
 const LandingScreenCardLayout: React.FC<LandingScreenLayoutProps> = ({
   children,
   ...rest

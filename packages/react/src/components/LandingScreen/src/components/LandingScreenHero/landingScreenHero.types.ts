@@ -14,19 +14,12 @@ type BaseHeroProps = {
   subtitle?: string;
   actions?: ReactNode;
   image: HeroImage;
+  description?: string;
+  bullets?: ReactElement<
+    LandingScreenBulletProps,
+    typeof LandingScreenBullet
+  >[];
 };
 
-export type HeroWithDescription = BaseHeroProps & {
-  description: string;
-  bullets?: never;
-};
-
-export type HeroWithBullets = BaseHeroProps & {
-  description?: never;
-  bullets: ReactElement<LandingScreenBulletProps, typeof LandingScreenBullet>[];
-};
-
-export type LandingScreenHeroProps = PropsWithChildren<
-  HeroWithDescription | HeroWithBullets
-> &
+export type LandingScreenHeroProps = PropsWithChildren<BaseHeroProps> &
   Omit<BoxProps, "alignItems" | "mx" | "height">;

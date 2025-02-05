@@ -2,6 +2,10 @@ import React from "react";
 import { Box, Text } from "@nimbus-ds/components";
 import { LandingScreenModuleProps } from "./landingScreenModule.types";
 
+/**
+ * Module component for the LandingScreen. It is used to display a module with a title and a description, and children component,
+ * generally used for application modules or callout cards.
+ */
 const LandingScreenModule: React.FC<LandingScreenModuleProps> = ({
   title,
   description,

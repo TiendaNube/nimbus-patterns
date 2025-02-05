@@ -6,10 +6,10 @@ import {
   LandingScreenFeatureProps,
 } from "./landingScreenFeature.types";
 
-const LandingScreenFeatureImage: React.FC<React.PropsWithChildren> = ({
-  children,
-}) => <Box>{children}</Box>;
-
+/**
+ * Feature item component for the LandingScreenItem. It is used to display a feature with a title, a description and the children, which
+ * can be any component (though it is generally used along with the ItemSpacing component).
+ */
 const LandingScreenFeatureItem: React.FC<LandingScreenFeatureItemProps> = ({
   title,
   description,
@@ -23,6 +23,9 @@ const LandingScreenFeatureItem: React.FC<LandingScreenFeatureItemProps> = ({
   </Box>
 );
 
+/**
+ * Spacing component for the LandingScreenItem. It is used to separate the items in the feature, maintaining a consistent layout.
+ */
 const LandingScreenFeatureItemSpacing: React.FC = () => (
   <Box
     borderTopWidth="1"
@@ -32,6 +35,9 @@ const LandingScreenFeatureItemSpacing: React.FC = () => (
   />
 );
 
+/**
+ * Feature component for the LandingScreen. It is used to display a feature with content and an image.
+ */
 const LandingScreenFeature: React.FC<LandingScreenFeatureProps> = ({
   content,
   image,
@@ -47,13 +53,14 @@ const LandingScreenFeature: React.FC<LandingScreenFeatureProps> = ({
     <Layout.Section justifyContent="center">
       <Box>{content}</Box>
     </Layout.Section>
-    <Layout.Section justifyContent="center">{image}</Layout.Section>
+    <Layout.Section justifyContent="center">
+      <Box>{image}</Box>
+    </Layout.Section>
   </Layout>
 );
 
 export {
   LandingScreenFeature,
   LandingScreenFeatureItem,
-  LandingScreenFeatureImage,
   LandingScreenFeatureItemSpacing,
 };

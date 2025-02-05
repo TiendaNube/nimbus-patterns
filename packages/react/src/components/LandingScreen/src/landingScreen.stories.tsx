@@ -223,14 +223,11 @@ export const sections: Story = {
             </>
           }
           image={
-            <LandingScreen.FeatureImage>
-              <Thumbnail
-                // width="100%"
-                alt="./static/feature_img.png"
-                src="./static/feature_img.png"
-                aspectRatio="4/3"
-              />
-            </LandingScreen.FeatureImage>
+            <Thumbnail
+              alt="./static/feature_img.png"
+              src="./static/feature_img.png"
+              aspectRatio="4/3"
+            />
           }
         />
       </LandingScreen.Section>

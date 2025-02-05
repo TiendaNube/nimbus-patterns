@@ -8,6 +8,10 @@ import {
   LandingScreenProps,
 } from "./landingScreen.types";
 
+/**
+ * LandingScreen component. It is used to display a landing or welcome screen, with a consistent layout and spacing, to present the user
+ * with information about an application or a service, providing the ability to access it or learn more about it.
+ */
 const LandingScreen: React.FC<LandingScreenProps> & LandingScreenComponents = ({
   children,
   ...rest
@@ -27,7 +31,6 @@ LandingScreen.Bullet = Components.LandingScreenBullet;
 LandingScreen.Card = Components.LandingScreenCard;
 LandingScreen.CardLayout = Components.LandingScreenCardLayout;
 LandingScreen.Feature = Components.LandingScreenFeature;
-LandingScreen.FeatureImage = Components.LandingScreenFeatureImage;
 LandingScreen.FeatureItem = Components.LandingScreenFeatureItem;
 LandingScreen.FeatureItemSpacing = Components.LandingScreenFeatureItemSpacing;
 LandingScreen.Hero = Components.LandingScreenHero;
@@ -39,7 +42,6 @@ LandingScreen.Bullet.displayName = "LandingScreen.LandingScreenBullet";
 LandingScreen.Card.displayName = "LandingScreen.Card";
 LandingScreen.CardLayout.displayName = "LandingScreen.CardLayout";
 LandingScreen.Feature.displayName = "LandingScreen.Feature";
-LandingScreen.FeatureImage.displayName = "LandingScreen.FeatureImage";
 LandingScreen.FeatureItem.displayName = "LandingScreen.FeatureItem";
 LandingScreen.FeatureItemSpacing.displayName =
   "LandingScreen.FeatureItemSpacing";

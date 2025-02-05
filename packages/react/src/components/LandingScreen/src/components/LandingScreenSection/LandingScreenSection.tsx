@@ -2,6 +2,10 @@ import React from "react";
 import { Box, Title } from "@nimbus-ds/components";
 import { LandingScreenSectionProps } from "./landingScreenSection.types";
 
+/**
+ * Section component for the LandingScreen. It is used to display a section with a title and children, generally used for separating
+ * content in the landing screen, maintaining a consistent layout.
+ */
 const LandingScreenSection: React.FC<LandingScreenSectionProps> = ({
   title,
   children,
