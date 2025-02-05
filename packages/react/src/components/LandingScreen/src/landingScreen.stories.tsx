@@ -52,7 +52,7 @@ export const appModule: Story = {
   render: () => (
     <LandingScreen>
       <LandingScreen.Hero
-        subtitle={"Impulsá tus ventas con".toUpperCase()} // Deberia ser responsabilidad del Hero hacer uppercase este subtitle?
+        subtitle={"Impulsá tus ventas con".toUpperCase()}
         title="Marketing Automation"
         description="Aumentá las visitas a tu sitio, captá nuevos suscriptores, optimizá las conversiones, recuperá y fidelizá clientes implementando email marketing y automation."
         actions={
@@ -92,7 +92,7 @@ export const bullets: Story = {
   render: () => (
     <LandingScreen>
       <LandingScreen.Hero
-        subtitle={"META".toUpperCase()} // Deberia ser responsabilidad del Hero hacer uppercase este subtitle?
+        subtitle={"META".toUpperCase()}
         title="¡Vendé más con Instagram y Facebook!"
         bullets={[
           <LandingScreenBullet
@@ -126,7 +126,7 @@ export const sections: Story = {
   render: () => (
     <LandingScreen>
       <LandingScreen.Hero
-        subtitle={"Impulsá tus ventas con".toUpperCase()} // Deberia ser responsabilidad del Hero hacer uppercase este subtitle?
+        subtitle={"Impulsá tus ventas con".toUpperCase()}
         title="Marketing Automation"
         description="Aumentá las visitas a tu sitio, captá nuevos suscriptores, optimizá las conversiones, recuperá y fidelizá clientes implementando email marketing y automation."
         actions={
