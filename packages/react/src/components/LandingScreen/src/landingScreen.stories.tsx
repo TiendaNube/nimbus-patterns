@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Button, Link, Text, Thumbnail } from "@nimbus-ds/components";
+import { Box, Button, Link, Thumbnail } from "@nimbus-ds/components";
 import {
   BagIcon,
   BoxPackedIcon,
@@ -163,34 +163,25 @@ export const sections: Story = {
           <LandingScreen.Card
             icon={<BoxPackedIcon size="large" />}
             title="Gestión unificada"
-          >
-            <Text>
-              Ahorrá tiempo gestionando tus envíos de forma unificada. Vas a
+            description="Ahorrá tiempo gestionando tus envíos de forma unificada. Vas a
               poder generar, imprimir y pagar tus etiquetas, desde el
-              administrador de tu tienda.
-            </Text>
-          </LandingScreen.Card>
+              administrador de tu tienda."
+          />
 
           <LandingScreen.Card
             icon={<BoxPackedIcon size="large" />}
             title="Gestión unificada"
-          >
-            <Text>
-              Ahorrá tiempo gestionando tus envíos de forma unificada. Vas a
+            description="Ahorrá tiempo gestionando tus envíos de forma unificada. Vas a
               poder generar, imprimir y pagar tus etiquetas, desde el
-              administrador de tu tienda.
-            </Text>
-          </LandingScreen.Card>
+              administrador de tu tienda."
+          />
           <LandingScreen.Card
             icon={<BoxPackedIcon size="large" />}
             title="Gestión unificada"
-          >
-            <Text>
-              Ahorrá tiempo gestionando tus envíos de forma unificada. Vas a
+            description="Ahorrá tiempo gestionando tus envíos de forma unificada. Vas a
               poder generar, imprimir y pagar tus etiquetas, desde el
-              administrador de tu tienda.
-            </Text>
-          </LandingScreen.Card>
+              administrador de tu tienda."
+          />
         </LandingScreen.CardLayout>
       </LandingScreen.Section>
       <LandingScreen.Section title="Detalle">

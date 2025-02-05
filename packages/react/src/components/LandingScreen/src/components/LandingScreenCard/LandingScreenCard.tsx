@@ -1,18 +1,18 @@
 import React from "react";
-import { Box, Icon, Title } from "@nimbus-ds/components";
+import { Box, Icon, Title, Text } from "@nimbus-ds/components";
 import {
   LandingScreenCardProps,
-  LandingScreenLayoutProps,
+  LandingScreenCardLayoutProps,
 } from "./landingScreenCard.types";
 
 /**
- * Card component for the LandingScreen. It is used to display a card with an icon, a title and children, generally used for
+ * Card component for the LandingScreen. It is used to display a card with an icon, a title and a text, generally used for
  * descriptive purposes.
  */
 const LandingScreenCard: React.FC<LandingScreenCardProps> = ({
   icon,
   title,
-  children,
+  description,
 }) => (
   <Box p="4" borderRadius="2" boxShadow="2">
     <Box
@@ -26,7 +26,9 @@ const LandingScreenCard: React.FC<LandingScreenCardProps> = ({
     </Box>
     <Box display="flex" flexDirection="column" gap="2">
       <Title as="h4">{title}</Title>
-      {children}
+      <Text color="neutral-textHigh" fontSize="caption" lineHeight="caption">
+        {description}
+      </Text>
     </Box>
   </Box>
 );
@@ -35,7 +37,7 @@ const LandingScreenCard: React.FC<LandingScreenCardProps> = ({
  * Layout for the LandingScreenCard component. It is used to display multiple cards in a row or column, depending on the
  * screen size, as it is a responsive component.
  */
-const LandingScreenCardLayout: React.FC<LandingScreenLayoutProps> = ({
+const LandingScreenCardLayout: React.FC<LandingScreenCardLayoutProps> = ({
   children,
   ...rest
 }) => (

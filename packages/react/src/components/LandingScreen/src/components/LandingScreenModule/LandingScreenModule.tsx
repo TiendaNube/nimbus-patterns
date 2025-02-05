@@ -10,8 +10,9 @@ const LandingScreenModule: React.FC<LandingScreenModuleProps> = ({
   title,
   description,
   children,
+  ...rest
 }) => (
-  <Box display="flex" flexDirection="column" gap="4">
+  <Box display="flex" flexDirection="column" gap="4" {...rest}>
     <Box display="flex" flexDirection="column" gap="2">
       <Text fontSize="highlight" fontWeight="medium" color="neutral-textHigh">
         {title}

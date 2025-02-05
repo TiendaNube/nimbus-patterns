@@ -1,10 +1,11 @@
 import { BoxProps } from "@nimbus-ds/components";
 import { PropsWithChildren, ReactNode } from "react";
 
-export type LandingScreenCardProps = PropsWithChildren<{
+export type LandingScreenCardProps = {
   icon: ReactNode;
   title: string;
-}>;
+  description: string;
+};
 
-export type LandingScreenLayoutProps = PropsWithChildren &
+export type LandingScreenCardLayoutProps = PropsWithChildren &
   Omit<BoxProps, "display" | "flexDirection" | "gap">;

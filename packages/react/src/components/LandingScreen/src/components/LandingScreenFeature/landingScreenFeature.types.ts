@@ -1,3 +1,4 @@
+import { BoxProps } from "@nimbus-ds/components";
 import { LayoutProps } from "@nimbus-ds/layout";
 import { PropsWithChildren, ReactNode } from "react";
 
@@ -12,3 +13,8 @@ type FeatureProps = {
 };
 export type LandingScreenFeatureProps = FeatureProps &
   Omit<LayoutProps, "columns" | "gap" | "justifyContent" | "children">;
+
+export type LandingScreenFeatureItemSpacingProps = Omit<
+  BoxProps,
+  "borderTopWidth" | "borderBottomWidth" | "borderColor" | "borderStyle"
+>;

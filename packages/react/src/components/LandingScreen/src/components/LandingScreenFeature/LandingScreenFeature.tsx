@@ -3,6 +3,7 @@ import { Box, Title, Text } from "@nimbus-ds/components";
 import { Layout } from "@nimbus-ds/layout";
 import {
   LandingScreenFeatureItemProps,
+  LandingScreenFeatureItemSpacingProps,
   LandingScreenFeatureProps,
 } from "./landingScreenFeature.types";
 
@@ -26,12 +27,15 @@ const LandingScreenFeatureItem: React.FC<LandingScreenFeatureItemProps> = ({
 /**
  * Spacing component for the LandingScreenItem. It is used to separate the items in the feature, maintaining a consistent layout.
  */
-const LandingScreenFeatureItemSpacing: React.FC = () => (
+const LandingScreenFeatureItemSpacing: React.FC<
+  LandingScreenFeatureItemSpacingProps
+> = ({ ...rest }) => (
   <Box
     borderTopWidth="1"
     borderBottomWidth="none"
     borderColor="neutral-surfaceHighlight"
     borderStyle="solid"
+    {...rest}
   />
 );
 
