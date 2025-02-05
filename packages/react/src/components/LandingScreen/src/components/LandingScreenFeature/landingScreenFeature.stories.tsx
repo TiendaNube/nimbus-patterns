@@ -8,20 +8,17 @@ import { LandingScreenFeature } from "./LandingScreenFeature";
 const meta: Meta<typeof LandingScreen.Feature> = {
   title: "Patterns/LandingScreen/LandingScreen.Feature",
   component: LandingScreen.Feature,
-  argTypes: {},
+  argTypes: {
+    content: { control: { type: "text" } },
+    image: { control: { type: "text" } },
+  },
   tags: ["autodocs"],
-  render: () => (
+  render: (args) => (
     <LandingScreenFeature
-      content={
-        <Box justifyContent="center" alignItems="center">
-          Content on the left
-        </Box>
-      }
+      {...args}
       image={
-        <Thumbnail
-          src="./static/mockup-perfit.jpg"
-          alt="./static/mockup-perfit.jpg"
-        />
+        // In the args we will receive the image src as a string, so we need to cast it
+        <Thumbnail src={args.image as string} alt={args.image as string} />
       }
     />
   ),
@@ -31,5 +28,13 @@ export default meta;
 type Story = StoryObj<typeof LandingScreen.Feature>;
 
 export const basic: Story = {
-  args: {},
+  args: {
+    content: (
+      <Box justifyContent="center" alignItems="center">
+        Content on the left
+      </Box>
+    ),
+    // We pass the image src so it can be edited in the Storybook web interface
+    image: "./static/mockup-perfit.jpg",
+  },
 };

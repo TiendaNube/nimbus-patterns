@@ -8,23 +8,20 @@ import { LandingScreenCard } from "./LandingScreenCard";
 const meta: Meta<typeof LandingScreen.Card> = {
   title: "Patterns/LandingScreen/LandingScreen.Card",
   component: LandingScreen.Card,
-  argTypes: {},
+  argTypes: {
+    icon: { control: { disabled: true } },
+  },
   tags: ["autodocs"],
-  render: () => (
-    <LandingScreenCard
-      icon={<TiendanubeIcon />}
-      title="Card title"
-      description="
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti eum
-        dolorem inventore quam neque hic doloribus iste commodi. Eligendi quos
-        doloribus laborum qui minus aspernatur!"
-    />
-  ),
+  render: (args) => <LandingScreenCard {...args} icon={<TiendanubeIcon />} />,
 };
 
 export default meta;
 type Story = StoryObj<typeof LandingScreen.Card>;
 
 export const basic: Story = {
-  args: {},
+  args: {
+    title: "Card title",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti eum dolorem inventore quam neque hic doloribus iste commodi. Eligendi quo doloribus laborum qui minus aspernatur!",
+  },
 };

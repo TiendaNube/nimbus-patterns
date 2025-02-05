@@ -7,18 +7,19 @@ import { LandingScreenSection } from "./LandingScreenSection";
 const meta: Meta<typeof LandingScreen.Section> = {
   title: "Patterns/LandingScreen/LandingScreen.Section",
   component: LandingScreen.Section,
-  argTypes: {},
+  argTypes: {
+    children: { control: { type: "text" } },
+  },
   tags: ["autodocs"],
-  render: () => (
-    <LandingScreenSection title="Section title">
-      Section content
-    </LandingScreenSection>
-  ),
+  render: (args) => <LandingScreenSection {...args} />,
 };
 
 export default meta;
 type Story = StoryObj<typeof LandingScreen.Section>;
 
 export const basic: Story = {
-  args: {},
+  args: {
+    title: "Section title",
+    children: "Section content",
+  },
 };
