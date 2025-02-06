@@ -139,25 +139,7 @@ export const sections: Story = {
           alt: "hero image",
           src: "./static/mockup-perfit.jpg",
         }}
-      >
-        <LandingScreen.Module
-          title="¿Querés crear promociones?"
-          description="Instale aplicativos para fazer dropshipping e venda productos sem a necessidade de manter estoque."
-        >
-          <CalloutCard
-            appearance="primary"
-            title="Ali Express"
-            subtitle="This component is used to provide the user with useful information, tips, tutorials or shortcuts to other parts of the product."
-            link={
-              <Box display="flex" gap="3">
-                <Link appearance="primary">Instalar</Link>
-                <Link appearance="primary">Más apps de Ali express</Link>
-              </Box>
-            }
-            icon={BoxUnpackedIcon}
-          />
-        </LandingScreen.Module>
-      </LandingScreen.Hero>
+      />
       <LandingScreen.Section title="Beneficios">
         <LandingScreen.CardLayout>
           <LandingScreen.Card
@@ -222,7 +204,6 @@ export const sections: Story = {
           }
         />
       </LandingScreen.Section>
-      <LandingScreen.Section title="Planes" />
     </LandingScreen>
   ),
 };

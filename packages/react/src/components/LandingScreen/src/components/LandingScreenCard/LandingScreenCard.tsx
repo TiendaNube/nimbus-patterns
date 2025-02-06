@@ -44,7 +44,7 @@ const LandingScreenCardLayout: React.FC<LandingScreenCardLayoutProps> = ({
   <Box
     display="flex"
     flexDirection={{ xs: "column", md: "row" }}
-    gap="3"
+    gap="4"
     {...rest}
   >
     {children}
