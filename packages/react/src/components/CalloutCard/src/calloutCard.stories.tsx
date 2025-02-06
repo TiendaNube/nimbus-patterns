@@ -2,7 +2,7 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { BoxUnpackedIcon } from "@nimbus-ds/icons";
 
-import { Box, Link } from "@nimbus-ds/components";
+import { Link } from "@nimbus-ds/components";
 import { CalloutCard } from "./CalloutCard";
 
 const meta: Meta<typeof CalloutCard> = {
@@ -26,24 +26,14 @@ export const basic: Story = {
     subtitle: "Description",
     icon: BoxUnpackedIcon,
     link: (
-      <Box display="flex" gap="3" marginTop="2">
-        <Link
-          appearance="primary"
-          as="a"
-          target="_link"
-          href="https://nimbus.nuvemshop.com.br"
-        >
-          Link
-        </Link>
-        <Link
-          appearance="primary"
-          as="a"
-          target="_link"
-          href="https://nimbus.nuvemshop.com.br"
-        >
-          Link
-        </Link>
-      </Box>
+      <Link
+        appearance="primary"
+        as="a"
+        target="_link"
+        href="https://nimbus.nuvemshop.com.br"
+      >
+        Link
+      </Link>
     ),
   },
 };

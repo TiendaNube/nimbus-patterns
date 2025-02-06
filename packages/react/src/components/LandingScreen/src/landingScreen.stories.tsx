@@ -1,9 +1,8 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Button, Link, Thumbnail } from "@nimbus-ds/components";
+import { Box, Button, Link } from "@nimbus-ds/components";
 import {
   BagIcon,
-  BoxPackedIcon,
   BoxUnpackedIcon,
   FireIcon,
   TagIcon,
@@ -118,92 +117,6 @@ export const bullets: Story = {
           src: "./static/3_320x320.jpg",
         }}
       />
-    </LandingScreen>
-  ),
-};
-
-export const sections: Story = {
-  render: () => (
-    <LandingScreen>
-      <LandingScreen.Hero
-        subtitle={"Impulsá tus ventas con".toUpperCase()}
-        title="Marketing Automation"
-        description="Aumentá las visitas a tu sitio, captá nuevos suscriptores, optimizá las conversiones, recuperá y fidelizá clientes implementando email marketing y automation."
-        actions={
-          <>
-            <Button appearance="primary">Comenzar ahora</Button>
-            <Button appearance="neutral">Saber más</Button>
-          </>
-        }
-        image={{
-          alt: "hero image",
-          src: "./static/mockup-perfit.jpg",
-        }}
-      />
-      <LandingScreen.Section title="Beneficios">
-        <LandingScreen.CardLayout>
-          <LandingScreen.Card
-            icon={<BoxPackedIcon size="large" />}
-            title="Gestión unificada"
-            description="Ahorrá tiempo gestionando tus envíos de forma unificada. Vas a
-              poder generar, imprimir y pagar tus etiquetas, desde el
-              administrador de tu tienda."
-          />
-
-          <LandingScreen.Card
-            icon={<BoxPackedIcon size="large" />}
-            title="Gestión unificada"
-            description="Ahorrá tiempo gestionando tus envíos de forma unificada. Vas a
-              poder generar, imprimir y pagar tus etiquetas, desde el
-              administrador de tu tienda."
-          />
-          <LandingScreen.Card
-            icon={<BoxPackedIcon size="large" />}
-            title="Gestión unificada"
-            description="Ahorrá tiempo gestionando tus envíos de forma unificada. Vas a
-              poder generar, imprimir y pagar tus etiquetas, desde el
-              administrador de tu tienda."
-          />
-        </LandingScreen.CardLayout>
-      </LandingScreen.Section>
-      <LandingScreen.Section title="Detalle">
-        <LandingScreen.Feature
-          content={
-            <>
-              <LandingScreen.FeatureItem
-                title="1. Cargá saldo"
-                description="Podés hacerlo con tarjeta de crédito, débito o mercado pago."
-              >
-                <LandingScreen.FeatureItemSpacing />
-              </LandingScreen.FeatureItem>
-
-              <LandingScreen.FeatureItem
-                title="2. Generá la etiqueta"
-                description="Revisá los datos y en simples pasos creá la etiqueta."
-              >
-                <LandingScreen.FeatureItemSpacing />
-              </LandingScreen.FeatureItem>
-              <LandingScreen.FeatureItem
-                title="3. Imprimí la etiqueta"
-                description="Una vez impresa colocala en el paquete a enviar."
-              >
-                <LandingScreen.FeatureItemSpacing />
-              </LandingScreen.FeatureItem>
-              <LandingScreen.FeatureItem
-                title="4. Despachá el paquete"
-                description="Podés despachar el paquete en cualquier sucursal de Correo Argentino o Andreani, o puntos de despacho."
-              />
-            </>
-          }
-          image={
-            <Thumbnail
-              alt="./static/feature_img.png"
-              src="./static/feature_img.png"
-              aspectRatio="4/3"
-            />
-          }
-        />
-      </LandingScreen.Section>
     </LandingScreen>
   ),
 };

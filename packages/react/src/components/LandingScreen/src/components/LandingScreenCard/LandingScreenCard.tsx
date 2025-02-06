@@ -6,8 +6,7 @@ import {
 } from "./landingScreenCard.types";
 
 /**
- * Card component for the LandingScreen. It is used to display a card with an icon, a title and a text, generally used for
- * descriptive purposes.
+ * Card component for the LandingScreen. It is used to display a card with an icon, a title and a text, generally used for descriptive purposes.
  */
 const LandingScreenCard: React.FC<LandingScreenCardProps> = ({
   icon,

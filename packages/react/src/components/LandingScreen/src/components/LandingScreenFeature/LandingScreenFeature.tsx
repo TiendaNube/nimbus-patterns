@@ -8,8 +8,7 @@ import {
 } from "./landingScreenFeature.types";
 
 /**
- * Feature item component for the LandingScreenItem. It is used to display a feature with a title, a description and the children, which
- * can be any component (though it is generally used along with the ItemSpacing component).
+ * Feature item component for the LandingScreenItem. It is used to display a feature with a title, a description and the children, which can be any component (though it is often used with the ItemSpacing component).
  */
 const LandingScreenFeatureItem: React.FC<LandingScreenFeatureItemProps> = ({
   title,
