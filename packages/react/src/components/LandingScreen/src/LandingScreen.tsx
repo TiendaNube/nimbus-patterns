@@ -9,7 +9,7 @@ import {
 } from "./landingScreen.types";
 
 /**
- * LandingScreen component. It is used to display a landing or welcome screen, with a consistent layout and spacing, to present the user with information about an application or a service, providing the ability to access it or learn more about it.
+ * The `LandingScreen` component provides a consistent layout and spacing for displaying a landing or welcome screen. It introduces users to an application or service, offering options to access more information or proceed further.
  */
 const LandingScreen: React.FC<LandingScreenProps> & LandingScreenComponents = ({
   children,
