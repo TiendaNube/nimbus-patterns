@@ -38,9 +38,7 @@ export const basic: Story = {
         </PlanDisplayCardHeader>
         <PlanDisplay.Content>
           <PlanDisplay.Bullet
-            icon={
-              <CheckIcon color="#097969" fontWeight="bold" fontSize="24px" />
-            }
+            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
           >
             Descuentos personalizados
           </PlanDisplay.Bullet>
@@ -85,9 +83,7 @@ export const basic: Story = {
         </PlanDisplayCardHeader>
         <PlanDisplay.Content>
           <PlanDisplay.Bullet
-            icon={
-              <CheckIcon color="#097969" fontWeight="bold" fontSize="24px" />
-            }
+            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
           >
             Descuentos personalizados
           </PlanDisplay.Bullet>
@@ -132,9 +128,7 @@ export const basic: Story = {
         </PlanDisplayCardHeader>
         <PlanDisplay.Content>
           <PlanDisplay.Bullet
-            icon={
-              <CheckIcon color="#097969" fontWeight="bold" fontSize="24px" />
-            }
+            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
           >
             Descuentos personalizados
           </PlanDisplay.Bullet>
