@@ -4867,11 +4867,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/interactive-list@workspace:packages/react/src/components/InteractiveList":
+"@nimbus-ds/initial-screen@workspace:packages/react/src/components/InitialScreen":
   version: 0.0.0-use.local
-  resolution: "@nimbus-ds/interactive-list@workspace:packages/react/src/components/InteractiveList"
+  resolution: "@nimbus-ds/initial-screen@workspace:packages/react/src/components/InitialScreen"
   dependencies:
-    "@nimbus-ds/data-list": "workspace:^"
+    "@nimbus-ds/layout": "workspace:^"
+    "@nimbus-ds/styles": ^9.11.0
+    "@nimbus-ds/tokens": ^9.1.0
   peerDependencies:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
@@ -4880,13 +4882,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/landing-screen@workspace:packages/react/src/components/LandingScreen":
+"@nimbus-ds/interactive-list@workspace:packages/react/src/components/InteractiveList":
   version: 0.0.0-use.local
-  resolution: "@nimbus-ds/landing-screen@workspace:packages/react/src/components/LandingScreen"
+  resolution: "@nimbus-ds/interactive-list@workspace:packages/react/src/components/InteractiveList"
   dependencies:
-    "@nimbus-ds/layout": "workspace:^"
-    "@nimbus-ds/styles": ^9.11.0
-    "@nimbus-ds/tokens": ^9.1.0
+    "@nimbus-ds/data-list": "workspace:^"
   peerDependencies:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
