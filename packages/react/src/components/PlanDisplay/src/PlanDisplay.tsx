@@ -22,6 +22,7 @@ const PlanDisplay: React.FC<PlanDisplayProps> & PlanDisplayComponents = ({
     gap="4"
     justifyContent="center"
     alignItems="flex-start"
+    px="20"
     {...rest}
   >
     {children}

@@ -4,7 +4,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Box, Button, Text, Title } from "@nimbus-ds/components";
 import { CheckIcon, CloseIcon } from "@nimbus-ds/icons";
 import { PlanDisplay } from "./PlanDisplay";
-import { PlanDisplayCardHeader } from "./components";
 
 const meta: Meta<typeof PlanDisplay> = {
   title: "Patterns/PlanDisplay",
@@ -18,11 +17,26 @@ const meta: Meta<typeof PlanDisplay> = {
 export default meta;
 type Story = StoryObj<typeof PlanDisplay>;
 
+/* <PlanDisplay
+    <PlanDisplay.Plan
+      subtitle="Punto de venta"
+      title={
+        <Box display="flex" gap="1">
+          <Title color="neutral-textLow">Plan</Title>
+          <Title color="neutral-textHigh">Básico</Title>
+        </Box>
+      }
+     />
+    <PlanDisplay.Plan />
+    <PlanDisplay.Plan>
+      <Button />
+    </PlanDisplay.Plan>
+*/
 export const basic: Story = {
   render: () => (
     <PlanDisplay>
       <PlanDisplay.Card>
-        <PlanDisplayCardHeader
+        <PlanDisplay.Header
           subtitle="Punto de venta"
           title={
             <Box display="flex" gap="1">
@@ -35,7 +49,7 @@ export const basic: Story = {
           <Text fontWeight="bold" fontSize="highlight">
             1.5% costo por transacción
           </Text>
-        </PlanDisplayCardHeader>
+        </PlanDisplay.Header>
         <PlanDisplay.Content>
           <PlanDisplay.Bullet
             icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
@@ -52,6 +66,9 @@ export const basic: Story = {
           >
             Búsqueda de clientes
           </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Venta con envío
+          </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
             Venta sin stock
           </PlanDisplay.Bullet>
@@ -64,10 +81,22 @@ export const basic: Story = {
           <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
             Gestión de caja
           </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Asignación de vendedor
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Creación de productos durante la venta
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Guardar carritos
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Atajos de teclado
+          </PlanDisplay.Bullet>
         </PlanDisplay.Content>
       </PlanDisplay.Card>
       <PlanDisplay.Card>
-        <PlanDisplayCardHeader
+        <PlanDisplay.Header
           subtitle="Punto de venta"
           title={
             <Box display="flex" gap="1">
@@ -80,7 +109,7 @@ export const basic: Story = {
           <Text fontWeight="bold" fontSize="highlight">
             0.5% costo por transacción
           </Text>
-        </PlanDisplayCardHeader>
+        </PlanDisplay.Header>
         <PlanDisplay.Content>
           <PlanDisplay.Bullet
             icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
@@ -98,21 +127,36 @@ export const basic: Story = {
             Búsqueda de clientes
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Venta con envío
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Venta sin stock
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
             Registro de medio de pago
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Escaneo de producto
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Gestión de caja
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Asignación de vendedor
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Creación de productos durante la venta
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Guardar carritos
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Atajos de teclado
           </PlanDisplay.Bullet>
         </PlanDisplay.Content>
       </PlanDisplay.Card>
-      <PlanDisplay.Card>
-        <PlanDisplayCardHeader
+      <PlanDisplay.Card highlighted>
+        <PlanDisplay.Header
           subtitle="Punto de venta"
           title={
             <Box display="flex" gap="1">
@@ -125,7 +169,7 @@ export const basic: Story = {
           <Text fontWeight="bold" fontSize="highlight">
             0.15% costo por transacción
           </Text>
-        </PlanDisplayCardHeader>
+        </PlanDisplay.Header>
         <PlanDisplay.Content>
           <PlanDisplay.Bullet
             icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
@@ -143,6 +187,9 @@ export const basic: Story = {
             Búsqueda de clientes
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Venta con envío
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Venta sin stock
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
@@ -153,6 +200,18 @@ export const basic: Story = {
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
             Gestión de caja
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Asignación de vendedor
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Creación de productos durante la venta
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Guardar carritos
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Atajos de teclado
           </PlanDisplay.Bullet>
         </PlanDisplay.Content>
         <PlanDisplay.Footer>

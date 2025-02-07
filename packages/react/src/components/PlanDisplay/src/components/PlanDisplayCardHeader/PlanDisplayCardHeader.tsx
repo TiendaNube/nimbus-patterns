@@ -13,7 +13,11 @@ const PlanDisplayCardHeader: React.FC<PlanDisplayCardHeaderProps> = ({
     </Text>
     {title}
 
-    {children && <Box pt="2">{children}</Box>}
+    {children && (
+      <Box pt="3" pb="4">
+        {children}
+      </Box>
+    )}
   </Box>
 );
 

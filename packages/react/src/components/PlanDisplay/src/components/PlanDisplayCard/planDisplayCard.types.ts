@@ -1,3 +1,6 @@
 import { PropsWithChildren } from "react";
 
-export type PlanDisplayCardProps = PropsWithChildren;
+type CardProps = {
+  highlighted?: boolean;
+};
+export type PlanDisplayCardProps = PropsWithChildren<CardProps>;
