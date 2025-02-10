@@ -8,12 +8,13 @@ const PlanDisplayBullet: React.FC<PlanDisplayBulletProps> = ({
   children,
 }) => (
   <Box display="flex" gap="2">
-    <Text
-      color={disabled ? "neutral-textDisabled" : "success-textLow"}
-      fontWeight="regular"
-    >
-      {icon}
-    </Text>
+    <Box display="flex" alignItems="center">
+      <Text color={disabled ? "neutral-textDisabled" : "success-textLow"}>
+        <Box display="flex" alignItems="center">
+          {icon}
+        </Box>
+      </Text>
+    </Box>
     <Text
       fontWeight="medium"
       color={disabled ? "neutral-textDisabled" : "neutral-textHigh"}
