@@ -1,23 +1,24 @@
 import React from "react";
-import { Box, Card } from "@nimbus-ds/components";
+import { Box, BoxProps, Card } from "@nimbus-ds/components";
 import { PlanDisplayCardProps } from "./planDisplayCard.types";
 
 const PlanDisplayCard: React.FC<PlanDisplayCardProps> = ({
   highlighted,
   children,
-}) => (
-  <Box
-    width="100%"
-    borderColor={highlighted ? "primary-interactive" : "transparent"}
-    borderStyle="solid"
-    borderWidth="2"
-    borderRadius="2"
-    boxShadow={highlighted ? "3" : "0"}
-  >
-    <Card>
-      <Card.Body>{children}</Card.Body>
-    </Card>
-  </Box>
-);
+}) => {
+  const highlightedProps: BoxProps = {
+    borderColor: "primary-interactive",
+    borderRadius: "2",
+    borderStyle: "solid",
+    borderWidth: "3",
+    boxShadow: "3",
+  };
+
+  return (
+    <Box width="100%" {...(highlighted ? highlightedProps : {})}>
+      <Card>{children}</Card>
+    </Box>
+  );
+};
 
 export { PlanDisplayCard };

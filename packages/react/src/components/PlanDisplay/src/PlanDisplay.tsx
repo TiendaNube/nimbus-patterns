@@ -19,7 +19,7 @@ const PlanDisplay: React.FC<PlanDisplayProps> & PlanDisplayComponents = ({
 }: PlanDisplayProps) => (
   <Box
     display="flex"
-    gap="4"
+    gap="6"
     justifyContent="center"
     alignItems="flex-start"
     px="20"
