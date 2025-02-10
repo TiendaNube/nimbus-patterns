@@ -40,19 +40,13 @@ export const twoPlans: Story = {
           </Text>
         </PlanDisplay.Header>
         <PlanDisplay.Content>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Descuentos personalizados
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Registro de clientes
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Búsqueda de clientes
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
@@ -104,19 +98,13 @@ export const twoPlans: Story = {
           </Text>
         </PlanDisplay.Header>
         <PlanDisplay.Content>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Descuentos personalizados
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Registro de clientes
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Búsqueda de clientes
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
@@ -195,19 +183,13 @@ export const threePlans: Story = {
           </Text>
         </PlanDisplay.Header>
         <PlanDisplay.Content>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Descuentos personalizados
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Registro de clientes
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Búsqueda de clientes
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
@@ -259,19 +241,13 @@ export const threePlans: Story = {
           </Text>
         </PlanDisplay.Header>
         <PlanDisplay.Content>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Descuentos personalizados
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Registro de clientes
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Búsqueda de clientes
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
@@ -323,19 +299,13 @@ export const threePlans: Story = {
           </Text>
         </PlanDisplay.Header>
         <PlanDisplay.Content>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Descuentos personalizados
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Registro de clientes
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet
-            icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
-          >
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
             Búsqueda de clientes
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
