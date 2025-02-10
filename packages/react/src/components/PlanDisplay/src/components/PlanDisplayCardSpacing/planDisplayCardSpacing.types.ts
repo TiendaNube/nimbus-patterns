@@ -1,3 +1,6 @@
-import { PropsWithChildren } from "react";
+import { BoxProps } from "@nimbus-ds/components";
 
-export type PlanDisplayCardSpacingProps = PropsWithChildren;
+export type PlanDisplayCardSpacingProps = Omit<
+  BoxProps,
+  "children" | "borderTopWidth" | "borderColor" | "borderStyle" | "my"
+>;
