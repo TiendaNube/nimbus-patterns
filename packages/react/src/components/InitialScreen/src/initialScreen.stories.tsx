@@ -11,7 +11,6 @@ import {
 
 import { CalloutCard } from "@nimbus-ds/callout-card";
 import { InitialScreen } from "./InitialScreen";
-import { InitialScreenBullet } from "./components/InitialScreenBullet";
 
 const meta: Meta<typeof InitialScreen> = {
   title: "Patterns/InitialScreen",
@@ -94,19 +93,19 @@ export const bullets: Story = {
         subtitle={"META".toUpperCase()}
         title="¡Vendé más con Instagram y Facebook!"
         bullets={[
-          <InitialScreenBullet
+          <InitialScreen.Bullet
             icon={<FireIcon />}
             text="Integración gratis y rápida"
           />,
-          <InitialScreenBullet
+          <InitialScreen.Bullet
             icon={<BagIcon />}
             text="Sincronización de catálogo en tiempo real"
           />,
-          <InitialScreenBullet
+          <InitialScreen.Bullet
             icon={<TagIcon />}
             text="Creación y seguimiento de campañas"
           />,
-          <InitialScreenBullet
+          <InitialScreen.Bullet
             icon={<TiendanubeIcon />}
             text="Medición de conversiones con API y píxel de Meta"
           />,
