@@ -20,6 +20,7 @@ export interface PlanDisplayComponents {
 }
 
 export interface PlanDisplayProperties {
+  minPlanWidth?: string;
   /**
    * Content of the PlanDisplay
    * @TJS-type React.ReactNode

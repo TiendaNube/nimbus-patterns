@@ -15,7 +15,7 @@ const PlanDisplayCard: React.FC<PlanDisplayCardProps> = ({
   };
 
   return (
-    <Box width="100%" {...(highlighted ? highlightedProps : {})}>
+    <Box {...(highlighted ? highlightedProps : {})}>
       <Card>{children}</Card>
     </Box>
   );

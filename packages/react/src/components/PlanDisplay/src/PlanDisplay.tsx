@@ -14,15 +14,17 @@ import {
 } from "./components";
 
 const PlanDisplay: React.FC<PlanDisplayProps> & PlanDisplayComponents = ({
+  minPlanWidth = "225px",
   children,
   ...rest
 }: PlanDisplayProps) => (
   <Box
-    display="flex"
+    display="grid"
+    gridTemplateColumns={`repeat(auto-fit, minmax(${minPlanWidth}, 1fr))`}
     gap="6"
     justifyContent="center"
     alignItems="flex-start"
-    px="20"
+    mx="18"
     {...rest}
   >
     {children}
