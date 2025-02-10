@@ -1,17 +1,9 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import {
-  Box,
-  Button,
-  Link,
-  Text,
-  Thumbnail,
-  Title,
-} from "@nimbus-ds/components";
+import { Box, Button, Text, Thumbnail, Title } from "@nimbus-ds/components";
 import {
   BagIcon,
   BoxPackedIcon,
-  BoxUnpackedIcon,
   CheckIcon,
   CloseIcon,
   FireIcon,
@@ -19,14 +11,11 @@ import {
   TiendanubeIcon,
 } from "@nimbus-ds/icons";
 
-import { CalloutCard } from "@nimbus-ds/callout-card";
 import { PlanDisplay } from "@nimbus-ds/plan-display";
-import { InitialScreen } from "./InitialScreen";
-import { InitialScreenBullet } from "./components/InitialScreenBullet";
+import { InitialScreen } from "@nimbus-ds/initial-screen";
 
-const meta: Meta<typeof InitialScreen> = {
-  title: "Patterns/InitialScreen",
-  component: InitialScreen,
+const meta: Meta = {
+  title: "Templates/LandingScreen",
   argTypes: {
     children: { control: { disable: true } },
   },
@@ -34,90 +23,28 @@ const meta: Meta<typeof InitialScreen> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof InitialScreen>;
+type Story = StoryObj;
 
-export const basic: Story = {
-  render: () => (
-    <InitialScreen>
-      <InitialScreen.Hero
-        subtitle={"Impulsá tus ventas con".toUpperCase()}
-        title="Marketing Automation"
-        description="Aumentá las visitas a tu sitio, captá nuevos suscriptores, optimizá las conversiones, recuperá y fidelizá clientes implementando email marketing y automation."
-        actions={
-          <>
-            <Button appearance="primary">Comenzar ahora</Button>
-            <Button appearance="neutral">Saber más</Button>
-          </>
-        }
-        image={{
-          alt: "hero image",
-          src: "./static/mockup-perfit.jpg",
-        }}
-      />
-    </InitialScreen>
-  ),
-};
-
-export const appModule: Story = {
-  render: () => (
-    <InitialScreen>
-      <InitialScreen.Hero
-        subtitle={"Impulsá tus ventas con".toUpperCase()}
-        title="Marketing Automation"
-        description="Aumentá las visitas a tu sitio, captá nuevos suscriptores, optimizá las conversiones, recuperá y fidelizá clientes implementando email marketing y automation."
-        actions={
-          <>
-            <Button appearance="primary">Comenzar ahora</Button>
-            <Button appearance="neutral">Saber más</Button>
-          </>
-        }
-        image={{
-          alt: "hero image",
-          src: "./static/mockup-perfit.jpg",
-        }}
-      >
-        <InitialScreen.Module
-          title="¿Querés crear promociones?"
-          description="Instale aplicativos para fazer dropshipping e venda productos sem a necessidade de manter estoque."
-        >
-          <CalloutCard
-            appearance="primary"
-            title="Ali Express"
-            subtitle="This component is used to provide the user with useful information, tips, tutorials or shortcuts to other parts of the product."
-            link={
-              <Box display="flex" gap="3">
-                <Link appearance="primary">Instalar</Link>
-                <Link appearance="primary">Más apps de Ali express</Link>
-              </Box>
-            }
-            icon={BoxUnpackedIcon}
-          />
-        </InitialScreen.Module>
-      </InitialScreen.Hero>
-    </InitialScreen>
-  ),
-};
-
-export const bullets: Story = {
-  render: () => (
+export const base: Story = {
+  render: (args) => (
     <InitialScreen>
       <InitialScreen.Hero
         subtitle={"META".toUpperCase()}
         title="¡Vendé más con Instagram y Facebook!"
         bullets={[
-          <InitialScreenBullet
+          <InitialScreen.Bullet
             icon={<FireIcon />}
             text="Integración gratis y rápida"
           />,
-          <InitialScreenBullet
+          <InitialScreen.Bullet
             icon={<BagIcon />}
             text="Sincronización de catálogo en tiempo real"
           />,
-          <InitialScreenBullet
+          <InitialScreen.Bullet
             icon={<TagIcon />}
             text="Creación y seguimiento de campañas"
           />,
-          <InitialScreenBullet
+          <InitialScreen.Bullet
             icon={<TiendanubeIcon />}
             text="Medición de conversiones con API y píxel de Meta"
           />,
@@ -410,4 +337,5 @@ export const bullets: Story = {
       </InitialScreen.Section>
     </InitialScreen>
   ),
+  args: {},
 };
