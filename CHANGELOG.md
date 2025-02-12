@@ -3,6 +3,10 @@
 This is the log of notable changes to the Nimbus Patterns that are developer-facing.
 Package-specific changes not released in any package will be added here just before the release. Until then, you can find them in changelogs of the individual packages (see [packages](./packages) directory).
 
+## 2025-02-12
+
+- Added `@nimbus-ds/initial-screen` new pattern. ([#97](https://github.com/TiendaNube/nimbus-patterns/pull/97) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2023-12-22
 
 ### 🎉 New features
