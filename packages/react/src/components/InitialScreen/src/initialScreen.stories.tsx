@@ -37,10 +37,13 @@ export const basic: Story = {
             <Button appearance="neutral">Saber más</Button>
           </>
         }
-        image={{
-          alt: "hero image",
-          src: "./static/mockup-perfit.jpg",
-        }}
+        image={
+          <img
+            src="./static/mockup-perfit.jpg"
+            alt="./static/mockup-perfit.jpg"
+            width="100%"
+          />
+        }
       />
     </InitialScreen>
   ),
@@ -59,10 +62,13 @@ export const appModule: Story = {
             <Button appearance="neutral">Saber más</Button>
           </>
         }
-        image={{
-          alt: "hero image",
-          src: "./static/mockup-perfit.jpg",
-        }}
+        image={
+          <img
+            src="./static/mockup-perfit.jpg"
+            alt="./static/mockup-perfit.jpg"
+            width="100%"
+          />
+        }
       >
         <InitialScreen.Module
           title="¿Querés crear promociones?"
@@ -111,10 +117,13 @@ export const bullets: Story = {
           />,
         ]}
         actions={<Button appearance="primary">Conectar cuenta</Button>}
-        image={{
-          alt: "hero image",
-          src: "./static/3_320x320.jpg",
-        }}
+        image={
+          <img
+            src="./static/3_320x320.jpg"
+            alt="./static/3_320x320.jpg"
+            width="100%"
+          />
+        }
       />
     </InitialScreen>
   ),

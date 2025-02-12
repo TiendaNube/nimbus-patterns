@@ -4,17 +4,13 @@ import InitialScreenBullet, {
   InitialScreenBulletProps,
 } from "../InitialScreenBullet";
 
-type HeroImage = {
-  alt: string;
-  src: string;
-};
-
 type BaseHeroProps = {
   title?: string;
   subtitle?: string;
   actions?: ReactNode;
-  image: HeroImage;
-  description?: string;
+  image: ReactNode;
+  // Description can have complex content to accept bold, italic, translations and other text styles embedded
+  description?: ReactNode;
   bullets?: ReactElement<
     InitialScreenBulletProps,
     typeof InitialScreenBullet

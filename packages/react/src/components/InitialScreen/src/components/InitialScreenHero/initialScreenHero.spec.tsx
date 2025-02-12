@@ -17,10 +17,9 @@ describe("GIVEN <InitialScreenHero />", () => {
   describe("WHEN rendered", () => {
     it("SHOULD render children correctly", () => {
       makeSut({
-        image: {
-          alt: "./static/feature_img.png",
-          src: "./static/feature_img.png",
-        },
+        image: (
+          <img alt="./static/feature_img.png" src="./static/feature_img.png" />
+        ),
       });
 
       expect(screen.getByText(bodyChildren)).toBeDefined();
@@ -32,10 +31,9 @@ describe("GIVEN <InitialScreenHero />", () => {
       const description = "description";
 
       makeSut({
-        image: {
-          alt: "./static/feature_img.png",
-          src: "./static/feature_img.png",
-        },
+        image: (
+          <img alt="./static/feature_img.png" src="./static/feature_img.png" />
+        ),
         title,
         subtitle,
         description,
@@ -51,10 +49,9 @@ describe("GIVEN <InitialScreenHero />", () => {
 
     it("SHOULD render the bullets correctly", () => {
       makeSut({
-        image: {
-          alt: "./static/feature_img.png",
-          src: "./static/feature_img.png",
-        },
+        image: (
+          <img alt="./static/feature_img.png" src="./static/feature_img.png" />
+        ),
         bullets: [
           <InitialScreenBullet icon={<BagIcon />} text="bullet 1" />,
           <InitialScreenBullet icon={<BagIcon />} text="bullet 2" />,
@@ -69,10 +66,9 @@ describe("GIVEN <InitialScreenHero />", () => {
 
     it("SHOULD render the actions correctly", () => {
       makeSut({
-        image: {
-          alt: "./static/feature_img.png",
-          src: "./static/feature_img.png",
-        },
+        image: (
+          <img alt="./static/feature_img.png" src="./static/feature_img.png" />
+        ),
         actions: (
           <>
             <Button>Action 1</Button>
