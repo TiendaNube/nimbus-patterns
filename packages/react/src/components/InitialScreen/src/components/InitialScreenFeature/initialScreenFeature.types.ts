@@ -1,5 +1,4 @@
 import { BoxProps } from "@nimbus-ds/components";
-import { LayoutProps } from "@nimbus-ds/layout";
 import { PropsWithChildren, ReactNode } from "react";
 
 export type InitialScreenFeatureItemProps = PropsWithChildren<{
@@ -7,12 +6,10 @@ export type InitialScreenFeatureItemProps = PropsWithChildren<{
   description: string;
 }>;
 
-type FeatureProps = {
+export type InitialScreenFeatureProps = {
   content: ReactNode;
   image: ReactNode;
 };
-export type InitialScreenFeatureProps = FeatureProps &
-  Omit<LayoutProps, "columns" | "gap" | "justifyContent" | "children">;
 
 export type InitialScreenFeatureItemSpacingProps = Omit<
   BoxProps,
