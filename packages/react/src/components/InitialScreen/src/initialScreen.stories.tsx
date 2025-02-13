@@ -119,8 +119,8 @@ export const bullets: Story = {
         actions={<Button appearance="primary">Conectar cuenta</Button>}
         image={
           <img
-            src="./static/3_320x320.jpg"
-            alt="./static/3_320x320.jpg"
+            src="./static/product.jpg"
+            alt="./static/product.jpg"
             width="100%"
           />
         }

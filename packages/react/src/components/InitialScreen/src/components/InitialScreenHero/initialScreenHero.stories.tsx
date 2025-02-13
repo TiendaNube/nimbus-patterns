@@ -68,7 +68,7 @@ export const withModule: Story = {
     subtitle: "Hero subtitle",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel tincidunt nunc, in porttitor erat. Sed tristique mauris porttitor, lobortis nibh nec, vulputate tellus. Donec lacinia massa vitae lectus congue venenatis. Nulla facilisi. Maecenas fermentum pretium diam id aliquet.",
-    image: <img src="./static/3_320x320.jpg" alt="./static/3_320x320.jpg" />,
+    image: <img src="./static/product.jpg" alt="./static/product.jpg" />,
     children: [
       <InitialScreen.Module
         title="Module title"
