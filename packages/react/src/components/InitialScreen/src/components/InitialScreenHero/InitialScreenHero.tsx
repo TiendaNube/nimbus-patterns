@@ -21,7 +21,6 @@ const InitialScreenHero: React.FC<InitialScreenHeroProps> = ({
       md: "center",
     }}
     mx="auto"
-    height="100%"
     {...rest}
   >
     <Box
