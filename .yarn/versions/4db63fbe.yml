@@ -1,3 +1,5 @@
+releases:
+  "@nimbus-ds/plan-display": major
+
 declined:
   - nimbus-patterns
-  - "@nimbus-ds/plan-display"
