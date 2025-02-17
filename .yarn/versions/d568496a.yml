@@ -1,6 +1,6 @@
 releases:
   "@nimbus-ds/initial-screen": major
+  "@nimbus-ds/patterns": minor
 
-declined:
+undecided:
   - nimbus-patterns
-  - "@nimbus-ds/patterns"
