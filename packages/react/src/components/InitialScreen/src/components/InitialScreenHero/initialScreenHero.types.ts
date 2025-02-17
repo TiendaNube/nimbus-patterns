@@ -18,4 +18,4 @@ type BaseHeroProps = {
 };
 
 export type InitialScreenHeroProps = PropsWithChildren<BaseHeroProps> &
-  Omit<BoxProps, "alignItems" | "mx" | "height">;
+  Omit<BoxProps, "alignItems" | "mx">;

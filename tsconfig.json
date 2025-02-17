@@ -70,7 +70,10 @@
         "./packages/react/src/components/ThumbnailWithAction/src"
       ],
       "@nimbus-ds/calendar": ["./packages/react/src/components/Calendar/src"],
-      "@nimbus-ds/empty-app": ["./packages/react/src/components/EmptyApp/src"]
+      "@nimbus-ds/empty-app": ["./packages/react/src/components/EmptyApp/src"],
+      "@nimbus-ds/initial-screen": [
+        "./packages/react/src/components/InitialScreen/src"
+      ]
     }
   }
 }
