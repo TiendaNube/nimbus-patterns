@@ -12,8 +12,9 @@ const InitialScreenCard: React.FC<InitialScreenCardProps> = ({
   icon,
   title,
   description,
+  ...rest
 }) => (
-  <Box p="4" borderRadius="2" boxShadow="2">
+  <Box p="4" borderRadius="2" boxShadow="2" flexGrow="1" width="100%" {...rest}>
     <Box
       backgroundColor="primary-surface"
       borderRadius="5"
