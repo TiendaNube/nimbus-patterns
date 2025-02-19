@@ -15,11 +15,15 @@ const InitialScreenFeatureItem: React.FC<InitialScreenFeatureItemProps> = ({
   description,
   children,
 }) => (
-  <Box display="flex" flexDirection="column" p="4" gap="1">
-    <Title as="h4">{title}</Title>
-    {description && <Text>{description}</Text>}
+  <Box py="4">
+    <Box px="4" display="flex" flexDirection="column" gap="1">
+      <Box paddingLeft="1">
+        <Title as="h4">{title}</Title>
+      </Box>
+      {description && <Text>{description}</Text>}
+    </Box>
 
-    {children && <Box paddingTop="3">{children}</Box>}
+    {children && <Box paddingTop="4">{children}</Box>}
   </Box>
 );
 
