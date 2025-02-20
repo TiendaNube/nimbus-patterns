@@ -73,6 +73,9 @@
       "@nimbus-ds/empty-app": ["./packages/react/src/components/EmptyApp/src"],
       "@nimbus-ds/initial-screen": [
         "./packages/react/src/components/InitialScreen/src"
+      ],
+      "@nimbus-ds/plan-display": [
+        "./packages/react/src/components/PlanDisplay/src"
       ]
     }
   }

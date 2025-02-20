@@ -4993,6 +4993,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@nimbus-ds/plan-display@workspace:packages/react/src/components/PlanDisplay":
+  version: 0.0.0-use.local
+  resolution: "@nimbus-ds/plan-display@workspace:packages/react/src/components/PlanDisplay"
+  dependencies:
+    "@nimbus-ds/layout": "workspace:^"
+    "@nimbus-ds/styles": ^9.11.0
+    "@nimbus-ds/tokens": ^9.1.0
+  peerDependencies:
+    "@nimbus-ds/components": ^5
+    "@nimbus-ds/icons": ^1
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  languageName: unknown
+  linkType: soft
+
 "@nimbus-ds/productupdates@workspace:packages/react/src/components/ProductUpdates":
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/productupdates@workspace:packages/react/src/components/ProductUpdates"
