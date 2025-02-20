@@ -2,6 +2,10 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2024-02-17 `1.9.0`
+
+- Added new `PlanDisplay` component. ([#98](https://github.com/TiendaNube/nimbus-patterns/pull/98) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2024-03-06 `1.8.0`
 
 ### 🎉 New features
