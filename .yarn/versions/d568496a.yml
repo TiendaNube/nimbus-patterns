@@ -1,7 +1,0 @@
-releases:
-  "@nimbus-ds/initial-screen": major
-  "@nimbus-ds/plan-display": patch
-  "@nimbus-ds/patterns": minor
-
-declined:
-  - nimbus-patterns
