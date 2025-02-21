@@ -5,6 +5,7 @@ import { PlanDisplayCardProps } from "./planDisplayCard.types";
 const PlanDisplayCard: React.FC<PlanDisplayCardProps> = ({
   highlighted,
   children,
+  ...rest
 }) => {
   const highlightedProps: BoxProps = {
     borderColor: "primary-interactive",
@@ -15,7 +16,7 @@ const PlanDisplayCard: React.FC<PlanDisplayCardProps> = ({
   };
 
   return (
-    <Box {...(highlighted ? highlightedProps : {})}>
+    <Box {...(highlighted ? highlightedProps : {})} {...rest}>
       <Card>{children}</Card>
     </Box>
   );
