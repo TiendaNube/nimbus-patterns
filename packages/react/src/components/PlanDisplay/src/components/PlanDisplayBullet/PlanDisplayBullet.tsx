@@ -9,7 +9,10 @@ const PlanDisplayBullet: React.FC<PlanDisplayBulletProps> = ({
 }) => (
   <Box display="flex" gap="2">
     <Box display="flex" alignItems="center">
-      <Text color={disabled ? "neutral-interactive" : "success-interactive"}>
+      <Text
+        as="span"
+        color={disabled ? "neutral-interactive" : "success-interactive"}
+      >
         <Box display="flex" alignItems="center">
           {icon}
         </Box>
