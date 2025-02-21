@@ -42,6 +42,8 @@ const config: Config.InitialOptions = {
       "<rootDir>/packages/react/src/components/Calendar/src",
     "@nimbus-ds/empty-app":
       "<rootDir>/packages/react/src/components/EmptyApp/src",
+    "@nimbus-ds/iniital-screen":
+      "<rootDir>/packages/react/src/components/InitialScreen/src",
     "@nimbus-ds/plan-display":
       "<rootDir>/packages/react/src/components/PlanDisplay/src",
   },
