@@ -1,6 +1,0 @@
-releases:
-  "@nimbus-ds/patterns": patch
-  "@nimbus-ds/plan-display": patch
-
-declined:
-  - nimbus-patterns
