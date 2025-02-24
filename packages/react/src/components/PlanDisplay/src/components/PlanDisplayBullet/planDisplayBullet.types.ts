@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactNode } from "react";
 
-type BulletProps = {
+type PlanDisplayBullet = {
   icon: ReactNode;
   disabled?: boolean;
 };
-export type PlanDisplayBulletProps = PropsWithChildren<BulletProps>;
+export type PlanDisplayBulletProps = PropsWithChildren<PlanDisplayBullet>;

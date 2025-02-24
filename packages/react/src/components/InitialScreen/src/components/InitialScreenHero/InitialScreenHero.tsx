@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, Thumbnail, Title } from "@nimbus-ds/components";
+import { Box, Text, Title } from "@nimbus-ds/components";
 import { InitialScreenHeroProps } from "./initialScreenHero.types";
 
 /**
@@ -21,7 +21,6 @@ const InitialScreenHero: React.FC<InitialScreenHeroProps> = ({
       md: "center",
     }}
     mx="auto"
-    height="100%"
     {...rest}
   >
     <Box
@@ -42,7 +41,7 @@ const InitialScreenHero: React.FC<InitialScreenHeroProps> = ({
           minWidth={{ md: "280px", xl: "320px" }}
           minHeight={{ md: "280px", xl: "320px" }}
         >
-          <Thumbnail alt={image.alt ?? ""} src={image.src} aspectRatio="1/1" />
+          {image}
         </Box>
       </Box>
 

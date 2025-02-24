@@ -14,13 +14,22 @@ const meta: Meta<typeof InitialScreen.Hero> = {
   argTypes: {
     actions: { control: { type: "text" } },
     bullets: { control: { type: "text" } },
+    description: { control: { type: "text" } },
     children: { control: false },
+    image: { control: false },
     as: { control: false },
   },
   tags: ["autodocs"],
-  render: ({ actions, bullets, ...args }) => (
+  render: ({ actions, bullets, image, ...args }) => (
     <InitialScreenHero
       {...args}
+      image={
+        <img
+          src="./static/mockup-perfit.jpg"
+          alt="./static/mockup-perfit.jpg"
+          width="100%"
+        />
+      }
       actions={
         actions && (
           <Box>
@@ -50,7 +59,6 @@ export const basic: Story = {
     subtitle: "Hero subtitle",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel tincidunt nunc, in porttitor erat. Sed tristique mauris porttitor, lobortis nibh nec, vulputate tellus. Donec lacinia massa vitae lectus congue venenatis. Nulla facilisi. Maecenas fermentum pretium diam id aliquet.",
-    image: { src: "/static/3.jpg", alt: "/static/3.jpg" },
   },
 };
 
@@ -60,7 +68,7 @@ export const withModule: Story = {
     subtitle: "Hero subtitle",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel tincidunt nunc, in porttitor erat. Sed tristique mauris porttitor, lobortis nibh nec, vulputate tellus. Donec lacinia massa vitae lectus congue venenatis. Nulla facilisi. Maecenas fermentum pretium diam id aliquet.",
-    image: { src: "/static/3.jpg", alt: "/static/3.jpg" },
+    image: <img src="./static/product.jpg" alt="./static/product.jpg" />,
     children: [
       <InitialScreen.Module
         title="Module title"

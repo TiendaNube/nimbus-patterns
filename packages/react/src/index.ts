@@ -18,3 +18,5 @@ export * from "@nimbus-ds/sidemodal";
 export * from "@nimbus-ds/thumbnail-with-action";
 export * from "@nimbus-ds/calendar";
 export * from "@nimbus-ds/empty-app";
+export * from "@nimbus-ds/initial-screen";
+export * from "@nimbus-ds/plan-display";
