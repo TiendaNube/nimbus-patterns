@@ -54,7 +54,14 @@ export const base: Story = {
           />,
         ]}
         actions={<Button appearance="primary">Conectar cuenta</Button>}
-        image={<img src="./static/3_320x320.jpg" alt="hero image" />}
+        image={
+          <img
+            src="./static/product.jpg"
+            alt="hero image"
+            width="100%"
+            height="auto"
+          />
+        }
       />
       <InitialScreen.Section title="Beneficios">
         <InitialScreen.CardLayout>
