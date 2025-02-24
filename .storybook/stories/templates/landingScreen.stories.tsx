@@ -25,9 +25,13 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
+/**
+ * The LandingScreen template is used to introduce users to an application or service, offering options to access more information or proceed further.
+ * It is composed of several sections, each with a different purpose, such as presenting the main features, benefits, and plans. It is a flexible template that can be customized to fit the needs of the application or service, combined with two main pattern components: InitialScreen and PlanDisplay.
+ */
 export const base: Story = {
-  render: (args) => (
-    <InitialScreen>
+  render: () => (
+    <InitialScreen mx="auto">
       <InitialScreen.Hero
         subtitle={"META".toUpperCase()}
         title="¡Vendé más con Instagram y Facebook!"
@@ -50,10 +54,7 @@ export const base: Story = {
           />,
         ]}
         actions={<Button appearance="primary">Conectar cuenta</Button>}
-        image={{
-          alt: "hero image",
-          src: "./static/3_320x320.jpg",
-        }}
+        image={<img src="./static/3_320x320.jpg" alt="hero image" />}
       />
       <InitialScreen.Section title="Beneficios">
         <InitialScreen.CardLayout>
@@ -111,16 +112,24 @@ export const base: Story = {
             </>
           }
           image={
-            <Thumbnail
-              alt="./static/feature_img.png"
-              src="./static/feature_img.png"
-              aspectRatio="4/3"
-            />
+            <Box
+              maxWidth="500px"
+              borderRadius="5"
+              borderColor="primary-interactive"
+              borderWidth="4"
+              borderStyle="solid"
+            >
+              <img
+                src="./static/nuvem-chat.png"
+                alt="NuvemChatView"
+                width="100%"
+              />
+            </Box>
           }
         />
       </InitialScreen.Section>
       <InitialScreen.Section title="Planes">
-        <PlanDisplay>
+        <PlanDisplay mx="4">
           <PlanDisplay.Card>
             <PlanDisplay.Header
               subtitle="Punto de venta"
