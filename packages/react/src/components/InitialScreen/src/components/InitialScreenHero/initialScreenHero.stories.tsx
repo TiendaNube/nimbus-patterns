@@ -38,13 +38,13 @@ const meta: Meta<typeof InitialScreen.Hero> = {
         )
       }
       bullets={
-        bullets && [
+        bullets && (
           <InitialScreenBullet
             // We are sure that we're getting strings here as we set the control type to text
             text={bullets as unknown as string}
             icon={<TiendanubeIcon />}
-          />,
-        ]
+          />
+        )
       }
     />
   ),
