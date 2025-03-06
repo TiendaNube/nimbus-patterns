@@ -1,14 +1,16 @@
 import { BoxProps } from "@nimbus-ds/components";
 import { PropsWithChildren, ReactNode } from "react";
 
-type CardProps = {
+export type InitialScreenCardProperties = {
   icon: ReactNode;
   title: string;
   description: string;
 };
 
-export type InitialScreenCardProps = CardProps &
+export type InitialScreenCardProps = InitialScreenCardProperties &
   Omit<BoxProps, "p" | "borderRadius" | "boxShadow">;
 
-export type InitialScreenCardLayoutProps = PropsWithChildren &
+export type InitialScreenCardLayoutProperties = PropsWithChildren;
+
+export type InitialScreenCardLayoutProps = InitialScreenCardLayoutProperties &
   Omit<BoxProps, "display" | "flexDirection" | "gap">;

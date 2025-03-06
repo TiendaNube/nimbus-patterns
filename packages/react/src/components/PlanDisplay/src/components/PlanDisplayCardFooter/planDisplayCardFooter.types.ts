@@ -1,3 +1,3 @@
 import { PropsWithChildren } from "react";
 
-export type PlanDisplayCardFooterProps = PropsWithChildren;
+export type PlanDisplayCardFooterProperties = PropsWithChildren;

@@ -1,7 +1,8 @@
 import { PropsWithChildren, ReactNode } from "react";
 
-type CardHeaderProps = {
+export type PlanDisplayCardHeaderProperties = {
   subtitle: string;
   title: ReactNode;
 };
-export type PlanDisplayCardHeaderProps = PropsWithChildren<CardHeaderProps>;
+export type PlanDisplayCardHeaderProps =
+  PropsWithChildren<PlanDisplayCardHeaderProperties>;

@@ -3,7 +3,7 @@
   "name": "FormField",
   "totalProps": 6,
   "packageName": "@nimbus-ds/formfield",
-  "version": "1.6.1",
+  "version": "1.6.4",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/form-field",
   "props": [
     {
@@ -27,12 +27,7 @@
     {
       "description": "Appearance of the field and help text elements.",
       "default": "none",
-      "enum": [
-        "danger",
-        "none",
-        "success",
-        "warning"
-      ],
+      "enum": ["danger", "none", "success", "warning"],
       "type": "string",
       "title": "appearance",
       "required": false
@@ -59,12 +54,7 @@
         {
           "description": "Appearance of the field and help text elements.",
           "default": "none",
-          "enum": [
-            "danger",
-            "none",
-            "success",
-            "warning"
-          ],
+          "enum": ["danger", "none", "success", "warning"],
           "type": "string",
           "title": "appearance",
           "required": false
@@ -121,12 +111,7 @@
         {
           "description": "Appearance of the field and help text elements.",
           "default": "none",
-          "enum": [
-            "danger",
-            "none",
-            "success",
-            "warning"
-          ],
+          "enum": ["danger", "none", "success", "warning"],
           "type": "string",
           "title": "appearance",
           "required": false
@@ -178,12 +163,7 @@
         {
           "description": "Appearance of the field and help text elements.",
           "default": "none",
-          "enum": [
-            "danger",
-            "none",
-            "success",
-            "warning"
-          ],
+          "enum": ["danger", "none", "success", "warning"],
           "type": "string",
           "title": "appearance",
           "required": false
@@ -234,10 +214,7 @@
         {
           "description": "Sent icon display position",
           "default": "start",
-          "enum": [
-            "end",
-            "start"
-          ],
+          "enum": ["end", "start"],
           "type": "string",
           "title": "appendPosition",
           "required": false

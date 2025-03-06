@@ -1,7 +1,7 @@
 import { ReactNode, PropsWithChildren } from "react";
 import { BoxProps } from "@nimbus-ds/components";
 
-type BaseHeroProps = {
+export type InitialScreenHeroProperties = {
   title?: string;
   subtitle?: string;
   actions?: ReactNode;
@@ -11,5 +11,6 @@ type BaseHeroProps = {
   bullets?: ReactNode;
 };
 
-export type InitialScreenHeroProps = PropsWithChildren<BaseHeroProps> &
-  Omit<BoxProps, "alignItems" | "mx">;
+export type InitialScreenHeroProps =
+  PropsWithChildren<InitialScreenHeroProperties> &
+    Omit<BoxProps, "alignItems" | "mx">;

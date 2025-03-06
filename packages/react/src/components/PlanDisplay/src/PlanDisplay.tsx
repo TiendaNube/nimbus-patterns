@@ -39,10 +39,10 @@ PlanDisplay.Bullet = PlanDisplayBullet;
 PlanDisplay.Footer = PlanDisplayCardFooter;
 
 PlanDisplay.displayName = "PlanDisplay";
-PlanDisplay.Card.displayName = "PlanDisplay.PlanDisplayCard";
-PlanDisplay.Bullet.displayName = "PlanDisplay.PlanDisplayBullet";
-PlanDisplay.Header.displayName = "PlanDisplay.PlanDisplayCardHeader";
-PlanDisplay.Content.displayName = "PlanDisplay.PlanDisplayCardContent";
-PlanDisplay.Spacing.displayName = "PlanDisplay.PlanDisplayCardSpacing";
+PlanDisplay.Card.displayName = "PlanDisplay.Card";
+PlanDisplay.Bullet.displayName = "PlanDisplay.Bullet";
+PlanDisplay.Header.displayName = "PlanDisplay.CardHeader";
+PlanDisplay.Content.displayName = "PlanDisplay.CardContent";
+PlanDisplay.Spacing.displayName = "PlanDisplay.CardSpacing";
 
 export { PlanDisplay };

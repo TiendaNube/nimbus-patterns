@@ -1,0 +1,82 @@
+{
+  "id": "planDisplay",
+  "name": "PlanDisplay",
+  "totalProps": 2,
+  "packageName": "@nimbus-ds/plan-display",
+  "version": "1.0.2",
+  "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/plan-display",
+  "props": [
+    {
+      "type": "string",
+      "title": "minPlanWidth",
+      "required": false
+    },
+    {
+      "description": "Content of the PlanDisplay",
+      "type": "React.ReactNode",
+      "title": "children",
+      "required": true
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "PlanDisplay.Card",
+      "totalProps": 1,
+      "props": [
+        {
+          "type": "boolean",
+          "title": "highlighted",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "PlanDisplay.Bullet",
+      "totalProps": 2,
+      "props": [
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "icon",
+          "required": false
+        },
+        {
+          "type": "boolean",
+          "title": "disabled",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "PlanDisplay.CardHeader",
+      "totalProps": 2,
+      "props": [
+        {
+          "type": "string",
+          "title": "subtitle",
+          "required": true
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "title",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "PlanDisplay.CardContent",
+      "totalProps": 1,
+      "props": [
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "PlanDisplay.CardSpacing",
+      "totalProps": 0,
+      "props": []
+    }
+  ]
+}

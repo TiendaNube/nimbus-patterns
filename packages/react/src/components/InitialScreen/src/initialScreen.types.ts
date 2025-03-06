@@ -53,7 +53,7 @@ export interface InitialScreenComponents {
   Section: typeof InitialScreenSection;
 }
 
-export interface InitialScreenBaseProps {
+export interface InitialScreenProperties {
   /**
    * Content of the InitialScreen component.
    * @TJS-type React.ReactNode
@@ -61,7 +61,7 @@ export interface InitialScreenBaseProps {
   children: React.ReactNode;
 }
 
-export type InitialScreenProps = InitialScreenBaseProps &
+export type InitialScreenProps = InitialScreenProperties &
   Omit<
     BoxProps,
     | "width"

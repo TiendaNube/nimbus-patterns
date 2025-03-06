@@ -2,11 +2,11 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 
 import { PlanDisplayCardFooter } from "./PlanDisplayCardFooter";
-import { PlanDisplayCardFooterProps } from "./planDisplayCardFooter.types";
+import { PlanDisplayCardFooterProperties } from "./planDisplayCardFooter.types";
 
 const bodyChildren = <div>Body content</div>;
 
-const makeSut = (rest: Omit<PlanDisplayCardFooterProps, "children">) => {
+const makeSut = (rest: Omit<PlanDisplayCardFooterProperties, "children">) => {
   render(
     <PlanDisplayCardFooter {...rest}>{bodyChildren}</PlanDisplayCardFooter>
   );

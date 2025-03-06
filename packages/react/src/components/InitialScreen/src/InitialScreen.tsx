@@ -37,7 +37,7 @@ InitialScreen.Module = Components.InitialScreenModule;
 InitialScreen.Section = Components.InitialScreenSection;
 
 InitialScreen.displayName = "InitialScreen";
-InitialScreen.Bullet.displayName = "InitialScreen.InitialScreenBullet";
+InitialScreen.Bullet.displayName = "InitialScreen.Bullet";
 InitialScreen.Card.displayName = "InitialScreen.Card";
 InitialScreen.CardLayout.displayName = "InitialScreen.CardLayout";
 InitialScreen.Feature.displayName = "InitialScreen.Feature";
