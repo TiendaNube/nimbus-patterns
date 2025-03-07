@@ -2,11 +2,11 @@ import React from "react";
 
 import { Box, Thumbnail } from "@nimbus-ds/components";
 
-import { EmptyAppContentImageElementProps } from "./emptyAppContentImageElement.types";
+import { EmptyAppContentImageElementProperties } from "./emptyAppContentImageElement.types";
 
 const EmptyAppContentImageElement: React.FC<
-  EmptyAppContentImageElementProps
-> = ({ ...rest }: EmptyAppContentImageElementProps) => (
+  EmptyAppContentImageElementProperties
+> = ({ ...rest }: EmptyAppContentImageElementProperties) => (
   <Box
     display="flex"
     alignItems="center"

@@ -3,7 +3,7 @@
   "name": "SideModal",
   "totalProps": 15,
   "packageName": "@nimbus-ds/sidemodal",
-  "version": "1.7.3",
+  "version": "1.7.5",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/side-modal",
   "props": [
     {
@@ -38,30 +38,21 @@
     },
     {
       "description": "Header padding.",
-      "enum": [
-        "base",
-        "none"
-      ],
+      "enum": ["base", "none"],
       "type": "string",
       "title": "paddingHeader",
       "required": false
     },
     {
       "description": "Body padding.",
-      "enum": [
-        "base",
-        "none"
-      ],
+      "enum": ["base", "none"],
       "type": "string",
       "title": "paddingBody",
       "required": false
     },
     {
       "description": "Footer padding.",
-      "enum": [
-        "base",
-        "none"
-      ],
+      "enum": ["base", "none"],
       "type": "string",
       "title": "paddingFooter",
       "required": false
@@ -81,12 +72,7 @@
             "appearance": {
               "description": "Change the visual style of the button.",
               "default": "neutral",
-              "enum": [
-                "danger",
-                "neutral",
-                "primary",
-                "transparent"
-              ],
+              "enum": ["danger", "neutral", "primary", "transparent"],
               "type": "string",
               "title": "appearance"
             },
@@ -98,14 +84,8 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "children",
-            "appearance",
-            "disabled"
-          ],
-          "required": [
-            "children"
-          ],
+          "propertyOrder": ["children", "appearance", "disabled"],
+          "required": ["children"],
           "title": "primaryAction"
         },
         "secondaryAction": {
@@ -119,12 +99,7 @@
             "appearance": {
               "description": "Change the visual style of the button.",
               "default": "neutral",
-              "enum": [
-                "danger",
-                "neutral",
-                "primary",
-                "transparent"
-              ],
+              "enum": ["danger", "neutral", "primary", "transparent"],
               "type": "string",
               "title": "appearance"
             },
@@ -136,22 +111,13 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "children",
-            "appearance",
-            "disabled"
-          ],
-          "required": [
-            "children"
-          ],
+          "propertyOrder": ["children", "appearance", "disabled"],
+          "required": ["children"],
           "title": "secondaryAction"
         }
       },
       "additionalProperties": false,
-      "propertyOrder": [
-        "primaryAction",
-        "secondaryAction"
-      ],
+      "propertyOrder": ["primaryAction", "secondaryAction"],
       "required": false,
       "title": "footer"
     },
@@ -187,12 +153,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "type": "string"
@@ -204,11 +165,7 @@
     {
       "description": "The padding properties are used to generate space around an sidebar's content area.",
       "default": "base",
-      "enum": [
-        "base",
-        "none",
-        "small"
-      ],
+      "enum": ["base", "none", "small"],
       "type": "string",
       "title": "padding",
       "required": false
@@ -216,10 +173,7 @@
     {
       "description": "Side from which the sidebar will appear.",
       "default": "right",
-      "enum": [
-        "left",
-        "right"
-      ],
+      "enum": ["left", "right"],
       "type": "string",
       "title": "position",
       "required": false
@@ -292,12 +246,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "enum": [

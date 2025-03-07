@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Card } from "@nimbus-ds/components";
-import { PlanDisplayCardContentProps } from "./planDisplayCardContent.types";
+import { PlanDisplayCardContentProperties } from "./planDisplayCardContent.types";
 import PlanDisplayCardSpacing from "../PlanDisplayCardSpacing";
 
-const PlanDisplayCardContent: React.FC<PlanDisplayCardContentProps> = ({
+const PlanDisplayCardContent: React.FC<PlanDisplayCardContentProperties> = ({
   children,
 }) => (
   <Card.Body>

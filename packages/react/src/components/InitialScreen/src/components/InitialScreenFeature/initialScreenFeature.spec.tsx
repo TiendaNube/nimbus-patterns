@@ -8,13 +8,13 @@ import {
   InitialScreenFeatureItemSpacing,
 } from "./InitialScreenFeature";
 import {
-  InitialScreenFeatureItemProps,
+  InitialScreenFeatureItemProperties,
   InitialScreenFeatureItemSpacingProps,
-  InitialScreenFeatureProps,
+  InitialScreenFeatureProperties,
 } from "./initialScreenFeature.types";
 
 describe("GIVEN <InitialScreenFeature />", () => {
-  const makeSut = (rest: Omit<InitialScreenFeatureProps, "children">) => {
+  const makeSut = (rest: Omit<InitialScreenFeatureProperties, "children">) => {
     render(<InitialScreenFeature {...rest} />);
   };
 
@@ -50,7 +50,7 @@ describe("GIVEN <InitialScreenFeature />", () => {
 });
 
 describe("GIVEN <InitialScreenFeatureItem />", () => {
-  const makeSut = (rest: InitialScreenFeatureItemProps) => {
+  const makeSut = (rest: InitialScreenFeatureItemProperties) => {
     render(<InitialScreenFeatureItem {...rest} />);
   };
 

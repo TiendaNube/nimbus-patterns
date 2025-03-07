@@ -1,9 +1,9 @@
 import React from "react";
 import { Box } from "@nimbus-ds/components";
-import { PlanDisplayCardFooterProps } from "./planDisplayCardFooter.types";
+import { PlanDisplayCardFooterProperties } from "./planDisplayCardFooter.types";
 import PlanDisplayCardSpacing from "../PlanDisplayCardSpacing";
 
-const PlanDisplayCardFooter: React.FC<PlanDisplayCardFooterProps> = ({
+const PlanDisplayCardFooter: React.FC<PlanDisplayCardFooterProperties> = ({
   children,
 }) => (
   <Box display="flex" flexDirection="column" gap="4">

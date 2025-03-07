@@ -98,24 +98,26 @@ export const bullets: Story = {
       <InitialScreen.Hero
         subtitle={"META".toUpperCase()}
         title="¡Vendé más con Instagram y Facebook!"
-        bullets={[
-          <InitialScreen.Bullet
-            icon={<FireIcon />}
-            text="Integración gratis y rápida"
-          />,
-          <InitialScreen.Bullet
-            icon={<BagIcon />}
-            text="Sincronización de catálogo en tiempo real"
-          />,
-          <InitialScreen.Bullet
-            icon={<TagIcon />}
-            text="Creación y seguimiento de campañas"
-          />,
-          <InitialScreen.Bullet
-            icon={<TiendanubeIcon />}
-            text="Medición de conversiones con API y píxel de Meta"
-          />,
-        ]}
+        bullets={
+          <>
+            <InitialScreen.Bullet
+              icon={<FireIcon />}
+              text="Integración gratis y rápida"
+            />
+            <InitialScreen.Bullet
+              icon={<BagIcon />}
+              text="Sincronización de catálogo en tiempo real"
+            />
+            <InitialScreen.Bullet
+              icon={<TagIcon />}
+              text="Creación y seguimiento de campañas"
+            />
+            <InitialScreen.Bullet
+              icon={<TiendanubeIcon />}
+              text="Medición de conversiones con API y píxel de Meta"
+            />
+          </>
+        }
         actions={<Button appearance="primary">Conectar cuenta</Button>}
         image={
           <img

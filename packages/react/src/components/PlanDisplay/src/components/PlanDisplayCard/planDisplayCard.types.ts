@@ -1,10 +1,16 @@
 import { BoxProps } from "@nimbus-ds/components";
 import { PropsWithChildren } from "react";
 
-export type PlanDisplayCardProps = PropsWithChildren<{
+export interface PlanDisplayCardProperties {
   highlighted?: boolean;
-}> &
-  Omit<
-    BoxProps,
-    "borderColor" | "borderRadius" | "borderStyle" | "borderWidth" | "boxShadow"
-  >;
+}
+export type PlanDisplayCardProps =
+  PropsWithChildren<PlanDisplayCardProperties> &
+    Omit<
+      BoxProps,
+      | "borderColor"
+      | "borderRadius"
+      | "borderStyle"
+      | "borderWidth"
+      | "boxShadow"
+    >;

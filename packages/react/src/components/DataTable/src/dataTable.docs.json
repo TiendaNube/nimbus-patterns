@@ -48,10 +48,7 @@
             "appearance": {
               "description": "Change the visual style of the checkbox.",
               "default": "neutral",
-              "enum": [
-                "danger",
-                "primary"
-              ],
+              "enum": ["danger", "primary"],
               "type": "string",
               "title": "appearance"
             },
@@ -119,10 +116,7 @@
             "appearance": {
               "description": "Change the visual style of the checkbox.",
               "default": "neutral",
-              "enum": [
-                "danger",
-                "primary"
-              ],
+              "enum": ["danger", "primary"],
               "type": "string",
               "title": "appearance"
             },
@@ -202,6 +196,13 @@
               "default": true,
               "type": "boolean",
               "title": "showNumbers"
+            },
+            "renderItem": {
+              "description": "Custom render function for pagination items.",
+              "type": "object",
+              "additionalProperties": false,
+              "propertyOrder": [],
+              "title": "renderItem"
             }
           },
           "additionalProperties": false,
@@ -209,7 +210,8 @@
             "activePage",
             "pageCount",
             "onPageChange",
-            "showNumbers"
+            "showNumbers",
+            "renderItem"
           ],
           "required": false,
           "title": "pagination"
@@ -232,10 +234,7 @@
             "appearance": {
               "description": "Change the visual style of the checkbox.",
               "default": "neutral",
-              "enum": [
-                "danger",
-                "primary"
-              ],
+              "enum": ["danger", "primary"],
               "type": "string",
               "title": "appearance"
             },

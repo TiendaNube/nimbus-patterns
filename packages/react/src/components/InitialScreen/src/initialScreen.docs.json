@@ -1,0 +1,171 @@
+{
+  "id": "initialScreen",
+  "name": "InitialScreen",
+  "totalProps": 1,
+  "packageName": "@nimbus-ds/initial-screen",
+  "version": "1.0.0",
+  "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/initial-screen",
+  "props": [
+    {
+      "description": "Content of the InitialScreen component.",
+      "type": "React.ReactNode",
+      "title": "children",
+      "required": true
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "InitialScreen.Bullet",
+      "totalProps": 2,
+      "props": [
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "icon",
+          "required": false
+        },
+        {
+          "type": "string",
+          "title": "text",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "InitialScreen.Card",
+      "totalProps": 3,
+      "props": [
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "icon",
+          "required": false
+        },
+        {
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "type": "string",
+          "title": "description",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "InitialScreen.CardLayout",
+      "totalProps": 1,
+      "props": [
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "InitialScreen.Feature",
+      "totalProps": 2,
+      "props": [
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "content",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "image",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "InitialScreen.FeatureItem",
+      "totalProps": 3,
+      "props": [
+        {
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "type": "string",
+          "title": "description",
+          "required": true
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "InitialScreen.FeatureItemSpacing",
+      "totalProps": 0,
+      "props": []
+    },
+    {
+      "name": "InitialScreen.Hero",
+      "totalProps": 6,
+      "props": [
+        {
+          "type": "string",
+          "title": "title",
+          "required": false
+        },
+        {
+          "type": "string",
+          "title": "subtitle",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "actions",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "image",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "description",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "bullets",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "InitialScreen.Module",
+      "totalProps": 2,
+      "props": [
+        {
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "type": "string",
+          "title": "description",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "InitialScreen.Section",
+      "totalProps": 1,
+      "props": [
+        {
+          "type": "string",
+          "title": "title",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

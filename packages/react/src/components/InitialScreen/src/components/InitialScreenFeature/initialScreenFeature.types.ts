@@ -1,12 +1,12 @@
 import { BoxProps } from "@nimbus-ds/components";
 import { PropsWithChildren, ReactNode } from "react";
 
-export type InitialScreenFeatureItemProps = PropsWithChildren<{
+export type InitialScreenFeatureItemProperties = PropsWithChildren<{
   title: string;
   description: string;
 }>;
 
-export type InitialScreenFeatureProps = {
+export type InitialScreenFeatureProperties = {
   content: ReactNode;
   image: ReactNode;
 };

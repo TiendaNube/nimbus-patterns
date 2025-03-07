@@ -2,19 +2,17 @@ import React from "react";
 import { Box, Title, Text } from "@nimbus-ds/components";
 import { Layout } from "@nimbus-ds/layout";
 import {
-  InitialScreenFeatureItemProps,
+  InitialScreenFeatureItemProperties,
   InitialScreenFeatureItemSpacingProps,
-  InitialScreenFeatureProps,
+  InitialScreenFeatureProperties,
 } from "./initialScreenFeature.types";
 
 /**
  * Feature item component for the InitialScreenItem. It is used to display a feature with a title, a description and the children, which can be any component (though it is often used with the ItemSpacing component).
  */
-const InitialScreenFeatureItem: React.FC<InitialScreenFeatureItemProps> = ({
-  title,
-  description,
-  children,
-}) => (
+const InitialScreenFeatureItem: React.FC<
+  InitialScreenFeatureItemProperties
+> = ({ title, description, children }) => (
   <Box py="4">
     <Box px="4" display="flex" flexDirection="column" gap="1">
       <Box paddingLeft="1">
@@ -45,7 +43,7 @@ const InitialScreenFeatureItemSpacing: React.FC<
 /**
  * Feature component for the InitialScreen. It is used to display a feature with content and an image.
  */
-const InitialScreenFeature: React.FC<InitialScreenFeatureProps> = ({
+const InitialScreenFeature: React.FC<InitialScreenFeatureProperties> = ({
   content,
   image,
   ...rest

@@ -1,9 +1,9 @@
 import { BoxProps } from "@nimbus-ds/components";
 import { PropsWithChildren } from "react";
 
-type ModuleProps = {
+export type InitialScreenModuleProperties = {
   title: string;
   description: string;
 };
-export type InitialScreenModuleProps = PropsWithChildren<ModuleProps> &
-  BoxProps;
+export type InitialScreenModuleProps =
+  PropsWithChildren<InitialScreenModuleProperties> & BoxProps;
