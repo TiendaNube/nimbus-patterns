@@ -3,7 +3,7 @@
   "name": "PlanDisplay",
   "totalProps": 2,
   "packageName": "@nimbus-ds/plan-display",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/plan-display",
   "props": [
     {

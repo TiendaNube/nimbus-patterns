@@ -3,12 +3,18 @@
   "name": "CalloutCard",
   "totalProps": 6,
   "packageName": "@nimbus-ds/callout-card",
-  "version": "1.6.5",
+  "version": "1.6.6",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/callout-card",
   "props": [
     {
       "description": "CalloutCard color.",
-      "enum": ["danger", "neutral", "primary", "success", "warning"],
+      "enum": [
+        "danger",
+        "neutral",
+        "primary",
+        "success",
+        "warning"
+      ],
       "type": "string",
       "title": "appearance",
       "required": true

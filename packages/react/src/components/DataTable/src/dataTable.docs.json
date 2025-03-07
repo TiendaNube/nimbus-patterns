@@ -3,7 +3,7 @@
   "name": "DataTable",
   "totalProps": 4,
   "packageName": "@nimbus-ds/data-table",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/data-table",
   "props": [
     {
@@ -48,7 +48,10 @@
             "appearance": {
               "description": "Change the visual style of the checkbox.",
               "default": "neutral",
-              "enum": ["danger", "primary"],
+              "enum": [
+                "danger",
+                "primary"
+              ],
               "type": "string",
               "title": "appearance"
             },
@@ -116,7 +119,10 @@
             "appearance": {
               "description": "Change the visual style of the checkbox.",
               "default": "neutral",
-              "enum": ["danger", "primary"],
+              "enum": [
+                "danger",
+                "primary"
+              ],
               "type": "string",
               "title": "appearance"
             },
@@ -234,7 +240,10 @@
             "appearance": {
               "description": "Change the visual style of the checkbox.",
               "default": "neutral",
-              "enum": ["danger", "primary"],
+              "enum": [
+                "danger",
+                "primary"
+              ],
               "type": "string",
               "title": "appearance"
             },
