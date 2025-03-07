@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/sidemodal",
-  "version": "1.7.5",
+  "version": "1.7.6",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
