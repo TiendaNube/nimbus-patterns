@@ -15,23 +15,21 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Cache NPM dependencies
-        uses: actions/cache@v3
-        id: cache-dependencies
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Install dependencies
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
-        run: yarn
-
-      - name: Set Node version
+      - name: Set Node version and cache Yarn dependencies
         uses: actions/setup-node@v3
         with:
           node-version-file: ".nvmrc"
           cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        id: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Check
         run: yarn bump:check
