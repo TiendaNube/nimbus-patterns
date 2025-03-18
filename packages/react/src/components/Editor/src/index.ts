@@ -1,3 +1,5 @@
+"use client";
+
 import { Editor } from "./Editor";
 
 export { Editor } from "./Editor";

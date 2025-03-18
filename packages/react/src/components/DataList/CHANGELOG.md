@@ -2,6 +2,12 @@
 
 DataList is a flexible list-style component that enables the organization of customizable row elements in a vertical manner, with visual separators between rows.
 
+## 2025-03-18 `1.2.2`
+
+### 💡 Others
+
+- Rebuild after build process changes to add support for modular imports and Server Components. ([#-PULL_REQUEST_NUMBER](https://github.com/TiendaNube/nimbus-design-system/pull/-PULL_REQUEST_NUMBER) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2023-06-15 `1.2.2`
 
 #### 💡 Others

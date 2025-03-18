@@ -1,3 +1,5 @@
+"use client";
+
 import { DataList } from "./DataList";
 
 export { DataList } from "./DataList";

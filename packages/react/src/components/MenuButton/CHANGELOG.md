@@ -2,6 +2,16 @@
 
 MenuButton component is meant to be used inside Menus and navigation, and allows the user to navigate between different sections of an application.
 
+## 2025-03-18 `1.6.0`
+
+#### 🎉 New features
+
+- Adds `use-client` directive to the build output in order to support NextJS applications. ([#-PULL_REQUEST_NUMBER](https://github.com/TiendaNube/nimbus-design-system/pull/-PULL_REQUEST_NUMBER) by [@joacotornello](https://github.com/joacotornello))
+
+### 💡 Others
+
+- Rebuild after build process changes to add support for modular imports and Server Components. ([#-PULL_REQUEST_NUMBER](https://github.com/TiendaNube/nimbus-design-system/pull/-PULL_REQUEST_NUMBER) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2024-02-07 `1.5.5`
 
 ### 🎉 New features

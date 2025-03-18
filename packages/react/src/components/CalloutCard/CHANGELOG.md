@@ -2,6 +2,16 @@
 
 This component is used to provide the user with useful information, tips, tutorials or shortcuts to other parts of the product. It is a visual component specially designed to be used in contexts such as integration, tutorials or dashboards, where we need to show different relevant information in the same space.
 
+## 2025-03-18 `1.7.0`
+
+#### 🎉 New features
+
+- Adds `use-client` directive to the build output in order to support NextJS applications. ([#-PULL_REQUEST_NUMBER](https://github.com/TiendaNube/nimbus-design-system/pull/-PULL_REQUEST_NUMBER) by [@joacotornello](https://github.com/joacotornello))
+
+### 💡 Others
+
+- Rebuild after build process changes to add support for modular imports and Server Components. ([#-PULL_REQUEST_NUMBER](https://github.com/TiendaNube/nimbus-design-system/pull/-PULL_REQUEST_NUMBER) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2023-12-22 `1.6.4`
 
 #### 🎉 New features

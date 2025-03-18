@@ -1,3 +1,5 @@
+"use client";
+
 import { ProductUpdates } from "./ProductUpdates";
 
 export { ProductUpdates } from "./ProductUpdates";

@@ -2,6 +2,12 @@
 
 This package is intended for internal use in generating builds of each design system package. It contains all the necessary settings and dependencies to optimize the creation of our builds.
 
+## 2025-03-18 `0.2.0`
+
+#### 🎉 New features
+
+- Bumped `@nimbus-ds/webpack`, implementing new plugins and webpack configuration in order to support Server Components and Modular Imports, improving and optimizing Tree Shaking for our clients.. ([#-PULL_REQUEST_NUMBER](https://github.com/TiendaNube/nimbus-design-system/pull/-PULL_REQUEST_NUMBER) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2023-09-25 `0.1.1`
 
 ### 📚 3rd party library updates

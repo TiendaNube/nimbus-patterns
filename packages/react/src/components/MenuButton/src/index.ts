@@ -1,3 +1,5 @@
+"use client";
+
 import { MenuButton } from "./MenuButton";
 
 export { MenuButton } from "./MenuButton";

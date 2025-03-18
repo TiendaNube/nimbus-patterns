@@ -2,6 +2,12 @@
 
 DataTable is a highly versatile component used to organize large quantities of tabular data. It supports pagination to help navigate through the data easily and efficiently, and also allows the user to sort and filter the data by columns. Additionally, it offers the ability to select one or multiple rows using checkboxes, which can be useful for performing batch actions or manipulating the data in other ways.
 
+## 2025-03-18 `1.2.5`
+
+### 💡 Others
+
+- Rebuild after build process changes to add support for modular imports and Server Components. ([#-PULL_REQUEST_NUMBER](https://github.com/TiendaNube/nimbus-design-system/pull/-PULL_REQUEST_NUMBER) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2023-07-18 `1.2.3`
 
 #### 🐛 Bug fixes

@@ -2,6 +2,12 @@
 
 The Layout component is intended for building single or multi-column layouts using predefined typologies.
 
+## 2025-03-18 `1.3.4`
+
+### 💡 Others
+
+- Rebuild after build process changes to add support for modular imports and Server Components. ([#-PULL_REQUEST_NUMBER](https://github.com/TiendaNube/nimbus-design-system/pull/-PULL_REQUEST_NUMBER) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2023-06-15 `1.3.2`
 
 #### 💡 Others

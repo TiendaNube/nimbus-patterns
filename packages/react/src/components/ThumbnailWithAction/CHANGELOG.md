@@ -2,6 +2,12 @@
 
 The Thumbnail With Action pattern allows you to add interactive elements to image thumbnails. By overlaying custom content onto a thumbnail component in one of the four corners, you can embed atomic components such as buttons, icons, or links that enable users to perform specific actions related to the image.
 
+## 2025-03-18 `1.2.5`
+
+### 💡 Others
+
+- Rebuild after build process changes to add support for modular imports and Server Components. ([#-PULL_REQUEST_NUMBER](https://github.com/TiendaNube/nimbus-design-system/pull/-PULL_REQUEST_NUMBER) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2023-11-15 `1.2.3`
 
 ### 📚 3rd party library updates

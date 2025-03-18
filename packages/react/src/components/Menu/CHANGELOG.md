@@ -2,6 +2,12 @@
 
 The Menu component allows the user to create in-app menus that navigate through different sections of an application.
 
+## 2025-03-18 `1.5.6`
+
+### 💡 Others
+
+- Rebuild after build process changes to add support for modular imports and Server Components. ([#-PULL_REQUEST_NUMBER](https://github.com/TiendaNube/nimbus-design-system/pull/-PULL_REQUEST_NUMBER) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2023-12-18 `1.5.3`
 
 ### 🎉 New features
