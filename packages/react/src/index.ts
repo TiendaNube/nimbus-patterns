@@ -1,3 +1,5 @@
+"use client";
+
 // components
 export * from "@nimbus-ds/app-shell";
 export * from "@nimbus-ds/callout-card";

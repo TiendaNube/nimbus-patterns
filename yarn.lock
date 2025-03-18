@@ -4959,7 +4959,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/patterns-webpack@workspace:packages/core/webpack"
   dependencies:
-    "@nimbus-ds/webpack": ^1.3.1
+    "@nimbus-ds/webpack": 1.5.0-rc.4
     "@types/webpack": ^5.28.0
     "@vanilla-extract/webpack-plugin": ^2.2.0
     css-minimizer-webpack-plugin: ^4.2.2
@@ -5019,13 +5019,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/scripts@npm:1.5.1":
-  version: 1.5.1
-  resolution: "@nimbus-ds/scripts@npm:1.5.1"
+"@nimbus-ds/scripts@npm:1.6.0-rc.4":
+  version: 1.6.0-rc.4
+  resolution: "@nimbus-ds/scripts@npm:1.6.0-rc.4"
   dependencies:
     change-case: ^4.1.2
     typescript-json-schema: ^0.55.0
-  checksum: 169a9f191e0cd217bf4f1ce5b971459e84897597086851dd88326a0954f01a13d6b0580c88cb5e917bf828a521dd44252e4fd29fbda2ce55ad75673f338f7d18
+  checksum: 2cbe2cb5aed7296887aa8958c80c900e2f338bb1b93aa3a043a80c8b9fd0cbcbdf967fc34b62a19151b42576d4a25475b89590909ee2ed4cf73df890d7e1fa82
   languageName: node
   linkType: hard
 
@@ -5088,10 +5088,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/webpack@npm:^1.3.1":
-  version: 1.3.1
-  resolution: "@nimbus-ds/webpack@npm:1.3.1"
-  checksum: 402171e049535fcd2e82e4436f2d36002a23de208930b1abd0680e6e701da4c648a375d0cd0ee5c4ca658c561ecdface055314f0fa4f386bca2559ed60b5597a
+"@nimbus-ds/webpack@npm:1.5.0-rc.4":
+  version: 1.5.0-rc.4
+  resolution: "@nimbus-ds/webpack@npm:1.5.0-rc.4"
+  checksum: 84dccc386ab244bbbb5ecf9948626b57f5f6ecee9cab2b19dc60a76d1aafa9c5c1fd33ef47a7bb3217294bda5bfbe324aa5684f5b07775e635aae156fc1b1d8e
   languageName: node
   linkType: hard
 
@@ -16422,7 +16422,7 @@ __metadata:
     "@jest/types": ^29.2.1
     "@mdx-js/react": ^1.6.22
     "@nimbus-ds/components": 5.7.1
-    "@nimbus-ds/scripts": 1.5.1
+    "@nimbus-ds/scripts": 1.6.0-rc.4
     "@nimbus-ds/styles": 9.12.0
     "@nimbus-ds/tokens": ^9.x
     "@storybook/addon-docs": ^7.5.1
@@ -16474,7 +16474,7 @@ __metadata:
     ts-jest: ^29.0.3
     ts-loader: ^9.4.2
     ts-node: ^10.9.1
-    turbo: ^1.8.8
+    turbo: 1.10.16
     typescript: ~4.7.4
   languageName: unknown
   linkType: soft
@@ -20045,58 +20045,58 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo-darwin-64@npm:1.8.8":
-  version: 1.8.8
-  resolution: "turbo-darwin-64@npm:1.8.8"
+"turbo-darwin-64@npm:1.10.16":
+  version: 1.10.16
+  resolution: "turbo-darwin-64@npm:1.10.16"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-darwin-arm64@npm:1.8.8":
-  version: 1.8.8
-  resolution: "turbo-darwin-arm64@npm:1.8.8"
+"turbo-darwin-arm64@npm:1.10.16":
+  version: 1.10.16
+  resolution: "turbo-darwin-arm64@npm:1.10.16"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-64@npm:1.8.8":
-  version: 1.8.8
-  resolution: "turbo-linux-64@npm:1.8.8"
+"turbo-linux-64@npm:1.10.16":
+  version: 1.10.16
+  resolution: "turbo-linux-64@npm:1.10.16"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm64@npm:1.8.8":
-  version: 1.8.8
-  resolution: "turbo-linux-arm64@npm:1.8.8"
+"turbo-linux-arm64@npm:1.10.16":
+  version: 1.10.16
+  resolution: "turbo-linux-arm64@npm:1.10.16"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-windows-64@npm:1.8.8":
-  version: 1.8.8
-  resolution: "turbo-windows-64@npm:1.8.8"
+"turbo-windows-64@npm:1.10.16":
+  version: 1.10.16
+  resolution: "turbo-windows-64@npm:1.10.16"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-windows-arm64@npm:1.8.8":
-  version: 1.8.8
-  resolution: "turbo-windows-arm64@npm:1.8.8"
+"turbo-windows-arm64@npm:1.10.16":
+  version: 1.10.16
+  resolution: "turbo-windows-arm64@npm:1.10.16"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo@npm:^1.8.8":
-  version: 1.8.8
-  resolution: "turbo@npm:1.8.8"
+"turbo@npm:1.10.16":
+  version: 1.10.16
+  resolution: "turbo@npm:1.10.16"
   dependencies:
-    turbo-darwin-64: 1.8.8
-    turbo-darwin-arm64: 1.8.8
-    turbo-linux-64: 1.8.8
-    turbo-linux-arm64: 1.8.8
-    turbo-windows-64: 1.8.8
-    turbo-windows-arm64: 1.8.8
+    turbo-darwin-64: 1.10.16
+    turbo-darwin-arm64: 1.10.16
+    turbo-linux-64: 1.10.16
+    turbo-linux-arm64: 1.10.16
+    turbo-windows-64: 1.10.16
+    turbo-windows-arm64: 1.10.16
   dependenciesMeta:
     turbo-darwin-64:
       optional: true
@@ -20112,7 +20112,7 @@ __metadata:
       optional: true
   bin:
     turbo: bin/turbo
-  checksum: 6dcfd7b38e2dd9abe279bda54e474be3463df51428f0b91c5e0539e9fd8c9b1efec562df629946f5ca92ede05f0aba35027481065d054249334e11692085ddb7
+  checksum: 69d1892593449b264e0bd48b851317a743016ab62cf470e7293b2cc3781240e863c48232c89f65a5a4ce97eb791ca550b201593449350da073db07703a19cfa5
   languageName: node
   linkType: hard
 
