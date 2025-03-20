@@ -4748,16 +4748,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/components@npm:5.8.1":
-  version: 5.8.1
-  resolution: "@nimbus-ds/components@npm:5.8.1"
+"@nimbus-ds/components@npm:5.8.2":
+  version: 5.8.2
+  resolution: "@nimbus-ds/components@npm:5.8.2"
   dependencies:
     "@floating-ui/react": ^0.26.0
     "@nimbus-ds/icons": ^1.6.1
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: a3c97183c08e975e842e09608806d82c0db36cfa8b369d3c05baf861165dff5b00805526d3929cde3f1ac949703a5cf054bb0f6a6c01e967227bfcc4d193d6af
+  checksum: 8337f33d5d97c772c9af5e9f83dab5d7a26ffa36746c8f46df152354d0c5f42b9d86884bd77481fa318a4c323eebdad8a8961f553edfe04c9b1d4ef2297921cc
   languageName: node
   linkType: hard
 
@@ -4959,7 +4959,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/patterns-webpack@workspace:packages/core/webpack"
   dependencies:
-    "@nimbus-ds/webpack": 1.5.0-rc.4
+    "@nimbus-ds/webpack": 1.5.0
     "@types/webpack": ^5.28.0
     "@vanilla-extract/webpack-plugin": ^2.2.0
     css-minimizer-webpack-plugin: ^4.2.2
@@ -5019,13 +5019,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/scripts@npm:1.6.1":
-  version: 1.6.1
-  resolution: "@nimbus-ds/scripts@npm:1.6.1"
+"@nimbus-ds/scripts@npm:1.6.2":
+  version: 1.6.2
+  resolution: "@nimbus-ds/scripts@npm:1.6.2"
   dependencies:
     change-case: ^4.1.2
     typescript-json-schema: ^0.55.0
-  checksum: a0854ff603d5bc3a155f544bb1bdcaa26f3099c129cdf8715b35fa326d9857adb08f6a5ad8a0a3b04df62439e2efb793ad0b731886f9227f74852b23af50e696
+  checksum: 1af34c43d5558bf5bf7edc14f4d89c6603f950cc2437699bbbfe6f5a1cc112bb0daa82290adb5f5a79b5ebafb8c78dc19ca9870ccd4c69b7eb01d8df5472f848
   languageName: node
   linkType: hard
 
@@ -5095,10 +5095,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/webpack@npm:1.5.0-rc.4":
-  version: 1.5.0-rc.4
-  resolution: "@nimbus-ds/webpack@npm:1.5.0-rc.4"
-  checksum: 84dccc386ab244bbbb5ecf9948626b57f5f6ecee9cab2b19dc60a76d1aafa9c5c1fd33ef47a7bb3217294bda5bfbe324aa5684f5b07775e635aae156fc1b1d8e
+"@nimbus-ds/webpack@npm:1.5.0":
+  version: 1.5.0
+  resolution: "@nimbus-ds/webpack@npm:1.5.0"
+  checksum: 773836f7b39a9a2c05d053471940b0de306955ccf40aa64358fe666c7bff6178f755a3dbaefa6f67a035c42ae6436755d3be6fd7b0475fecd47b27b091b48147
   languageName: node
   linkType: hard
 
@@ -16428,8 +16428,8 @@ __metadata:
     "@commitlint/config-conventional": ^17.2.0
     "@jest/types": ^29.2.1
     "@mdx-js/react": ^1.6.22
-    "@nimbus-ds/components": 5.8.1
-    "@nimbus-ds/scripts": 1.6.1
+    "@nimbus-ds/components": 5.8.2
+    "@nimbus-ds/scripts": 1.6.2
     "@nimbus-ds/styles": 9.13.1
     "@nimbus-ds/tokens": ^9.1.1
     "@storybook/addon-docs": ^7.5.1
