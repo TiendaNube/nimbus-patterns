@@ -3,7 +3,7 @@
   "name": "DataList",
   "totalProps": 2,
   "packageName": "@nimbus-ds/data-list",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/data-list",
   "props": [
     {

@@ -3,7 +3,7 @@
   "name": "Menu",
   "totalProps": 1,
   "packageName": "@nimbus-ds/menu",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/menu",
   "props": [
     {

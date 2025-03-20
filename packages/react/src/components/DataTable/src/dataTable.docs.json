@@ -3,7 +3,7 @@
   "name": "DataTable",
   "totalProps": 4,
   "packageName": "@nimbus-ds/data-table",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/data-table",
   "props": [
     {

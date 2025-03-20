@@ -3,7 +3,7 @@
   "name": "Page",
   "totalProps": 88,
   "packageName": "@nimbus-ds/page",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/page",
   "props": [
     {

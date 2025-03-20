@@ -3,7 +3,7 @@
   "name": "ProductUpdates",
   "totalProps": 20,
   "packageName": "@nimbus-ds/productupdates",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/product-updates",
   "props": [
     {
