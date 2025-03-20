@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/editor",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
