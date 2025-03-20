@@ -1,0 +1,27 @@
+releases:
+  "@nimbus-ds/app-shell": patch
+  "@nimbus-ds/calendar": minor
+  "@nimbus-ds/callout-card": minor
+  "@nimbus-ds/data-list": patch
+  "@nimbus-ds/data-table": patch
+  "@nimbus-ds/editor": minor
+  "@nimbus-ds/empty-app": patch
+  "@nimbus-ds/empty-message": patch
+  "@nimbus-ds/formfield": minor
+  "@nimbus-ds/help-link": patch
+  "@nimbus-ds/initial-screen": patch
+  "@nimbus-ds/interactive-list": patch
+  "@nimbus-ds/layout": patch
+  "@nimbus-ds/menu": patch
+  "@nimbus-ds/menubutton": minor
+  "@nimbus-ds/nav-tabs": minor
+  "@nimbus-ds/page": patch
+  "@nimbus-ds/patterns": minor
+  "@nimbus-ds/patterns-webpack": minor
+  "@nimbus-ds/plan-display": patch
+  "@nimbus-ds/productupdates": minor
+  "@nimbus-ds/sidemodal": patch
+  "@nimbus-ds/thumbnail-with-action": patch
+
+declined:
+  - nimbus-patterns

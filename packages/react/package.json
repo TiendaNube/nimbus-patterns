@@ -34,5 +34,95 @@
   },
   "bugs": {
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./AppShell": {
+      "import": "./dist/AppShell/index.js",
+      "require": "./dist/AppShell/index.js"
+    },
+    "./Calendar": {
+      "import": "./dist/Calendar/index.js",
+      "require": "./dist/Calendar/index.js"
+    },
+    "./CalloutCard": {
+      "import": "./dist/CalloutCard/index.js",
+      "require": "./dist/CalloutCard/index.js"
+    },
+    "./DataList": {
+      "import": "./dist/DataList/index.js",
+      "require": "./dist/DataList/index.js"
+    },
+    "./DataTable": {
+      "import": "./dist/DataTable/index.js",
+      "require": "./dist/DataTable/index.js"
+    },
+    "./Editor": {
+      "import": "./dist/Editor/index.js",
+      "require": "./dist/Editor/index.js"
+    },
+    "./EmptyApp": {
+      "import": "./dist/EmptyApp/index.js",
+      "require": "./dist/EmptyApp/index.js"
+    },
+    "./EmptyMessage": {
+      "import": "./dist/EmptyMessage/index.js",
+      "require": "./dist/EmptyMessage/index.js"
+    },
+    "./FormField": {
+      "import": "./dist/FormField/index.js",
+      "require": "./dist/FormField/index.js"
+    },
+    "./HelpLink": {
+      "import": "./dist/HelpLink/index.js",
+      "require": "./dist/HelpLink/index.js"
+    },
+    "./InitialScreen": {
+      "import": "./dist/InitialScreen/index.js",
+      "require": "./dist/InitialScreen/index.js"
+    },
+    "./InteractiveList": {
+      "import": "./dist/InteractiveList/index.js",
+      "require": "./dist/InteractiveList/index.js"
+    },
+    "./Layout": {
+      "import": "./dist/Layout/index.js",
+      "require": "./dist/Layout/index.js"
+    },
+    "./Menu": {
+      "import": "./dist/Menu/index.js",
+      "require": "./dist/Menu/index.js"
+    },
+    "./MenuButton": {
+      "import": "./dist/MenuButton/index.js",
+      "require": "./dist/MenuButton/index.js"
+    },
+    "./NavTabs": {
+      "import": "./dist/NavTabs/index.js",
+      "require": "./dist/NavTabs/index.js"
+    },
+    "./Page": {
+      "import": "./dist/Page/index.js",
+      "require": "./dist/Page/index.js"
+    },
+    "./PlanDisplay": {
+      "import": "./dist/PlanDisplay/index.js",
+      "require": "./dist/PlanDisplay/index.js"
+    },
+    "./ProductUpdates": {
+      "import": "./dist/ProductUpdates/index.js",
+      "require": "./dist/ProductUpdates/index.js"
+    },
+    "./SideModal": {
+      "import": "./dist/SideModal/index.js",
+      "require": "./dist/SideModal/index.js"
+    },
+    "./ThumbnailWithAction": {
+      "import": "./dist/ThumbnailWithAction/index.js",
+      "require": "./dist/ThumbnailWithAction/index.js"
+    }
   }
 }

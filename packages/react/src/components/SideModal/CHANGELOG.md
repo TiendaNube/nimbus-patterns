@@ -2,6 +2,12 @@
 
 Sidemodal navigation provides access to the parts within its application. The side sections have the supplementary content that is linked on the left or right side of the screen.
 
+## 2025-03-18 `1.7.7`
+
+### 💡 Others
+
+- Rebuild after build process changes to add support for modular imports and Server Components. ([#-PULL_REQUEST_NUMBER](https://github.com/TiendaNube/nimbus-design-system/pull/-PULL_REQUEST_NUMBER) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2023-12-22 `1.7.4`
 
 #### 🎉 New features

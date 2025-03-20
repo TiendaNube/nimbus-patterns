@@ -4748,16 +4748,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/components@npm:5.7.1":
-  version: 5.7.1
-  resolution: "@nimbus-ds/components@npm:5.7.1"
+"@nimbus-ds/components@npm:5.8.2":
+  version: 5.8.2
+  resolution: "@nimbus-ds/components@npm:5.8.2"
   dependencies:
     "@floating-ui/react": ^0.26.0
-    "@nimbus-ds/icons": ^1.6.0
+    "@nimbus-ds/icons": ^1.6.1
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 7d495ceae1bf1b6f512cc70911d9af7a9dbb2663cec412ec21c825b59d0801471887983435a0e87d270891090771a91d0f5fc4c13d04c27375f8253709f22b9e
+  checksum: 8337f33d5d97c772c9af5e9f83dab5d7a26ffa36746c8f46df152354d0c5f42b9d86884bd77481fa318a4c323eebdad8a8961f553edfe04c9b1d4ef2297921cc
   languageName: node
   linkType: hard
 
@@ -4860,10 +4860,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/icons@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "@nimbus-ds/icons@npm:1.6.0"
-  checksum: b7cf5ba3f216f20d1810687163099775fae5c84219573e12e3d7b9a1a880bc09200e17655ecd765651e7ac715a943a2e710aa4c5c9a9dd06fd6deb1869cf08aa
+"@nimbus-ds/icons@npm:^1.6.1":
+  version: 1.6.1
+  resolution: "@nimbus-ds/icons@npm:1.6.1"
+  checksum: cce371a0a067be3cfffd0407109854a60822922832efb490c2f0b45fcd06ac5ee8db4f5a055833bd80bf5253d8dc93f64026a252792ce77d67acd030c86c7368
   languageName: node
   linkType: hard
 
@@ -4959,7 +4959,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/patterns-webpack@workspace:packages/core/webpack"
   dependencies:
-    "@nimbus-ds/webpack": ^1.3.1
+    "@nimbus-ds/webpack": 1.5.0
     "@types/webpack": ^5.28.0
     "@vanilla-extract/webpack-plugin": ^2.2.0
     css-minimizer-webpack-plugin: ^4.2.2
@@ -5019,13 +5019,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/scripts@npm:1.5.1":
-  version: 1.5.1
-  resolution: "@nimbus-ds/scripts@npm:1.5.1"
+"@nimbus-ds/scripts@npm:1.6.2":
+  version: 1.6.2
+  resolution: "@nimbus-ds/scripts@npm:1.6.2"
   dependencies:
     change-case: ^4.1.2
     typescript-json-schema: ^0.55.0
-  checksum: 169a9f191e0cd217bf4f1ce5b971459e84897597086851dd88326a0954f01a13d6b0580c88cb5e917bf828a521dd44252e4fd29fbda2ce55ad75673f338f7d18
+  checksum: 1af34c43d5558bf5bf7edc14f4d89c6603f950cc2437699bbbfe6f5a1cc112bb0daa82290adb5f5a79b5ebafb8c78dc19ca9870ccd4c69b7eb01d8df5472f848
   languageName: node
   linkType: hard
 
@@ -5041,10 +5041,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/styles@npm:9.12.0":
-  version: 9.12.0
-  resolution: "@nimbus-ds/styles@npm:9.12.0"
-  checksum: 806096644ff6f5d40e49b50accfa1970857607828011452ce7896bf56bc9db71e458c06d935a7ab722864a461f0a83be3e1727b173d2a92c2c64a3d1310f124b
+"@nimbus-ds/styles@npm:9.13.1":
+  version: 9.13.1
+  resolution: "@nimbus-ds/styles@npm:9.13.1"
+  checksum: 41c353c874177765f8576cf5b38e26c37cf47673f567ab54600f80564030bade10f16e3d26cf3ba4c11b47638baba1e4d75543d23046ac1b43c761a25decc992
   languageName: node
   linkType: hard
 
@@ -5074,10 +5074,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/tokens@npm:^9.1.0, @nimbus-ds/tokens@npm:^9.x":
+"@nimbus-ds/tokens@npm:^9.1.0":
   version: 9.1.0
   resolution: "@nimbus-ds/tokens@npm:9.1.0"
   checksum: 42e4ad8c73588b93754a2a0bb6868b1c43fb306b4ccfb493e26237a7425bbfec3d4682fe922f760822fa49b5adf0ae996fcbd32ea7983803317be1e5acba9829
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/tokens@npm:^9.1.1":
+  version: 9.1.1
+  resolution: "@nimbus-ds/tokens@npm:9.1.1"
+  checksum: ab033cea5026e8c1e2c481cc0f9dc4e823e3384d998bd74dca2aaa9d0c70dcf32007bc0e79ab987e5c1606ed4c2e1b0794ce8493de6e6ae85a424fdee7c37d02
   languageName: node
   linkType: hard
 
@@ -5088,10 +5095,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/webpack@npm:^1.3.1":
-  version: 1.3.1
-  resolution: "@nimbus-ds/webpack@npm:1.3.1"
-  checksum: 402171e049535fcd2e82e4436f2d36002a23de208930b1abd0680e6e701da4c648a375d0cd0ee5c4ca658c561ecdface055314f0fa4f386bca2559ed60b5597a
+"@nimbus-ds/webpack@npm:1.5.0":
+  version: 1.5.0
+  resolution: "@nimbus-ds/webpack@npm:1.5.0"
+  checksum: 773836f7b39a9a2c05d053471940b0de306955ccf40aa64358fe666c7bff6178f755a3dbaefa6f67a035c42ae6436755d3be6fd7b0475fecd47b27b091b48147
   languageName: node
   linkType: hard
 
@@ -16421,10 +16428,10 @@ __metadata:
     "@commitlint/config-conventional": ^17.2.0
     "@jest/types": ^29.2.1
     "@mdx-js/react": ^1.6.22
-    "@nimbus-ds/components": 5.7.1
-    "@nimbus-ds/scripts": 1.5.1
-    "@nimbus-ds/styles": 9.12.0
-    "@nimbus-ds/tokens": ^9.x
+    "@nimbus-ds/components": 5.8.2
+    "@nimbus-ds/scripts": 1.6.2
+    "@nimbus-ds/styles": 9.13.1
+    "@nimbus-ds/tokens": ^9.1.1
     "@storybook/addon-docs": ^7.5.1
     "@storybook/addon-essentials": ^7.5.1
     "@storybook/addon-interactions": ^7.5.1
@@ -16474,7 +16481,7 @@ __metadata:
     ts-jest: ^29.0.3
     ts-loader: ^9.4.2
     ts-node: ^10.9.1
-    turbo: ^1.8.8
+    turbo: 1.10.16
     typescript: ~4.7.4
   languageName: unknown
   linkType: soft
@@ -20045,58 +20052,58 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo-darwin-64@npm:1.8.8":
-  version: 1.8.8
-  resolution: "turbo-darwin-64@npm:1.8.8"
+"turbo-darwin-64@npm:1.10.16":
+  version: 1.10.16
+  resolution: "turbo-darwin-64@npm:1.10.16"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-darwin-arm64@npm:1.8.8":
-  version: 1.8.8
-  resolution: "turbo-darwin-arm64@npm:1.8.8"
+"turbo-darwin-arm64@npm:1.10.16":
+  version: 1.10.16
+  resolution: "turbo-darwin-arm64@npm:1.10.16"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-64@npm:1.8.8":
-  version: 1.8.8
-  resolution: "turbo-linux-64@npm:1.8.8"
+"turbo-linux-64@npm:1.10.16":
+  version: 1.10.16
+  resolution: "turbo-linux-64@npm:1.10.16"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm64@npm:1.8.8":
-  version: 1.8.8
-  resolution: "turbo-linux-arm64@npm:1.8.8"
+"turbo-linux-arm64@npm:1.10.16":
+  version: 1.10.16
+  resolution: "turbo-linux-arm64@npm:1.10.16"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-windows-64@npm:1.8.8":
-  version: 1.8.8
-  resolution: "turbo-windows-64@npm:1.8.8"
+"turbo-windows-64@npm:1.10.16":
+  version: 1.10.16
+  resolution: "turbo-windows-64@npm:1.10.16"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-windows-arm64@npm:1.8.8":
-  version: 1.8.8
-  resolution: "turbo-windows-arm64@npm:1.8.8"
+"turbo-windows-arm64@npm:1.10.16":
+  version: 1.10.16
+  resolution: "turbo-windows-arm64@npm:1.10.16"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo@npm:^1.8.8":
-  version: 1.8.8
-  resolution: "turbo@npm:1.8.8"
+"turbo@npm:1.10.16":
+  version: 1.10.16
+  resolution: "turbo@npm:1.10.16"
   dependencies:
-    turbo-darwin-64: 1.8.8
-    turbo-darwin-arm64: 1.8.8
-    turbo-linux-64: 1.8.8
-    turbo-linux-arm64: 1.8.8
-    turbo-windows-64: 1.8.8
-    turbo-windows-arm64: 1.8.8
+    turbo-darwin-64: 1.10.16
+    turbo-darwin-arm64: 1.10.16
+    turbo-linux-64: 1.10.16
+    turbo-linux-arm64: 1.10.16
+    turbo-windows-64: 1.10.16
+    turbo-windows-arm64: 1.10.16
   dependenciesMeta:
     turbo-darwin-64:
       optional: true
@@ -20112,7 +20119,7 @@ __metadata:
       optional: true
   bin:
     turbo: bin/turbo
-  checksum: 6dcfd7b38e2dd9abe279bda54e474be3463df51428f0b91c5e0539e9fd8c9b1efec562df629946f5ca92ede05f0aba35027481065d054249334e11692085ddb7
+  checksum: 69d1892593449b264e0bd48b851317a743016ab62cf470e7293b2cc3781240e863c48232c89f65a5a4ce97eb791ca550b201593449350da073db07703a19cfa5
   languageName: node
   linkType: hard
 
