@@ -21,7 +21,7 @@
     "bump:next": "yarn version apply --all --prerelease",
     "bump:stable": "yarn version apply --all",
     "clean": "yarn workspaces foreach -pv -pt --exclude nimbus-patterns run clean",
-    "reset": "yarn clean && rm -rf node_modules .yarn/cache .turbo && git clean -fdx",
+    "reset": "yarn clean && rm -rf node_modules .yarn/cache .turbo && git clean -fdX",
     "lint": "eslint packages --ext .jsx,.js,.ts,.tsx --quiet",
     "lint:fix": "yarn lint --fix",
     "test": "jest --passWithNoTests --no-cache --runInBand --watchAll=false",
