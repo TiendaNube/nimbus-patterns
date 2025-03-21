@@ -1,4 +1,5 @@
 declined:
+  - nimbus-patterns
   - "@nimbus-ds/patterns-webpack"
   - "@nimbus-ds/patterns"
   - "@nimbus-ds/app-shell"
