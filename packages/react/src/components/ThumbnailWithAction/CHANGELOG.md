@@ -6,7 +6,7 @@ The Thumbnail With Action pattern allows you to add interactive elements to imag
 
 ### 💡 Others
 
-- Rebuild after build process changes to add support for modular imports and Server Components. ([#-PULL_REQUEST_NUMBER](https://github.com/TiendaNube/nimbus-design-system/pull/-PULL_REQUEST_NUMBER) by [@joacotornello](https://github.com/joacotornello))
+- Rebuild after build process changes to add support for modular imports and Server Components. ([#104](https://github.com/TiendaNube/nimbus-patterns/pull/104) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2023-11-15 `1.2.3`
 
