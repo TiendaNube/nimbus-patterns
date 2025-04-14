@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo } from "react";
+import React, { useMemo } from "react";
 import {
   DndContext,
   closestCenter,
@@ -7,7 +7,6 @@ import {
   useSensor,
   useSensors,
   DragEndEvent,
-  UniqueIdentifier,
 } from "@dnd-kit/core";
 import {
   SortableContext as BaseSortableContext,
@@ -15,24 +14,30 @@ import {
   verticalListSortingStrategy,
   horizontalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { SortableProps, SortableContextValue } from "./Sortable.types";
-import { SortableItem, SortableItemHandle } from "./components";
+import * as Components from "./components";
+import { SortableProps, SortableItemType } from "./Sortable.types";
+import { SortableContext } from "./contexts/SortableContext";
 
-export const SortableContext = createContext<SortableContextValue>({
-  activeId: null,
-});
-
-export const useSortableContext = () => {
-  const context = useContext(SortableContext);
-  if (!context) {
-    throw new Error(
-      "useSortableContext must be used within a Sortable component"
-    );
-  }
-  return context;
-};
-
-function Sortable<T extends { id: UniqueIdentifier }>({
+/**
+ * A component that provides drag and drop sorting functionality
+ * @example
+ * ```tsx
+ * const [items, setItems] = useState([{ id: '1', content: 'Item 1' }]);
+ *
+ * return (
+ *   <Sortable items={items} onReorder={setItems}>
+ *     <div className="my-sortable-container">
+ *       {items.map((item) => (
+ *         <Sortable.Item key={item.id} id={item.id}>
+ *           {item.content}
+ *         </Sortable.Item>
+ *       ))}
+ *     </div>
+ *   </Sortable>
+ * );
+ * ```
+ */
+function Sortable<T extends SortableItemType>({
   items,
   onReorder,
   orientation = "vertical",
@@ -41,10 +46,8 @@ function Sortable<T extends { id: UniqueIdentifier }>({
   onDragOver,
   onDragEnd,
   disabled = false,
-  as: Component = "div",
-  containerProps = {},
   children,
-}: SortableProps<T>) {
+}: SortableProps<T>): React.ReactElement {
   const [activeId, setActiveId] = React.useState<string | null>(null);
 
   const sensors = useSensors(
@@ -94,7 +97,9 @@ function Sortable<T extends { id: UniqueIdentifier }>({
   );
 
   if (disabled) {
-    return <Component {...containerProps}>{children}</Component>;
+    // We return the children without the DndContext to avoid the drag and drop functionality
+    /* eslint-disable-next-line react/jsx-no-useless-fragment */
+    return <>{children}</>;
   }
 
   return (
@@ -113,18 +118,42 @@ function Sortable<T extends { id: UniqueIdentifier }>({
         strategy={strategy}
       >
         <SortableContext.Provider value={contextValue}>
-          <Component {...containerProps}>{children}</Component>
+          {children}
         </SortableContext.Provider>
       </BaseSortableContext>
     </DndContext>
   );
 }
 
-Sortable.displayName = "Sortable";
+/**
+ * A draggable item within the sortable list
+ * @example
+ * ```tsx
+ * <Sortable.Item id="1">
+ *   <div>Draggable content</div>
+ * </Sortable.Item>
+ * ```
+ */
+Sortable.Item = Components.SortableItem;
 
-Sortable.Item = SortableItem;
+/**
+ * A handle component that can be used to drag a sortable item, useful for providing a dedicated drag target
+ * @example
+ * ```tsx
+ * <Sortable.Item id="1" handle>
+ *   <div>
+ *     <Sortable.ItemHandle>
+ *       <DragIcon />
+ *     </Sortable.ItemHandle>
+ *     Draggable content
+ *   </div>
+ * </Sortable.Item>
+ * ```
+ */
+Sortable.ItemHandle = Components.SortableItemHandle;
+
+Sortable.displayName = "Sortable";
 Sortable.Item.displayName = "Sortable.Item";
-Sortable.ItemHandle = SortableItemHandle;
 Sortable.ItemHandle.displayName = "Sortable.ItemHandle";
 
 export { Sortable };

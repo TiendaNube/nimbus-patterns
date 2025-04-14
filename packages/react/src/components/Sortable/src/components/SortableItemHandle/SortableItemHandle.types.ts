@@ -2,7 +2,8 @@ import { ReactNode } from "react";
 import type { DraggableAttributes } from "@dnd-kit/core";
 import type { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities";
 
-export interface SortableItemHandleProps {
+// Properties specific to the SortableItemHandle component
+export interface SortableItemHandleProperties {
   /** The reference callback for the handle element */
   setActivatorNodeRef?: (node: HTMLElement | null) => void;
   /** DND-kit drag attributes */
@@ -11,4 +12,4 @@ export interface SortableItemHandleProps {
   listeners?: SyntheticListenerMap | undefined;
   /** Custom icon or content for the handle */
   children?: ReactNode;
-} 
+}

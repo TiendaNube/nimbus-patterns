@@ -1,56 +1,41 @@
-import React, {
-  memo,
-  useMemo,
-  type CSSProperties,
-  type ReactNode,
-} from "react";
+import React, { memo, useMemo, type CSSProperties } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { SortableItemProps } from "./sortableItem.types";
-import type { DraggableAttributes } from "@dnd-kit/core";
-import type { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities";
+import {
+  SortableItemContainerProperties,
+  SortableItemProps,
+} from "./sortableItem.types";
 import { SortableItemContext } from "./SortableItemContext";
 
-interface SortableItemComponentProps {
-  setNodeRef: (node: HTMLElement | null) => void;
-  attributes: DraggableAttributes;
-  listeners: SyntheticListenerMap | undefined;
-  style: CSSProperties;
-  isDragging: boolean;
-  handle?: boolean;
-  children: ReactNode;
-}
-
-function SortableItemComponent({
-  setNodeRef,
-  attributes,
-  listeners,
-  style,
-  isDragging,
-  handle = false,
-  children,
-}: SortableItemComponentProps) {
-  return (
-    <div 
-      ref={setNodeRef} 
+/**
+ *
+ */
+const SortableItemContainer: React.FC<SortableItemContainerProperties> = memo(
+  ({
+    setNodeRef,
+    attributes,
+    listeners,
+    style,
+    handle = false,
+    children,
+  }: SortableItemContainerProperties) => (
+    <div
+      ref={setNodeRef}
       style={style}
       {...(!handle && { ...attributes, ...listeners })}
     >
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
     </div>
-  );
-}
-
-const SortableItemComponentMemo = memo(SortableItemComponent);
+  )
+);
 
 const SortableItem: React.FC<SortableItemProps> = ({
   id,
   disabled = false,
   handle = false,
   children,
-}: SortableItemProps): JSX.Element => {
+  renderItem,
+}: SortableItemProps) => {
   const {
     attributes,
     listeners,
@@ -73,28 +58,36 @@ const SortableItem: React.FC<SortableItemProps> = ({
     [transform, transition]
   );
 
-  const contextValue = useMemo(() => ({
-    setActivatorNodeRef,
-    attributes,
-    listeners,
-  }), [setActivatorNodeRef, attributes, listeners]);
+  const contextValue = useMemo(
+    () => ({
+      setActivatorNodeRef,
+      attributes,
+      listeners,
+    }),
+    [setActivatorNodeRef, attributes, listeners]
+  );
 
-  if (typeof children === "function") {
-    return <>{children({ isDragging })}</>;
+  if (renderItem) {
+    return renderItem({
+      isDragging,
+      attributes: handle ? attributes : attributes,
+      listeners: handle ? undefined : listeners,
+      setNodeRef,
+      style,
+    });
   }
 
   return (
     <SortableItemContext.Provider value={contextValue}>
-      <SortableItemComponentMemo
+      <SortableItemContainer
         setNodeRef={setNodeRef}
         attributes={attributes}
         listeners={listeners}
         style={style}
-        isDragging={isDragging}
         handle={handle}
       >
         {children}
-      </SortableItemComponentMemo>
+      </SortableItemContainer>
     </SortableItemContext.Provider>
   );
 };

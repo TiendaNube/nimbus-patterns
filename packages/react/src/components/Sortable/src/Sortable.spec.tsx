@@ -29,7 +29,6 @@ const makeSut = (
         <Sortable.Item
           key={item.id}
           id={item.id}
-          item={item}
           data-testid={`item-${item.id}`}
         >
           <div>{item.content}</div>
@@ -82,7 +81,7 @@ describe("GIVEN <Sortable />", () => {
       fireEvent.dragOver(secondItem);
       fireEvent.drop(secondItem);
 
-      expect(handleReorder).toBeCalled();
+      expect(handleReorder).toHaveBeenCalled();
     });
   });
 });

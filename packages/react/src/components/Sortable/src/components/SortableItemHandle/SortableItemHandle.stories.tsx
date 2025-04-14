@@ -4,6 +4,7 @@ import { SortableItemHandle } from "./SortableItemHandle";
 import { SortableItemContext } from "../SortableItem/SortableItemContext";
 
 const mockContextValue = {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setActivatorNodeRef: () => {},
   attributes: {
     role: "button",

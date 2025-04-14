@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import {
   DragEndEvent,
   DragStartEvent,
@@ -6,47 +6,38 @@ import {
   UniqueIdentifier,
   PointerSensorOptions,
 } from "@dnd-kit/core";
+import { orientation } from "./Sortable.definitions";
 
-export interface SortableProps<T extends { id: UniqueIdentifier }> {
+// Type for items that can be sorted
+export type SortableItemType = { id: UniqueIdentifier };
+
+// Properties specific to the Sortable component
+export interface SortableProperties<T extends SortableItemType> {
+  /** The children components */
+  children: ReactNode;
+  /** Whether to disable sorting functionality */
+  disabled?: boolean;
   /** The items to be sorted */
   items: T[];
   /** Callback fired when items are reordered */
   onReorder: (items: T[]) => void;
-  /** The orientation of the sortable list */
-  orientation?: "vertical" | "horizontal";
-  /** Custom sensor options for drag detection */
-  sensorOptions?: PointerSensorOptions;
   /** Callback fired when drag starts */
   onDragStart?: (event: DragStartEvent) => void;
   /** Callback fired during drag */
   onDragOver?: (event: DragOverEvent) => void;
   /** Callback fired when drag ends */
   onDragEnd?: (event: DragEndEvent) => void;
-  /** Whether to disable sorting functionality */
-  disabled?: boolean;
-  /** Container component or element type */
-  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
-  /** Additional props for the container element */
-  containerProps?: React.HTMLAttributes<HTMLElement>;
-  /** The children components */
-  children: ReactNode;
+  /** The orientation of the sortable list */
+  orientation?: typeof orientation.vertical | typeof orientation.horizontal;
+  /** Custom sensor options for drag detection */
+  sensorOptions?: PointerSensorOptions;
 }
 
-export interface SortableItemProps<T = any> {
-  /** The item data */
-  item: T;
-  /** The unique identifier for the item */
-  id: UniqueIdentifier;
-  /** Whether the item is disabled from being dragged */
-  disabled?: boolean;
-  /** Custom drag handle selector */
-  handle?: boolean;
-  /** Additional props for the item element */
-  itemProps?: React.HTMLAttributes<HTMLElement>;
-  /** The children components or render function */
-  children: ReactNode | ((props: { isDragging: boolean }) => ReactNode);
-}
+// Props that can be passed to the Sortable component
+export type SortableProps<T extends SortableItemType> = SortableProperties<T>;
 
+// Context value for sortable functionality
 export interface SortableContextValue {
+  /** Currently active (being dragged) item ID */
   activeId: UniqueIdentifier | null;
 }

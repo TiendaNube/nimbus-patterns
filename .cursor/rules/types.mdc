@@ -38,6 +38,7 @@ alwaysApply: false
    - Add JSDoc comments for all exported types
    - Include descriptions of the type's purpose
    - Document any constraints or special cases
+   - Always sort types alphabetically
 
 ## TypeScript Best Practices
 

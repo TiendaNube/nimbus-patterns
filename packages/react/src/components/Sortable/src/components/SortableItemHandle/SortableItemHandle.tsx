@@ -1,15 +1,11 @@
-import React, { type ReactNode } from "react";
-import { DragDotsIcon } from "@nimbus-ds/icons";
-import { useSortableItemContext } from "../SortableItem/SortableItemContext";
+import React from "react";
 import { Box } from "@nimbus-ds/components";
-
-interface SortableItemHandleProps {
-  children?: ReactNode;
-}
+import { useSortableItemContext } from "../SortableItem/SortableItemContext";
+import { SortableItemHandleProperties } from "./SortableItemHandle.types";
 
 const SortableItemHandle = ({
-  children = <DragDotsIcon />,
-}: SortableItemHandleProps): JSX.Element => {
+  children,
+}: SortableItemHandleProperties): React.ReactElement => {
   const { setActivatorNodeRef, attributes, listeners } =
     useSortableItemContext();
 

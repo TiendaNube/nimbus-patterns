@@ -3,8 +3,11 @@ import type { DraggableAttributes } from "@dnd-kit/core";
 import type { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities";
 
 interface SortableItemContextValue {
+  // Reference callback for the drag handle element
   setActivatorNodeRef: (node: HTMLElement | null) => void;
+  // DND-kit drag attributes
   attributes: DraggableAttributes;
+  // DND-kit drag listeners
   listeners: SyntheticListenerMap | undefined;
 }
 
