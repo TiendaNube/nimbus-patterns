@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { Box, Card, Text, Checkbox, List } from "@nimbus-ds/components";
+import { Box, Card, Text } from "@nimbus-ds/components";
 import { DragDotsIcon } from "@nimbus-ds/icons";
 import { Sortable } from "./Sortable";
-import { DragOverlay } from "@dnd-kit/core";
 
 interface Item {
   id: string;
@@ -187,74 +186,6 @@ export const CustomRenderItem: Story = {
   },
 };
 
-export const WithCustomSensors: Story = {
-  render: () => {
-    const [items, setItems] = useState(initialItems);
-
-    return (
-      <Box display="flex" flexDirection="column" gap="4" width="400px">
-        <Text>This list has more relaxed drag settings:</Text>
-        <List as="ul">
-          <List.Item>
-            Can start dragging with larger movements (up to 20px)
-          </List.Item>
-          <List.Item>Waits 150ms before canceling a potential drag</List.Item>
-          <List.Item>Tolerates movements up to 5px without canceling</List.Item>
-        </List>
-        <Text color="neutral-textSupport">
-          Try making small movements - notice how the dragging is smoother and
-          more forgiving
-        </Text>
-        <Sortable
-          items={items}
-          onReorder={setItems}
-          sensorOptions={{
-            activationConstraint: {
-              distance: 10, // Maximum distance allowed before drag activates
-              delay: 150, // Time to wait before canceling a potential drag
-              tolerance: 15, // Movement tolerance before canceling
-            },
-          }}
-        >
-          <Box
-            display="flex"
-            flexDirection="column"
-            gap="2"
-            overflow="hidden"
-            padding="2"
-          >
-            {items.map((item) => (
-              <Sortable.Item key={item.id} id={item.id}>
-                <Box
-                  as="div"
-                  width="100%"
-                  cursor="grab"
-                  style={{ touchAction: "none" }}
-                >
-                  <Card>
-                    <Card.Body>
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="space-between"
-                      >
-                        <Text>{item.content}</Text>
-                        <Text color="neutral-textSupport">
-                          (Smoother dragging)
-                        </Text>
-                      </Box>
-                    </Card.Body>
-                  </Card>
-                </Box>
-              </Sortable.Item>
-            ))}
-          </Box>
-        </Sortable>
-      </Box>
-    );
-  },
-};
-
 export const VerticalScroll: Story = {
   render: () => {
     const doubledItems = [
@@ -264,10 +195,6 @@ export const VerticalScroll: Story = {
     const [items, setItems] = useState(doubledItems);
     const [activeId, setActiveId] = useState<string | null>(null);
 
-    const activeItem = activeId
-      ? items.find((item) => item.id === activeId)
-      : null;
-
     return (
       <Box width="400px">
         <Sortable
@@ -276,12 +203,22 @@ export const VerticalScroll: Story = {
           orientation="vertical"
           onDragStart={(event) => setActiveId(event.active.id as string)}
           onDragEnd={() => setActiveId(null)}
+          renderOverlay={(item) => (
+            <Box width="400px">
+              <Card>
+                <Card.Body>
+                  <Text>{item.content}</Text>
+                </Card.Body>
+              </Card>
+            </Box>
+          )}
         >
           <Box
             display="flex"
             flexDirection="column"
             height="300px"
             overflow="auto"
+            backgroundColor="neutral-background"
             padding="4"
           >
             {items.map((item) => (
@@ -306,17 +243,6 @@ export const VerticalScroll: Story = {
               </Sortable.Item>
             ))}
           </Box>
-          <DragOverlay>
-            {activeId ? (
-              <Box>
-                <Card>
-                  <Card.Body>
-                    <Text>{activeItem?.content}</Text>
-                  </Card.Body>
-                </Card>
-              </Box>
-            ) : null}
-          </DragOverlay>
         </Sortable>
       </Box>
     );

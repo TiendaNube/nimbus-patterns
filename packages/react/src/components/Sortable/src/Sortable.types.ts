@@ -1,10 +1,12 @@
-import { ReactNode } from "react";
+import { ReactNode, CSSProperties } from "react";
 import {
   DragEndEvent,
   DragStartEvent,
   DragOverEvent,
   UniqueIdentifier,
   PointerSensorOptions,
+  DropAnimation,
+  Modifiers,
 } from "@dnd-kit/core";
 import { orientation } from "./Sortable.definitions";
 
@@ -24,6 +26,31 @@ export interface DragActivationConstraint {
   /** Whether to use pressure-based activation (for Apple Pencil etc) */
   pressure?: number;
 }
+
+/** Configuration for the drag overlay appearance and behavior */
+export interface DragOverlaySettings {
+  /** 
+   * Animation configuration for when the item is dropped.
+   * @default { duration: 0 }
+   */
+  dropAnimation?: DropAnimation | null;
+  /** Modifiers to adjust the overlay position/behavior */
+  modifiers?: Modifiers;
+  /** Custom transition timing */
+  transition?: string;
+  /** Z-index for the overlay */
+  zIndex?: number;
+  /** The HTML element to wrap the overlay content in */
+  wrapperElement?: keyof JSX.IntrinsicElements;
+}
+
+/** Default overlay settings with no animation duration */
+export const DEFAULT_OVERLAY_SETTINGS: DragOverlaySettings = {
+  dropAnimation: {
+    duration: 0,
+    easing: "ease"
+  }
+};
 
 // Properties specific to the Sortable component
 export interface SortableProperties<T extends SortableItemType> {
@@ -60,6 +87,10 @@ export interface SortableProperties<T extends SortableItemType> {
    * ```
    */
   sensorOptions?: PointerSensorOptions;
+  /** Configuration for the drag overlay appearance and behavior */
+  overlaySettings?: DragOverlaySettings;
+  /** Render function for the dragged item overlay */
+  renderOverlay?: (item: T) => ReactNode;
 }
 
 // Props that can be passed to the Sortable component

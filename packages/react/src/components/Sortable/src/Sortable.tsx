@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import {
   DndContext,
   closestCenter,
@@ -7,6 +7,7 @@ import {
   useSensor,
   useSensors,
   DragEndEvent,
+  DragOverlay,
 } from "@dnd-kit/core";
 import {
   SortableContext as BaseSortableContext,
@@ -15,7 +16,7 @@ import {
   horizontalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import * as Components from "./components";
-import { SortableProps, SortableItemType } from "./Sortable.types";
+import { SortableProps, SortableItemType, DEFAULT_OVERLAY_SETTINGS } from "./Sortable.types";
 import { SortableContext } from "./contexts/SortableContext";
 
 /**
@@ -47,8 +48,11 @@ function Sortable<T extends SortableItemType>({
   onDragEnd,
   disabled = false,
   children,
+  overlaySettings = DEFAULT_OVERLAY_SETTINGS,
+  renderOverlay,
 }: SortableProps<T>): React.ReactElement {
-  const [activeId, setActiveId] = React.useState<string | null>(null);
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const activeItem = activeId ? items.find((item) => item.id === activeId) : null;
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -70,6 +74,11 @@ function Sortable<T extends SortableItemType>({
         : horizontalListSortingStrategy,
     [orientation]
   );
+
+  const handleDragStart = (event: DragEndEvent) => {
+    setActiveId(event.active.id as string);
+    onDragStart?.(event);
+  };
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -106,10 +115,7 @@ function Sortable<T extends SortableItemType>({
     <DndContext
       sensors={sensors}
       collisionDetection={closestCenter}
-      onDragStart={(event) => {
-        setActiveId(event.active.id as string);
-        onDragStart?.(event);
-      }}
+      onDragStart={handleDragStart}
       onDragOver={onDragOver}
       onDragEnd={handleDragEnd}
     >
@@ -121,6 +127,9 @@ function Sortable<T extends SortableItemType>({
           {children}
         </SortableContext.Provider>
       </BaseSortableContext>
+      <DragOverlay {...overlaySettings}>
+        {activeItem && renderOverlay ? renderOverlay(activeItem) : null}
+      </DragOverlay>
     </DndContext>
   );
 }
