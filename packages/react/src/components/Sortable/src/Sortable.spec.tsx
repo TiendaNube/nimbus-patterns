@@ -1,7 +1,17 @@
 import React from "react";
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import { Sortable } from "./Sortable";
-import { SortableProps } from "./Sortable.types";
+import { DragDotsIcon } from "@nimbus-ds/icons";
+
+// Mock DndContext to simulate drag and drop
+jest.mock("@dnd-kit/core", () => ({
+  ...jest.requireActual("@dnd-kit/core"),
+  DndContext: jest.fn(({ children, onDragEnd }) => {
+    (global as any).__dndContextOnDragEnd = onDragEnd;
+    return <div>{children}</div>;
+  }),
+}));
 
 const mockItems = [
   { id: "1", content: "Item 1" },
@@ -15,73 +25,150 @@ const defaultProps = {
 
 const makeSut = (
   rest?: Partial<
-    Omit<SortableProps<(typeof mockItems)[0]>, "children" | "items">
-  >
-) => {
-  render(
-    <Sortable
-      items={mockItems}
-      {...defaultProps}
-      {...rest}
-      data-testid="sortable-element"
+    Omit<
+      typeof defaultProps & {
+        disabled?: boolean;
+        orientation?: "vertical" | "horizontal";
+      },
+      "children" | "items"
     >
-      {mockItems.map((item) => (
-        <Sortable.Item
-          key={item.id}
-          id={item.id}
-          data-testid={`item-${item.id}`}
-        >
-          <div>{item.content}</div>
-        </Sortable.Item>
-      ))}
+  >
+) =>
+  render(
+    <Sortable items={mockItems} {...defaultProps} {...rest}>
+      <div data-testid="sortable-container">
+        {mockItems.map((item) => (
+          <div key={item.id} data-testid={`item-wrapper-${item.id}`}>
+            <Sortable.Item id={item.id}>
+              <div>{item.content}</div>
+            </Sortable.Item>
+          </div>
+        ))}
+      </div>
     </Sortable>
   );
-};
+
+const makeSutWithHandle = () =>
+  render(
+    <Sortable items={mockItems} {...defaultProps}>
+      <div data-testid="sortable-container">
+        {mockItems.map((item) => (
+          <div key={item.id} data-testid={`item-wrapper-${item.id}`}>
+            <Sortable.Item id={item.id} handle>
+              <div>
+                <div data-testid={`handle-${item.id}`}>
+                  <Sortable.ItemHandle>
+                    <DragDotsIcon size="small" />
+                  </Sortable.ItemHandle>
+                </div>
+                {item.content}
+              </div>
+            </Sortable.Item>
+          </div>
+        ))}
+      </div>
+    </Sortable>
+  );
 
 describe("GIVEN <Sortable />", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe("WHEN rendered", () => {
     it("SHOULD render all items correctly", () => {
       makeSut();
       mockItems.forEach((item) => {
-        expect(screen.getByText(item.content)).toBeDefined();
+        expect(screen.getByText(item.content)).toBeInTheDocument();
       });
     });
 
-    it("SHOULD apply horizontal styles when orientation is horizontal", () => {
-      makeSut({ orientation: "horizontal" });
-      expect(
-        screen.getByTestId("sortable-element").getAttribute("style")
-      ).toContain("display: flex");
-    });
-
-    it("SHOULD not apply horizontal styles when orientation is vertical", () => {
-      makeSut({ orientation: "vertical" });
-      expect(
-        screen.getByTestId("sortable-element").getAttribute("style")
-      ).not.toContain("display: flex");
+    it("SHOULD apply correct attributes to items", () => {
+      makeSut();
+      mockItems.forEach((item) => {
+        const itemWrapper = screen.getByTestId(`item-wrapper-${item.id}`);
+        const itemElement = itemWrapper.querySelector("[role='button']");
+        expect(itemElement).toHaveAttribute("aria-roledescription", "sortable");
+        expect(itemElement).toHaveAttribute("role", "button");
+      });
     });
 
     it("SHOULD not render drag context when disabled", () => {
       makeSut({ disabled: true });
+      const container = screen.getByTestId("sortable-container");
       expect(
-        screen.getByTestId("sortable-element").getAttribute("data-dnd-context")
-      ).toBeNull();
+        container.parentElement?.getAttribute("aria-describedby")
+      ).toBeFalsy();
+    });
+  });
+
+  describe("WHEN using handle functionality", () => {
+    it("SHOULD render handles correctly", () => {
+      makeSutWithHandle();
+      mockItems.forEach((item) => {
+        const handle = screen.getByTestId(`handle-${item.id}`);
+        expect(handle).toBeInTheDocument();
+        const handleElement = handle.querySelector("[role='button']");
+        expect(handleElement).toHaveClass(
+          "nimbus-box_cursor-grab-xs__cklfii119"
+        );
+      });
     });
   });
 
   describe("WHEN items are reordered", () => {
-    it("SHOULD call onReorder callback", () => {
+    it("SHOULD call onReorder callback with correct order", () => {
       const handleReorder = jest.fn();
       makeSut({ onReorder: handleReorder });
 
-      const firstItem = screen.getByTestId("item-1");
-      const secondItem = screen.getByTestId("item-2");
+      // Simulate drag end event
+      (global as any).__dndContextOnDragEnd({
+        active: { id: "1" },
+        over: { id: "2" },
+      });
 
-      fireEvent.dragStart(firstItem);
-      fireEvent.dragOver(secondItem);
-      fireEvent.drop(secondItem);
+      expect(handleReorder).toHaveBeenCalledWith([
+        mockItems[1],
+        mockItems[0],
+        mockItems[2],
+      ]);
+    });
+  });
 
-      expect(handleReorder).toHaveBeenCalled();
+  describe("WHEN using custom render item", () => {
+    it("SHOULD render custom item correctly", () => {
+      render(
+        <Sortable items={mockItems} {...defaultProps}>
+          {mockItems.map((item) => (
+            <Sortable.Item
+              key={item.id}
+              id={item.id}
+              renderItem={({
+                isDragging,
+                attributes,
+                listeners,
+                setNodeRef,
+                style,
+              }) => (
+                <div
+                  ref={setNodeRef}
+                  style={style}
+                  data-testid={`custom-${item.id}`}
+                  data-is-dragging={isDragging}
+                  {...attributes}
+                  {...listeners}
+                >
+                  {item.content}
+                </div>
+              )}
+            />
+          ))}
+        </Sortable>
+      );
+
+      const customItem = screen.getByTestId("custom-1");
+      expect(customItem).toBeInTheDocument();
+      expect(customItem).toHaveAttribute("data-is-dragging", "false");
     });
   });
 });

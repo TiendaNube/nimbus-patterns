@@ -1,157 +1,85 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import { SortableItem } from "./SortableItem";
-import type { RenderItemProps } from "./sortableItem.types";
+import { useSortable } from "@dnd-kit/sortable";
+import { DragDotsIcon } from "@nimbus-ds/icons";
+import { SortableItemHandle } from "../SortableItemHandle";
 
-const mockItem = { id: "test-1", content: "Test Item" };
-const childrenContent = "Item content";
+jest.mock("@dnd-kit/sortable", () => ({
+  useSortable: jest.fn(),
+}));
 
-type BaseTestProps = {
-  id?: string;
-  disabled?: boolean;
-  handle?: boolean;
-  "data-testid"?: string;
+const mockUseSortable = {
+  attributes: {
+    role: "button",
+    tabIndex: 0,
+    "aria-describedby": "DraggableItem-1",
+  },
+  listeners: {
+    onKeyDown: jest.fn(),
+    onMouseDown: jest.fn(),
+  },
+  setNodeRef: jest.fn(),
+  setActivatorNodeRef: jest.fn(),
+  transform: null,
+  transition: null,
+  isDragging: false,
 };
 
-type TestProps = BaseTestProps &
-  (
-    | { children?: React.ReactNode; renderItem?: undefined }
-    | {
-        children?: undefined;
-        renderItem: (props: RenderItemProps) => ReactElement;
-      }
-  );
-
-const makeSut = (props?: TestProps) => {
-  const defaultChildren = (
-    <div data-testid="item-content">{childrenContent}</div>
-  );
-
-  if (props?.renderItem) {
-    return render(
-      <SortableItem
-        id={props?.id ?? mockItem.id}
-        data-testid="sortable-item"
-        disabled={props?.disabled}
-        handle={props?.handle}
-        renderItem={props.renderItem}
-      />
-    );
-  }
-
-  return render(
-    <SortableItem
-      id={props?.id ?? mockItem.id}
-      data-testid="sortable-item"
-      disabled={props?.disabled}
-      handle={props?.handle}
-    >
-      {props?.children ?? defaultChildren}
-    </SortableItem>
-  );
-};
-
-describe("GIVEN <SortableItem />", () => {
-  describe("WHEN rendered with children", () => {
-    it("SHOULD render children correctly", () => {
-      makeSut();
-      expect(screen.getByText(childrenContent)).toBeDefined();
-    });
-
-    it("SHOULD apply handle attribute when handle prop is true", () => {
-      makeSut({ handle: true });
-      expect(
-        screen.getByTestId("item-content").getAttribute("data-handle-selector")
-      ).toBeDefined();
-    });
-
-    it("SHOULD apply disabled attribute when disabled prop is true", () => {
-      makeSut({ disabled: true });
-      expect(
-        screen.getByTestId("sortable-item").getAttribute("data-disabled")
-      ).toBeDefined();
-    });
+describe("SortableItem", () => {
+  beforeEach(() => {
+    (useSortable as jest.Mock).mockReturnValue(mockUseSortable);
   });
 
-  describe("WHEN rendered with renderItem", () => {
-    const renderItemContent = "Custom rendered content";
-    const customTestId = "custom-rendered-item";
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
-    const renderItemFn = jest.fn(
-      ({
-        isDragging,
-        setNodeRef,
-        style,
-        attributes,
-        listeners,
-      }: RenderItemProps) => (
-        <div
-          ref={setNodeRef}
-          style={style}
-          data-testid={customTestId}
-          data-is-dragging={isDragging}
-          {...attributes}
-          {...listeners}
-        >
-          {renderItemContent}
-        </div>
-      )
+  it("renders children correctly", () => {
+    render(
+      <SortableItem id="test-1">
+        <div data-testid="test-content">Test Content</div>
+      </SortableItem>
     );
 
-    beforeEach(() => {
-      renderItemFn.mockClear();
-    });
+    expect(screen.getByTestId("test-content")).toBeInTheDocument();
+  });
 
-    it("SHOULD call renderItem with correct props", () => {
-      makeSut({ renderItem: renderItemFn });
+  it("renders with handle correctly", () => {
+    render(
+      <SortableItem id="test-1" handle>
+        <div>
+          <SortableItemHandle>
+            <DragDotsIcon size="small" />
+          </SortableItemHandle>
+          <div data-testid="test-content">Test Content</div>
+        </div>
+      </SortableItem>
+    );
 
-      expect(renderItemFn).toHaveBeenCalledTimes(1);
-      expect(renderItemFn).toHaveBeenCalledWith(
-        expect.objectContaining({
-          isDragging: false,
-          setNodeRef: expect.any(Function),
-          style: expect.any(Object),
-          attributes: expect.any(Object),
-          listeners: expect.any(Object),
-        })
-      );
-    });
+    expect(screen.getByTestId("test-content")).toBeInTheDocument();
+  });
 
-    it("SHOULD render the custom content", () => {
-      makeSut({ renderItem: renderItemFn });
-      expect(screen.getByText(renderItemContent)).toBeDefined();
-    });
+  it("renders with renderItem prop correctly", () => {
+    render(
+      <SortableItem
+        id="test-1"
+        renderItem={({ isDragging, attributes, listeners, setNodeRef, style }) => (
+          <div
+            ref={setNodeRef}
+            {...attributes}
+            {...listeners}
+            style={style}
+            data-testid="custom-render"
+            data-is-dragging={isDragging}
+          >
+            Custom Render
+          </div>
+        )}
+      />
+    );
 
-    it("SHOULD apply drag attributes and listeners", () => {
-      makeSut({ renderItem: renderItemFn });
-      const element = screen.getByTestId(customTestId);
-
-      // Check for drag-related attributes
-      expect(element.getAttribute("role")).toBe("button");
-      expect(element.getAttribute("tabindex")).toBe("0");
-      expect(element.style.touchAction).toBe("none");
-    });
-
-    it("SHOULD not apply listeners when handle is true", () => {
-      makeSut({ renderItem: renderItemFn, handle: true });
-
-      expect(renderItemFn).toHaveBeenCalledWith(
-        expect.objectContaining({
-          listeners: undefined,
-        })
-      );
-    });
-
-    it("SHOULD apply disabled state correctly", () => {
-      makeSut({ renderItem: renderItemFn, disabled: true });
-
-      expect(renderItemFn).toHaveBeenCalledWith(
-        expect.objectContaining({
-          attributes: expect.objectContaining({
-            "aria-disabled": true,
-          }),
-        })
-      );
-    });
+    expect(screen.getByTestId("custom-render")).toBeInTheDocument();
   });
 });

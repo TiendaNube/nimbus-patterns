@@ -1,4 +1,4 @@
-import { ReactNode, CSSProperties } from "react";
+import { ReactNode } from "react";
 import {
   DragEndEvent,
   DragStartEvent,
@@ -10,8 +10,13 @@ import {
 } from "@dnd-kit/core";
 import { orientation } from "./Sortable.definitions";
 
-// Type for items that can be sorted
-export type SortableItemType = { id: UniqueIdentifier };
+/**
+ * Base type for items that can be sorted
+ */
+export type SortableItemType = {
+  /** Unique identifier for the sortable item */
+  id: UniqueIdentifier;
+};
 
 /**
  * Activation constraints for drag detection
@@ -27,11 +32,13 @@ export interface DragActivationConstraint {
   pressure?: number;
 }
 
-/** Configuration for the drag overlay appearance and behavior */
+/**
+ * Configuration for the drag overlay appearance and behavior
+ */
 export interface DragOverlaySettings {
-  /** 
-   * Animation configuration for when the item is dropped.
-   * @default { duration: 0 }
+  /**
+   * Animation configuration for when the item is dropped
+   * @default { duration: 0, easing: "ease" }
    */
   dropAnimation?: DropAnimation | null;
   /** Modifiers to adjust the overlay position/behavior */
@@ -44,15 +51,19 @@ export interface DragOverlaySettings {
   wrapperElement?: keyof JSX.IntrinsicElements;
 }
 
-/** Default overlay settings with no animation duration */
+/**
+ * Default overlay settings with no animation duration
+ */
 export const DEFAULT_OVERLAY_SETTINGS: DragOverlaySettings = {
   dropAnimation: {
     duration: 0,
-    easing: "ease"
-  }
+    easing: "ease",
+  },
 };
 
-// Properties specific to the Sortable component
+/**
+ * Properties specific to the Sortable component
+ */
 export interface SortableProperties<T extends SortableItemType> {
   /** The children components */
   children: ReactNode;
@@ -70,13 +81,12 @@ export interface SortableProperties<T extends SortableItemType> {
   onDragEnd?: (event: DragEndEvent) => void;
   /** The orientation of the sortable list */
   orientation?: typeof orientation.vertical | typeof orientation.horizontal;
-  /** 
-   * Custom sensor options for drag detection.
+  /**
+   * Custom sensor options for drag detection
    * @example
    * ```tsx
    * <Sortable
    *   sensorOptions={{
-   *     // Allow smoother dragging with more forgiving constraints
    *     activationConstraint: {
    *       distance: 20, // Allow movements up to 20px
    *       delay: 150,  // Wait 150ms before canceling
@@ -93,10 +103,14 @@ export interface SortableProperties<T extends SortableItemType> {
   renderOverlay?: (item: T) => ReactNode;
 }
 
-// Props that can be passed to the Sortable component
+/**
+ * Props that can be passed to the Sortable component
+ */
 export type SortableProps<T extends SortableItemType> = SortableProperties<T>;
 
-// Context value for sortable functionality
+/**
+ * Context value for sortable functionality
+ */
 export interface SortableContextValue {
   /** Currently active (being dragged) item ID */
   activeId: UniqueIdentifier | null;
