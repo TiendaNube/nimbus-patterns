@@ -35,7 +35,13 @@ export const Vertical: Story = {
 
     return (
       <Sortable items={items} onReorder={setItems} orientation="vertical">
-        <Box display="flex" flexDirection="column" width="100%">
+        <Box
+          display="flex"
+          flexDirection="column"
+          width="100%"
+          padding="2"
+          overflow="hidden"
+        >
           {items.map((item) => (
             <Sortable.Item key={item.id} id={item.id}>
               <Box
@@ -65,7 +71,7 @@ export const Horizontal: Story = {
 
     return (
       <Sortable items={items} onReorder={setItems} orientation="horizontal">
-        <Box display="flex" gap="4">
+        <Box display="flex" gap="4" overflow="hidden" padding="2">
           {items.map((item) => (
             <Sortable.Item key={item.id} id={item.id}>
               <Box as="div" cursor="grab" style={{ touchAction: "none" }}>
@@ -89,7 +95,13 @@ export const WithHandle: Story = {
 
     return (
       <Sortable items={items} onReorder={setItems}>
-        <Box display="flex" flexDirection="column" gap="2">
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap="2"
+          overflow="hidden"
+          padding="2"
+        >
           {items.map((item) => (
             <Sortable.Item key={item.id} id={item.id} handle>
               <Card>
@@ -112,95 +124,6 @@ export const WithHandle: Story = {
           ))}
         </Box>
       </Sortable>
-    );
-  },
-};
-
-export const WithHandleRight: Story = {
-  render: () => {
-    const [items, setItems] = useState(initialItems);
-
-    return (
-      <Sortable items={items} onReorder={setItems}>
-        <Box display="flex" flexDirection="column" gap="2">
-          {items.map((item) => (
-            <Sortable.Item key={item.id} id={item.id} handle>
-              <Card>
-                <Card.Body>
-                  <Box display="flex" alignItems="center" gap="2">
-                    <Text>{item.content}</Text>
-                    <Sortable.ItemHandle>
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="center"
-                      >
-                        <DragDotsIcon size="small" />
-                      </Box>
-                    </Sortable.ItemHandle>
-                  </Box>
-                </Card.Body>
-              </Card>
-            </Sortable.Item>
-          ))}
-        </Box>
-      </Sortable>
-    );
-  },
-};
-
-export const Disabled: Story = {
-  render: () => {
-    const [items, setItems] = useState(initialItems);
-    const [isDisabled, setIsDisabled] = useState(true);
-
-    return (
-      <Box display="flex" flexDirection="column" gap="4" width="400px">
-        <Box display="flex" alignItems="center" gap="2">
-          <Checkbox
-            name="enable-sorting"
-            checked={!isDisabled}
-            onChange={(e) => setIsDisabled(!e.target.checked)}
-          />
-          <Text>Enable sorting</Text>
-        </Box>
-        <Text>
-          {isDisabled
-            ? "Sorting is disabled. Items cannot be dragged."
-            : "Sorting is enabled. Try dragging items to reorder them."}
-        </Text>
-        <Sortable items={items} onReorder={setItems} disabled={isDisabled}>
-          <Box display="flex" flexDirection="column" gap="2">
-            {items.map((item) => (
-              <Sortable.Item key={item.id} id={item.id}>
-                <Box
-                  as="div"
-                  width="100%"
-                  cursor={isDisabled ? "not-allowed" : "grab"}
-                  style={{ touchAction: "none" }}
-                >
-                  <Card>
-                    <Card.Body>
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="space-between"
-                      >
-                        <Text>{item.content}</Text>
-                        {isDisabled && (
-                          <Text color="neutral-textSupport">
-                            (Sorting disabled)
-                          </Text>
-                        )}
-                      </Box>
-                    </Card.Body>
-                  </Card>
-                </Box>
-              </Sortable.Item>
-            ))}
-          </Box>
-        </Sortable>
-      </Box>
     );
   },
 };
@@ -211,7 +134,13 @@ export const CustomRenderItem: Story = {
 
     return (
       <Sortable items={items} onReorder={setItems}>
-        <Box display="flex" flexDirection="column" gap="2">
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap="2"
+          overflow="hidden"
+          padding="2"
+        >
           {items.map((item) => (
             <Sortable.Item
               key={item.id}
@@ -287,7 +216,13 @@ export const WithCustomSensors: Story = {
             },
           }}
         >
-          <Box display="flex" flexDirection="column" gap="2">
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap="2"
+            overflow="hidden"
+            padding="2"
+          >
             {items.map((item) => (
               <Sortable.Item key={item.id} id={item.id}>
                 <Box
