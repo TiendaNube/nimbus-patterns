@@ -3,6 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Box, Card, Text, Checkbox, List } from "@nimbus-ds/components";
 import { DragDotsIcon } from "@nimbus-ds/icons";
 import { Sortable } from "./Sortable";
+import { DragOverlay } from "@dnd-kit/core";
 
 interface Item {
   id: string;
@@ -99,7 +100,6 @@ export const WithHandle: Story = {
                         display="flex"
                         alignItems="center"
                         justifyContent="center"
-                        cursor="grab"
                       >
                         <DragDotsIcon size="small" />
                       </Box>
@@ -134,7 +134,6 @@ export const WithHandleRight: Story = {
                         display="flex"
                         alignItems="center"
                         justifyContent="center"
-                        cursor="grab"
                       >
                         <DragDotsIcon size="small" />
                       </Box>
@@ -282,9 +281,9 @@ export const WithCustomSensors: Story = {
           onReorder={setItems}
           sensorOptions={{
             activationConstraint: {
-              distance: 20, // Maximum distance allowed before drag activates
+              distance: 10, // Maximum distance allowed before drag activates
               delay: 150, // Time to wait before canceling a potential drag
-              tolerance: 5, // Movement tolerance before canceling
+              tolerance: 15, // Movement tolerance before canceling
             },
           }}
         >
@@ -315,6 +314,74 @@ export const WithCustomSensors: Story = {
               </Sortable.Item>
             ))}
           </Box>
+        </Sortable>
+      </Box>
+    );
+  },
+};
+
+export const VerticalScroll: Story = {
+  render: () => {
+    const doubledItems = [
+      ...initialItems,
+      ...initialItems.map((item) => ({ ...item, id: `${item.id}-copy` })),
+    ];
+    const [items, setItems] = useState(doubledItems);
+    const [activeId, setActiveId] = useState<string | null>(null);
+
+    const activeItem = activeId
+      ? items.find((item) => item.id === activeId)
+      : null;
+
+    return (
+      <Box width="400px">
+        <Sortable
+          items={items}
+          onReorder={setItems}
+          orientation="vertical"
+          onDragStart={(event) => setActiveId(event.active.id as string)}
+          onDragEnd={() => setActiveId(null)}
+        >
+          <Box
+            display="flex"
+            flexDirection="column"
+            height="300px"
+            overflow="auto"
+            padding="4"
+          >
+            {items.map((item) => (
+              <Sortable.Item key={item.id} id={item.id}>
+                {item.id === activeId ? (
+                  <Box
+                    borderTopWidth="1"
+                    borderBottomWidth="none"
+                    borderColor="primary-interactive"
+                    borderStyle="solid"
+                    marginY="2"
+                  />
+                ) : (
+                  <Box marginY="2" cursor="grab">
+                    <Card>
+                      <Card.Body>
+                        <Text>{item.content}</Text>
+                      </Card.Body>
+                    </Card>
+                  </Box>
+                )}
+              </Sortable.Item>
+            ))}
+          </Box>
+          <DragOverlay>
+            {activeId ? (
+              <Box>
+                <Card>
+                  <Card.Body>
+                    <Text>{activeItem?.content}</Text>
+                  </Card.Body>
+                </Card>
+              </Box>
+            ) : null}
+          </DragOverlay>
         </Sortable>
       </Box>
     );

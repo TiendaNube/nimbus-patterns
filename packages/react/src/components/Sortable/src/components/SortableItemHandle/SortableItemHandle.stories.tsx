@@ -12,9 +12,9 @@ const mockContextValue = {
     "aria-describedby": "draggable-handle",
     "aria-disabled": false,
     "aria-pressed": false,
-    "aria-roledescription": "draggable"
+    "aria-roledescription": "draggable",
   },
-  listeners: undefined
+  listeners: undefined,
 };
 
 const meta: Meta<typeof SortableItemHandle> = {
@@ -33,10 +33,14 @@ const meta: Meta<typeof SortableItemHandle> = {
 export default meta;
 type Story = StoryObj<typeof SortableItemHandle>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    children: "⋮⋮",
+  },
+};
 
 export const CustomContent: Story = {
   args: {
     children: "⋮ Drag Handle",
   },
-}; 
+};

@@ -3,6 +3,8 @@ import { Meta, StoryObj } from "@storybook/react";
 import { DndContext } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
 import { SortableItem } from "./SortableItem";
+import { Box, Card } from "@nimbus-ds/components";
+import { SortableItemHandle } from "../SortableItemHandle";
 
 const meta: Meta<typeof SortableItem> = {
   title: "Components/Sortable/SortableItem",
@@ -26,27 +28,27 @@ const mockItem = { id: "test-1", content: "Test Item" };
 export const Default: Story = {
   args: {
     id: mockItem.id,
-    item: mockItem,
-    children: <div style={{ padding: "1rem", border: "1px solid #ccc" }}>Draggable Item</div>,
+    children: (
+      <Card>
+        <Card.Body>Draggable Item</Card.Body>
+      </Card>
+    ),
   },
 };
 
 export const WithHandle: Story = {
   args: {
     id: mockItem.id,
-    item: mockItem,
     handle: true,
     children: (
-      <div style={{ 
-        padding: "1rem", 
-        border: "1px solid #ccc",
-        display: "flex",
-        alignItems: "center",
-        gap: "0.5rem"
-      }}>
-        <span data-handle-selector style={{ cursor: "grab" }}>⋮⋮</span>
-        Draggable with Handle
-      </div>
+      <Card>
+        <Card.Body>
+          <Box display="flex" alignItems="center" gap="2">
+            <SortableItemHandle>⋮⋮</SortableItemHandle>
+            Draggable with Handle
+          </Box>
+        </Card.Body>
+      </Card>
     ),
   },
 };
@@ -54,25 +56,25 @@ export const WithHandle: Story = {
 export const Disabled: Story = {
   args: {
     id: mockItem.id,
-    item: mockItem,
     disabled: true,
-    children: <div style={{ padding: "1rem", border: "1px solid #ccc", opacity: 0.5 }}>Disabled Item</div>,
+    children: (
+      <Card>
+        <Card.Body>
+          <Box cursor="not-allowed">Disabled Item</Box>
+        </Card.Body>
+      </Card>
+    ),
   },
 };
 
 export const WithRenderFunction: Story = {
   args: {
     id: mockItem.id,
-    item: mockItem,
-    children: ({ isDragging }: { isDragging: boolean }) => (
-      <div style={{ 
-        padding: "1rem", 
-        border: "1px solid #ccc",
-        background: isDragging ? "#f0f0f0" : "white",
-        transform: isDragging ? "scale(1.02)" : "none",
-        transition: "all 0.2s"
-      }}>
-        {isDragging ? "Dragging..." : "Drag me!"}
+    renderItem: ({ isDragging, attributes, listeners, setNodeRef, style }) => (
+      <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+        <Card>
+          <Card.Body>{isDragging ? "Dragging..." : "Drag me!"}</Card.Body>
+        </Card>
       </div>
     ),
   },

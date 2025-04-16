@@ -10,7 +10,7 @@ const SortableItemHandle = ({
     useSortableItemContext();
 
   return (
-    <Box {...attributes} {...listeners} ref={setActivatorNodeRef}>
+    <Box {...attributes} {...listeners} ref={setActivatorNodeRef} cursor="grab">
       {children}
     </Box>
   );
