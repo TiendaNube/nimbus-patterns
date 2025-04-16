@@ -5,8 +5,7 @@ import {
   DragOverEvent,
   UniqueIdentifier,
   PointerSensorOptions,
-  DropAnimation,
-  Modifiers,
+  DragOverlayProps,
 } from "@dnd-kit/core";
 import { orientation } from "./Sortable.definitions";
 
@@ -19,42 +18,9 @@ export type SortableItemType = {
 };
 
 /**
- * Activation constraints for drag detection
- */
-export interface DragActivationConstraint {
-  /** Maximum distance (in pixels) allowed for movement before drag activates */
-  distance?: number;
-  /** Time in milliseconds to wait before canceling a potential drag */
-  delay?: number;
-  /** Movement tolerance in pixels before canceling a drag */
-  tolerance?: number;
-  /** Whether to use pressure-based activation (for Apple Pencil etc) */
-  pressure?: number;
-}
-
-/**
- * Configuration for the drag overlay appearance and behavior
- */
-export interface DragOverlaySettings {
-  /**
-   * Animation configuration for when the item is dropped
-   * @default { duration: 0, easing: "ease" }
-   */
-  dropAnimation?: DropAnimation | null;
-  /** Modifiers to adjust the overlay position/behavior */
-  modifiers?: Modifiers;
-  /** Custom transition timing */
-  transition?: string;
-  /** Z-index for the overlay */
-  zIndex?: number;
-  /** The HTML element to wrap the overlay content in */
-  wrapperElement?: keyof JSX.IntrinsicElements;
-}
-
-/**
  * Default overlay settings with no animation duration
  */
-export const DEFAULT_OVERLAY_SETTINGS: DragOverlaySettings = {
+export const DEFAULT_OVERLAY_SETTINGS: DragOverlayProps = {
   dropAnimation: {
     duration: 0,
     easing: "ease",
@@ -98,7 +64,7 @@ export interface SortableProperties<T extends SortableItemType> {
    */
   sensorOptions?: PointerSensorOptions;
   /** Configuration for the drag overlay appearance and behavior */
-  overlaySettings?: DragOverlaySettings;
+  overlaySettings?: DragOverlayProps;
   /** Render function for the dragged item overlay */
   renderOverlay?: (item: T) => ReactNode;
 }

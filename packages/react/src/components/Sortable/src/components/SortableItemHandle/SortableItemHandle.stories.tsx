@@ -18,7 +18,7 @@ const mockContextValue = {
 };
 
 const meta: Meta<typeof SortableItemHandle> = {
-  title: "Components/Sortable/SortableItemHandle",
+  title: "Patterns/Sortable/SortableItemHandle",
   component: SortableItemHandle,
   tags: ["autodocs"],
   decorators: [

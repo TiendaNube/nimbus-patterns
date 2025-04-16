@@ -16,8 +16,11 @@ import {
   horizontalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import * as Components from "./components";
-import { SortableProps, SortableItemType, DEFAULT_OVERLAY_SETTINGS } from "./Sortable.types";
-import { SortableContext } from "./contexts/SortableContext";
+import {
+  SortableProps,
+  SortableItemType,
+  DEFAULT_OVERLAY_SETTINGS,
+} from "./Sortable.types";
 
 /**
  * A component that provides drag and drop sorting functionality
@@ -52,7 +55,9 @@ function Sortable<T extends SortableItemType>({
   renderOverlay,
 }: SortableProps<T>): React.ReactElement {
   const [activeId, setActiveId] = useState<string | null>(null);
-  const activeItem = activeId ? items.find((item) => item.id === activeId) : null;
+  const activeItem = activeId
+    ? items.find((item) => item.id === activeId)
+    : null;
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -98,13 +103,6 @@ function Sortable<T extends SortableItemType>({
     onDragEnd?.(event);
   };
 
-  const contextValue = useMemo(
-    () => ({
-      activeId,
-    }),
-    [activeId]
-  );
-
   if (disabled) {
     // We return the children without the DndContext to avoid the drag and drop functionality
     /* eslint-disable-next-line react/jsx-no-useless-fragment */
@@ -123,9 +121,7 @@ function Sortable<T extends SortableItemType>({
         items={items.map((item) => item.id)}
         strategy={strategy}
       >
-        <SortableContext.Provider value={contextValue}>
-          {children}
-        </SortableContext.Provider>
+        {children}
       </BaseSortableContext>
       <DragOverlay {...overlaySettings}>
         {activeItem && renderOverlay ? renderOverlay(activeItem) : null}

@@ -4,13 +4,8 @@ import { Box, Card, Text } from "@nimbus-ds/components";
 import { DragDotsIcon } from "@nimbus-ds/icons";
 import { Sortable } from "./Sortable";
 
-interface Item {
-  id: string;
-  content: string;
-}
-
 const meta: Meta<typeof Sortable> = {
-  title: "Components/Sortable",
+  title: "Patterns/Sortable",
   component: Sortable,
   parameters: {
     layout: "centered",
@@ -20,7 +15,7 @@ const meta: Meta<typeof Sortable> = {
 export default meta;
 type Story = StoryObj<typeof Sortable>;
 
-const initialItems: Item[] = [
+const initialItems = [
   { id: "1", content: "Item 1" },
   { id: "2", content: "Item 2" },
   { id: "3", content: "Item 3" },

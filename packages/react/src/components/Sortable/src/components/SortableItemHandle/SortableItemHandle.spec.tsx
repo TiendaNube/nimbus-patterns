@@ -59,7 +59,10 @@ describe("GIVEN <SortableItemHandle />", () => {
   describe("WHEN context is not provided", () => {
     it("SHOULD throw error", () => {
       // Mock console.error to avoid React error logging
-      const consoleSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+      const consoleSpy = jest
+        .spyOn(console, "error")
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        .mockImplementation(() => {});
       (useSortableItemContext as jest.Mock).mockImplementation(() => {
         throw new Error("Context not found");
       });
@@ -81,4 +84,4 @@ describe("GIVEN <SortableItemHandle />", () => {
       expect(SortableItemHandle.displayName).toBe("SortableItemHandle");
     });
   });
-}); 
+});

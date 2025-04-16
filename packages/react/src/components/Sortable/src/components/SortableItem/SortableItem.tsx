@@ -1,33 +1,8 @@
-import React, { memo, useMemo, type CSSProperties } from "react";
+import React, { useMemo, type CSSProperties } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import {
-  SortableItemContainerProperties,
-  SortableItemProps,
-} from "./sortableItem.types";
+import { SortableItemProps } from "./sortableItem.types";
 import { SortableItemContext } from "./SortableItemContext";
-
-/**
- *
- */
-const SortableItemContainer: React.FC<SortableItemContainerProperties> = memo(
-  ({
-    setNodeRef,
-    attributes,
-    listeners,
-    style,
-    handle = false,
-    children,
-  }: SortableItemContainerProperties) => (
-    <div
-      ref={setNodeRef}
-      style={style}
-      {...(!handle && { ...attributes, ...listeners })}
-    >
-      <div>{children}</div>
-    </div>
-  )
-);
 
 const SortableItem: React.FC<SortableItemProps> = ({
   id,
@@ -79,15 +54,14 @@ const SortableItem: React.FC<SortableItemProps> = ({
 
   return (
     <SortableItemContext.Provider value={contextValue}>
-      <SortableItemContainer
-        setNodeRef={setNodeRef}
-        attributes={attributes}
-        listeners={listeners}
+      {/* We use a native div because Nimbus components don't support the 'style' property */}
+      <div
+        ref={setNodeRef}
         style={style}
-        handle={handle}
+        {...(!handle && { ...attributes, ...listeners })}
       >
         {children}
-      </SortableItemContainer>
+      </div>
     </SortableItemContext.Provider>
   );
 };

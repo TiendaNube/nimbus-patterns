@@ -2,12 +2,12 @@ import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { DndContext } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
-import { SortableItem } from "./SortableItem";
 import { Box, Card } from "@nimbus-ds/components";
+import { SortableItem } from "./SortableItem";
 import { SortableItemHandle } from "../SortableItemHandle";
 
 const meta: Meta<typeof SortableItem> = {
-  title: "Components/Sortable/SortableItem",
+  title: "Patterns/Sortable/SortableItem",
   component: SortableItem,
   decorators: [
     (Story) => (

@@ -11,12 +11,17 @@ interface SortableItemContextValue {
   listeners: SyntheticListenerMap | undefined;
 }
 
-export const SortableItemContext = createContext<SortableItemContextValue | null>(null);
+export const SortableItemContext =
+  createContext<SortableItemContextValue | null>(null);
 
 export const useSortableItemContext = () => {
   const context = useContext(SortableItemContext);
+  // Ignored as it's not necessary to test
+  /* istanbul ignore next */
   if (!context) {
-    throw new Error("useSortableItemContext must be used within a SortableItem");
+    throw new Error(
+      "useSortableItemContext must be used within a SortableItem"
+    );
   }
   return context;
-}; 
+};
