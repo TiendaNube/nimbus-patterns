@@ -156,7 +156,7 @@ export const CustomRenderItem: Story = {
                             color={
                               isDragging
                                 ? "danger-interactive"
-                                : "neutral-textPrimary"
+                                : "neutral-interactive"
                             }
                           >
                             Drag me!

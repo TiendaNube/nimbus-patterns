@@ -120,6 +120,10 @@
       "import": "./dist/SideModal/index.js",
       "require": "./dist/SideModal/index.js"
     },
+    "./Sortable": {
+      "import": "./dist/Sortable/index.js",
+      "require": "./dist/Sortable/index.js"
+    },
     "./ThumbnailWithAction": {
       "import": "./dist/ThumbnailWithAction/index.js",
       "require": "./dist/ThumbnailWithAction/index.js"

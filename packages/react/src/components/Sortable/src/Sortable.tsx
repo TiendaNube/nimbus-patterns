@@ -15,7 +15,7 @@ import {
   verticalListSortingStrategy,
   horizontalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import * as Components from "./components";
+import { SortableItem, SortableItemHandle } from "./components";
 import { SortableItemType, SortableProperties } from "./Sortable.types";
 import { DEFAULT_OVERLAY_SETTINGS } from "./Sortable.definitions";
 
@@ -138,7 +138,7 @@ function Sortable<T extends SortableItemType>({
  * </Sortable.Item>
  * ```
  */
-Sortable.Item = Components.SortableItem;
+Sortable.Item = SortableItem;
 
 /**
  * A handle component that can be used to drag a sortable item, useful for providing a dedicated drag target
@@ -154,7 +154,7 @@ Sortable.Item = Components.SortableItem;
  * </Sortable.Item>
  * ```
  */
-Sortable.ItemHandle = Components.SortableItemHandle;
+Sortable.ItemHandle = SortableItemHandle;
 
 Sortable.displayName = "Sortable";
 Sortable.Item.displayName = "Sortable.Item";

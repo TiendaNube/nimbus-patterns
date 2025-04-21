@@ -2,7 +2,7 @@ import { ReactNode, CSSProperties, ReactElement } from "react";
 import { UniqueIdentifier, DraggableAttributes } from "@dnd-kit/core";
 import { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities";
 
-export interface SortableItemContainerProperties {
+export interface RenderItemProps {
   /** Drag attributes required for drag functionality */
   attributes: DraggableAttributes;
   /** Event listeners for drag functionality */
@@ -11,14 +11,6 @@ export interface SortableItemContainerProperties {
   setNodeRef: (node: HTMLElement | null) => void;
   /** Style properties for drag animation */
   style: CSSProperties;
-  /** Whether the item is a drag handle */
-  handle?: boolean;
-  /** The children components */
-  children: ReactNode;
-}
-
-export interface RenderItemProps
-  extends Omit<SortableItemContainerProperties, "children" | "handle"> {
   /** Whether the item is currently being dragged */
   isDragging: boolean;
 }
@@ -33,7 +25,7 @@ export interface SortableItemProperties {
   handle?: boolean;
   /** The children components */
   children?: ReactNode;
-  /** Optional render function that receives drag state and handlers */
+  /** Optional render function that receives drag state and handlers, useful for fully customizing the item */
   renderItem?: (props: RenderItemProps) => ReactElement;
 }
 
