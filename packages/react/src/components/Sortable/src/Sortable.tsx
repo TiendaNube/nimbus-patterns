@@ -16,11 +16,8 @@ import {
   horizontalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import * as Components from "./components";
-import {
-  SortableProps,
-  SortableItemType,
-  DEFAULT_OVERLAY_SETTINGS,
-} from "./Sortable.types";
+import { SortableItemType, SortableProperties } from "./Sortable.types";
+import { DEFAULT_OVERLAY_SETTINGS } from "./Sortable.definitions";
 
 /**
  * A component that provides drag and drop sorting functionality
@@ -53,7 +50,7 @@ function Sortable<T extends SortableItemType>({
   children,
   overlaySettings = DEFAULT_OVERLAY_SETTINGS,
   renderOverlay,
-}: SortableProps<T>): React.ReactElement {
+}: SortableProperties<T>): React.ReactElement {
   const [activeId, setActiveId] = useState<string | null>(null);
   const activeItem = activeId
     ? items.find((item) => item.id === activeId)
@@ -88,6 +85,7 @@ function Sortable<T extends SortableItemType>({
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
+    // We only reorder if the item is being dragged over a different item
     if (over && active.id !== over.id) {
       const oldIndex = items.findIndex((item) => item.id === active.id);
       const newIndex = items.findIndex((item) => item.id === over.id);
@@ -123,6 +121,7 @@ function Sortable<T extends SortableItemType>({
       >
         {children}
       </BaseSortableContext>
+      {/* DragOverlay helps with the visual feedback of the drag and the fixed constrains of the container */}
       <DragOverlay {...overlaySettings}>
         {activeItem && renderOverlay ? renderOverlay(activeItem) : null}
       </DragOverlay>

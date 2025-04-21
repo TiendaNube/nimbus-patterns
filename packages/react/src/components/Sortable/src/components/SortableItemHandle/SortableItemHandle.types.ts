@@ -13,6 +13,3 @@ export interface SortableItemHandleProperties {
   /** Custom icon or content for the handle */
   children?: ReactNode;
 }
-
-// Props that can be passed to the SortableItemHandle component
-export type SortableItemHandleProps = SortableItemHandleProperties;

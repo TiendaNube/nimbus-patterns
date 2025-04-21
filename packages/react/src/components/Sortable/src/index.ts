@@ -1,5 +1,4 @@
 import { Sortable } from "./Sortable";
 
 export { Sortable } from "./Sortable";
-export type { SortableProps } from "./Sortable.types";
 export default Sortable;

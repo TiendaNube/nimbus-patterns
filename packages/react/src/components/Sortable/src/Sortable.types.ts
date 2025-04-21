@@ -18,16 +18,6 @@ export type SortableItemType = {
 };
 
 /**
- * Default overlay settings with no animation duration
- */
-export const DEFAULT_OVERLAY_SETTINGS: DragOverlayProps = {
-  dropAnimation: {
-    duration: 0,
-    easing: "ease",
-  },
-};
-
-/**
  * Properties specific to the Sortable component
  */
 export interface SortableProperties<T extends SortableItemType> {
@@ -68,11 +58,6 @@ export interface SortableProperties<T extends SortableItemType> {
   /** Render function for the dragged item overlay */
   renderOverlay?: (item: T) => ReactNode;
 }
-
-/**
- * Props that can be passed to the Sortable component
- */
-export type SortableProps<T extends SortableItemType> = SortableProperties<T>;
 
 /**
  * Context value for sortable functionality

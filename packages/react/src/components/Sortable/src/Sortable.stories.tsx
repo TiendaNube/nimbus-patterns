@@ -38,13 +38,7 @@ export const Vertical: Story = {
         >
           {items.map((item) => (
             <Sortable.Item key={item.id} id={item.id}>
-              <Box
-                as="div"
-                width="100%"
-                marginY="2"
-                cursor="grab"
-                style={{ touchAction: "none" }}
-              >
+              <Box as="div" width="100%" marginY="2" cursor="grab">
                 <Card>
                   <Card.Body>
                     <Text>{item.content}</Text>
@@ -68,7 +62,7 @@ export const Horizontal: Story = {
         <Box display="flex" gap="4" overflow="hidden" padding="2">
           {items.map((item) => (
             <Sortable.Item key={item.id} id={item.id}>
-              <Box as="div" cursor="grab" style={{ touchAction: "none" }}>
+              <Box as="div" cursor="grab">
                 <Card>
                   <Card.Body>
                     <Text>{item.content}</Text>
@@ -183,11 +177,14 @@ export const CustomRenderItem: Story = {
 
 export const VerticalScroll: Story = {
   render: () => {
-    const doubledItems = [
+    const [items, setItems] = useState([
       ...initialItems,
-      ...initialItems.map((item) => ({ ...item, id: `${item.id}-copy` })),
-    ];
-    const [items, setItems] = useState(doubledItems);
+      { id: "6", content: "Item 6" },
+      { id: "7", content: "Item 7" },
+      { id: "8", content: "Item 8" },
+      { id: "9", content: "Item 9" },
+      { id: "10", content: "Item 10" },
+    ]);
     const [activeId, setActiveId] = useState<string | null>(null);
 
     return (
@@ -213,7 +210,6 @@ export const VerticalScroll: Story = {
             flexDirection="column"
             height="300px"
             overflow="auto"
-            backgroundColor="neutral-background"
             padding="4"
           >
             {items.map((item) => (
