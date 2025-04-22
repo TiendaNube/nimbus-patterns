@@ -5058,9 +5058,6 @@ __metadata:
   resolution: "@nimbus-ds/patterns@workspace:packages/react"
   dependencies:
     "@lexical/react": ^0.12.2
-    "@testing-library/jest-dom": ^6.6.3
-    "@testing-library/react": ^16.3.0
-    "@testing-library/user-event": ^14.6.1
     date-fns: ^2.30.0
     lexical: ^0.12.2
     react-day-picker: ^8.8.2
@@ -7439,26 +7436,6 @@ __metadata:
     react: ^18.0.0
     react-dom: ^18.0.0
   checksum: 51ec548c1fdb1271089a5c63e0908f0166f2c7fcd9cacd3108ebbe0ce64cb4351812d885892020dc37608418cfb15698514856502b3cab0e5cc58d6cc1bd4a3e
-  languageName: node
-  linkType: hard
-
-"@testing-library/react@npm:^16.3.0":
-  version: 16.3.0
-  resolution: "@testing-library/react@npm:16.3.0"
-  dependencies:
-    "@babel/runtime": ^7.12.5
-  peerDependencies:
-    "@testing-library/dom": ^10.0.0
-    "@types/react": ^18.0.0 || ^19.0.0
-    "@types/react-dom": ^18.0.0 || ^19.0.0
-    react: ^18.0.0 || ^19.0.0
-    react-dom: ^18.0.0 || ^19.0.0
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-    "@types/react-dom":
-      optional: true
-  checksum: 85728ea8a1bcc9d865782a3d3bcc1db6632cb77907b47fb99c7f338e3ebdfc74dc6d21dfc5526a215a4f4f7b7d8a6392de87f48da3848866ab088f327ebb3e92
   languageName: node
   linkType: hard
 
@@ -16623,6 +16600,7 @@ __metadata:
     "@svgr/webpack": ^6.5.1
     "@testing-library/jest-dom": ^6.6.3
     "@testing-library/react": ^13.4.0
+    "@testing-library/user-event": ^14.6.1
     "@tiendanube/eslint-config": ^0.3.2
     "@types/babel__core": ^7
     "@types/eslint": ^8
