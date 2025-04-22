@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Icon, IconButton, Text, Thumbnail } from "@nimbus-ds/components";
+import { Box, IconButton, Text, Thumbnail } from "@nimbus-ds/components";
 import { DragDotsIcon, TrashIcon } from "@nimbus-ds/icons";
 import { Sortable } from "@nimbus-ds/sortable";
 import type { ProductDataListItemProps } from "./ProductDataListItem.types";
@@ -14,8 +14,7 @@ const ProductDataListItem: React.FC<ProductDataListItemProps> = ({
   children,
 }) => {
   const component = (
-    <>
-      <Box display="flex" alignItems="center" gap="3" px="2" borderRadius="2">
+    <Box display="flex" alignItems="center" gap="3" px="2" borderRadius="2">
         {isDraggable && (
           <Box as="span" className="handle" cursor="grab">
             <Sortable.ItemHandle>
@@ -48,7 +47,6 @@ const ProductDataListItem: React.FC<ProductDataListItemProps> = ({
           </Box>
         )}
       </Box>
-    </>
   );
 
   if (isDraggable) {

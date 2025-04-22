@@ -1,17 +1,9 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import {
-  Box,
-  Title,
-  Link,
-  Text,
-  IconButton,
-  Button,
-  Icon,
-} from "@nimbus-ds/components";
+import { Link, Text, Icon, Tag, Card, Box } from "@nimbus-ds/components";
+import { EditIcon, PlusCircleIcon, TagIcon } from "@nimbus-ds/icons";
 import { ProductDataList } from "./ProductDataList";
-import Sortable from "@nimbus-ds/sortable";
-import { PlusCircleIcon } from "@nimbus-ds/icons";
+import { ProductDataListItem } from "./components/ProductDataListItem";
 
 const meta: Meta<typeof ProductDataList> = {
   title: "Components/ProductDataList",
@@ -50,140 +42,9 @@ const mockProducts: Product[] = [
   },
 ];
 
-const ProductDataListSection = ({
-  title,
-  description,
-  content,
-  link,
-  children,
-}: {
-  title: string;
-  description: string;
-  content?: React.ReactNode;
-  link: React.ReactNode;
-  children?: React.ReactNode;
-}) => {
-  return (
-    <>
-      <Box display="flex" flexDirection="column" gap="4">
-        <Box>
-          <Text fontSize="highlight">{title}</Text>
-          <Text color="neutral-textLow">{description}</Text>
-          {content}
-        </Box>
-        {link}
-      </Box>
-      {children}
-    </>
-  );
-};
-
-const ProductDataListProducts = ({
-  sortable,
-  items,
-  onReorder,
-  onRemove,
-}: {
-  sortable: boolean;
-  items: Product[];
-  onReorder: (items: Product[]) => void;
-  onRemove: (id: string) => void;
-}) => {
-  return (
-    <Box>
-      <Sortable items={items} onReorder={onReorder} orientation="vertical">
-        <hr
-          style={{
-            border: "1px solid rgba(163, 156, 156, 0.53)",
-            width: "100%",
-          }}
-        />
-        <Box display="flex" flexDirection="column" overflow="hidden">
-          {items.map((item) => (
-            <>
-              <ProductDataList.Item
-                key={item.id}
-                id={item.id}
-                title={item.title}
-                imageUrl={item.imageUrl}
-                imageAlt={item.title}
-                isDraggable={sortable}
-                onRemove={() => onRemove(item.id)}
-              />
-              <hr
-                style={{
-                  border: "1px solid rgba(163, 156, 156, 0.53)",
-                  width: "100%",
-                }}
-              />
-            </>
-          ))}
-        </Box>
-      </Sortable>
-    </Box>
-  );
-};
-
-// Template for interactive stories
-const SortableTemplate = () => {
-  const [products, setProducts] = useState(mockProducts);
-  const [products2, setProducts2] = useState(mockProducts);
-
-  const handleReorder = (newItems: Product[]) => {
-    setProducts(newItems);
-  };
-
-  const handleReorder2 = (newItems: Product[]) => {
-    setProducts2(newItems);
-  };
-
-  const handleRemove = (id: string) => {
-    setProducts(products.filter((product) => product.id !== id));
-  };
-
-  const handleRemove2 = (id: string) => {
-    setProducts2(products2.filter((product) => product.id !== id));
-  };
-
-  return (
-    <ProductDataList title="Productos relacionados" width="700px" margin="auto">
-      <ProductDataListSection
-        title="Alternativo"
-        description="Productos relacionados"
-        content={<Text>Featured Products</Text>}
-        link={
-          <Link appearance="primary" textDecoration="none">
-            <Icon source={<PlusCircleIcon />} color="primary-interactive" />
-            Agregar productos
-          </Link>
-        }
-      >
-        <ProductDataListProducts
-          sortable={true}
-          items={products}
-          onReorder={handleReorder}
-          onRemove={handleRemove}
-        />
-      </ProductDataListSection>
-      <ProductDataListSection
-        title="Featured Products"
-        description="Pueden ser opciones similares a este producto. Ejemplo: una remera lisa o una rayada."
-        // content={<Text>Featured Products</Text>}
-        link={
-          <Link appearance="primary" textDecoration="none">
-            <Icon source={<PlusCircleIcon />} color="primary-interactive" />
-            Agregar productos
-          </Link>
-        }
-      ></ProductDataListSection>
-    </ProductDataList>
-  );
-};
-
 export const Default: Story = {
   args: {
     title: "Featured Products",
-    description: "Our top selling items",
     children: mockProducts.map((product) => (
       <ProductDataList.Item
         key={product.id}
@@ -199,13 +60,78 @@ export const Default: Story = {
 };
 
 export const WithSortableItems: Story = {
-  render: () => <SortableTemplate />,
+  render: () => {
+    const [products, setProducts] = useState(mockProducts);
+
+    const handleReorder = (newItems: Product[]) => {
+      setProducts(newItems);
+    };
+
+    const handleRemove = (id: string) => {
+      setProducts(products.filter((product) => product.id !== id));
+    };
+
+    return (
+      <Box maxWidth="700px" mx="auto">
+        <Card>
+          <Card.Body>
+            <ProductDataList title="Productos relacionados">
+              <ProductDataList.Section
+                title="Alternativo"
+                description="Pueden ser opciones similares a este producto. Ejemplo: una remera lisa o una rayada."
+                content={
+                  <Tag appearance="warning">
+                    <TagIcon size={12} /> 8 de 8 productos
+                  </Tag>
+                }
+                link={
+                  <Link appearance="primary" textDecoration="none">
+                    <Icon source={<EditIcon />} color="primary-interactive" />
+                    Editar productos
+                  </Link>
+                }
+              >
+                <ProductDataList.Products<Product>
+                  sortable
+                  items={products}
+                  onReorder={handleReorder}
+                  renderItem={(product) => (
+                    <ProductDataListItem
+                      key={product.id}
+                      id={product.id}
+                      title={product.title}
+                      imageUrl={product.imageUrl}
+                      imageAlt={product.title}
+                      isDraggable
+                      onRemove={() => handleRemove(product.id)}
+                    />
+                  )}
+                ></ProductDataList.Products>
+              </ProductDataList.Section>
+              <ProductDataList.Section
+                title="Featured Products"
+                description="Pueden ser opciones similares a este producto. Ejemplo: una remera lisa o una rayada."
+                link={
+                  <Link appearance="primary" textDecoration="none">
+                    <Icon
+                      source={<PlusCircleIcon />}
+                      color="primary-interactive"
+                    />
+                    Agregar productos
+                  </Link>
+                }
+              />
+            </ProductDataList>
+          </Card.Body>
+        </Card>
+      </Box>
+    );
+  },
 };
 
 export const WithRemoveButton: Story = {
   args: {
     title: "Manage Products",
-    description: "Click the trash icon to remove products",
     children: mockProducts.map((product) => (
       <ProductDataList.Item
         key={product.id}

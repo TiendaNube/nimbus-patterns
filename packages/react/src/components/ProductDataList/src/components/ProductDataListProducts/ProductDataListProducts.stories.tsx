@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box, Text } from "@nimbus-ds/components";
-import { ProductDataList } from "../../ProductDataList";
-import { Sortable } from "@nimbus-ds/sortable";
 
-const meta: Meta<typeof ProductDataList.Sortable> = {
-  title: "Components/ProductDataList/Sortable",
-  component: ProductDataList.Sortable,
+import { ProductDataList } from "../../ProductDataList";
+import { ProductDataListProducts } from "./ProductDataListProducts";
+
+const meta: Meta<typeof ProductDataList.Products> = {
+  title: "Components/ProductDataList/Products",
+  component: ProductDataList.Products,
   tags: ["autodocs"],
 };
 
 export default meta;
-type Story = StoryObj<typeof ProductDataList.Sortable>;
+type Story = StoryObj<typeof ProductDataList.Products>;
 
 const ProductItem = ({
   title,
@@ -39,7 +40,7 @@ export const Default: Story = {
     };
 
     return (
-      <Sortable items={items} onReorder={handleReorder}>
+      <ProductDataListProducts sortable items={items} onReorder={handleReorder}>
         {items.map((item) => (
           <ProductItem
             key={item.id}
@@ -47,7 +48,7 @@ export const Default: Story = {
             description={item.description}
           />
         ))}
-      </Sortable>
+      </ProductDataListProducts>
     );
   },
 };
