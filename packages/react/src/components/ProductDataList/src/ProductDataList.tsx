@@ -5,7 +5,11 @@ import type {
   ProductDataListProps,
   ProductDataListComponents,
 } from "./ProductDataList.types";
-import { ProductDataListProducts, ProductDataListItem, ProductDataListSection } from "./components";
+import {
+  ProductDataListProducts,
+  ProductDataListItem,
+  ProductDataListSection,
+} from "./components";
 
 const ProductDataList: React.FC<ProductDataListProps> &
   ProductDataListComponents = ({

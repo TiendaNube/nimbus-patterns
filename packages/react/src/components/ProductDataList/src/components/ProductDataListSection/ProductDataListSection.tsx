@@ -13,8 +13,8 @@ const ProductDataListSection: React.FC<ProductDataListSectionProps> = ({
   <Box {...props}>
     <Box display="flex" flexDirection="column" gap="4">
       <Box display="flex" flexDirection="column" gap="1">
-        <Text fontSize="highlight">{title}</Text>
-        <Text color="neutral-textLow">{description}</Text>
+        {title && <Text fontSize="highlight">{title}</Text>}
+        {description && <Text color="neutral-textLow">{description}</Text>}
         {content}
       </Box>
       {link}

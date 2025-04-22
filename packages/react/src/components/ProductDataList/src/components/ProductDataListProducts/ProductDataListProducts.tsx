@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@nimbus-ds/components";
 import { Sortable, SortableItemType } from "@nimbus-ds/sortable";
-import { ProductDataListProductsProperties } from "./ProductDataListProducts.types";
+import { ProductDataListProductsProps } from "./ProductDataListProducts.types";
 
 const ItemSeparator = () => (
   <Box
@@ -18,7 +18,8 @@ function ProductDataListProducts<T extends SortableItemType>({
   onReorder,
   children,
   renderItem,
-}: ProductDataListProductsProperties<T>): React.ReactElement {
+  ...props
+}: ProductDataListProductsProps<T>): React.ReactElement {
   return (
     <Sortable
       items={items}
@@ -26,7 +27,14 @@ function ProductDataListProducts<T extends SortableItemType>({
       orientation="vertical"
       disabled={!sortable}
     >
-      <Box display="flex" flexDirection="column" overflow="hidden" py="4" gap="2">
+      <Box
+        display="flex"
+        flexDirection="column"
+        py="4"
+        gap="2"
+        overflow="scroll"
+        {...props}
+      >
         <ItemSeparator />
         {renderItem &&
           items.map((item) => (
