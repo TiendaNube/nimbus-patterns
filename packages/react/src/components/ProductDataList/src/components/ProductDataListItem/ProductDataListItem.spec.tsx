@@ -1,9 +1,11 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { ProductDataListItem } from './ProductDataListItem';
 
 describe('ProductDataList.Item', () => {
   const defaultProps = {
+    id: 'test-id',
     title: 'Test Product',
   };
 
@@ -26,7 +28,9 @@ describe('ProductDataList.Item', () => {
 
   it('renders drag handle when isDraggable is true', () => {
     render(<ProductDataListItem {...defaultProps} isDraggable />);
-    expect(screen.getByRole('button', { name: /drag handle/i })).toBeInTheDocument();
+    const dragButton = screen.getByRole('button');
+    expect(dragButton).toBeInTheDocument();
+    expect(dragButton).toHaveAttribute('aria-roledescription', 'sortable');
   });
 
   it('does not render drag handle when isDraggable is false', () => {

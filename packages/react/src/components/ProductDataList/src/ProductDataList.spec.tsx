@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import '@testing-library/jest-dom';
 import { ProductDataList } from "./ProductDataList";
 
 describe("ProductDataList", () => {
@@ -12,19 +13,17 @@ describe("ProductDataList", () => {
     expect(screen.getByTestId("child")).toBeInTheDocument();
   });
 
-  it("renders title and description when provided", () => {
+  it("renders title when provided", () => {
     const title = "Test Title";
-    const description = "Test Description";
     render(
       <ProductDataList title={title}>
         <div>Child</div>
       </ProductDataList>
     );
     expect(screen.getByText(title)).toBeInTheDocument();
-    expect(screen.getByText(description)).toBeInTheDocument();
   });
 
-  it("does not render title and description when not provided", () => {
+  it("does not render title when not provided", () => {
     render(
       <ProductDataList>
         <div>Child</div>

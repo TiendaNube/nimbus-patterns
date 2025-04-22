@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import '@testing-library/jest-dom';
 import { ProductDataListProducts } from "./ProductDataListProducts";
 
 describe("ProductDataList.Sortable", () => {
@@ -17,16 +18,23 @@ describe("ProductDataList.Sortable", () => {
     expect(screen.getByTestId("child")).toBeInTheDocument();
   });
 
-  it("renders title and description when provided", () => {
-    const title = "Test Title";
-    const description = "Test Description";
-    render(
-      <ProductDataListProducts sortable items={mockItems} onReorder={jest.fn()}>
-        <div>Child</div>
-      </ProductDataListProducts>
+  it("renders items correctly", () => {
+    const renderItem = (item: { id: string; content: string }) => (
+      <div key={item.id}>{item.content}</div>
     );
-    expect(screen.getByText(title)).toBeInTheDocument();
-    expect(screen.getByText(description)).toBeInTheDocument();
+
+    render(
+      <ProductDataListProducts
+        sortable
+        items={mockItems}
+        onReorder={jest.fn()}
+        renderItem={renderItem}
+      />
+    );
+
+    mockItems.forEach((item) => {
+      expect(screen.getByText(item.content)).toBeInTheDocument();
+    });
   });
 
   it("passes sortable props correctly", () => {

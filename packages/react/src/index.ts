@@ -22,3 +22,5 @@ export * from "@nimbus-ds/calendar";
 export * from "@nimbus-ds/empty-app";
 export * from "@nimbus-ds/initial-screen";
 export * from "@nimbus-ds/plan-display";
+export * from "@nimbus-ds/sortable";
+export * from "@nimbus-ds/product-data-list";

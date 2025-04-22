@@ -6,6 +6,7 @@ const config: Config.InitialOptions = {
   transform: {
     ".+\\.(ts|tsx)$": "ts-jest",
   },
+  setupFilesAfterEnv: ["./setupTests.ts"],
   coveragePathIgnorePatterns: ["dist"],
   moduleNameMapper: {
     // components
@@ -46,6 +47,10 @@ const config: Config.InitialOptions = {
       "<rootDir>/packages/react/src/components/InitialScreen/src",
     "@nimbus-ds/plan-display":
       "<rootDir>/packages/react/src/components/PlanDisplay/src",
+    "@nimbus-ds/sortable":
+      "<rootDir>/packages/react/src/components/Sortable/src",
+    "@nimbus-ds/product-data-list":
+      "<rootDir>/packages/react/src/components/ProductDataList/src",
   },
 };
 
