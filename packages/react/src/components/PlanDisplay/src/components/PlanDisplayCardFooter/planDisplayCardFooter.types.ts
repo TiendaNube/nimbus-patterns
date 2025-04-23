@@ -1,3 +1,8 @@
-import { PropsWithChildren } from "react";
+import { ReactNode } from "react";
 
-export type PlanDisplayCardFooterProperties = PropsWithChildren;
+export type PlanDisplayCardFooterProperties = {
+  /**
+   * The content of the PlanDisplayCardFooter component
+   */
+  children: ReactNode;
+};

@@ -1,3 +1,8 @@
-import { PropsWithChildren } from "react";
+import { ReactNode } from "react";
 
-export type PlanDisplayCardContentProperties = PropsWithChildren;
+export type PlanDisplayCardContentProperties = {
+  /**
+   * The content of the PlanDisplayCardContent component
+   */
+  children: ReactNode;
+};

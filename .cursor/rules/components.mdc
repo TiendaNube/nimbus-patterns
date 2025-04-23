@@ -12,7 +12,7 @@ alwaysApply: false
    - Component file should match component name
    - Keep related files (types, tests, stories) in the same directory
    - Sub-components are created inside the src/components/ directory of the specific package
-   - Each component inside react/src/components is its own NPM package, which means it has its own package.json, webpack.config.ts and tsconfig.ts files.
+   - Each component inside react/src/components is its own NPM package, which means it has its own package.json, webpack.config.ts and tsconfig.json files.
 
 2. **Component Design**:
    - Focus on reusability and composability

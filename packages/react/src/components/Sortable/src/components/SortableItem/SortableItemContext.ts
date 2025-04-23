@@ -1,6 +1,8 @@
 import { createContext, useContext } from "react";
-import type { DraggableAttributes } from "@dnd-kit/core";
-import type { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities";
+import type {
+  DraggableAttributes,
+  DraggableSyntheticListeners,
+} from "@dnd-kit/core";
 
 interface SortableItemContextValue {
   // Reference callback for the drag handle element
@@ -8,7 +10,7 @@ interface SortableItemContextValue {
   // DND-kit drag attributes
   attributes: DraggableAttributes;
   // DND-kit drag listeners
-  listeners: SyntheticListenerMap | undefined;
+  listeners: DraggableSyntheticListeners;
 }
 
 export const SortableItemContext =
@@ -23,5 +25,6 @@ export const useSortableItemContext = () => {
       "useSortableItemContext must be used within a SortableItem"
     );
   }
+
   return context;
 };

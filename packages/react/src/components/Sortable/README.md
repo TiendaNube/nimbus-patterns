@@ -23,7 +23,7 @@ This component uses [@dnd-kit](https://dndkit.com/) for drag and drop functional
 ## Usage
 
 ```tsx
-import { Sortable, SortableItem } from '@nimbus-ds/sortable';
+import { Sortable } from '@nimbus-ds/sortable';
 
 interface Item {
   id: string;
@@ -40,16 +40,14 @@ function MyComponent() {
   const [sortedItems, setSortedItems] = useState(items);
 
   return (
-    <Sortable
-      items={sortedItems}
-      onReorder={setSortedItems}
-      orientation="vertical"
-    >
-      {sortedItems.map((item) => (
-        <SortableItem key={item.id} id={item.id} item={item}>
-          <div>{item.content}</div>
-        </SortableItem>
-      ))}
+    <Sortable items={sortedItems} onReorder={setSortedItems}>
+      <div className="my-sortable-container">
+        {sortedItems.map((item) => (
+          <Sortable.Item key={item.id} id={item.id}>
+            {item.content}
+          </Sortable.Item>
+        ))}
+      </div>
     </Sortable>
   );
 }
@@ -63,66 +61,52 @@ function MyComponent() {
 |------|------|---------|-------------|
 | items | `T[]` | - | The items to be sorted |
 | onReorder | `(items: T[]) => void` | - | Callback fired when items are reordered |
-| idKey | `keyof T` | `'id'` | The unique key in your items to be used as identifier |
 | orientation | `'vertical' \| 'horizontal'` | `'vertical'` | The orientation of the sortable list |
-| sensorOptions | `UseSensorOptions` | - | Custom sensor options for drag detection |
+| sensorOptions | `PointerSensorOptions` | - | Custom sensor options for drag detection |
 | onDragStart | `(event: DragStartEvent) => void` | - | Callback fired when drag starts |
 | onDragOver | `(event: DragOverEvent) => void` | - | Callback fired during drag |
 | onDragEnd | `(event: DragEndEvent) => void` | - | Callback fired when drag ends |
 | disabled | `boolean` | `false` | Whether to disable sorting functionality |
-| as | `keyof JSX.IntrinsicElements \| React.ComponentType` | `'div'` | Container component or element type |
-| containerProps | `React.HTMLAttributes<HTMLElement>` | `{}` | Additional props for the container element |
+| children | `ReactNode` | - | The children components |
+| overlaySettings | `DragOverlayProps` | `DEFAULT_OVERLAY_SETTINGS` | Configuration for the drag overlay appearance and behavior |
+| renderOverlay | `(item: T) => ReactNode` | - | Render function for the dragged item overlay |
 
-### SortableItem
+### Sortable.Item
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| item | `T` | - | The item data |
 | id | `UniqueIdentifier` | - | The unique identifier for the item |
 | disabled | `boolean` | `false` | Whether the item is disabled from being dragged |
 | handle | `boolean` | `false` | Whether to use a drag handle |
-| itemProps | `React.HTMLAttributes<HTMLElement>` | `{}` | Additional props for the item element |
-| children | `ReactNode \| ((props: { isDragging: boolean }) => ReactNode)` | - | The children components or render function |
+| children | `ReactNode` | - | The children components |
+| renderItem | `(props: { isDragging: boolean, attributes: any, listeners: any, setNodeRef: any, style: any }) => ReactNode` | - | Custom render function for the item |
+
+### Sortable.ItemHandle
+
+A handle component that can be used to drag a sortable item when the `handle` prop is set to `true` on the `Sortable.Item`.
 
 ## Accessibility
 
 The component follows WCAG 2.1 guidelines and implements proper ARIA attributes:
 
-- Uses `aria-grabbed` to indicate drag state
-- Supports keyboard navigation
+- Uses proper drag and drop ARIA attributes
+- Supports keyboard navigation through the KeyboardSensor
 - Maintains focus management during drag operations
 - Works with screen readers
 
 ## Examples
 
-### Vertical List
+### Basic Usage
 
 ```tsx
-<Sortable items={items} onReorder={setItems} orientation="vertical">
-  {items.map((item) => (
-    <SortableItem key={item.id} id={item.id} item={item}>
-      <div>{item.content}</div>
-    </SortableItem>
-  ))}
-</Sortable>
-```
-
-### Horizontal List
-
-```tsx
-<Sortable
-  items={items}
-  onReorder={setItems}
-  orientation="horizontal"
-  containerProps={{
-    style: { display: 'flex', gap: '1rem' }
-  }}
->
-  {items.map((item) => (
-    <SortableItem key={item.id} id={item.id} item={item}>
-      <div>{item.content}</div>
-    </SortableItem>
-  ))}
+<Sortable items={items} onReorder={setItems}>
+  <div className="my-sortable-container">
+    {items.map((item) => (
+      <Sortable.Item key={item.id} id={item.id}>
+        {item.content}
+      </Sortable.Item>
+    ))}
+  </div>
 </Sortable>
 ```
 
@@ -130,21 +114,69 @@ The component follows WCAG 2.1 guidelines and implements proper ARIA attributes:
 
 ```tsx
 <Sortable items={items} onReorder={setItems}>
-  {items.map((item) => (
-    <SortableItem key={item.id} id={item.id} item={item} handle>
-      <div>
-        <span data-handle-selector>⋮⋮</span>
+  <div className="my-sortable-container">
+    {items.map((item) => (
+      <Sortable.Item key={item.id} id={item.id} handle>
+        <div>
+          <Sortable.ItemHandle>
+            <DragIcon />
+          </Sortable.ItemHandle>
+          {item.content}
+        </div>
+      </Sortable.Item>
+    ))}
+  </div>
+</Sortable>
+```
+
+### Custom Drag Overlay
+
+```tsx
+<Sortable
+  items={items}
+  onReorder={setItems}
+  overlaySettings={{
+    dropAnimation: {
+      duration: 200,
+      easing: 'cubic-bezier(0.18, 0.67, 0.6, 1.22)',
+    }
+  }}
+  renderOverlay={(item) => (
+    <div className="custom-overlay">{item.content}</div>
+  )}
+>
+  <div className="my-sortable-container">
+    {items.map((item) => (
+      <Sortable.Item key={item.id} id={item.id}>
         {item.content}
-      </div>
-    </SortableItem>
-  ))}
+      </Sortable.Item>
+    ))}
+  </div>
+</Sortable>
+```
+
+### Custom Sensor Options
+
+```tsx
+<Sortable
+  items={items}
+  onReorder={setItems}
+  sensorOptions={{
+    activationConstraint: {
+      distance: 20, // Allow movements up to 20px
+      delay: 150,  // Wait 150ms before canceling
+      tolerance: 5 // Tolerate 5px of movement
+    }
+  }}
+>
+  {/* ... */}
 </Sortable>
 ```
 
 ## Performance
 
 The component is optimized for performance:
-- Uses proper memoization to prevent unnecessary re-renders
-- Efficiently handles large lists
-- Implements virtualization when needed through the container component
-- Minimal bundle size impact through proper tree-shaking 
+- Uses `useMemo` for memoization of styles and context values
+- Efficiently handles drag and drop operations
+- Minimal re-renders through proper state management
+- Uses `@dnd-kit` for optimized drag and drop functionality 
