@@ -88,6 +88,7 @@ reviews:
         Flag any deviations from these patterns.
   abort_on_close: true
   auto_review:
+    # Automatically review PRs when they are opened.
     enabled: true
     # We don't want to auto-incremental review PRs. After the first review, the author will need to manually re-request a review when the PR is ready for a new round of reviews. This saves rate limits and allows the author to review the PR first.
     auto_incremental_review: false
