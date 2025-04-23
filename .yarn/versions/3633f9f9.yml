@@ -1,0 +1,6 @@
+releases:
+  "@nimbus-ds/patterns": minor
+  "@nimbus-ds/sortable": minor
+
+declined:
+  - nimbus-patterns
