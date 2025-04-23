@@ -174,10 +174,12 @@ The component follows WCAG 2.1 guidelines and implements proper ARIA attributes:
 ```
 
 ## Performance
-
-The component is optimized for performance:
 The component is optimized for performance:
 
+- Uses `useMemo` for memoization of styles and context values
+- Efficiently handles drag and drop operations
+- Minimal re-renders through proper state management
+- Uses `@dnd-kit` for optimized drag and drop functionality
 - Uses `useMemo` for memoization of styles and context values
 - Efficiently handles drag and drop operations
 - Minimal re-renders through proper state management
