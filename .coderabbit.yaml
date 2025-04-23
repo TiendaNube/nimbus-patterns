@@ -89,7 +89,8 @@ reviews:
   abort_on_close: true
   auto_review:
     enabled: true
-    auto_incremental_review: true
+    # We don't want to auto-incremental review PRs. After the first review, the author will need to manually re-request a review when the PR is ready for a new round of reviews. This saves rate limits and allows the author to review the PR first.
+    auto_incremental_review: false
     ignore_title_keywords:
       - "DRAFT"
       - "WIP"
