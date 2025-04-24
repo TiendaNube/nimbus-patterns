@@ -2,6 +2,12 @@
 
 The `InitialScreen` component provides a consistent layout and spacing for displaying a landing or welcome screen. It introduces users to an application or service, offering options to access more information or proceed further.
 
+## 2025-04-24 `1.0.3`
+
+### 💡 Others
+
+- Update stories images. ([#PULL_REQUEST_NUMBER](https://github.com/TiendaNube/nimbus-patterns/pull/PULL_REQUEST_NUMBER) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-03-18 `1.0.2`
 
 ### 💡 Others

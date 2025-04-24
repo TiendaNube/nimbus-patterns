@@ -35,6 +35,6 @@ export const basic: Story = {
       </Box>
     ),
     // We pass the image src so it can be edited in the Storybook web interface
-    image: "./static/mockup-perfit.jpg",
+    image: "./static/empty-orders.png",
   },
 };

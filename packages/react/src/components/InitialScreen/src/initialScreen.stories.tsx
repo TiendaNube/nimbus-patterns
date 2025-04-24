@@ -39,8 +39,8 @@ export const basic: Story = {
         }
         image={
           <img
-            src="./static/mockup-perfit.jpg"
-            alt="./static/mockup-perfit.jpg"
+            src="./static/empty-orders.png"
+            alt="./static/empty-orders.png"
             width="100%"
           />
         }
@@ -64,8 +64,8 @@ export const appModule: Story = {
         }
         image={
           <img
-            src="./static/mockup-perfit.jpg"
-            alt="./static/mockup-perfit.jpg"
+            src="./static/empty-orders.png"
+            alt="./static/empty-orders.png"
             width="100%"
           />
         }
@@ -121,8 +121,8 @@ export const bullets: Story = {
         actions={<Button appearance="primary">Conectar cuenta</Button>}
         image={
           <img
-            src="./static/product.jpg"
-            alt="./static/product.jpg"
+            src="./static/empty-orders.png"
+            alt="./static/empty-orders.png"
             width="100%"
           />
         }
