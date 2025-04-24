@@ -15,7 +15,7 @@ type Story = StoryObj<typeof ProductDataListItem>;
 export const Default: Story = {
   args: {
     title: 'Product Name',
-    imageUrl: 'https://via.placeholder.com/100',
+    imageUrl: 'static/Thumbnail.png',
     imageAlt: 'Product image',
   },
 };

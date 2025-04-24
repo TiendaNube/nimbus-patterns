@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box } from "@nimbus-ds/components";
 import { Sortable, SortableItemType } from "@nimbus-ds/sortable";
 import { ProductDataListProductsProps } from "./ProductDataListProducts.types";
-import { ItemDivider } from "./ProductDataList.definitions";
+import { ProductDataListItemDivider } from "../ProductDataListItemDivider";
 
 function ProductDataListProducts<T extends SortableItemType>({
   sortable,
@@ -21,20 +21,17 @@ function ProductDataListProducts<T extends SortableItemType>({
       onReorder={onReorder}
       orientation="vertical"
       disabled={!sortable}
-      renderOverlay={(props) => (
-        <>
-          <Box
-            display="flex"
-            flexDirection="column"
-            backgroundColor="neutral-background"
-            boxShadow="3"
-            gap="2"
-            py="2"
-          >
-            {renderItem(props)}
-          </Box>
-          <ItemDivider />
-        </>
+      renderOverlay={(overlayProps) => (
+        <Box
+          display="flex"
+          flexDirection="column"
+          backgroundColor="neutral-background"
+          boxShadow="3"
+          gap="2"
+          py="2"
+        >
+          {renderItem(overlayProps)}
+        </Box>
       )}
       onDragStart={(event) => {
         setActiveId(event.active.id as string);
@@ -48,14 +45,15 @@ function ProductDataListProducts<T extends SortableItemType>({
       <Box
         display="flex"
         flexDirection="column"
-        py="4"
+        my="4"
         gap="2"
-        overflow="scroll"
+        overflowY="auto"
+        maxHeight="370px"
         {...props}
       >
-        <ItemDivider />
         {items.map((item) => (
           <>
+            <ProductDataListItemDivider />
             <div
               key={item.id}
               style={{
@@ -64,9 +62,9 @@ function ProductDataListProducts<T extends SortableItemType>({
             >
               {renderItem(item)}
             </div>
-            <ItemDivider />
           </>
         ))}
+        <ProductDataListItemDivider />
       </Box>
     </Sortable>
   );

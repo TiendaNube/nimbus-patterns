@@ -9,6 +9,7 @@ import {
   ProductDataListProducts,
   ProductDataListItem,
   ProductDataListSection,
+  ProductDataListItemDivider,
 } from "./components";
 
 const ProductDataList: React.FC<ProductDataListProps> &
@@ -19,18 +20,19 @@ const ProductDataList: React.FC<ProductDataListProps> &
 }: ProductDataListProps) => (
   <Box padding="4" display="flex" flexDirection="column" gap="4" {...props}>
     {title && <Title as="h4">{title}</Title>}
-    <Box display="flex" flexDirection="column" gap="2">
-      {children}
-    </Box>
+
+    {children}
   </Box>
 );
 
 ProductDataList.Item = ProductDataListItem;
 ProductDataList.Products = ProductDataListProducts;
 ProductDataList.Section = ProductDataListSection;
+ProductDataList.ItemDivider = ProductDataListItemDivider;
 
 ProductDataList.displayName = "ProductDataList";
 ProductDataList.Item.displayName = "ProductDataList.Item";
 ProductDataList.Products.displayName = "ProductDataList.Products";
+ProductDataList.ItemDivider.displayName = "ProductDataList.ItemDivider";
 
 export { ProductDataList };

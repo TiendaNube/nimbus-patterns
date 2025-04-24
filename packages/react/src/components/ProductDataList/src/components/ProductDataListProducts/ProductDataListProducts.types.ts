@@ -24,4 +24,4 @@ export interface ProductDataListProductsProperties<T extends SortableItemType> {
 
 export type ProductDataListProductsProps<T extends SortableItemType> =
   ProductDataListProductsProperties<T> &
-    Omit<BoxProps, "padding" | "display" | "flexDirection" | "gap">;
+    Omit<BoxProps, "my" | "display" | "flexDirection" | "gap">;

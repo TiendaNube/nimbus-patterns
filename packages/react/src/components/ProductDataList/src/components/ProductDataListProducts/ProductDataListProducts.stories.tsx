@@ -40,15 +40,17 @@ export const Default: Story = {
     };
 
     return (
-      <ProductDataListProducts sortable items={items} onReorder={handleReorder}>
-        {items.map((item) => (
+      <ProductDataListProducts
+        sortable
+        items={items}
+        onReorder={handleReorder}
+        renderItem={() => (
           <ProductItem
-            key={item.id}
-            title={item.title}
-            description={item.description}
+            title="Product 1"
+            description="Description for product 1"
           />
-        ))}
-      </ProductDataListProducts>
+        )}
+      />
     );
   },
 };

@@ -14,7 +14,7 @@ const ProductDataListItem: React.FC<ProductDataListItemProps> = ({
   children,
 }) => {
   const component = (
-    <Box display="flex" alignItems="center" gap="3" px="2" borderRadius="2">
+    <Box display="flex" alignItems="center" gap="3" px="2" >
         {isDraggable && (
           <Box as="span" className="handle" cursor="grab">
             <Sortable.ItemHandle>

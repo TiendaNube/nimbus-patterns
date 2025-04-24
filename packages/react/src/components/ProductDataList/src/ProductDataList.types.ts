@@ -4,6 +4,7 @@ import {
   ProductDataListProducts,
   ProductDataListItem,
   ProductDataListSection,
+  ProductDataListItemDivider,
 } from "./components";
 
 /**
@@ -30,4 +31,5 @@ export interface ProductDataListComponents {
   Products: typeof ProductDataListProducts;
   Item: typeof ProductDataListItem;
   Section: typeof ProductDataListSection;
+  ItemDivider: typeof ProductDataListItemDivider;
 }

@@ -69,6 +69,18 @@ const mockProducts: Product[] = [
     imageUrl: "static/Thumbnail.png",
     description: "T-shirt with breathable mesh fabric",
   },
+  {
+    id: "7",
+    title: "Watch",
+    imageUrl: "static/Thumbnail.png",
+    description: "Watch with breathable mesh fabric",
+  },
+  {
+    id: "8",
+    title: "Belt",
+    imageUrl: "static/Thumbnail.png",
+    description: "Belt with breathable mesh fabric",
+  },
 ];
 
 export const Default: Story = {
@@ -156,9 +168,37 @@ export const Default: Story = {
   },
 };
 
+export const InitialState: Story = {
+  render: () => (
+      <ProductDataList title="Productos relacionados">
+        <ProductDataList.Section
+          title="Alternativo"
+          description="Pueden ser opciones similares a este producto. Ejemplo: una remera lisa o una rayada."
+          link={
+            <Link appearance="primary" textDecoration="none">
+              <Icon source={<PlusCircleIcon />} color="primary-interactive" />
+              Agregar productos
+            </Link>
+          }
+        />
+        <ProductDataList.ItemDivider />
+        <ProductDataList.Section
+          title="Complementarios"
+          description="Pueden ser opciones similares a este producto. Ejemplo: una remera lisa o una rayada."
+          link={
+            <Link appearance="primary" textDecoration="none">
+              <Icon source={<PlusCircleIcon />} color="primary-interactive" />
+              Agregar productos
+            </Link>
+          }
+        />
+      </ProductDataList>
+    ),
+};
+
 export const WithSortableItems: Story = {
   render: () => {
-    const [products, setProducts] = useState(mockProducts.slice(0, 3));
+    const [products, setProducts] = useState(mockProducts.slice(0, 5));
 
     const handleReorder = (newItems: Product[]) => {
       setProducts(newItems);
@@ -261,7 +301,6 @@ export const WithVerticalScroll: Story = {
                 onRemove={() => handleRemove(product.id)}
               />
             )}
-            maxHeight="250px"
           />
         </ProductDataList.Section>
         <ProductDataList.Section
