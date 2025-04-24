@@ -1,2 +1,2 @@
-declined:
-  - nimbus-patterns
+releases:
+  - nimbus-patterns: minor
