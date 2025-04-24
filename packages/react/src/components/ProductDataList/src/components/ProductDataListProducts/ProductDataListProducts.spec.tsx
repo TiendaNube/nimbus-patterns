@@ -8,9 +8,18 @@ describe("ProductDataList.Sortable", () => {
     { id: "2", content: "Item 2" },
   ];
 
+  const defaultRenderItem = (item: { id: string; content: string }) => (
+    <div key={item.id}>{item.content}</div>
+  );
+
   it("renders children correctly", () => {
     render(
-      <ProductDataListProducts sortable items={mockItems} onReorder={jest.fn()}>
+      <ProductDataListProducts 
+        sortable 
+        items={mockItems} 
+        onReorder={jest.fn()} 
+        renderItem={defaultRenderItem}
+      >
         <div data-testid="child">Test Child</div>
       </ProductDataListProducts>
     );
@@ -39,7 +48,12 @@ describe("ProductDataList.Sortable", () => {
   it("passes sortable props correctly", () => {
     const onReorder = jest.fn();
     render(
-      <ProductDataListProducts sortable items={mockItems} onReorder={onReorder}>
+      <ProductDataListProducts 
+        sortable 
+        items={mockItems} 
+        onReorder={onReorder}
+        renderItem={defaultRenderItem}
+      >
         <div>Child</div>
       </ProductDataListProducts>
     );

@@ -10,6 +10,7 @@ function ProductDataListProducts<T extends SortableItemType>({
   onReorder,
   renderItem,
   sortableProps,
+  children,
   ...props
 }: ProductDataListProductsProps<T>): React.ReactElement {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -51,18 +52,18 @@ function ProductDataListProducts<T extends SortableItemType>({
         maxHeight="370px"
         {...props}
       >
+        {children}
         {items.map((item) => (
-          <>
+          <React.Fragment key={item.id}>
             <ProductDataListItemDivider />
             <div
-              key={item.id}
               style={{
                 visibility: activeId === item.id ? "hidden" : "visible",
               }}
             >
               {renderItem(item)}
             </div>
-          </>
+          </React.Fragment>
         ))}
         <ProductDataListItemDivider />
       </Box>

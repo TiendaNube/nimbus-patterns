@@ -13,11 +13,13 @@ describe("<ProductDataListItemDivider />", () => {
     render(<ProductDataListItemDivider data-testid="divider" />);
     const divider = screen.getByTestId("divider");
     
-    expect(divider).toHaveStyle({
-      borderTopWidth: "1px",
-      borderBottomWidth: "0",
-      borderStyle: "solid"
-    });
+    // The Nimbus Box component applies styles via CSS classes and CSS variables
+    expect(divider).toHaveClass(
+      "nimbus-box_borderTopWidth-xs__cklfiif9",
+      "nimbus-box_borderBottomWidth-xs__cklfiifr",
+      "nimbus-box_borderColor-xs__cklfiidr",
+      "nimbus-box_borderStyle-solid-xs__cklfiiyr"
+    );
   });
 
   it("should pass through additional props", () => {
