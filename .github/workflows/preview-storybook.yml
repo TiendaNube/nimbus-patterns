@@ -32,14 +32,6 @@ jobs:
       - uses: ./.github/actions/setup-node-deps
         if: steps.check_release.outputs.should_skip == 'false'
 
-      - name: Run build tokens
-        if: steps.check_release.outputs.should_skip == 'false'
-        run: npm run build:tokens
-
-      - name: Run build icons
-        if: steps.check_release.outputs.should_skip == 'false'
-        run: yarn build:icons
-
       - name: Build Storybook
         if: steps.check_release.outputs.should_skip == 'false'
         run: yarn build:storybook
@@ -55,7 +47,7 @@ jobs:
       - name: Upload Storybook to S3
         if: steps.check_release.outputs.should_skip == 'false'
         run: |
-          aws s3 sync ./.build-storybook s3://ns-ec-dms-bs3-nimbus-preview/components/pull/${{ github.event.pull_request.number }} --delete
+          aws s3 sync ./.build-storybook s3://ns-ec-dms-bs3-nimbus-preview/patterns/pull/${{ github.event.pull_request.number }} --delete
 
       - name: Comment Storybook preview URL on PR and Check summary
         if: steps.check_release.outputs.should_skip == 'false'
@@ -63,7 +55,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           REPO: ${{ github.repository }}
-          STORYBOOK_URL: https://ns-ec-dms-bs3-nimbus-preview.s3.us-west-2.amazonaws.com/components/pull/${{ github.event.pull_request.number }}/index.html
+          STORYBOOK_URL: https://ns-ec-dms-bs3-nimbus-preview.s3.us-west-2.amazonaws.com/patterns/pull/${{ github.event.pull_request.number }}/index.html
         run: |
           echo "Checking for existing Storybook comment..."
 
