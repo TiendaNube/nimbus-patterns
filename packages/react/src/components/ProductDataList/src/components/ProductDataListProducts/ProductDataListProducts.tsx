@@ -56,10 +56,10 @@ function ProductDataListProducts<T extends SortableItemType>({
         {items.map((item) => (
           <React.Fragment key={item.id}>
             <ProductDataListItemDivider />
+            {/* We need to hide the item when it's being dragged, but Nimbus doesn't provide a way to do this right now */}
             <div
-              style={{
-                visibility: activeId === item.id ? "hidden" : "visible",
-              }}
+              aria-hidden={activeId === item.id}
+              style={{ opacity: activeId === item.id ? 0 : 1 }}
             >
               {renderItem(item)}
             </div>
