@@ -4,7 +4,7 @@ import { Text } from '@nimbus-ds/components';
 import { ProductDataListItem } from './ProductDataListItem';
 
 const meta: Meta<typeof ProductDataListItem> = {
-  title: 'Components/ProductDataList/Item',
+  title: 'Patterns/ProductDataList/Item',
   component: ProductDataListItem,
   tags: ['autodocs'],
 };

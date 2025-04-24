@@ -6,7 +6,7 @@ import { ProductDataList } from "../../ProductDataList";
 import { ProductDataListProducts } from "./ProductDataListProducts";
 
 const meta: Meta<typeof ProductDataList.Products> = {
-  title: "Components/ProductDataList/Products",
+  title: "Patterns/ProductDataList/Products",
   component: ProductDataList.Products,
   tags: ["autodocs"],
 };
