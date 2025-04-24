@@ -19,7 +19,7 @@ jobs:
       - name: Check for release files in ./yarn/versions
         id: check_release
         run: |
-          has_releases=$(grep -l "^releases:" .yarn/versions/* | wc -l)
+          has_releases=$(grep -l "^releases:" .yarn/versions/* 2>/dev/null | wc -l)
           if [ "$has_releases" -eq "0" ]; then
             echo "No release files found, skipping..."
             echo "should_skip=true" >> $GITHUB_OUTPUT
@@ -28,7 +28,6 @@ jobs:
           else
             echo "should_skip=false" >> $GITHUB_OUTPUT
           fi
-
       - uses: ./.github/actions/setup-node-deps
         if: steps.check_release.outputs.should_skip == 'false'
 
