@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { SortableItemType } from "@nimbus-ds/sortable";
+import { SortableItemType, SortableProperties } from "@nimbus-ds/sortable";
 import { BoxProps } from "@nimbus-ds/components";
 
 /**
@@ -10,8 +10,16 @@ export interface ProductDataListProductsProperties<T extends SortableItemType> {
   items: T[];
   onReorder: (items: T[]) => void;
   sortable?: boolean;
-  renderItem?: (item: T) => ReactNode;
-  children?: ReactNode;
+  renderItem: (item: T) => ReactNode;
+  sortableProps?: Omit<
+    SortableProperties<T>,
+    | "items"
+    | "onReorder"
+    | "orientation"
+    | "disabled"
+    | "renderOverlay"
+    | "children"
+  >;
 }
 
 export type ProductDataListProductsProps<T extends SortableItemType> =
