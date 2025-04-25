@@ -10,7 +10,7 @@ export interface ProductDataListProductsProperties<T extends SortableItemType> {
   items: T[];
   onReorder: (items: T[]) => void;
   sortable?: boolean;
-  renderItem: (item: T) => ReactNode;
+  renderItem: (item: T, index: number) => ReactNode;
   sortableProps?: Omit<
     SortableProperties<T>,
     | "items"

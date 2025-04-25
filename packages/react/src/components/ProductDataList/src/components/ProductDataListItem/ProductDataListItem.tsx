@@ -3,6 +3,7 @@ import { Box, IconButton, Text, Thumbnail } from "@nimbus-ds/components";
 import { DragDotsIcon, TrashIcon } from "@nimbus-ds/icons";
 import { Sortable } from "@nimbus-ds/sortable";
 import type { ProductDataListItemProps } from "./ProductDataListItem.types";
+import { ProductDataListItemDivider } from "../ProductDataListItemDivider/ProductDataListItemDivider";
 
 const ProductDataListItem: React.FC<ProductDataListItemProps> = ({
   id,
@@ -10,11 +11,13 @@ const ProductDataListItem: React.FC<ProductDataListItemProps> = ({
   imageUrl,
   imageAlt,
   isDraggable = false,
+  withDivider = false,
   onRemove,
   children,
 }) => {
   const component = (
-    <Box display="flex" alignItems="center" gap="3" px="2" >
+    <Box display="flex" flexDirection="column" gap="2">
+      <Box display="flex" alignItems="center" gap="3" px="2">
         {isDraggable && (
           <Box as="span" className="handle" cursor="grab">
             <Sortable.ItemHandle>
@@ -47,6 +50,8 @@ const ProductDataListItem: React.FC<ProductDataListItemProps> = ({
           </Box>
         )}
       </Box>
+      {withDivider && <ProductDataListItemDivider />}
+    </Box>
   );
 
   if (isDraggable) {

@@ -83,7 +83,35 @@ const mockProducts: Product[] = [
   },
 ];
 
-export const Default: Story = {
+export const InitialState: Story = {
+  render: () => (
+    <ProductDataList title="Productos relacionados">
+      <ProductDataList.Section
+        title="Alternativo"
+        description="Pueden ser opciones similares a este producto. Ejemplo: una remera lisa o una rayada."
+        link={
+          <Link appearance="primary" textDecoration="none">
+            <Icon source={<PlusCircleIcon />} color="primary-interactive" />
+            Agregar productos
+          </Link>
+        }
+      />
+      <ProductDataList.ItemDivider />
+      <ProductDataList.Section
+        title="Complementarios"
+        description="Pueden ser opciones similares a este producto. Ejemplo: una remera lisa o una rayada."
+        link={
+          <Link appearance="primary" textDecoration="none">
+            <Icon source={<PlusCircleIcon />} color="primary-interactive" />
+            Agregar productos
+          </Link>
+        }
+      />
+    </ProductDataList>
+  ),
+};
+
+export const OneSection: Story = {
   render: () => {
     const [products, setProducts] = useState(mockProducts.slice(0, 3));
     const [selected, setSelected] = useState("1");
@@ -141,7 +169,7 @@ export const Default: Story = {
           <ProductDataList.Products<Product>
             items={products}
             onReorder={handleReorder}
-            renderItem={(product) => (
+            renderItem={(product, index) => (
               <ProductDataListItem
                 key={product.id}
                 id={product.id}
@@ -149,6 +177,7 @@ export const Default: Story = {
                 imageUrl={product.imageUrl}
                 imageAlt={product.title}
                 onRemove={() => handleRemove(product.id)}
+                withDivider={index !== products.length - 1}
               />
             )}
           />
@@ -156,34 +185,6 @@ export const Default: Story = {
       </ProductDataList>
     );
   },
-};
-
-export const InitialState: Story = {
-  render: () => (
-    <ProductDataList title="Productos relacionados">
-      <ProductDataList.Section
-        title="Alternativo"
-        description="Pueden ser opciones similares a este producto. Ejemplo: una remera lisa o una rayada."
-        link={
-          <Link appearance="primary" textDecoration="none">
-            <Icon source={<PlusCircleIcon />} color="primary-interactive" />
-            Agregar productos
-          </Link>
-        }
-      />
-      <ProductDataList.ItemDivider />
-      <ProductDataList.Section
-        title="Complementarios"
-        description="Pueden ser opciones similares a este producto. Ejemplo: una remera lisa o una rayada."
-        link={
-          <Link appearance="primary" textDecoration="none">
-            <Icon source={<PlusCircleIcon />} color="primary-interactive" />
-            Agregar productos
-          </Link>
-        }
-      />
-    </ProductDataList>
-  ),
 };
 
 export const WithSortableItems: Story = {
@@ -228,6 +229,7 @@ export const WithSortableItems: Story = {
                 imageAlt={product.title}
                 isDraggable
                 onRemove={() => handleRemove(product.id)}
+                withDivider
               />
             )}
           />
@@ -289,6 +291,7 @@ export const WithVerticalScroll: Story = {
                 imageAlt={product.title}
                 isDraggable
                 onRemove={() => handleRemove(product.id)}
+                withDivider
               />
             )}
           />

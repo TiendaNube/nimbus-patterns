@@ -31,7 +31,7 @@ function ProductDataListProducts<T extends SortableItemType>({
           gap="2"
           py="2"
         >
-          {renderItem(overlayProps)}
+          {renderItem(overlayProps, 0)}
         </Box>
       )}
       onDragStart={(event) => {
@@ -52,19 +52,18 @@ function ProductDataListProducts<T extends SortableItemType>({
         {...props}
       >
         {children}
-        {items.map((item) => (
+        <ProductDataListItemDivider />
+        {items.map((item, index) => (
           <React.Fragment key={item.id}>
-            <ProductDataListItemDivider />
             {/* We need to hide the item when it's being dragged, but Nimbus doesn't provide a way to do this right now */}
             <div
               aria-hidden={activeId === item.id}
               style={{ opacity: activeId === item.id ? 0 : 1 }}
             >
-              {renderItem(item)}
+              {renderItem(item, index)}
             </div>
           </React.Fragment>
         ))}
-        <ProductDataListItemDivider />
       </Box>
     </Sortable>
   );

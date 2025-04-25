@@ -29,6 +29,10 @@ export interface ProductDataListItemProperties {
    */
   onRemove?: () => void;
   /**
+   * Whether the item has a divider
+   */
+  withDivider?: boolean;
+  /**
    * Additional content to be rendered
    */
   children?: ReactNode;
