@@ -100,13 +100,14 @@ describe("ProductDataList.Sortable", () => {
       expect(onDragStart).toHaveBeenCalledWith({ active: { id: "1" } });
 
       // Check if the dragged item is hidden
-      const draggedItem = screen.getByTestId("item-1").closest("div[aria-hidden]");
+      const items = screen.getAllByTestId("item-1");
+      const draggedItem = items[0].closest("div[aria-hidden]");
       expect(draggedItem).toHaveAttribute("aria-hidden", "true");
       expect(draggedItem).toHaveStyle({ opacity: "0" });
 
       // Check if other items remain visible
       const otherItem = screen.getByTestId("item-2").closest("div[aria-hidden]");
-      expect(otherItem).not.toHaveAttribute("aria-hidden");
+      expect(otherItem).toHaveAttribute("aria-hidden", "false");
       expect(otherItem).toHaveStyle({ opacity: "1" });
     });
 
@@ -136,12 +137,13 @@ describe("ProductDataList.Sortable", () => {
       expect(onDragEnd).toHaveBeenCalledWith({ active: { id: "1" } });
 
       // Check if all items are visible after drag end
-      const draggedItem = screen.getByTestId("item-1").closest("div[aria-hidden]");
-      expect(draggedItem).not.toHaveAttribute("aria-hidden");
+      const items = screen.getAllByTestId("item-1");
+      const draggedItem = items[0].closest("div[aria-hidden]");
+      expect(draggedItem).toHaveAttribute("aria-hidden", "false");
       expect(draggedItem).toHaveStyle({ opacity: "1" });
 
       const otherItem = screen.getByTestId("item-2").closest("div[aria-hidden]");
-      expect(otherItem).not.toHaveAttribute("aria-hidden");
+      expect(otherItem).toHaveAttribute("aria-hidden", "false");
       expect(otherItem).toHaveStyle({ opacity: "1" });
     });
 
@@ -161,7 +163,8 @@ describe("ProductDataList.Sortable", () => {
       });
       
       // Check visibility during drag
-      const draggedItem = screen.getByTestId("item-1").closest("div[aria-hidden]");
+      const items = screen.getAllByTestId("item-1");
+      const draggedItem = items[0].closest("div[aria-hidden]");
       expect(draggedItem).toHaveAttribute("aria-hidden", "true");
       expect(draggedItem).toHaveStyle({ opacity: "0" });
 
@@ -171,7 +174,7 @@ describe("ProductDataList.Sortable", () => {
       });
 
       // Check visibility after drag
-      expect(draggedItem).not.toHaveAttribute("aria-hidden");
+      expect(draggedItem).toHaveAttribute("aria-hidden", "false");
       expect(draggedItem).toHaveStyle({ opacity: "1" });
     });
 
