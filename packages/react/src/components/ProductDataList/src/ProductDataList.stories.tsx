@@ -153,16 +153,6 @@ export const Default: Story = {
             )}
           />
         </ProductDataList.Section>
-        <ProductDataList.Section
-          title="Featured Products"
-          description="Pueden ser opciones similares a este producto. Ejemplo: una remera lisa o una rayada."
-          link={
-            <Link appearance="primary" textDecoration="none">
-              <Icon source={<PlusCircleIcon />} color="primary-interactive" />
-              Agregar productos
-            </Link>
-          }
-        />
       </ProductDataList>
     );
   },
@@ -170,30 +160,30 @@ export const Default: Story = {
 
 export const InitialState: Story = {
   render: () => (
-      <ProductDataList title="Productos relacionados">
-        <ProductDataList.Section
-          title="Alternativo"
-          description="Pueden ser opciones similares a este producto. Ejemplo: una remera lisa o una rayada."
-          link={
-            <Link appearance="primary" textDecoration="none">
-              <Icon source={<PlusCircleIcon />} color="primary-interactive" />
-              Agregar productos
-            </Link>
-          }
-        />
-        <ProductDataList.ItemDivider />
-        <ProductDataList.Section
-          title="Complementarios"
-          description="Pueden ser opciones similares a este producto. Ejemplo: una remera lisa o una rayada."
-          link={
-            <Link appearance="primary" textDecoration="none">
-              <Icon source={<PlusCircleIcon />} color="primary-interactive" />
-              Agregar productos
-            </Link>
-          }
-        />
-      </ProductDataList>
-    ),
+    <ProductDataList title="Productos relacionados">
+      <ProductDataList.Section
+        title="Alternativo"
+        description="Pueden ser opciones similares a este producto. Ejemplo: una remera lisa o una rayada."
+        link={
+          <Link appearance="primary" textDecoration="none">
+            <Icon source={<PlusCircleIcon />} color="primary-interactive" />
+            Agregar productos
+          </Link>
+        }
+      />
+      <ProductDataList.ItemDivider />
+      <ProductDataList.Section
+        title="Complementarios"
+        description="Pueden ser opciones similares a este producto. Ejemplo: una remera lisa o una rayada."
+        link={
+          <Link appearance="primary" textDecoration="none">
+            <Icon source={<PlusCircleIcon />} color="primary-interactive" />
+            Agregar productos
+          </Link>
+        }
+      />
+    </ProductDataList>
+  ),
 };
 
 export const WithSortableItems: Story = {

@@ -54,7 +54,7 @@ describe("ProductDataListProducts", () => {
   });
 
   it("renders items correctly", () => {
-    const renderItem = (item: { id: string; content: string }) => (
+    const renderItem = (item: ProductDataItem) => (
       <div key={item.id}>{item.content}</div>
     );
 
