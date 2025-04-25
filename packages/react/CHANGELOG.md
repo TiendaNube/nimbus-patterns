@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2025-04-25 `1.13.0`
+
+#### 🎉 New features
+
+- Added `Sortable` component. ([#PULL_REQUEST_NUMBER](https://github.com/TiendaNube/nimbus-patterns/pull/PULL_REQUEST_NUMBER) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-03-18 `1.12.0`
 
 #### 🎉 New features
