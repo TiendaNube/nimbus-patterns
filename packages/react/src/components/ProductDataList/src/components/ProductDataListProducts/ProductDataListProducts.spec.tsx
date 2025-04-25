@@ -16,12 +16,17 @@ jest.mock("@dnd-kit/core", () => ({
   )),
 }));
 
+interface ProductDataItem {
+  id: string;
+  content: string;
+}
+
 describe("ProductDataListProducts", () => {
-  const mockItems = [
+  const mockItems: ProductDataItem[] = [
     { id: "1", content: "Item 1" },
     { id: "2", content: "Item 2" },
   ];
-  const defaultRenderItem = (item: { id: string; content: string }) => (
+  const defaultRenderItem = (item: ProductDataItem) => (
     <div data-testid={`item-${item.id}`}>{item.content}</div>
   );
 
@@ -31,10 +36,10 @@ describe("ProductDataListProducts", () => {
 
   it("renders children correctly", () => {
     render(
-      <ProductDataListProducts 
-        sortable 
-        items={mockItems} 
-        onReorder={jest.fn()} 
+      <ProductDataListProducts
+        sortable
+        items={mockItems}
+        onReorder={jest.fn()}
         renderItem={defaultRenderItem}
       >
         <div data-testid="child">Test Child</div>
@@ -62,24 +67,10 @@ describe("ProductDataListProducts", () => {
     });
   });
 
-  it("passes sortable props correctly", () => {
-    const onReorder = jest.fn();
-    render(
-      <ProductDataListProducts 
-        sortable 
-        items={mockItems} 
-        onReorder={onReorder}
-        renderItem={defaultRenderItem}
-      >
-        <div>Child</div>
-      </ProductDataListProducts>
-    );
-  });
-
   describe("drag events", () => {
     it("calls onDragStart callback and updates item visibility", async () => {
       const onDragStart = jest.fn();
-      
+
       render(
         <ProductDataListProducts
           sortable
@@ -105,14 +96,16 @@ describe("ProductDataListProducts", () => {
       expect(draggedItem).toHaveStyle({ opacity: "0" });
 
       // Check if other items remain visible
-      const otherItem = screen.getByTestId("item-2").closest("div[aria-hidden]");
+      const otherItem = screen
+        .getByTestId("item-2")
+        .closest("div[aria-hidden]");
       expect(otherItem).toHaveAttribute("aria-hidden", "false");
       expect(otherItem).toHaveStyle({ opacity: "1" });
     });
 
     it("calls onDragEnd callback and restores item visibility", async () => {
       const onDragEnd = jest.fn();
-      
+
       render(
         <ProductDataListProducts
           sortable
@@ -141,7 +134,9 @@ describe("ProductDataListProducts", () => {
       expect(draggedItem).toHaveAttribute("aria-hidden", "false");
       expect(draggedItem).toHaveStyle({ opacity: "1" });
 
-      const otherItem = screen.getByTestId("item-2").closest("div[aria-hidden]");
+      const otherItem = screen
+        .getByTestId("item-2")
+        .closest("div[aria-hidden]");
       expect(otherItem).toHaveAttribute("aria-hidden", "false");
       expect(otherItem).toHaveStyle({ opacity: "1" });
     });
@@ -160,7 +155,7 @@ describe("ProductDataListProducts", () => {
       await act(async () => {
         (global as any).__dndContextOnDragStart({ active: { id: "1" } });
       });
-      
+
       // Check visibility during drag
       const items = screen.getAllByTestId("item-1");
       const draggedItem = items[0].closest("div[aria-hidden]");
@@ -179,7 +174,7 @@ describe("ProductDataListProducts", () => {
 
     it("calls onReorder when items are reordered", async () => {
       const onReorder = jest.fn();
-      
+
       render(
         <ProductDataListProducts
           sortable
@@ -193,7 +188,7 @@ describe("ProductDataListProducts", () => {
       await act(async () => {
         (global as any).__dndContextOnDragEnd({
           active: { id: "1" },
-          over: { id: "2" }
+          over: { id: "2" },
         });
       });
 

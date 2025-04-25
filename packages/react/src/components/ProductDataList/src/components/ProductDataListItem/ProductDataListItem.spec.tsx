@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ProductDataListItem } from './ProductDataListItem';
 
-describe('ProductDataList.Item', () => {
+describe('ProductDataListItem', () => {
   const defaultProps = {
     id: 'test-id',
     title: 'Test Product',
