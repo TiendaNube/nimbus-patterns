@@ -10,7 +10,7 @@ const ProductDataListSection: React.FC<ProductDataListSectionProps> = ({
   children,
   ...props
 }: ProductDataListSectionProps) => (
-  <Box {...props}>
+  <Box display="flex" flexDirection="column" gap="4"  {...props}>
     <Box display="flex" flexDirection="column" gap="4">
       <Box display="flex" flexDirection="column" gap="1">
         {title && <Text fontSize="highlight">{title}</Text>}

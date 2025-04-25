@@ -46,7 +46,6 @@ function ProductDataListProducts<T extends SortableItemType>({
       <Box
         display="flex"
         flexDirection="column"
-        my="4"
         gap="2"
         overflowY="auto"
         maxHeight="370px"
