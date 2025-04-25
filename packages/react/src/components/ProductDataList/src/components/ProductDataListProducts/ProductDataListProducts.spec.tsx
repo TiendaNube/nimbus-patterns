@@ -3,6 +3,11 @@ import { render, screen, act } from "@testing-library/react";
 import { ProductDataListProducts } from "./ProductDataListProducts";
 
 // Mock DndContext to simulate drag and drop
+/**
+ * Mock implementation of @dnd-kit/core components
+ * - DndContext: Captures drag callbacks on global object for test access
+ * - DragOverlay: Simple wrapper with testid for overlay content
+ */
 jest.mock("@dnd-kit/core", () => ({
   ...jest.requireActual("@dnd-kit/core"),
   DndContext: jest.fn(({ children, onDragStart, onDragOver, onDragEnd }) => {
