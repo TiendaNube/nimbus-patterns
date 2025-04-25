@@ -16,12 +16,11 @@ jest.mock("@dnd-kit/core", () => ({
   )),
 }));
 
-describe("ProductDataList.Sortable", () => {
+describe("ProductDataListProducts", () => {
   const mockItems = [
     { id: "1", content: "Item 1" },
     { id: "2", content: "Item 2" },
   ];
-
   const defaultRenderItem = (item: { id: string; content: string }) => (
     <div data-testid={`item-${item.id}`}>{item.content}</div>
   );
