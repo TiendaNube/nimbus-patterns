@@ -56,4 +56,10 @@ describe('ProductDataListItem', () => {
     );
     expect(screen.getByText(childText)).toBeInTheDocument();
   });
+
+  it('renders divider when withDivider is true', () => {
+    render(<ProductDataListItem {...defaultProps} withDivider />);
+    const divider = screen.getByTestId('divider');
+    expect(divider).toBeInTheDocument();
+  });
 }); 

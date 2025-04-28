@@ -50,7 +50,7 @@ const ProductDataListItem: React.FC<ProductDataListItemProps> = ({
           </Box>
         )}
       </Box>
-      {withDivider && <ProductDataListItemDivider />}
+      {withDivider && <ProductDataListItemDivider data-testid="divider" />}
     </Box>
   );
 
