@@ -28,8 +28,7 @@ function ProductDataListProducts<T extends SortableItemType>({
           flexDirection="column"
           backgroundColor="neutral-background"
           boxShadow="3"
-          gap="2"
-          py="2"
+          paddingTop="2"
         >
           {renderItem(overlayProps, 0)}
         </Box>

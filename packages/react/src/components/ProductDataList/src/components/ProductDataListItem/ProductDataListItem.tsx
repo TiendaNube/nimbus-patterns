@@ -22,7 +22,9 @@ const ProductDataListItem: React.FC<ProductDataListItemProps> = ({
           <Box as="span" className="handle" cursor="grab">
             <Sortable.ItemHandle>
               <Box display="flex" alignItems="center" justifyContent="center">
-                <DragDotsIcon size="small" />
+                <Text>
+                  <DragDotsIcon size="small" />
+                </Text>
               </Box>
             </Sortable.ItemHandle>
           </Box>
