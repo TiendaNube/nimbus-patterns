@@ -34,5 +34,6 @@ ProductDataList.displayName = "ProductDataList";
 ProductDataList.Item.displayName = "ProductDataList.Item";
 ProductDataList.Products.displayName = "ProductDataList.Products";
 ProductDataList.ItemDivider.displayName = "ProductDataList.ItemDivider";
+ProductDataList.Section.displayName = "ProductDataList.Section";
 
 export { ProductDataList };
