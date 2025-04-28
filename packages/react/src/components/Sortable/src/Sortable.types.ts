@@ -54,10 +54,17 @@ export interface SortableProperties<T extends SortableItemType> {
    */
   sensorOptions?: PointerSensorOptions;
   /** Configuration for the drag overlay appearance and behavior */
-  overlaySettings?: DragOverlayProps;
+  overlaySettings?: Omit<DragOverlayProps, "wrapperElement" | "style">; // Omit here for cleaner docs generation
   /** Render function for the dragged item overlay */
   renderOverlay?: (item: T) => ReactNode;
 }
+
+export type SortableProps<T extends SortableItemType> =
+  SortableProperties<T> & {
+    /** Configuration for the drag overlay appearance and behavior */
+    // Set here to avoid generating these types into the .docs.json
+    overlaySettings?: DragOverlayProps;
+  };
 
 /**
  * Context value for sortable functionality
