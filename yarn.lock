@@ -4922,21 +4922,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/icons@npm:^1":
-  version: 1.4.0
-  resolution: "@nimbus-ds/icons@npm:1.4.0"
-  checksum: dfdac1dc1fde65f3f94d357e181d15ae791d2f0821c847e13b800e889bd047928bdfb10773bea5f400f7ca11e284b23632803c520cd35e89a11cf3ad29cc02f4
-  languageName: node
-  linkType: hard
-
-"@nimbus-ds/icons@npm:^1.6.1":
-  version: 1.6.1
-  resolution: "@nimbus-ds/icons@npm:1.6.1"
-  checksum: cce371a0a067be3cfffd0407109854a60822922832efb490c2f0b45fcd06ac5ee8db4f5a055833bd80bf5253d8dc93f64026a252792ce77d67acd030c86c7368
-  languageName: node
-  linkType: hard
-
-"@nimbus-ds/icons@npm:^1.7.0":
+"@nimbus-ds/icons@npm:^1, @nimbus-ds/icons@npm:^1.6.1, @nimbus-ds/icons@npm:^1.7.0":
   version: 1.7.0
   resolution: "@nimbus-ds/icons@npm:1.7.0"
   checksum: 64646f6988874855729b88270192783e236ed3150fd4ff840b86e5f56de2eada444c3236223d1cc825333ebdb04957cd21410af2d656353be1cfad8bcc593ae2
