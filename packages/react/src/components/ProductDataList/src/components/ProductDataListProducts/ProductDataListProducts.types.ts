@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { SortableItemType, SortableProperties } from "@nimbus-ds/sortable";
+import { SortableItemType, SortableProps } from "@nimbus-ds/sortable";
 import { BoxProps } from "@nimbus-ds/components";
 
 /**
@@ -35,7 +35,7 @@ export interface ProductDataListProductsProperties<T extends SortableItemType> {
   /**
    * Additional properties to pass to the sortable container.
    */
-  sortableProps?: object;
+  sortableProps?: object; // Set to object because docs generation doesn't support generics
 }
 
 /**
@@ -50,7 +50,7 @@ export type ProductDataListProductsProps<T extends SortableItemType> =
      */
     // Set here to avoid generating these types into the .docs.json
     sortableProps?: Omit<
-      SortableProperties<T>,
+      SortableProps<T>,
       | "items"
       | "onReorder"
       | "orientation"

@@ -142,8 +142,76 @@
     },
     {
       "name": "ProductDataList.ItemDivider",
-      "totalProps": 4,
+      "totalProps": 6,
       "props": [
+        {
+          "type": "string",
+          "title": "id",
+          "required": false
+        },
+        {
+          "description": "The width property specifies the width of a box's content area.",
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "title": "focus"
+                },
+                "focusWithin": {
+                  "type": "string",
+                  "title": "focusWithin"
+                },
+                "active": {
+                  "type": "string",
+                  "title": "active"
+                },
+                "hover": {
+                  "type": "string",
+                  "title": "hover"
+                },
+                "disabled": {
+                  "type": "string",
+                  "title": "disabled"
+                },
+                "xs": {
+                  "type": "string",
+                  "title": "xs"
+                },
+                "md": {
+                  "type": "string",
+                  "title": "md"
+                },
+                "lg": {
+                  "type": "string",
+                  "title": "lg"
+                },
+                "xl": {
+                  "type": "string",
+                  "title": "xl"
+                }
+              },
+              "additionalProperties": false,
+              "propertyOrder": [
+                "focus",
+                "focusWithin",
+                "active",
+                "hover",
+                "disabled",
+                "xs",
+                "md",
+                "lg",
+                "xl"
+              ]
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "width",
+          "required": false
+        },
         {
           "description": "The borderBottomWidth property defines the width of the border at the bottom of a box.",
           "anyOf": [
