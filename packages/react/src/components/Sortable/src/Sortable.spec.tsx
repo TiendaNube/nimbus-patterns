@@ -1,6 +1,5 @@
 import React from "react";
 import { render, screen, act } from "@testing-library/react";
-import "@testing-library/jest-dom";
 import { DragDotsIcon } from "@nimbus-ds/icons";
 import { Sortable } from "./Sortable";
 

@@ -1,0 +1,30 @@
+{
+  "name": "@nimbus-ds/product-data-list",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn g:webpack",
+    "clean": "rm -rf dist",
+    "version": "yarn version"
+  },
+  "peerDependencies": {
+    "@nimbus-ds/components": "^5",
+    "@nimbus-ds/sortable": "^1",
+    "react": "^16.8 || ^17.0 || ^18.0",
+    "react-dom": "^16.8 || ^17.0 || ^18.0"
+  },
+  "devDependencies": {
+    "@nimbus-ds/components": "^5",
+    "@nimbus-ds/icons": "^1",
+    "@nimbus-ds/sortable": "workspace:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/nimbus-patterns.git",
+    "directory": "packages/react/src/components/ProductDataList"
+  }
+}

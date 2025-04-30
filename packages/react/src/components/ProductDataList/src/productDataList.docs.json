@@ -1,0 +1,921 @@
+{
+  "id": "productDataList",
+  "name": "ProductDataList",
+  "totalProps": 2,
+  "packageName": "@nimbus-ds/product-data-list",
+  "version": "0.0.0",
+  "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/product-data-list",
+  "props": [
+    {
+      "$ref": "#/definitions/React.ReactNode",
+      "description": "The content to be rendered inside the list",
+      "title": "children",
+      "required": false
+    },
+    {
+      "$ref": "#/definitions/React.ReactNode",
+      "description": "Optional title for the list section",
+      "title": "title",
+      "required": false
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "ProductDataList.Item",
+      "totalProps": 8,
+      "props": [
+        {
+          "description": "The id of the product",
+          "type": "string",
+          "title": "id",
+          "required": true
+        },
+        {
+          "description": "The title of the product",
+          "type": "string",
+          "title": "title",
+          "required": true
+        },
+        {
+          "description": "The image URL of the product",
+          "type": "string",
+          "title": "imageUrl",
+          "required": false
+        },
+        {
+          "description": "Alternative text for the product image",
+          "type": "string",
+          "title": "imageAlt",
+          "required": false
+        },
+        {
+          "description": "Whether the item is draggable",
+          "type": "boolean",
+          "title": "isDraggable",
+          "required": false
+        },
+        {
+          "description": "Callback fired when remove button is clicked",
+          "type": "object",
+          "additionalProperties": false,
+          "propertyOrder": [],
+          "title": "onRemove",
+          "required": false
+        },
+        {
+          "description": "Whether the item has a divider",
+          "type": "boolean",
+          "title": "withDivider",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Additional content to be rendered",
+          "title": "children",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "ProductDataList.Products",
+      "totalProps": 5,
+      "props": [
+        {
+          "description": "The array of items to be rendered and sorted in the list.",
+          "type": "array",
+          "items": {
+            "description": "- The type of each sortable item in the list",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "Unique identifier for the sortable item",
+                "type": [
+                  "string",
+                  "number"
+                ],
+                "title": "id"
+              }
+            },
+            "additionalProperties": false,
+            "propertyOrder": [
+              "id"
+            ],
+            "required": [
+              "id"
+            ]
+          },
+          "title": "items",
+          "required": true
+        },
+        {
+          "description": "Callback fired when the order of items changes.",
+          "type": "object",
+          "additionalProperties": false,
+          "propertyOrder": [],
+          "title": "onReorder",
+          "required": true
+        },
+        {
+          "description": "If true, enables drag-and-drop sorting for the list items.",
+          "default": false,
+          "type": "boolean",
+          "title": "sortable",
+          "required": false
+        },
+        {
+          "description": "Function to render each item in the list.",
+          "type": "object",
+          "additionalProperties": false,
+          "propertyOrder": [],
+          "title": "renderItem",
+          "required": true
+        },
+        {
+          "description": "Additional properties to pass to the sortable container.",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": true,
+          "title": "sortableProps",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "ProductDataList.ItemDivider",
+      "totalProps": 6,
+      "props": [
+        {
+          "type": "string",
+          "title": "id",
+          "required": false
+        },
+        {
+          "description": "The width property specifies the width of a box's content area.",
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "title": "focus"
+                },
+                "focusWithin": {
+                  "type": "string",
+                  "title": "focusWithin"
+                },
+                "active": {
+                  "type": "string",
+                  "title": "active"
+                },
+                "hover": {
+                  "type": "string",
+                  "title": "hover"
+                },
+                "disabled": {
+                  "type": "string",
+                  "title": "disabled"
+                },
+                "xs": {
+                  "type": "string",
+                  "title": "xs"
+                },
+                "md": {
+                  "type": "string",
+                  "title": "md"
+                },
+                "lg": {
+                  "type": "string",
+                  "title": "lg"
+                },
+                "xl": {
+                  "type": "string",
+                  "title": "xl"
+                }
+              },
+              "additionalProperties": false,
+              "propertyOrder": [
+                "focus",
+                "focusWithin",
+                "active",
+                "hover",
+                "disabled",
+                "xs",
+                "md",
+                "lg",
+                "xl"
+              ]
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "width",
+          "required": false
+        },
+        {
+          "description": "The borderBottomWidth property defines the width of the border at the bottom of a box.",
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "focus"
+                },
+                "focusWithin": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "focusWithin"
+                },
+                "active": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "active"
+                },
+                "hover": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "hover"
+                },
+                "disabled": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "disabled"
+                },
+                "xs": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "xs"
+                },
+                "md": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "md"
+                },
+                "lg": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "lg"
+                },
+                "xl": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "xl"
+                }
+              },
+              "additionalProperties": false,
+              "propertyOrder": [
+                "focus",
+                "focusWithin",
+                "active",
+                "hover",
+                "disabled",
+                "xs",
+                "md",
+                "lg",
+                "xl"
+              ]
+            },
+            {
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "none"
+              ],
+              "type": "string"
+            }
+          ],
+          "title": "borderBottomWidth",
+          "required": false
+        },
+        {
+          "description": "The borderColor property sets the color of the box's four borders.",
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "enum": [
+                    "danger-interactive",
+                    "danger-surface",
+                    "danger-surfaceHighlight",
+                    "neutral-interactive",
+                    "neutral-surface",
+                    "neutral-surfaceDisabled",
+                    "neutral-surfaceHighlight",
+                    "primary-interactive",
+                    "primary-surface",
+                    "primary-surfaceHighlight",
+                    "success-interactive",
+                    "success-surface",
+                    "success-surfaceHighlight",
+                    "transparent",
+                    "warning-interactive",
+                    "warning-surface",
+                    "warning-surfaceHighlight"
+                  ],
+                  "type": "string",
+                  "title": "focus"
+                },
+                "focusWithin": {
+                  "enum": [
+                    "danger-interactive",
+                    "danger-surface",
+                    "danger-surfaceHighlight",
+                    "neutral-interactive",
+                    "neutral-surface",
+                    "neutral-surfaceDisabled",
+                    "neutral-surfaceHighlight",
+                    "primary-interactive",
+                    "primary-surface",
+                    "primary-surfaceHighlight",
+                    "success-interactive",
+                    "success-surface",
+                    "success-surfaceHighlight",
+                    "transparent",
+                    "warning-interactive",
+                    "warning-surface",
+                    "warning-surfaceHighlight"
+                  ],
+                  "type": "string",
+                  "title": "focusWithin"
+                },
+                "active": {
+                  "enum": [
+                    "danger-interactive",
+                    "danger-surface",
+                    "danger-surfaceHighlight",
+                    "neutral-interactive",
+                    "neutral-surface",
+                    "neutral-surfaceDisabled",
+                    "neutral-surfaceHighlight",
+                    "primary-interactive",
+                    "primary-surface",
+                    "primary-surfaceHighlight",
+                    "success-interactive",
+                    "success-surface",
+                    "success-surfaceHighlight",
+                    "transparent",
+                    "warning-interactive",
+                    "warning-surface",
+                    "warning-surfaceHighlight"
+                  ],
+                  "type": "string",
+                  "title": "active"
+                },
+                "hover": {
+                  "enum": [
+                    "danger-interactive",
+                    "danger-surface",
+                    "danger-surfaceHighlight",
+                    "neutral-interactive",
+                    "neutral-surface",
+                    "neutral-surfaceDisabled",
+                    "neutral-surfaceHighlight",
+                    "primary-interactive",
+                    "primary-surface",
+                    "primary-surfaceHighlight",
+                    "success-interactive",
+                    "success-surface",
+                    "success-surfaceHighlight",
+                    "transparent",
+                    "warning-interactive",
+                    "warning-surface",
+                    "warning-surfaceHighlight"
+                  ],
+                  "type": "string",
+                  "title": "hover"
+                },
+                "disabled": {
+                  "enum": [
+                    "danger-interactive",
+                    "danger-surface",
+                    "danger-surfaceHighlight",
+                    "neutral-interactive",
+                    "neutral-surface",
+                    "neutral-surfaceDisabled",
+                    "neutral-surfaceHighlight",
+                    "primary-interactive",
+                    "primary-surface",
+                    "primary-surfaceHighlight",
+                    "success-interactive",
+                    "success-surface",
+                    "success-surfaceHighlight",
+                    "transparent",
+                    "warning-interactive",
+                    "warning-surface",
+                    "warning-surfaceHighlight"
+                  ],
+                  "type": "string",
+                  "title": "disabled"
+                },
+                "xs": {
+                  "enum": [
+                    "danger-interactive",
+                    "danger-surface",
+                    "danger-surfaceHighlight",
+                    "neutral-interactive",
+                    "neutral-surface",
+                    "neutral-surfaceDisabled",
+                    "neutral-surfaceHighlight",
+                    "primary-interactive",
+                    "primary-surface",
+                    "primary-surfaceHighlight",
+                    "success-interactive",
+                    "success-surface",
+                    "success-surfaceHighlight",
+                    "transparent",
+                    "warning-interactive",
+                    "warning-surface",
+                    "warning-surfaceHighlight"
+                  ],
+                  "type": "string",
+                  "title": "xs"
+                },
+                "md": {
+                  "enum": [
+                    "danger-interactive",
+                    "danger-surface",
+                    "danger-surfaceHighlight",
+                    "neutral-interactive",
+                    "neutral-surface",
+                    "neutral-surfaceDisabled",
+                    "neutral-surfaceHighlight",
+                    "primary-interactive",
+                    "primary-surface",
+                    "primary-surfaceHighlight",
+                    "success-interactive",
+                    "success-surface",
+                    "success-surfaceHighlight",
+                    "transparent",
+                    "warning-interactive",
+                    "warning-surface",
+                    "warning-surfaceHighlight"
+                  ],
+                  "type": "string",
+                  "title": "md"
+                },
+                "lg": {
+                  "enum": [
+                    "danger-interactive",
+                    "danger-surface",
+                    "danger-surfaceHighlight",
+                    "neutral-interactive",
+                    "neutral-surface",
+                    "neutral-surfaceDisabled",
+                    "neutral-surfaceHighlight",
+                    "primary-interactive",
+                    "primary-surface",
+                    "primary-surfaceHighlight",
+                    "success-interactive",
+                    "success-surface",
+                    "success-surfaceHighlight",
+                    "transparent",
+                    "warning-interactive",
+                    "warning-surface",
+                    "warning-surfaceHighlight"
+                  ],
+                  "type": "string",
+                  "title": "lg"
+                },
+                "xl": {
+                  "enum": [
+                    "danger-interactive",
+                    "danger-surface",
+                    "danger-surfaceHighlight",
+                    "neutral-interactive",
+                    "neutral-surface",
+                    "neutral-surfaceDisabled",
+                    "neutral-surfaceHighlight",
+                    "primary-interactive",
+                    "primary-surface",
+                    "primary-surfaceHighlight",
+                    "success-interactive",
+                    "success-surface",
+                    "success-surfaceHighlight",
+                    "transparent",
+                    "warning-interactive",
+                    "warning-surface",
+                    "warning-surfaceHighlight"
+                  ],
+                  "type": "string",
+                  "title": "xl"
+                }
+              },
+              "additionalProperties": false,
+              "propertyOrder": [
+                "focus",
+                "focusWithin",
+                "active",
+                "hover",
+                "disabled",
+                "xs",
+                "md",
+                "lg",
+                "xl"
+              ]
+            },
+            {
+              "enum": [
+                "danger-interactive",
+                "danger-surface",
+                "danger-surfaceHighlight",
+                "neutral-interactive",
+                "neutral-surface",
+                "neutral-surfaceDisabled",
+                "neutral-surfaceHighlight",
+                "primary-interactive",
+                "primary-surface",
+                "primary-surfaceHighlight",
+                "success-interactive",
+                "success-surface",
+                "success-surfaceHighlight",
+                "transparent",
+                "warning-interactive",
+                "warning-surface",
+                "warning-surfaceHighlight"
+              ],
+              "type": "string"
+            }
+          ],
+          "title": "borderColor",
+          "required": false
+        },
+        {
+          "description": "borderStyle property sets the line style for all four sides of an box's border.",
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
+                  "type": "string",
+                  "title": "focus"
+                },
+                "focusWithin": {
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
+                  "type": "string",
+                  "title": "focusWithin"
+                },
+                "active": {
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
+                  "type": "string",
+                  "title": "active"
+                },
+                "hover": {
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
+                  "type": "string",
+                  "title": "hover"
+                },
+                "disabled": {
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
+                  "type": "string",
+                  "title": "disabled"
+                },
+                "xs": {
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
+                  "type": "string",
+                  "title": "xs"
+                },
+                "md": {
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
+                  "type": "string",
+                  "title": "md"
+                },
+                "lg": {
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
+                  "type": "string",
+                  "title": "lg"
+                },
+                "xl": {
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
+                  "type": "string",
+                  "title": "xl"
+                }
+              },
+              "additionalProperties": false,
+              "propertyOrder": [
+                "focus",
+                "focusWithin",
+                "active",
+                "hover",
+                "disabled",
+                "xs",
+                "md",
+                "lg",
+                "xl"
+              ]
+            },
+            {
+              "enum": [
+                "dashed",
+                "dotted",
+                "hidden",
+                "none",
+                "solid"
+              ],
+              "type": "string"
+            }
+          ],
+          "title": "borderStyle",
+          "required": false
+        },
+        {
+          "description": "The borderTopWidth property defines the width of the border at the top of a box.",
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "focus"
+                },
+                "focusWithin": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "focusWithin"
+                },
+                "active": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "active"
+                },
+                "hover": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "hover"
+                },
+                "disabled": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "disabled"
+                },
+                "xs": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "xs"
+                },
+                "md": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "md"
+                },
+                "lg": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "lg"
+                },
+                "xl": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "xl"
+                }
+              },
+              "additionalProperties": false,
+              "propertyOrder": [
+                "focus",
+                "focusWithin",
+                "active",
+                "hover",
+                "disabled",
+                "xs",
+                "md",
+                "lg",
+                "xl"
+              ]
+            },
+            {
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "none"
+              ],
+              "type": "string"
+            }
+          ],
+          "title": "borderTopWidth",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "ProductDataList.Section",
+      "totalProps": 5,
+      "props": [
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "title",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "description",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "content",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "link",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "title": "children",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

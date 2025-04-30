@@ -4817,6 +4817,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nimbus-ds/components@npm:^5":
+  version: 5.10.0
+  resolution: "@nimbus-ds/components@npm:5.10.0"
+  dependencies:
+    "@floating-ui/react": ^0.26.0
+    "@nimbus-ds/icons": ^1.7.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: b136c337fb07094b8fbfc89d72bab74f9169039c9a7722f133f4725944b032eabb15f1b1544255ae4d282809eda209b6c56a0ba66777cac629f1c87adb0c4c17
+  languageName: node
+  linkType: hard
+
 "@nimbus-ds/data-list@workspace:^, @nimbus-ds/data-list@workspace:packages/react/src/components/DataList":
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/data-list@workspace:packages/react/src/components/DataList"
@@ -4920,6 +4933,13 @@ __metadata:
   version: 1.6.1
   resolution: "@nimbus-ds/icons@npm:1.6.1"
   checksum: cce371a0a067be3cfffd0407109854a60822922832efb490c2f0b45fcd06ac5ee8db4f5a055833bd80bf5253d8dc93f64026a252792ce77d67acd030c86c7368
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/icons@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "@nimbus-ds/icons@npm:1.7.0"
+  checksum: 64646f6988874855729b88270192783e236ed3150fd4ff840b86e5f56de2eada444c3236223d1cc825333ebdb04957cd21410af2d656353be1cfad8bcc593ae2
   languageName: node
   linkType: hard
 
@@ -5067,6 +5087,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@nimbus-ds/product-data-list@workspace:packages/react/src/components/ProductDataList":
+  version: 0.0.0-use.local
+  resolution: "@nimbus-ds/product-data-list@workspace:packages/react/src/components/ProductDataList"
+  dependencies:
+    "@nimbus-ds/components": ^5
+    "@nimbus-ds/icons": ^1
+    "@nimbus-ds/sortable": "workspace:*"
+  peerDependencies:
+    "@nimbus-ds/components": ^5
+    "@nimbus-ds/sortable": ^1
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  languageName: unknown
+  linkType: soft
+
 "@nimbus-ds/productupdates@workspace:packages/react/src/components/ProductUpdates":
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/productupdates@workspace:packages/react/src/components/ProductUpdates"
@@ -5100,7 +5135,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/sortable@workspace:packages/react/src/components/Sortable":
+"@nimbus-ds/sortable@workspace:*, @nimbus-ds/sortable@workspace:packages/react/src/components/Sortable":
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/sortable@workspace:packages/react/src/components/Sortable"
   dependencies:
@@ -7413,6 +7448,15 @@ __metadata:
   peerDependencies:
     "@testing-library/dom": ">=7.21.4"
   checksum: 3e6bc9fd53dfe2f3648190193ed2fd4bca2a1bfb47f68810df3b33f05412526e5fd5c4ef9dc5375635e0f4cdf1859916867b597eed22bda1321e04242ea6c519
+  languageName: node
+  linkType: hard
+
+"@testing-library/user-event@npm:^14.6.1":
+  version: 14.6.1
+  resolution: "@testing-library/user-event@npm:14.6.1"
+  peerDependencies:
+    "@testing-library/dom": ">=7.21.4"
+  checksum: 4cb8a81fea1fea83a42619e9545137b51636bb7a3182c596bb468e5664f1e4699a275c2d0fb8b6dcc3fe2684f9d87b0637ab7cb4f566051539146872c9141fcb
   languageName: node
   linkType: hard
 
@@ -16559,6 +16603,7 @@ __metadata:
     "@svgr/webpack": ^6.5.1
     "@testing-library/jest-dom": ^6.6.3
     "@testing-library/react": ^13.4.0
+    "@testing-library/user-event": ^14.6.1
     "@tiendanube/eslint-config": ^0.3.2
     "@types/babel__core": ^7
     "@types/eslint": ^8

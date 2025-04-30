@@ -23,7 +23,7 @@ This component uses [@dnd-kit](https://dndkit.com/) for drag and drop functional
 ## Usage
 
 ```tsx
-import { Sortable } from '@nimbus-ds/sortable';
+import { Sortable } from "@nimbus-ds/sortable";
 
 interface Item {
   id: string;
@@ -31,9 +31,9 @@ interface Item {
 }
 
 const items: Item[] = [
-  { id: '1', content: 'Item 1' },
-  { id: '2', content: 'Item 2' },
-  { id: '3', content: 'Item 3' },
+  { id: "1", content: "Item 1" },
+  { id: "2", content: "Item 2" },
+  { id: "3", content: "Item 3" },
 ];
 
 function MyComponent() {
@@ -176,10 +176,6 @@ The component follows WCAG 2.1 guidelines and implements proper ARIA attributes:
 ## Performance
 The component is optimized for performance:
 
-- Uses `useMemo` for memoization of styles and context values
-- Efficiently handles drag and drop operations
-- Minimal re-renders through proper state management
-- Uses `@dnd-kit` for optimized drag and drop functionality
 - Uses `useMemo` for memoization of styles and context values
 - Efficiently handles drag and drop operations
 - Minimal re-renders through proper state management

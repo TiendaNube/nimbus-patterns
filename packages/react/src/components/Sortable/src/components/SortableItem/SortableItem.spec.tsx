@@ -1,6 +1,5 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
 import { useSortable } from "@dnd-kit/sortable";
 import { DragDotsIcon } from "@nimbus-ds/icons";
 import type { DraggableAttributes } from "@dnd-kit/core";

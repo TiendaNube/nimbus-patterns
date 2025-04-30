@@ -25,8 +25,8 @@ const meta: Meta<typeof InitialScreen.Hero> = {
       {...args}
       image={
         <img
-          src="./static/mockup-perfit.jpg"
-          alt="./static/mockup-perfit.jpg"
+          src="./static/empty-orders.png"
+          alt="./static/empty-orders.png"
           width="100%"
         />
       }
