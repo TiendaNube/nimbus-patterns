@@ -1,8 +1,2 @@
-releases:
-  "@nimbus-ds/initial-screen": patch
-  "@nimbus-ds/patterns": minor
-  "@nimbus-ds/product-data-list": major
-
 declined:
   - nimbus-patterns
-  - "@nimbus-ds/sortable"
