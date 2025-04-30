@@ -16,7 +16,7 @@ import {
   horizontalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { SortableItem, SortableItemHandle } from "./components";
-import { SortableItemType, SortableProperties } from "./Sortable.types";
+import { SortableItemType, SortableProps } from "./Sortable.types";
 import { DEFAULT_OVERLAY_SETTINGS } from "./Sortable.definitions";
 
 /**
@@ -50,7 +50,8 @@ function Sortable<T extends SortableItemType>({
   children,
   overlaySettings = DEFAULT_OVERLAY_SETTINGS,
   renderOverlay,
-}: SortableProperties<T>): React.ReactElement {
+  dndContextSettings,
+}: SortableProps<T>): React.ReactElement {
   const [activeId, setActiveId] = useState<string | null>(null);
   const activeItem = activeId
     ? items.find((item) => item.id === activeId)
@@ -114,6 +115,7 @@ function Sortable<T extends SortableItemType>({
       onDragStart={handleDragStart}
       onDragOver={onDragOver}
       onDragEnd={handleDragEnd}
+      {...dndContextSettings}
     >
       <BaseSortableContext
         items={items.map((item) => item.id)}
