@@ -6,6 +6,7 @@ import {
   UniqueIdentifier,
   PointerSensorOptions,
   DragOverlayProps,
+  DndContextProps,
 } from "@dnd-kit/core";
 import { orientation } from "./Sortable.definitions";
 
@@ -16,6 +17,16 @@ export type SortableItemType = {
   /** Unique identifier for the sortable item */
   id: UniqueIdentifier;
 };
+
+type InternalDndContextSettings = Omit<
+  DndContextProps,
+  | "children"
+  | "sensors"
+  | "collisionDetection"
+  | "onDragStart"
+  | "onDragOver"
+  | "onDragEnd"
+>;
 
 /**
  * Properties specific to the Sortable component
@@ -55,6 +66,8 @@ export interface SortableProperties<T extends SortableItemType> {
   sensorOptions?: PointerSensorOptions;
   /** Configuration for the drag overlay appearance and behavior */
   overlaySettings?: Omit<DragOverlayProps, "wrapperElement" | "style">; // Omit here for cleaner docs generation
+  /** Settings for the DndContext */
+  dndContextSettings?: Omit<InternalDndContextSettings, "accessibility">; // Omit 'accesibility' because docs generation doesn't support it
   /** Render function for the dragged item overlay */
   renderOverlay?: (item: T) => ReactNode;
 }
@@ -64,6 +77,8 @@ export type SortableProps<T extends SortableItemType> =
     /** Configuration for the drag overlay appearance and behavior */
     // Set here to avoid generating these types into the .docs.json
     overlaySettings?: DragOverlayProps;
+    /** Settings for the DndContext */
+    dndContextSettings?: InternalDndContextSettings;
   };
 
 /**
