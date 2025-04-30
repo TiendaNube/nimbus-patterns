@@ -76,7 +76,8 @@
       ],
       "@nimbus-ds/plan-display": [
         "./packages/react/src/components/PlanDisplay/src"
-      ]
+      ],
+      "@nimbus-ds/sortable": ["./packages/react/src/components/Sortable/src"]
     }
   }
 }

@@ -1,25 +1,6 @@
+releases:
+  "@nimbus-ds/patterns": minor
+  "@nimbus-ds/sortable": major
+
 declined:
   - nimbus-patterns
-  - "@nimbus-ds/patterns-webpack"
-  - "@nimbus-ds/patterns"
-  - "@nimbus-ds/app-shell"
-  - "@nimbus-ds/calendar"
-  - "@nimbus-ds/callout-card"
-  - "@nimbus-ds/data-list"
-  - "@nimbus-ds/data-table"
-  - "@nimbus-ds/editor"
-  - "@nimbus-ds/empty-app"
-  - "@nimbus-ds/empty-message"
-  - "@nimbus-ds/formfield"
-  - "@nimbus-ds/help-link"
-  - "@nimbus-ds/initial-screen"
-  - "@nimbus-ds/interactive-list"
-  - "@nimbus-ds/layout"
-  - "@nimbus-ds/menu"
-  - "@nimbus-ds/menubutton"
-  - "@nimbus-ds/nav-tabs"
-  - "@nimbus-ds/page"
-  - "@nimbus-ds/plan-display"
-  - "@nimbus-ds/productupdates"
-  - "@nimbus-ds/sidemodal"
-  - "@nimbus-ds/thumbnail-with-action"
