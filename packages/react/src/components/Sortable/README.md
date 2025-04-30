@@ -57,29 +57,29 @@ function MyComponent() {
 
 ### Sortable
 
-| Prop            | Type                              | Default                    | Description                                                |
-| --------------- | --------------------------------- | -------------------------- | ---------------------------------------------------------- |
-| items           | `T[]`                             | -                          | The items to be sorted                                     |
-| onReorder       | `(items: T[]) => void`            | -                          | Callback fired when items are reordered                    |
-| orientation     | `'vertical' \| 'horizontal'`      | `'vertical'`               | The orientation of the sortable list                       |
-| sensorOptions   | `PointerSensorOptions`            | -                          | Custom sensor options for drag detection                   |
-| onDragStart     | `(event: DragStartEvent) => void` | -                          | Callback fired when drag starts                            |
-| onDragOver      | `(event: DragOverEvent) => void`  | -                          | Callback fired during drag                                 |
-| onDragEnd       | `(event: DragEndEvent) => void`   | -                          | Callback fired when drag ends                              |
-| disabled        | `boolean`                         | `false`                    | Whether to disable sorting functionality                   |
-| children        | `ReactNode`                       | -                          | The children components                                    |
-| overlaySettings | `DragOverlayProps`                | `DEFAULT_OVERLAY_SETTINGS` | Configuration for the drag overlay appearance and behavior |
-| renderOverlay   | `(item: T) => ReactNode`          | -                          | Render function for the dragged item overlay               |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| items | `T[]` | - | The items to be sorted |
+| onReorder | `(items: T[]) => void` | - | Callback fired when items are reordered |
+| orientation | `'vertical' \| 'horizontal'` | `'vertical'` | The orientation of the sortable list |
+| sensorOptions | `PointerSensorOptions` | - | Custom sensor options for drag detection |
+| onDragStart | `(event: DragStartEvent) => void` | - | Callback fired when drag starts |
+| onDragOver | `(event: DragOverEvent) => void` | - | Callback fired during drag |
+| onDragEnd | `(event: DragEndEvent) => void` | - | Callback fired when drag ends |
+| disabled | `boolean` | `false` | Whether to disable sorting functionality |
+| children | `ReactNode` | - | The children components |
+| overlaySettings | `DragOverlayProps` | `DEFAULT_OVERLAY_SETTINGS` | Configuration for the drag overlay appearance and behavior |
+| renderOverlay | `(item: T) => ReactNode` | - | Render function for the dragged item overlay |
 
 ### Sortable.Item
 
-| Prop       | Type                                                                                                          | Default | Description                                     |
-| ---------- | ------------------------------------------------------------------------------------------------------------- | ------- | ----------------------------------------------- |
-| id         | `UniqueIdentifier`                                                                                            | -       | The unique identifier for the item              |
-| disabled   | `boolean`                                                                                                     | `false` | Whether the item is disabled from being dragged |
-| handle     | `boolean`                                                                                                     | `false` | Whether to use a drag handle                    |
-| children   | `ReactNode`                                                                                                   | -       | The children components                         |
-| renderItem | `(props: { isDragging: boolean, attributes: any, listeners: any, setNodeRef: any, style: any }) => ReactNode` | -       | Custom render function for the item             |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| id | `UniqueIdentifier` | - | The unique identifier for the item |
+| disabled | `boolean` | `false` | Whether the item is disabled from being dragged |
+| handle | `boolean` | `false` | Whether to use a drag handle |
+| children | `ReactNode` | - | The children components |
+| renderItem | `(props: { isDragging: boolean, attributes: any, listeners: any, setNodeRef: any, style: any }) => ReactNode` | - | Custom render function for the item |
 
 ### Sortable.ItemHandle
 
@@ -138,10 +138,12 @@ The component follows WCAG 2.1 guidelines and implements proper ARIA attributes:
   overlaySettings={{
     dropAnimation: {
       duration: 200,
-      easing: "cubic-bezier(0.18, 0.67, 0.6, 1.22)",
-    },
+      easing: 'cubic-bezier(0.18, 0.67, 0.6, 1.22)',
+    }
   }}
-  renderOverlay={(item) => <div className="custom-overlay">{item.content}</div>}
+  renderOverlay={(item) => (
+    <div className="custom-overlay">{item.content}</div>
+  )}
 >
   <div className="my-sortable-container">
     {items.map((item) => (
@@ -162,9 +164,9 @@ The component follows WCAG 2.1 guidelines and implements proper ARIA attributes:
   sensorOptions={{
     activationConstraint: {
       distance: 20, // Allow movements up to 20px
-      delay: 150, // Wait 150ms before canceling
-      tolerance: 5, // Tolerate 5px of movement
-    },
+      delay: 150,  // Wait 150ms before canceling
+      tolerance: 5 // Tolerate 5px of movement
+    }
   }}
 >
   {/* ... */}
@@ -172,7 +174,6 @@ The component follows WCAG 2.1 guidelines and implements proper ARIA attributes:
 ```
 
 ## Performance
-
 The component is optimized for performance:
 
 - Uses `useMemo` for memoization of styles and context values

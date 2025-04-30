@@ -3,7 +3,7 @@
   "name": "Sortable",
   "totalProps": 12,
   "packageName": "@nimbus-ds/sortable",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/sortable",
   "props": [
     {
