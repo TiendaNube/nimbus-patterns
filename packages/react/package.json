@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/patterns",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -114,6 +114,10 @@
     "./PlanDisplay": {
       "import": "./dist/PlanDisplay/index.js",
       "require": "./dist/PlanDisplay/index.js"
+    },
+    "./ProductDataList": {
+      "import": "./dist/ProductDataList/index.js",
+      "require": "./dist/ProductDataList/index.js"
     },
     "./ProductUpdates": {
       "import": "./dist/ProductUpdates/index.js",

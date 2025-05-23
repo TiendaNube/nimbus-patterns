@@ -3,7 +3,7 @@
   "name": "InitialScreen",
   "totalProps": 1,
   "packageName": "@nimbus-ds/initial-screen",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/initial-screen",
   "props": [
     {
