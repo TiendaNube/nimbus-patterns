@@ -5,7 +5,7 @@ import {
   ThumbnailProps,
 } from "@nimbus-ds/components";
 
-export interface ThumbnailWithActionProperties extends BoxProperties {
+export interface ThumbnailWithActionProperties {
   /**
    * Thumbnail component properties.
    */
@@ -23,4 +23,5 @@ export interface ThumbnailWithActionProperties extends BoxProperties {
 
 export type ThumbnailWithActionProps = ThumbnailWithActionProperties & {
   thumbnail: ThumbnailProps;
-} & Omit<HTMLAttributes<HTMLElement>, "color">;
+} & BoxProperties &
+  Omit<HTMLAttributes<HTMLElement>, "color">;

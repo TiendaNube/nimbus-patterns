@@ -27,7 +27,9 @@ try {
     },
   };
   const docgen = new Docgen(options);
-  docgen.generate(paths);
+  const docs = docgen.generate(paths);
+
+  docgen.generateBundle(docs, path.join("packages/react/components-props.json"));
 } catch (err) {
   console.log(err);
   console.error(`\x1b[33m ${err.message} \x1b[0m`);

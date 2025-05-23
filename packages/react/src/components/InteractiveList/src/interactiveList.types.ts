@@ -1,4 +1,4 @@
-import { ReactNode, HTMLAttributes } from "react";
+import { HTMLAttributes, PropsWithChildren } from "react";
 
 import { DataListProps } from "@nimbus-ds/data-list";
 import {
@@ -27,13 +27,8 @@ export interface InteractiveListComponents {
   RadioItemSkeleton: typeof InteractiveListRadioItemSkeleton;
 }
 
-export interface InteractiveListProperties extends DataListProps {
-  /**
-   * Content of the InteractiveList
-   * @TJS-type React.ReactNode
-   */
-  children: ReactNode;
-}
+export type InteractiveListProperties = PropsWithChildren &
+  Pick<DataListProps, "bottomDivider">;
 
 export type InteractiveListProps = InteractiveListProperties &
   HTMLAttributes<HTMLElement>;

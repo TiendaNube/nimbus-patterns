@@ -1,4 +1,4 @@
-import { ReactNode, HTMLAttributes } from "react";
+import { HTMLAttributes, PropsWithChildren } from "react";
 
 import { BoxProperties, BoxProps } from "@nimbus-ds/components";
 import { PageHeader, PageBody } from "./components";
@@ -8,19 +8,12 @@ export interface PageComponents {
   Body: typeof PageBody;
 }
 
-export interface PageProperties
-  extends Omit<BoxProperties, "width" | "maxWidth" | "marginX"> {
-  /**
-   * Content to be rendered inside the page body.
-   * @TJS-type React.ReactNode
-   */
-  children: ReactNode;
-  /**
-   * Optional parameter to define a maximum width of the page content.
-   */
+// Type defined for documentation purposes
+export type PageProperties = PropsWithChildren<{
   maxWidth?: string;
-}
+}>;
 
 export type PageProps = PageProperties &
   Omit<HTMLAttributes<HTMLElement>, "color"> &
-  Omit<BoxProps, "width" | "maxWidth" | "marginX">;
+  Omit<BoxProps, "width" | "maxWidth" | "marginX"> &
+  Omit<BoxProperties, "width" | "maxWidth" | "marginX">;

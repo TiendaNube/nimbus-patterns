@@ -8,10 +8,12 @@ export interface InteractiveListCheckboxItemProperties
   /**
    * Checkbox props inherited from Nimbus components.
    */
-  checkbox: CheckboxProps;
+  checkbox: any; // Omitted long list of props for docs purposes
 }
 
 export type InteractiveListCheckboxItemProps =
-  InteractiveListCheckboxItemProperties &
-    Omit<HTMLAttributes<HTMLElement>, "color"> &
+  InteractiveListCheckboxItemProperties & {
+    // Restored long list of props for actual usage
+    checkbox: CheckboxProps;
+  } & Omit<HTMLAttributes<HTMLElement>, "color"> &
     Pick<InteractiveListRowProps, "topDivider">;

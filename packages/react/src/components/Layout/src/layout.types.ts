@@ -6,11 +6,7 @@ export interface LayoutComponents {
   Section: typeof LayoutSection;
 }
 
-export interface LayoutProperties
-  extends Omit<
-    BoxProperties,
-    "children" | "boxSizing" | "display" | "gridTemplateColumns"
-  > {
+export interface LayoutProperties {
   /**
    * Content to be rendered inside the layout.
    * @TJS-type React.ReactNode
@@ -22,4 +18,9 @@ export interface LayoutProperties
   columns?: "1" | "2 - symmetric" | "2 - asymmetric" | "3";
 }
 
-export type LayoutProps = LayoutProperties & HTMLAttributes<HTMLElement>;
+export type LayoutProps = LayoutProperties &
+  Omit<
+    BoxProperties,
+    "children" | "boxSizing" | "display" | "gridTemplateColumns"
+  > &
+  HTMLAttributes<HTMLElement>;
