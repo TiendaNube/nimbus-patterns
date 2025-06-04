@@ -1,8 +1,16 @@
 releases:
-  "@nimbus-ds/initial-screen": patch
+  "@nimbus-ds/calendar": patch
+  "@nimbus-ds/data-list": patch
+  "@nimbus-ds/empty-app": patch
+  "@nimbus-ds/interactive-list": patch
+  "@nimbus-ds/layout": patch
+  "@nimbus-ds/nav-tabs": patch
+  "@nimbus-ds/page": patch
   "@nimbus-ds/patterns": minor
-  "@nimbus-ds/product-data-list": major
+  "@nimbus-ds/thumbnail-with-action": patch
 
 declined:
   - nimbus-patterns
-  - "@nimbus-ds/sortable"
+  - "@nimbus-ds/app-shell"
+  - "@nimbus-ds/initial-screen"
+  - "@nimbus-ds/plan-display"

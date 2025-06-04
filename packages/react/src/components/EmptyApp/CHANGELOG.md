@@ -2,6 +2,12 @@
 
 EmptyApp allows the user to build marketing-style landing pages for apps. It features internal components meant to build hero sections, content sections with images and text with features, and payment plans.
 
+## 2025-06-04 `1.0.3`
+
+#### 💡 Others
+
+- Fixed documentation props, reducing the props size and keeping only the most relevant properties to showcase. ([#114](https://github.com/TiendaNube/nimbus-patterns/pull/114) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-03-18 `1.0.2`
 
 ### 💡 Others
