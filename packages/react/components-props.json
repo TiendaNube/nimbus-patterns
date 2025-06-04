@@ -1576,7 +1576,7 @@
     "name": "InitialScreen",
     "totalProps": 1,
     "packageName": "@nimbus-ds/initial-screen",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/initial-screen",
     "props": [
       {
@@ -2541,7 +2541,7 @@
     "name": "ProductDataList",
     "totalProps": 2,
     "packageName": "@nimbus-ds/product-data-list",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/product-data-list",
     "props": [
       {

@@ -1,7 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Thumbnail, Text } from "@nimbus-ds/components";
-
 import { ProductUpdates } from "./ProductUpdates";
 
 const meta: Meta<typeof ProductUpdates> = {
