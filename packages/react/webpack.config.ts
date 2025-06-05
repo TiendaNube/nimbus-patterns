@@ -40,7 +40,7 @@ const config = configuration.getConfiguration(baseConfig, {
       };
       return packageJson;
     },
-    files: ["CHANGELOG.md", "README.md", componentPropsJson],
+    files: ["CHANGELOG.md", "README.md"],
   },
 });
 

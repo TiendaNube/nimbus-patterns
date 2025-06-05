@@ -1,5 +1,6 @@
-import glob from "glob";
 import path from "path";
+import { glob } from "glob";
+import fs from "fs";
 
 import {
   Docgen,
@@ -29,7 +30,17 @@ try {
   const docgen = new Docgen(options);
   const docs = docgen.generate(paths);
 
-  docgen.generateBundle(docs, path.join("packages/react/components-props.json"));
+  const bundlePropsOutPath = path.join(
+    "packages/react/dist/components-props.json"
+  );
+
+  if (!fs.existsSync(path.dirname(bundlePropsOutPath))) {
+    fs.mkdirSync(path.dirname(bundlePropsOutPath));
+  }
+
+  docgen.generateBundle(docs, bundlePropsOutPath);
+
+  console.log("Bundle documentation generated successfully");
 } catch (err) {
   console.log(err);
   console.error(`\x1b[33m ${err.message} \x1b[0m`);
