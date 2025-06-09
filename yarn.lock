@@ -4804,16 +4804,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/components@npm:5.8.2":
-  version: 5.8.2
-  resolution: "@nimbus-ds/components@npm:5.8.2"
+"@nimbus-ds/components@npm:5.11.2":
+  version: 5.11.2
+  resolution: "@nimbus-ds/components@npm:5.11.2"
   dependencies:
     "@floating-ui/react": ^0.26.0
-    "@nimbus-ds/icons": ^1.6.1
+    "@nimbus-ds/icons": ^1.9.0
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 8337f33d5d97c772c9af5e9f83dab5d7a26ffa36746c8f46df152354d0c5f42b9d86884bd77481fa318a4c323eebdad8a8961f553edfe04c9b1d4ef2297921cc
+  checksum: 7d735d06b6c71e45ac78ac453102a86a55e7b3c65dc280b537c771d0aee25cf96170048ba0f116a5bde29aa05d850647cea7de42e7d44045c4508342bd732c38
   languageName: node
   linkType: hard
 
@@ -4929,17 +4929,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/icons@npm:^1.6.1":
-  version: 1.6.1
-  resolution: "@nimbus-ds/icons@npm:1.6.1"
-  checksum: cce371a0a067be3cfffd0407109854a60822922832efb490c2f0b45fcd06ac5ee8db4f5a055833bd80bf5253d8dc93f64026a252792ce77d67acd030c86c7368
-  languageName: node
-  linkType: hard
-
 "@nimbus-ds/icons@npm:^1.7.0":
   version: 1.7.0
   resolution: "@nimbus-ds/icons@npm:1.7.0"
   checksum: 64646f6988874855729b88270192783e236ed3150fd4ff840b86e5f56de2eada444c3236223d1cc825333ebdb04957cd21410af2d656353be1cfad8bcc593ae2
+  languageName: node
+  linkType: hard
+
+"@nimbus-ds/icons@npm:^1.9.0":
+  version: 1.9.0
+  resolution: "@nimbus-ds/icons@npm:1.9.0"
+  checksum: 1d3a40a15abc8bdbc0fb0e67b89521ef0e42f3551311b56f80ebed02105b06e0d5a46d4620c6cc99ed656d683a3c0ffe8aaf80bfb7b71dcfe1719b9bf69cb439
   languageName: node
   linkType: hard
 
@@ -5113,13 +5113,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/scripts@npm:1.7.0-rc.2":
-  version: 1.7.0-rc.2
-  resolution: "@nimbus-ds/scripts@npm:1.7.0-rc.2"
+"@nimbus-ds/scripts@npm:1.7.0":
+  version: 1.7.0
+  resolution: "@nimbus-ds/scripts@npm:1.7.0"
   dependencies:
     change-case: ^4.1.2
     typescript-json-schema: ^0.55.0
-  checksum: d3315e36f510eb6adcbe2542d168cc0ad05a8ced68607a1f3f6d7e2c1b3d0a0007177c21d62e48455f3694b03ea15c7940ebfdcf59f54530a126f0403e8e9fbc
+  checksum: 0a874b0c4261b4ebad80bc879adfbd3a61295486346dda88733c75c0ad9df7c45f6ddfc6b33266ac5174f621c8512c26b07aad62ba183fd99ab97de0b7ff8dcd
   languageName: node
   linkType: hard
 
@@ -16588,8 +16588,8 @@ __metadata:
     "@commitlint/config-conventional": ^17.2.0
     "@jest/types": ^29.2.1
     "@mdx-js/react": ^1.6.22
-    "@nimbus-ds/components": 5.8.2
-    "@nimbus-ds/scripts": 1.7.0-rc.2
+    "@nimbus-ds/components": 5.11.2
+    "@nimbus-ds/scripts": 1.7.0
     "@nimbus-ds/styles": 9.13.1
     "@nimbus-ds/tokens": ^9.1.1
     "@storybook/addon-docs": ^7.5.1
