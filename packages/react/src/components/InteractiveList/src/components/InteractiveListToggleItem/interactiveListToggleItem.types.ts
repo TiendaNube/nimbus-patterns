@@ -8,10 +8,12 @@ export interface InteractiveListToggleItemProperties
   /**
    * Toggle props inherited from Nimbus components.
    */
-  toggle: ToggleProps;
+  toggle: any; // Omitted long list of props for docs purposes
 }
 
 export type InteractiveListToggleItemProps =
-  InteractiveListToggleItemProperties &
-    Omit<HTMLAttributes<HTMLElement>, "color"> &
+  InteractiveListToggleItemProperties & {
+    // Restored long list of props for actual usage
+    toggle: ToggleProps;
+  } & Omit<HTMLAttributes<HTMLElement>, "color"> &
     Pick<InteractiveListRowProps, "topDivider">;

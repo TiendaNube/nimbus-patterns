@@ -2,6 +2,12 @@
 
 The NavTabs component represents the main navigation dock for an application on a mobile device, including up to 5 tabs or buttons for different sections. The component has a fixed position on the bottom of the screen.
 
+## 2025-06-04 `1.2.5`
+
+#### 💡 Others
+
+- Fixed documentation props, reducing the props size and keeping only the most relevant properties to showcase. ([#114](https://github.com/TiendaNube/nimbus-patterns/pull/114) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-03-18 `1.2.4`
 
 #### 🎉 New features

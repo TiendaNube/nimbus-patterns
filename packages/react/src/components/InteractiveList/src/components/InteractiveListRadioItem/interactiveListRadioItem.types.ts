@@ -8,9 +8,12 @@ export interface InteractiveListRadioItemProperties
   /**
    * Radio props inherited from Nimbus components.
    */
-  radio: RadioProps;
+  radio: any; // Omitted long list of props for docs purposes
 }
 
-export type InteractiveListRadioItemProps = InteractiveListRadioItemProperties &
-  Omit<HTMLAttributes<HTMLElement>, "color"> &
-  Pick<InteractiveListRowProps, "topDivider">;
+export type InteractiveListRadioItemProps =
+  InteractiveListRadioItemProperties & {
+    // Restored long list of props for actual usage
+    radio: RadioProps;
+  } & Omit<HTMLAttributes<HTMLElement>, "color"> &
+    Pick<InteractiveListRowProps, "topDivider">;

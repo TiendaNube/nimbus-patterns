@@ -2,6 +2,12 @@
 
 Interactive List allows users to build lists with multiple options that have some kind of interaction. It can be, and is not limited to, checkboxes, radios, toggles and buttons. This component is built on top of the DataList component that allows the creation of scrollable lists with multiple entries of different kinds of data.
 
+## 2025-06-04 `1.3.6`
+
+#### 💡 Others
+
+- Fixed documentation props, reducing the props size and keeping only the most relevant properties to showcase. ([#114](https://github.com/TiendaNube/nimbus-patterns/pull/114) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-03-18 `1.3.5`
 
 ### 💡 Others

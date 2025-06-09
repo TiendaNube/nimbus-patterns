@@ -2,6 +2,12 @@
 
 The Layout component is intended for building single or multi-column layouts using predefined typologies.
 
+## 2025-06-04 `1.3.5`
+
+#### 💡 Others
+
+- Fixed documentation props, reducing the props size and keeping only the most relevant properties to showcase. ([#114](https://github.com/TiendaNube/nimbus-patterns/pull/114) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-03-18 `1.3.4`
 
 ### 💡 Others

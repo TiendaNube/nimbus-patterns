@@ -1,5 +1,5 @@
 import { HTMLAttributes } from "react";
-import { ToggleProperties, ToggleProps } from "@nimbus-ds/components";
+import { ToggleProperties } from "@nimbus-ds/components";
 import { InteractiveListStructureProperties } from "../InteractiveListStructure/interactiveListStructure.types";
 
 export interface InteractiveListToggleItemSkeletonProperties
@@ -7,10 +7,11 @@ export interface InteractiveListToggleItemSkeletonProperties
   /**
    * Toggle props inherited from Nimbus components.
    */
-  toggle: ToggleProperties;
+  toggle: any; // Omitted long list of props for docs purposes
 }
 
 export type InteractiveListToggleItemSkeletonProps =
   InteractiveListToggleItemSkeletonProperties & {
-    toggle: ToggleProps;
+    // Restored long list of props for actual usage
+    toggle: ToggleProperties;
   } & Omit<HTMLAttributes<HTMLElement>, "color">;

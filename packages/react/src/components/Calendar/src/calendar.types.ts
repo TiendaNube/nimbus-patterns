@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
 import { DayPicker } from "react-day-picker";
-import { BoxProperties, BoxProps } from "@nimbus-ds/components";
+import { BoxProps } from "@nimbus-ds/components";
 
 type CalendarExtends = ComponentProps<typeof DayPicker>;
 
@@ -10,10 +10,6 @@ export interface CalendarProperties {
    * @default false
    */
   hideBorder?: boolean;
-  /**
-   * Spreads the properties of the Box component to thˇe calendar wrapper.
-   */
-  containerProps?: BoxProperties;
   /**
    * If true will stick the weekday indicators to the top of the component. Useful for when creating scrolling calendars with a display of >1 months. Only works when property numberOfMonths is set to a number greater than 1.
    * @default false
@@ -29,7 +25,7 @@ export interface CalendarProperties {
 export type CalendarProps = CalendarProperties &
   CalendarExtends & {
     /**
-     * Spreads the properties of the Box component to thˇe calendar wrapper.
+     * Spreads the properties of the Box component to the calendar wrapper.
      */
     containerProps?: BoxProps;
   };

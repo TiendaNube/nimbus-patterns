@@ -1,7 +1,7 @@
 import { ReactNode, HTMLAttributes } from "react";
 import { BoxProperties } from "@nimbus-ds/components";
 
-export interface DataListRowProperties extends Omit<BoxProperties, "padding"> {
+export interface DataListRowProperties {
   /**
    * Optional padding for the row.
    * @default base
@@ -20,4 +20,5 @@ export interface DataListRowProperties extends Omit<BoxProperties, "padding"> {
 }
 
 export type DataListRowProps = DataListRowProperties &
+  Omit<BoxProperties, "padding"> &
   Omit<HTMLAttributes<HTMLElement>, "color">;
