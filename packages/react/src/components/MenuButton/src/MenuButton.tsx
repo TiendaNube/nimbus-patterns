@@ -50,7 +50,7 @@ const MenuButton = forwardRef(
         px="2"
         py={{
           xs: "2",
-          md: "1"
+          md: "1",
         }}
         width="100%"
         transitionProperty="all"
@@ -58,11 +58,11 @@ const MenuButton = forwardRef(
         transitionTimingFunction="ease-in-out"
         maxHeight={{
           xs: "34px",
-          md: "26px"
+          md: "26px",
         }}
       >
         {IconSrc && (
-          <Icon color={disabledColor} source={<IconSrc size={14} />} />
+          <Icon color={disabledColor} source={<IconSrc size={16} />} />
         )}
         <Box display="inline-flex" flex="1">
           <Text
