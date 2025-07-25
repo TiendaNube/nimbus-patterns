@@ -2,6 +2,12 @@
 
 The Menu component allows the user to create in-app menus that navigate through different sections of an application.
 
+## 2025-01-09 `1.5.7`
+
+#### 💡 Others
+
+- Updated MenuFooter ChevronRightIcon size from 14px to 16px for visual consistency with MenuButton icons. ([#XXX](https://github.com/TiendaNube/nimbus-patterns/pull/XXX) by [@contributor](https://github.com/contributor))
+
 ## 2025-03-18 `1.5.6`
 
 ### 💡 Others
