@@ -6,7 +6,7 @@ MenuButton component is meant to be used inside Menus and navigation, and allows
 
 #### 💡 Others
 
-- Updated icon size from 14px to 16px for better visual consistency. ([#XXX](https://github.com/TiendaNube/nimbus-patterns/pull/XXX) by [@contributor](https://github.com/contributor))
+- Updated icon size from 14px to 16px for better visual consistency. ([#115](https://github.com/TiendaNube/nimbus-patterns/pull/115) by [@FedeTrevi-se](https://github.com/FedeTrevi-se))
 
 ## 2025-03-18 `1.6.0`
 
