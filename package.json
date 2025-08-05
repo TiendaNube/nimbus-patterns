@@ -38,7 +38,8 @@
     "publish:next": "yarn bump:next && npm run build && yarn publish:npm:next",
     "publish:stable": "npm run build && yarn build:docs && yarn bump:stable && yarn publish:npm:stable",
     "publish:npm:next": "yarn workspaces foreach -pv -pt --exclude nimbus-patterns npm publish --tolerate-republish --access public --tag next",
-    "publish:npm:stable": "yarn workspaces foreach -pv -pt --exclude nimbus-patterns npm publish --tolerate-republish --access public"
+    "publish:npm:stable": "yarn workspaces foreach -pv -pt --exclude nimbus-patterns npm publish --tolerate-republish --access public",
+    "publish:rc": "babel-node -x .ts ./.scripts/publish-rc"
   },
   "repository": {
     "type": "git",
@@ -61,7 +62,7 @@
     "@jest/types": "^29.2.1",
     "@mdx-js/react": "^1.6.22",
     "@nimbus-ds/components": "5.11.2",
-    "@nimbus-ds/scripts": "1.7.0",
+    "@nimbus-ds/scripts": "1.8.0-rc.10",
     "@nimbus-ds/styles": "9.13.1",
     "@nimbus-ds/tokens": "^9.1.1",
     "@storybook/addon-docs": "^7.5.1",

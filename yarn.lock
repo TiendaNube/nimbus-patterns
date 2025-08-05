@@ -5113,13 +5113,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/scripts@npm:1.7.0":
-  version: 1.7.0
-  resolution: "@nimbus-ds/scripts@npm:1.7.0"
+"@nimbus-ds/scripts@npm:1.8.0-rc.10":
+  version: 1.8.0-rc.10
+  resolution: "@nimbus-ds/scripts@npm:1.8.0-rc.10"
   dependencies:
     change-case: ^4.1.2
     typescript-json-schema: ^0.55.0
-  checksum: 0a874b0c4261b4ebad80bc879adfbd3a61295486346dda88733c75c0ad9df7c45f6ddfc6b33266ac5174f621c8512c26b07aad62ba183fd99ab97de0b7ff8dcd
+  checksum: 2e0f47f42a6f75177f2227baf99c847d05ababc77fb7e09866f66e3ab49ace5c0d16e95518666a95c864270e15a269585e2c8da5e2c56d16c2d1266b875c2500
   languageName: node
   linkType: hard
 
@@ -16589,7 +16589,7 @@ __metadata:
     "@jest/types": ^29.2.1
     "@mdx-js/react": ^1.6.22
     "@nimbus-ds/components": 5.11.2
-    "@nimbus-ds/scripts": 1.7.0
+    "@nimbus-ds/scripts": 1.8.0-rc.10
     "@nimbus-ds/styles": 9.13.1
     "@nimbus-ds/tokens": ^9.1.1
     "@storybook/addon-docs": ^7.5.1
