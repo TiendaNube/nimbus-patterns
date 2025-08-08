@@ -2,6 +2,16 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+
+## 2025-08-05 `1.15.0`
+
+#### 🎉 New features
+
+- Updated MenuFooter ChevronRightIcon size from 14px to 16px for visual consistency with MenuButton icons. ([#115](https://github.com/TiendaNube/nimbus-patterns/pull/115) by [@noecondoleo](https://github.com/noecondoleo) [@FedeTrevi-se](https://github.com/FedeTrevi-se)) 
+
+- Updated MenuButton icon size from 14px to 16px for better visual consistency. ([#115](https://github.com/TiendaNube/nimbus-patterns/pull/115) by [@noecondoleo](https://github.com/noecondoleo) [@FedeTrevi-se](https://github.com/FedeTrevi-se)) 
+
+
 ## 2025-06-04 `1.14.1`
 
 #### 🎉 New features

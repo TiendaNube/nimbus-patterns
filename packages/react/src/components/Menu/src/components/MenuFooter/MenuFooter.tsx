@@ -23,7 +23,7 @@ const MenuFooter: React.FC<MenuFooterProps> = ({
       width="100%"
     >
       <MenuButton {...rest}>
-        <Icon source={<ChevronRightIcon size={14} />} color={disabledColor} />
+        <Icon source={<ChevronRightIcon size={16} />} color={disabledColor} />
       </MenuButton>
     </Box>
   );
