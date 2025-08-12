@@ -10,7 +10,7 @@ export interface MenuButtonProperties {
   /**
    * Text label for the button.
    */
-  label: string;
+  label?: string;
   /**
    * Function executed when clicking the button.
    * @TJS-type () => void;

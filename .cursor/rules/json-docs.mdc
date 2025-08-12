@@ -1,0 +1,7 @@
+---
+globs: *.docs.json
+alwaysApply: false
+---
+CRITICAL: Never modify manually the .docs.json files. They are generated when running the `yarn build:docs` command.
+
+If need to ensure the types are correctly generated and documented, run the `yarn build:docs` command.

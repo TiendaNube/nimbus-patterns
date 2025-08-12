@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import {
@@ -13,7 +13,6 @@ import {
 } from "@nimbus-ds/components";
 
 import { Menu } from "@nimbus-ds/menu";
-import { MenuButton } from "@nimbus-ds/menubutton";
 import { Page } from "@nimbus-ds/page";
 
 import {
@@ -28,11 +27,13 @@ import {
   QuestionCircleIcon,
   StatsIcon,
   TagIcon,
+  TiendanubeIcon,
   ToolsIcon,
   UserIcon,
 } from "@nimbus-ds/icons";
 
 import { AppShell } from "./AppShell";
+import { IconProps } from "@nimbus-ds/icons";
 
 const meta: Meta<typeof AppShell> = {
   title: "Patterns/AppShell",
@@ -121,7 +122,7 @@ const buttonStack = (
         backgroundColor="transparent"
         borderColor={{
           xs: "transparent",
-          hover: "neutral-interactiveHover"
+          hover: "neutral-interactiveHover",
         }}
       />
     </Tooltip>
@@ -132,7 +133,7 @@ const buttonStack = (
         backgroundColor="transparent"
         borderColor={{
           xs: "transparent",
-          hover: "neutral-interactiveHover"
+          hover: "neutral-interactiveHover",
         }}
       />
     </Tooltip>
@@ -152,12 +153,12 @@ const AppMenu = (
     </Menu.Header>
     <Menu.Body>
       <Menu.Section>
-        <MenuButton startIcon={HomeIcon} label="Inicio" />
-        <MenuButton startIcon={StatsIcon} label="Estadísticas" />
+        <Menu.Button startIcon={HomeIcon} label="Inicio" />
+        <Menu.Button startIcon={StatsIcon} label="Estadísticas" />
       </Menu.Section>
       <Menu.Section title="Administrar">
         <Box backgroundColor="primary-surface" borderRadius="2">
-          <MenuButton
+          <Menu.Button
             id="control-1"
             aria-expanded
             aria-controls="content-1"
@@ -165,7 +166,7 @@ const AppMenu = (
             label="Ventas"
           >
             <Badge appearance="primary" count="1299" />
-          </MenuButton>
+          </Menu.Button>
           <Box
             id="content-1"
             aria-hidden={false}
@@ -176,22 +177,22 @@ const AppMenu = (
             pb="1"
             pr="1"
           >
-            <MenuButton label="Lista de ventas" active />
-            <MenuButton label="Exportar lista" />
+            <Menu.Button label="Lista de ventas" active />
+            <Menu.Button label="Exportar lista" />
           </Box>
         </Box>
-        <MenuButton startIcon={TagIcon} label="Productos" />
-        <MenuButton startIcon={UserIcon} label="Clientes">
+        <Menu.Button startIcon={TagIcon} label="Productos" />
+        <Menu.Button startIcon={UserIcon} label="Clientes">
           <Tag appearance="primary">Nuevo</Tag>
-        </MenuButton>
-        <MenuButton startIcon={DiscountCircleIcon} label="Marketing" />
+        </Menu.Button>
+        <Menu.Button startIcon={DiscountCircleIcon} label="Marketing" />
       </Menu.Section>
       <Menu.Section title="Personalizar">
-        <MenuButton startIcon={ToolsIcon} label="Mi Tiendanube" />
+        <Menu.Button startIcon={ToolsIcon} label="Mi Tiendanube" />
       </Menu.Section>
       <Menu.Section title="Potenciar">
-        <MenuButton startIcon={AppsIcon} label="Mis aplicaciones" />
-        <MenuButton startIcon={EcosystemIcon} label="Canales de venta" />
+        <Menu.Button startIcon={AppsIcon} label="Mis aplicaciones" />
+        <Menu.Button startIcon={EcosystemIcon} label="Canales de venta" />
       </Menu.Section>
     </Menu.Body>
     <Menu.Footer label="Configuración" startIcon={CogIcon} />
@@ -270,6 +271,141 @@ export const demoApp: Story = {
     </AppShell>
   ),
   args: {},
+};
+
+export const expandableMenu: Story = {
+  render: (args) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    // const [{ menuExpanded }, updateArgs] = useArgs();
+    // const toggle = () => updateArgs({ menuExpanded: !menuExpanded });
+    const toggle = () => setIsExpanded(!isExpanded);
+
+    const menuWrapper = (
+      startIcon: React.FC<IconProps>,
+      label: string,
+      children: React.ReactNode
+    ) => {
+      const expandedProps = isExpanded
+        ? {
+            startIcon,
+            label,
+            children,
+          }
+        : {
+            startIcon,
+          };
+      return <Menu.Button {...expandedProps} />;
+    };
+
+    const ventasAccordion = (
+      <Box backgroundColor="primary-surface" borderRadius="2">
+        {menuWrapper(
+          CashIcon,
+          "Ventas",
+          <Badge appearance="primary" count="1299" />
+        )}
+        <Box
+          id="content-1"
+          aria-hidden={false}
+          height="auto"
+          overflow="hidden"
+          pl="6"
+          pt="1"
+          pb="1"
+          pr="1"
+        >
+          <Menu.Button label="Lista de ventas" active />
+          <Menu.Button label="Exportar lista" />
+        </Box>
+      </Box>
+    );
+
+    return (
+      <AppShell
+        {...args}
+        menu={
+          <Menu>
+            <Menu.Header>
+              <Box display="flex" gap="2" alignItems="center" width="100%">
+                {isExpanded ? (
+                  <Icon source={tiendanubeLogo} color="primary-interactive" />
+                ) : (
+                  <Icon
+                    source={<TiendanubeIcon />}
+                    color="primary-interactive"
+                  />
+                )}
+              </Box>
+            </Menu.Header>
+            <Menu.Body>
+              <Menu.Section>
+                {menuWrapper(HomeIcon, "Inicio", null)}
+                {menuWrapper(StatsIcon, "Estadísticas", null)}
+              </Menu.Section>
+              <Menu.Section title="Administrar">
+                {isExpanded
+                  ? ventasAccordion
+                  : menuWrapper(CashIcon, "Ventas", null)}
+                <Menu.Button startIcon={TagIcon} label="Productos" />
+                {menuWrapper(
+                  UserIcon,
+                  "Clientes",
+                  <Tag appearance="primary">Nuevo</Tag>
+                )}
+                {menuWrapper(DiscountCircleIcon, "Marketing", null)}
+              </Menu.Section>
+              <Menu.Section title="Personalizar">
+                <Menu.Button startIcon={ToolsIcon} label="Mi Tiendanube" />
+              </Menu.Section>
+              <Menu.Section title="Potenciar">
+                <Menu.Button startIcon={AppsIcon} label="Mis aplicaciones" />
+                <Menu.Button
+                  startIcon={EcosystemIcon}
+                  label="Canales de venta"
+                />
+              </Menu.Section>
+            </Menu.Body>
+            <Menu.Footer label="Configuración" startIcon={CogIcon} />
+          </Menu>
+        }
+        menuExpanded={isExpanded}
+        onMenuExpandedChange={(v) => setIsExpanded(v)}
+        menuExpandedWidth="18rem"
+        menuCollapsedWidth="4.5rem"
+      >
+        <AppShell.Header
+          leftSlot={
+            <Button appearance="transparent" onClick={toggle}>
+              Toggle sidebar
+            </Button>
+          }
+          rightSlot={buttonStack}
+        />
+        <Page maxWidth="800px">
+          <Page.Header title="Expandable menu (rail)" />
+          <Page.Body>
+            <Box
+              backgroundColor="primary-surface"
+              borderColor="primary-interactive"
+              borderStyle="dashed"
+              borderWidth="1"
+              borderRadius="2"
+              width="100%"
+              height="500px"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text fontSize="base" color="primary-interactive">
+                Toggle the sidebar to see collapse/expand
+              </Text>
+            </Box>
+          </Page.Body>
+        </Page>
+      </AppShell>
+    );
+  },
+  args: { menuExpanded: true },
 };
 
 export const noLeftSlot: Story = {

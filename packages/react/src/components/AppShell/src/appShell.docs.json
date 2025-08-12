@@ -1,7 +1,7 @@
 {
   "id": "appShell",
   "name": "AppShell",
-  "totalProps": 3,
+  "totalProps": 8,
   "packageName": "@nimbus-ds/app-shell",
   "version": "1.4.4",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/app-shell",
@@ -170,6 +170,36 @@
         "display"
       ],
       "title": "menuProperties",
+      "required": false
+    },
+    {
+      "description": "Controls whether the left sidebar (menu) is expanded (true) or collapsed (false). When undefined, the component is uncontrolled and uses defaultMenuExpanded.",
+      "type": "boolean",
+      "title": "menuExpanded",
+      "required": false
+    },
+    {
+      "description": "Initial expansion state when uncontrolled.",
+      "type": "boolean",
+      "title": "defaultMenuExpanded",
+      "required": false
+    },
+    {
+      "description": "Callback fired when the expansion state changes.",
+      "type": "(expanded: boolean) => void",
+      "title": "onMenuExpandedChange",
+      "required": false
+    },
+    {
+      "description": "Sidebar width when expanded. Defaults to \"18rem\".",
+      "type": "string | number",
+      "title": "menuExpandedWidth",
+      "required": false
+    },
+    {
+      "description": "Sidebar width when collapsed (rail). If provided, the sidebar will render in a compact rail while collapsed. Defaults to \"4.5rem\".",
+      "type": "string | number",
+      "title": "menuCollapsedWidth",
       "required": false
     }
   ],

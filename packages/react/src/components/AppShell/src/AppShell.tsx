@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Box } from "@nimbus-ds/components";
 
@@ -17,36 +17,56 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       md: "block",
     },
   },
+  menuExpanded: controlledExpanded,
+  defaultMenuExpanded = true,
+  onMenuExpandedChange,
+  menuExpandedWidth = "18rem",
+  menuCollapsedWidth = "4rem",
   ...rest
-}: AppShellProps) => (
-  <Box {...rest} display="flex">
-    {menu && (
+}: AppShellProps) => {
+  const [uncontrolledExpanded] = useState<boolean>(defaultMenuExpanded);
+  const expanded =
+    controlledExpanded === undefined
+      ? uncontrolledExpanded
+      : controlledExpanded;
+
+  const sidebarWidth = String(
+    expanded ? menuExpandedWidth : menuCollapsedWidth
+  );
+
+  return (
+    <Box {...rest} display="flex">
+      {menu && (
+        <Box
+          {...menuProperties}
+          width={sidebarWidth}
+          height="100vh"
+          position="sticky"
+          top="0"
+          left="0"
+          borderStyle="solid"
+          borderWidth="none"
+          borderRightWidth="1"
+          borderColor="neutral-surfaceDisabled"
+          transitionProperty="all"
+          transitionDuration="base"
+          transitionTimingFunction="ease-in-out"
+        >
+          <>{menu}</>
+        </Box>
+      )}
       <Box
-        {...menuProperties}
-        width="18rem"
-        height="100vh"
-        position="sticky"
-        top="0"
-        left="0"
-        borderStyle="solid"
-        borderWidth="none"
-        borderRightWidth="1"
-        borderColor="neutral-surfaceDisabled"
+        display="flex"
+        flexDirection="column"
+        flex="1 1 auto"
+        backgroundColor="neutral-surface"
+        width="100%"
       >
-        {menu}
+        {children}
       </Box>
-    )}
-    <Box
-      display="flex"
-      flexDirection="column"
-      flex="1 1 auto"
-      backgroundColor="neutral-surface"
-      width="100%"
-    >
-      {children}
     </Box>
-  </Box>
-);
+  );
+};
 
 AppShell.Header = AppShellHeader;
 
