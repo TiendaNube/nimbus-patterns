@@ -408,6 +408,180 @@ export const expandableMenu: Story = {
   args: { menuExpanded: true },
 };
 
+export const railWithHoverPopover: Story = {
+  render: () => {
+    const rail = (
+      <Menu>
+        <Menu.Header>
+          <Box display="flex" gap="2" alignItems="center" width="100%">
+            <Icon source={<TiendanubeIcon />} color="primary-interactive" />
+          </Box>
+        </Menu.Header>
+        <Menu.Body>
+          <Menu.Section>
+            <Menu.Button startIcon={HomeIcon} />
+            <Menu.Button startIcon={StatsIcon} />
+          </Menu.Section>
+          <Menu.Section title="Administrar">
+            <Menu.Button startIcon={CashIcon} />
+            <Menu.Button startIcon={TagIcon} />
+            <Menu.Button startIcon={UserIcon} />
+            <Menu.Button startIcon={DiscountCircleIcon} />
+          </Menu.Section>
+          <Menu.Section title="Potenciar">
+            <Menu.Button startIcon={AppsIcon} />
+            <Menu.Button startIcon={EcosystemIcon} />
+          </Menu.Section>
+        </Menu.Body>
+        <Menu.Footer startIcon={CogIcon} />
+      </Menu>
+    );
+
+    const full = (
+      <Menu>
+        <Menu.Header>
+          <Box display="flex" gap="2" alignItems="center" width="100%">
+            <Icon source={tiendanubeLogo} color="primary-interactive" />
+          </Box>
+        </Menu.Header>
+        <Menu.Body>
+          <Menu.Section>
+            <Menu.Button startIcon={HomeIcon} label="Inicio" />
+            <Menu.Button startIcon={StatsIcon} label="Estadísticas" />
+          </Menu.Section>
+          <Menu.Section title="Administrar">
+            <Box backgroundColor="primary-surface" borderRadius="2">
+              <Menu.ButtonAccordion
+                menuButton={{ startIcon: CashIcon, label: "Ventas" }}
+                contentid="content-ventas"
+              >
+                <Badge appearance="primary" count="1299" />
+                <Menu.Button label="Lista de ventas" active />
+                <Menu.Button label="Exportar lista" />
+              </Menu.ButtonAccordion>
+            </Box>
+            <Menu.Button startIcon={TagIcon} label="Productos" />
+            <Menu.Button startIcon={UserIcon} label="Clientes">
+              <Tag appearance="primary">Nuevo</Tag>
+            </Menu.Button>
+            <Menu.Button startIcon={DiscountCircleIcon} label="Marketing" />
+          </Menu.Section>
+          <Menu.Section title="Potenciar">
+            <Menu.Button startIcon={AppsIcon} label="Mis aplicaciones" />
+            <Menu.Button startIcon={EcosystemIcon} label="Canales de venta" />
+          </Menu.Section>
+        </Menu.Body>
+        <Menu.Footer label="Configuración" startIcon={CogIcon} />
+      </Menu>
+    );
+
+    return (
+      <AppShell
+        menuBehavior="popover"
+        menuTrigger="hover"
+        menuCollapsed={rail}
+        menuExpandedContent={full}
+        defaultMenuExpanded={false}
+        menuCollapsedWidth="4.5rem"
+        menuExpandedWidth="18rem"
+      >
+        <AppShell.Header rightSlot={buttonStack} />
+        <Page maxWidth="800px">
+          <Page.Header title="Rail with hover popover" />
+          <Page.Body>
+            <Box
+              backgroundColor="primary-surface"
+              borderColor="primary-interactive"
+              borderStyle="dashed"
+              borderWidth="1"
+              borderRadius="2"
+              width="100%"
+              height="500px"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text fontSize="base" color="primary-interactive">
+                Hover the rail to open the overlay menu
+              </Text>
+            </Box>
+          </Page.Body>
+        </Page>
+      </AppShell>
+    );
+  },
+  args: {},
+};
+
+export const railWithClickPopover: Story = {
+  render: () => {
+    const rail = (
+      <Menu>
+        <Menu.Header>
+          <Box display="flex" gap="2" alignItems="center" width="100%">
+            <Icon source={<TiendanubeIcon />} color="primary-interactive" />
+          </Box>
+        </Menu.Header>
+        <Menu.Body>
+          <Menu.Section>
+            <Menu.Button startIcon={HomeIcon} />
+            <Menu.Button startIcon={StatsIcon} />
+          </Menu.Section>
+          <Menu.Section title="Administrar">
+            <Menu.Button startIcon={CashIcon} />
+            <Menu.Button startIcon={TagIcon} />
+            <Menu.Button startIcon={UserIcon} />
+            <Menu.Button startIcon={DiscountCircleIcon} />
+          </Menu.Section>
+          <Menu.Section title="Potenciar">
+            <Menu.Button startIcon={AppsIcon} />
+            <Menu.Button startIcon={EcosystemIcon} />
+          </Menu.Section>
+        </Menu.Body>
+        <Menu.Footer startIcon={CogIcon} />
+      </Menu>
+    );
+
+    const full = AppMenu;
+
+    return (
+      <AppShell
+        menuBehavior="popover"
+        menuTrigger="click"
+        menuCollapsed={rail}
+        menuExpandedContent={full}
+        menuExpanded={false}
+        menuCollapsedWidth="4.5rem"
+        menuExpandedWidth="18rem"
+      >
+        <AppShell.Header rightSlot={buttonStack} />
+        <Page maxWidth="800px">
+          <Page.Header title="Rail with click popover" />
+          <Page.Body>
+            <Box
+              backgroundColor="primary-surface"
+              borderColor="primary-interactive"
+              borderStyle="dashed"
+              borderWidth="1"
+              borderRadius="2"
+              width="100%"
+              height="500px"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text fontSize="base" color="primary-interactive">
+                Click the rail to open the overlay menu
+              </Text>
+            </Box>
+          </Page.Body>
+        </Page>
+      </AppShell>
+    );
+  },
+  args: {},
+};
+
 export const noLeftSlot: Story = {
   render: (args) => (
     <AppShell {...args} menu={sampleMenu}>
