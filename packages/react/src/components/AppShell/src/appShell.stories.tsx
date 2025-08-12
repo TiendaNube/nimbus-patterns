@@ -515,11 +515,17 @@ export const railWithHoverPopover: Story = {
 
 export const railWithClickPopover: Story = {
   render: () => {
+    const [open, setOpen] = React.useState(false);
     const rail = (
       <Menu>
         <Menu.Header>
           <Box display="flex" gap="2" alignItems="center" width="100%">
             <Icon source={<TiendanubeIcon />} color="primary-interactive" />
+            <Box ml="auto">
+              <Button appearance="primary" onClick={() => setOpen((v) => !v)}>
+                {open ? "Collapse" : "Expand"}
+              </Button>
+            </Box>
           </Box>
         </Menu.Header>
         <Menu.Body>
@@ -547,10 +553,12 @@ export const railWithClickPopover: Story = {
     return (
       <AppShell
         menuBehavior="popover"
-        menuTrigger="click"
+        menuTrigger="manual"
         menuCollapsed={rail}
         menuExpandedContent={full}
-        menuExpanded={false}
+        defaultMenuExpanded={false}
+        menuFlyoutOpen={open}
+        onMenuFlyoutOpenChange={setOpen}
         menuCollapsedWidth="4.5rem"
         menuExpandedWidth="18rem"
       >
@@ -570,9 +578,7 @@ export const railWithClickPopover: Story = {
               alignItems="center"
               justifyContent="center"
             >
-              <Text fontSize="base" color="primary-interactive">
-                Click the rail to open the overlay menu
-              </Text>
+              <Text fontSize="base" color="primary-interactive">Use the button inside the rail to toggle the overlay menu</Text>
             </Box>
           </Page.Body>
         </Page>

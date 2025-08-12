@@ -30,6 +30,9 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   menuPopoverZIndex = "900",
   menuHoverOpenDelayMs = 100,
   menuHoverCloseDelayMs = 150,
+  menuFlyoutOpen: controlledFlyoutOpen,
+  defaultMenuFlyoutOpen = false,
+  onMenuFlyoutOpenChange,
   ...rest
 }: AppShellProps) => {
   const [uncontrolledExpanded] = useState<boolean>(defaultMenuExpanded);
@@ -43,7 +46,13 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   );
 
   const isPopoverMode = menuBehavior === "popover";
-  const [flyoutOpen, setFlyoutOpen] = useState(false);
+  const [uncontrolledFlyoutOpen, setUncontrolledFlyoutOpen] = useState(
+    defaultMenuFlyoutOpen
+  );
+  const flyoutOpen =
+    controlledFlyoutOpen === undefined
+      ? uncontrolledFlyoutOpen
+      : controlledFlyoutOpen;
   const openTimeoutRef = useRef<number | null>(null);
   const closeTimeoutRef = useRef<number | null>(null);
   const railRef = useRef<HTMLDivElement | null>(null);
@@ -63,7 +72,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   const scheduleOpen = useCallback(() => {
     clearTimers();
     openTimeoutRef.current = window.setTimeout(
-      () => setFlyoutOpen(true),
+      () => setFlyout(true),
       menuHoverOpenDelayMs
     );
   }, [clearTimers, menuHoverOpenDelayMs]);
@@ -71,7 +80,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   const scheduleClose = useCallback(() => {
     clearTimers();
     closeTimeoutRef.current = window.setTimeout(
-      () => setFlyoutOpen(false),
+      () => setFlyout(false),
       menuHoverCloseDelayMs
     );
   }, [clearTimers, menuHoverCloseDelayMs]);
@@ -109,13 +118,18 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   const handleOverlayFocus = handleRailFocus;
   const handleOverlayBlur = handleRailBlur;
 
-  const handleRailClick = useCallback(() => {
-    if (!isPopoverMode || expanded || menuTrigger !== "click") return;
-    setFlyoutOpen((prev) => !prev);
-  }, [isPopoverMode, expanded, menuTrigger]);
+  const setFlyout = useCallback(
+    (open: boolean) => {
+      if (controlledFlyoutOpen === undefined) {
+        setUncontrolledFlyoutOpen(open);
+      }
+      onMenuFlyoutOpenChange?.(open);
+    },
+    [controlledFlyoutOpen, onMenuFlyoutOpenChange]
+  );
 
   useEffect(() => {
-    if (!isPopoverMode || expanded || menuTrigger !== "click" || !flyoutOpen)
+    if (!isPopoverMode || expanded || menuTrigger !== "manual" || !flyoutOpen)
       return;
 
     const handleDocumentMouseDown = (event: MouseEvent) => {
@@ -127,11 +141,11 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         target &&
         !railEl.contains(target) &&
         !overlayEl.contains(target);
-      if (clickedOutside) setFlyoutOpen(false);
+      if (clickedOutside) setFlyout(false);
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setFlyoutOpen(false);
+      if (event.key === "Escape") setFlyout(false);
     };
 
     document.addEventListener("mousedown", handleDocumentMouseDown);
@@ -140,7 +154,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       document.removeEventListener("mousedown", handleDocumentMouseDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isPopoverMode, expanded, menuTrigger, flyoutOpen]);
+  }, [isPopoverMode, expanded, menuTrigger, flyoutOpen, setFlyout]);
 
   useEffect(() => () => clearTimers(), [clearTimers]);
 
@@ -170,7 +184,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
           onMouseLeave={handleRailMouseLeave}
           onFocus={handleRailFocus}
           onBlur={handleRailBlur}
-          onClick={handleRailClick}
+          // In manual or hover triggers, clicks on rail should not auto-open the popover
         >
           <>{expanded ? expandedContent : collapsedContent}</>
         </Box>

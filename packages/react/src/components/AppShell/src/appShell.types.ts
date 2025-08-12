@@ -53,10 +53,10 @@ export interface AppShellProperties {
   /**
    * How the popover opens when menuBehavior is 'popover'.
    * - 'hover': opens on hover/focus, closes on leave/blur (with optional delays).
-   * - 'click': toggles on click, closes on outside click or Escape.
+   * - 'manual': only opens/closes when controlled via `menuFlyoutOpen` props.
    * Defaults to 'hover'.
    */
-  menuTrigger?: "hover" | "click";
+  menuTrigger?: "hover" | "manual";
 
   /**
    * Optional content to render inside the collapsed rail. Falls back to `menu` when not provided.
@@ -85,6 +85,22 @@ export interface AppShellProperties {
    */
   menuHoverOpenDelayMs?: number;
   menuHoverCloseDelayMs?: number;
+
+  /**
+   * Controls whether the popover (flyout) is open when `menuBehavior` is 'popover' and the menu is collapsed.
+   * When undefined, the component is uncontrolled and uses `defaultMenuFlyoutOpen`.
+   */
+  menuFlyoutOpen?: boolean;
+
+  /**
+   * Initial flyout open state when uncontrolled.
+   */
+  defaultMenuFlyoutOpen?: boolean;
+
+  /**
+   * Callback fired when the controlled flyout open state should change (for example on outside click or Escape).
+   */
+  onMenuFlyoutOpenChange?: (open: boolean) => void;
 }
 
 export type AppShellProps = AppShellProperties &
