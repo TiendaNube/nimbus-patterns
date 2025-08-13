@@ -31,6 +31,10 @@ export interface AppShellProperties {
    * Control responsive visibility of the right slot.
    */
   rightProperties?: Pick<BoxBaseProps, "display">;
+  /**
+   * Ref for the center children.
+   */
+  centerChildrenRef?: React.RefObject<HTMLDivElement>;
 }
 
 export type AppShellProps = AppShellProperties &

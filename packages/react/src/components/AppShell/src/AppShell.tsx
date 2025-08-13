@@ -3,7 +3,6 @@ import React from "react";
 import { Box } from "@nimbus-ds/components";
 
 import { AppShellHeader } from "./components";
-import { AppShellOverlayProvider } from "./appShell.context";
 
 import { AppShellProps, AppShellComponents } from "./appShell.types";
 
@@ -25,58 +24,56 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       md: "block",
     },
   },
+  centerChildrenRef,
   ...rest
 }: AppShellProps) => {
-  const overlayRef = React.useRef<HTMLDivElement | null>(null);
-
   return (
-  <Box {...rest} display="flex">
-    {menu && (
+    <Box {...rest} display="flex">
+      {menu && (
+        <Box
+          {...menuProperties}
+          width="18rem"
+          height="100vh"
+          position="sticky"
+          top="0"
+          left="0"
+          borderStyle="solid"
+          borderWidth="none"
+          borderRightWidth="1"
+          borderColor="neutral-surfaceDisabled"
+        >
+          {menu}
+        </Box>
+      )}
       <Box
-        {...menuProperties}
-        width="18rem"
-        height="100vh"
-        position="sticky"
-        top="0"
-        left="0"
-        borderStyle="solid"
-        borderWidth="none"
-        borderRightWidth="1"
-        borderColor="neutral-surfaceDisabled"
+        display="flex"
+        flexDirection="column"
+        flex="1 1 auto"
+        backgroundColor="neutral-surface"
+        width="100%"
+        position="relative"
+        ref={centerChildrenRef}
       >
-        {menu}
-      </Box>
-    )}
-    <Box
-      display="flex"
-      flexDirection="column"
-      flex="1 1 auto"
-      backgroundColor="neutral-surface"
-      width="100%"
-    >
-      <AppShellOverlayProvider value={overlayRef.current}>
         {children}
-      </AppShellOverlayProvider>
-      {/* Invisible div used as the portal container root for overlays anchored to AppShell's center */}
-      <div ref={overlayRef} data-app-shell-overlay-root />
-    </Box>
-    {right && (
-      <Box
-        {...rightProperties}
-        width="18rem"
-        height="100vh"
-        position="sticky"
-        top="0"
-        right="0"
-        borderStyle="solid"
-        borderWidth="none"
-        borderLeftWidth="1"
-        borderColor="neutral-surfaceDisabled"
-      >
-        {right}
       </Box>
-    )}
-  </Box>
+
+      {right && (
+        <Box
+          {...rightProperties}
+          width="18rem"
+          height="100vh"
+          position="sticky"
+          top="0"
+          right="0"
+          borderStyle="solid"
+          borderWidth="none"
+          borderLeftWidth="1"
+          borderColor="neutral-surfaceDisabled"
+        >
+          {right}
+        </Box>
+      )}
+    </Box>
   );
 };
 

@@ -33,6 +33,7 @@ import {
 } from "@nimbus-ds/icons";
 
 import { AppShell } from "./AppShell";
+import { SideModal } from "@nimbus-ds/sidemodal";
 
 const meta: Meta<typeof AppShell> = {
   title: "Patterns/AppShell",
@@ -121,7 +122,7 @@ const buttonStack = (
         backgroundColor="transparent"
         borderColor={{
           xs: "transparent",
-          hover: "neutral-interactiveHover"
+          hover: "neutral-interactiveHover",
         }}
       />
     </Tooltip>
@@ -132,7 +133,7 @@ const buttonStack = (
         backgroundColor="transparent"
         borderColor={{
           xs: "transparent",
-          hover: "neutral-interactiveHover"
+          hover: "neutral-interactiveHover",
         }}
       />
     </Tooltip>
@@ -294,5 +295,88 @@ export const noLeftSlot: Story = {
       </Box>
     </AppShell>
   ),
+  args: {},
+};
+
+const ChatPanel: React.FC = () => (
+  <Box display="flex" flexDirection="column" height="100%">
+    <Box
+      borderBottomWidth="1"
+      borderStyle="solid"
+      borderColor="neutral-surfaceDisabled"
+      p="2"
+    >
+      <Text fontWeight="bold">Chat</Text>
+    </Box>
+    <Box p="2" display="flex" flexDirection="column" gap="2" overflowY="auto">
+      <Text color="neutral-textLow">Agent: Hi there! How can I help?</Text>
+      <Text>You: I need help with an order.</Text>
+      <Text color="neutral-textLow">Agent: Sure, what’s the order number?</Text>
+    </Box>
+    <Box p="2" mt="auto">
+      <Button appearance="primary" fullWidth>
+        New message
+      </Button>
+    </Box>
+  </Box>
+);
+
+export const withRightChatAndAnchoredSideModal: Story = {
+  render: (args) => {
+    const [openAnchored, setOpenAnchored] = React.useState(false);
+
+    const centerChildrenRef = React.useRef<HTMLDivElement>(null);
+
+    console.log("centerChildrenRef.current", centerChildrenRef.current);
+
+    return (
+      <AppShell
+        {...args}
+        menu={sampleMenu}
+        right={<ChatPanel />}
+        rightProperties={{ display: { xs: "none", md: "block" } }}
+        centerChildrenRef={centerChildrenRef}
+      >
+        <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
+        <Page maxWidth="800px" position="relative">
+          <Page.Header title="Anchored SideModal demo" />
+          <Page.Body>
+            <Box display="flex" gap="2">
+              <Button onClick={() => setOpenAnchored(true)}>
+                Open anchored SideModal
+              </Button>
+            </Box>
+            <Box
+              mt="4"
+              backgroundColor="primary-surface"
+              borderColor="primary-interactive"
+              borderStyle="dashed"
+              borderWidth="1"
+              borderRadius="2"
+              width="100%"
+              height="500px"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text fontSize="base" color="primary-interactive">
+                Body content
+              </Text>
+            </Box>
+          </Page.Body>
+        </Page>
+
+        <SideModal
+          open={openAnchored}
+          onRemove={() => setOpenAnchored(false)}
+          title="Anchored to AppShell center"
+          portalWithin="appShell"
+          container={centerChildrenRef.current}
+        >
+          <Text>This SideModal is constrained to the center area.</Text>
+        </SideModal>
+      </AppShell>
+    );
+  },
   args: {},
 };
