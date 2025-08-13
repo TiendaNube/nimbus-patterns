@@ -478,7 +478,7 @@ export const railWithHoverPopover: Story = {
     return (
       <AppShell
         menuBehavior="popover"
-        menuTrigger="hover"
+        menuFlyout={{ trigger: "hover" }}
         menuCollapsed={rail}
         menuExpandedContent={full}
         defaultMenuExpanded={false}
@@ -553,12 +553,10 @@ export const railWithClickPopover: Story = {
     return (
       <AppShell
         menuBehavior="popover"
-        menuTrigger="manual"
+        menuFlyout={{ trigger: "manual", open, onOpenChange: setOpen }}
         menuCollapsed={rail}
         menuExpandedContent={full}
         defaultMenuExpanded={false}
-        menuFlyoutOpen={open}
-        onMenuFlyoutOpenChange={setOpen}
         menuCollapsedWidth="4.5rem"
         menuExpandedWidth="18rem"
       >

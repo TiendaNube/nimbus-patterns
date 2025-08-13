@@ -1,11 +1,31 @@
 import { HTMLAttributes, ReactNode } from "react";
 
-import { BoxBaseProps } from "@nimbus-ds/components";
+import { BoxBaseProps, BoxProps } from "@nimbus-ds/components";
 import { AppShellHeader } from "./components";
 
 export interface AppShellComponents {
   Header: typeof AppShellHeader;
 }
+
+/**
+ * Configuration options for the AppShell flyout (popover) behavior when the menu is collapsed.
+ * This consolidates all popover-related props into a single object for simpler usage,
+ * while keeping individual top-level props for backward compatibility.
+ */
+export type AppShellMenuFlyoutOptions = {
+  /** How the popover opens. Defaults to 'hover'. */
+  trigger?: "hover" | "manual";
+  /** Controlled open state for the flyout. */
+  open?: boolean;
+  /** Uncontrolled initial open state for the flyout. */
+  defaultOpen?: boolean;
+  /** Callback when the open state should change. */
+  onOpenChange?: (open: boolean) => void;
+  /** Hover open delay in ms (only when trigger is 'hover'). */
+  hoverOpenDelayMs?: number;
+  /** Hover close delay in ms (only when trigger is 'hover'). */
+  hoverCloseDelayMs?: number;
+} & Omit<BoxProps, "position" | "top" | "left" | "right" | "bottom" | "height" >;
 
 export interface AppShellProperties {
   /**
@@ -51,12 +71,10 @@ export interface AppShellProperties {
   menuBehavior?: "inline" | "popover";
 
   /**
-   * How the popover opens when menuBehavior is 'popover'.
-   * - 'hover': opens on hover/focus, closes on leave/blur (with optional delays).
-   * - 'manual': only opens/closes when controlled via `menuFlyoutOpen` props.
-   * Defaults to 'hover'.
+   * Consolidated configuration for the popover/flyout behavior when `menuBehavior` is 'popover'.
+   * Prefer using this over individual top-level props for simpler usage.
    */
-  menuTrigger?: "hover" | "manual";
+  menuFlyout?: AppShellMenuFlyoutOptions;
 
   /**
    * Optional content to render inside the collapsed rail. Falls back to `menu` when not provided.
@@ -70,37 +88,6 @@ export interface AppShellProperties {
    */
   menuExpandedContent?: ReactNode;
 
-  /**
-   * Optional width for the popover overlay. Defaults to `menuExpandedWidth` when omitted.
-   */
-  menuPopoverWidth?: string | number;
-
-  /**
-   * Optional z-index token for the popover overlay. Defaults to "900".
-   */
-  menuPopoverZIndex?: "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900";
-
-  /**
-   * When using 'hover' trigger, optional open/close delays in milliseconds to reduce flicker.
-   */
-  menuHoverOpenDelayMs?: number;
-  menuHoverCloseDelayMs?: number;
-
-  /**
-   * Controls whether the popover (flyout) is open when `menuBehavior` is 'popover' and the menu is collapsed.
-   * When undefined, the component is uncontrolled and uses `defaultMenuFlyoutOpen`.
-   */
-  menuFlyoutOpen?: boolean;
-
-  /**
-   * Initial flyout open state when uncontrolled.
-   */
-  defaultMenuFlyoutOpen?: boolean;
-
-  /**
-   * Callback fired when the controlled flyout open state should change (for example on outside click or Escape).
-   */
-  onMenuFlyoutOpenChange?: (open: boolean) => void;
 }
 
 export type AppShellProps = AppShellProperties &

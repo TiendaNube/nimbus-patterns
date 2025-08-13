@@ -31,18 +31,12 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   defaultMenuExpanded = true,
   onMenuExpandedChange,
   menuExpandedWidth = "18rem",
-  menuCollapsedWidth = "4rem",
+  menuCollapsedWidth = "4.5rem",
   menuBehavior = "inline",
-  menuTrigger = "hover",
+  menuFlyout,
   menuCollapsed,
   menuExpandedContent,
-  menuPopoverWidth,
-  menuPopoverZIndex = "900",
-  menuHoverOpenDelayMs = 100,
-  menuHoverCloseDelayMs = 150,
-  menuFlyoutOpen: controlledFlyoutOpen,
-  defaultMenuFlyoutOpen = false,
-  onMenuFlyoutOpenChange,
+  
   ...rest
 }: AppShellProps) => {
   const [uncontrolledExpanded] = useState<boolean>(defaultMenuExpanded);
@@ -56,21 +50,28 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   );
 
   const isPopoverMode = menuBehavior === "popover";
-  const [uncontrolledFlyoutOpen, setUncontrolledFlyoutOpen] = useState(
-    defaultMenuFlyoutOpen
-  );
-  const flyoutOpen =
-    controlledFlyoutOpen === undefined
-      ? uncontrolledFlyoutOpen
-      : controlledFlyoutOpen;
+
+  const {
+    trigger: flyoutTrigger = "hover",
+    open: controlledOpen,
+    defaultOpen = false,
+    onOpenChange,
+    hoverOpenDelayMs: hoverOpenDelay = 100,
+    hoverCloseDelayMs: hoverCloseDelay = 150,
+    width: flyoutWidth,
+    zIndex: flyoutZIndex,
+    ...flyoutBoxProps
+  } = menuFlyout ?? {};
+  const [uncontrolledFlyoutOpen, setUncontrolledFlyoutOpen] = useState(defaultOpen);
+  const flyoutOpen = controlledOpen === undefined ? uncontrolledFlyoutOpen : controlledOpen;
   const setFlyout = useCallback(
     (open: boolean) => {
-      if (controlledFlyoutOpen === undefined) {
+      if (controlledOpen === undefined) {
         setUncontrolledFlyoutOpen(open);
       }
-      onMenuFlyoutOpenChange?.(open);
+      onOpenChange?.(open);
     },
-    [controlledFlyoutOpen, onMenuFlyoutOpenChange]
+    [controlledOpen, onOpenChange]
   );
 
   // Floating UI interactions
@@ -80,10 +81,10 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   });
 
   const interactions = [] as ReturnType<typeof useHover | typeof useFocus | typeof useDismiss | typeof useRole>[];
-  if (menuTrigger === "hover") {
+  if (flyoutTrigger === "hover") {
     interactions.push(
       useHover(context, {
-        delay: { open: menuHoverOpenDelayMs, close: menuHoverCloseDelayMs },
+        delay: { open: hoverOpenDelay, close: hoverCloseDelay },
         handleClose: safePolygon(),
       })
     );
@@ -133,18 +134,19 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       {isPopoverMode && !expanded && flyoutOpen && (
         <FloatingPortal id="nimbus-popover-floating">
           <Box
-            position="fixed"
-            top="0"
-            left="0"
-            height="100vh"
-            width={String(menuPopoverWidth ?? menuExpandedWidth)}
-            zIndex={menuPopoverZIndex}
             backgroundColor="neutral-background"
             boxShadow="2"
             borderStyle="solid"
             borderWidth="none"
             borderRightWidth="1"
             borderColor="neutral-surfaceDisabled"
+            {...flyoutBoxProps}
+            position="fixed"
+            top="0"
+            left="0"
+            height="100vh"
+            width={String(flyoutWidth ?? "18rem")}
+            zIndex={flyoutZIndex ?? "900"}
             ref={refs.setFloating}
             {...getFloatingProps()}
           >
