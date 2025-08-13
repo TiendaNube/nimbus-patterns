@@ -4,6 +4,8 @@ import { Sidebar, Box, Title, Button } from "@nimbus-ds/components";
 import { SideModalProps } from "./sideModal.types";
 
 const SideModal: React.FC<SideModalProps> = ({
+  portalWithin = "viewport",
+  container,
   title,
   titleAction,
   headerAction,
@@ -14,8 +16,17 @@ const SideModal: React.FC<SideModalProps> = ({
   footer,
   children,
   ...rest
-}) => (
-  <Sidebar {...rest}>
+}) => {
+  const appShellContainer = React.useMemo(() => {
+    if (typeof document === "undefined") return null;
+    return document.querySelector(
+      "[data-app-shell-overlay-root]"
+    ) as HTMLElement | null;
+  }, []);
+  const portalContainer = container ?? (portalWithin === "appShell" ? appShellContainer : null);
+
+  return (
+  <Sidebar {...rest} container={portalContainer as any}>
     <Sidebar.Header padding={paddingHeader || "base"}>
       <Box
         display="flex"
@@ -39,7 +50,8 @@ const SideModal: React.FC<SideModalProps> = ({
       </Sidebar.Footer>
     )}
   </Sidebar>
-);
+  );
+};
 
 SideModal.displayName = "SideModal";
 

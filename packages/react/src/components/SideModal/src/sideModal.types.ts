@@ -13,6 +13,14 @@ export interface SideModalProperties
     "position" | "onRemove" | "open" | "padding" | "maxWidth" | "zIndex"
   > {
   /**
+   * Choose where the portal should render. Defaults to viewport (body).
+   */
+  portalWithin?: "viewport" | "appShell";
+  /**
+   * Explicit portal container element. If provided, overrides portalWithin.
+   */
+  container?: HTMLElement | null;
+  /**
    * Title.
    */
   title?: string;

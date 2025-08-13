@@ -22,6 +22,15 @@ export interface AppShellProperties {
    * Can be used to control the responsive properties of the AppShell menu so you can change which breakpoint the menu hides under.
    */
   menuProperties?: Pick<BoxBaseProps, "display">;
+  /**
+   * Optional slot for right sidebar content (e.g., chat panel).
+   * @TJS-type React.ReactNode
+   */
+  right?: ReactNode;
+  /**
+   * Control responsive visibility of the right slot.
+   */
+  rightProperties?: Pick<BoxBaseProps, "display">;
 }
 
 export type AppShellProps = AppShellProperties &

@@ -3,6 +3,7 @@ import React from "react";
 import { Box } from "@nimbus-ds/components";
 
 import { AppShellHeader } from "./components";
+import { AppShellOverlayProvider } from "./appShell.context";
 
 import { AppShellProps, AppShellComponents } from "./appShell.types";
 
@@ -17,8 +18,18 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       md: "block",
     },
   },
+  right,
+  rightProperties = {
+    display: {
+      xs: "none",
+      md: "block",
+    },
+  },
   ...rest
-}: AppShellProps) => (
+}: AppShellProps) => {
+  const overlayRef = React.useRef<HTMLDivElement | null>(null);
+
+  return (
   <Box {...rest} display="flex">
     {menu && (
       <Box
@@ -43,10 +54,31 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       backgroundColor="neutral-surface"
       width="100%"
     >
-      {children}
+      <AppShellOverlayProvider value={overlayRef.current}>
+        {children}
+      </AppShellOverlayProvider>
+      {/* Invisible div used as the portal container root for overlays anchored to AppShell's center */}
+      <div ref={overlayRef} data-app-shell-overlay-root />
     </Box>
+    {right && (
+      <Box
+        {...rightProperties}
+        width="18rem"
+        height="100vh"
+        position="sticky"
+        top="0"
+        right="0"
+        borderStyle="solid"
+        borderWidth="none"
+        borderLeftWidth="1"
+        borderColor="neutral-surfaceDisabled"
+      >
+        {right}
+      </Box>
+    )}
   </Box>
-);
+  );
+};
 
 AppShell.Header = AppShellHeader;
 
