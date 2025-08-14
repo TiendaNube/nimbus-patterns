@@ -10,6 +10,8 @@ import {
   Tag,
   IconButton,
   Tooltip,
+  Input,
+  Popover,
 } from "@nimbus-ds/components";
 
 import { Menu } from "@nimbus-ds/menu";
@@ -314,6 +316,12 @@ const ChatPanel: React.FC = () => (
       <Text color="neutral-textLow">Agent: Sure, what’s the order number?</Text>
     </Box>
     <Box p="2" mt="auto">
+      <Input placeholder="New message" />
+      <Popover content="New message" visible={true} data-nimbus-dismiss-exempt>
+        <Button appearance="primary" fullWidth>
+          New message
+        </Button>
+      </Popover>
       <Button appearance="primary" fullWidth>
         New message
       </Button>
@@ -335,7 +343,9 @@ export const withRightChatAndAnchoredSideModal: Story = {
         menu={sampleMenu}
         right={<ChatPanel />}
         rightProperties={{ display: { xs: "none", md: "block" } }}
+        rightDismissGuard
         centerChildrenRef={centerChildrenRef}
+        dismissExemptAttribute="data-nimbus-dismiss-exempt"
       >
         <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
         <Page maxWidth="800px" position="relative">

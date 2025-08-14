@@ -5,6 +5,10 @@ import { Box } from "@nimbus-ds/components";
 import { AppShellHeader } from "./components";
 
 import { AppShellProps, AppShellComponents } from "./appShell.types";
+import {
+  defaultDismissExemptAttribute,
+  stopDismissPropagation,
+} from "./AppShell.definitions";
 
 const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   className: _className,
@@ -24,9 +28,18 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       md: "block",
     },
   },
+  rightDismissGuard = false,
+  dismissExemptAttribute = defaultDismissExemptAttribute,
   centerChildrenRef,
   ...rest
 }: AppShellProps) => {
+  const handleDismissPropagation = React.useCallback(
+    (event: React.SyntheticEvent) => {
+      stopDismissPropagation(event, dismissExemptAttribute);
+    },
+    [dismissExemptAttribute]
+  );
+
   return (
     <Box {...rest} display="flex">
       {menu && (
@@ -69,6 +82,14 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
           borderWidth="none"
           borderLeftWidth="1"
           borderColor="neutral-surfaceDisabled"
+          {...(rightDismissGuard && {
+            [dismissExemptAttribute]: "",
+            onPointerDownCapture: handleDismissPropagation,
+            onMouseDownCapture: handleDismissPropagation,
+            onTouchStartCapture: handleDismissPropagation,
+            onClickCapture: handleDismissPropagation,
+            onKeyDown: handleDismissPropagation,
+          })}
         >
           {right}
         </Box>

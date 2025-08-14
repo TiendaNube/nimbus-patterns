@@ -32,6 +32,19 @@ export interface AppShellProperties {
    */
   rightProperties?: Pick<BoxBaseProps, "display">;
   /**
+   * When true, interactions inside the right slot will not bubble up to the
+   * document. This prevents overlays that dismiss on outside press (like
+   * `Sidebar`/`SideModal`) from closing while the user is interacting with the chat.
+   */
+  rightDismissGuard?: boolean;
+  /**
+   * Attribute used to detect exempt elements when `rightDismissGuard` is enabled.
+   * Any event whose `composedPath()` includes an element matching this attribute
+   * will be prevented from bubbling to document-level listeners.
+   * Defaults to "data-nimbus-dismiss-exempt".
+   */
+  dismissExemptAttribute?: string;
+  /**
    * Ref for the center children.
    */
   centerChildrenRef?: React.RefObject<HTMLDivElement>;
