@@ -4,12 +4,14 @@ import { Box, Icon } from "@nimbus-ds/components";
 import { MenuButton } from "@nimbus-ds/menubutton";
 
 import { MenuFooterProps } from "./menuFooter.types";
+import { useMenuContext } from "../../context/MenuContext";
 
 const MenuFooter: React.FC<MenuFooterProps> = ({
   className: _className,
   style: _style,
   ...rest
 }: MenuFooterProps) => {
+  const { collapsed } = useMenuContext();
   const activeColor = rest.active ? "primary-interactive" : "neutral-textHigh";
   const disabledColor = rest.disabled ? "neutral-textDisabled" : activeColor;
 
@@ -22,7 +24,7 @@ const MenuFooter: React.FC<MenuFooterProps> = ({
       paddingY="3"
       width="100%"
     >
-      <MenuButton {...rest}>
+      <MenuButton collapsed={collapsed} {...rest}>
         <Icon source={<ChevronRightIcon size={16} />} color={disabledColor} />
       </MenuButton>
     </Box>

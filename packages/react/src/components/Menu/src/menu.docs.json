@@ -1,7 +1,7 @@
 {
   "id": "menu",
   "name": "Menu",
-  "totalProps": 1,
+  "totalProps": 3,
   "packageName": "@nimbus-ds/menu",
   "version": "1.5.6",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/menu",
@@ -11,6 +11,20 @@
       "type": "React.ReactNode",
       "title": "children",
       "required": true
+    },
+    {
+      "default": false,
+      "description": "Whether the menu should render in collapsed mode (icon-only).",
+      "type": "boolean",
+      "title": "collapse",
+      "required": false
+    },
+    {
+      "default": false,
+      "description": "Whether the menu should animate its transitions internally.",
+      "type": "boolean",
+      "title": "transition",
+      "required": false
     }
   ],
   "subComponents": [

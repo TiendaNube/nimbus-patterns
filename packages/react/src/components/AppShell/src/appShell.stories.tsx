@@ -33,7 +33,6 @@ import {
 } from "@nimbus-ds/icons";
 
 import { AppShell } from "./AppShell";
-import { IconProps } from "@nimbus-ds/icons";
 
 const meta: Meta<typeof AppShell> = {
   title: "Patterns/AppShell",
@@ -144,11 +143,15 @@ const buttonStack = (
   </>
 );
 
-const AppMenu = (
-  <Menu>
+const AppMenu = ({ collapsed }: { collapsed: boolean }) => (
+  <Menu collapse={collapsed}>
     <Menu.Header>
       <Box display="flex" gap="2" alignItems="center" width="100%">
-        <Icon source={tiendanubeLogo} color="primary-interactive" />
+        {!collapsed ? (
+          <Icon source={tiendanubeLogo} color="primary-interactive" />
+        ) : (
+          <Icon source={<TiendanubeIcon />} color="primary-interactive" />
+        )}
       </Box>
     </Menu.Header>
     <Menu.Body>
@@ -157,30 +160,15 @@ const AppMenu = (
         <Menu.Button startIcon={StatsIcon} label="Estadísticas" />
       </Menu.Section>
       <Menu.Section title="Administrar">
-        <Box backgroundColor="primary-surface" borderRadius="2">
-          <Menu.Button
-            id="control-1"
-            aria-expanded
-            aria-controls="content-1"
-            startIcon={CashIcon}
-            label="Ventas"
-          >
-            <Badge appearance="primary" count="1299" />
-          </Menu.Button>
-          <Box
-            id="content-1"
-            aria-hidden={false}
-            height="auto"
-            overflow="hidden"
-            pl="6"
-            pt="1"
-            pb="1"
-            pr="1"
-          >
-            <Menu.Button label="Lista de ventas" active />
-            <Menu.Button label="Exportar lista" />
-          </Box>
-        </Box>
+        <Menu.ButtonAccordion
+          menuButton={{ startIcon: CashIcon, label: "Ventas" }}
+          contentid="content-1"
+          open={!collapsed}
+        >
+          <Badge appearance="primary" count="1299" />
+          <Menu.Button label="Lista de ventas" active />
+          <Menu.Button label="Exportar lista" />
+        </Menu.ButtonAccordion>
         <Menu.Button startIcon={TagIcon} label="Productos" />
         <Menu.Button startIcon={UserIcon} label="Clientes">
           <Tag appearance="primary">Nuevo</Tag>
@@ -245,7 +233,7 @@ export const basic: Story = {
 
 export const demoApp: Story = {
   render: (args) => (
-    <AppShell {...args} menu={AppMenu}>
+    <AppShell {...args} menu={<AppMenu collapsed={false} />}>
       <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
       <Page maxWidth="800px">
         <Page.Header title="Page demo" />
@@ -276,98 +264,13 @@ export const demoApp: Story = {
 export const expandableMenu: Story = {
   render: (args) => {
     const [isExpanded, setIsExpanded] = useState(false);
-    // const [{ menuExpanded }, updateArgs] = useArgs();
-    // const toggle = () => updateArgs({ menuExpanded: !menuExpanded });
     const toggle = () => setIsExpanded(!isExpanded);
-
-    const menuWrapper = (
-      startIcon: React.FC<IconProps>,
-      label: string,
-      children: React.ReactNode
-    ) => {
-      const expandedProps = isExpanded
-        ? {
-            startIcon,
-            label,
-            children,
-          }
-        : {
-            startIcon,
-          };
-      return <Menu.Button {...expandedProps} />;
-    };
-
-    const ventasAccordion = (
-      <Box backgroundColor="primary-surface" borderRadius="2">
-        {menuWrapper(
-          CashIcon,
-          "Ventas",
-          <Badge appearance="primary" count="1299" />
-        )}
-        <Box
-          id="content-1"
-          aria-hidden={false}
-          height="auto"
-          overflow="hidden"
-          pl="6"
-          pt="1"
-          pb="1"
-          pr="1"
-        >
-          <Menu.Button label="Lista de ventas" active />
-          <Menu.Button label="Exportar lista" />
-        </Box>
-      </Box>
-    );
 
     return (
       <AppShell
         {...args}
-        menu={
-          <Menu>
-            <Menu.Header>
-              <Box display="flex" gap="2" alignItems="center" width="100%">
-                {isExpanded ? (
-                  <Icon source={tiendanubeLogo} color="primary-interactive" />
-                ) : (
-                  <Icon
-                    source={<TiendanubeIcon />}
-                    color="primary-interactive"
-                  />
-                )}
-              </Box>
-            </Menu.Header>
-            <Menu.Body>
-              <Menu.Section>
-                {menuWrapper(HomeIcon, "Inicio", null)}
-                {menuWrapper(StatsIcon, "Estadísticas", null)}
-              </Menu.Section>
-              <Menu.Section title="Administrar">
-                {isExpanded
-                  ? ventasAccordion
-                  : menuWrapper(CashIcon, "Ventas", null)}
-                <Menu.Button startIcon={TagIcon} label="Productos" />
-                {menuWrapper(
-                  UserIcon,
-                  "Clientes",
-                  <Tag appearance="primary">Nuevo</Tag>
-                )}
-                {menuWrapper(DiscountCircleIcon, "Marketing", null)}
-              </Menu.Section>
-              <Menu.Section title="Personalizar">
-                <Menu.Button startIcon={ToolsIcon} label="Mi Tiendanube" />
-              </Menu.Section>
-              <Menu.Section title="Potenciar">
-                <Menu.Button startIcon={AppsIcon} label="Mis aplicaciones" />
-                <Menu.Button
-                  startIcon={EcosystemIcon}
-                  label="Canales de venta"
-                />
-              </Menu.Section>
-            </Menu.Body>
-            <Menu.Footer label="Configuración" startIcon={CogIcon} />
-          </Menu>
-        }
+        menu={<AppMenu collapsed={!isExpanded} />}
+        menuFlyout={{ trigger: "manual" }}
         menuExpanded={isExpanded}
         onMenuExpandedChange={(v) => setIsExpanded(v)}
         menuExpandedWidth="18rem"
@@ -410,152 +313,14 @@ export const expandableMenu: Story = {
 
 export const railWithHoverPopover: Story = {
   render: () => {
-    const rail = (
-      <Menu>
-        <Menu.Header>
-          <Box display="flex" gap="2" alignItems="center" width="100%">
-            <Icon source={<TiendanubeIcon />} color="primary-interactive" />
-          </Box>
-        </Menu.Header>
-        <Menu.Body>
-          <Menu.Section>
-            <Menu.Button startIcon={HomeIcon} />
-            <Menu.Button startIcon={StatsIcon} />
-          </Menu.Section>
-          <Menu.Section title="Administrar">
-            <Menu.Button startIcon={CashIcon} />
-            <Menu.Button startIcon={TagIcon} />
-            <Menu.Button startIcon={UserIcon} />
-            <Menu.Button startIcon={DiscountCircleIcon} />
-          </Menu.Section>
-          <Menu.Section title="Potenciar">
-            <Menu.Button startIcon={AppsIcon} />
-            <Menu.Button startIcon={EcosystemIcon} />
-          </Menu.Section>
-        </Menu.Body>
-        <Menu.Footer startIcon={CogIcon} />
-      </Menu>
-    );
-
-    const full = (
-      <Menu>
-        <Menu.Header>
-          <Box display="flex" gap="2" alignItems="center" width="100%">
-            <Icon source={tiendanubeLogo} color="primary-interactive" />
-          </Box>
-        </Menu.Header>
-        <Menu.Body>
-          <Menu.Section>
-            <Menu.Button startIcon={HomeIcon} label="Inicio" />
-            <Menu.Button startIcon={StatsIcon} label="Estadísticas" />
-          </Menu.Section>
-          <Menu.Section title="Administrar">
-            <Box backgroundColor="primary-surface" borderRadius="2">
-              <Menu.ButtonAccordion
-                menuButton={{ startIcon: CashIcon, label: "Ventas" }}
-                contentid="content-ventas"
-              >
-                <Badge appearance="primary" count="1299" />
-                <Menu.Button label="Lista de ventas" active />
-                <Menu.Button label="Exportar lista" />
-              </Menu.ButtonAccordion>
-            </Box>
-            <Menu.Button startIcon={TagIcon} label="Productos" />
-            <Menu.Button startIcon={UserIcon} label="Clientes">
-              <Tag appearance="primary">Nuevo</Tag>
-            </Menu.Button>
-            <Menu.Button startIcon={DiscountCircleIcon} label="Marketing" />
-          </Menu.Section>
-          <Menu.Section title="Potenciar">
-            <Menu.Button startIcon={AppsIcon} label="Mis aplicaciones" />
-            <Menu.Button startIcon={EcosystemIcon} label="Canales de venta" />
-          </Menu.Section>
-        </Menu.Body>
-        <Menu.Footer label="Configuración" startIcon={CogIcon} />
-      </Menu>
-    );
-
-    return (
-      <AppShell
-        menuBehavior="popover"
-        menuFlyout={{ trigger: "hover" }}
-        menuCollapsed={rail}
-        menuExpandedContent={full}
-        defaultMenuExpanded={false}
-        menuCollapsedWidth="4.5rem"
-        menuExpandedWidth="18rem"
-      >
-        <AppShell.Header rightSlot={buttonStack} />
-        <Page maxWidth="800px">
-          <Page.Header title="Rail with hover popover" />
-          <Page.Body>
-            <Box
-              backgroundColor="primary-surface"
-              borderColor="primary-interactive"
-              borderStyle="dashed"
-              borderWidth="1"
-              borderRadius="2"
-              width="100%"
-              height="500px"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Text fontSize="base" color="primary-interactive">
-                Hover the rail to open the overlay menu
-              </Text>
-            </Box>
-          </Page.Body>
-        </Page>
-      </AppShell>
-    );
-  },
-  args: {},
-};
-
-export const railWithClickPopover: Story = {
-  render: () => {
     const [open, setOpen] = React.useState(false);
-    const rail = (
-      <Menu>
-        <Menu.Header>
-          <Box display="flex" gap="2" alignItems="center" width="100%">
-            <Icon source={<TiendanubeIcon />} color="primary-interactive" />
-            <Box ml="auto">
-              <Button appearance="primary" onClick={() => setOpen((v) => !v)}>
-                {open ? "Collapse" : "Expand"}
-              </Button>
-            </Box>
-          </Box>
-        </Menu.Header>
-        <Menu.Body>
-          <Menu.Section>
-            <Menu.Button startIcon={HomeIcon} />
-            <Menu.Button startIcon={StatsIcon} />
-          </Menu.Section>
-          <Menu.Section title="Administrar">
-            <Menu.Button startIcon={CashIcon} />
-            <Menu.Button startIcon={TagIcon} />
-            <Menu.Button startIcon={UserIcon} />
-            <Menu.Button startIcon={DiscountCircleIcon} />
-          </Menu.Section>
-          <Menu.Section title="Potenciar">
-            <Menu.Button startIcon={AppsIcon} />
-            <Menu.Button startIcon={EcosystemIcon} />
-          </Menu.Section>
-        </Menu.Body>
-        <Menu.Footer startIcon={CogIcon} />
-      </Menu>
-    );
-
-    const full = AppMenu;
 
     return (
       <AppShell
         menuBehavior="popover"
-        menuFlyout={{ trigger: "manual", open, onOpenChange: setOpen }}
-        menuCollapsed={rail}
-        menuExpandedContent={full}
+        menuFlyout={{ trigger: "hover", open, onOpenChange: setOpen }}
+        menuCollapsed={<AppMenu collapsed={true} />}
+        menuExpandedContent={<AppMenu collapsed={false} />}
         defaultMenuExpanded={false}
         menuCollapsedWidth="4.5rem"
         menuExpandedWidth="18rem"
@@ -576,7 +341,121 @@ export const railWithClickPopover: Story = {
               alignItems="center"
               justifyContent="center"
             >
-              <Text fontSize="base" color="primary-interactive">Use the button inside the rail to toggle the overlay menu</Text>
+              <Text fontSize="base" color="primary-interactive">
+                Use the button inside the rail to toggle the overlay menu
+              </Text>
+            </Box>
+          </Page.Body>
+        </Page>
+      </AppShell>
+    );
+  },
+  args: {},
+};
+
+export const railWithClickPopover: Story = {
+  render: () => {
+    const [open, setOpen] = React.useState(false);
+    const toggle = () => setOpen(!open);
+
+    const AppClickMenu = ({ collapsed }: { collapsed: boolean }) => {
+      return (
+        <Menu collapse={collapsed}>
+          <Menu.Header>
+            <Box display="flex" gap="2" alignItems="center" width="100%">
+              {!collapsed ? (
+                <Box display="flex" gap="2">
+                  <Icon source={tiendanubeLogo} color="primary-interactive" />
+                  <IconButton
+                    source={
+                      <Icon
+                        source={<TiendanubeIcon />}
+                        color="primary-interactive"
+                      />
+                    }
+                    onClick={() => {
+                      toggle();
+                    }}
+                  />
+                </Box>
+              ) : (
+                <IconButton
+                  source={
+                    <Icon
+                      source={<TiendanubeIcon />}
+                      color="primary-interactive"
+                    />
+                  }
+                  onClick={() => {
+                    toggle();
+                  }}
+                />
+              )}
+            </Box>
+          </Menu.Header>
+          <Menu.Body>
+            <Menu.Section>
+              <Menu.Button startIcon={HomeIcon} label="Inicio" />
+              <Menu.Button startIcon={StatsIcon} label="Estadísticas" />
+            </Menu.Section>
+            <Menu.Section title="Administrar">
+              <Menu.ButtonAccordion
+                menuButton={{ startIcon: CashIcon, label: "Ventas" }}
+                contentid="content-1"
+                open={!collapsed}
+              >
+                <Badge appearance="primary" count="1299" />
+                <Menu.Button label="Lista de ventas" active />
+                <Menu.Button label="Exportar lista" />
+              </Menu.ButtonAccordion>
+              <Menu.Button startIcon={TagIcon} label="Productos" />
+              <Menu.Button startIcon={UserIcon} label="Clientes">
+                <Tag appearance="primary">Nuevo</Tag>
+              </Menu.Button>
+              <Menu.Button startIcon={DiscountCircleIcon} label="Marketing" />
+            </Menu.Section>
+            <Menu.Section title="Personalizar">
+              <Menu.Button startIcon={ToolsIcon} label="Mi Tiendanube" />
+            </Menu.Section>
+            <Menu.Section title="Potenciar">
+              <Menu.Button startIcon={AppsIcon} label="Mis aplicaciones" />
+              <Menu.Button startIcon={EcosystemIcon} label="Canales de venta" />
+            </Menu.Section>
+          </Menu.Body>
+          <Menu.Footer label="Configuración" startIcon={CogIcon} />
+        </Menu>
+      );
+    };
+    return (
+      <AppShell
+        menuBehavior="popover"
+        menuFlyout={{ trigger: "manual", open }}
+        menuCollapsed={<AppClickMenu collapsed={true} />}
+        menuExpandedContent={<AppClickMenu collapsed={false} />}
+        defaultMenuExpanded={false}
+        menuCollapsedWidth="4.5rem"
+        menuExpandedWidth="18rem"
+      >
+        <AppShell.Header rightSlot={buttonStack} />
+        <Page maxWidth="800px">
+          <Page.Header title="Rail with click popover" />
+          <Page.Body display="flex" flexDirection="column" gap="2">
+            <Box
+              backgroundColor="primary-surface"
+              borderColor="primary-interactive"
+              borderStyle="dashed"
+              borderWidth="1"
+              borderRadius="2"
+              width="100%"
+              height="500px"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text fontSize="base" color="primary-interactive">
+                Use the Tiendanube icon inside the rail header to toggle the
+                overlay menu
+              </Text>
             </Box>
           </Page.Body>
         </Page>

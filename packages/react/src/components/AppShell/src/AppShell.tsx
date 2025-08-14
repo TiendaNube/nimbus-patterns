@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { Box } from "@nimbus-ds/components";
 import {
@@ -70,6 +70,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         setUncontrolledFlyoutOpen(open);
       }
       onOpenChange?.(open);
+      onMenuExpandedChange?.(open);
     },
     [controlledOpen, onOpenChange]
   );

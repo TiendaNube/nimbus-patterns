@@ -29,7 +29,8 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "dependencies": {
-    "@nimbus-ds/typings": "^1.1.0"
+    "@nimbus-ds/typings": "^1.1.0",
+    "@nimbus-ds/menu": "workspace:^"
   },
   "devDependencies": {
     "@nimbus-ds/icons": "^1"

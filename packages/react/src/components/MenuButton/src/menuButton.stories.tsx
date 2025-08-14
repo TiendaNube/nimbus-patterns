@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useArgs } from "@storybook/preview-api";
 
@@ -7,9 +7,9 @@ import { Tag, Badge, Icon } from "@nimbus-ds/components";
 
 import { MenuButton, MenuButtonProps } from "./MenuButton";
 
-export const Basic: React.FC<MenuButtonProps> = forwardRef(
-  ({ ...props }: MenuButtonProps) => <MenuButton {...props} />
-) as React.FC<MenuButtonProps>;
+export const Basic: React.FC<MenuButtonProps> = (props: MenuButtonProps) => (
+  <MenuButton {...props} />
+);
 Basic.displayName = "MenuButton";
 
 const meta: Meta<typeof Basic> = {

@@ -1,16 +1,26 @@
 import React from "react";
 import { Box } from "@nimbus-ds/components";
-import { MenuButton } from "@nimbus-ds/menubutton";
+import { MenuContext } from "./context/MenuContext";
 
 import { MenuProps, MenuComponents } from "./menu.types";
-import { MenuSection, MenuHeader, MenuBody, MenuFooter } from "./components";
+import {
+  MenuSection,
+  MenuHeader,
+  MenuBody,
+  MenuFooter,
+  MenuButtonContainer,
+  MenuButtonAccordionContainer,
+} from "./components";
 
 const Menu: React.FC<MenuProps> & MenuComponents = ({
   className: _className,
   style: _style,
   children,
+  collapse = false,
+  transition = false,
   ...rest
 }: MenuProps) => (
+  <MenuContext.Provider value={{ collapsed: collapse, transition }}>
     <Box
       {...rest}
       display="flex"
@@ -20,14 +30,18 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
       backgroundColor="neutral-background"
       width="100%"
       boxSizing="border-box"
+      transitionProperty={transition ? "all" : undefined}
+      transitionDuration={transition ? "base" : undefined}
+      transitionTimingFunction={transition ? "ease-in-out" : undefined}
     >
       {children}
     </Box>
-  );
+  </MenuContext.Provider>
+);
 
 Menu.Section = MenuSection;
-Menu.Button = MenuButton;
-Menu.ButtonAccordion = MenuButton?.Accordion;
+Menu.Button = MenuButtonContainer;
+Menu.ButtonAccordion = MenuButtonAccordionContainer;
 Menu.Header = MenuHeader;
 Menu.Body = MenuBody;
 Menu.Footer = MenuFooter;

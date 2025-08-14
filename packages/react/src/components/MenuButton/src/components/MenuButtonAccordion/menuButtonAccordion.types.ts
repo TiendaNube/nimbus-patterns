@@ -25,6 +25,10 @@ export interface MenuButtonAccordionProperties {
    * Sets the state of the button as active/inactive.
    */
   active?: boolean;
+  /**
+   * Whether the menu is collapsed (icon-only).
+   */
+  collapsed?: boolean;
 }
 
 export type MenuButtonAccordionBaseProps = MenuButtonAccordionProperties & {

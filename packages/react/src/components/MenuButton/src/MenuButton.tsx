@@ -17,6 +17,7 @@ const MenuButton = forwardRef(
       children,
       active = false,
       as = "button",
+      collapsed = false,
       ...rest
     }: MenuButtonBaseProps & { as: any },
     ref
@@ -64,17 +65,19 @@ const MenuButton = forwardRef(
         {IconSrc && (
           <Icon color={disabledColor} source={<IconSrc size={16} />} />
         )}
-        <Box display="inline-flex" flex="1">
-          <Text
-            fontSize="base"
-            color={disabledColor}
-            lineClamp={1}
-            wordBreak="break-all"
-          >
-            {label}
-          </Text>
-        </Box>
-        {children}
+        {!collapsed && (
+          <Box display="inline-flex" flex="1">
+            <Text
+              fontSize="base"
+              color={disabledColor}
+              lineClamp={1}
+              wordBreak="break-all"
+            >
+              {label}
+            </Text>
+          </Box>
+        )}
+        {!collapsed && children}
       </Box>
     );
   }

@@ -20,6 +20,7 @@ const MenuButtonAccordion = forwardRef(
       menuButton,
       children,
       as,
+      collapsed,
       ...rest
     }: MenuButtonAccordionBaseProps & { as: any },
     ref
@@ -50,6 +51,7 @@ const MenuButtonAccordion = forwardRef(
         textDecoration="none"
       >
         <MenuButton
+          collapsed={collapsed}
           {...menuButton}
           onClick={
             controlledOpen !== undefined ? menuButton.onClick : handleOpen
@@ -57,7 +59,7 @@ const MenuButtonAccordion = forwardRef(
           active={active}
           aria-expanded={open}
         />
-        {open && (
+        {open && !collapsed && (
           <Box
             id="content-1"
             aria-hidden={!open}

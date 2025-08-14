@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Text, Box } from "@nimbus-ds/components";
+import { useMenuContext } from "../../context/MenuContext";
 
 import { MenuSectionProps } from "./menuSection.types";
 
@@ -10,17 +11,28 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   title,
   children,
   ...rest
-}: MenuSectionProps) => (
-  <Box {...rest} display="flex" flexDirection="column" gap="1-5">
-    {title && (
-      <Box pl="2" pt="2">
-        <Text color="neutral-textDisabled" fontSize="caption">
-          {title}
-        </Text>
-      </Box>
-    )}
-    {children}
-  </Box>
-);
+}: MenuSectionProps) => {
+  const { collapsed } = useMenuContext();
+  return (
+    <Box {...rest} display="flex" flexDirection="column" gap="1-5">
+      {title &&
+        (collapsed ? (
+          <Box
+            borderTopWidth="1"
+            borderBottomWidth="none"
+            borderColor="neutral-surfaceHighlight"
+            borderStyle="solid"
+          />
+        ) : (
+          <Box>
+            <Text color="neutral-textDisabled" fontSize="caption">
+              {title}
+            </Text>
+          </Box>
+        ))}
+      {children}
+    </Box>
+  );
+};
 
 export { MenuSection };
