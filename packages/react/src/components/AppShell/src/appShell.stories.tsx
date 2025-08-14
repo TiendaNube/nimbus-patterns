@@ -301,31 +301,21 @@ export const noLeftSlot: Story = {
 };
 
 const ChatPanel: React.FC = () => (
-  <Box display="flex" flexDirection="column" height="100%">
-    <Box
-      borderBottomWidth="1"
-      borderStyle="solid"
-      borderColor="neutral-surfaceDisabled"
-      p="2"
-    >
-      <Text fontWeight="bold">Chat</Text>
-    </Box>
-    <Box p="2" display="flex" flexDirection="column" gap="2" overflowY="auto">
-      <Text color="neutral-textLow">Agent: Hi there! How can I help?</Text>
-      <Text>You: I need help with an order.</Text>
-      <Text color="neutral-textLow">Agent: Sure, what’s the order number?</Text>
-    </Box>
-    <Box p="2" mt="auto">
-      <Input placeholder="New message" />
-      <Popover content="New message" visible={true} data-nimbus-dismiss-exempt>
-        <Button appearance="primary" fullWidth>
-          New message
-        </Button>
-      </Popover>
-      <Button appearance="primary" fullWidth>
-        New message
-      </Button>
-    </Box>
+  <Box
+    backgroundColor="primary-surface"
+    borderColor="primary-interactive"
+    borderStyle="dashed"
+    borderWidth="1"
+    borderRadius="2"
+    width="15rem"
+    height="100vh"
+    display="flex"
+    alignItems="center"
+    justifyContent="center"
+  >
+    <Text fontSize="base" color="primary-interactive">
+      Chat content
+    </Text>
   </Box>
 );
 
