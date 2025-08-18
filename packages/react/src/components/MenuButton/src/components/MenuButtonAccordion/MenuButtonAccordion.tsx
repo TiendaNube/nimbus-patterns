@@ -39,6 +39,7 @@ const MenuButtonAccordion = forwardRef(
       }
       return open ? "neutral-surface" : "transparent";
     };
+    
 
     return (
       <Box
@@ -49,6 +50,7 @@ const MenuButtonAccordion = forwardRef(
         borderRadius="2"
         zIndex={open ? "100" : undefined}
         textDecoration="none"
+        alignSelf={collapsed ? "center" : "stretch"}
       >
         <MenuButton
           collapsed={collapsed}

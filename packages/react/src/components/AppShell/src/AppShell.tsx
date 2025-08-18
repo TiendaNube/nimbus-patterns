@@ -31,7 +31,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   defaultMenuExpanded = true,
   onMenuExpandedChange,
   menuExpandedWidth = "18rem",
-  menuCollapsedWidth = "4.5rem",
+  menuCollapsedWidth = "48px",
   menuBehavior = "inline",
   menuFlyout,
   menuCollapsed,

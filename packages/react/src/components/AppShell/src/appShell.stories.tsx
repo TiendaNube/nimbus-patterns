@@ -146,7 +146,7 @@ const buttonStack = (
 const AppMenu = ({ collapsed }: { collapsed: boolean }) => (
   <Menu collapse={collapsed}>
     <Menu.Header>
-      <Box display="flex" gap="2" alignItems="center" width="100%">
+      <Box display="flex" gap="2" justifyContent={collapsed ? "center" : "flex-start"} alignItems="center" width="100%" padding="4">
         {!collapsed ? (
           <Icon source={tiendanubeLogo} color="primary-interactive" />
         ) : (
@@ -273,8 +273,6 @@ export const expandableMenu: Story = {
         menuFlyout={{ trigger: "manual" }}
         menuExpanded={isExpanded}
         onMenuExpandedChange={(v) => setIsExpanded(v)}
-        menuExpandedWidth="18rem"
-        menuCollapsedWidth="4.5rem"
       >
         <AppShell.Header
           leftSlot={
@@ -362,7 +360,7 @@ export const railWithClickPopover: Story = {
       return (
         <Menu collapse={collapsed}>
           <Menu.Header>
-            <Box display="flex" gap="2" alignItems="center" width="100%">
+            <Box display="flex" gap="2">
               {!collapsed ? (
                 <Box display="flex" gap="2">
                   <Icon source={tiendanubeLogo} color="primary-interactive" />
@@ -428,11 +426,13 @@ export const railWithClickPopover: Story = {
     };
     return (
       <AppShell
-        menuBehavior="popover"
-        menuFlyout={{ trigger: "manual", open }}
+        menuBehavior="inline"
+        menuFlyout={{ trigger: "manual" }}
         menuCollapsed={<AppClickMenu collapsed={true} />}
         menuExpandedContent={<AppClickMenu collapsed={false} />}
         defaultMenuExpanded={false}
+        menuExpanded={open}
+        onMenuExpandedChange={(v) => setOpen(v)}
         menuCollapsedWidth="4.5rem"
         menuExpandedWidth="18rem"
       >

@@ -13,8 +13,15 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   ...rest
 }: MenuSectionProps) => {
   const { collapsed } = useMenuContext();
+
   return (
-    <Box {...rest} display="flex" flexDirection="column" gap="1-5">
+    <Box
+      {...rest}
+      display="flex"
+      flexDirection="column"
+      gap="1-5"
+      alignItems={collapsed ? "center" : "flex-start"}
+    >
       {title &&
         (collapsed ? (
           <Box
@@ -22,6 +29,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
             borderBottomWidth="none"
             borderColor="neutral-surfaceHighlight"
             borderStyle="solid"
+            width="100%"
           />
         ) : (
           <Box>

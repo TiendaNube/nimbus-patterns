@@ -1,25 +1,37 @@
 import React from "react";
 
-import { Box } from "@nimbus-ds/components";
+import { Box, BoxProperties } from "@nimbus-ds/components";
 
 import { MenuHeaderProps } from "./menuHeader.types";
+import { useMenuContext } from "../../context/MenuContext";
 
 const MenuHeader: React.FC<MenuHeaderProps> = ({
   className: _className,
   style: _style,
   children,
   ...rest
-}: MenuHeaderProps) => (
-  <Box
-    {...rest}
-    boxSizing="border-box"
-    display="flex"
-    flex="0 1 auto"
-    padding="4"
-    width="100%"
-  >
-    {children}
-  </Box>
-);
+}: MenuHeaderProps) => {
+  const { collapsed } = useMenuContext();
+
+  const collapsedProps: BoxProperties = collapsed
+    ? {
+        justifyContent: "center",
+      }
+    : {};
+
+  return (
+    <Box
+      {...rest}
+      boxSizing="border-box"
+      display="flex"
+      flex="0 1 auto"
+      width="100%"
+      padding="4"
+      {...collapsedProps}
+    >
+      {children}
+    </Box>
+  );
+};
 
 export { MenuHeader };

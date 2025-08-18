@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithRef, forwardRef } from "react";
 
-import { Text, Icon, Box } from "@nimbus-ds/components";
+import { Icon, Box, Text, BoxProperties } from "@nimbus-ds/components";
 import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
 import { MenuButtonBaseProps, MenuButtonComponents } from "./menuButton.types";
@@ -24,6 +24,12 @@ const MenuButton = forwardRef(
   ) => {
     const activeColor = active ? "primary-interactive" : "neutral-textHigh";
     const disabledColor = rest.disabled ? "neutral-textDisabled" : activeColor;
+
+      const collapsedProps: BoxProperties = collapsed
+        ? {
+            justifyContent: "center",
+          }
+        : {};
 
     return (
       <Box
@@ -61,6 +67,7 @@ const MenuButton = forwardRef(
           xs: "34px",
           md: "26px",
         }}
+        {...collapsedProps}
       >
         {IconSrc && (
           <Icon color={disabledColor} source={<IconSrc size={16} />} />
