@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
 import { Box } from "@nimbus-ds/components";
 import {
@@ -15,6 +15,7 @@ import {
 import { AppShellHeader } from "./components";
 
 import { AppShellProps, AppShellComponents } from "./appShell.types";
+import { AppShellContext } from "./contexts/AppShellContext";
 
 const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   className: _className,
@@ -33,10 +34,10 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   menuExpandedWidth = "18rem",
   menuCollapsedWidth = "48px",
   menuBehavior = "inline",
-  menuFlyout,
+  menuFlyout = { trigger: "manual" },
   menuCollapsed,
   menuExpandedContent,
-  
+
   ...rest
 }: AppShellProps) => {
   const [uncontrolledExpanded] = useState<boolean>(defaultMenuExpanded);
@@ -62,8 +63,10 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
     zIndex: flyoutZIndex,
     ...flyoutBoxProps
   } = menuFlyout ?? {};
-  const [uncontrolledFlyoutOpen, setUncontrolledFlyoutOpen] = useState(defaultOpen);
-  const flyoutOpen = controlledOpen === undefined ? uncontrolledFlyoutOpen : controlledOpen;
+  const [uncontrolledFlyoutOpen, setUncontrolledFlyoutOpen] =
+    useState(defaultOpen);
+  const flyoutOpen =
+    controlledOpen === undefined ? uncontrolledFlyoutOpen : controlledOpen;
   const setFlyout = useCallback(
     (open: boolean) => {
       if (controlledOpen === undefined) {
@@ -101,6 +104,20 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   const expandedContent = menuExpandedContent ?? menu;
   const hasMenu = Boolean(collapsedContent || expandedContent);
 
+  const appShellMenuContext = useMemo(
+    () => ({
+      isMenuPopover: false,
+    }),
+    []
+  );
+
+  const popoverAppShellContext = useMemo(
+    () => ({
+      isMenuPopover: true,
+    }),
+    []
+  );
+
   return (
     <Box {...rest} display="flex">
       {hasMenu && (
@@ -121,7 +138,9 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
           ref={refs.setReference}
           {...getReferenceProps()}
         >
-          {expanded ? expandedContent : collapsedContent}
+          <AppShellContext.Provider value={appShellMenuContext}>
+            {menu}
+          </AppShellContext.Provider>
         </Box>
       )}
       <Box
@@ -134,27 +153,29 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         {children}
       </Box>
       {isPopoverMode && !expanded && flyoutOpen && (
-        <FloatingPortal id="nimbus-popover-floating">
-          <Box
-            backgroundColor="neutral-background"
-            boxShadow="2"
-            borderStyle="solid"
-            borderWidth="none"
-            borderRightWidth="1"
-            borderColor="neutral-surfaceDisabled"
-            {...flyoutBoxProps}
-            position="fixed"
-            top="0"
-            left="0"
-            height="100vh"
-            width={String(flyoutWidth ?? "18rem")}
-            zIndex={flyoutZIndex ?? "900"}
-            ref={refs.setFloating}
-            {...getFloatingProps()}
-          >
-            {expandedContent}
-          </Box>
-        </FloatingPortal>
+        <AppShellContext.Provider value={popoverAppShellContext}>
+          <FloatingPortal id="nimbus-popover-floating">
+            <Box
+              backgroundColor="neutral-background"
+              boxShadow="2"
+              borderStyle="solid"
+              borderWidth="none"
+              borderRightWidth="1"
+              borderColor="neutral-surfaceDisabled"
+              {...flyoutBoxProps}
+              position="fixed"
+              top="0"
+              left="0"
+              height="100vh"
+              width={String(flyoutWidth ?? "18rem")}
+              zIndex={flyoutZIndex ?? "900"}
+              ref={refs.setFloating}
+              {...getFloatingProps()}
+            >
+              {menu}
+            </Box>
+          </FloatingPortal>
+        </AppShellContext.Provider>
       )}
     </Box>
   );

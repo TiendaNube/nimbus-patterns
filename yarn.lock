@@ -5000,7 +5000,6 @@ __metadata:
   resolution: "@nimbus-ds/menubutton@workspace:packages/react/src/components/MenuButton"
   dependencies:
     "@nimbus-ds/icons": ^1
-    "@nimbus-ds/menu": "workspace:^"
     "@nimbus-ds/typings": ^1.1.0
   peerDependencies:
     "@nimbus-ds/components": ^5

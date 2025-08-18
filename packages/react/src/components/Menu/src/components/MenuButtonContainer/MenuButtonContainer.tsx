@@ -7,7 +7,7 @@ import {
   MenuButtonBaseProps,
   MenuButtonComponents,
 } from "packages/react/src/components/MenuButton/src/menuButton.types";
-import { PolymorphicForwardRefComponent } from "@nimbus-ds/components";
+import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 import { useMenuContext } from "../../context/MenuContext";
 
 const MenuButtonContainer = forwardRef(
