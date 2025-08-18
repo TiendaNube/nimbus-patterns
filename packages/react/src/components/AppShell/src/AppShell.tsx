@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import { Box } from "@nimbus-ds/components";
 import {
@@ -72,7 +72,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       onOpenChange?.(open);
       onMenuExpandedChange?.(open);
     },
-    [controlledOpen, onOpenChange]
+    [controlledOpen, onOpenChange, onMenuExpandedChange]
   );
 
   // Floating UI interactions
@@ -81,20 +81,21 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
     onOpenChange: setFlyout,
   });
 
-  const interactions = [] as ReturnType<typeof useHover | typeof useFocus | typeof useDismiss | typeof useRole>[];
-  if (flyoutTrigger === "hover") {
-    interactions.push(
-      useHover(context, {
-        delay: { open: hoverOpenDelay, close: hoverCloseDelay },
-        handleClose: safePolygon(),
-      })
-    );
-    interactions.push(useFocus(context));
-  }
-  interactions.push(useDismiss(context, { outsidePress: true, escapeKey: true }));
-  interactions.push(useRole(context, { role: "dialog" }));
+  const hover = useHover(context, {
+    delay: { open: hoverOpenDelay, close: hoverCloseDelay },
+    handleClose: safePolygon(),
+    enabled: flyoutTrigger === "hover",
+  });
+  const focus = useFocus(context, { enabled: flyoutTrigger === "hover" });
+  const dismiss = useDismiss(context, { outsidePress: true, escapeKey: true });
+  const role = useRole(context, { role: "dialog" });
 
-  const { getReferenceProps, getFloatingProps } = useInteractions(interactions);
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    hover,
+    focus,
+    dismiss,
+    role,
+  ]);
 
   const collapsedContent = menuCollapsed ?? menu;
   const expandedContent = menuExpandedContent ?? menu;
@@ -120,7 +121,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
           ref={refs.setReference}
           {...getReferenceProps()}
         >
-          <>{expanded ? expandedContent : collapsedContent}</>
+          {expanded ? expandedContent : collapsedContent}
         </Box>
       )}
       <Box
@@ -151,7 +152,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
             ref={refs.setFloating}
             {...getFloatingProps()}
           >
-            <>{expandedContent}</>
+            {expandedContent}
           </Box>
         </FloatingPortal>
       )}

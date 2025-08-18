@@ -317,7 +317,7 @@ export const railWithHoverPopover: Story = {
       <AppShell
         menuBehavior="popover"
         menuFlyout={{ trigger: "hover", open, onOpenChange: setOpen }}
-        menuCollapsed={<AppMenu collapsed={true} />}
+        menuCollapsed={<AppMenu collapsed />}
         menuExpandedContent={<AppMenu collapsed={false} />}
         defaultMenuExpanded={false}
         menuCollapsedWidth="4.5rem"
@@ -356,8 +356,7 @@ export const railWithClickPopover: Story = {
     const [open, setOpen] = React.useState(false);
     const toggle = () => setOpen(!open);
 
-    const AppClickMenu = ({ collapsed }: { collapsed: boolean }) => {
-      return (
+    const AppClickMenu = ({ collapsed }: { collapsed: boolean }) => (
         <Menu collapse={collapsed}>
           <Menu.Header>
             <Box display="flex" gap="2">
@@ -423,18 +422,14 @@ export const railWithClickPopover: Story = {
           <Menu.Footer label="Configuración" startIcon={CogIcon} />
         </Menu>
       );
-    };
+      
     return (
       <AppShell
-        menuBehavior="inline"
-        menuFlyout={{ trigger: "manual" }}
-        menuCollapsed={<AppClickMenu collapsed={true} />}
+        menuBehavior="popover"
+        menuFlyout={{ trigger: "manual", open, onOpenChange: setOpen }}
+        menuCollapsed={<AppClickMenu collapsed />}
         menuExpandedContent={<AppClickMenu collapsed={false} />}
         defaultMenuExpanded={false}
-        menuExpanded={open}
-        onMenuExpandedChange={(v) => setOpen(v)}
-        menuCollapsedWidth="4.5rem"
-        menuExpandedWidth="18rem"
       >
         <AppShell.Header rightSlot={buttonStack} />
         <Page maxWidth="800px">

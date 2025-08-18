@@ -3,12 +3,12 @@ import {
   MenuButton,
   MenuButtonAccordionBaseProps,
 } from "@nimbus-ds/menubutton";
-import { useMenuContext } from "../../context/MenuContext";
 import {
   MenuButtonBaseProps,
   MenuButtonComponents,
 } from "packages/react/src/components/MenuButton/src/menuButton.types";
 import { PolymorphicForwardRefComponent } from "@nimbus-ds/components";
+import { useMenuContext } from "../../context/MenuContext";
 
 const MenuButtonContainer = forwardRef(
   (props: MenuButtonBaseProps & { as: any }, ref) => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Box } from "@nimbus-ds/components";
 import { MenuContext } from "./context/MenuContext";
 
@@ -19,25 +19,32 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
   collapse = false,
   transition = false,
   ...rest
-}: MenuProps) => (
-  <MenuContext.Provider value={{ collapsed: collapse, transition }}>
-    <Box
-      {...rest}
-      display="flex"
-      flexDirection="column"
-      flex="0 0 auto"
-      height="100%"
-      backgroundColor="neutral-background"
-      width="100%"
-      boxSizing="border-box"
-      transitionProperty={transition ? "all" : undefined}
-      transitionDuration={transition ? "base" : undefined}
-      transitionTimingFunction={transition ? "ease-in-out" : undefined}
-    >
-      {children}
-    </Box>
-  </MenuContext.Provider>
-);
+}: MenuProps) => {
+  const providerValue = useMemo(
+    () => ({ collapsed: collapse, transition }),
+    [collapse, transition]
+  );
+
+  return (
+    <MenuContext.Provider value={providerValue}>
+      <Box
+        {...rest}
+        display="flex"
+        flexDirection="column"
+        flex="0 0 auto"
+        height="100%"
+        backgroundColor="neutral-background"
+        width="100%"
+        boxSizing="border-box"
+        transitionProperty={transition ? "all" : undefined}
+        transitionDuration={transition ? "base" : undefined}
+        transitionTimingFunction={transition ? "ease-in-out" : undefined}
+      >
+        {children}
+      </Box>
+    </MenuContext.Provider>
+  );
+};
 
 Menu.Section = MenuSection;
 Menu.Button = MenuButtonContainer;
