@@ -33,6 +33,7 @@ import {
 } from "@nimbus-ds/icons";
 
 import { AppShell } from "./AppShell";
+import { useAppShellMenuContext } from "./hooks/useAppShellMenuContext";
 import { useAppShellContext } from "./hooks/useAppShellContext";
 
 const meta: Meta<typeof AppShell> = {
@@ -144,10 +145,12 @@ const buttonStack = (
   </>
 );
 
-const AppMenu = ({ defaultCollapsed }: { defaultCollapsed: boolean }) => {
-  const { isMenuPopover } = useAppShellContext();
+const AppMenu = () => {
+  const { isMenuPopover } = useAppShellMenuContext();
+  const { isMenuCollapsed } = useAppShellContext();
   console.log("isMenuPopover", isMenuPopover);
-  const collapsed = isMenuPopover ? false : defaultCollapsed;
+  console.log("isMenuCollapsed", isMenuCollapsed);
+  const collapsed = isMenuPopover ? false : isMenuCollapsed;
 
   return (
     <Menu collapse={collapsed}>
@@ -247,7 +250,7 @@ export const basic: Story = {
 
 export const demoApp: Story = {
   render: (args) => (
-    <AppShell {...args} menu={<AppMenu defaultCollapsed={false} />}>
+    <AppShell {...args} menu={<AppMenu />}>
       <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
       <Page maxWidth="800px">
         <Page.Header title="Page demo" />
@@ -283,9 +286,8 @@ export const expandableMenu: Story = {
     return (
       <AppShell
         {...args}
-        menu={<AppMenu defaultCollapsed={!isExpanded} />}
+        menu={<AppMenu />}
         menuExpanded={isExpanded}
-        onMenuExpandedChange={(v) => setIsExpanded(v)}
       >
         <AppShell.Header
           leftSlot={
@@ -330,9 +332,7 @@ export const railWithHoverPopover: Story = {
       <AppShell
         menuBehavior="popover"
         menuFlyout={{ trigger: "hover", open, onOpenChange: setOpen }}
-        menu={<AppMenu defaultCollapsed />}
-        // menuCollapsed={<AppMenu collapsed />}
-        // menuExpandedContent={<AppMenu defaultCollapsed={false} />}
+        menu={<AppMenu />}
         defaultMenuExpanded={false}
         menuCollapsedWidth="4.5rem"
         menuExpandedWidth="18rem"
@@ -375,9 +375,9 @@ export const railWithClickPopover: Story = {
     }: {
       defaultCollapsed: boolean;
     }) => {
-      const { isMenuPopover } = useAppShellContext();
+      const { isMenuPopover } = useAppShellMenuContext();
       const collapsed = isMenuPopover ? false : defaultCollapsed;
-      
+
       return (
         <Menu collapse={collapsed}>
           <Menu.Header>

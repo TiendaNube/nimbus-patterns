@@ -1,4 +1,5 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
+import { Transition } from "react-transition-group";
 
 import { Box } from "@nimbus-ds/components";
 import {
@@ -15,6 +16,7 @@ import {
 import { AppShellHeader } from "./components";
 
 import { AppShellProps, AppShellComponents } from "./appShell.types";
+import { AppShellMenuContext } from "./contexts/AppShellMenuContext";
 import { AppShellContext } from "./contexts/AppShellContext";
 
 const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
@@ -35,8 +37,6 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   menuCollapsedWidth = "48px",
   menuBehavior = "inline",
   menuFlyout = { trigger: "manual" },
-  menuCollapsed,
-  menuExpandedContent,
 
   ...rest
 }: AppShellProps) => {
@@ -45,6 +45,8 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
     controlledExpanded === undefined
       ? uncontrolledExpanded
       : controlledExpanded;
+
+  const [isMenuExpanded, setIsMenuExpanded] = useState(expanded);
 
   const sidebarWidth = String(
     expanded ? menuExpandedWidth : menuCollapsedWidth
@@ -73,9 +75,8 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         setUncontrolledFlyoutOpen(open);
       }
       onOpenChange?.(open);
-      onMenuExpandedChange?.(open);
     },
-    [controlledOpen, onOpenChange, onMenuExpandedChange]
+    [controlledOpen, onOpenChange]
   );
 
   // Floating UI interactions
@@ -100,9 +101,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
     role,
   ]);
 
-  const collapsedContent = menuCollapsed ?? menu;
-  const expandedContent = menuExpandedContent ?? menu;
-  const hasMenu = Boolean(collapsedContent || expandedContent);
+  const hasMenu = Boolean(menu);
 
   const appShellMenuContext = useMemo(
     () => ({
@@ -111,73 +110,106 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
     []
   );
 
-  const popoverAppShellContext = useMemo(
+  const popoverAppShellMenuContext = useMemo(
     () => ({
       isMenuPopover: true,
     }),
     []
   );
 
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
+
+  const appShellContextValue = useMemo(
+    () => ({
+      isMenuCollapsed: !isMenuExpanded,
+    }),
+    [isMenuExpanded]
+  );
+
   return (
-    <Box {...rest} display="flex">
-      {hasMenu && (
-        <Box
-          {...menuProperties}
-          width={sidebarWidth}
-          height="100vh"
-          position="sticky"
-          top="0"
-          left="0"
-          borderStyle="solid"
-          borderWidth="none"
-          borderRightWidth="1"
-          borderColor="neutral-surfaceDisabled"
-          transitionProperty="all"
-          transitionDuration="base"
-          transitionTimingFunction="ease-in-out"
-          ref={refs.setReference}
-          {...getReferenceProps()}
-        >
-          <AppShellContext.Provider value={appShellMenuContext}>
-            {menu}
-          </AppShellContext.Provider>
-        </Box>
-      )}
-      <Box
-        display="flex"
-        flexDirection="column"
-        flex="1 1 auto"
-        backgroundColor="neutral-surface"
-        width="100%"
-      >
-        {children}
-      </Box>
-      {isPopoverMode && !expanded && flyoutOpen && (
-        <AppShellContext.Provider value={popoverAppShellContext}>
-          <FloatingPortal id="nimbus-popover-floating">
+    <AppShellContext.Provider value={appShellContextValue}>
+      <Box {...rest} display="flex">
+        {hasMenu && (
+          <Transition
+            in={expanded}
+            nodeRef={sidebarRef}
+            timeout={{ enter: 0, appear: 0, exit: 175 }}
+            addEndListener={(done: () => void) => {
+              const el = sidebarRef.current;
+              if (!el) return done();
+              const handler = (e: TransitionEvent) => {
+                if (e.propertyName === "width") {
+                  el.removeEventListener("transitionend", handler);
+                  done();
+                }
+              };
+              return el.addEventListener("transitionend", handler);
+            }}
+            onEntered={() => setIsMenuExpanded(true)}
+            onExited={() => setIsMenuExpanded(false)}
+          >
             <Box
-              backgroundColor="neutral-background"
-              boxShadow="2"
+              {...menuProperties}
+              width={sidebarWidth}
+              height="100vh"
+              position="sticky"
+              top="0"
+              left="0"
               borderStyle="solid"
               borderWidth="none"
               borderRightWidth="1"
               borderColor="neutral-surfaceDisabled"
-              {...flyoutBoxProps}
-              position="fixed"
-              top="0"
-              left="0"
-              height="100vh"
-              width={String(flyoutWidth ?? "18rem")}
-              zIndex={flyoutZIndex ?? "900"}
-              ref={refs.setFloating}
-              {...getFloatingProps()}
+              transitionProperty="all"
+              transitionDuration="base"
+              transitionTimingFunction="ease-in-out"
+              ref={(node) => {
+                sidebarRef.current = node;
+                refs.setReference(node);
+              }}
+              {...getReferenceProps()}
             >
-              {menu}
+              <AppShellMenuContext.Provider value={appShellMenuContext}>
+                {menu}
+              </AppShellMenuContext.Provider>
             </Box>
-          </FloatingPortal>
-        </AppShellContext.Provider>
-      )}
-    </Box>
+          </Transition>
+        )}
+        <Box
+          display="flex"
+          flexDirection="column"
+          flex="1 1 auto"
+          backgroundColor="neutral-surface"
+          width="100%"
+        >
+          {children}
+        </Box>
+        {isPopoverMode && !expanded && flyoutOpen && (
+          <AppShellMenuContext.Provider value={popoverAppShellMenuContext}>
+            <FloatingPortal id="nimbus-popover-floating">
+              <Box
+                backgroundColor="neutral-background"
+                boxShadow="2"
+                borderStyle="solid"
+                borderWidth="none"
+                borderRightWidth="1"
+                borderColor="neutral-surfaceDisabled"
+                {...flyoutBoxProps}
+                position="fixed"
+                top="0"
+                left="0"
+                height="100vh"
+                width={String(flyoutWidth ?? "18rem")}
+                zIndex={flyoutZIndex ?? "900"}
+                ref={refs.setFloating}
+                {...getFloatingProps()}
+              >
+                {menu}
+              </Box>
+            </FloatingPortal>
+          </AppShellMenuContext.Provider>
+        )}
+      </Box>
+    </AppShellContext.Provider>
   );
 };
 

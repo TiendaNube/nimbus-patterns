@@ -80,13 +80,13 @@ export interface AppShellProperties {
    * Optional content to render inside the collapsed rail. Falls back to `menu` when not provided.
    * @TJS-type React.ReactNode
    */
-  menuCollapsed?: ReactNode;
+  // menuCollapsed?: ReactNode;
 
   /**
    * Optional content to render when expanded (both inline and popover). Falls back to `menu` when not provided.
    * @TJS-type React.ReactNode
    */
-  menuExpandedContent?: ReactNode;
+  // menuExpandedContent?: ReactNode;
 
 }
 

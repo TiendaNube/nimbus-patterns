@@ -25,11 +25,11 @@ const MenuButton = forwardRef(
     const activeColor = active ? "primary-interactive" : "neutral-textHigh";
     const disabledColor = rest.disabled ? "neutral-textDisabled" : activeColor;
 
-      const collapsedProps: BoxProperties = collapsed
-        ? {
-            justifyContent: "center",
-          }
-        : {};
+    const collapsedProps: BoxProperties = collapsed
+      ? {
+          justifyContent: "center",
+        }
+      : {};
 
     return (
       <Box

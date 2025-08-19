@@ -16,6 +16,7 @@ const MenuHeader: React.FC<MenuHeaderProps> = ({
   const collapsedProps: BoxProperties = collapsed
     ? {
         justifyContent: "center",
+        padding: undefined,
       }
     : {};
 
@@ -27,6 +28,7 @@ const MenuHeader: React.FC<MenuHeaderProps> = ({
       flex="0 1 auto"
       width="100%"
       padding="4"
+      overflow="hidden"
       {...collapsedProps}
     >
       {children}
