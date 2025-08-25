@@ -1,12 +1,10 @@
 import React from "react";
-import { Box, Title, Button } from "@nimbus-ds/components";
-import { Sidebar } from "@nimbus-ds/sidebar";
+import { Box, Title, Button, Sidebar } from "@nimbus-ds/components";
 
 import { SideModalProps } from "./sideModal.types";
 
 
 const SideModal: React.FC<SideModalProps> = ({
-  portalWithin = "viewport",
   container,
   title,
   titleAction,

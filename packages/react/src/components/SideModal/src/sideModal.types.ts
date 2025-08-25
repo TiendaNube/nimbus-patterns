@@ -15,11 +15,6 @@ export interface SideModalProperties
   /**
    * Choose where the portal should render. Defaults to viewport (body).
    */
-  portalWithin?: "viewport" | "appShell";
-  /**
-   * Explicit portal container element. If provided, overrides portalWithin.
-   */
-  container?: HTMLElement | null;
   /**
    * Title.
    */

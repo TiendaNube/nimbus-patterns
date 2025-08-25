@@ -335,7 +335,6 @@ export const withRightChatAndAnchoredSideModal: Story = {
         rightProperties={{ display: { xs: "none", md: "block" } }}
         rightDismissGuard
         centerChildrenRef={centerChildrenRef}
-        dismissExemptAttribute="data-nimbus-dismiss-exempt"
       >
         <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
         <Page maxWidth="800px" position="relative">

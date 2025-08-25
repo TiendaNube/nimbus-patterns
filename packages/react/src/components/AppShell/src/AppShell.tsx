@@ -5,10 +5,7 @@ import { Box } from "@nimbus-ds/components";
 import { AppShellHeader } from "./components";
 
 import { AppShellProps, AppShellComponents } from "./appShell.types";
-import {
-  defaultDismissExemptAttribute,
-  stopDismissPropagation,
-} from "./AppShell.definitions";
+import { defaultDismissExemptAttribute } from "./AppShell.definitions";
 
 const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   className: _className,
@@ -33,43 +30,37 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   centerChildrenRef,
   ...rest
 }: AppShellProps) => {
-  const handleDismissPropagation = React.useCallback(
-    (event: React.SyntheticEvent) => {
-      stopDismissPropagation(event, dismissExemptAttribute);
-    },
-    [dismissExemptAttribute]
-  );
-
   return (
     <Box {...rest} display="flex">
-      {menu && (
+      <Box position="relative" ref={centerChildrenRef} width="100%">
+        {menu && (
+          <Box
+            {...menuProperties}
+            width="18rem"
+            height="100vh"
+            position="sticky"
+            top="0"
+            left="0"
+            borderStyle="solid"
+            borderWidth="none"
+            borderRightWidth="1"
+            borderColor="neutral-surfaceDisabled"
+          >
+            {menu}
+          </Box>
+        )}
         <Box
-          {...menuProperties}
-          width="18rem"
-          height="100vh"
-          position="sticky"
-          top="0"
-          left="0"
-          borderStyle="solid"
-          borderWidth="none"
-          borderRightWidth="1"
-          borderColor="neutral-surfaceDisabled"
+          display="flex"
+          flexDirection="column"
+          flex="1 1 auto"
+          backgroundColor="neutral-surface"
+          width="100%"
+          position="relative"
+          ref={centerChildrenRef}
         >
-          {menu}
+          {children}
         </Box>
-      )}
-      <Box
-        display="flex"
-        flexDirection="column"
-        flex="1 1 auto"
-        backgroundColor="neutral-surface"
-        width="100%"
-        position="relative"
-        ref={centerChildrenRef}
-      >
-        {children}
       </Box>
-
       {right && (
         <Box
           {...rightProperties}
@@ -83,12 +74,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
           borderLeftWidth="1"
           borderColor="neutral-surfaceDisabled"
           {...(rightDismissGuard && {
-            [dismissExemptAttribute]: "",
-            onPointerDownCapture: handleDismissPropagation,
-            onMouseDownCapture: handleDismissPropagation,
-            onTouchStartCapture: handleDismissPropagation,
-            onClickCapture: handleDismissPropagation,
-            onKeyDown: handleDismissPropagation,
+            [dismissExemptAttribute]: true,
           })}
         >
           {right}
