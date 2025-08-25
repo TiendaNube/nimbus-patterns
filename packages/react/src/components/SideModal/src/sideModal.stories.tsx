@@ -317,7 +317,7 @@ export const withoutFooter: Story = {
   },
 };
 
-export const withContainer: Story = {
+export const withRoot: Story = {
   render: (args) => {
     const [{ open }, updateArgs] = useArgs();
     const handleClose = () => updateArgs({ open: !open });
@@ -330,7 +330,7 @@ export const withContainer: Story = {
           {containerRef.current && (
             <SideModal
               {...args}
-              container={containerRef.current}
+              root={containerRef.current}
               onRemove={handleClose}
               open={open}
             />
@@ -353,7 +353,9 @@ export const withContainer: Story = {
         borderColor="neutral-interactive"
         boxSizing="border-box"
       >
-        <Text textAlign="center">This sidebar renders inside the provided container</Text>
+        <Text textAlign="center">
+          This sidebar is anchored to the provided root element
+        </Text>
       </Box>
     ),
   },

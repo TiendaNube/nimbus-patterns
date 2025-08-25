@@ -1,6 +1,6 @@
 import { HTMLAttributes, ReactNode } from "react";
 import {
-  SidebarProperties,
+  SidebarProps,
   ButtonProperties,
   ButtonProps,
 } from "@nimbus-ds/components";
@@ -9,8 +9,14 @@ export type SideModalPadding = "none" | "base";
 
 export interface SideModalProperties
   extends Pick<
-    SidebarProperties,
-    "position" | "onRemove" | "open" | "padding" | "maxWidth" | "zIndex"
+    SidebarProps,
+    | "position"
+    | "onRemove"
+    | "open"
+    | "padding"
+    | "maxWidth"
+    | "zIndex"
+    | "root"
   > {
   /**
    * Choose where the portal should render. Defaults to viewport (body).

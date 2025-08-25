@@ -3,9 +3,7 @@ import { Box, Title, Button, Sidebar } from "@nimbus-ds/components";
 
 import { SideModalProps } from "./sideModal.types";
 
-
 const SideModal: React.FC<SideModalProps> = ({
-  container,
   title,
   titleAction,
   headerAction,
@@ -18,7 +16,7 @@ const SideModal: React.FC<SideModalProps> = ({
   ...rest
 }) => {
   return (
-    <Sidebar {...rest} container={container}>
+    <Sidebar {...rest}>
       <Sidebar.Header padding={paddingHeader || "base"}>
         <Box
           display="flex"

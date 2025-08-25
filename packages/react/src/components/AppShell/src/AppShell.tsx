@@ -32,7 +32,12 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
 }: AppShellProps) => {
   return (
     <Box {...rest} display="flex">
-      <Box position="relative" ref={centerChildrenRef} width="100%">
+      <Box
+        position="relative"
+        width="100%"
+        display="flex"
+        ref={centerChildrenRef}
+      >
         {menu && (
           <Box
             {...menuProperties}

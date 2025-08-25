@@ -10,8 +10,6 @@ import {
   Tag,
   IconButton,
   Tooltip,
-  Input,
-  Popover,
 } from "@nimbus-ds/components";
 
 import { Menu } from "@nimbus-ds/menu";
@@ -325,8 +323,6 @@ export const withRightChatAndAnchoredSideModal: Story = {
 
     const centerChildrenRef = React.useRef<HTMLDivElement>(null);
 
-    console.log("centerChildrenRef.current", centerChildrenRef.current);
-
     return (
       <AppShell
         {...args}
@@ -369,8 +365,7 @@ export const withRightChatAndAnchoredSideModal: Story = {
           open={openAnchored}
           onRemove={() => setOpenAnchored(false)}
           title="Anchored to AppShell center"
-          portalWithin="appShell"
-          container={centerChildrenRef.current}
+          root={centerChildrenRef.current}
         >
           <Text>This SideModal is constrained to the center area.</Text>
         </SideModal>
