@@ -324,43 +324,64 @@ export const withRightChatAndAnchoredSideModal: Story = {
     const centerChildrenRef = React.useRef<HTMLDivElement>(null);
 
     return (
-      <AppShell
-        {...args}
-        menu={sampleMenu}
-        right={<ChatPanel />}
-        rightProperties={{ display: { xs: "none", md: "block" } }}
-        rightDismissGuard
-        centerChildrenRef={centerChildrenRef}
-      >
-        <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
-        <Page maxWidth="800px" position="relative">
-          <Page.Header title="Anchored SideModal demo" />
-          <Page.Body>
-            <Box display="flex" gap="2">
-              <Button onClick={() => setOpenAnchored(true)}>
-                Open anchored SideModal
-              </Button>
-            </Box>
-            <Box
-              mt="4"
-              backgroundColor="primary-surface"
-              borderColor="primary-interactive"
-              borderStyle="dashed"
-              borderWidth="1"
-              borderRadius="2"
-              width="100%"
-              height="500px"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Text fontSize="base" color="primary-interactive">
-                Body content
-              </Text>
-            </Box>
-          </Page.Body>
-        </Page>
-
+      <AppShell {...args} menu={sampleMenu} rightDismissGuard>
+        <Box
+          padding="2"
+          display="flex"
+          justifyContent={"space-between"}
+          gap="2"
+        >
+          {backButton}
+          <Box display="flex" gap="2">
+            {buttonStack}
+          </Box>
+        </Box>
+        <Box display="flex" justifyContent="space-between" gap="2">
+          <Box
+            position="relative"
+            ref={centerChildrenRef}
+            id="ref-element"
+            width="100%"
+          >
+            <Page maxWidth="800px">
+              <Page.Header title="Anchored SideModal demo" />
+              <Page.Body>
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  gap="2"
+                  width="100%"
+                >
+                  <Box width="100%">
+                    <Box display="flex" gap="2">
+                      <Button onClick={() => setOpenAnchored(true)}>
+                        Open anchored SideModal
+                      </Button>
+                    </Box>
+                    <Box
+                      mt="4"
+                      backgroundColor="primary-surface"
+                      borderColor="primary-interactive"
+                      borderStyle="dashed"
+                      borderWidth="1"
+                      borderRadius="2"
+                      width="100%"
+                      height="500px"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <Text fontSize="base" color="primary-interactive">
+                        Body content
+                      </Text>
+                    </Box>
+                  </Box>
+                </Box>
+              </Page.Body>
+            </Page>
+          </Box>
+          <ChatPanel />
+        </Box>
         <SideModal
           open={openAnchored}
           onRemove={() => setOpenAnchored(false)}
