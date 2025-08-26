@@ -9,6 +9,8 @@ const config: Config.InitialOptions = {
   setupFilesAfterEnv: ["./setupTests.ts"],
   coveragePathIgnorePatterns: ["dist"],
   moduleNameMapper: {
+    "@nimbus-ds/common": "<rootDir>/packages/react/src/common",
+    "@common": "<rootDir>/packages/react/src/common",
     // components
     "@nimbus-ds/app-shell":
       "<rootDir>/packages/react/src/components/AppShell/src",
@@ -43,7 +45,7 @@ const config: Config.InitialOptions = {
       "<rootDir>/packages/react/src/components/Calendar/src",
     "@nimbus-ds/empty-app":
       "<rootDir>/packages/react/src/components/EmptyApp/src",
-    "@nimbus-ds/iniital-screen":
+    "@nimbus-ds/initial-screen":
       "<rootDir>/packages/react/src/components/InitialScreen/src",
     "@nimbus-ds/plan-display":
       "<rootDir>/packages/react/src/components/PlanDisplay/src",

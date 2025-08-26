@@ -1,3 +1,3 @@
 export type AppShellMenuContextValue = {
-  isMenuPopover?: boolean;
+  isMenuPopover: boolean;
 };

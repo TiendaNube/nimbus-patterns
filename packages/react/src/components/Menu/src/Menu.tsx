@@ -1,32 +1,22 @@
 import React, { useMemo } from "react";
 import { Box } from "@nimbus-ds/components";
-import { MenuContext } from "./context/MenuContext";
+import { MenuExpandContext } from "@common/contexts";
 
 import { MenuProps, MenuComponents } from "./menu.types";
-import {
-  MenuSection,
-  MenuHeader,
-  MenuBody,
-  MenuFooter,
-  MenuButtonContainer,
-  MenuButtonAccordionContainer,
-} from "./components";
+import { MenuSection, MenuHeader, MenuBody, MenuFooter } from "./components";
+import { MenuButton } from "@nimbus-ds/menubutton";
 
 const Menu: React.FC<MenuProps> & MenuComponents = ({
   className: _className,
   style: _style,
   children,
-  collapse = false,
-  transition = false,
+  expanded = true,
   ...rest
 }: MenuProps) => {
-  const providerValue = useMemo(
-    () => ({ collapsed: collapse, transition }),
-    [collapse, transition]
-  );
+  const providerValue = useMemo(() => ({ expanded }), [expanded]);
 
   return (
-    <MenuContext.Provider value={providerValue}>
+    <MenuExpandContext.Provider value={providerValue}>
       <Box
         {...rest}
         display="flex"
@@ -36,19 +26,16 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
         backgroundColor="neutral-background"
         width="100%"
         boxSizing="border-box"
-        transitionProperty={transition ? "all" : undefined}
-        transitionDuration={transition ? "base" : undefined}
-        transitionTimingFunction={transition ? "ease-in-out" : undefined}
       >
         {children}
       </Box>
-    </MenuContext.Provider>
+    </MenuExpandContext.Provider>
   );
 };
 
 Menu.Section = MenuSection;
-Menu.Button = MenuButtonContainer;
-Menu.ButtonAccordion = MenuButtonAccordionContainer;
+Menu.Button = MenuButton;
+Menu.ButtonAccordion = MenuButton.Accordion;
 Menu.Header = MenuHeader;
 Menu.Body = MenuBody;
 Menu.Footer = MenuFooter;

@@ -18,15 +18,10 @@ export interface MenuProperties {
    */
   children: ReactNode;
   /**
-   * Whether the menu should render in collapsed mode (icon-only).
-   * Defaults to false (expanded).
+   * Whether the menu should render in expanded mode.
+   * Defaults to true.
    */
-  collapse?: boolean;
-  /**
-   * Whether the menu should animate its size/appearance transitions internally.
-   * Defaults to false to allow parent containers like AppShell to handle transitions.
-   */
-  transition?: boolean;
+  expanded?: boolean;
 }
 
 export type MenuProps = MenuProperties &

@@ -30,10 +30,6 @@ export interface MenuButtonProperties {
    * @TJS-type React.ReactNode
    */
   children?: ReactNode;
-  /**
-   * Whether the menu is collapsed (icon-only).
-   */
-  collapsed?: boolean;
 }
 
 export type MenuButtonBaseProps = MenuButtonProperties &

@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, BoxProperties } from "@nimbus-ds/components";
+import { useMenuExpandContext } from "@common/contexts";
 
 import { MenuBodyProps } from "./menuBody.types";
-import { useMenuContext } from "../../context/MenuContext";
 
 const MenuBody: React.FC<MenuBodyProps> = ({
   className: _className,
@@ -10,9 +10,9 @@ const MenuBody: React.FC<MenuBodyProps> = ({
   children,
   ...rest
 }: MenuBodyProps) => {
-  const { collapsed } = useMenuContext();
+  const { expanded } = useMenuExpandContext();
 
-  const collapsedProps: BoxProperties = collapsed
+  const collapsedProps: BoxProperties = !expanded
     ? {
         paddingX: "none",
       }

@@ -5,6 +5,7 @@ import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
 import { MenuButtonBaseProps, MenuButtonComponents } from "./menuButton.types";
 import { MenuButtonAccordion } from "./components";
+import { useMenuExpandContext } from "@common/contexts";
 
 const MenuButton = forwardRef(
   (
@@ -17,15 +18,16 @@ const MenuButton = forwardRef(
       children,
       active = false,
       as = "button",
-      collapsed = false,
       ...rest
     }: MenuButtonBaseProps & { as: any },
     ref
   ) => {
+    const { expanded } = useMenuExpandContext(false);
+
     const activeColor = active ? "primary-interactive" : "neutral-textHigh";
     const disabledColor = rest.disabled ? "neutral-textDisabled" : activeColor;
 
-    const collapsedProps: BoxProperties = collapsed
+    const collapsedProps: BoxProperties = !expanded
       ? {
           justifyContent: "center",
         }
@@ -72,7 +74,8 @@ const MenuButton = forwardRef(
         {IconSrc && (
           <Icon color={disabledColor} source={<IconSrc size={16} />} />
         )}
-        {!collapsed && (
+
+        {expanded && (
           <Box display="inline-flex" flex="1">
             <Text
               fontSize="base"
@@ -84,7 +87,7 @@ const MenuButton = forwardRef(
             </Text>
           </Box>
         )}
-        {!collapsed && children}
+        {expanded && children}
       </Box>
     );
   }

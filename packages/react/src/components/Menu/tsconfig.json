@@ -1,5 +1,5 @@
 {
   "extends": "../../../../../tsconfig.json",
-  "include": ["./src"],
+  "include": ["./src", "../../common/contexts/MenuExpandContext/MenuExpandContext.tsx"],
   "exclude": ["src/**/*.spec.tsx"]
 }

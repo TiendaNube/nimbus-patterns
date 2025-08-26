@@ -1,22 +1,21 @@
 import React from "react";
 
 import { Box, BoxProperties } from "@nimbus-ds/components";
+import { useMenuExpandContext } from "@common/contexts";
 
 import { MenuHeaderProps } from "./menuHeader.types";
-import { useMenuContext } from "../../context/MenuContext";
 
 const MenuHeader: React.FC<MenuHeaderProps> = ({
   className: _className,
   style: _style,
   children,
-  ...rest
+  ...rest 
 }: MenuHeaderProps) => {
-  const { collapsed } = useMenuContext();
+  const { expanded } = useMenuExpandContext();
 
-  const collapsedProps: BoxProperties = collapsed
+  const collapsedProps: BoxProperties = !expanded
     ? {
         justifyContent: "center",
-        padding: undefined,
       }
     : {};
 

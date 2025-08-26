@@ -33,8 +33,7 @@ import {
 } from "@nimbus-ds/icons";
 
 import { AppShell } from "./AppShell";
-import { useAppShellMenuContext } from "./hooks/useAppShellMenuContext";
-import { useAppShellContext } from "./hooks/useAppShellContext";
+import { useAppShellMenuContext } from ".";
 
 const meta: Meta<typeof AppShell> = {
   title: "Patterns/AppShell",
@@ -145,25 +144,23 @@ const buttonStack = (
   </>
 );
 
-const AppMenu = () => {
+const AppMenu = ({ menuExpanded }: { menuExpanded: boolean }) => {
   const { isMenuPopover } = useAppShellMenuContext();
-  const { isMenuCollapsed } = useAppShellContext();
-  console.log("isMenuPopover", isMenuPopover);
-  console.log("isMenuCollapsed", isMenuCollapsed);
-  const collapsed = isMenuPopover ? false : isMenuCollapsed;
+
+  const expanded = isMenuPopover ? true : menuExpanded;
 
   return (
-    <Menu collapse={collapsed}>
+    <Menu expanded={expanded}>
       <Menu.Header>
         <Box
           display="flex"
           gap="2"
-          justifyContent={collapsed ? "center" : "flex-start"}
+          justifyContent={expanded ? "flex-start" : "center"}
           alignItems="center"
           width="100%"
           padding="4"
         >
-          {!collapsed ? (
+          {expanded ? (
             <Icon source={tiendanubeLogo} color="primary-interactive" />
           ) : (
             <Icon source={<TiendanubeIcon />} color="primary-interactive" />
@@ -179,7 +176,7 @@ const AppMenu = () => {
           <Menu.ButtonAccordion
             menuButton={{ startIcon: CashIcon, label: "Ventas" }}
             contentid="content-1"
-            open={!collapsed}
+            open={expanded}
           >
             <Badge appearance="primary" count="1299" />
             <Menu.Button label="Lista de ventas" active />
@@ -250,7 +247,7 @@ export const basic: Story = {
 
 export const demoApp: Story = {
   render: (args) => (
-    <AppShell {...args} menu={<AppMenu />}>
+    <AppShell {...args} menu={<AppMenu menuExpanded={true} />}>
       <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
       <Page maxWidth="800px">
         <Page.Header title="Page demo" />
@@ -278,15 +275,15 @@ export const demoApp: Story = {
   args: {},
 };
 
-export const expandableMenu: Story = {
+export const collapsibleMenu: Story = {
   render: (args) => {
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(true);
     const toggle = () => setIsExpanded(!isExpanded);
 
     return (
       <AppShell
         {...args}
-        menu={<AppMenu />}
+        menu={<AppMenu menuExpanded={isExpanded} />}
         menuExpanded={isExpanded}
       >
         <AppShell.Header
@@ -324,7 +321,7 @@ export const expandableMenu: Story = {
   args: { menuExpanded: true },
 };
 
-export const railWithHoverPopover: Story = {
+export const collapsibleMenuHover: Story = {
   render: () => {
     const [open, setOpen] = React.useState(false);
 
@@ -332,7 +329,7 @@ export const railWithHoverPopover: Story = {
       <AppShell
         menuBehavior="popover"
         menuFlyout={{ trigger: "hover", open, onOpenChange: setOpen }}
-        menu={<AppMenu />}
+        menu={<AppMenu menuExpanded={open} />}
         defaultMenuExpanded={false}
         menuCollapsedWidth="4.5rem"
         menuExpandedWidth="18rem"
@@ -365,24 +362,24 @@ export const railWithHoverPopover: Story = {
   args: {},
 };
 
-export const railWithClickPopover: Story = {
+export const collapsibleMenuClick: Story = {
   render: () => {
     const [open, setOpen] = React.useState(false);
     const toggle = () => setOpen(!open);
 
     const AppClickMenu = ({
-      defaultCollapsed,
+      defaultExpanded,
     }: {
-      defaultCollapsed: boolean;
+      defaultExpanded: boolean;
     }) => {
       const { isMenuPopover } = useAppShellMenuContext();
-      const collapsed = isMenuPopover ? false : defaultCollapsed;
+      const expanded = isMenuPopover ? true : defaultExpanded;
 
       return (
-        <Menu collapse={collapsed}>
+        <Menu expanded={expanded}>
           <Menu.Header>
             <Box display="flex" gap="2">
-              {!collapsed ? (
+              {expanded ? (
                 <Box display="flex" gap="2">
                   <Icon source={tiendanubeLogo} color="primary-interactive" />
                   <IconButton
@@ -421,7 +418,7 @@ export const railWithClickPopover: Story = {
               <Menu.ButtonAccordion
                 menuButton={{ startIcon: CashIcon, label: "Ventas" }}
                 contentid="content-1"
-                open={!collapsed}
+                open={expanded}
               >
                 <Badge appearance="primary" count="1299" />
                 <Menu.Button label="Lista de ventas" active />
@@ -450,7 +447,7 @@ export const railWithClickPopover: Story = {
       <AppShell
         menuBehavior="popover"
         menuFlyout={{ trigger: "manual", open, onOpenChange: setOpen }}
-        menu={<AppClickMenu defaultCollapsed />}
+        menu={<AppClickMenu defaultExpanded={open} />}
         defaultMenuExpanded={false}
       >
         <AppShell.Header rightSlot={buttonStack} />

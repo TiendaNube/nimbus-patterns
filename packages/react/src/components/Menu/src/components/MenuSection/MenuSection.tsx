@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Text, Box } from "@nimbus-ds/components";
-import { useMenuContext } from "../../context/MenuContext";
+import { Text, Box, BoxProperties } from "@nimbus-ds/components";
+import { useMenuExpandContext } from "@common/contexts";
 
 import { MenuSectionProps } from "./menuSection.types";
 
@@ -11,8 +11,14 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   title,
   children,
   ...rest
-}: MenuSectionProps) => {
-  const { collapsed } = useMenuContext();
+}: MenuSectionProps) => { 
+  const { expanded } = useMenuExpandContext();
+
+  const collapsedProps: BoxProperties = !expanded
+    ? {
+        alignItems: "center",
+      }
+    : {};
 
   return (
     <Box
@@ -20,16 +26,19 @@ const MenuSection: React.FC<MenuSectionProps> = ({
       display="flex"
       flexDirection="column"
       gap="1-5"
-      alignItems={collapsed ? "center" : "flex-start"}
+      {...collapsedProps}
     >
       {title &&
-        (collapsed ? (
+        (!expanded ? (
           <Box
             borderTopWidth="1"
             borderBottomWidth="none"
             borderColor="neutral-surfaceHighlight"
             borderStyle="solid"
             width="100%"
+            // Margin to approximate to the same height of the Section expanded title
+            marginTop="2"
+            marginBottom="3"
           />
         ) : (
           <Box>

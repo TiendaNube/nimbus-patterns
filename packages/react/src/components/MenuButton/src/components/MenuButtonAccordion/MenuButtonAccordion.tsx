@@ -9,6 +9,7 @@ import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
 import { MenuButtonAccordionBaseProps } from "./menuButtonAccordion.types";
 import { MenuButton } from "../../MenuButton";
+import { useMenuExpandContext } from "@common/contexts";
 
 const MenuButtonAccordion = forwardRef(
   (
@@ -20,11 +21,12 @@ const MenuButtonAccordion = forwardRef(
       menuButton,
       children,
       as,
-      collapsed,
       ...rest
     }: MenuButtonAccordionBaseProps & { as: any },
     ref
   ) => {
+    const { expanded } = useMenuExpandContext(false);
+
     const [isOpen, setOpen] = useState(false);
     const handleOpen = () => setOpen((prevState) => !prevState);
 
@@ -39,7 +41,6 @@ const MenuButtonAccordion = forwardRef(
       }
       return open ? "neutral-surface" : "transparent";
     };
-    
 
     return (
       <Box
@@ -50,10 +51,9 @@ const MenuButtonAccordion = forwardRef(
         borderRadius="2"
         zIndex={open ? "100" : undefined}
         textDecoration="none"
-        alignSelf={collapsed ? "center" : "stretch"}
+        alignSelf={expanded ? "stretch" : "center"}
       >
         <MenuButton
-          collapsed={collapsed}
           {...menuButton}
           onClick={
             controlledOpen !== undefined ? menuButton.onClick : handleOpen
@@ -61,7 +61,7 @@ const MenuButtonAccordion = forwardRef(
           active={active}
           aria-expanded={open}
         />
-        {open && !collapsed && (
+        {open && expanded && (
           <Box
             id="content-1"
             aria-hidden={!open}
