@@ -11,7 +11,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   title,
   children,
   ...rest
-}: MenuSectionProps) => { 
+}: MenuSectionProps) => {
   const { expanded } = useMenuExpandContext();
 
   const collapsedProps: BoxProperties = !expanded
@@ -29,7 +29,13 @@ const MenuSection: React.FC<MenuSectionProps> = ({
       {...collapsedProps}
     >
       {title &&
-        (!expanded ? (
+        (expanded ? (
+          <Box>
+            <Text color="neutral-textDisabled" fontSize="caption">
+              {title}
+            </Text>
+          </Box>
+        ) : (
           <Box
             borderTopWidth="1"
             borderBottomWidth="none"
@@ -39,13 +45,8 @@ const MenuSection: React.FC<MenuSectionProps> = ({
             // Margin to approximate to the same height of the Section expanded title
             marginTop="2"
             marginBottom="3"
+            data-testid="menu-section--collapsed"
           />
-        ) : (
-          <Box>
-            <Text color="neutral-textDisabled" fontSize="caption">
-              {title}
-            </Text>
-          </Box>
         ))}
       {children}
     </Box>

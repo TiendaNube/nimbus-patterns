@@ -35,7 +35,7 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
 
 Menu.Section = MenuSection;
 Menu.Button = MenuButton;
-Menu.ButtonAccordion = MenuButton.Accordion;
+Menu.ButtonAccordion = MenuButton?.Accordion;
 Menu.Header = MenuHeader;
 Menu.Body = MenuBody;
 Menu.Footer = MenuFooter;

@@ -3,14 +3,17 @@ import { render, screen } from "@testing-library/react";
 
 import { MenuHeader } from "./MenuHeader";
 import { MenuHeaderProps } from "./menuHeader.types";
+import { MenuExpandContext } from "@common/contexts";
 
 const headerChildren = "Header content";
 
 const makeSut = (rest: Omit<MenuHeaderProps, "children">) => {
   render(
-    <MenuHeader {...rest} data-testid="header-element">
-      {headerChildren}
-    </MenuHeader>
+    <MenuExpandContext.Provider value={{ expanded: true }}>
+      <MenuHeader {...rest} data-testid="header-element">
+        {headerChildren}
+      </MenuHeader>
+    </MenuExpandContext.Provider>
   );
 };
 
