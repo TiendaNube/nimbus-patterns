@@ -3,9 +3,9 @@ import React, { ComponentPropsWithRef, forwardRef } from "react";
 import { Icon, Box, Text, BoxProperties } from "@nimbus-ds/components";
 import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
+import { useMenuExpandContext } from "@common/contexts";
 import { MenuButtonBaseProps, MenuButtonComponents } from "./menuButton.types";
 import { MenuButtonAccordion } from "./components";
-import { useMenuExpandContext } from "@common/contexts";
 
 const MenuButton = forwardRef(
   (
@@ -18,11 +18,14 @@ const MenuButton = forwardRef(
       children,
       active = false,
       as = "button",
+      expanded: expandedProp,
       ...rest
     }: MenuButtonBaseProps & { as: any },
     ref
   ) => {
-    const { expanded } = useMenuExpandContext(false);
+    const { expanded: contextExpanded } = useMenuExpandContext(false);
+
+    const expanded = expandedProp ?? contextExpanded;
 
     const activeColor = active ? "primary-interactive" : "neutral-textHigh";
     const disabledColor = rest.disabled ? "neutral-textDisabled" : activeColor;

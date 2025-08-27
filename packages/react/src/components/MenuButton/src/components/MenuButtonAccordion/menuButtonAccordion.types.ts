@@ -26,9 +26,9 @@ export interface MenuButtonAccordionProperties {
    */
   active?: boolean;
   /**
-   * Whether the menu is collapsed (icon-only).
+   * Whether the MenuButtonAccordion is expanded. If not provided, the expanded state will be determined by the context. If provided, it will override the context.
    */
-  collapsed?: boolean;
+  expanded?: boolean;
 }
 
 export type MenuButtonAccordionBaseProps = MenuButtonAccordionProperties & {

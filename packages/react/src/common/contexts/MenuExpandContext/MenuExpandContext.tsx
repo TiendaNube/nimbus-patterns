@@ -1,22 +1,17 @@
 import { createContext, useContext } from "react";
 
-export interface MenuExpandContext {
-  expanded: boolean;
-}
+import { MenuExpandContextValue } from "./MenuExpandContext.types";
+import { initialMenuContext } from "./MenuExpandContext.definitions";
 
-export const initialMenuContext: MenuExpandContext = {
-  expanded: true,
-};
-
-export const MenuExpandContext = createContext<MenuExpandContext | undefined>(
+const MenuExpandContext = createContext<MenuExpandContextValue | undefined>(
   undefined
 );
 
-export const useMenuExpandContext = (enforce: boolean = true): MenuExpandContext => {
+const useMenuExpandContext = (enforce = true): MenuExpandContextValue => {
   const context = useContext(MenuExpandContext);
-  
+
   if (context === undefined) {
-    if(!enforce) {
+    if (!enforce) {
       return initialMenuContext;
     }
 
@@ -26,3 +21,4 @@ export const useMenuExpandContext = (enforce: boolean = true): MenuExpandContext
   return context;
 };
 
+export { MenuExpandContext, useMenuExpandContext };

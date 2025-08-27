@@ -2,9 +2,9 @@ import React, { useMemo } from "react";
 import { Box } from "@nimbus-ds/components";
 import { MenuExpandContext } from "@common/contexts";
 
+import { MenuButton } from "@nimbus-ds/menubutton";
 import { MenuProps, MenuComponents } from "./menu.types";
 import { MenuSection, MenuHeader, MenuBody, MenuFooter } from "./components";
-import { MenuButton } from "@nimbus-ds/menubutton";
 
 const Menu: React.FC<MenuProps> & MenuComponents = ({
   className: _className,

@@ -5,8 +5,8 @@ import { useArgs } from "@storybook/preview-api";
 import { ChevronRightIcon, HomeIcon } from "@nimbus-ds/icons";
 import { Tag, Badge, Icon, Box } from "@nimbus-ds/components";
 
-import { MenuButton, MenuButtonProps } from "./MenuButton";
 import { MenuExpandContext } from "@common/contexts";
+import { MenuButton, MenuButtonProps } from "./MenuButton";
 
 export const Basic: React.FC<MenuButtonProps> = (props: MenuButtonProps) => (
   <MenuButton {...props} />

@@ -247,7 +247,7 @@ export const basic: Story = {
 
 export const demoApp: Story = {
   render: (args) => (
-    <AppShell {...args} menu={<AppMenu menuExpanded={true} />}>
+    <AppShell {...args} menu={<AppMenu menuExpanded />}>
       <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
       <Page maxWidth="800px">
         <Page.Header title="Page demo" />

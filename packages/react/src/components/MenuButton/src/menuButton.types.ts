@@ -30,6 +30,10 @@ export interface MenuButtonProperties {
    * @TJS-type React.ReactNode
    */
   children?: ReactNode;
+  /**
+   * Whether the menu is expanded. If not provided, the expanded state will be determined by the context. If provided, it will override the context.
+   */
+  expanded?: boolean;
 }
 
 export type MenuButtonBaseProps = MenuButtonProperties &
