@@ -117,6 +117,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   return (
     <Box {...rest} display="flex">
       {Boolean(menu) && (
+        // Remove all of this transition IF the Menu will handle its own collapse animation
         <Transition
           in={expanded}
           nodeRef={sidebarRef}
