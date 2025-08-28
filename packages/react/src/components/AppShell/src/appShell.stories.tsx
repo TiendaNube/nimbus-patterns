@@ -319,6 +319,7 @@ export const collapsibleMenu: Story = {
   args: {},
 };
 
+// CHECK WHY IS NOT CENTERED
 export const collapsibleMenuHover: Story = {
   render: () => {
     const [open, setOpen] = React.useState(false);
@@ -328,8 +329,6 @@ export const collapsibleMenuHover: Story = {
         menuBehavior="popover"
         menuFlyout={{ trigger: "hover", open, onOpenChange: setOpen }}
         menu={<AppMenu menuExpanded={open} />}
-        menuCollapsedWidth="4.5rem"
-        menuExpandedWidth="18rem"
       >
         <AppShell.Header rightSlot={buttonStack} />
         <Page maxWidth="800px">

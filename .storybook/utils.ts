@@ -11,9 +11,10 @@ export const convertTsConfigPathsToWebpackAliases = () => {
 
     let aliasPath = absoluteTarget;
 
-    if (absoluteTarget.endsWith("/src")) {
-      const packageDir = path.basename(path.dirname(absoluteTarget));
-      const candidate = path.join(absoluteTarget, `${packageDir}.tsx`);
+    const normalized = path.normalize(absoluteTarget);
+    if (path.basename(normalized) === "src") {
+      const packageDir = path.basename(path.dirname(normalized));
+      const candidate = path.join(normalized, `${packageDir}.tsx`);
       if (fs.existsSync(candidate)) {
         aliasPath = candidate;
       }
