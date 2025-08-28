@@ -1,5 +1,5 @@
 import path from "path";
-import fs from "fs";
+import * as fs from "fs";
 
 export const convertTsConfigPathsToWebpackAliases = () => {
   const rootDir = path.resolve(__dirname, "../");

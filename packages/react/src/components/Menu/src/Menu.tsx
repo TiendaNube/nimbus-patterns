@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Box } from "@nimbus-ds/components";
+import { Box, BoxProps } from "@nimbus-ds/components";
 import { MenuExpandContext } from "@common/contexts";
 
 import { MenuButton } from "@nimbus-ds/menubutton";
@@ -18,6 +18,18 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
     [expandedProp]
   );
 
+  const dynamicProps: BoxProps = useMemo(
+    () =>
+      expandedProp
+        ? {
+            width: "100%",
+          }
+        : {
+            width: "unset",
+          },
+    [expandedProp]
+  );
+
   return (
     <MenuExpandContext.Provider value={providerValue}>
       <Box
@@ -26,8 +38,8 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
         flexDirection="column"
         height="100%"
         backgroundColor="neutral-background"
-        width={expandedProp ? "100%" : "unset"}
         boxSizing="border-box"
+        {...dynamicProps}
       >
         {children}
       </Box>

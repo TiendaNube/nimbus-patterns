@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 import { Text, Box, BoxProperties } from "@nimbus-ds/components";
 import { useMenuExpandContext } from "@common/contexts";
@@ -14,16 +14,20 @@ const MenuSection: React.FC<MenuSectionProps> = ({
 }: MenuSectionProps) => {
   const { expanded } = useMenuExpandContext();
 
-  const collapsedProps: BoxProperties = !expanded
-    ? {
-        maxWidth: "32px",
-        pt: "2",
-      }
-    : {};
+  const dynamicProps: BoxProperties = useMemo(
+    () =>
+      !expanded
+        ? {
+            maxWidth: "32px",
+            pt: "2",
+          }
+        : {},
+    [expanded]
+  );
 
   return (
     <Box
-      {...collapsedProps}
+      {...dynamicProps}
       {...rest}
       display="flex"
       flexDirection="column"

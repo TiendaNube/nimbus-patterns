@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 import { Box, BoxProperties } from "@nimbus-ds/components";
 import { useMenuExpandContext } from "@common/contexts";
@@ -13,13 +13,19 @@ const MenuHeader: React.FC<MenuHeaderProps> = ({
 }: MenuHeaderProps) => {
   const { expanded } = useMenuExpandContext();
 
-  const collapsedProps: BoxProperties = !expanded
-    ? {
-        justifyContent: "center",
-        paddingX: "3",
-        paddingY: "4",
-      }
-    : {};
+  const dynamicProps: BoxProperties = useMemo(
+    () =>
+      !expanded
+        ? {
+            justifyContent: "center",
+            paddingX: "3",
+            paddingY: "4",
+          }
+        : {
+            padding: "4",
+          },
+    [expanded]
+  );
 
   return (
     <Box
@@ -28,9 +34,8 @@ const MenuHeader: React.FC<MenuHeaderProps> = ({
       display="flex"
       flex="0 1 auto"
       width="100%"
-      padding="4"
       overflow="hidden"
-      {...collapsedProps}
+      {...dynamicProps}
     >
       {children}
     </Box>

@@ -10,6 +10,7 @@ const meta: Meta<typeof Menu> = {
   component: Menu,
   argTypes: {
     children: { control: { disable: true } },
+    expanded: { control: 'boolean', defaultValue: true },
   },
   tags: ["autodocs"],
 };

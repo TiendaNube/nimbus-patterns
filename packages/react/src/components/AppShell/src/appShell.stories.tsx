@@ -275,7 +275,7 @@ export const demoApp: Story = {
 
 export const collapsibleMenu: Story = {
   render: (args) => {
-    const [isExpanded, setIsExpanded] = useState(true);
+    const [isExpanded, setIsExpanded] = useState(false);
     const toggle = () => setIsExpanded(!isExpanded);
 
     return (
@@ -316,7 +316,7 @@ export const collapsibleMenu: Story = {
       </AppShell>
     );
   },
-  args: { menuExpanded: true },
+  args: {},
 };
 
 export const collapsibleMenuHover: Story = {
@@ -328,7 +328,6 @@ export const collapsibleMenuHover: Story = {
         menuBehavior="popover"
         menuFlyout={{ trigger: "hover", open, onOpenChange: setOpen }}
         menu={<AppMenu menuExpanded={open} />}
-        defaultMenuExpanded={false}
         menuCollapsedWidth="4.5rem"
         menuExpandedWidth="18rem"
       >
@@ -446,7 +445,6 @@ export const collapsibleMenuClick: Story = {
         menuBehavior="popover"
         menuFlyout={{ trigger: "manual", open, onOpenChange: setOpen }}
         menu={<AppClickMenu defaultExpanded={open} />}
-        defaultMenuExpanded={false}
       >
         <AppShell.Header rightSlot={buttonStack} />
         <Page maxWidth="800px">

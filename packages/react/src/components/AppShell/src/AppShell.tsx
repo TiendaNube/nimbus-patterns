@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
 import { Box } from "@nimbus-ds/components";
 import {
@@ -28,24 +28,13 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       md: "block",
     },
   },
-  menuExpanded: controlledExpanded,
-  defaultMenuExpanded = true,
-  onMenuExpandedChange,
+  menuExpanded,
   menuExpandedWidth = "18rem",
   menuCollapsedWidth = "48px",
   menuBehavior = "inline",
   menuFlyout = { trigger: "manual" },
-
   ...rest
 }: AppShellProps) => {
-  const [uncontrolledExpanded] = useState<boolean>(defaultMenuExpanded);
-  const expanded =
-    controlledExpanded === undefined
-      ? uncontrolledExpanded
-      : controlledExpanded;
-
-  const menuWidth = String(expanded ? menuExpandedWidth : menuCollapsedWidth);
-
   const isPopoverMode = menuBehavior === "popover";
 
   const {
@@ -55,8 +44,6 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
     onOpenChange,
     hoverOpenDelayMs: hoverOpenDelay = 100,
     hoverCloseDelayMs: hoverCloseDelay = 150,
-    width: flyoutWidth,
-    zIndex: flyoutZIndex,
     ...flyoutBoxProps
   } = menuFlyout ?? {};
   const [uncontrolledFlyoutOpen, setUncontrolledFlyoutOpen] =
@@ -74,7 +61,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
 
   // Floating UI interactions
   const { refs, context } = useFloating({
-    open: isPopoverMode && !expanded ? flyoutOpen : false,
+    open: isPopoverMode && !menuExpanded ? flyoutOpen : false,
     onOpenChange: setFlyout,
   });
 
@@ -108,14 +95,12 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
     []
   );
 
-  const sidebarRef = useRef<HTMLDivElement | null>(null);
-
   return (
     <Box {...rest} display="flex">
-      {Boolean(menu) && (
+      {menu && (
         <Box
           {...menuProperties}
-          width={menuWidth}
+          width={menuExpanded ? menuExpandedWidth : menuCollapsedWidth}
           height="100vh"
           position="sticky"
           top="0"
@@ -127,10 +112,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
           transitionProperty="width"
           transitionDuration="fast"
           transitionTimingFunction="ease-out"
-          ref={(node) => {
-            sidebarRef.current = node;
-            refs.setReference(node);
-          }}
+          ref={refs.setReference}
           {...getReferenceProps()}
         >
           <AppShellMenuContext.Provider value={appShellMenuContext}>
@@ -147,7 +129,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       >
         {children}
       </Box>
-      {isPopoverMode && !expanded && flyoutOpen && (
+      {isPopoverMode && !menuExpanded && flyoutOpen && (
         <AppShellMenuContext.Provider value={popoverAppShellMenuContext}>
           <FloatingPortal id="nimbus-popover-floating">
             <Box
@@ -157,13 +139,13 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
               borderWidth="none"
               borderRightWidth="1"
               borderColor="neutral-surfaceDisabled"
+              width="18rem"
               {...flyoutBoxProps}
               position="fixed"
               top="0"
               left="0"
+              zIndex="900"
               height="100vh"
-              width={String(flyoutWidth ?? "18rem")}
-              zIndex={flyoutZIndex ?? "900"}
               ref={refs.setFloating}
               {...getFloatingProps()}
             >

@@ -43,17 +43,9 @@ export interface AppShellProperties {
    */
   menuProperties?: Pick<BoxBaseProps, "display">;
   /**
-   * Controls whether the left sidebar (menu) is expanded (true) or collapsed (false). When undefined, the component is uncontrolled and uses defaultMenuExpanded.
+   * Controls whether the left sidebar (menu) is expanded (true) or collapsed (false).
    */
   menuExpanded?: boolean;
-  /**
-   * Initial expansion state when uncontrolled.
-   */
-  defaultMenuExpanded?: boolean;
-  /**
-   * Callback fired when the expansion state changes.
-   */
-  onMenuExpandedChange?: (expanded: boolean) => void;
   /**
    * Sidebar width when expanded. Defaults to "18rem".
    */

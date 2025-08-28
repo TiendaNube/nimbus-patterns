@@ -7,6 +7,11 @@ const MenuExpandContext = createContext<MenuExpandContextValue | undefined>(
   undefined
 );
 
+/**
+ * Read Menu expand/collapse state.
+ * @param enforce When false, returns `initialMenuContext` if no provider is present.
+ * @throws If `enforce=true` and used without a provider.
+ */
 const useMenuExpandContext = (enforce = true): MenuExpandContextValue => {
   const context = useContext(MenuExpandContext);
 
@@ -15,7 +20,9 @@ const useMenuExpandContext = (enforce = true): MenuExpandContextValue => {
       return initialMenuContext;
     }
 
-    throw new Error("MenuExpand components must be used within a MenuExpand");
+    throw new Error(
+      "Menu subcomponents must be used within MenuExpandContext.Provider"
+    );
   }
 
   return context;
