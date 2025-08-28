@@ -33,7 +33,7 @@ const MenuButtonAccordion = forwardRef(
     const handleOpen = () => setOpen((prevState) => !prevState);
 
     const open = useMemo(
-      () => (controlledOpen === undefined ? isOpen : controlledOpen),
+      () => controlledOpen ?? isOpen,
       [controlledOpen, isOpen]
     );
 

@@ -44,9 +44,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       ? uncontrolledExpanded
       : controlledExpanded;
 
-  const menuWidth = String(
-    expanded ? menuExpandedWidth : menuCollapsedWidth
-  );
+  const menuWidth = String(expanded ? menuExpandedWidth : menuCollapsedWidth);
 
   const isPopoverMode = menuBehavior === "popover";
 
@@ -63,8 +61,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   } = menuFlyout ?? {};
   const [uncontrolledFlyoutOpen, setUncontrolledFlyoutOpen] =
     useState(defaultOpen);
-  const flyoutOpen =
-    controlledOpen === undefined ? uncontrolledFlyoutOpen : controlledOpen;
+  const flyoutOpen = controlledOpen ?? uncontrolledFlyoutOpen;
   const setFlyout = useCallback(
     (open: boolean) => {
       if (controlledOpen === undefined) {
