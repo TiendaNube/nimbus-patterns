@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 
+import { MenuExpandContext } from "@common/contexts";
 import { MenuSection } from "./MenuSection";
 import { MenuSectionProps } from "./menuSection.types";
-import { MenuExpandContext } from "@common/contexts";
 
 const sectionChildren = "Body content";
 const sectionTitle = "Title content";

@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 
+import { MenuExpandContext } from "@common/contexts";
 import { MenuHeader } from "./MenuHeader";
 import { MenuHeaderProps } from "./menuHeader.types";
-import { MenuExpandContext } from "@common/contexts";
 
 const headerChildren = "Header content";
 

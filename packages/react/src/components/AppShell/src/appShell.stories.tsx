@@ -150,21 +150,13 @@ const AppMenu = ({ menuExpanded }: { menuExpanded: boolean }) => {
   const expanded = isMenuPopover ? true : menuExpanded;
 
   return (
-    <Menu expanded={expanded} >
+    <Menu expanded={expanded}>
       <Menu.Header>
-        <Box
-          display="flex"
-          gap="2"
-          justifyContent={expanded ? "flex-start" : "center"}
-          alignItems="center"
-          width="100%"
-        >
-          {expanded ? (
-            <Icon source={tiendanubeLogo} color="primary-interactive" />
-          ) : (
-            <Icon source={<TiendanubeIcon />} color="primary-interactive" />
-          )}
-        </Box>
+        {expanded ? (
+          <Icon source={tiendanubeLogo} color="primary-interactive" />
+        ) : (
+          <Icon source={<TiendanubeIcon />} color="primary-interactive" />
+        )}
       </Menu.Header>
       <Menu.Body>
         <Menu.Section>
@@ -172,15 +164,22 @@ const AppMenu = ({ menuExpanded }: { menuExpanded: boolean }) => {
           <Menu.Button startIcon={StatsIcon} label="Estadísticas" />
         </Menu.Section>
         <Menu.Section title="Administrar">
-          <Menu.ButtonAccordion
-            menuButton={{ startIcon: CashIcon, label: "Ventas" }}
-            contentid="content-1"
-            open={expanded}
-          >
-            <Badge appearance="primary" count="1299" />
-            <Menu.Button label="Lista de ventas" active />
-            <Menu.Button label="Exportar lista" />
-          </Menu.ButtonAccordion>
+          <Box backgroundColor="primary-surface" borderRadius="2">
+            <Menu.ButtonAccordion
+              open
+              contentid="content-1"
+              menuButton={{
+                id: "control-1",
+                startIcon: CashIcon,
+                label: "Ventas",
+                children: <Badge appearance="primary" count="1299" />,
+                "aria-controls": "content-1",
+              }}
+            >
+              <Menu.Button label="Lista de ventas" active />
+              <Menu.Button label="Exportar lista" />
+            </Menu.ButtonAccordion>
+          </Box>
           <Menu.Button startIcon={TagIcon} label="Productos" />
           <Menu.Button startIcon={UserIcon} label="Clientes">
             <Tag appearance="primary">Nuevo</Tag>

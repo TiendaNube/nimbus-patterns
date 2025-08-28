@@ -14,8 +14,8 @@ const MenuBody: React.FC<MenuBodyProps> = ({
 
   const collapsedProps: BoxProperties = !expanded
     ? {
-        paddingX: "none",
         pb: "none",
+        alignItems: "center",
       }
     : {};
 

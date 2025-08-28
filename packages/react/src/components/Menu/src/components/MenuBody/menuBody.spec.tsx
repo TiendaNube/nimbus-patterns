@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 
+import { MenuExpandContext } from "@common/contexts";
 import { MenuBody } from "./MenuBody";
 import { MenuBodyProps } from "./menuBody.types";
-import { MenuExpandContext } from "@common/contexts";
 
 const bodyChildren = "Body content";
 

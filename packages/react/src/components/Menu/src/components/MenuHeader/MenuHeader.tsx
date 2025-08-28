@@ -9,14 +9,15 @@ const MenuHeader: React.FC<MenuHeaderProps> = ({
   className: _className,
   style: _style,
   children,
-  ...rest 
+  ...rest
 }: MenuHeaderProps) => {
   const { expanded } = useMenuExpandContext();
 
   const collapsedProps: BoxProperties = !expanded
     ? {
         justifyContent: "center",
-        paddingX: "none"
+        paddingX: "3",
+        paddingY: "4",
       }
     : {};
 

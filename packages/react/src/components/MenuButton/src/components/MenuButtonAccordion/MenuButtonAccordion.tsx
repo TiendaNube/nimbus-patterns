@@ -53,7 +53,6 @@ const MenuButtonAccordion = forwardRef(
         borderRadius="2"
         zIndex={open ? "100" : undefined}
         textDecoration="none"
-        alignSelf={expanded ? "stretch" : "center"}
       >
         <MenuButton
           {...menuButton}

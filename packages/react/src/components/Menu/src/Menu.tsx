@@ -26,7 +26,7 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
         flexDirection="column"
         height="100%"
         backgroundColor="neutral-background"
-        width="100%"
+        width={expandedProp ? "100%" : "unset"}
         boxSizing="border-box"
       >
         {children}

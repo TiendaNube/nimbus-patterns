@@ -16,22 +16,22 @@ const MenuSection: React.FC<MenuSectionProps> = ({
 
   const collapsedProps: BoxProperties = !expanded
     ? {
-        alignItems: "center",
-        maxWidth: "48px", // Check this and PR
+        maxWidth: "32px",
+        pt: "2",
       }
     : {};
 
   return (
     <Box
+      {...collapsedProps}
       {...rest}
       display="flex"
       flexDirection="column"
       gap="1-5"
-      {...collapsedProps}
     >
       {title &&
         (expanded ? (
-          <Box>
+          <Box pl="2" pt="2">
             <Text color="neutral-textDisabled" fontSize="caption">
               {title}
             </Text>

@@ -35,7 +35,9 @@ export const menuInsideSidebar: Story = {
       </>
     );
   },
-  args: {},
+  args: {
+    expanded: false,
+  },
 };
 
 export const menuInsideFixedBar: Story = {
@@ -71,7 +73,9 @@ export const menuInsideFixedBar: Story = {
       />
     </Box>
   ),
-  args: {},
+  args: {
+    expanded: true
+  },
 };
 
 export const menuCollapsed: Story = {

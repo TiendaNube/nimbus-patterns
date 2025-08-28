@@ -76,9 +76,7 @@ const MenuButton = forwardRef(
         {...collapsedProps}
       >
         {IconSrc && (
-          <Box mt={expanded ? "none" : "2"}>
-            <Icon color={disabledColor} source={<IconSrc size={16} />} />
-          </Box>
+          <Icon color={disabledColor} source={<IconSrc size={16} />} />
         )}
 
         {expanded && (
