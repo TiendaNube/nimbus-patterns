@@ -17,6 +17,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   const collapsedProps: BoxProperties = !expanded
     ? {
         alignItems: "center",
+        maxWidth: "48px", // Check this and PR
       }
     : {};
 

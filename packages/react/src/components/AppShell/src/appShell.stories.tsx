@@ -150,7 +150,7 @@ const AppMenu = ({ menuExpanded }: { menuExpanded: boolean }) => {
   const expanded = isMenuPopover ? true : menuExpanded;
 
   return (
-    <Menu expanded={expanded}>
+    <Menu expanded={expanded} >
       <Menu.Header>
         <Box
           display="flex"
@@ -158,7 +158,6 @@ const AppMenu = ({ menuExpanded }: { menuExpanded: boolean }) => {
           justifyContent={expanded ? "flex-start" : "center"}
           alignItems="center"
           width="100%"
-          padding="4"
         >
           {expanded ? (
             <Icon source={tiendanubeLogo} color="primary-interactive" />

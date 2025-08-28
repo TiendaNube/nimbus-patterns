@@ -16,6 +16,7 @@ const MenuHeader: React.FC<MenuHeaderProps> = ({
   const collapsedProps: BoxProperties = !expanded
     ? {
         justifyContent: "center",
+        paddingX: "none"
       }
     : {};
 

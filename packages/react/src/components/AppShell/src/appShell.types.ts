@@ -25,7 +25,7 @@ export type AppShellMenuFlyoutOptions = {
   hoverOpenDelayMs?: number;
   /** Hover close delay in ms (only when trigger is 'hover'). */
   hoverCloseDelayMs?: number;
-} & Omit<BoxProps, "position" | "top" | "left" | "right" | "bottom" | "height" >;
+} & Omit<BoxProps, "position" | "top" | "left" | "right" | "bottom" | "height">;
 
 export interface AppShellProperties {
   /**
@@ -57,11 +57,11 @@ export interface AppShellProperties {
   /**
    * Sidebar width when expanded. Defaults to "18rem".
    */
-  menuExpandedWidth?: string | number;
+  menuExpandedWidth?: BoxBaseProps["width"];
   /**
    * Sidebar width when collapsed (rail). If provided, the sidebar will render in a compact rail while collapsed. Defaults to "4.5rem".
    */
-  menuCollapsedWidth?: string | number;
+  menuCollapsedWidth?: BoxBaseProps["width"];
 
   /**
    * Determines how the left sidebar behaves when collapsed.
@@ -75,19 +75,6 @@ export interface AppShellProperties {
    * Prefer using this over individual top-level props for simpler usage.
    */
   menuFlyout?: AppShellMenuFlyoutOptions;
-
-  /**
-   * Optional content to render inside the collapsed rail. Falls back to `menu` when not provided.
-   * @TJS-type React.ReactNode
-   */
-  // menuCollapsed?: ReactNode;
-
-  /**
-   * Optional content to render when expanded (both inline and popover). Falls back to `menu` when not provided.
-   * @TJS-type React.ReactNode
-   */
-  // menuExpandedContent?: ReactNode;
-
 }
 
 export type AppShellProps = AppShellProperties &

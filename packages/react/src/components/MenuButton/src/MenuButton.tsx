@@ -33,6 +33,7 @@ const MenuButton = forwardRef(
     const collapsedProps: BoxProperties = !expanded
       ? {
           justifyContent: "center",
+          paddingX: "none",
         }
       : {};
 
@@ -75,7 +76,9 @@ const MenuButton = forwardRef(
         {...collapsedProps}
       >
         {IconSrc && (
-          <Icon color={disabledColor} source={<IconSrc size={16} />} />
+          <Box mt={expanded ? "none" : "2"}>
+            <Icon color={disabledColor} source={<IconSrc size={16} />} />
+          </Box>
         )}
 
         {expanded && (

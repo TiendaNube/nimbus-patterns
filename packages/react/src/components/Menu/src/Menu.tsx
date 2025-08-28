@@ -10,10 +10,13 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
   className: _className,
   style: _style,
   children,
-  expanded = true,
+  expanded: expandedProp = true,
   ...rest
 }: MenuProps) => {
-  const providerValue = useMemo(() => ({ expanded }), [expanded]);
+  const providerValue = useMemo(
+    () => ({ expanded: expandedProp }),
+    [expandedProp]
+  );
 
   return (
     <MenuExpandContext.Provider value={providerValue}>
@@ -21,7 +24,6 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
         {...rest}
         display="flex"
         flexDirection="column"
-        flex="0 0 auto"
         height="100%"
         backgroundColor="neutral-background"
         width="100%"

@@ -1,5 +1,4 @@
 import React, { useCallback, useMemo, useRef, useState } from "react";
-import { Transition } from "react-transition-group";
 
 import { Box } from "@nimbus-ds/components";
 import {
@@ -45,7 +44,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       ? uncontrolledExpanded
       : controlledExpanded;
 
-  const sidebarWidth = String(
+  const menuWidth = String(
     expanded ? menuExpandedWidth : menuCollapsedWidth
   );
 
@@ -117,48 +116,30 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   return (
     <Box {...rest} display="flex">
       {Boolean(menu) && (
-        // Remove all of this transition IF the Menu will handle its own collapse animation
-        <Transition
-          in={expanded}
-          nodeRef={sidebarRef}
-          timeout={{ enter: 0, appear: 0, exit: 175 }}
-          addEndListener={(done: () => void) => {
-            const el = sidebarRef.current;
-            if (!el) return done();
-            const handler = (e: TransitionEvent) => {
-              if (e.propertyName === "width") {
-                el.removeEventListener("transitionend", handler);
-                done();
-              }
-            };
-            return el.addEventListener("transitionend", handler);
+        <Box
+          {...menuProperties}
+          width={menuWidth}
+          height="100vh"
+          position="sticky"
+          top="0"
+          left="0"
+          borderStyle="solid"
+          borderWidth="none"
+          borderRightWidth="1"
+          borderColor="neutral-surfaceDisabled"
+          transitionProperty="width"
+          transitionDuration="fast"
+          transitionTimingFunction="ease-out"
+          ref={(node) => {
+            sidebarRef.current = node;
+            refs.setReference(node);
           }}
+          {...getReferenceProps()}
         >
-          <Box
-            {...menuProperties}
-            width={sidebarWidth}
-            height="100vh"
-            position="sticky"
-            top="0"
-            left="0"
-            borderStyle="solid"
-            borderWidth="none"
-            borderRightWidth="1"
-            borderColor="neutral-surfaceDisabled"
-            transitionProperty="all"
-            transitionDuration="base"
-            transitionTimingFunction="ease-in-out"
-            ref={(node) => {
-              sidebarRef.current = node;
-              refs.setReference(node);
-            }}
-            {...getReferenceProps()}
-          >
-            <AppShellMenuContext.Provider value={appShellMenuContext}>
-              {menu}
-            </AppShellMenuContext.Provider>
-          </Box>
-        </Transition>
+          <AppShellMenuContext.Provider value={appShellMenuContext}>
+            {menu}
+          </AppShellMenuContext.Provider>
+        </Box>
       )}
       <Box
         display="flex"
