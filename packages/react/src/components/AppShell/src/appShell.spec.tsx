@@ -2,10 +2,10 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+import { Box } from "@nimbus-ds/components";
 import { AppShell } from "./AppShell";
 import { AppShellProps } from "./appShell.types";
 import { useAppShellMenuContext } from "./contexts";
-import { Box } from "@nimbus-ds/components";
 
 const bodyChildren = "Body content";
 
