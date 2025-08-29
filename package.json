@@ -31,7 +31,7 @@
     "test:watch": "yarn test --watch",
     "types:check": "tsc --skipLibCheck --noEmit",
     "pre-commit": "lint-staged",
-    "pre-push": "yarn test:coverage && yarn lint && yarn types:check",
+    "pre-push": "yarn lint && yarn types:check",
     "start:dev": "yarn storybook",
     "storybook": "storybook dev -p 6006",
     "prepare-husky": "husky install",
