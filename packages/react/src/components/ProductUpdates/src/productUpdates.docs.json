@@ -1,7 +1,7 @@
 {
   "id": "productUpdates",
   "name": "ProductUpdates",
-  "totalProps": 21,
+  "totalProps": 20,
   "packageName": "@nimbus-ds/productupdates",
   "version": "1.5.0",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/product-updates",
@@ -547,13 +547,6 @@
       "default": true,
       "type": "boolean",
       "title": "enabledClick",
-      "required": false
-    },
-    {
-      "description": "When enabled, renders an invisible overlay that prevents accidental clicks on elements behind the popover.",
-      "default": false,
-      "type": "boolean",
-      "title": "renderOverlay",
       "required": false
     }
   ],

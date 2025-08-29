@@ -95,20 +95,13 @@
               "default": false,
               "type": "boolean",
               "title": "disabled"
-            },
-            "fullWidth": {
-              "description": "Determines if the button should grow to fill the full width of its container.",
-              "default": false,
-              "type": "boolean",
-              "title": "fullWidth"
             }
           },
           "additionalProperties": false,
           "propertyOrder": [
             "children",
             "appearance",
-            "disabled",
-            "fullWidth"
+            "disabled"
           ],
           "required": [
             "children"
@@ -140,20 +133,13 @@
               "default": false,
               "type": "boolean",
               "title": "disabled"
-            },
-            "fullWidth": {
-              "description": "Determines if the button should grow to fill the full width of its container.",
-              "default": false,
-              "type": "boolean",
-              "title": "fullWidth"
             }
           },
           "additionalProperties": false,
           "propertyOrder": [
             "children",
             "appearance",
-            "disabled",
-            "fullWidth"
+            "disabled"
           ],
           "required": [
             "children"
