@@ -22,9 +22,7 @@ export default meta;
 type Story = StoryObj<typeof FormField>;
 
 export const basic: Story = {
-  render: (args) => {
-    return <FormField.Input {...args} placeholder="Placeholder" />;
-  },
+  render: (args) => <FormField.Input {...args} placeholder="Placeholder" />,
   args: {
     label: "Label text",
     helpText: "Help text",
@@ -34,9 +32,7 @@ export const basic: Story = {
 };
 
 export const asInput: Story = {
-  render: (args) => {
-    return <FormField.Input {...args} placeholder="Placeholder" />;
-  },
+  render: (args) => <FormField.Input {...args} placeholder="Placeholder" />,
   args: {
     label: "Label text",
     helpText: "Help text",
