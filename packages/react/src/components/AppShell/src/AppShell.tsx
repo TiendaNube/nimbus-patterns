@@ -61,7 +61,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
 
   // Floating UI interactions
   const { refs, context } = useFloating({
-    open: isPopoverMode && !menuExpanded ? flyoutOpen : false,
+    open: isPopoverMode ? flyoutOpen : false,
     onOpenChange: setFlyout,
   });
 
@@ -129,7 +129,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       >
         {children}
       </Box>
-      {isPopoverMode && !menuExpanded && flyoutOpen && (
+      {isPopoverMode && flyoutOpen && (
         <AppShellMenuContext.Provider value={popoverAppShellMenuContext}>
           <FloatingPortal id="nimbus-popover-floating">
             <Box
