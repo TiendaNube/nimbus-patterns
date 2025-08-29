@@ -9,3 +9,6 @@ declined:
   - nimbus-patterns
   - "@nimbus-ds/calendar"
   - "@nimbus-ds/editor"
+  - "@nimbus-ds/formfield"
+  - "@nimbus-ds/productupdates"
+  - "@nimbus-ds/sidemodal"
