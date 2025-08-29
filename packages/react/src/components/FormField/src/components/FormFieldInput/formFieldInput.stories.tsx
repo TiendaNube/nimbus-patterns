@@ -24,3 +24,13 @@ export const basic: Story = {
     helpIcon: ExclamationCircleIcon,
   },
 };
+
+export const aiGenerated: Story = {
+  args: {
+    placeholder: "Placeholder",
+    label: "Label text",
+    helpText: "Help text",
+    helpIcon: ExclamationCircleIcon,
+    aiGenerated: true,
+  },
+};
