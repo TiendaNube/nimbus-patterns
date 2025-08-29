@@ -37,6 +37,8 @@
     "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
       "@nimbus-ds/patterns": ["./packages/react/src"],
+      "@common": ["./packages/react/src/common"],
+      "@common/*": ["./packages/react/src/common/*"],
       "@nimbus-ds/patterns-webpack": ["./packages/core/webpack/src"],
       "@nimbus-ds/app-shell": ["./packages/react/src/components/AppShell/src"],
       "@nimbus-ds/callout-card": [

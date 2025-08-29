@@ -25,6 +25,12 @@ export interface MenuButtonAccordionProperties {
    * Sets the state of the button as active/inactive.
    */
   active?: boolean;
+  /**
+   * Whether the MenuButtonAccordion is expanded.
+   * If `undefined`, it follows `MenuExpandContext`.
+   * If provided, it overrides the context.
+   */
+  expanded?: boolean;
 }
 
 export type MenuButtonAccordionBaseProps = MenuButtonAccordionProperties & {

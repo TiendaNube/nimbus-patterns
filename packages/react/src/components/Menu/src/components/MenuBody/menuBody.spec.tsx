@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 
+import { MenuExpandContext } from "@common/contexts";
 import { MenuBody } from "./MenuBody";
 import { MenuBodyProps } from "./menuBody.types";
 
@@ -8,9 +9,11 @@ const bodyChildren = "Body content";
 
 const makeSut = (rest: Omit<MenuBodyProps, "children">) => {
   render(
-    <MenuBody {...rest} data-testid="body-element">
-      {bodyChildren}
-    </MenuBody>
+    <MenuExpandContext.Provider value={{ expanded: true }}>
+      <MenuBody {...rest} data-testid="body-element">
+        {bodyChildren}
+      </MenuBody>
+    </MenuExpandContext.Provider>
   );
 };
 

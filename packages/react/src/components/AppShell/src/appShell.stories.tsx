@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import {
@@ -13,7 +13,6 @@ import {
 } from "@nimbus-ds/components";
 
 import { Menu } from "@nimbus-ds/menu";
-import { MenuButton } from "@nimbus-ds/menubutton";
 import { Page } from "@nimbus-ds/page";
 
 import {
@@ -28,11 +27,13 @@ import {
   QuestionCircleIcon,
   StatsIcon,
   TagIcon,
+  TiendanubeIcon,
   ToolsIcon,
   UserIcon,
 } from "@nimbus-ds/icons";
 
 import { AppShell } from "./AppShell";
+import { useAppShellMenuContext } from ".";
 
 const meta: Meta<typeof AppShell> = {
   title: "Patterns/AppShell",
@@ -121,7 +122,7 @@ const buttonStack = (
         backgroundColor="transparent"
         borderColor={{
           xs: "transparent",
-          hover: "neutral-interactiveHover"
+          hover: "neutral-interactiveHover",
         }}
       />
     </Tooltip>
@@ -132,7 +133,7 @@ const buttonStack = (
         backgroundColor="transparent"
         borderColor={{
           xs: "transparent",
-          hover: "neutral-interactiveHover"
+          hover: "neutral-interactiveHover",
         }}
       />
     </Tooltip>
@@ -143,60 +144,60 @@ const buttonStack = (
   </>
 );
 
-const AppMenu = (
-  <Menu>
-    <Menu.Header>
-      <Box display="flex" gap="2" alignItems="center" width="100%">
-        <Icon source={tiendanubeLogo} color="primary-interactive" />
-      </Box>
-    </Menu.Header>
-    <Menu.Body>
-      <Menu.Section>
-        <MenuButton startIcon={HomeIcon} label="Inicio" />
-        <MenuButton startIcon={StatsIcon} label="Estadísticas" />
-      </Menu.Section>
-      <Menu.Section title="Administrar">
-        <Box backgroundColor="primary-surface" borderRadius="2">
-          <MenuButton
-            id="control-1"
-            aria-expanded
-            aria-controls="content-1"
-            startIcon={CashIcon}
-            label="Ventas"
-          >
-            <Badge appearance="primary" count="1299" />
-          </MenuButton>
-          <Box
-            id="content-1"
-            aria-hidden={false}
-            height="auto"
-            overflow="hidden"
-            pl="6"
-            pt="1"
-            pb="1"
-            pr="1"
-          >
-            <MenuButton label="Lista de ventas" active />
-            <MenuButton label="Exportar lista" />
+const AppMenu = ({ menuExpanded }: { menuExpanded: boolean }) => {
+  const { isMenuPopover } = useAppShellMenuContext();
+
+  const expanded = isMenuPopover ? true : menuExpanded;
+
+  return (
+    <Menu expanded={expanded}>
+      <Menu.Header>
+        {expanded ? (
+          <Icon source={tiendanubeLogo} color="primary-interactive" />
+        ) : (
+          <Icon source={<TiendanubeIcon />} color="primary-interactive" />
+        )}
+      </Menu.Header>
+      <Menu.Body>
+        <Menu.Section>
+          <Menu.Button startIcon={HomeIcon} label="Inicio" />
+          <Menu.Button startIcon={StatsIcon} label="Estadísticas" />
+        </Menu.Section>
+        <Menu.Section title="Administrar">
+          <Box backgroundColor="primary-surface" borderRadius="2">
+            <Menu.ButtonAccordion
+              open
+              contentid="content-1"
+              menuButton={{
+                id: "control-1",
+                startIcon: CashIcon,
+                label: "Ventas",
+                children: <Badge appearance="primary" count="1299" />,
+                "aria-controls": "content-1",
+              }}
+            >
+              <Menu.Button label="Lista de ventas" active />
+              <Menu.Button label="Exportar lista" />
+            </Menu.ButtonAccordion>
           </Box>
-        </Box>
-        <MenuButton startIcon={TagIcon} label="Productos" />
-        <MenuButton startIcon={UserIcon} label="Clientes">
-          <Tag appearance="primary">Nuevo</Tag>
-        </MenuButton>
-        <MenuButton startIcon={DiscountCircleIcon} label="Marketing" />
-      </Menu.Section>
-      <Menu.Section title="Personalizar">
-        <MenuButton startIcon={ToolsIcon} label="Mi Tiendanube" />
-      </Menu.Section>
-      <Menu.Section title="Potenciar">
-        <MenuButton startIcon={AppsIcon} label="Mis aplicaciones" />
-        <MenuButton startIcon={EcosystemIcon} label="Canales de venta" />
-      </Menu.Section>
-    </Menu.Body>
-    <Menu.Footer label="Configuración" startIcon={CogIcon} />
-  </Menu>
-);
+          <Menu.Button startIcon={TagIcon} label="Productos" />
+          <Menu.Button startIcon={UserIcon} label="Clientes">
+            <Tag appearance="primary">Nuevo</Tag>
+          </Menu.Button>
+          <Menu.Button startIcon={DiscountCircleIcon} label="Marketing" />
+        </Menu.Section>
+        <Menu.Section title="Personalizar">
+          <Menu.Button startIcon={ToolsIcon} label="Mi Tiendanube" />
+        </Menu.Section>
+        <Menu.Section title="Potenciar">
+          <Menu.Button startIcon={AppsIcon} label="Mis aplicaciones" />
+          <Menu.Button startIcon={EcosystemIcon} label="Canales de venta" />
+        </Menu.Section>
+      </Menu.Body>
+      <Menu.Footer label="Configuración" startIcon={CogIcon} />
+    </Menu>
+  );
+};
 
 const sampleMenu = (
   <Box
@@ -244,7 +245,7 @@ export const basic: Story = {
 
 export const demoApp: Story = {
   render: (args) => (
-    <AppShell {...args} menu={AppMenu}>
+    <AppShell {...args} menu={<AppMenu menuExpanded />}>
       <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
       <Page maxWidth="800px">
         <Page.Header title="Page demo" />
@@ -269,6 +270,206 @@ export const demoApp: Story = {
       </Page>
     </AppShell>
   ),
+  args: {},
+};
+
+export const collapsibleMenu: Story = {
+  render: (args) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const toggle = () => setIsExpanded(!isExpanded);
+
+    return (
+      <AppShell
+        {...args}
+        menu={<AppMenu menuExpanded={isExpanded} />}
+        menuExpanded={isExpanded}
+      >
+        <AppShell.Header
+          leftSlot={
+            <Button appearance="transparent" onClick={toggle}>
+              Toggle sidebar
+            </Button>
+          }
+          rightSlot={buttonStack}
+        />
+        <Page maxWidth="800px">
+          <Page.Header title="Expandable menu (rail)" />
+          <Page.Body>
+            <Box
+              backgroundColor="primary-surface"
+              borderColor="primary-interactive"
+              borderStyle="dashed"
+              borderWidth="1"
+              borderRadius="2"
+              width="100%"
+              height="500px"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text fontSize="base" color="primary-interactive">
+                Toggle the sidebar to see collapse/expand
+              </Text>
+            </Box>
+          </Page.Body>
+        </Page>
+      </AppShell>
+    );
+  },
+  args: {},
+};
+
+export const collapsibleMenuHover: Story = {
+  render: () => {
+    const [open, setOpen] = React.useState(false);
+
+    return (
+      <AppShell
+        menuBehavior="popover"
+        menuFlyout={{ trigger: "hover", open, onOpenChange: setOpen }}
+        menu={<AppMenu menuExpanded={open} />}
+      >
+        <AppShell.Header rightSlot={buttonStack} />
+        <Page maxWidth="800px">
+          <Page.Header title="Rail with click popover" />
+          <Page.Body>
+            <Box
+              backgroundColor="primary-surface"
+              borderColor="primary-interactive"
+              borderStyle="dashed"
+              borderWidth="1"
+              borderRadius="2"
+              width="100%"
+              height="500px"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text fontSize="base" color="primary-interactive">
+                Use the button inside the rail to toggle the overlay menu
+              </Text>
+            </Box>
+          </Page.Body>
+        </Page>
+      </AppShell>
+    );
+  },
+  args: {},
+};
+
+export const collapsibleMenuClick: Story = {
+  render: () => {
+    const [open, setOpen] = React.useState(false);
+    const toggle = () => setOpen(!open);
+
+    const AppClickMenu = ({
+      defaultExpanded,
+    }: {
+      defaultExpanded: boolean;
+    }) => {
+      const { isMenuPopover } = useAppShellMenuContext();
+      const expanded = isMenuPopover ? true : defaultExpanded;
+
+      return (
+        <Menu expanded={expanded}>
+          <Menu.Header>
+            <Box display="flex" gap="2">
+              {expanded ? (
+                <Box display="flex" gap="2">
+                  <Icon source={tiendanubeLogo} color="primary-interactive" />
+                  <IconButton
+                    source={
+                      <Icon
+                        source={<TiendanubeIcon />}
+                        color="primary-interactive"
+                      />
+                    }
+                    onClick={() => {
+                      toggle();
+                    }}
+                  />
+                </Box>
+              ) : (
+                <IconButton
+                  source={
+                    <Icon
+                      source={<TiendanubeIcon />}
+                      color="primary-interactive"
+                    />
+                  }
+                  onClick={() => {
+                    toggle();
+                  }}
+                />
+              )}
+            </Box>
+          </Menu.Header>
+          <Menu.Body>
+            <Menu.Section>
+              <Menu.Button startIcon={HomeIcon} label="Inicio" />
+              <Menu.Button startIcon={StatsIcon} label="Estadísticas" />
+            </Menu.Section>
+            <Menu.Section title="Administrar">
+              <Menu.ButtonAccordion
+                menuButton={{ startIcon: CashIcon, label: "Ventas" }}
+                contentid="content-1"
+                open={expanded}
+              >
+                <Badge appearance="primary" count="1299" />
+                <Menu.Button label="Lista de ventas" active />
+                <Menu.Button label="Exportar lista" />
+              </Menu.ButtonAccordion>
+              <Menu.Button startIcon={TagIcon} label="Productos" />
+              <Menu.Button startIcon={UserIcon} label="Clientes">
+                <Tag appearance="primary">Nuevo</Tag>
+              </Menu.Button>
+              <Menu.Button startIcon={DiscountCircleIcon} label="Marketing" />
+            </Menu.Section>
+            <Menu.Section title="Personalizar">
+              <Menu.Button startIcon={ToolsIcon} label="Mi Tiendanube" />
+            </Menu.Section>
+            <Menu.Section title="Potenciar">
+              <Menu.Button startIcon={AppsIcon} label="Mis aplicaciones" />
+              <Menu.Button startIcon={EcosystemIcon} label="Canales de venta" />
+            </Menu.Section>
+          </Menu.Body>
+          <Menu.Footer label="Configuración" startIcon={CogIcon} />
+        </Menu>
+      );
+    };
+
+    return (
+      <AppShell
+        menuBehavior="popover"
+        menuFlyout={{ trigger: "manual", open, onOpenChange: setOpen }}
+        menu={<AppClickMenu defaultExpanded={open} />}
+      >
+        <AppShell.Header rightSlot={buttonStack} />
+        <Page maxWidth="800px">
+          <Page.Header title="Rail with click popover" />
+          <Page.Body display="flex" flexDirection="column" gap="2">
+            <Box
+              backgroundColor="primary-surface"
+              borderColor="primary-interactive"
+              borderStyle="dashed"
+              borderWidth="1"
+              borderRadius="2"
+              width="100%"
+              height="500px"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text fontSize="base" color="primary-interactive">
+                Use the Tiendanube icon inside the rail header to toggle the
+                overlay menu
+              </Text>
+            </Box>
+          </Page.Body>
+        </Page>
+      </AppShell>
+    );
+  },
   args: {},
 };
 

@@ -1,5 +1,6 @@
-import React from "react";
-import { Box } from "@nimbus-ds/components";
+import React, { useMemo } from "react";
+import { Box, BoxProperties } from "@nimbus-ds/components";
+import { useMenuExpandContext } from "@common/contexts";
 
 import { MenuBodyProps } from "./menuBody.types";
 
@@ -8,21 +9,38 @@ const MenuBody: React.FC<MenuBodyProps> = ({
   style: _style,
   children,
   ...rest
-}: MenuBodyProps) => (
-  <Box
-    {...rest}
-    display="flex"
-    flexDirection="column"
-    flex="1 1 auto"
-    gap="2"
-    paddingX="2"
-    pb="4"
-    width="100%"
-    overflowY="auto"
-    boxSizing="border-box"
-  >
-    {children}
-  </Box>
-);
+}: MenuBodyProps) => {
+  const { expanded } = useMenuExpandContext();
+
+  const dynamicProps: BoxProperties = useMemo(
+    () =>
+      !expanded
+        ? {
+            alignItems: "center",
+          }
+        : {
+            pb: "4",
+          },
+    [expanded]
+  );
+
+  return (
+    <Box
+      {...rest}
+      display="flex"
+      flexDirection="column"
+      flex="1 1 auto"
+      gap="2"
+      paddingX="2"
+      width="100%"
+      overflowY="auto"
+      overflowX="hidden"
+      boxSizing="border-box"
+      {...dynamicProps}
+    >
+      {children}
+    </Box>
+  );
+};
 
 export { MenuBody };
