@@ -26,7 +26,9 @@ export interface MenuButtonAccordionProperties {
    */
   active?: boolean;
   /**
-   * Whether the MenuButtonAccordion is expanded. If not provided, the expanded state will be determined by the context. If provided, it will override the context.
+   * Whether the MenuButtonAccordion is expanded.
+   * If `undefined`, it follows `MenuExpandContext`.
+   * If provided, it overrides the context.
    */
   expanded?: boolean;
 }

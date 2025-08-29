@@ -32,11 +32,9 @@
     "@nimbus-ds/icons": "^1",
     "@nimbus-ds/menu": "workspace:^",
     "@nimbus-ds/menubutton": "workspace:^",
-    "@nimbus-ds/page": "workspace:^",
-    "@types/react-transition-group": "^4.4.12"
+    "@nimbus-ds/page": "workspace:^"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.1",
-    "react-transition-group": "^4.4.5"
+    "@floating-ui/react": "^0.26.1"
   }
 }

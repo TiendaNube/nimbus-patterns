@@ -19,7 +19,8 @@ export interface MenuProperties {
   children: ReactNode;
   /**
    * Whether the menu should render in expanded mode.
-   * Defaults to true.
+   * If `undefined`, it follows `MenuExpandContext` value.
+   * If provided, it overrides the context.
    */
   expanded?: boolean;
 }

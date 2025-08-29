@@ -10,24 +10,21 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
   className: _className,
   style: _style,
   children,
-  expanded: expandedProp = true,
+  expanded = true,
   ...rest
 }: MenuProps) => {
-  const providerValue = useMemo(
-    () => ({ expanded: expandedProp }),
-    [expandedProp]
-  );
+  const providerValue = useMemo(() => ({ expanded }), [expanded]);
 
   const dynamicProps: BoxProps = useMemo(
     () =>
-      expandedProp
+      expanded
         ? {
             width: "100%",
           }
         : {
             width: "unset",
           },
-    [expandedProp]
+    [expanded]
   );
 
   return (

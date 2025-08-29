@@ -25,7 +25,7 @@ export type AppShellMenuFlyoutOptions = {
   hoverOpenDelayMs?: number;
   /** Hover close delay in ms (only when trigger is 'hover'). */
   hoverCloseDelayMs?: number;
-} & Omit<BoxProps, "position" | "top" | "left" | "right" | "bottom" | "height">;
+} & Omit<BoxProps, "position" | "top" | "left" | "right" | "bottom" | "height" | "zIndex">;
 
 export interface AppShellProperties {
   /**

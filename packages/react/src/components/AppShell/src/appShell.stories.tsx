@@ -319,7 +319,6 @@ export const collapsibleMenu: Story = {
   args: {},
 };
 
-// CHECK WHY IS NOT CENTERED
 export const collapsibleMenuHover: Story = {
   render: () => {
     const [open, setOpen] = React.useState(false);

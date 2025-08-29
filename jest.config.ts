@@ -9,8 +9,7 @@ const config: Config.InitialOptions = {
   setupFilesAfterEnv: ["./setupTests.ts"],
   coveragePathIgnorePatterns: ["dist"],
   moduleNameMapper: {
-    "@nimbus-ds/common": "<rootDir>/packages/react/src/common",
-    "@common": "<rootDir>/packages/react/src/common",
+    "@common(.*)$": "<rootDir>/packages/react/src/common$1",
     // components
     "@nimbus-ds/app-shell":
       "<rootDir>/packages/react/src/components/AppShell/src",
