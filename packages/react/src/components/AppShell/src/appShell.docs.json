@@ -173,33 +173,198 @@
       "required": false
     },
     {
-      "description": "Controls whether the left sidebar (menu) is expanded (true) or collapsed (false). When undefined, the component is uncontrolled and uses defaultMenuExpanded.",
+      "description": "Controls whether the left sidebar (menu) is expanded (true) or collapsed (false).",
       "type": "boolean",
       "title": "menuExpanded",
       "required": false
     },
     {
-      "description": "Initial expansion state when uncontrolled.",
-      "type": "boolean",
-      "title": "defaultMenuExpanded",
-      "required": false
-    },
-    {
-      "description": "Callback fired when the expansion state changes.",
-      "type": "(expanded: boolean) => void",
-      "title": "onMenuExpandedChange",
-      "required": false
-    },
-    {
       "description": "Sidebar width when expanded. Defaults to \"18rem\".",
-      "type": "string | number",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "focus": {
+              "type": "string",
+              "title": "focus"
+            },
+            "focusWithin": {
+              "type": "string",
+              "title": "focusWithin"
+            },
+            "active": {
+              "type": "string",
+              "title": "active"
+            },
+            "hover": {
+              "type": "string",
+              "title": "hover"
+            },
+            "disabled": {
+              "type": "string",
+              "title": "disabled"
+            },
+            "xs": {
+              "type": "string",
+              "title": "xs"
+            },
+            "md": {
+              "type": "string",
+              "title": "md"
+            },
+            "lg": {
+              "type": "string",
+              "title": "lg"
+            },
+            "xl": {
+              "type": "string",
+              "title": "xl"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": [
+            "focus",
+            "focusWithin",
+            "active",
+            "hover",
+            "disabled",
+            "xs",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        {
+          "type": "string"
+        }
+      ],
       "title": "menuExpandedWidth",
       "required": false
     },
     {
       "description": "Sidebar width when collapsed (rail). If provided, the sidebar will render in a compact rail while collapsed. Defaults to \"4.5rem\".",
-      "type": "string | number",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "focus": {
+              "type": "string",
+              "title": "focus"
+            },
+            "focusWithin": {
+              "type": "string",
+              "title": "focusWithin"
+            },
+            "active": {
+              "type": "string",
+              "title": "active"
+            },
+            "hover": {
+              "type": "string",
+              "title": "hover"
+            },
+            "disabled": {
+              "type": "string",
+              "title": "disabled"
+            },
+            "xs": {
+              "type": "string",
+              "title": "xs"
+            },
+            "md": {
+              "type": "string",
+              "title": "md"
+            },
+            "lg": {
+              "type": "string",
+              "title": "lg"
+            },
+            "xl": {
+              "type": "string",
+              "title": "xl"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": [
+            "focus",
+            "focusWithin",
+            "active",
+            "hover",
+            "disabled",
+            "xs",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        {
+          "type": "string"
+        }
+      ],
       "title": "menuCollapsedWidth",
+      "required": false
+    },
+    {
+      "description": "Determines how the left sidebar behaves when collapsed.\n- 'inline': current behavior; width changes affect layout.\n- 'popover': when collapsed, hovering or clicking the rail shows the expanded menu as an overlay without affecting layout.",
+      "enum": [
+        "inline",
+        "popover"
+      ],
+      "type": "string",
+      "title": "menuBehavior",
+      "required": false
+    },
+    {
+      "description": "Configuration options for the AppShell flyout (popover) behavior when the menu is collapsed.\nThis consolidates all popover-related props into a single object for simpler usage,\nwhile keeping individual top-level props for backward compatibility.",
+      "type": "object",
+      "properties": {
+        "trigger": {
+          "description": "How the popover opens. Defaults to 'hover'.",
+          "enum": [
+            "hover",
+            "manual"
+          ],
+          "type": "string",
+          "title": "trigger"
+        },
+        "open": {
+          "description": "Controlled open state for the flyout.",
+          "type": "boolean",
+          "title": "open"
+        },
+        "defaultOpen": {
+          "description": "Uncontrolled initial open state for the flyout.",
+          "type": "boolean",
+          "title": "defaultOpen"
+        },
+        "onOpenChange": {
+          "description": "Callback when the open state should change.",
+          "type": "object",
+          "additionalProperties": false,
+          "propertyOrder": [],
+          "title": "onOpenChange"
+        },
+        "hoverOpenDelayMs": {
+          "description": "Hover open delay in ms (only when trigger is 'hover').",
+          "type": "number",
+          "title": "hoverOpenDelayMs"
+        },
+        "hoverCloseDelayMs": {
+          "description": "Hover close delay in ms (only when trigger is 'hover').",
+          "type": "number",
+          "title": "hoverCloseDelayMs"
+        }
+      },
+      "additionalProperties": false,
+      "propertyOrder": [
+        "trigger",
+        "open",
+        "defaultOpen",
+        "onOpenChange",
+        "hoverOpenDelayMs",
+        "hoverCloseDelayMs"
+      ],
+      "title": "menuFlyout",
       "required": false
     }
   ],

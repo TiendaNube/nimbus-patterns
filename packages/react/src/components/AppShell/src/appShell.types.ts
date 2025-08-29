@@ -25,7 +25,7 @@ export type AppShellMenuFlyoutOptions = {
   hoverOpenDelayMs?: number;
   /** Hover close delay in ms (only when trigger is 'hover'). */
   hoverCloseDelayMs?: number;
-} & Omit<BoxProps, "position" | "top" | "left" | "right" | "bottom" | "height" | "zIndex">;
+};
 
 export interface AppShellProperties {
   /**
@@ -64,10 +64,14 @@ export interface AppShellProperties {
 
   /**
    * Consolidated configuration for the popover/flyout behavior when `menuBehavior` is 'popover'.
-   * Prefer using this over individual top-level props for simpler usage.
    */
   menuFlyout?: AppShellMenuFlyoutOptions;
 }
 
-export type AppShellProps = AppShellProperties &
-  Omit<HTMLAttributes<HTMLElement>, "color">;
+export type AppShellProps = AppShellProperties & {
+  menuFlyout?: AppShellMenuFlyoutOptions &
+    Omit<
+      BoxProps,
+      "position" | "top" | "left" | "right" | "bottom" | "height" | "zIndex"
+    >;
+} & Omit<HTMLAttributes<HTMLElement>, "color">;
