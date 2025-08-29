@@ -9,6 +9,11 @@ const meta: Meta<typeof FormField.Input> = {
   argTypes: {
     helpIcon: { control: { disable: true } },
     showHelpText: { defaultValue: false },
+    appearance: {
+      control: "select",
+      options: ["danger", "warning", "success", "none", "ai-generative"],
+      defaultValue: "none",
+    },
   },
   tags: ["autodocs"],
 };
