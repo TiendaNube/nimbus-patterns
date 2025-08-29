@@ -112,14 +112,3 @@ export const customContent: Story = {
     helpIcon: ExclamationCircleIcon,
   },
 };
-
-export const aiGenerative: Story = {
-  render: (args) => <FormField.Input {...args} placeholder="Placeholder" />,
-  args: {
-    label: "Label text",
-    helpText: "Help text",
-    helpIcon: ExclamationCircleIcon,
-    appearance: "ai-generative",
-    showHelpText: true,
-  },
-};

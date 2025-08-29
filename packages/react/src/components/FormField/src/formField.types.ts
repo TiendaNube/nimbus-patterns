@@ -31,13 +31,7 @@ export interface FormFieldProperties {
    * Appearance of the field and help text elements.
    * @default none
    */
-  appearance?:
-    | "danger"
-    | "warning"
-    | "success"
-    | "none"
-    | "ai-generative"
-    | "ai-generated";
+  appearance?: "danger" | "warning" | "success" | "none";
   /**
    * Control to conditionally show the help text and icon.
    * @default false
