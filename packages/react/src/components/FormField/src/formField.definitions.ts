@@ -3,8 +3,10 @@ export const inputAppearance = {
   warning: "warning",
   success: "success",
   none: "neutral",
+  "ai-generative": "ai-generative",
+  "ai-generated": "neutral",
 } as {
-  [key: string]: "danger" | "warning" | "success" | "neutral";
+  [key: string]: "danger" | "warning" | "success" | "neutral" | "ai-generative";
 };
 
 export const helpTextAppearance = {

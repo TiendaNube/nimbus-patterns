@@ -5,7 +5,7 @@ import { useRefObjectAsForwardedRef } from "@nimbus-ds/typings";
 
 import { FormField } from "../../FormField";
 import { FormFieldTextareaBaseProps } from "./formFieldTextarea.types";
-import { inputAppearance } from "../../formField.definitions";
+import { textAreaAppearances } from "./FormFieldTextarea.definitions";
 
 const FormFieldTextarea = forwardRef<
   HTMLTextAreaElement,
@@ -37,7 +37,7 @@ const FormFieldTextarea = forwardRef<
         <Textarea
           ref={textAreaRef}
           {...rest}
-          appearance={inputAppearance[appearance]}
+          appearance={textAreaAppearances[appearance]}
         />
       </FormField>
     );

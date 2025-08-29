@@ -9,6 +9,11 @@ const meta: Meta<typeof FormField.Input> = {
   argTypes: {
     helpIcon: { control: { disable: true } },
     showHelpText: { defaultValue: false },
+    appearance: {
+      control: "select",
+      options: ["danger", "warning", "success", "none", "ai-generative"],
+      defaultValue: "none",
+    },
   },
   tags: ["autodocs"],
 };
@@ -22,5 +27,15 @@ export const basic: Story = {
     label: "Label text",
     helpText: "Help text",
     helpIcon: ExclamationCircleIcon,
+  },
+};
+
+export const aiGenerated: Story = {
+  args: {
+    placeholder: "Placeholder",
+    label: "Label text",
+    helpText: "Help text",
+    helpIcon: ExclamationCircleIcon,
+    aiGenerated: true,
   },
 };
