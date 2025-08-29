@@ -1,7 +1,8 @@
-import React from "react";
-import { Box } from "@nimbus-ds/components";
-import { MenuButton } from "@nimbus-ds/menubutton";
+import React, { useMemo } from "react";
+import { Box, BoxProps } from "@nimbus-ds/components";
+import { MenuExpandContext } from "@common/contexts";
 
+import { MenuButton } from "@nimbus-ds/menubutton";
 import { MenuProps, MenuComponents } from "./menu.types";
 import { MenuSection, MenuHeader, MenuBody, MenuFooter } from "./components";
 
@@ -9,21 +10,39 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
   className: _className,
   style: _style,
   children,
+  expanded = true,
   ...rest
-}: MenuProps) => (
-    <Box
-      {...rest}
-      display="flex"
-      flexDirection="column"
-      flex="0 0 auto"
-      height="100%"
-      backgroundColor="neutral-background"
-      width="100%"
-      boxSizing="border-box"
-    >
-      {children}
-    </Box>
+}: MenuProps) => {
+  const providerValue = useMemo(() => ({ expanded }), [expanded]);
+
+  const dynamicProps: BoxProps = useMemo(
+    () =>
+      expanded
+        ? {
+            width: "100%",
+          }
+        : {
+            width: "unset",
+          },
+    [expanded]
   );
+
+  return (
+    <MenuExpandContext.Provider value={providerValue}>
+      <Box
+        {...rest}
+        display="flex"
+        flexDirection="column"
+        height="100%"
+        backgroundColor="neutral-background"
+        boxSizing="border-box"
+        {...dynamicProps}
+      >
+        {children}
+      </Box>
+    </MenuExpandContext.Provider>
+  );
+};
 
 Menu.Section = MenuSection;
 Menu.Button = MenuButton;

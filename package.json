@@ -29,6 +29,7 @@
     "test:coverage": "yarn test --coverage",
     "test:staged": "yarn test --findRelatedTests",
     "test:watch": "yarn test --watch",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "types:check": "tsc --skipLibCheck --noEmit",
     "pre-commit": "lint-staged",
     "pre-push": "yarn lint && yarn types:check",

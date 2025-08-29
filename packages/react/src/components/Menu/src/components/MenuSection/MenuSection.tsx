@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useMemo } from "react";
 
-import { Text, Box } from "@nimbus-ds/components";
+import { Text, Box, BoxProperties } from "@nimbus-ds/components";
+import { useMenuExpandContext } from "@common/contexts";
 
 import { MenuSectionProps } from "./menuSection.types";
 
@@ -10,17 +11,51 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   title,
   children,
   ...rest
-}: MenuSectionProps) => (
-  <Box {...rest} display="flex" flexDirection="column" gap="1-5">
-    {title && (
-      <Box pl="2" pt="2">
-        <Text color="neutral-textDisabled" fontSize="caption">
-          {title}
-        </Text>
-      </Box>
-    )}
-    {children}
-  </Box>
-);
+}: MenuSectionProps) => {
+  const { expanded } = useMenuExpandContext();
+
+  const dynamicProps: BoxProperties = useMemo(
+    () =>
+      !expanded
+        ? {
+            maxWidth: "32px",
+            pt: "2",
+          }
+        : {},
+    [expanded]
+  );
+
+  return (
+    <Box
+      {...dynamicProps}
+      {...rest}
+      display="flex"
+      flexDirection="column"
+      gap="1-5"
+    >
+      {title &&
+        (expanded ? (
+          <Box pl="2" pt="2">
+            <Text color="neutral-textDisabled" fontSize="caption">
+              {title}
+            </Text>
+          </Box>
+        ) : (
+          <Box
+            borderTopWidth="1"
+            borderBottomWidth="none"
+            borderColor="neutral-surfaceHighlight"
+            borderStyle="solid"
+            width="100%"
+            // Margin to approximate to the same height of the Section expanded title
+            marginTop="2"
+            marginBottom="3"
+            data-testid="menu-section--collapsed"
+          />
+        ))}
+      {children}
+    </Box>
+  );
+};
 
 export { MenuSection };

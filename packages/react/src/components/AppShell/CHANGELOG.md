@@ -2,6 +2,16 @@
 
 The AppShell component is the main outer frame of an application. It provides the basic architecture to build an application inside of our admin.
 
+## 2025-08-08 `1.5.0`
+
+#### 🎉 New features
+
+- Added collapsible sidebar support via new props: `menuExpanded`, `menuExpandedWidth`, and `menuCollapsedWidth`. The sidebar width now transitions between expanded and a compact rail. A `MenuProvider` context is used to inform `Menu` descendants about expansion state. ([#117](https://github.com/TiendaNube/nimbus-patterns/pull/117) by [@joacotornello](https://github.com/joacotornello))
+
+#### 💡 Others
+
+- Storybook: added `expandableMenu` story demonstrating expand/collapse behavior and rail mode. ([#117](https://github.com/TiendaNube/nimbus-patterns/pull/117) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-03-18 `1.4.2`
 
 ### 💡 Others
