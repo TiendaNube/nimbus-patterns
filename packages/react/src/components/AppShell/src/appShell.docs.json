@@ -3,7 +3,7 @@
   "name": "AppShell",
   "totalProps": 8,
   "packageName": "@nimbus-ds/app-shell",
-  "version": "1.4.4",
+  "version": "1.5.0",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/app-shell",
   "props": [
     {
