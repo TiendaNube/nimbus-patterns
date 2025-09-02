@@ -1,11 +1,31 @@
 import { HTMLAttributes, ReactNode } from "react";
 
-import { BoxBaseProps } from "@nimbus-ds/components";
+import { BoxBaseProps, BoxProps } from "@nimbus-ds/components";
 import { AppShellHeader } from "./components";
 
 export interface AppShellComponents {
   Header: typeof AppShellHeader;
 }
+
+/**
+ * Configuration options for the AppShell flyout (popover) behavior when the menu is collapsed.
+ * This consolidates all popover-related props into a single object for simpler usage,
+ * while keeping individual top-level props for backward compatibility.
+ */
+export type AppShellMenuFlyoutOptions = {
+  /** How the popover opens. Defaults to 'hover'. */
+  trigger?: "hover" | "manual";
+  /** Controlled open state for the flyout. */
+  open?: boolean;
+  /** Uncontrolled initial open state for the flyout. */
+  defaultOpen?: boolean;
+  /** Callback when the open state should change. */
+  onOpenChange?: (open: boolean) => void;
+  /** Hover open delay in ms (only when trigger is 'hover'). */
+  hoverOpenDelayMs?: number;
+  /** Hover close delay in ms (only when trigger is 'hover'). */
+  hoverCloseDelayMs?: number;
+};
 
 export interface AppShellProperties {
   /**
@@ -23,32 +43,35 @@ export interface AppShellProperties {
    */
   menuProperties?: Pick<BoxBaseProps, "display">;
   /**
-   * Optional slot for right sidebar content (e.g., chat panel).
-   * @TJS-type React.ReactNode
+   * Controls whether the left sidebar (menu) is expanded (true) or collapsed (false).
    */
-  right?: ReactNode;
+  menuExpanded?: boolean;
   /**
-   * Control responsive visibility of the right slot.
+   * Sidebar width when expanded. Defaults to "18rem".
    */
-  rightProperties?: Pick<BoxBaseProps, "display">;
+  menuExpandedWidth?: BoxBaseProps["width"];
   /**
-   * When true, interactions inside the right slot will not bubble up to the
-   * document. This prevents overlays that dismiss on outside press (like
-   * `Sidebar`/`SideModal`) from closing while the user is interacting with the chat.
+   * Sidebar width when collapsed (rail). If provided, the sidebar will render in a compact rail while collapsed. Defaults to "4.5rem".
    */
-  rightDismissGuard?: boolean;
+  menuCollapsedWidth?: BoxBaseProps["width"];
+
   /**
-   * Attribute used to detect exempt elements when `rightDismissGuard` is enabled.
-   * Any event whose `composedPath()` includes an element matching this attribute
-   * will be prevented from bubbling to document-level listeners.
-   * Defaults to "data-nimbus-dismiss-exempt".
+   * Determines how the left sidebar behaves when collapsed.
+   * - 'inline': current behavior; width changes affect layout.
+   * - 'popover': when collapsed, hovering or clicking the rail shows the expanded menu as an overlay without affecting layout.
    */
-  dismissExemptAttribute?: string;
+  menuBehavior?: "inline" | "popover";
+
   /**
-   * Ref for the center children.
+   * Consolidated configuration for the popover/flyout behavior when `menuBehavior` is 'popover'.
    */
-  centerChildrenRef?: React.RefObject<HTMLDivElement>;
+  menuFlyout?: AppShellMenuFlyoutOptions;
 }
 
-export type AppShellProps = AppShellProperties &
-  Omit<HTMLAttributes<HTMLElement>, "color">;
+export type AppShellProps = AppShellProperties & {
+  menuFlyout?: AppShellMenuFlyoutOptions &
+    Omit<
+      BoxProps,
+      "position" | "top" | "left" | "right" | "bottom" | "height" | "zIndex"
+    >;
+} & Omit<HTMLAttributes<HTMLElement>, "color">;

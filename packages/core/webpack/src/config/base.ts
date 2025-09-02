@@ -37,7 +37,9 @@ const webpack = ({
     new plugins.UseClientInjectionPlugin(useClientInjectionOptions),
   ],
   resolve: {
-    alias: aliasItems,
+    alias: {
+      ...aliasItems,
+    },
     extensions: [".tsx", ".ts", ".js"],
   },
   externals: externalItems,

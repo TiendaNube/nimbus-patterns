@@ -17,6 +17,7 @@ export interface SideModalProperties
     | "maxWidth"
     | "zIndex"
     | "root"
+    | "ignoreAttributeName"
   > {
   /**
    * Choose where the portal should render. Defaults to viewport (body).

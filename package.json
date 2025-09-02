@@ -29,6 +29,7 @@
     "test:coverage": "yarn test --coverage",
     "test:staged": "yarn test --findRelatedTests",
     "test:watch": "yarn test --watch",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "types:check": "tsc --skipLibCheck --noEmit",
     "pre-commit": "lint-staged",
     "pre-push": "yarn test:coverage && yarn lint && yarn types:check",
@@ -51,7 +52,6 @@
   },
   "homepage": "https://github.com/TiendaNube/nimbus-patterns#readme",
   "dependencies": {
-    "@nimbus-ds/sidebar": "3.5.0-rc.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

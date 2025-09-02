@@ -1,9 +1,9 @@
 {
   "id": "menuButton",
   "name": "MenuButton",
-  "totalProps": 6,
+  "totalProps": 7,
   "packageName": "@nimbus-ds/menubutton",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/menu-button",
   "props": [
     {
@@ -11,10 +11,7 @@
       "description": "The underlying element to render — either a HTML element name or a React component.",
       "anyOf": [
         {
-          "enum": [
-            "button",
-            "a"
-          ],
+          "enum": ["button", "a"],
           "type": "string"
         },
         {
@@ -28,7 +25,7 @@
       "description": "Text label for the button.",
       "type": "string",
       "title": "label",
-      "required": true
+      "required": false
     },
     {
       "description": "Function executed when clicking the button.",
@@ -53,12 +50,18 @@
       "type": "React.ReactNode",
       "title": "children",
       "required": false
+    },
+    {
+      "description": "Controlled override for menu expansion state. This prop does not manage internal state\nand is not forwarded to the DOM as an attribute. It is used only for layout and visual\nstate determination. \nIf not provided, the expanded state will be determined by the context.",
+      "type": "boolean",
+      "title": "expanded",
+      "required": false
     }
   ],
   "subComponents": [
     {
       "name": "MenuButton.Accordion",
-      "totalProps": 5,
+      "totalProps": 6,
       "props": [
         {
           "description": "Content of the menu.",
@@ -88,6 +91,12 @@
           "description": "Sets the state of the button as active/inactive.",
           "type": "boolean",
           "title": "active",
+          "required": false
+        },
+        {
+          "description": "Whether the MenuButtonAccordion is expanded.\nIf `undefined`, it follows `MenuExpandContext`.\nIf provided, it overrides the context.",
+          "type": "boolean",
+          "title": "expanded",
           "required": false
         }
       ]

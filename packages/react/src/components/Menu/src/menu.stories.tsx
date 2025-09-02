@@ -3,13 +3,14 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Sidebar, Button, Box } from "@nimbus-ds/components";
 
 import { Menu } from "./Menu";
-import { MenuStories as render } from "./menu.utils";
+import { MenuStories as DefaultMenu } from "./menu.utils";
 
 const meta: Meta<typeof Menu> = {
   title: "Patterns/Menu",
   component: Menu,
   argTypes: {
     children: { control: { disable: true } },
+    expanded: { control: "boolean", defaultValue: true },
   },
   tags: ["autodocs"],
 };
@@ -18,7 +19,7 @@ export default meta;
 type Story = StoryObj<typeof Menu>;
 
 export const basic: Story = {
-  render: () => render,
+  render: (args) => <DefaultMenu {...args} />,
   args: {},
 };
 
@@ -30,16 +31,18 @@ export const menuInsideSidebar: Story = {
       <>
         <Button onClick={handleClose}>Open</Button>
         <Sidebar {...args} onRemove={handleClose} open={open}>
-          {render}
+          <DefaultMenu {...args} />
         </Sidebar>
       </>
     );
   },
-  args: {},
+  args: {
+    expanded: false,
+  },
 };
 
 export const menuInsideFixedBar: Story = {
-  render: () => (
+  render: (args) => (
     <Box display="flex" gap="4">
       <Box
         display="flex"
@@ -55,7 +58,7 @@ export const menuInsideFixedBar: Story = {
         top="0"
         overflow="hidden"
       >
-        {render}
+        <DefaultMenu {...args} />
       </Box>
       <Box
         display="flex"
@@ -71,5 +74,18 @@ export const menuInsideFixedBar: Story = {
       />
     </Box>
   ),
-  args: {},
+  args: {
+    expanded: true,
+  },
+};
+
+export const menuCollapsed: Story = {
+  render: (args) => (
+    <Box display="flex" gap="4" width={args.expanded ? "200px" : "50px"}>
+      <DefaultMenu {...args} />
+    </Box>
+  ),
+  args: {
+    expanded: false,
+  },
 };

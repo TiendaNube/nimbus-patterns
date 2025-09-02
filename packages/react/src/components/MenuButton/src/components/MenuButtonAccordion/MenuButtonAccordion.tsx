@@ -7,6 +7,7 @@ import React, {
 import { Box } from "@nimbus-ds/components";
 import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
+import { useMenuExpandContext } from "@common/contexts";
 import { MenuButtonAccordionBaseProps } from "./menuButtonAccordion.types";
 import { MenuButton } from "../../MenuButton";
 
@@ -20,15 +21,19 @@ const MenuButtonAccordion = forwardRef(
       menuButton,
       children,
       as,
+      expanded: expandedProp,
       ...rest
     }: MenuButtonAccordionBaseProps & { as: any },
     ref
   ) => {
+    const { expanded: contextExpanded } = useMenuExpandContext(false);
+    const expanded = expandedProp ?? contextExpanded;
+
     const [isOpen, setOpen] = useState(false);
     const handleOpen = () => setOpen((prevState) => !prevState);
 
     const open = useMemo(
-      () => (controlledOpen === undefined ? isOpen : controlledOpen),
+      () => controlledOpen ?? isOpen,
       [controlledOpen, isOpen]
     );
 
@@ -55,9 +60,9 @@ const MenuButtonAccordion = forwardRef(
             controlledOpen !== undefined ? menuButton.onClick : handleOpen
           }
           active={active}
-          aria-expanded={open}
+          aria-expanded={open && expanded}
         />
-        {open && (
+        {open && expanded && (
           <Box
             id="content-1"
             aria-hidden={!open}

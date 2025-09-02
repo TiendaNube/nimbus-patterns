@@ -9,10 +9,12 @@ import {
   ToolsIcon,
   AppsIcon,
   EcosystemIcon,
-  CogIcon
+  CogIcon,
+  TiendanubeIcon,
 } from "@nimbus-ds/icons";
-import { Box, Badge, Tag, Icon } from "@nimbus-ds/components";
+import { Badge, Tag, Icon } from "@nimbus-ds/components";
 import { Menu } from "./Menu";
+import { MenuProps } from "./menu.types";
 
 const TiendanubeLogo: React.FC = () => (
   <svg
@@ -68,12 +70,16 @@ const TiendanubeLogo: React.FC = () => (
   </svg>
 );
 
-export const MenuStories = (
-  <Menu>
+export const MenuStories = (props?: MenuProps) => (
+  <Menu {...props}>
     <Menu.Header>
-      <Box display="flex" gap="2" alignItems="center" width="100%">
+      {/* <Icon source={<TiendanubeIcon />} color="primary-interactive" /> */}
+
+      {props?.expanded ? (
         <Icon source={<TiendanubeLogo />} color="primary-interactive" />
-      </Box>
+      ) : (
+        <Icon source={<TiendanubeIcon />} color="primary-interactive" />
+      )}
     </Menu.Header>
     <Menu.Body>
       <Menu.Section>
@@ -89,7 +95,7 @@ export const MenuStories = (
             startIcon: CashIcon,
             label: "Ventas",
             children: <Badge appearance="primary" count="1299" />,
-            "aria-controls": "content-1"
+            "aria-controls": "content-1",
           }}
         >
           <Menu.Button label="Lista de ventas" />

@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/app-shell",
-  "version": "1.4.4",
+  "version": "1.5.0",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -33,5 +33,8 @@
     "@nimbus-ds/menu": "workspace:^",
     "@nimbus-ds/menubutton": "workspace:^",
     "@nimbus-ds/page": "workspace:^"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.26.1"
   }
 }
