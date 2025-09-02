@@ -9,7 +9,6 @@ const AppShellBody: React.FC<AppShellBodyProps> = ({
   ...rest
 }: AppShellBodyProps) => (
   <Box
-    padding="2"
     backgroundColor="neutral-surface"
     width="100%"
     gap="2"

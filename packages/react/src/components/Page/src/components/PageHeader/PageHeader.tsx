@@ -11,6 +11,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   subtitle,
   buttonStack,
   children,
+  fontSize,
   ...rest
 }: PageHeaderProps) => (
   <Box
@@ -24,7 +25,9 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   >
     <Box display="flex" alignItems="center" gap="2">
       <Box display="inline-flex" flex="1">
-        <Title as="h1">{title}</Title>
+        <Title as="h1" fontSize={fontSize}>
+          {title}
+        </Title>
       </Box>
       {buttonStack}
     </Box>

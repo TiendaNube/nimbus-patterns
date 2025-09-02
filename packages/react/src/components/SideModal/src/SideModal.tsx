@@ -14,34 +14,32 @@ const SideModal: React.FC<SideModalProps> = ({
   footer,
   children,
   ...rest
-}) => {
-  return (
-    <Sidebar {...rest}>
-      <Sidebar.Header padding={paddingHeader || "base"}>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          mb="4"
-        >
-          {headerAction}
-          {headerIcon}
-        </Box>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Title as="h2">{title}</Title>
-          {titleAction}
-        </Box>
-      </Sidebar.Header>
-      <Sidebar.Body padding={paddingBody}>{children}</Sidebar.Body>
-      {!!footer && (
-        <Sidebar.Footer padding={paddingFooter || "base"}>
-          <Button {...footer.primaryAction} />
-          <Button {...footer.secondaryAction} />
-        </Sidebar.Footer>
-      )}
-    </Sidebar>
-  );
-};
+}) => (
+  <Sidebar {...rest}>
+    <Sidebar.Header padding={paddingHeader || "base"}>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        mb="4"
+      >
+        {headerAction}
+        {headerIcon}
+      </Box>
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Title as="h2">{title}</Title>
+        {titleAction}
+      </Box>
+    </Sidebar.Header>
+    <Sidebar.Body padding={paddingBody}>{children}</Sidebar.Body>
+    {!!footer && (
+      <Sidebar.Footer padding={paddingFooter || "base"}>
+        <Button {...footer.primaryAction} />
+        <Button {...footer.secondaryAction} />
+      </Sidebar.Footer>
+    )}
+  </Sidebar>
+);
 
 SideModal.displayName = "SideModal";
 

@@ -17,6 +17,7 @@ export interface SideModalProperties
     | "maxWidth"
     | "zIndex"
     | "root"
+    | "needRemoveScroll"
     | "ignoreAttributeName"
   > {
   /**

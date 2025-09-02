@@ -12,7 +12,7 @@ import {
   useFloating,
 } from "@floating-ui/react";
 
-import { AppShellHeader } from "./components";
+import { AppShellHeader, AppShellBody, AppShellChat } from "./components";
 
 import { AppShellProps, AppShellComponents } from "./appShell.types";
 import { AppShellMenuContext } from "./contexts/AppShellMenuContext";
@@ -159,8 +159,12 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
 };
 
 AppShell.Header = AppShellHeader;
+AppShell.Body = AppShellBody;
+AppShell.Chat = AppShellChat;
 
 AppShell.displayName = "AppShell";
 AppShell.Header.displayName = "AppShell.Header";
+AppShell.Body.displayName = "AppShell.Body";
+AppShell.Chat.displayName = "AppShell.Chat";
 
 export { AppShell };

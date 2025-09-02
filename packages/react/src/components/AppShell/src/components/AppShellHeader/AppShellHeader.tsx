@@ -12,11 +12,15 @@ const AppShellHeader: React.FC<AppShellHeaderProps> = ({
   ...rest
 }: AppShellHeaderProps) => (
   <Box
-    {...rest}
     padding="2"
+    {...rest}
     display="flex"
     justifyContent={leftSlot ? "space-between" : "flex-end"}
     gap="2"
+    position="sticky"
+    top="0"
+    zIndex="900"
+    backgroundColor="neutral-surface"
   >
     {leftSlot}
     {rightSlot && (
