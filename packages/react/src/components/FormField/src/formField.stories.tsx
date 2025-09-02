@@ -39,6 +39,13 @@ export const asInput: Story = {
     id: "input-id",
     helpIcon: ExclamationCircleIcon,
   },
+  argTypes: {
+    appearance: {
+      control: "select",
+      options: ["danger", "warning", "success", "none", "ai-generative"],
+      defaultValue: "none",
+    },
+  },
 };
 
 export const asSelect = {

@@ -2,6 +2,12 @@
 
 The FormField component allows the user to enter or edit information in text format. Additionally, it provides a label, and a conditional help text that can be used to provide additional context on a validation scenario.
 
+## 2025-08-29 `1.8.0`
+
+#### 🎉 New features
+
+- Added `ai-generative` appearance for `FormField.Input` component. ([#118](https://github.com/TiendaNube/nimbus-patterns/pull/118) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-03-18 `1.7.0`
 
 #### 🎉 New features

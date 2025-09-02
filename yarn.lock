@@ -5180,6 +5180,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@nimbus-ds/tokens@npm:9.3.0":
+  version: 9.3.0
+  resolution: "@nimbus-ds/tokens@npm:9.3.0"
+  checksum: fe2f074443c7b5889645059302550ffe5aaab3170985e4508cab282c1e8d7e16a4ad2821f273ae34ccf11ad93901287a6c76519faaa8dcc2700a8f89f876ca19
+  languageName: node
+  linkType: hard
+
 "@nimbus-ds/tokens@npm:^9.0.0":
   version: 9.0.0
   resolution: "@nimbus-ds/tokens@npm:9.0.0"
@@ -5191,13 +5198,6 @@ __metadata:
   version: 9.1.0
   resolution: "@nimbus-ds/tokens@npm:9.1.0"
   checksum: 42e4ad8c73588b93754a2a0bb6868b1c43fb306b4ccfb493e26237a7425bbfec3d4682fe922f760822fa49b5adf0ae996fcbd32ea7983803317be1e5acba9829
-  languageName: node
-  linkType: hard
-
-"@nimbus-ds/tokens@npm:^9.1.1":
-  version: 9.1.1
-  resolution: "@nimbus-ds/tokens@npm:9.1.1"
-  checksum: ab033cea5026e8c1e2c481cc0f9dc4e823e3384d998bd74dca2aaa9d0c70dcf32007bc0e79ab987e5c1606ed4c2e1b0794ce8493de6e6ae85a424fdee7c37d02
   languageName: node
   linkType: hard
 
@@ -16592,7 +16592,7 @@ __metadata:
     "@nimbus-ds/components": 5.19.0
     "@nimbus-ds/scripts": 1.8.0
     "@nimbus-ds/styles": 9.23.0
-    "@nimbus-ds/tokens": ^9.1.1
+    "@nimbus-ds/tokens": 9.3.0
     "@storybook/addon-docs": ^7.5.1
     "@storybook/addon-essentials": ^7.5.1
     "@storybook/addon-interactions": ^7.5.1

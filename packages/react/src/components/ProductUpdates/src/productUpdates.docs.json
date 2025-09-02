@@ -1,7 +1,7 @@
 {
   "id": "productUpdates",
   "name": "ProductUpdates",
-  "totalProps": 20,
+  "totalProps": 21,
   "packageName": "@nimbus-ds/productupdates",
   "version": "1.5.0",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/product-updates",
@@ -61,12 +61,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "type": "string"
@@ -100,12 +95,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "type": "string"
@@ -176,12 +166,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "enum": [
@@ -260,12 +245,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "enum": [
@@ -307,12 +287,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "type": "string"
@@ -328,61 +303,31 @@
           "type": "object",
           "properties": {
             "xs": {
-              "enum": [
-                "auto",
-                "hidden",
-                "scroll",
-                "visible"
-              ],
+              "enum": ["auto", "hidden", "scroll", "visible"],
               "type": "string",
               "title": "xs"
             },
             "md": {
-              "enum": [
-                "auto",
-                "hidden",
-                "scroll",
-                "visible"
-              ],
+              "enum": ["auto", "hidden", "scroll", "visible"],
               "type": "string",
               "title": "md"
             },
             "lg": {
-              "enum": [
-                "auto",
-                "hidden",
-                "scroll",
-                "visible"
-              ],
+              "enum": ["auto", "hidden", "scroll", "visible"],
               "type": "string",
               "title": "lg"
             },
             "xl": {
-              "enum": [
-                "auto",
-                "hidden",
-                "scroll",
-                "visible"
-              ],
+              "enum": ["auto", "hidden", "scroll", "visible"],
               "type": "string",
               "title": "xl"
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
-          "enum": [
-            "auto",
-            "hidden",
-            "scroll",
-            "visible"
-          ],
+          "enum": ["auto", "hidden", "scroll", "visible"],
           "type": "string"
         }
       ],
@@ -478,12 +423,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "enum": [
@@ -547,6 +487,13 @@
       "default": true,
       "type": "boolean",
       "title": "enabledClick",
+      "required": false
+    },
+    {
+      "description": "When enabled, renders an invisible overlay that prevents accidental clicks on elements behind the popover.",
+      "default": false,
+      "type": "boolean",
+      "title": "renderOverlay",
       "required": false
     }
   ],
