@@ -94,44 +94,36 @@ export const base: Story = {
           content={
             <>
               <InitialScreen.FeatureItem
-                title="1. Cargá saldo"
-                description="Podés hacerlo con tarjeta de crédito, débito o mercado pago."
+                title="Detail text"
+                description="Lorem ipsum is simply dummy text of the printing and typesetting industry."
               >
                 <InitialScreen.FeatureItemSpacing />
               </InitialScreen.FeatureItem>
 
               <InitialScreen.FeatureItem
-                title="2. Generá la etiqueta"
-                description="Revisá los datos y en simples pasos creá la etiqueta."
+                title="Detail text"
+                description="Lorem ipsum is simply dummy text of the printing and typesetting industry."
               >
                 <InitialScreen.FeatureItemSpacing />
               </InitialScreen.FeatureItem>
               <InitialScreen.FeatureItem
-                title="3. Imprimí la etiqueta"
-                description="Una vez impresa colocala en el paquete a enviar."
+                title="Detail text"
+                description="Lorem ipsum is simply dummy text of the printing and typesetting industry."
               >
                 <InitialScreen.FeatureItemSpacing />
               </InitialScreen.FeatureItem>
               <InitialScreen.FeatureItem
-                title="4. Despachá el paquete"
-                description="Podés despachar el paquete en cualquier sucursal de Correo Argentino o Andreani, o puntos de despacho."
+                title="Detail text"
+                description="Lorem ipsum is simply dummy text of the printing and typesetting industry."
               />
             </>
           }
           image={
-            <Box
-              maxWidth="500px"
-              borderRadius="5"
-              borderColor="primary-interactive"
-              borderWidth="4"
-              borderStyle="solid"
-            >
-              <img
-                src="./static/nuvem-chat.png"
-                alt="NuvemChatView"
-                width="100%"
-              />
-            </Box>
+            <img
+              src="./static/nuvem-chat.png"
+              alt="NuvemChatView"
+              width="100%"
+            />
           }
         />
       </InitialScreen.Section>
