@@ -531,14 +531,7 @@ export const withRightChatAndAnchoredSideModal: Story = {
 
     return (
       <AppShell {...args} menu={SampleMenu} menuCollapsedWidth="64px">
-        <AppShell.Header
-          leftSlot={backButton}
-          rightSlot={buttonStack}
-          position="sticky"
-          top="0"
-          zIndex="900"
-          backgroundColor="neutral-background"
-        />
+        <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
         <AppShell.Body>
           <Box flex="1" ref={centerChildrenRef} position="relative">
             <Page maxWidth="800px" position="relative">

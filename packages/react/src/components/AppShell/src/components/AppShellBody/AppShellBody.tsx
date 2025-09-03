@@ -12,6 +12,8 @@ const AppShellBody: React.FC<AppShellBodyProps> = ({
     backgroundColor="neutral-surface"
     width="100%"
     gap="2"
+    overflow="auto"
+    height="100%"
     {...rest}
     flex="1 1 auto"
     display="flex"

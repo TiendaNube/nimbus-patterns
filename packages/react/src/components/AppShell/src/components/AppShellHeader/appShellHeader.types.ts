@@ -17,4 +17,4 @@ export interface AppShellHeaderProperties {
 
 export type AppShellHeaderProps = AppShellHeaderProperties &
   Omit<HTMLAttributes<HTMLElement>, "color"> &
-  Omit<BoxProperties, "display" | "justifyContent">;
+  Omit<BoxProperties, "display" | "justifyContent" | "position" | "top">;

@@ -68,6 +68,11 @@ export interface AppShellProperties {
    * Consolidated configuration for the popover/flyout behavior when `menuBehavior` is 'popover'.
    */
   menuFlyout?: AppShellMenuFlyoutOptions;
+
+  /**
+   * Consolidated configuration for the content container.
+   */
+  contentProperties?: BoxBaseProps;
 }
 
 export type AppShellProps = AppShellProperties & {

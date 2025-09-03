@@ -21,6 +21,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   className: _className,
   style: _style,
   children,
+  contentProperties,
   menu,
   menuProperties = {
     display: {
@@ -121,11 +122,14 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         </Box>
       )}
       <Box
-        display="flex"
-        flexDirection="column"
+        display="grid"
+        gridTemplateRows="auto 1fr"
         flex="1 1 auto"
-        backgroundColor="neutral-surface"
+        height="100vh"
         width="100%"
+        overflow="hidden"
+        backgroundColor="neutral-surface"
+        {...contentProperties}
       >
         {children}
       </Box>

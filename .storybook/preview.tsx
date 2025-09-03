@@ -35,6 +35,7 @@ const preview: Preview = {
     backgrounds: {
       disable: true,
     },
+    layout: "fullscreen",
   },
 };
 
