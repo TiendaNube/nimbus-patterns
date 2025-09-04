@@ -8,6 +8,4 @@ declined:
   - "@nimbus-ds/formfield"
   - "@nimbus-ds/menu"
   - "@nimbus-ds/menubutton"
-
-undecided:
   - "@nimbus-ds/productupdates"
