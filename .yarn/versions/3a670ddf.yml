@@ -1,0 +1,5 @@
+releases:
+  "@nimbus-ds/initial-screen": minor
+
+declined:
+  - nimbus-patterns

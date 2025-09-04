@@ -18,7 +18,7 @@ const InitialScreen: React.FC<InitialScreenProps> & InitialScreenComponents = ({
   <Box
     width="100%"
     paddingTop={{ xs: "6", md: "20" }}
-    px={{ xs: "8", md: "8" }}
+    px={{ xs: "none", md: "8" }}
     maxWidth="1200px"
     {...rest}
   >

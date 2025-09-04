@@ -1,18 +1,14 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Button, Text, Thumbnail, Title } from "@nimbus-ds/components";
+import { Box, Button, Icon, Link, Text, Title } from "@nimbus-ds/components";
 import {
-  BagIcon,
   BoxPackedIcon,
   CheckIcon,
   CloseIcon,
-  FireIcon,
-  TagIcon,
-  TiendanubeIcon,
+  ExternalLinkIcon,
 } from "@nimbus-ds/icons";
 
-import { PlanDisplay } from "@nimbus-ds/plan-display";
-import { InitialScreen } from "@nimbus-ds/initial-screen";
+import { InitialScreen, PlanDisplay, HelpLink } from "@nimbus-ds/patterns";
 
 const meta: Meta = {
   title: "Templates/LandingScreen",
@@ -25,6 +21,24 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
+const sampleImage = (
+  <Box
+    backgroundColor="primary-surface"
+    borderColor="primary-interactive"
+    borderStyle="dashed"
+    borderWidth="1"
+    borderRadius="2"
+    flexGrow="1"
+    minWidth="180px"
+    maxWidth="480px"
+    height="100%"
+    minHeight="192px"
+    display="flex"
+    alignItems="center"
+    justifyContent="center"
+  />
+);
+
 /**
  * The LandingScreen template is used to introduce users to an application or service, offering options to access more information or proceed further.
  * It is composed of several sections, each with a different purpose, such as presenting the main features, benefits, and plans. It is a flexible template that can be customized to fit the needs of the application or service, combined with two main pattern components: InitialScreen and PlanDisplay.
@@ -33,37 +47,37 @@ export const base: Story = {
   render: () => (
     <InitialScreen mx="auto">
       <InitialScreen.Hero
-        subtitle={"META".toUpperCase()}
-        title="¡Vendé más con Instagram y Facebook!"
-        bullets={[
-          <InitialScreen.Bullet
-            icon={<FireIcon />}
-            text="Integración gratis y rápida"
-          />,
-          <InitialScreen.Bullet
-            icon={<BagIcon />}
-            text="Sincronización de catálogo en tiempo real"
-          />,
-          <InitialScreen.Bullet
-            icon={<TagIcon />}
-            text="Creación y seguimiento de campañas"
-          />,
-          <InitialScreen.Bullet
-            icon={<TiendanubeIcon />}
-            text="Medición de conversiones con API y píxel de Meta"
-          />,
-        ]}
-        actions={<Button appearance="primary">Conectar cuenta</Button>}
-        image={
-          <img
-            src="./static/product.jpg"
-            alt="hero image"
-            width="100%"
-            height="auto"
-          />
+        subtitle="SUBTITLE"
+        title="Title text"
+        description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type. "
+        actions={
+          <>
+            <Button appearance="primary">Button</Button>
+            <Button>Button</Button>
+          </>
         }
-      />
-      <InitialScreen.Section title="Beneficios">
+        image={sampleImage}
+        backgroundColor={{ xs: "neutral-background", md: "transparent" }}
+      >
+        <HelpLink>
+          <Box py="4">
+            <Link
+              as="a"
+              href="https://nimbus.tiendanube.com/"
+              target="_blank"
+              appearance="primary"
+              textDecoration="none"
+            >
+              Help link{" "}
+              <Icon color="currentColor" source={<ExternalLinkIcon />} />
+            </Link>
+          </Box>
+        </HelpLink>
+      </InitialScreen.Hero>
+      <InitialScreen.Section
+        title="Title text - Beneficios"
+        backgroundColor={{ xs: "neutral-surface", md: "transparent" }}
+      >
         <InitialScreen.CardLayout>
           <InitialScreen.Card
             icon={<BoxPackedIcon size="large" />}
@@ -89,7 +103,10 @@ export const base: Story = {
           />
         </InitialScreen.CardLayout>
       </InitialScreen.Section>
-      <InitialScreen.Section title="Detalle">
+      <InitialScreen.Section
+        title="Title text - Detalle"
+        backgroundColor={{ xs: "neutral-background", md: "transparent" }}
+      >
         <InitialScreen.Feature
           content={
             <>
@@ -118,16 +135,13 @@ export const base: Story = {
               />
             </>
           }
-          image={
-            <img
-              src="./static/nuvem-chat.png"
-              alt="NuvemChatView"
-              width="100%"
-            />
-          }
+          image={sampleImage}
         />
       </InitialScreen.Section>
-      <InitialScreen.Section title="Planes">
+      <InitialScreen.Section
+        title="Title text - Planes"
+        backgroundColor={{ xs: "neutral-surface", md: "transparent" }}
+      >
         <PlanDisplay mx="4">
           <PlanDisplay.Card>
             <PlanDisplay.Header

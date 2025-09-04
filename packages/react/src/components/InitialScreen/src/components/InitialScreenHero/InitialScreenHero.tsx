@@ -16,7 +16,13 @@ const InitialScreenHero: React.FC<InitialScreenHeroProps> = ({
   children,
   ...rest
 }) => (
-  <Box alignItems={{ xs: "center", md: "center" }} mx="auto" {...rest}>
+  <Box
+    alignItems="center"
+    mx="auto"
+    px={{ xs: "8", md: "none" }}
+    paddingBottom={{ xs: "10", md: "none" }}
+    {...rest}
+  >
     <Box
       display="flex"
       flexDirection={{ md: "row", xs: "column" }}
@@ -30,10 +36,11 @@ const InitialScreenHero: React.FC<InitialScreenHeroProps> = ({
       >
         <Box
           display="flex"
+          flexDirection="column"
           maxWidth={{ xs: "192px", md: "280px", lg: "280px", xl: "320px" }}
           maxHeight={{ xs: "192px", md: "280px", lg: "280px", xl: "320px" }}
-          minWidth={{ md: "280px", xl: "320px" }}
-          minHeight={{ md: "280px", xl: "320px" }}
+          minWidth={{ xs: "192px", md: "280px", xl: "320px" }}
+          minHeight={{ xs: "192px", md: "280px", xl: "320px" }}
         >
           {image}
         </Box>
@@ -76,11 +83,17 @@ const InitialScreenHero: React.FC<InitialScreenHeroProps> = ({
             {bullets && (
               <Box
                 display="flex"
+                alignItems="flex-start"
                 flexDirection="column"
-                gap="3"
-                alignItems={{ xs: "center", md: "flex-start" }}
               >
-                {bullets}
+                <Box
+                  alignSelf={{ xs: "center", md: "flex-start" }}
+                  display="flex"
+                  gap="3"
+                  flexDirection="column"
+                >
+                  {bullets}
+                </Box>
               </Box>
             )}
           </Box>
@@ -88,7 +101,7 @@ const InitialScreenHero: React.FC<InitialScreenHeroProps> = ({
         {actions && (
           <Box
             display="flex"
-            flexDirection={{ md: "row", xs: "column" }}
+            flexDirection="row"
             gap="2"
             justifyContent={{ xs: "center", md: "flex-start" }}
             alignItems={{ xs: "center", md: "flex-start" }}
