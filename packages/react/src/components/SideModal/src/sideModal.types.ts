@@ -72,5 +72,9 @@ export type SideModalProps = SideModalProperties & {
     primaryAction: ButtonProps;
     secondaryAction: ButtonProps;
   };
+  /**
+   * Choose where the portal should render. Defaults to the viewport (document.body).
+   * Useful to scope the modal within a specific container (e.g., AppShell.Chat).
+   */
   root?: HTMLElement | null;
 } & HTMLAttributes<HTMLElement>;
