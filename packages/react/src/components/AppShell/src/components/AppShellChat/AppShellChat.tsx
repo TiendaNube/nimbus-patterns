@@ -14,6 +14,7 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
     top="0"
     flex="1"
     padding="2"
+    zIndex="700"
     {...rest}
     position="sticky"
   >

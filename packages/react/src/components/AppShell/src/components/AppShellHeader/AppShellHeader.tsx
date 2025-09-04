@@ -13,7 +13,6 @@ const AppShellHeader: React.FC<AppShellHeaderProps> = ({
 }: AppShellHeaderProps) => (
   <Box
     padding="2"
-    zIndex="900"
     backgroundColor="neutral-surface"
     gap="2"
     {...rest}
