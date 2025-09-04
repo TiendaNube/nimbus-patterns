@@ -129,6 +129,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         width="100%"
         overflow="hidden"
         backgroundColor="neutral-surface"
+        // Fully customizable due to client needs
         {...contentProperties}
       >
         {children}

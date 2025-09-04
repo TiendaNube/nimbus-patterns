@@ -582,6 +582,7 @@ export const withRightChatAndAnchoredSideModal: Story = {
           onRemove={() => setOpenAnchored(false)}
           title="Anchored to AppShell center"
           root={centerChildrenRef.current}
+          needRemoveScroll
         >
           <Text>This SideModal is constrained to the center area.</Text>
         </SideModal>

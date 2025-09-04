@@ -1,3 +1,3 @@
 import { BoxProps } from "@nimbus-ds/components";
 
-export type AppShellChatProps = BoxProps;
+export type AppShellChatProps = Omit<BoxProps, "position">;

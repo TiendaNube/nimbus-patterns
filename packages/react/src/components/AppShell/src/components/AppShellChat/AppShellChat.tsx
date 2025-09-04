@@ -10,12 +10,12 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
 }: AppShellChatProps) => (
   <Box
     height="100%"
-    position="sticky"
     maxWidth="360px"
     top="0"
     flex="1"
     padding="2"
     {...rest}
+    position="sticky"
   >
     {children}
   </Box>
