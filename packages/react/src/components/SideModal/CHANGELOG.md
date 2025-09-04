@@ -2,6 +2,12 @@
 
 Sidemodal navigation provides access to the parts within its application. The side sections have the supplementary content that is linked on the left or right side of the screen.
 
+## 2025-09-04 `1.8.0`
+
+#### 🎉 New features
+
+- Added `root` prop support to `SideModal` component. ([#119](https://github.com/TiendaNube/nimbus-patterns/pull/119) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-03-18 `1.7.7`
 
 ### 💡 Others
