@@ -7,20 +7,6 @@
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/side-modal",
   "props": [
     {
-      "description": "Choose where the portal should render. Defaults to viewport (body).",
-      "default": "viewport",
-      "enum": ["viewport", "appShell"],
-      "type": "string",
-      "title": "portalWithin",
-      "required": false
-    },
-    {
-      "description": "Explicit portal container element. If provided, overrides portalWithin.",
-      "type": "object",
-      "title": "container",
-      "required": false
-    },
-    {
       "description": "Title.",
       "type": "string",
       "title": "title",
@@ -293,11 +279,25 @@
       "required": false
     },
     {
+      "description": "The attribute name to ignore when checking for outside clicks.",
+      "default": "data-nimbus-outside-press-ignore",
+      "type": "string",
+      "title": "ignoreAttributeName",
+      "required": false
+    },
+    {
       "description": "Callback fired when the component requests to be closed.\n() => void;",
       "type": "object",
       "additionalProperties": false,
       "propertyOrder": [],
       "title": "onRemove",
+      "required": false
+    },
+    {
+      "description": "Determines if RemoveScroll wraps sidebar's children component.",
+      "default": true,
+      "type": "boolean",
+      "title": "needRemoveScroll",
       "required": false
     }
   ],

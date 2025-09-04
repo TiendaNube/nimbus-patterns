@@ -1,0 +1,9 @@
+releases:
+  "@nimbus-ds/app-shell": minor
+  "@nimbus-ds/sidemodal": minor
+
+declined:
+  - nimbus-patterns
+  - "@nimbus-ds/formfield"
+  - "@nimbus-ds/menu"
+  - "@nimbus-ds/menubutton"

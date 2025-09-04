@@ -1,22 +1,21 @@
 import { HTMLAttributes, ReactNode } from "react";
 import {
-  SidebarProps,
   ButtonProperties,
   ButtonProps,
+  SidebarProperties,
 } from "@nimbus-ds/components";
 
 export type SideModalPadding = "none" | "base";
 
 export interface SideModalProperties
   extends Pick<
-    SidebarProps,
+    SidebarProperties,
     | "position"
     | "onRemove"
     | "open"
     | "padding"
     | "maxWidth"
     | "zIndex"
-    | "root"
     | "needRemoveScroll"
     | "ignoreAttributeName"
   > {
@@ -73,4 +72,5 @@ export type SideModalProps = SideModalProperties & {
     primaryAction: ButtonProps;
     secondaryAction: ButtonProps;
   };
+  root?: HTMLElement | null;
 } & HTMLAttributes<HTMLElement>;
