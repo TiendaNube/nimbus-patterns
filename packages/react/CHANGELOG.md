@@ -2,6 +2,13 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2025-09-04 `1.17.0`
+
+#### 🎉 New features
+
+- Added `Chat` and `Body` subcomponents to `AppShell` component, and improved layout to better support fixed header. ([#120](https://github.com/TiendaNube/nimbus-patterns/pull/120) by [@joacotornello](https://github.com/joacotornello))
+- Added `root` prop support to `SideModal` component. ([#120](https://github.com/TiendaNube/nimbus-patterns/pull/120) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-08-29 `1.16.0`
 
 #### 🎉 New features
