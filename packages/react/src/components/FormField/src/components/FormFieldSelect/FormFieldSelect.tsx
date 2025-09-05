@@ -5,7 +5,7 @@ import { useRefObjectAsForwardedRef } from "@nimbus-ds/typings";
 
 import { FormField } from "../../FormField";
 import { FormFieldSelectBaseProps } from "./formFieldSelect.types";
-import { inputAppearance } from "../../formField.definitions";
+import { selectAppearances } from "./FormFieldSelect.definitions";
 
 const FormFieldSelect = forwardRef<HTMLSelectElement, FormFieldSelectBaseProps>(
   (
@@ -34,7 +34,7 @@ const FormFieldSelect = forwardRef<HTMLSelectElement, FormFieldSelectBaseProps>(
         <Select
           ref={selectRef}
           {...rest}
-          appearance={inputAppearance[appearance]}
+          appearance={selectAppearances[appearance]}
         />
       </FormField>
     );

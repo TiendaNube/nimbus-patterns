@@ -2,11 +2,17 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
-## 2025-09-05 `1.16.0`
+## 2025-09-05 `1.17.0`
 
 #### 🎉 New features
 
 - Improved `PlanDisplay` and `InitialScreen` mobile layout. ([#120](https://github.com/TiendaNube/nimbus-patterns/pull/120) by [@joacotornello](https://github.com/joacotornello))
+
+## 2025-08-29 `1.16.0`
+
+#### 🎉 New features
+
+- Added `ai-generative` appearance for `FormField.Input` component. ([#110](https://github.com/TiendaNube/nimbus-patterns/pull/110) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-08-05 `1.15.0`
 
