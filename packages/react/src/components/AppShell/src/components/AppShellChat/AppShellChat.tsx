@@ -10,7 +10,7 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
 }: AppShellChatProps) => (
   <Box
     height="100%"
-    maxWidth="360px"
+    maxWidth={{ xs: "300px", lg: "378px" }}
     top="0"
     flex="1"
     padding="2"

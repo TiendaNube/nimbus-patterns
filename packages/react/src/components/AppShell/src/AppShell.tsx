@@ -30,7 +30,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
     },
   },
   menuExpanded,
-  menuExpandedWidth = "18rem",
+  menuExpandedWidth = "240px",
   menuCollapsedWidth = "48px",
   menuBehavior = "inline",
   menuFlyout = { trigger: "manual" },
@@ -113,6 +113,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
           transitionProperty="width"
           transitionDuration="fast"
           transitionTimingFunction="ease-out"
+          flexShrink={menuExpanded ? "0" : "1"}
           ref={refs.setReference}
           {...getReferenceProps()}
         >
@@ -144,7 +145,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
               borderWidth="none"
               borderRightWidth="1"
               borderColor="neutral-surfaceDisabled"
-              width="18rem"
+              width={menuExpandedWidth}
               {...flyoutBoxProps}
               position="fixed"
               top="0"

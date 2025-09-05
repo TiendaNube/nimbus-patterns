@@ -610,8 +610,6 @@ export const rightChatCollapsibleMenuWithAnchoredSideModal: Story = {
         menu={<AppMenu menuExpanded={effectiveMenuExpanded} />}
         menuExpanded={effectiveMenuExpanded}
         menuBehavior={effectiveMenuBehavior}
-        menuCollapsedWidth="4.5rem"
-        menuExpandedWidth="18rem"
         menuFlyout={{ trigger: "hover", defaultOpen: false }}
       >
         <AppShell.Header
