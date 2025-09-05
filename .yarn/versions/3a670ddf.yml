@@ -1,5 +1,6 @@
 releases:
   "@nimbus-ds/initial-screen": minor
+  "@nimbus-ds/plan-display": minor
 
 declined:
   - nimbus-patterns
