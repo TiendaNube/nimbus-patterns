@@ -136,7 +136,7 @@ export const base: Story = {
         title="Title text - Planes"
         backgroundColor={{ xs: "neutral-surface", md: "transparent" }}
       >
-        <PlanDisplay mx="4">
+        <PlanDisplay>
           <PlanDisplay.Card>
             <PlanDisplay.Header
               subtitle="Punto de venta"
