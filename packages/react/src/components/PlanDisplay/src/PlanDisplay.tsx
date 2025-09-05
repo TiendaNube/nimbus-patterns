@@ -24,7 +24,6 @@ const PlanDisplay: React.FC<PlanDisplayProps> & PlanDisplayComponents = ({
     gap="6"
     justifyContent="center"
     alignItems="flex-start"
-    mx={{ xs: "none", md: "18" }}
     {...rest}
   >
     {children}
