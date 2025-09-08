@@ -14,8 +14,10 @@ const InitialScreenSection: React.FC<InitialScreenSectionProps> = ({
   <Box
     display="flex"
     flexDirection="column"
-    paddingTop="12"
-    gap="8"
+    paddingTop={{ xs: "10", md: "12" }}
+    paddingBottom={{ xs: "10", md: "none" }}
+    gap={{ xs: "6", md: "8" }}
+    px={{ xs: "8", md: "none" }}
     maxWidth="1200px"
     width="100%"
     mx="auto"
@@ -23,7 +25,11 @@ const InitialScreenSection: React.FC<InitialScreenSectionProps> = ({
   >
     <Box display="flex" flexDirection="column" gap="4">
       <Box display="flex" flexDirection="column" gap="2">
-        <Title as="h2" textAlign="left">
+        <Title
+          as="h2"
+          fontSize={{ xs: "h3", md: "h2" }}
+          textAlign={{ xs: "center", md: "left" }}
+        >
           {title}
         </Title>
       </Box>
