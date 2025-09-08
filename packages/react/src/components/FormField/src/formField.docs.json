@@ -27,12 +27,7 @@
     {
       "description": "Appearance of the field and help text elements.",
       "default": "none",
-      "enum": [
-        "danger",
-        "none",
-        "success",
-        "warning"
-      ],
+      "enum": ["danger", "none", "success", "warning"],
       "type": "string",
       "title": "appearance",
       "required": false
@@ -59,12 +54,7 @@
         {
           "description": "Appearance of the field and help text elements.",
           "default": "none",
-          "enum": [
-            "danger",
-            "none",
-            "success",
-            "warning"
-          ],
+          "enum": ["danger", "none", "success", "warning"],
           "type": "string",
           "title": "appearance",
           "required": false
@@ -121,12 +111,7 @@
         {
           "description": "Appearance of the field and help text elements.",
           "default": "none",
-          "enum": [
-            "danger",
-            "none",
-            "success",
-            "warning"
-          ],
+          "enum": ["danger", "none", "success", "warning"],
           "type": "string",
           "title": "appearance",
           "required": false
@@ -240,10 +225,7 @@
         {
           "description": "Sent icon display position",
           "default": "start",
-          "enum": [
-            "end",
-            "start"
-          ],
+          "enum": ["end", "start"],
           "type": "string",
           "title": "appendPosition",
           "required": false

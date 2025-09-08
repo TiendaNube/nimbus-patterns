@@ -61,12 +61,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "type": "string"
@@ -100,12 +95,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "type": "string"
@@ -176,12 +166,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "enum": [
@@ -260,12 +245,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "enum": [
@@ -307,12 +287,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "type": "string"
@@ -328,61 +303,31 @@
           "type": "object",
           "properties": {
             "xs": {
-              "enum": [
-                "auto",
-                "hidden",
-                "scroll",
-                "visible"
-              ],
+              "enum": ["auto", "hidden", "scroll", "visible"],
               "type": "string",
               "title": "xs"
             },
             "md": {
-              "enum": [
-                "auto",
-                "hidden",
-                "scroll",
-                "visible"
-              ],
+              "enum": ["auto", "hidden", "scroll", "visible"],
               "type": "string",
               "title": "md"
             },
             "lg": {
-              "enum": [
-                "auto",
-                "hidden",
-                "scroll",
-                "visible"
-              ],
+              "enum": ["auto", "hidden", "scroll", "visible"],
               "type": "string",
               "title": "lg"
             },
             "xl": {
-              "enum": [
-                "auto",
-                "hidden",
-                "scroll",
-                "visible"
-              ],
+              "enum": ["auto", "hidden", "scroll", "visible"],
               "type": "string",
               "title": "xl"
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
-          "enum": [
-            "auto",
-            "hidden",
-            "scroll",
-            "visible"
-          ],
+          "enum": ["auto", "hidden", "scroll", "visible"],
           "type": "string"
         }
       ],
@@ -478,12 +423,7 @@
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl"
-          ]
+          "propertyOrder": ["xs", "md", "lg", "xl"]
         },
         {
           "enum": [

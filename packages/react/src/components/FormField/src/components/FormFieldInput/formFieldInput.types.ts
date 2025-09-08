@@ -13,10 +13,8 @@ export type FormFieldInputBaseProps = Omit<
   FormFieldInputProperties,
   "appearance"
 > &
-  Omit<InputProps, "appearance"> &
-  {
+  Omit<InputProps, "appearance"> & {
     appearance?:
       | FormFieldProperties["appearance"]
       | InputProperties["appearance"];
-  } &
-  HTMLAttributes<HTMLElement>;
+  } & HTMLAttributes<HTMLElement>;

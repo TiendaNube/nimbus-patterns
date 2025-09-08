@@ -2,13 +2,26 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
-## 2025-08-29 `1.16.0`
+## 2025-09-05 `1.19.0`
+
+#### 🎉 New features
+
+- Improved `PlanDisplay` and `InitialScreen` mobile layout. ([#120](https://github.com/TiendaNube/nimbus-patterns/pull/120) by [@joacotornello](https://github.com/joacotornello))
+
+## 2025-08-29 `1.18.0`
 
 #### 🎉 New features
 
 - Added `ai-generative` appearance for `FormField.Input` component. ([#110](https://github.com/TiendaNube/nimbus-patterns/pull/110) by [@joacotornello](https://github.com/joacotornello))
 
-## 2025-08-05 `1.15.0`
+## 2025-08-08 `1.17.0`
+
+#### 🎉 New features
+
+- Added collapsible sidebar support via new props: `menuExpanded`, `menuExpandedWidth`, and `menuCollapsedWidth`. The sidebar width now transitions between expanded and a compact rail. A `MenuProvider` context is used to inform `Menu` descendants about expansion state. ([#117](https://github.com/TiendaNube/nimbus-patterns/pull/117) by [@joacotornello](https://github.com/joacotornello))
+- Added `expanded` prop support for Menu component. ([#117](https://github.com/TiendaNube/nimbus-patterns/pull/117) by [@joacotornello](https://github.com/joacotornello))
+
+## 2025-08-05 `1.16.0`
 
 #### 🎉 New features
 
@@ -16,7 +29,7 @@ Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s tea
 
 - Updated MenuButton icon size from 14px to 16px for better visual consistency. ([#115](https://github.com/TiendaNube/nimbus-patterns/pull/115) by [@noecondoleo](https://github.com/noecondoleo) [@FedeTrevi-se](https://github.com/FedeTrevi-se))
 
-## 2025-06-04 `1.14.1`
+## 2025-06-04 `1.15.0`
 
 #### 🎉 New features
 

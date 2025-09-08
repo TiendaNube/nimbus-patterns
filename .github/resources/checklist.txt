@@ -5,5 +5,5 @@ Please make sure you read our documentation on how to [write code for components
 - [ ] Provide a list of changes
 - [ ] Include images to help better visualize your work
 - [ ] If your PR closes an issue, please link it
-- [ ] Add reviewers
+- [ ] Add reviewers
 - [ ] Add a label to help better understand what your changes are related to

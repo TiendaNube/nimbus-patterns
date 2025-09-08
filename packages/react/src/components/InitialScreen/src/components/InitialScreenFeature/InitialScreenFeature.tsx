@@ -15,7 +15,7 @@ const InitialScreenFeatureItem: React.FC<
 > = ({ title, description, children }) => (
   <Box py="4">
     <Box px="4" display="flex" flexDirection="column" gap="1">
-      <Box paddingLeft="1">
+      <Box paddingLeft={{ xs: "none", md: "1" }}>
         <Title as="h4">{title}</Title>
       </Box>
       {description && <Text>{description}</Text>}
@@ -58,8 +58,10 @@ const InitialScreenFeature: React.FC<InitialScreenFeatureProperties> = ({
     <Layout.Section justifyContent="center">
       <Box>{content}</Box>
     </Layout.Section>
-    <Layout.Section justifyContent="center">
-      <Box>{image}</Box>
+    <Layout.Section justifyContent="center" order={{ xs: "-1", md: "initial" }}>
+      <Box justifyContent="center" display="flex">
+        {image}
+      </Box>
     </Layout.Section>
   </Layout>
 );

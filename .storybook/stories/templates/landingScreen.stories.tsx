@@ -1,18 +1,14 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Button, Text, Thumbnail, Title } from "@nimbus-ds/components";
+import { Box, Button, Icon, Link, Text, Title } from "@nimbus-ds/components";
 import {
-  BagIcon,
   BoxPackedIcon,
   CheckIcon,
   CloseIcon,
-  FireIcon,
-  TagIcon,
-  TiendanubeIcon,
+  ExternalLinkIcon,
 } from "@nimbus-ds/icons";
 
-import { PlanDisplay } from "@nimbus-ds/plan-display";
-import { InitialScreen } from "@nimbus-ds/initial-screen";
+import { InitialScreen, PlanDisplay, HelpLink } from "@nimbus-ds/patterns";
 
 const meta: Meta = {
   title: "Templates/LandingScreen",
@@ -25,6 +21,24 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
+const sampleImage = (
+  <Box
+    backgroundColor="primary-surface"
+    borderColor="primary-interactive"
+    borderStyle="dashed"
+    borderWidth="1"
+    borderRadius="2"
+    flexGrow="1"
+    minWidth="180px"
+    maxWidth="480px"
+    height="100%"
+    minHeight="192px"
+    display="flex"
+    alignItems="center"
+    justifyContent="center"
+  />
+);
+
 /**
  * The LandingScreen template is used to introduce users to an application or service, offering options to access more information or proceed further.
  * It is composed of several sections, each with a different purpose, such as presenting the main features, benefits, and plans. It is a flexible template that can be customized to fit the needs of the application or service, combined with two main pattern components: InitialScreen and PlanDisplay.
@@ -33,110 +47,96 @@ export const base: Story = {
   render: () => (
     <InitialScreen mx="auto">
       <InitialScreen.Hero
-        subtitle={"META".toUpperCase()}
-        title="¡Vendé más con Instagram y Facebook!"
-        bullets={[
-          <InitialScreen.Bullet
-            icon={<FireIcon />}
-            text="Integración gratis y rápida"
-          />,
-          <InitialScreen.Bullet
-            icon={<BagIcon />}
-            text="Sincronización de catálogo en tiempo real"
-          />,
-          <InitialScreen.Bullet
-            icon={<TagIcon />}
-            text="Creación y seguimiento de campañas"
-          />,
-          <InitialScreen.Bullet
-            icon={<TiendanubeIcon />}
-            text="Medición de conversiones con API y píxel de Meta"
-          />,
-        ]}
-        actions={<Button appearance="primary">Conectar cuenta</Button>}
-        image={
-          <img
-            src="./static/product.jpg"
-            alt="hero image"
-            width="100%"
-            height="auto"
-          />
+        subtitle="SUBTITLE"
+        title="Title text"
+        description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type. "
+        actions={
+          <>
+            <Button appearance="primary">Button</Button>
+            <Button>Button</Button>
+          </>
         }
-      />
-      <InitialScreen.Section title="Beneficios">
+        image={sampleImage}
+        backgroundColor={{ xs: "neutral-background", md: "transparent" }}
+      >
+        <HelpLink>
+          <Box py="4">
+            <Link
+              as="a"
+              href="https://nimbus.tiendanube.com/"
+              target="_blank"
+              appearance="primary"
+              textDecoration="none"
+            >
+              Help link{" "}
+              <Icon color="currentColor" source={<ExternalLinkIcon />} />
+            </Link>
+          </Box>
+        </HelpLink>
+      </InitialScreen.Hero>
+      <InitialScreen.Section
+        title="Title text - Beneficios"
+        backgroundColor={{ xs: "neutral-surface", md: "transparent" }}
+      >
         <InitialScreen.CardLayout>
           <InitialScreen.Card
             icon={<BoxPackedIcon size="large" />}
-            title="Gestión unificada"
-            description="Ahorrá tiempo gestionando tus envíos de forma unificada. Vas a
-              poder generar, imprimir y pagar tus etiquetas, desde el
-              administrador de tu tienda."
+            title="Card beneficio"
+            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley."
           />
 
           <InitialScreen.Card
             icon={<BoxPackedIcon size="large" />}
-            title="Gestión unificada"
-            description="Ahorrá tiempo gestionando tus envíos de forma unificada. Vas a
-              poder generar, imprimir y pagar tus etiquetas, desde el
-              administrador de tu tienda."
+            title="Card beneficio"
+            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley."
           />
           <InitialScreen.Card
             icon={<BoxPackedIcon size="large" />}
-            title="Gestión unificada"
-            description="Ahorrá tiempo gestionando tus envíos de forma unificada. Vas a
-              poder generar, imprimir y pagar tus etiquetas, desde el
-              administrador de tu tienda."
+            title="Card beneficio"
+            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley."
           />
         </InitialScreen.CardLayout>
       </InitialScreen.Section>
-      <InitialScreen.Section title="Detalle">
+      <InitialScreen.Section
+        title="Title text - Detalle"
+        backgroundColor={{ xs: "neutral-background", md: "transparent" }}
+      >
         <InitialScreen.Feature
           content={
             <>
               <InitialScreen.FeatureItem
-                title="1. Cargá saldo"
-                description="Podés hacerlo con tarjeta de crédito, débito o mercado pago."
+                title="Detail text"
+                description="Lorem ipsum is simply dummy text of the printing and typesetting industry."
               >
                 <InitialScreen.FeatureItemSpacing />
               </InitialScreen.FeatureItem>
 
               <InitialScreen.FeatureItem
-                title="2. Generá la etiqueta"
-                description="Revisá los datos y en simples pasos creá la etiqueta."
+                title="Detail text"
+                description="Lorem ipsum is simply dummy text of the printing and typesetting industry."
               >
                 <InitialScreen.FeatureItemSpacing />
               </InitialScreen.FeatureItem>
               <InitialScreen.FeatureItem
-                title="3. Imprimí la etiqueta"
-                description="Una vez impresa colocala en el paquete a enviar."
+                title="Detail text"
+                description="Lorem ipsum is simply dummy text of the printing and typesetting industry."
               >
                 <InitialScreen.FeatureItemSpacing />
               </InitialScreen.FeatureItem>
               <InitialScreen.FeatureItem
-                title="4. Despachá el paquete"
-                description="Podés despachar el paquete en cualquier sucursal de Correo Argentino o Andreani, o puntos de despacho."
+                title="Detail text"
+                description="Lorem ipsum is simply dummy text of the printing and typesetting industry."
               />
             </>
           }
-          image={
-            <Box
-              maxWidth="500px"
-              borderRadius="5"
-              borderColor="primary-interactive"
-              borderWidth="4"
-              borderStyle="solid"
-            >
-              <img
-                src="./static/nuvem-chat.png"
-                alt="NuvemChatView"
-                width="100%"
-              />
-            </Box>
-          }
+          image={sampleImage}
         />
       </InitialScreen.Section>
-      <InitialScreen.Section title="Planes">
-        <PlanDisplay mx="4">
+      <InitialScreen.Section
+        title="Title text - Planes"
+        backgroundColor={{ xs: "neutral-surface", md: "transparent" }}
+      >
+        <PlanDisplay>
           <PlanDisplay.Card>
             <PlanDisplay.Header
               subtitle="Punto de venta"
@@ -153,51 +153,39 @@ export const base: Story = {
             >
               <Title as="h5">Suscripción gratuita</Title>
               <Text fontWeight="bold" fontSize="highlight">
-                1.5% costo por transacción
+                Lorem Ipsum is simply dummy.
               </Text>
             </PlanDisplay.Header>
             <PlanDisplay.Content>
               <PlanDisplay.Bullet
                 icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
               >
-                Descuentos personalizados
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet
                 icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
               >
-                Registro de clientes
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet
                 icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
               >
-                Búsqueda de clientes
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Venta con envío
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-                Venta sin stock
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-                Registro de medio de pago
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-                Escaneo de producto
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-                Gestión de caja
-              </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-                Asignación de vendedor
-              </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-                Creación de productos durante la venta
-              </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-                Guardar carritos
-              </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-                Atajos de teclado
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
             </PlanDisplay.Content>
           </PlanDisplay.Card>
@@ -217,51 +205,39 @@ export const base: Story = {
             >
               <Title as="h5">$6.999 / mes</Title>
               <Text fontWeight="bold" fontSize="highlight">
-                0.5% costo por transacción
+                Lorem Ipsum is simply dummy.
               </Text>
             </PlanDisplay.Header>
             <PlanDisplay.Content>
               <PlanDisplay.Bullet
                 icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
               >
-                Descuentos personalizados
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet
                 icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
               >
-                Registro de clientes
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet
                 icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
               >
-                Búsqueda de clientes
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Venta con envío
-              </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Venta sin stock
-              </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Registro de medio de pago
-              </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Escaneo de producto
-              </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Gestión de caja
-              </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Asignación de vendedor
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-                Creación de productos durante la venta
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-                Guardar carritos
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-                Atajos de teclado
+                Lorem Ipsum is simply dummy.
+              </PlanDisplay.Bullet>
+              <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
             </PlanDisplay.Content>
           </PlanDisplay.Card>
@@ -281,51 +257,39 @@ export const base: Story = {
             >
               <Title as="h5">$14.999 / mes</Title>
               <Text fontWeight="bold" fontSize="highlight">
-                0.15% costo por transacción
+                Lorem Ipsum is simply dummy.
               </Text>
             </PlanDisplay.Header>
             <PlanDisplay.Content>
               <PlanDisplay.Bullet
                 icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
               >
-                Descuentos personalizados
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet
                 icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
               >
-                Registro de clientes
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet
                 icon={<CheckIcon fontWeight="bold" fontSize="24px" />}
               >
-                Búsqueda de clientes
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
               <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Venta con envío
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Venta sin stock
+              <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Registro de medio de pago
+              <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Escaneo de producto
+              <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Gestión de caja
-              </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Asignación de vendedor
-              </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Creación de productos durante la venta
-              </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Guardar carritos
-              </PlanDisplay.Bullet>
-              <PlanDisplay.Bullet icon={<CheckIcon />}>
-                Atajos de teclado
+              <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+                Lorem Ipsum is simply dummy.
               </PlanDisplay.Bullet>
             </PlanDisplay.Content>
             <PlanDisplay.Footer>
@@ -339,7 +303,7 @@ export const base: Story = {
               >
                 <Button appearance="primary">
                   <Text fontSize="base" color="currentColor">
-                    Comenzar gratis por 7 días*
+                    Button
                   </Text>
                 </Button>
                 <Text fontSize="caption">
