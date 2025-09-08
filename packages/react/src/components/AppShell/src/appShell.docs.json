@@ -166,7 +166,9 @@
         }
       },
       "additionalProperties": false,
-      "propertyOrder": ["display"],
+      "propertyOrder": [
+        "display"
+      ],
       "title": "menuProperties",
       "required": false
     },
@@ -304,7 +306,10 @@
     },
     {
       "description": "Determines how the left sidebar behaves when collapsed.\n- 'inline': current behavior; width changes affect layout.\n- 'popover': when collapsed, hovering or clicking the rail shows the expanded menu as an overlay without affecting layout.",
-      "enum": ["inline", "popover"],
+      "enum": [
+        "inline",
+        "popover"
+      ],
       "type": "string",
       "title": "menuBehavior",
       "required": false
@@ -315,7 +320,10 @@
       "properties": {
         "trigger": {
           "description": "How the popover opens. Defaults to 'hover'.",
-          "enum": ["hover", "manual"],
+          "enum": [
+            "hover",
+            "manual"
+          ],
           "type": "string",
           "title": "trigger"
         },
