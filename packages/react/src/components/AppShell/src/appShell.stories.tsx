@@ -32,8 +32,9 @@ import {
   UserIcon,
 } from "@nimbus-ds/icons";
 
+import { SideModal } from "@nimbus-ds/sidemodal";
 import { AppShell } from "./AppShell";
-import { useAppShellMenuContext } from ".";
+import { useAppShellMenuContext } from "./contexts/AppShellMenuContext";
 
 const meta: Meta<typeof AppShell> = {
   title: "Patterns/AppShell",
@@ -199,18 +200,18 @@ const AppMenu = ({ menuExpanded }: { menuExpanded: boolean }) => {
   );
 };
 
-const sampleMenu = (
+const SampleMenu = (
   <Box
     backgroundColor="primary-surface"
     borderColor="primary-interactive"
     borderStyle="dashed"
     borderWidth="1"
     borderRadius="2"
-    width="15rem"
     height="100vh"
     display="flex"
     alignItems="center"
     justifyContent="center"
+    padding="2"
   >
     <Text fontSize="base" color="primary-interactive">
       Menu content
@@ -220,7 +221,7 @@ const sampleMenu = (
 
 export const basic: Story = {
   render: (args) => (
-    <AppShell {...args} menu={sampleMenu}>
+    <AppShell {...args} menu={SampleMenu}>
       <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
       <Box
         backgroundColor="primary-surface"
@@ -240,7 +241,9 @@ export const basic: Story = {
       </Box>
     </AppShell>
   ),
-  args: {},
+  args: {
+    menuExpanded: true,
+  },
 };
 
 export const demoApp: Story = {
@@ -475,7 +478,7 @@ export const collapsibleMenuClick: Story = {
 
 export const noLeftSlot: Story = {
   render: (args) => (
-    <AppShell {...args} menu={sampleMenu}>
+    <AppShell {...args} menu={SampleMenu}>
       <AppShell.Header rightSlot={buttonStack} />
       <Box
         backgroundColor="primary-surface"
@@ -495,5 +498,191 @@ export const noLeftSlot: Story = {
       </Box>
     </AppShell>
   ),
+  args: {
+    menuExpanded: true,
+  },
+};
+
+const ChatPanel: React.FC = () => (
+  <Box
+    backgroundColor="primary-surface"
+    borderColor="primary-interactive"
+    borderStyle="dashed"
+    borderWidth="1"
+    borderRadius="2"
+    width="100%"
+    height="100%"
+    display="flex"
+    alignItems="center"
+    justifyContent="center"
+    data-nimbus-outside-press-ignore
+  >
+    <Text fontSize="base" color="primary-interactive">
+      Chat content
+    </Text>
+  </Box>
+);
+
+export const withRightChatAndAnchoredSideModal: Story = {
+  render: (args) => {
+    const [openAnchored, setOpenAnchored] = React.useState(false);
+
+    const centerChildrenRef = React.useRef<HTMLDivElement>(null);
+
+    return (
+      <AppShell {...args} menu={SampleMenu} menuCollapsedWidth="64px">
+        <AppShell.Header leftSlot={backButton} rightSlot={buttonStack} />
+        <AppShell.Body>
+          <Box flex="1" ref={centerChildrenRef} position="relative">
+            <Page maxWidth="800px" position="relative">
+              <Page.Header title="Anchored SideModal demo" />
+              <Page.Body>
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  gap="2"
+                  width="100%"
+                >
+                  <Box width="100%">
+                    <Box display="flex" gap="2">
+                      <Button onClick={() => setOpenAnchored(true)}>
+                        Open anchored SideModal
+                      </Button>
+                    </Box>
+                    <Box
+                      mt="4"
+                      backgroundColor="primary-surface"
+                      borderColor="primary-interactive"
+                      borderStyle="dashed"
+                      borderWidth="1"
+                      borderRadius="2"
+                      width="100%"
+                      height="500px"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <Text fontSize="base" color="primary-interactive">
+                        Body content
+                      </Text>
+                    </Box>
+                  </Box>
+                </Box>
+              </Page.Body>
+            </Page>
+          </Box>
+
+          <AppShell.Chat>
+            <ChatPanel />
+          </AppShell.Chat>
+        </AppShell.Body>
+
+        <SideModal
+          open={openAnchored}
+          onRemove={() => setOpenAnchored(false)}
+          title="Anchored to AppShell center"
+          root={centerChildrenRef.current}
+          needRemoveScroll
+        >
+          <Text>This SideModal is constrained to the center area.</Text>
+        </SideModal>
+      </AppShell>
+    );
+  },
+  args: {
+    menuExpanded: true,
+  },
+};
+
+export const rightChatCollapsibleMenuWithAnchoredSideModal: Story = {
+  render: () => {
+    const [chatOpen, setChatOpen] = React.useState(false);
+    const [menuExpandedBase, setMenuExpandedBase] = React.useState(true);
+    const [openAnchored, setOpenAnchored] = React.useState(false);
+
+    const centerChildrenRef = React.useRef<HTMLDivElement>(null);
+
+    const effectiveMenuExpanded = chatOpen ? false : menuExpandedBase;
+    const effectiveMenuBehavior = chatOpen ? "popover" : "inline";
+
+    return (
+      <AppShell
+        menu={<AppMenu menuExpanded={effectiveMenuExpanded} />}
+        menuExpanded={effectiveMenuExpanded}
+        menuBehavior={effectiveMenuBehavior}
+        menuFlyout={{ trigger: "hover", defaultOpen: false }}
+      >
+        <AppShell.Header
+          leftSlot={
+            !chatOpen ? (
+              <Button
+                appearance="transparent"
+                onClick={() => setMenuExpandedBase((v) => !v)}
+              >
+                Toggle menu
+              </Button>
+            ) : undefined
+          }
+          rightSlot={
+            <Box display="flex" gap="2" alignItems="center">
+              {buttonStack}
+              <Button
+                onClick={() => setChatOpen((v) => !v)}
+                appearance={chatOpen ? "neutral" : "primary"}
+              >
+                {chatOpen ? "Close chat" : "Open chat"}
+              </Button>
+            </Box>
+          }
+        />
+        <AppShell.Body>
+          <Box flex="1" ref={centerChildrenRef} position="relative">
+            <Page maxWidth="800px" position="relative">
+              <Page.Header title="Anchored SideModal demo" />
+              <Page.Body>
+                <Box display="flex" gap="2">
+                  <Button onClick={() => setOpenAnchored(true)}>
+                    Open anchored SideModal
+                  </Button>
+                </Box>
+                <Box
+                  mt="4"
+                  backgroundColor="primary-surface"
+                  borderColor="primary-interactive"
+                  borderStyle="dashed"
+                  borderWidth="1"
+                  borderRadius="2"
+                  width="100%"
+                  height="50vh"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <Text fontSize="base" color="primary-interactive">
+                    Body content
+                  </Text>
+                </Box>
+              </Page.Body>
+            </Page>
+          </Box>
+          {chatOpen && (
+            <AppShell.Chat>
+              <ChatPanel />
+            </AppShell.Chat>
+          )}
+        </AppShell.Body>
+
+        <SideModal
+          open={openAnchored}
+          onRemove={() => setOpenAnchored(false)}
+          title="Anchored to AppShell center"
+          root={centerChildrenRef.current}
+          needRemoveScroll
+        >
+          <Text>This SideModal is constrained to the center area.</Text>
+        </SideModal>
+      </AppShell>
+    );
+  },
   args: {},
 };

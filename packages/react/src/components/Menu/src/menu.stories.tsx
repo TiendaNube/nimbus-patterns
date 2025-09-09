@@ -10,7 +10,7 @@ const meta: Meta<typeof Menu> = {
   component: Menu,
   argTypes: {
     children: { control: { disable: true } },
-    expanded: { control: 'boolean', defaultValue: true },
+    expanded: { control: "boolean", defaultValue: true },
   },
   tags: ["autodocs"],
 };
@@ -75,7 +75,7 @@ export const menuInsideFixedBar: Story = {
     </Box>
   ),
   args: {
-    expanded: true
+    expanded: true,
   },
 };
 

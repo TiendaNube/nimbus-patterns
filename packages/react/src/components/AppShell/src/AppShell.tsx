@@ -12,7 +12,7 @@ import {
   useFloating,
 } from "@floating-ui/react";
 
-import { AppShellHeader } from "./components";
+import { AppShellHeader, AppShellBody, AppShellChat } from "./components";
 
 import { AppShellProps, AppShellComponents } from "./appShell.types";
 import { AppShellMenuContext } from "./contexts/AppShellMenuContext";
@@ -21,6 +21,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   className: _className,
   style: _style,
   children,
+  contentProperties,
   menu,
   menuProperties = {
     display: {
@@ -29,7 +30,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
     },
   },
   menuExpanded,
-  menuExpandedWidth = "18rem",
+  menuExpandedWidth = "240px",
   menuCollapsedWidth = "48px",
   menuBehavior = "inline",
   menuFlyout = { trigger: "manual" },
@@ -112,6 +113,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
           transitionProperty="width"
           transitionDuration="fast"
           transitionTimingFunction="ease-out"
+          flexShrink={menuExpanded ? "0" : "1"}
           ref={refs.setReference}
           {...getReferenceProps()}
         >
@@ -121,11 +123,15 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         </Box>
       )}
       <Box
-        display="flex"
-        flexDirection="column"
+        display="grid"
+        gridTemplateRows="auto 1fr"
         flex="1 1 auto"
-        backgroundColor="neutral-surface"
+        height="100vh"
         width="100%"
+        overflow="hidden"
+        backgroundColor="neutral-surface"
+        // Fully customizable due to client needs
+        {...contentProperties}
       >
         {children}
       </Box>
@@ -139,7 +145,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
               borderWidth="none"
               borderRightWidth="1"
               borderColor="neutral-surfaceDisabled"
-              width="18rem"
+              width={menuExpandedWidth}
               {...flyoutBoxProps}
               position="fixed"
               top="0"
@@ -159,8 +165,12 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
 };
 
 AppShell.Header = AppShellHeader;
+AppShell.Body = AppShellBody;
+AppShell.Chat = AppShellChat;
 
 AppShell.displayName = "AppShell";
 AppShell.Header.displayName = "AppShell.Header";
+AppShell.Body.displayName = "AppShell.Body";
+AppShell.Chat.displayName = "AppShell.Chat";
 
 export { AppShell };

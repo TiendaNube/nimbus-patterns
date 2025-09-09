@@ -316,3 +316,47 @@ export const withoutFooter: Story = {
     ),
   },
 };
+
+export const withRoot: Story = {
+  render: (args) => {
+    const [{ open }, updateArgs] = useArgs();
+    const handleClose = () => updateArgs({ open: !open });
+    const containerRef = React.useRef<HTMLDivElement | null>(null);
+
+    return (
+      <Box height="60vh" position="relative" width="50vw" ref={containerRef}>
+        <Box borderStyle="dashed" borderWidth="1" padding="2" height="100%">
+          <Button onClick={handleClose}>Open</Button>
+          {containerRef.current && (
+            <SideModal
+              {...args}
+              root={containerRef.current}
+              onRemove={handleClose}
+              open={open}
+            />
+          )}
+        </Box>
+      </Box>
+    );
+  },
+  args: {
+    padding: "base",
+    children: (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100%"
+        borderStyle="dashed"
+        padding="2"
+        borderWidth="1"
+        borderColor="neutral-interactive"
+        boxSizing="border-box"
+      >
+        <Text textAlign="center">
+          This sidebar is anchored to the provided root element
+        </Text>
+      </Box>
+    ),
+  },
+};

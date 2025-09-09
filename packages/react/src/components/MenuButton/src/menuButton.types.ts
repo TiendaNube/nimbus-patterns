@@ -33,7 +33,7 @@ export interface MenuButtonProperties {
   /**
    * Controlled override for menu expansion state. This prop does not manage internal state
    * and is not forwarded to the DOM as an attribute. It is used only for layout and visual
-   * state determination. 
+   * state determination.
    * If not provided, the expanded state will be determined by the context.
    */
   expanded?: boolean;

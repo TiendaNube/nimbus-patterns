@@ -79,7 +79,7 @@
           "required": false
         },
         {
-          "description": "Controlled override for menu expansion state. This prop does not manage internal state\nand is not forwarded to the DOM as an attribute. It is used only for layout and visual\nstate determination. \nIf not provided, the expanded state will be determined by the context.",
+          "description": "Controlled override for menu expansion state. This prop does not manage internal state\nand is not forwarded to the DOM as an attribute. It is used only for layout and visual\nstate determination.\nIf not provided, the expanded state will be determined by the context.",
           "type": "boolean",
           "title": "expanded",
           "required": false

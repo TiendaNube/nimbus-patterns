@@ -1,10 +1,12 @@
 import { HTMLAttributes, ReactNode } from "react";
 
 import { BoxBaseProps, BoxProps } from "@nimbus-ds/components";
-import { AppShellHeader } from "./components";
+import { AppShellHeader, AppShellBody, AppShellChat } from "./components";
 
 export interface AppShellComponents {
   Header: typeof AppShellHeader;
+  Body: typeof AppShellBody;
+  Chat: typeof AppShellChat;
 }
 
 /**
@@ -66,6 +68,11 @@ export interface AppShellProperties {
    * Consolidated configuration for the popover/flyout behavior when `menuBehavior` is 'popover'.
    */
   menuFlyout?: AppShellMenuFlyoutOptions;
+
+  /**
+   * Consolidated configuration for the content container.
+   */
+  contentProperties?: BoxBaseProps;
 }
 
 export type AppShellProps = AppShellProperties & {

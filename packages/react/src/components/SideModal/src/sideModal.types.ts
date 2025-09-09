@@ -1,8 +1,8 @@
 import { HTMLAttributes, ReactNode } from "react";
 import {
-  SidebarProperties,
   ButtonProperties,
   ButtonProps,
+  SidebarProperties,
 } from "@nimbus-ds/components";
 
 export type SideModalPadding = "none" | "base";
@@ -10,8 +10,18 @@ export type SideModalPadding = "none" | "base";
 export interface SideModalProperties
   extends Pick<
     SidebarProperties,
-    "position" | "onRemove" | "open" | "padding" | "maxWidth" | "zIndex"
+    | "position"
+    | "onRemove"
+    | "open"
+    | "padding"
+    | "maxWidth"
+    | "zIndex"
+    | "needRemoveScroll"
+    | "ignoreAttributeName"
   > {
+  /**
+   * Choose where the portal should render. Defaults to viewport (body).
+   */
   /**
    * Title.
    */
@@ -62,4 +72,9 @@ export type SideModalProps = SideModalProperties & {
     primaryAction: ButtonProps;
     secondaryAction: ButtonProps;
   };
+  /**
+   * Choose where the portal should render. Defaults to the viewport (document.body).
+   * Useful to scope the modal within a specific container (e.g., AppShell.Chat).
+   */
+  root?: HTMLElement | null;
 } & HTMLAttributes<HTMLElement>;
