@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2025-09-10 `1.20.1`
+
+#### 🐛 Bug fixes
+
+- Fixed `AppShell` default value for `menuExpanded` prop to be true. ([#121](https://github.com/TiendaNube/nimbus-patterns/pull/121) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-09-04 `1.20.0`
 
 #### 🎉 New features

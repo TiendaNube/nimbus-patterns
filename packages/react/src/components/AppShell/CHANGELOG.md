@@ -2,6 +2,12 @@
 
 The AppShell component is the main outer frame of an application. It provides the basic architecture to build an application inside of our admin.
 
+## 2025-09-10 `1.6.1`
+
+#### 🐛 Bug fixes
+
+- Fixed default value for `menuExpanded` prop to be true. ([#121](https://github.com/TiendaNube/nimbus-patterns/pull/121) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-09-04 `1.6.0`
 
 #### 💡 Others
