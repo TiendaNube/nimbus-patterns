@@ -29,7 +29,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
       md: "block",
     },
   },
-  menuExpanded,
+  menuExpanded = true,
   menuExpandedWidth = "240px",
   menuCollapsedWidth = "48px",
   menuBehavior = "inline",

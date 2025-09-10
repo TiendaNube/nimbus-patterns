@@ -45,7 +45,7 @@ export interface AppShellProperties {
    */
   menuProperties?: Pick<BoxBaseProps, "display">;
   /**
-   * Controls whether the left sidebar (menu) is expanded (true) or collapsed (false).
+   * Controls whether the left sidebar (menu) is expanded (true) or collapsed (false). Defaults to true.
    */
   menuExpanded?: boolean;
   /**
