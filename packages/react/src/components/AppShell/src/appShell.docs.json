@@ -3,7 +3,7 @@
   "name": "AppShell",
   "totalProps": 9,
   "packageName": "@nimbus-ds/app-shell",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/app-shell",
   "props": [
     {
@@ -173,13 +173,13 @@
       "required": false
     },
     {
-      "description": "Controls whether the left sidebar (menu) is expanded (true) or collapsed (false).",
+      "description": "Controls whether the left sidebar (menu) is expanded (true) or collapsed (false). Defaults to true.",
       "type": "boolean",
       "title": "menuExpanded",
       "required": false
     },
     {
-      "description": "Sidebar width when expanded. Defaults to \"18rem\".",
+      "description": "Sidebar width when expanded. Defaults to \"240px\".",
       "anyOf": [
         {
           "type": "object",
@@ -242,7 +242,7 @@
       "required": false
     },
     {
-      "description": "Sidebar width when collapsed (rail). If provided, the sidebar will render in a compact rail while collapsed. Defaults to \"4.5rem\".",
+      "description": "Sidebar width when collapsed (rail). If provided, the sidebar will render in a compact rail while collapsed. Defaults to \"48px\".",
       "anyOf": [
         {
           "type": "object",
@@ -319,7 +319,7 @@
       "type": "object",
       "properties": {
         "trigger": {
-          "description": "How the popover opens. Defaults to 'hover'.",
+          "description": "How the popover opens. Defaults to 'manual'.",
           "enum": [
             "hover",
             "manual"

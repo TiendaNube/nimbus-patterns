@@ -3,7 +3,7 @@
   "name": "SideModal",
   "totalProps": 17,
   "packageName": "@nimbus-ds/sidemodal",
-  "version": "1.7.7",
+  "version": "1.8.0",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/side-modal",
   "props": [
     {
