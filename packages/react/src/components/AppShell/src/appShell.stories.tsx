@@ -331,10 +331,11 @@ export const collapsibleMenuHover: Story = {
         menuBehavior="popover"
         menuFlyout={{ trigger: "hover", open, onOpenChange: setOpen }}
         menu={<AppMenu menuExpanded={open} />}
+        menuExpanded={false}
       >
         <AppShell.Header rightSlot={buttonStack} />
         <Page maxWidth="800px">
-          <Page.Header title="Rail with click popover" />
+          <Page.Header title="Rail with hover popover" />
           <Page.Body>
             <Box
               backgroundColor="primary-surface"
@@ -349,7 +350,7 @@ export const collapsibleMenuHover: Story = {
               justifyContent="center"
             >
               <Text fontSize="base" color="primary-interactive">
-                Use the button inside the rail to toggle the overlay menu
+                Hover the left menu to toggle the overlay menu
               </Text>
             </Box>
           </Page.Body>
@@ -446,6 +447,7 @@ export const collapsibleMenuClick: Story = {
         menuBehavior="popover"
         menuFlyout={{ trigger: "manual", open, onOpenChange: setOpen }}
         menu={<AppClickMenu defaultExpanded={open} />}
+        menuExpanded={false}
       >
         <AppShell.Header rightSlot={buttonStack} />
         <Page maxWidth="800px">

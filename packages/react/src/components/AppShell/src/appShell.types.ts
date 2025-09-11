@@ -15,7 +15,7 @@ export interface AppShellComponents {
  * while keeping individual top-level props for backward compatibility.
  */
 export type AppShellMenuFlyoutOptions = {
-  /** How the popover opens. Defaults to 'hover'. */
+  /** How the popover opens. Defaults to 'manual'. */
   trigger?: "hover" | "manual";
   /** Controlled open state for the flyout. */
   open?: boolean;
@@ -45,15 +45,15 @@ export interface AppShellProperties {
    */
   menuProperties?: Pick<BoxBaseProps, "display">;
   /**
-   * Controls whether the left sidebar (menu) is expanded (true) or collapsed (false).
+   * Controls whether the left sidebar (menu) is expanded (true) or collapsed (false). Defaults to true.
    */
   menuExpanded?: boolean;
   /**
-   * Sidebar width when expanded. Defaults to "18rem".
+   * Sidebar width when expanded. Defaults to "240px".
    */
   menuExpandedWidth?: BoxBaseProps["width"];
   /**
-   * Sidebar width when collapsed (rail). If provided, the sidebar will render in a compact rail while collapsed. Defaults to "4.5rem".
+   * Sidebar width when collapsed (rail). If provided, the sidebar will render in a compact rail while collapsed. Defaults to "48px".
    */
   menuCollapsedWidth?: BoxBaseProps["width"];
 
