@@ -27,8 +27,5 @@
   },
   "bugs": {
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
-  },
-  "devDependencies": {
-    "@nimbus-ds/icons": "^1"
   }
 }

@@ -19,7 +19,6 @@
   },
   "devDependencies": {
     "@nimbus-ds/components": "^5",
-    "@nimbus-ds/icons": "^1",
     "@nimbus-ds/sortable": "workspace:*"
   },
   "repository": {

@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { HomeIcon } from "@nimbus-ds/icons";
+import { GenerativeStarsIcon, HomeIcon } from "@nimbus-ds/icons";
 
 import { NavTabs } from "../../NavTabs";
 
@@ -22,5 +22,15 @@ export const basic: Story = {
     icon: <HomeIcon size="medium" />,
     onClick: () => false,
     ariaLabel: "Home",
+  },
+};
+
+export const aiGenerative: Story = {
+  args: {
+    active: true,
+    icon: <GenerativeStarsIcon size="medium" />,
+    onClick: () => false,
+    ariaLabel: "Home",
+    appearance: "ai-generative",
   },
 };
