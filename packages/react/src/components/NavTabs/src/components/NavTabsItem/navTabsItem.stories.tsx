@@ -30,7 +30,7 @@ export const aiGenerative: Story = {
     active: true,
     icon: <GenerativeStarsIcon size="medium" />,
     onClick: () => false,
-    ariaLabel: "Home",
+    ariaLabel: "AI",
     appearance: "ai-generative",
   },
 };

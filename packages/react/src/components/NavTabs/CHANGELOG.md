@@ -2,7 +2,7 @@
 
 The NavTabs component represents the main navigation dock for an application on a mobile device, including up to 5 tabs or buttons for different sections. The component has a fixed position on the bottom of the screen.
 
-## 2025-09-17 `1.3.0`
+## 2025-09-17 `1.4.0`
 
 #### 🎉 New features
 

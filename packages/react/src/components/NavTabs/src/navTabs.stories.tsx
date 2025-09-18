@@ -72,7 +72,7 @@ export const withAiItem: Story = {
         <NavTabs.Item
           icon={<GenerativeStarsIcon size="medium" />}
           onClick={() => false}
-          ariaLabel="Home"
+          ariaLabel="AI"
           appearance="ai-generative"
         />
         <NavTabs.Item
