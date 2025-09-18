@@ -40,5 +40,24 @@ describe("GIVEN <NavTabsItem />", () => {
       fireEvent.click(buttonClick);
       expect(mockedClickFunction).toHaveBeenCalled();
     });
+
+    it("renders active badge with ai-generative appearance", () => {
+      makeSut({ active: true, badge: true, appearance: "ai-generative" });
+
+      const button = screen.getByRole("button");
+      expect(button.className).toContain("background");
+
+      const badge = button.querySelector('[class*="position-absolute"]');
+      expect(badge).toBeInTheDocument();
+    });
+
+    it("applies ai-generative appearance when specified", () => {
+      makeSut({ appearance: "ai-generative" });
+
+      const button = screen.getByRole("button");
+      expect(button.className).toContain("background");
+      expect(button.className).toContain("borderColor");
+      expect(button.className).toContain("borderWidth");
+    });
   });
 });

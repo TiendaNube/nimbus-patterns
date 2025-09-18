@@ -41,7 +41,10 @@ describe("GIVEN <SortableItemHandle />", () => {
 
       const handle = screen.getByText("Handle Content").parentElement;
       expect(handle).toHaveAttribute("aria-label", "drag handle");
-      expect(handle).toHaveClass("nimbus-box_cursor-grab-xs__cklfii119");
+      // Assert using stable class prefix instead of hashed class name
+      expect(handle?.className).toEqual(
+        expect.stringContaining("nimbus-box_cursor-grab-xs__")
+      );
     });
 
     it("SHOULD set proper ref from context", () => {

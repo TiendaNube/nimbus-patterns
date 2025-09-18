@@ -24,6 +24,10 @@ export interface NavTabsItemProperties {
    * Text label used for accessibility.
    */
   ariaLabel: string;
+  /**
+   * Appearance of the button.
+   */
+  appearance?: "default" | "ai-generative";
 }
 
 export type NavTabsItemProps = NavTabsItemProperties &
