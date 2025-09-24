@@ -1,12 +1,11 @@
 import React, { forwardRef, useRef } from "react";
-
-import { Textarea } from "@nimbus-ds/textarea";
+import { Textarea } from "@nimbus-ds/components";
 import { useRefObjectAsForwardedRef } from "@nimbus-ds/typings";
 
 import { ChatInputFieldBaseProps } from "./chatInputField.types";
 
 const ChatInputField = forwardRef<HTMLTextAreaElement, ChatInputFieldBaseProps>(
-  ({ appearance = "none", lines = 1, ...rest }, ref) => {
+  ({ lines = 1, maxLines = 7, ...rest }, ref) => {
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
     useRefObjectAsForwardedRef(ref, textAreaRef);
 
@@ -15,11 +14,10 @@ const ChatInputField = forwardRef<HTMLTextAreaElement, ChatInputFieldBaseProps>(
         ref={textAreaRef}
         {...rest}
         lines={lines}
-        maxLines={7}
-        fieldSizing="content"
-        appearance={
-          appearance === "ai-generative" ? "ai-generative" : "transparent"
-        }
+        maxLines={maxLines}
+        autoGrow
+        resize={false}
+        appearance="transparent"
       />
     );
   }

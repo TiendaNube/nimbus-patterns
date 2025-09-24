@@ -1,7 +1,12 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box, IconButton } from "@nimbus-ds/components";
-import { PlusIcon, MicrophoneIcon, ArrowupIcon } from "@nimbus-ds/icons";
+import {
+  PlusIcon,
+  MicrophoneIcon,
+  ArrowupIcon,
+  PlusCircleIcon,
+} from "@nimbus-ds/icons";
 
 import { ChatInput } from "./ChatInput";
 
@@ -28,13 +33,35 @@ export const Base: Story = {
         />
         <ChatInput.Actions>
           <Box display="flex" gap="2" alignItems="center">
-            <IconButton
-              color="neutral-textLow"
-              source={<PlusIcon />}
-              size="2rem"
-              borderColor="transparent"
-              backgroundColor="transparent"
-            />
+            <ChatInput.Popover
+              content={
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  gap="1"
+                  minWidth="140px"
+                >
+                  <ChatInput.PopoverButton
+                    icon={<PlusCircleIcon />}
+                    text="Upload file"
+                    onClick={() => console.log("Upload file clicked")}
+                  />
+                  <ChatInput.PopoverButton
+                    icon={<PlusCircleIcon />}
+                    text="Upload photo"
+                    onClick={() => console.log("Upload photo clicked")}
+                  />
+                </Box>
+              }
+            >
+              <IconButton
+                color="neutral-textLow"
+                source={<PlusIcon />}
+                size="2rem"
+                borderColor="transparent"
+                backgroundColor="transparent"
+              />
+            </ChatInput.Popover>
           </Box>
           <Box display="flex" gap="2" alignItems="center">
             <IconButton
@@ -70,13 +97,35 @@ export const Filled: Story = {
         />
         <ChatInput.Actions>
           <Box display="flex" gap="2" alignItems="center">
-            <IconButton
-              color="neutral-textLow"
-              source={<PlusIcon />}
-              size="2rem"
-              borderColor="transparent"
-              backgroundColor="transparent"
-            />
+            <ChatInput.Popover
+              content={
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  gap="1"
+                  minWidth="140px"
+                >
+                  <ChatInput.PopoverButton
+                    icon={<PlusCircleIcon />}
+                    text="Upload file"
+                    onClick={() => console.log("Upload file clicked")}
+                  />
+                  <ChatInput.PopoverButton
+                    icon={<PlusCircleIcon />}
+                    text="Upload photo"
+                    onClick={() => console.log("Upload photo clicked")}
+                  />
+                </Box>
+              }
+            >
+              <IconButton
+                color="neutral-textLow"
+                source={<PlusIcon />}
+                size="2rem"
+                borderColor="transparent"
+                backgroundColor="transparent"
+              />
+            </ChatInput.Popover>
           </Box>
           <Box display="flex" gap="2" alignItems="center">
             <IconButton

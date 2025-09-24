@@ -3,7 +3,12 @@ import React from "react";
 import { Box } from "@nimbus-ds/components";
 
 import { ChatInputProps, ChatInputComponents } from "./chatInput.types";
-import { ChatInputActions, ChatInputField } from "./components";
+import {
+  ChatInputActions,
+  ChatInputField,
+  ChatInputPopover,
+  ChatInputPopoverButton,
+} from "./components";
 
 const ChatInput: React.FC<ChatInputProps> & ChatInputComponents = ({
   className: _className,
@@ -30,9 +35,13 @@ const ChatInput: React.FC<ChatInputProps> & ChatInputComponents = ({
 
 ChatInput.Actions = ChatInputActions;
 ChatInput.Field = ChatInputField;
+ChatInput.Popover = ChatInputPopover;
+ChatInput.PopoverButton = ChatInputPopoverButton;
 
 ChatInput.displayName = "ChatInput";
 ChatInput.Actions.displayName = "ChatInput.Actions";
 ChatInput.Field.displayName = "ChatInput.Field";
+ChatInput.Popover.displayName = "ChatInput.Popover";
+ChatInput.PopoverButton.displayName = "ChatInput.PopoverButton";
 
 export { ChatInput };
