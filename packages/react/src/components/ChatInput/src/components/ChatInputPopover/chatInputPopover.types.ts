@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { PopoverProperties } from "@nimbus-ds/components";
+import { BoxProperties, PopoverProperties } from "@nimbus-ds/components";
 
 export interface ChatInputPopoverProperties {
   /**
@@ -7,6 +7,11 @@ export interface ChatInputPopoverProperties {
    * @TJS-type React.ReactNode
    */
   content: ReactNode;
+
+  contentProperties?: Omit<
+    BoxProperties,
+    "children" | "display" | "flexDirection" | "gap"
+  >;
 
   /**
    * The trigger element that opens the popover, usually an IconButton.

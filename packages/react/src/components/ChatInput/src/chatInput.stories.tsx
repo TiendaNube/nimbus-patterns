@@ -35,12 +35,7 @@ export const Base: Story = {
           <Box display="flex" gap="2" alignItems="center">
             <ChatInput.Popover
               content={
-                <Box
-                  display="flex"
-                  flexDirection="column"
-                  gap="1"
-                  minWidth="140px"
-                >
+                <>
                   <ChatInput.PopoverButton
                     icon={<PlusCircleIcon />}
                     text="Upload file"
@@ -51,7 +46,7 @@ export const Base: Story = {
                     text="Upload photo"
                     onClick={() => console.log("Upload photo clicked")}
                   />
-                </Box>
+                </>
               }
             >
               <IconButton
@@ -99,12 +94,7 @@ export const Filled: Story = {
           <Box display="flex" gap="2" alignItems="center">
             <ChatInput.Popover
               content={
-                <Box
-                  display="flex"
-                  flexDirection="column"
-                  gap="1"
-                  minWidth="140px"
-                >
+                <>
                   <ChatInput.PopoverButton
                     icon={<PlusCircleIcon />}
                     text="Upload file"
@@ -115,7 +105,7 @@ export const Filled: Story = {
                     text="Upload photo"
                     onClick={() => console.log("Upload photo clicked")}
                   />
-                </Box>
+                </>
               }
             >
               <IconButton

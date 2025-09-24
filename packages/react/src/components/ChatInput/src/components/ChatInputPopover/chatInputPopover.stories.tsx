@@ -25,7 +25,7 @@ export const SingleOption: Story = {
       <ChatInputPopover
         visible
         content={
-          <Box display="flex" flexDirection="column" gap="1" minWidth="140px">
+          <>
             <ChatInputPopoverButton
               icon={<PlusCircleIcon />}
               text="Upload file"
@@ -36,7 +36,7 @@ export const SingleOption: Story = {
               text="Upload image"
               onClick={() => console.log("Upload image clicked")}
             />
-          </Box>
+          </>
         }
       >
         <IconButton
@@ -57,7 +57,7 @@ export const MultipleOptions: Story = {
       <ChatInputPopover
         visible
         content={
-          <Box display="flex" flexDirection="column" gap="1" minWidth="160px">
+          <>
             <ChatInputPopoverButton
               icon={<PlusCircleIcon />}
               text="Upload document"
@@ -72,7 +72,7 @@ export const MultipleOptions: Story = {
               text="Other option"
               onClick={() => console.log("Other option clicked")}
             />
-          </Box>
+          </>
         }
       >
         <IconButton
