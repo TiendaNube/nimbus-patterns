@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2025-09-24 `1.21.0`
+
+#### 🎉 New features
+
+- Added `ChatInput` component. ([#123](https://github.com/TiendaNube/nimbus-patterns/pull/123) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-09-10 `1.20.1`
 
 #### 🐛 Bug fixes
