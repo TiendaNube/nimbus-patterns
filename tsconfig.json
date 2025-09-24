@@ -82,7 +82,8 @@
       "@nimbus-ds/sortable": ["./packages/react/src/components/Sortable/src"],
       "@nimbus-ds/product-data-list": [
         "./packages/react/src/components/ProductDataList/src"
-      ]
+      ],
+      "@nimbus-ds/chat-input": ["./packages/react/src/components/ChatInput/src"]
     }
   }
 }

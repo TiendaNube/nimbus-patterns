@@ -59,6 +59,10 @@
       "import": "./dist/CalloutCard/index.js",
       "require": "./dist/CalloutCard/index.js"
     },
+    "./ChatInput": {
+      "import": "./dist/ChatInput/index.js",
+      "require": "./dist/ChatInput/index.js"
+    },
     "./DataList": {
       "import": "./dist/DataList/index.js",
       "require": "./dist/DataList/index.js"
@@ -138,10 +142,6 @@
     "./ThumbnailWithAction": {
       "import": "./dist/ThumbnailWithAction/index.js",
       "require": "./dist/ThumbnailWithAction/index.js"
-    },
-    "./ChatInput": {
-      "import": "./dist/ChatInput/index.js",
-      "require": "./dist/ChatInput/index.js"
     }
   }
 }

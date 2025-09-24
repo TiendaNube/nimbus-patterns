@@ -52,6 +52,8 @@ const config: Config.InitialOptions = {
       "<rootDir>/packages/react/src/components/Sortable/src",
     "@nimbus-ds/product-data-list":
       "<rootDir>/packages/react/src/components/ProductDataList/src",
+    "@nimbus-ds/chat-input":
+      "<rootDir>/packages/react/src/components/ChatInput/src",
   },
 };
 
