@@ -60,7 +60,9 @@
           "properties": {
             "appearance": {
               "description": "AI gradient background appearance for the button container.\nWhen provided, container color/border sprinkles are ignored in favor of gradient styles.",
-              "enum": ["ai-generative"],
+              "enum": [
+                "ai-generative"
+              ],
               "type": "string",
               "title": "appearance"
             },
@@ -99,13 +101,20 @@
             "as": {
               "description": "Type of html tag to create for the Icon Button component.",
               "default": "button",
-              "enum": ["button", "div"],
+              "enum": [
+                "button",
+                "div"
+              ],
               "type": "string",
               "title": "as"
             }
           },
           "additionalProperties": false,
-          "propertyOrder": ["appearance", "color", "as"],
+          "propertyOrder": [
+            "appearance",
+            "color",
+            "as"
+          ],
           "title": "iconButton",
           "required": true
         },
