@@ -1,7 +1,12 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "@nimbus-ds/components";
-import { PaperclipIcon, MicrophoneIcon } from "@nimbus-ds/icons";
+import { Button, Box, IconButton } from "@nimbus-ds/components";
+import {
+  UploadIcon,
+  MicrophoneIcon,
+  PlusIcon,
+  ArrowupIcon,
+} from "@nimbus-ds/icons";
 
 import { ChatInput } from "../../ChatInput";
 
@@ -17,26 +22,11 @@ const meta: Meta<typeof ChatInput.Actions> = {
 export default meta;
 type Story = StoryObj<typeof ChatInput.Actions>;
 
-export const basic: Story = {
-  args: {
-    children: (
-      <>
-        <Button size="2xs" appearance="transparent">
-          <PaperclipIcon />
-        </Button>
-        <Button size="2xs" appearance="transparent">
-          <MicrophoneIcon />
-        </Button>
-      </>
-    ),
-  },
-};
-
 export const singleAction: Story = {
   args: {
     children: (
-      <Button size="2xs" appearance="transparent">
-        <PaperclipIcon />
+      <Button appearance="transparent">
+        <UploadIcon />
       </Button>
     ),
   },
@@ -46,17 +36,31 @@ export const multipleActions: Story = {
   args: {
     children: (
       <>
-        <div style={{ display: "flex", gap: "8px" }}>
-          <Button size="2xs" appearance="transparent">
-            <PaperclipIcon />
-          </Button>
-          <Button size="2xs" appearance="transparent">
-            <MicrophoneIcon />
-          </Button>
-        </div>
-        <Button size="2xs" appearance="primary">
-          Send
-        </Button>
+        <Box display="flex" gap="2" alignItems="center">
+          <IconButton
+            color="neutral-textLow"
+            source={<PlusIcon />}
+            size="2rem"
+            borderColor="transparent"
+            backgroundColor="transparent"
+          />
+        </Box>
+        <Box display="flex" gap="2" alignItems="center">
+          <IconButton
+            color="neutral-textLow"
+            source={<MicrophoneIcon />}
+            size="2rem"
+            borderColor="transparent"
+            backgroundColor="transparent"
+          />
+          <IconButton
+            color="neutral-background"
+            source={<ArrowupIcon />}
+            appearance="ai-generative"
+            size="2rem"
+            borderColor="transparent"
+          />
+        </Box>
       </>
     ),
   },

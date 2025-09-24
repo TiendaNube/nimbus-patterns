@@ -6,7 +6,7 @@ import { PlusCircleIcon, UploadIcon, FileIcon } from "@nimbus-ds/icons";
 import { ChatInputPopoverButton } from "./ChatInputPopoverButton";
 
 const meta: Meta<typeof ChatInputPopoverButton> = {
-  title: "Patterns/ChatInput/Components/PopoverButton",
+  title: "Patterns/ChatInput/ChatInput.PopoverButton",
   component: ChatInputPopoverButton,
   argTypes: {
     text: {
@@ -79,59 +79,4 @@ export const MultipleButtons: Story = {
       />
     </Box>
   ),
-};
-
-export const WithoutIcon: Story = {
-  args: {
-    text: "Text only button",
-    onClick: () => console.log("Text only button clicked"),
-  },
-  render: (args) => (
-    <Box margin="4" maxWidth="200px">
-      <ChatInputPopoverButton {...args} />
-    </Box>
-  ),
-};
-
-export const LongText: Story = {
-  args: {
-    icon: <PlusCircleIcon />,
-    text: "This is a very long button text that might wrap",
-    onClick: () => console.log("Long text button clicked"),
-  },
-  render: (args) => (
-    <Box margin="4" maxWidth="200px">
-      <ChatInputPopoverButton {...args} />
-    </Box>
-  ),
-};
-
-export const InteractiveDemo: Story = {
-  render: () => {
-    const [lastClicked, setLastClicked] = React.useState<string>("None");
-
-    return (
-      <Box margin="4" maxWidth="300px">
-        <Box mb="4">
-          <strong>Last clicked: {lastClicked}</strong>
-        </Box>
-        <Box display="flex" flexDirection="column" gap="1">
-          <ChatInputPopoverButton
-            icon={<UploadIcon />}
-            text="Upload document"
-            onClick={() => setLastClicked("Upload document")}
-          />
-          <ChatInputPopoverButton
-            icon={<UploadIcon />}
-            text="Upload image"
-            onClick={() => setLastClicked("Upload image")}
-          />
-          <ChatInputPopoverButton
-            text="Simple action"
-            onClick={() => setLastClicked("Simple action")}
-          />
-        </Box>
-      </Box>
-    );
-  },
 };

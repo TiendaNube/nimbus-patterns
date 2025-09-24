@@ -1,13 +1,13 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box, IconButton } from "@nimbus-ds/components";
-import { PlusIcon, PlusCircleIcon, ImageIcon } from "@nimbus-ds/icons";
+import { PlusIcon, PlusCircleIcon, UploadIcon } from "@nimbus-ds/icons";
 
 import { ChatInputPopover } from "./ChatInputPopover";
 import { ChatInputPopoverButton } from "../ChatInputPopoverButton/ChatInputPopoverButton";
 
 const meta: Meta<typeof ChatInputPopover> = {
-  title: "Patterns/ChatInput/Components/Popover",
+  title: "Patterns/ChatInput/ChatInput.Popover",
   component: ChatInputPopover,
   argTypes: {
     content: { control: { disable: true } },
@@ -19,10 +19,11 @@ const meta: Meta<typeof ChatInputPopover> = {
 export default meta;
 type Story = StoryObj<typeof ChatInputPopover>;
 
-export const Default: Story = {
+export const SingleOption: Story = {
   render: () => (
     <Box margin="4">
       <ChatInputPopover
+        visible
         content={
           <Box display="flex" flexDirection="column" gap="1" minWidth="140px">
             <ChatInputPopoverButton
@@ -31,35 +32,9 @@ export const Default: Story = {
               onClick={() => console.log("Upload file clicked")}
             />
             <ChatInputPopoverButton
-              icon={<ImageIcon />}
+              icon={<UploadIcon />}
               text="Upload image"
               onClick={() => console.log("Upload image clicked")}
-            />
-          </Box>
-        }
-      >
-        <IconButton
-          color="neutral-textLow"
-          source={<PlusIcon />}
-          size="2rem"
-          borderColor="transparent"
-          backgroundColor="transparent"
-        />
-      </ChatInputPopover>
-    </Box>
-  ),
-};
-
-export const SingleOption: Story = {
-  render: () => (
-    <Box margin="4">
-      <ChatInputPopover
-        content={
-          <Box display="flex" flexDirection="column" gap="1" minWidth="120px">
-            <ChatInputPopoverButton
-              icon={<PlusCircleIcon />}
-              text="Upload file"
-              onClick={() => console.log("Upload file clicked")}
             />
           </Box>
         }
@@ -80,6 +55,7 @@ export const MultipleOptions: Story = {
   render: () => (
     <Box margin="4">
       <ChatInputPopover
+        visible
         content={
           <Box display="flex" flexDirection="column" gap="1" minWidth="160px">
             <ChatInputPopoverButton
@@ -88,7 +64,7 @@ export const MultipleOptions: Story = {
               onClick={() => console.log("Upload document clicked")}
             />
             <ChatInputPopoverButton
-              icon={<ImageIcon />}
+              icon={<UploadIcon />}
               text="Upload image"
               onClick={() => console.log("Upload image clicked")}
             />
@@ -96,39 +72,6 @@ export const MultipleOptions: Story = {
               text="Other option"
               onClick={() => console.log("Other option clicked")}
             />
-          </Box>
-        }
-      >
-        <IconButton
-          color="neutral-textLow"
-          source={<PlusIcon />}
-          size="2rem"
-          borderColor="transparent"
-          backgroundColor="transparent"
-        />
-      </ChatInputPopover>
-    </Box>
-  ),
-};
-
-export const CustomContent: Story = {
-  render: () => (
-    <Box margin="4">
-      <ChatInputPopover
-        content={
-          <Box p="3" minWidth="200px">
-            <Box mb="2">
-              <h4>Custom Content</h4>
-            </Box>
-            <Box display="flex" flexDirection="column" gap="2">
-              <p>This is custom content inside the popover.</p>
-              <button
-                type="button"
-                onClick={() => console.log("Custom action")}
-              >
-                Custom Action
-              </button>
-            </Box>
           </Box>
         }
       >
