@@ -4805,16 +4805,27 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/components@npm:5.19.0":
-  version: 5.19.0
-  resolution: "@nimbus-ds/components@npm:5.19.0"
+"@nimbus-ds/chat-input@workspace:packages/react/src/components/ChatInput":
+  version: 0.0.0-use.local
+  resolution: "@nimbus-ds/chat-input@workspace:packages/react/src/components/ChatInput"
+  peerDependencies:
+    "@nimbus-ds/components": ^5
+    "@nimbus-ds/icons": ^1
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  languageName: unknown
+  linkType: soft
+
+"@nimbus-ds/components@npm:5.27.0":
+  version: 5.27.0
+  resolution: "@nimbus-ds/components@npm:5.27.0"
   dependencies:
     "@floating-ui/react": ^0.26.0
-    "@nimbus-ds/icons": ^1.12.0
+    "@nimbus-ds/icons": ^1.13.1
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 18b1c6a731d9e07460b86a57952233d2fa027f12e21a9c8555c561a70a78ad250aa654a92ef71b3419c94b04c40f5bb2491fe6f4f0a6d2e825af486d0e57307a
+  checksum: 082f3fb062aae58defcc19c8e6077be46379e25da0d12e6def9508ff462583dc47627593f5d69328e0f9d77106013421a2b473ced408477dde4b7c5fb50d9386
   languageName: node
   linkType: hard
 
@@ -4923,17 +4934,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@nimbus-ds/icons@npm:1.13.1, @nimbus-ds/icons@npm:^1.13.1":
+  version: 1.13.1
+  resolution: "@nimbus-ds/icons@npm:1.13.1"
+  checksum: c84786823afa105eeb8d8056d0e899d1d12202eb89442e7da55a7cffa6f426b3c33e2ad575a87897b68778ef647ea73eff416b25bd38c3b226a8acdec28a8b82
+  languageName: node
+  linkType: hard
+
 "@nimbus-ds/icons@npm:^1":
   version: 1.4.0
   resolution: "@nimbus-ds/icons@npm:1.4.0"
   checksum: dfdac1dc1fde65f3f94d357e181d15ae791d2f0821c847e13b800e889bd047928bdfb10773bea5f400f7ca11e284b23632803c520cd35e89a11cf3ad29cc02f4
-  languageName: node
-  linkType: hard
-
-"@nimbus-ds/icons@npm:^1.12.0":
-  version: 1.12.0
-  resolution: "@nimbus-ds/icons@npm:1.12.0"
-  checksum: 4ce9000022465e8baebcf9be4ed3a77397f8662294755986d0e7276af5756c8c197bc696f9fb2f72bc41e00d7aa8dc8cca7d348d7d13364589880b1334e6da02
   languageName: node
   linkType: hard
 
@@ -5154,10 +5165,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/styles@npm:9.23.0":
-  version: 9.23.0
-  resolution: "@nimbus-ds/styles@npm:9.23.0"
-  checksum: 417383bf7a512f3422318f07605f3b0257bd8812e5008712832010b7c8c7bb09d17df692bd3850ce4acd26d1345dbdad45a5d83f72f33c6b3c02f6de2da421d4
+"@nimbus-ds/styles@npm:9.30.0":
+  version: 9.30.0
+  resolution: "@nimbus-ds/styles@npm:9.30.0"
+  checksum: 690564239d95eacfc966d7dffc3af21e127904f37543a0ce321922a12b0340943537cf4eca05256a8502be7c613d43ee219dd06c0ab4d4903ac86790df30561f
   languageName: node
   linkType: hard
 
@@ -5180,10 +5191,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/tokens@npm:9.3.0":
-  version: 9.3.0
-  resolution: "@nimbus-ds/tokens@npm:9.3.0"
-  checksum: fe2f074443c7b5889645059302550ffe5aaab3170985e4508cab282c1e8d7e16a4ad2821f273ae34ccf11ad93901287a6c76519faaa8dcc2700a8f89f876ca19
+"@nimbus-ds/tokens@npm:9.4.0":
+  version: 9.4.0
+  resolution: "@nimbus-ds/tokens@npm:9.4.0"
+  checksum: f7de6b3274b7c613506b0144ab4e48d1616abbff1c230d23c3ddf90da6d8dc4c467ee51e036a9115bfae562efa888eea9bf1fddd58257d50688150cbd73dc73e
   languageName: node
   linkType: hard
 
@@ -16589,10 +16600,11 @@ __metadata:
     "@commitlint/config-conventional": ^17.2.0
     "@jest/types": ^29.2.1
     "@mdx-js/react": ^1.6.22
-    "@nimbus-ds/components": 5.19.0
+    "@nimbus-ds/components": 5.27.0
+    "@nimbus-ds/icons": 1.13.1
     "@nimbus-ds/scripts": 1.8.0
-    "@nimbus-ds/styles": 9.23.0
-    "@nimbus-ds/tokens": 9.3.0
+    "@nimbus-ds/styles": 9.30.0
+    "@nimbus-ds/tokens": 9.4.0
     "@storybook/addon-docs": ^7.5.1
     "@storybook/addon-essentials": ^7.5.1
     "@storybook/addon-interactions": ^7.5.1

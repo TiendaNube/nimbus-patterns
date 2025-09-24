@@ -27,12 +27,7 @@
     {
       "description": "Appearance of the field and help text elements.",
       "default": "none",
-      "enum": [
-        "danger",
-        "none",
-        "success",
-        "warning"
-      ],
+      "enum": ["danger", "none", "success", "warning"],
       "type": "string",
       "title": "appearance",
       "required": false
@@ -59,12 +54,7 @@
         {
           "description": "Appearance of the field and help text elements.",
           "default": "none",
-          "enum": [
-            "danger",
-            "none",
-            "success",
-            "warning"
-          ],
+          "enum": ["danger", "none", "success", "warning"],
           "type": "string",
           "title": "appearance",
           "required": false
@@ -116,17 +106,12 @@
     },
     {
       "name": "FormField.Textarea",
-      "totalProps": 7,
+      "totalProps": 11,
       "props": [
         {
           "description": "Appearance of the field and help text elements.",
           "default": "none",
-          "enum": [
-            "danger",
-            "none",
-            "success",
-            "warning"
-          ],
+          "enum": ["danger", "none", "success", "warning"],
           "type": "string",
           "title": "appearance",
           "required": false
@@ -163,10 +148,36 @@
           "required": true
         },
         {
+          "description": "Enable/disable textarea resize functionality",
+          "default": true,
+          "type": "boolean",
+          "title": "resize",
+          "required": false
+        },
+        {
+          "description": "Caps the textarea visual height to the given number of lines.\nWhen used together with autoGrow=true, the textarea will grow\nwith content up to this limit and then scroll.",
+          "type": "number",
+          "title": "maxLines",
+          "required": false
+        },
+        {
           "description": "Number of lines to be rendered for the user to input text",
           "default": 2,
           "type": "number",
           "title": "lines",
+          "required": false
+        },
+        {
+          "description": "Controls intrinsic sizing behavior of the field. When true, the textarea will grow with content up to the maxLines limit (if provided) and then scroll.",
+          "default": false,
+          "type": "boolean",
+          "title": "autoGrow",
+          "required": false
+        },
+        {
+          "description": "Sets the minimum height of the textarea to the given number of lines.\nThe textarea will never shrink below this height, even when empty.",
+          "type": "number",
+          "title": "minLines",
           "required": false
         }
       ]
@@ -240,10 +251,7 @@
         {
           "description": "Sent icon display position",
           "default": "start",
-          "enum": [
-            "end",
-            "start"
-          ],
+          "enum": ["end", "start"],
           "type": "string",
           "title": "appendPosition",
           "required": false

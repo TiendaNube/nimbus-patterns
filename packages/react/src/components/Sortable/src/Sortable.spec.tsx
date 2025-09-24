@@ -128,9 +128,7 @@ describe("GIVEN <Sortable />", () => {
         const handle = screen.getByTestId(`handle-${item.id}`);
         expect(handle).toBeInTheDocument();
         const handleElement = handle.querySelector("[role='button']");
-        expect(handleElement).toHaveClass(
-          "nimbus-box_cursor-grab-xs__cklfii119"
-        );
+        expect(handleElement?.className).toContain("nimbus-box_cursor-grab");
       });
     });
   });

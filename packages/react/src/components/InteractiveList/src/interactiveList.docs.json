@@ -58,21 +58,54 @@
           "description": "Button props inherited from Nimbus components",
           "type": "object",
           "properties": {
+            "appearance": {
+              "description": "AI gradient background appearance for the button container.\nWhen provided, container color/border sprinkles are ignored in favor of gradient styles.",
+              "enum": ["ai-generative"],
+              "type": "string",
+              "title": "appearance"
+            },
+            "color": {
+              "description": "Set the color for the inner Icon fill.",
+              "default": "neutral-textHigh",
+              "enum": [
+                "ai-generative",
+                "currentColor",
+                "danger-interactive",
+                "danger-surface",
+                "danger-textHigh",
+                "danger-textLow",
+                "neutral-background",
+                "neutral-interactive",
+                "neutral-surface",
+                "neutral-textDisabled",
+                "neutral-textHigh",
+                "neutral-textLow",
+                "primary-interactive",
+                "primary-surface",
+                "primary-textHigh",
+                "primary-textLow",
+                "success-interactive",
+                "success-surface",
+                "success-textHigh",
+                "success-textLow",
+                "warning-interactive",
+                "warning-surface",
+                "warning-textHigh",
+                "warning-textLow"
+              ],
+              "type": "string",
+              "title": "color"
+            },
             "as": {
               "description": "Type of html tag to create for the Icon Button component.",
               "default": "button",
-              "enum": [
-                "button",
-                "div"
-              ],
+              "enum": ["button", "div"],
               "type": "string",
               "title": "as"
             }
           },
           "additionalProperties": false,
-          "propertyOrder": [
-            "as"
-          ],
+          "propertyOrder": ["appearance", "color", "as"],
           "title": "iconButton",
           "required": true
         },
