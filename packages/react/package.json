@@ -138,6 +138,10 @@
     "./ThumbnailWithAction": {
       "import": "./dist/ThumbnailWithAction/index.js",
       "require": "./dist/ThumbnailWithAction/index.js"
+    },
+    "./ChatInput": {
+      "import": "./dist/ChatInput/index.js",
+      "require": "./dist/ChatInput/index.js"
     }
   }
 }
