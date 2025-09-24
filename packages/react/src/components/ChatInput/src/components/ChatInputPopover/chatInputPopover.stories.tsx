@@ -23,7 +23,6 @@ export const SingleOption: Story = {
   render: () => (
     <Box margin="4">
       <ChatInputPopover
-        visible
         content={
           <>
             <ChatInputPopoverButton
@@ -55,7 +54,6 @@ export const MultipleOptions: Story = {
   render: () => (
     <Box margin="4">
       <ChatInputPopover
-        visible
         content={
           <>
             <ChatInputPopoverButton
