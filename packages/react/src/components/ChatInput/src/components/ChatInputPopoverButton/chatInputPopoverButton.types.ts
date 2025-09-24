@@ -11,7 +11,7 @@ export interface ChatInputPopoverButtonProperties {
   /**
    * The text content of the button.
    */
-  text: string;
+  text: ReactNode;
 
   /**
    * Click handler for the button.
