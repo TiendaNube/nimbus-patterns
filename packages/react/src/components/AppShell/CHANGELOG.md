@@ -6,7 +6,7 @@ The AppShell component is the main outer frame of an application. It provides th
 
 #### 🎉 New features
 
-- Added `enforce` parameter to `useAppShellMenuContext` hook to allow for optional use without a provider. ([#124](https://github.com/TiendaNube/nimbus-patterns/pull/124) by [@joacotornello](https://github.com/joacotornello))
+- Added `enforce` parameter to `useAppShellMenuContext` hook to allow for optional use without a provider. ([#125](https://github.com/TiendaNube/nimbus-patterns/pull/125) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-09-27 `1.7.0`
 
