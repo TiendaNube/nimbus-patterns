@@ -2,6 +2,12 @@
 
 The AppShell component is the main outer frame of an application. It provides the basic architecture to build an application inside of our admin.
 
+## 2025-09-27 `1.8.0`
+
+#### 🎉 New features
+
+- Added `enforce` parameter to `useAppShellMenuContext` hook to allow for optional use without a provider. ([#125](https://github.com/TiendaNube/nimbus-patterns/pull/125) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-09-27 `1.7.0`
 
 #### 🎉 New features
