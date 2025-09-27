@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2025-09-27 `1.23.0`
+
+#### 🎉 New features
+
+- Added `enforce` parameter to `useAppShellMenuContext` hook to allow for optional use without a provider. ([#124](https://github.com/TiendaNube/nimbus-patterns/pull/124) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-09-27 `1.22.0`
 
 #### 🎉 New features

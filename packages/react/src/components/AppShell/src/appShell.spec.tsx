@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, renderHook, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { Box } from "@nimbus-ds/components";
@@ -80,5 +80,9 @@ describe("GIVEN <AppShell />", () => {
     await userEvent.keyboard("{Escape}");
 
     expect(onOpenChange).toHaveBeenCalledWith(false);
+  });
+
+  it("does not throw error when useAppShellMenuContext is used without a provider", () => {
+    expect(() => renderHook(() => useAppShellMenuContext(false))).not.toThrow();
   });
 });
