@@ -2,7 +2,7 @@
 
 The AppShell component is the main outer frame of an application. It provides the basic architecture to build an application inside of our admin.
 
-## 2025-09-27 `1.6.2`
+## 2025-09-27 `1.7.0`
 
 #### 🎉 New features
 
