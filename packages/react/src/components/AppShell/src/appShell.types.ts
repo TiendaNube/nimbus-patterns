@@ -43,7 +43,26 @@ export interface AppShellProperties {
   /**
    * Can be used to control the responsive properties of the AppShell menu so you can change which breakpoint the menu hides under.
    */
-  menuProperties?: Pick<BoxBaseProps, "display">;
+  menuProperties?: Omit<
+    BoxBaseProps,
+    | "children"
+    | "width"
+    | "height"
+    | "position"
+    | "top"
+    | "left"
+    | "right"
+    | "bottom"
+    | "borderStyle"
+    | "borderWidth"
+    | "borderColor"
+    | "borderRightWidth"
+    | "transitionProperty"
+    | "transitionDuration"
+    | "transitionTimingFunction"
+    | "flexShrink"
+    | "ref"
+  >;
   /**
    * Controls whether the left sidebar (menu) is expanded (true) or collapsed (false). Defaults to true.
    */
