@@ -2,6 +2,12 @@
 
 The Menu component allows the user to create in-app menus that navigate through different sections of an application.
 
+## 2025-09-28 `1.6.1`
+
+#### 💡 Others
+
+- Disabled enforce check for `useMenuExpandContext` hook to ensure backward compatibility with clients that were not using the `<Menu>` component as wrapper of `Menu` subcomponents. ([#126](https://github.com/TiendaNube/nimbus-patterns/pull/126) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-08-08 `1.6.0`
 
 #### 🎉 New features

@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2025-09-28 `1.23.1`
+
+#### 💡 Others
+
+- Disabled enforce check for `useMenuExpandContext` hook to ensure backward compatibility with clients that were not using the `<Menu>` component as wrapper of `Menu` subcomponents. ([#126](https://github.com/TiendaNube/nimbus-patterns/pull/126) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-09-27 `1.23.0`
 
 #### 🎉 New features

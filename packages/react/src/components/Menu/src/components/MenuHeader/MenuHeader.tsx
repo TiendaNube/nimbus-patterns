@@ -11,7 +11,7 @@ const MenuHeader: React.FC<MenuHeaderProps> = ({
   children,
   ...rest
 }: MenuHeaderProps) => {
-  const { expanded } = useMenuExpandContext();
+  const { expanded } = useMenuExpandContext(false);
 
   const dynamicProps: BoxProperties = useMemo(
     () =>
