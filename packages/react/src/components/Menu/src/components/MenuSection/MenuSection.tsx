@@ -12,7 +12,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   children,
   ...rest
 }: MenuSectionProps) => {
-  const { expanded } = useMenuExpandContext();
+  const { expanded } = useMenuExpandContext(false);
 
   const dynamicProps: BoxProperties = useMemo(
     () =>
