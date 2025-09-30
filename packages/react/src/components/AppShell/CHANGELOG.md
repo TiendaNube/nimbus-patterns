@@ -2,6 +2,12 @@
 
 The AppShell component is the main outer frame of an application. It provides the basic architecture to build an application inside of our admin.
 
+## 2025-09-30 `1.8.1`
+
+#### 🐛 Bug fixes
+
+- Fixed `AppShell` component not showing scrollbar when content is taller than the viewport. ([#128](https://github.com/TiendaNube/nimbus-patterns/pull/128) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-09-27 `1.8.0`
 
 #### 🎉 New features
