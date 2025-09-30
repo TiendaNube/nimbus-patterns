@@ -10,7 +10,7 @@ const MenuBody: React.FC<MenuBodyProps> = ({
   children,
   ...rest
 }: MenuBodyProps) => {
-  const { expanded } = useMenuExpandContext();
+  const { expanded } = useMenuExpandContext(false);
 
   const dynamicProps: BoxProperties = useMemo(
     () =>
