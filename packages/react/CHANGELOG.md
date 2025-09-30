@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2025-09-30 `1.23.3`
+
+#### 🐛 Bug fixes
+
+- Fixed `AppShell` component not showing scrollbar when content is taller than the viewport. ([#128](https://github.com/TiendaNube/nimbus-patterns/pull/128) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-09-30 `1.23.2`
 
 #### 💡 Others

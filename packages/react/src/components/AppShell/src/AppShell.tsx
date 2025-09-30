@@ -128,7 +128,6 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         flex="1 1 auto"
         height="100vh"
         width="100%"
-        overflow="hidden"
         backgroundColor="neutral-surface"
         // Fully customizable due to client needs
         {...contentProperties}
