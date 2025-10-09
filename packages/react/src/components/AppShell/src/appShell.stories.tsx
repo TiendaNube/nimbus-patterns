@@ -157,7 +157,10 @@ const AppMenu = ({ menuExpanded }: { menuExpanded: boolean }) => {
         {expanded ? (
           <Icon source={tiendanubeLogo} color="primary-interactive" />
         ) : (
-          <Icon source={<TiendanubeIcon />} color="primary-interactive" />
+          <Icon
+            source={<TiendanubeIcon size={24} />}
+            color="primary-interactive"
+          />
         )}
       </Menu.Header>
       <Menu.Body>
@@ -224,40 +227,42 @@ const CollapsibleAppMenu = ({
             width="100%"
           >
             <Icon source={tiendanubeLogo} color="primary-interactive" />
+            <Tooltip content="Close menu" arrow position="right">
+              <Box
+                backgroundColor={{ hover: "primary-surface" }}
+                borderRadius="2"
+                cursor="pointer"
+                p="2"
+                onClick={() => {
+                  onMenuExpandedChange(false);
+                }}
+              >
+                <Icon source={<SidebarIcon />} color="neutral-textHigh" />
+              </Box>
+            </Tooltip>
+          </Box>
+        ) : (
+          <Tooltip content="Open menu" arrow position="right">
             <Box
               backgroundColor={{ hover: "primary-surface" }}
-              borderRadius="2"
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
               cursor="pointer"
-              p="2"
+              p={hovered ? "3" : "2"}
+              borderRadius="2"
               onClick={() => {
-                onMenuExpandedChange(false);
+                onMenuExpandedChange(!expanded);
                 setHovered(false);
               }}
             >
-              <Icon source={<SidebarIcon />} color="neutral-textHigh" />
+              <Icon
+                source={
+                  hovered ? <SidebarIcon /> : <TiendanubeIcon size={24} />
+                }
+                color={hovered ? "neutral-textHigh" : "primary-interactive"}
+              />
             </Box>
-          </Box>
-        ) : (
-          <Box
-            backgroundColor={{ hover: "primary-surface" }}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            cursor="pointer"
-            p="2"
-            borderRadius="2"
-            onClick={() => {
-              onMenuExpandedChange(!expanded);
-            }}
-          >
-            <Icon
-              source={
-                <Icon
-                  source={hovered ? <SidebarIcon /> : <TiendanubeIcon />}
-                  color={hovered ? "neutral-textHigh" : "primary-interactive"}
-                />
-              }
-            />
-          </Box>
+          </Tooltip>
         )}
       </Menu.Header>
       <Menu.Body>
@@ -507,7 +512,9 @@ export const collapsibleMenuClick: Story = {
                 <Icon
                   source={
                     <Icon
-                      source={hovered ? <SidebarIcon /> : <TiendanubeIcon />}
+                      source={
+                        hovered ? <SidebarIcon /> : <TiendanubeIcon size={24} />
+                      }
                       color={
                         hovered ? "neutral-textHigh" : "primary-interactive"
                       }
