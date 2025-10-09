@@ -100,8 +100,10 @@ const MenuButton = forwardRef(
       </Box>
     );
 
-    return !expanded && showTooltipsWhenCollapsed ? (
-      <Tooltip content={tooltipText ?? label ?? ""} position={tooltipsPosition}>
+    const tooltipContent = tooltipText ?? label;
+
+    return !expanded && showTooltipsWhenCollapsed && tooltipContent ? (
+      <Tooltip content={tooltipContent} position={tooltipsPosition}>
         {content}
       </Tooltip>
     ) : (

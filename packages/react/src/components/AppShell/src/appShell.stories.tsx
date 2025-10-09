@@ -381,31 +381,24 @@ export const collapsibleMenuClick: Story = {
           <Menu.Header>
             {expanded ? (
               <Box
-                  display="flex"
-                  gap="2"
-                  justifyContent="space-between"
-                  width="100%"
+                display="flex"
+                gap="2"
+                justifyContent="space-between"
+                width="100%"
+              >
+                <Icon source={tiendanubeLogo} color="primary-interactive" />
+                <Box
+                  backgroundColor={{ hover: "primary-surface" }}
+                  p="2"
+                  borderRadius="2"
+                  cursor="pointer"
+                  onClick={() => {
+                    toggle();
+                  }}
                 >
-                  <Icon source={tiendanubeLogo} color="primary-interactive" />
-                  <Box
-                    backgroundColor={{ hover: "primary-surface" }}
-                    p="2"
-                    borderRadius="2"
-                    cursor="pointer"
-                    onClick={() => {
-                      toggle();
-                    }}
-                  >
-                    <Icon
-                      source={
-                        <Icon
-                          source={<SidebarIcon />}
-                          color="neutral-textHigh"
-                        />
-                      }
-                    />
-                  </Box>
+                  <Icon source={<SidebarIcon />} color="neutral-textHigh" />
                 </Box>
+              </Box>
             ) : (
               <Box
                 backgroundColor={{ hover: "primary-surface" }}

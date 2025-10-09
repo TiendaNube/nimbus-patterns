@@ -30,7 +30,7 @@ export interface MenuProperties {
   showTooltipsWhenCollapsed?: boolean;
 
   /**
-   * Position of the tooltips for buttons when the menu is collapsed. Defaults to "Right".
+   * Position of the tooltips for buttons when the menu is collapsed. Defaults to "right".
    */
   tooltipsPosition?: "top" | "bottom" | "left" | "right";
 }
