@@ -230,7 +230,8 @@ const CollapsibleAppMenu = ({
               cursor="pointer"
               p="2"
               onClick={() => {
-                onMenuExpandedChange(!expanded);
+                onMenuExpandedChange(false);
+                setHovered(false);
               }}
             >
               <Icon source={<SidebarIcon />} color="neutral-textHigh" />

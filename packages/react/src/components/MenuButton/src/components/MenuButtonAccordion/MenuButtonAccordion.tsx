@@ -89,7 +89,7 @@ const MenuButtonAccordion = forwardRef(
     const tooltipContent = tooltipText ?? menuButton.label;
 
     return !expanded && showTooltipsWhenCollapsed && tooltipContent ? (
-      <Tooltip content={tooltipContent} position={tooltipsPosition}>
+      <Tooltip content={tooltipContent} position={tooltipsPosition} arrow>
         {content}
       </Tooltip>
     ) : (
