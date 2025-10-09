@@ -72,4 +72,76 @@ describe("GIVEN <MenuButton />", () => {
       expect(screen.queryByText(labelText)).toBeNull();
     });
   });
+
+  describe("WHEN collapsed with tooltip configuration", () => {
+    it("SHOULD wrap button with tooltip when collapsed and showTooltipsWhenCollapsed is true", () => {
+      render(
+        <MenuExpandContext.Provider
+          value={{
+            expanded: false,
+            showTooltipsWhenCollapsed: true,
+            tooltipsPosition: "right",
+          }}
+        >
+          <MenuButton label={labelText} />
+        </MenuExpandContext.Provider>
+      );
+
+      const tooltipContainer = screen.getByTestId("tooltip-container");
+      expect(tooltipContainer).toBeDefined();
+      expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
+    });
+
+    it("SHOULD not wrap button with tooltip when showTooltipsWhenCollapsed is false", () => {
+      render(
+        <MenuExpandContext.Provider
+          value={{
+            expanded: false,
+            showTooltipsWhenCollapsed: false,
+          }}
+        >
+          <MenuButton label={labelText} />
+        </MenuExpandContext.Provider>
+      );
+
+      expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
+      expect(screen.queryByTestId("tooltip-container")).toBeNull();
+      expect(screen.queryByText(labelText)).toBeNull();
+    });
+
+    it("SHOULD use custom tooltipText when provided", () => {
+      const customTooltip = "Custom tooltip text";
+      render(
+        <MenuExpandContext.Provider
+          value={{
+            expanded: false,
+            showTooltipsWhenCollapsed: true,
+            tooltipsPosition: "left",
+          }}
+        >
+          <MenuButton label={labelText} tooltipText={customTooltip} />
+        </MenuExpandContext.Provider>
+      );
+
+      const tooltipContainer = screen.getByTestId("tooltip-container");
+      expect(tooltipContainer).toBeDefined();
+    });
+
+    it("SHOULD not show tooltip when button is expanded", () => {
+      render(
+        <MenuExpandContext.Provider
+          value={{
+            expanded: true,
+            showTooltipsWhenCollapsed: true,
+            tooltipsPosition: "right",
+          }}
+        >
+          <MenuButton label={labelText} />
+        </MenuExpandContext.Provider>
+      );
+
+      expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
+      expect(screen.queryByTestId("tooltip-container")).toBeNull();
+    });
+  });
 });

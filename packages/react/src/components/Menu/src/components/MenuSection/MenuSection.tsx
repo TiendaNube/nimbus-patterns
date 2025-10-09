@@ -19,7 +19,6 @@ const MenuSection: React.FC<MenuSectionProps> = ({
       !expanded
         ? {
             maxWidth: "32px",
-            pt: "2",
           }
         : {},
     [expanded]
@@ -48,7 +47,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
             borderStyle="solid"
             width="100%"
             // Margin to approximate to the same height of the Section expanded title
-            marginTop="2"
+            marginTop="3"
             marginBottom="3"
             data-testid="menu-section--collapsed"
           />

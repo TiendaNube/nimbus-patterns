@@ -37,6 +37,11 @@ export interface MenuButtonProperties {
    * If not provided, the expanded state will be determined by the context.
    */
   expanded?: boolean;
+
+  /**
+   * Text to be displayed in the tooltip when the button is collapsed. If not provided, the label will be used.
+   */
+  tooltipText?: string;
 }
 
 export type MenuButtonBaseProps = MenuButtonProperties &

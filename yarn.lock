@@ -4767,7 +4767,6 @@ __metadata:
   resolution: "@nimbus-ds/app-shell@workspace:packages/react/src/components/AppShell"
   dependencies:
     "@floating-ui/react": ^0.26.1
-    "@nimbus-ds/icons": ^1
     "@nimbus-ds/menu": "workspace:^"
     "@nimbus-ds/menubutton": "workspace:^"
     "@nimbus-ds/page": "workspace:^"
