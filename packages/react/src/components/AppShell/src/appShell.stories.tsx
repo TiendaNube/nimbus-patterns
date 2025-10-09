@@ -29,6 +29,7 @@ import {
   TagIcon,
   TiendanubeIcon,
   ToolsIcon,
+  SidebarIcon,
   UserIcon,
 } from "@nimbus-ds/icons";
 
@@ -373,40 +374,62 @@ export const collapsibleMenuClick: Story = {
     }) => {
       const { isMenuPopover } = useAppShellMenuContext();
       const expanded = isMenuPopover ? true : defaultExpanded;
+      const [hovered, setHovered] = React.useState(false);
 
       return (
         <Menu expanded={expanded}>
           <Menu.Header>
-            <Box display="flex" gap="2">
-              {expanded ? (
-                <Box display="flex" gap="2">
+            {expanded ? (
+              <Box
+                  display="flex"
+                  gap="2"
+                  justifyContent="space-between"
+                  width="100%"
+                >
                   <Icon source={tiendanubeLogo} color="primary-interactive" />
-                  <IconButton
-                    source={
-                      <Icon
-                        source={<TiendanubeIcon />}
-                        color="primary-interactive"
-                      />
-                    }
+                  <Box
+                    backgroundColor={{ hover: "primary-surface" }}
+                    p="2"
+                    borderRadius="2"
+                    cursor="pointer"
                     onClick={() => {
                       toggle();
                     }}
-                  />
+                  >
+                    <Icon
+                      source={
+                        <Icon
+                          source={<SidebarIcon />}
+                          color="neutral-textHigh"
+                        />
+                      }
+                    />
+                  </Box>
                 </Box>
-              ) : (
-                <IconButton
+            ) : (
+              <Box
+                backgroundColor={{ hover: "primary-surface" }}
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+                cursor="pointer"
+                p="2"
+                borderRadius="2"
+                onClick={() => {
+                  toggle();
+                }}
+              >
+                <Icon
                   source={
                     <Icon
-                      source={<TiendanubeIcon />}
-                      color="primary-interactive"
+                      source={hovered ? <SidebarIcon /> : <TiendanubeIcon />}
+                      color={
+                        hovered ? "neutral-textHigh" : "primary-interactive"
+                      }
                     />
                   }
-                  onClick={() => {
-                    toggle();
-                  }}
                 />
-              )}
-            </Box>
+              </Box>
+            )}
           </Menu.Header>
           <Menu.Body>
             <Menu.Section>

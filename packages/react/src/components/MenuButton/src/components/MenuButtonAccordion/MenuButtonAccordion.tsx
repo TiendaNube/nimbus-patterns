@@ -4,7 +4,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { Box } from "@nimbus-ds/components";
+import { Box, Tooltip } from "@nimbus-ds/components";
 import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
 import { useMenuExpandContext } from "@common/contexts";
@@ -22,11 +22,16 @@ const MenuButtonAccordion = forwardRef(
       children,
       as,
       expanded: expandedProp,
+      tooltipText,
       ...rest
     }: MenuButtonAccordionBaseProps & { as: any },
     ref
   ) => {
-    const { expanded: contextExpanded } = useMenuExpandContext(false);
+    const {
+      expanded: contextExpanded,
+      showTooltipsWhenCollapsed,
+      tooltipsPosition,
+    } = useMenuExpandContext(false);
     const expanded = expandedProp ?? contextExpanded;
 
     const [isOpen, setOpen] = useState(false);
@@ -44,7 +49,7 @@ const MenuButtonAccordion = forwardRef(
       return open ? "neutral-surface" : "transparent";
     };
 
-    return (
+    const content = (
       <Box
         {...rest}
         ref={ref}
@@ -79,6 +84,17 @@ const MenuButtonAccordion = forwardRef(
           </Box>
         )}
       </Box>
+    );
+
+    return !expanded && showTooltipsWhenCollapsed ? (
+      <Tooltip
+        content={tooltipText ?? menuButton.label ?? ""}
+        position={tooltipsPosition}
+      >
+        {content}
+      </Tooltip>
+    ) : (
+      content
     );
   }
 ) as PolymorphicForwardRefComponent<

@@ -158,4 +158,101 @@ describe("GIVEN <MenuButton.Accordion />", () => {
     expect(button.getAttribute("aria-expanded")).toBe("true");
     expect(screen.getByText(contentText)).toBeDefined();
   });
+
+  describe("WHEN collapsed with tooltip configuration", () => {
+    it("SHOULD wrap accordion with tooltip when collapsed and showTooltipsWhenCollapsed is true", () => {
+      render(
+        <MenuExpandContext.Provider
+          value={{
+            expanded: false,
+            showTooltipsWhenCollapsed: true,
+            tooltipsPosition: "right",
+          }}
+        >
+          <MenuButtonAccordion
+            contentid="content-id"
+            menuButton={{ label: labelText }}
+          >
+            {contentText}
+          </MenuButtonAccordion>
+        </MenuExpandContext.Provider>
+      );
+
+      const tooltipContainer = screen.getByTestId("tooltip-container");
+      expect(tooltipContainer).toBeDefined();
+      expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
+    });
+
+    it("SHOULD not wrap accordion with tooltip when showTooltipsWhenCollapsed is false", () => {
+      render(
+        <MenuExpandContext.Provider
+          value={{
+            expanded: false,
+            showTooltipsWhenCollapsed: false,
+          }}
+        >
+          <MenuButtonAccordion
+            contentid="content-id"
+            menuButton={{ label: labelText }}
+          >
+            {contentText}
+          </MenuButtonAccordion>
+        </MenuExpandContext.Provider>
+      );
+
+      expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
+      expect(screen.queryByTestId("tooltip-container")).toBeNull();
+      expect(screen.queryByText(contentText)).toBeNull();
+    });
+
+    it("SHOULD use custom tooltipText when provided", () => {
+      const customTooltip = "Custom accordion tooltip";
+      render(
+        <MenuExpandContext.Provider
+          value={{
+            expanded: false,
+            showTooltipsWhenCollapsed: true,
+            tooltipsPosition: "top",
+          }}
+        >
+          <MenuButtonAccordion
+            contentid="content-id"
+            menuButton={{ label: labelText }}
+            tooltipText={customTooltip}
+          >
+            {contentText}
+          </MenuButtonAccordion>
+        </MenuExpandContext.Provider>
+      );
+
+      const tooltipContainer = screen.getByTestId("tooltip-container");
+      expect(tooltipContainer).toBeDefined();
+    });
+
+    it("SHOULD not show tooltip when accordion is expanded", () => {
+      render(
+        <MenuExpandContext.Provider
+          value={{
+            expanded: true,
+            showTooltipsWhenCollapsed: true,
+            tooltipsPosition: "right",
+          }}
+        >
+          <MenuButtonAccordion
+            contentid="content-id"
+            open
+            menuButton={{ label: labelText }}
+          >
+            {contentText}
+          </MenuButtonAccordion>
+        </MenuExpandContext.Provider>
+      );
+
+      const button = screen.getByRole<HTMLButtonElement>("button", {
+        name: labelText,
+      });
+      expect(button).toBeDefined();
+      expect(screen.queryByTestId("tooltip-container")).toBeNull();
+    });
+  });
 });

@@ -1,6 +1,22 @@
 # Changelog
 
-Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop’s team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
+Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
+
+## 2025-10-09 `1.24.0`
+
+#### 🎉 New features
+
+- Added `showTooltipsWhenCollapsed` prop to `Menu` component to control tooltip visibility when menu is collapsed. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+- Added `tooltipsPosition` prop to `Menu` component to control tooltip position when menu is collapsed. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+- Added `tooltipText` prop to `MenuButton` component to display custom tooltip text when menu is collapsed. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+- Added `tooltipText` prop to `MenuButton.Accordion` component to display custom tooltip text when menu is collapsed. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+- Added tooltip support to `MenuButton` component that automatically displays when menu is collapsed. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+- Added tooltip support to `MenuButton.Accordion` component that automatically displays when menu is collapsed. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+
+#### 💡 Others
+
+- Updated `AppShell` collapsible menu story with improved UI interactions using `SidebarIcon` for menu toggle. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+- Extended `MenuExpandContext` with `showTooltipsWhenCollapsed` and `tooltipsPosition` properties. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-09-30 `1.23.3`
 

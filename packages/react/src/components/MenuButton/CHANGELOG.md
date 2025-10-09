@@ -2,6 +2,14 @@
 
 MenuButton component is meant to be used inside Menus and navigation, and allows the user to navigate between different sections of an application.
 
+## 2025-10-09 `1.9.0`
+
+#### 🎉 New features
+
+- Added `tooltipText` prop to `MenuButton` component to display custom tooltip text when menu is collapsed. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+- Added `tooltipText` prop to `MenuButton.Accordion` component to display custom tooltip text when menu is collapsed. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+- Added automatic tooltip support that displays button label when menu is collapsed and tooltips are enabled. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-08-08 `1.8.0`
 
 #### 🎉 New features

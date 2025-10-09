@@ -2,6 +2,13 @@
 
 The AppShell component is the main outer frame of an application. It provides the basic architecture to build an application inside of our admin.
 
+## 2025-10-09 `1.8.2`
+
+#### 💡 Others
+
+- Updated collapsible menu story with improved UI interactions using `SidebarIcon` for menu toggle button. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+- Improved menu toggle button with hover state and icon transition between `TiendanubeIcon` and `SidebarIcon`. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-09-30 `1.8.1`
 
 #### 🐛 Bug fixes

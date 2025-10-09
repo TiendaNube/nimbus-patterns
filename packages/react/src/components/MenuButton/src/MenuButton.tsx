@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithRef, forwardRef } from "react";
 
-import { Icon, Box, Text, BoxProperties } from "@nimbus-ds/components";
+import { Icon, Box, Text, BoxProperties, Tooltip } from "@nimbus-ds/components";
 import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
 import { useMenuExpandContext } from "@common/contexts";
@@ -19,11 +19,16 @@ const MenuButton = forwardRef(
       active = false,
       as = "button",
       expanded: expandedProp,
+      tooltipText,
       ...rest
     }: MenuButtonBaseProps & { as: any },
     ref
   ) => {
-    const { expanded: contextExpanded } = useMenuExpandContext(false);
+    const {
+      expanded: contextExpanded,
+      showTooltipsWhenCollapsed,
+      tooltipsPosition,
+    } = useMenuExpandContext(false);
 
     const expanded = expandedProp ?? contextExpanded;
 
@@ -37,7 +42,7 @@ const MenuButton = forwardRef(
         }
       : {};
 
-    return (
+    const content = (
       <Box
         {...rest}
         ref={ref}
@@ -93,6 +98,14 @@ const MenuButton = forwardRef(
         )}
         {expanded && children}
       </Box>
+    );
+
+    return !expanded && showTooltipsWhenCollapsed ? (
+      <Tooltip content={tooltipText ?? label ?? ""} position={tooltipsPosition}>
+        {content}
+      </Tooltip>
+    ) : (
+      content
     );
   }
 ) as PolymorphicForwardRefComponent<"button" | "a", MenuButtonBaseProps> &

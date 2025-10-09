@@ -31,8 +31,21 @@ export interface MenuButtonAccordionProperties {
    * If provided, it overrides the context.
    */
   expanded?: boolean;
+
+  /**
+   * Whether to show a tooltip when the button is collapsed. Defaults to true.
+   */
+  showTooltipWhenCollapsed?: boolean;
+
+  /**
+   * Text to be displayed in the tooltip when the button is collapsed. If not provided, the label will be used.
+   */
+  tooltipText?: string;
 }
 
 export type MenuButtonAccordionBaseProps = MenuButtonAccordionProperties & {
-  menuButton: MenuButtonProps;
+  menuButton: Omit<
+    MenuButtonProps,
+    "expanded" | "showTooltipWhenCollapsed" | "tooltipText"
+  >;
 } & Omit<HTMLAttributes<HTMLElement>, "color">;
