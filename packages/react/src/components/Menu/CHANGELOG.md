@@ -6,12 +6,12 @@ The Menu component allows the user to create in-app menus that navigate through 
 
 #### 🎉 New features
 
-- Added `showTooltipsWhenCollapsed` prop to control tooltip visibility for menu buttons when menu is collapsed. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
-- Added `tooltipsPosition` prop to control tooltip position for menu buttons when menu is collapsed. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+- Added `showTooltipsWhenCollapsed` prop to control tooltip visibility for menu buttons when menu is collapsed. ([#129](https://github.com/TiendaNube/nimbus-patterns/pull/129) by [@joacotornello](https://github.com/joacotornello))
+- Added `tooltipsPosition` prop to control tooltip position for menu buttons when menu is collapsed. ([#129](https://github.com/TiendaNube/nimbus-patterns/pull/129) by [@joacotornello](https://github.com/joacotornello))
 
 #### 💡 Others
 
-- Extended `MenuExpandContext` with `showTooltipsWhenCollapsed` and `tooltipsPosition` properties to support tooltip configuration. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+- Extended `MenuExpandContext` with `showTooltipsWhenCollapsed` and `tooltipsPosition` properties to support tooltip configuration. ([#129](https://github.com/TiendaNube/nimbus-patterns/pull/129) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-09-30 `1.6.2`
 

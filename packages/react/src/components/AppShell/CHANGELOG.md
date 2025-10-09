@@ -6,8 +6,8 @@ The AppShell component is the main outer frame of an application. It provides th
 
 #### 💡 Others
 
-- Updated collapsible menu story with improved UI interactions using `SidebarIcon` for menu toggle button. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
-- Improved menu toggle button with hover state and icon transition between `TiendanubeIcon` and `SidebarIcon`. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@joacotornello](https://github.com/joacotornello))
+- Updated collapsible menu story with improved UI interactions using `SidebarIcon` for menu toggle button. ([#129](https://github.com/TiendaNube/nimbus-patterns/pull/129) by [@joacotornello](https://github.com/joacotornello))
+- Improved menu toggle button with hover state and icon transition between `TiendanubeIcon` and `SidebarIcon`. ([#129](https://github.com/TiendaNube/nimbus-patterns/pull/129) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-09-30 `1.8.1`
 
