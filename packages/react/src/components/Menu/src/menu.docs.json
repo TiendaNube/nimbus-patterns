@@ -1,7 +1,7 @@
 {
   "id": "menu",
   "name": "Menu",
-  "totalProps": 2,
+  "totalProps": 4,
   "packageName": "@nimbus-ds/menu",
   "version": "1.7.2",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/menu",
@@ -16,6 +16,24 @@
       "description": "Whether the menu should render in expanded mode.\nIf `undefined`, it follows `MenuExpandContext` value.\nIf provided, it overrides the context.",
       "type": "boolean",
       "title": "expanded",
+      "required": false
+    },
+    {
+      "description": "Whether to show tooltips for buttons when the menu is collapsed. Defaults to true.",
+      "type": "boolean",
+      "title": "showTooltipsWhenCollapsed",
+      "required": false
+    },
+    {
+      "description": "Position of the tooltips for buttons when the menu is collapsed. Defaults to \"right\".",
+      "enum": [
+        "bottom",
+        "left",
+        "right",
+        "top"
+      ],
+      "type": "string",
+      "title": "tooltipsPosition",
       "required": false
     }
   ],
@@ -64,7 +82,7 @@
     },
     {
       "name": "Menu.Footer",
-      "totalProps": 5,
+      "totalProps": 6,
       "props": [
         {
           "description": "Sets the state of the button as active/inactive.",
@@ -94,6 +112,12 @@
           "description": "Sets an icon element on the left of the button.",
           "type": "React.FC<IconProps>",
           "title": "startIcon",
+          "required": false
+        },
+        {
+          "description": "Text to be displayed in the tooltip when the button is collapsed. If not provided, the label will be used.",
+          "type": "string",
+          "title": "tooltipText",
           "required": false
         }
       ]

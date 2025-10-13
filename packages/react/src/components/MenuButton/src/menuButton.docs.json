@@ -1,7 +1,7 @@
 {
   "id": "menuButton",
   "name": "MenuButton",
-  "totalProps": 7,
+  "totalProps": 8,
   "packageName": "@nimbus-ds/menubutton",
   "version": "1.8.0",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/menu-button",
@@ -59,12 +59,18 @@
       "type": "boolean",
       "title": "expanded",
       "required": false
+    },
+    {
+      "description": "Text to be displayed in the tooltip when the button is collapsed. If not provided, the label will be used.",
+      "type": "string",
+      "title": "tooltipText",
+      "required": false
     }
   ],
   "subComponents": [
     {
       "name": "MenuButton.Accordion",
-      "totalProps": 6,
+      "totalProps": 7,
       "props": [
         {
           "description": "Content of the menu.",
@@ -100,6 +106,12 @@
           "description": "Whether the MenuButtonAccordion is expanded.\nIf `undefined`, it follows `MenuExpandContext`.\nIf provided, it overrides the context.",
           "type": "boolean",
           "title": "expanded",
+          "required": false
+        },
+        {
+          "description": "Text to be displayed in the tooltip when the button is collapsed. If not provided, the label will be used.",
+          "type": "string",
+          "title": "tooltipText",
           "required": false
         }
       ]
