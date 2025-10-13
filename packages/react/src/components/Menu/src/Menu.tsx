@@ -11,9 +11,14 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
   style: _style,
   children,
   expanded = true,
+  showTooltipsWhenCollapsed = true,
+  tooltipsPosition = "right",
   ...rest
 }: MenuProps) => {
-  const providerValue = useMemo(() => ({ expanded }), [expanded]);
+  const providerValue = useMemo(
+    () => ({ expanded, showTooltipsWhenCollapsed, tooltipsPosition }),
+    [expanded, showTooltipsWhenCollapsed, tooltipsPosition]
+  );
 
   const dynamicProps: BoxProps = useMemo(
     () =>

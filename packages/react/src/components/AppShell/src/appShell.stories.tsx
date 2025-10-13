@@ -29,6 +29,7 @@ import {
   TagIcon,
   TiendanubeIcon,
   ToolsIcon,
+  SidebarIcon,
   UserIcon,
 } from "@nimbus-ds/icons";
 
@@ -156,7 +157,10 @@ const AppMenu = ({ menuExpanded }: { menuExpanded: boolean }) => {
         {expanded ? (
           <Icon source={tiendanubeLogo} color="primary-interactive" />
         ) : (
-          <Icon source={<TiendanubeIcon />} color="primary-interactive" />
+          <Icon
+            source={<TiendanubeIcon size={24} />}
+            color="primary-interactive"
+          />
         )}
       </Menu.Header>
       <Menu.Body>
@@ -181,6 +185,101 @@ const AppMenu = ({ menuExpanded }: { menuExpanded: boolean }) => {
               <Menu.Button label="Exportar lista" />
             </Menu.ButtonAccordion>
           </Box>
+          <Menu.Button startIcon={TagIcon} label="Productos" />
+          <Menu.Button startIcon={UserIcon} label="Clientes">
+            <Tag appearance="primary">Nuevo</Tag>
+          </Menu.Button>
+          <Menu.Button startIcon={DiscountCircleIcon} label="Marketing" />
+        </Menu.Section>
+        <Menu.Section title="Personalizar">
+          <Menu.Button startIcon={ToolsIcon} label="Mi Tiendanube" />
+        </Menu.Section>
+        <Menu.Section title="Potenciar">
+          <Menu.Button startIcon={AppsIcon} label="Mis aplicaciones" />
+          <Menu.Button startIcon={EcosystemIcon} label="Canales de venta" />
+        </Menu.Section>
+      </Menu.Body>
+      <Menu.Footer label="Configuración" startIcon={CogIcon} />
+    </Menu>
+  );
+};
+
+const CollapsibleAppMenu = ({
+  menuExpanded,
+  onMenuExpandedChange,
+}: {
+  menuExpanded: boolean;
+  onMenuExpandedChange: (expanded: boolean) => void;
+}) => {
+  const { isMenuPopover } = useAppShellMenuContext();
+  const [hovered, setHovered] = useState(false);
+
+  const expanded = isMenuPopover ? true : menuExpanded;
+
+  return (
+    <Menu expanded={expanded}>
+      <Menu.Header>
+        {expanded ? (
+          <Box
+            display="flex"
+            gap="2"
+            justifyContent="space-between"
+            width="100%"
+          >
+            <Icon source={tiendanubeLogo} color="primary-interactive" />
+            <Tooltip content="Close menu" arrow position="right">
+              <Box
+                backgroundColor={{ hover: "primary-surface" }}
+                borderRadius="2"
+                cursor="pointer"
+                p="2"
+                onClick={() => {
+                  onMenuExpandedChange(false);
+                }}
+              >
+                <Icon source={<SidebarIcon />} color="neutral-textHigh" />
+              </Box>
+            </Tooltip>
+          </Box>
+        ) : (
+          <Tooltip content="Open menu" arrow position="right">
+            <Box
+              backgroundColor={{ hover: "primary-surface" }}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+              cursor="pointer"
+              p={hovered ? "3" : "2"}
+              borderRadius="2"
+              onClick={() => {
+                onMenuExpandedChange(!expanded);
+                setHovered(false);
+              }}
+            >
+              <Icon
+                source={
+                  hovered ? <SidebarIcon /> : <TiendanubeIcon size={24} />
+                }
+                color={hovered ? "neutral-textHigh" : "primary-interactive"}
+              />
+            </Box>
+          </Tooltip>
+        )}
+      </Menu.Header>
+      <Menu.Body>
+        <Menu.Section>
+          <Menu.Button startIcon={HomeIcon} label="Inicio" />
+          <Menu.Button startIcon={StatsIcon} label="Estadísticas" />
+        </Menu.Section>
+        <Menu.Section title="Administrar">
+          <Menu.ButtonAccordion
+            menuButton={{ startIcon: CashIcon, label: "Ventas" }}
+            contentid="content-1"
+            open={expanded}
+          >
+            <Badge appearance="primary" count="1299" />
+            <Menu.Button label="Lista de ventas" active />
+            <Menu.Button label="Exportar lista" />
+          </Menu.ButtonAccordion>
           <Menu.Button startIcon={TagIcon} label="Productos" />
           <Menu.Button startIcon={UserIcon} label="Clientes">
             <Tag appearance="primary">Nuevo</Tag>
@@ -373,40 +472,57 @@ export const collapsibleMenuClick: Story = {
     }) => {
       const { isMenuPopover } = useAppShellMenuContext();
       const expanded = isMenuPopover ? true : defaultExpanded;
+      const [hovered, setHovered] = React.useState(false);
 
       return (
         <Menu expanded={expanded}>
           <Menu.Header>
-            <Box display="flex" gap="2">
-              {expanded ? (
-                <Box display="flex" gap="2">
-                  <Icon source={tiendanubeLogo} color="primary-interactive" />
-                  <IconButton
-                    source={
-                      <Icon
-                        source={<TiendanubeIcon />}
-                        color="primary-interactive"
-                      />
-                    }
-                    onClick={() => {
-                      toggle();
-                    }}
-                  />
-                </Box>
-              ) : (
-                <IconButton
-                  source={
-                    <Icon
-                      source={<TiendanubeIcon />}
-                      color="primary-interactive"
-                    />
-                  }
+            {expanded ? (
+              <Box
+                display="flex"
+                gap="2"
+                justifyContent="space-between"
+                width="100%"
+              >
+                <Icon source={tiendanubeLogo} color="primary-interactive" />
+                <Box
+                  backgroundColor={{ hover: "primary-surface" }}
+                  borderRadius="2"
+                  cursor="pointer"
+                  p="2"
                   onClick={() => {
                     toggle();
                   }}
+                >
+                  <Icon source={<SidebarIcon />} color="neutral-textHigh" />
+                </Box>
+              </Box>
+            ) : (
+              <Box
+                backgroundColor={{ hover: "primary-surface" }}
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+                cursor="pointer"
+                p="2"
+                borderRadius="2"
+                onClick={() => {
+                  toggle();
+                }}
+              >
+                <Icon
+                  source={
+                    <Icon
+                      source={
+                        hovered ? <SidebarIcon /> : <TiendanubeIcon size={24} />
+                      }
+                      color={
+                        hovered ? "neutral-textHigh" : "primary-interactive"
+                      }
+                    />
+                  }
                 />
-              )}
-            </Box>
+              </Box>
+            )}
           </Menu.Header>
           <Menu.Body>
             <Menu.Section>
@@ -607,29 +723,29 @@ export const rightChatCollapsibleMenuWithAnchoredSideModal: Story = {
     const effectiveMenuExpanded = chatOpen ? false : menuExpandedBase;
     const effectiveMenuBehavior = chatOpen ? "popover" : "inline";
 
+    const handleChatOpenChange = (open: boolean) => {
+      setChatOpen(open);
+      setMenuExpandedBase(false);
+    };
+
     return (
       <AppShell
-        menu={<AppMenu menuExpanded={effectiveMenuExpanded} />}
+        menu={
+          <CollapsibleAppMenu
+            menuExpanded={effectiveMenuExpanded}
+            onMenuExpandedChange={setMenuExpandedBase}
+          />
+        }
         menuExpanded={effectiveMenuExpanded}
         menuBehavior={effectiveMenuBehavior}
-        menuFlyout={{ trigger: "hover", defaultOpen: false }}
+        menuFlyout={{ trigger: "hover", open: menuExpandedBase }}
       >
         <AppShell.Header
-          leftSlot={
-            !chatOpen ? (
-              <Button
-                appearance="transparent"
-                onClick={() => setMenuExpandedBase((v) => !v)}
-              >
-                Toggle menu
-              </Button>
-            ) : undefined
-          }
           rightSlot={
             <Box display="flex" gap="2" alignItems="center">
               {buttonStack}
               <Button
-                onClick={() => setChatOpen((v) => !v)}
+                onClick={() => handleChatOpenChange(!chatOpen)}
                 appearance={chatOpen ? "neutral" : "primary"}
               >
                 {chatOpen ? "Close chat" : "Open chat"}

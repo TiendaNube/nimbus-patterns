@@ -2,6 +2,17 @@
 
 The Menu component allows the user to create in-app menus that navigate through different sections of an application.
 
+## 2025-10-09 `1.7.0`
+
+#### 🎉 New features
+
+- Added `showTooltipsWhenCollapsed` prop to control tooltip visibility for menu buttons when menu is collapsed. ([#129](https://github.com/TiendaNube/nimbus-patterns/pull/129) by [@joacotornello](https://github.com/joacotornello))
+- Added `tooltipsPosition` prop to control tooltip position for menu buttons when menu is collapsed. ([#129](https://github.com/TiendaNube/nimbus-patterns/pull/129) by [@joacotornello](https://github.com/joacotornello))
+
+#### 💡 Others
+
+- Extended `MenuExpandContext` with `showTooltipsWhenCollapsed` and `tooltipsPosition` properties to support tooltip configuration. ([#129](https://github.com/TiendaNube/nimbus-patterns/pull/129) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-09-30 `1.6.2`
 
 #### 💡 Others

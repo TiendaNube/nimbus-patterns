@@ -23,6 +23,16 @@ export interface MenuProperties {
    * If provided, it overrides the context.
    */
   expanded?: boolean;
+
+  /**
+   * Whether to show tooltips for buttons when the menu is collapsed. Defaults to true.
+   */
+  showTooltipsWhenCollapsed?: boolean;
+
+  /**
+   * Position of the tooltips for buttons when the menu is collapsed. Defaults to "right".
+   */
+  tooltipsPosition?: "top" | "bottom" | "left" | "right";
 }
 
 export type MenuProps = MenuProperties &
