@@ -6,7 +6,7 @@ The `InitialScreen` component provides a consistent layout and spacing for displ
 
 ### 💡 Others
 
-- Fixes background color of `InitialScreen.Card`. ([#111](https://github.com/TiendaNube/nimbus-patterns/pull/111) by [@joacotornello](https://github.com/joacotornello))
+- Fixes background color of `InitialScreen.Card`. ([#130](https://github.com/TiendaNube/nimbus-patterns/pull/130) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-04-24 `1.0.3`
 
