@@ -1,0 +1,6 @@
+releases:
+  "@nimbus-ds/initial-screen": patch
+  "@nimbus-ds/patterns": patch
+
+declined:
+  - nimbus-patterns

@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2025-10-16 `1.24.1`
+
+#### 💡 Others
+
+- Fixes background color of `InitialScreen.Card`. ([#130](https://github.com/TiendaNube/nimbus-patterns/pull/130) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-10-09 `1.24.0`
 
 #### 🎉 New features
