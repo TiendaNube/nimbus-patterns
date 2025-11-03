@@ -101,6 +101,7 @@
         "trailingComma": "none"
       }
     ],
-    "no-console": "warn"
+    "no-console": "warn",
+    "no-void": "off"
   }
 }

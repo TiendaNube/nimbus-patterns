@@ -8,8 +8,16 @@ import {
 } from "./MenuButtonAccordion";
 import { MenuButtonProperties } from "../../menuButton.types";
 
+const noop = () => void 0;
+
 jest.mock("../../MenuButton", () => ({
-  MenuButton: ({ onClick, active, label, ...props }: any) => (
+  MenuButton: ({
+    onClick,
+    active,
+    label,
+    showTooltipsWhenCollapsed: _showTooltipsWhenCollapsed,
+    ...props
+  }: any) => (
     <button
       onClick={onClick}
       data-active={active}
@@ -119,7 +127,13 @@ describe("GIVEN <MenuButton.Accordion />", () => {
 
   it("should override context expanded state when expanded is provided", () => {
     render(
-      <MenuExpandContext.Provider value={{ expanded: true }}>
+      <MenuExpandContext.Provider
+        value={{
+          expanded: true,
+          activeAccordionPopover: null,
+          setActiveAccordionPopover: noop,
+        }}
+      >
         <MenuButtonAccordion
           contentid="content-id"
           expanded={false}
@@ -140,7 +154,13 @@ describe("GIVEN <MenuButton.Accordion />", () => {
 
   it("should override context collapsed state when expanded is provided", () => {
     render(
-      <MenuExpandContext.Provider value={{ expanded: false }}>
+      <MenuExpandContext.Provider
+        value={{
+          expanded: false,
+          activeAccordionPopover: null,
+          setActiveAccordionPopover: noop,
+        }}
+      >
         <MenuButtonAccordion
           open
           contentid="content-id"
@@ -159,36 +179,15 @@ describe("GIVEN <MenuButton.Accordion />", () => {
     expect(screen.getByText(contentText)).toBeDefined();
   });
 
-  describe("WHEN collapsed with tooltip configuration", () => {
-    it("SHOULD wrap accordion with tooltip when collapsed and showTooltipsWhenCollapsed is true", () => {
+  describe("WHEN collapsed", () => {
+    it("SHOULD wrap accordion with popover showing children", () => {
       render(
         <MenuExpandContext.Provider
           value={{
             expanded: false,
-            showTooltipsWhenCollapsed: true,
             tooltipsPosition: "right",
-          }}
-        >
-          <MenuButtonAccordion
-            contentid="content-id"
-            menuButton={{ label: labelText }}
-          >
-            {contentText}
-          </MenuButtonAccordion>
-        </MenuExpandContext.Provider>
-      );
-
-      const tooltipContainer = screen.getByTestId("tooltip-container");
-      expect(tooltipContainer).toBeDefined();
-      expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
-    });
-
-    it("SHOULD not wrap accordion with tooltip when showTooltipsWhenCollapsed is false", () => {
-      render(
-        <MenuExpandContext.Provider
-          value={{
-            expanded: false,
-            showTooltipsWhenCollapsed: false,
+            activeAccordionPopover: null,
+            setActiveAccordionPopover: noop,
           }}
         >
           <MenuButtonAccordion
@@ -201,41 +200,16 @@ describe("GIVEN <MenuButton.Accordion />", () => {
       );
 
       expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
-      expect(screen.queryByTestId("tooltip-container")).toBeNull();
-      expect(screen.queryByText(contentText)).toBeNull();
     });
 
-    it("SHOULD use custom tooltipText when provided", () => {
-      const customTooltip = "Custom accordion tooltip";
-      render(
-        <MenuExpandContext.Provider
-          value={{
-            expanded: false,
-            showTooltipsWhenCollapsed: true,
-            tooltipsPosition: "top",
-          }}
-        >
-          <MenuButtonAccordion
-            contentid="content-id"
-            menuButton={{ label: labelText }}
-            tooltipText={customTooltip}
-          >
-            {contentText}
-          </MenuButtonAccordion>
-        </MenuExpandContext.Provider>
-      );
-
-      const tooltipContainer = screen.getByTestId("tooltip-container");
-      expect(tooltipContainer).toBeDefined();
-    });
-
-    it("SHOULD not show tooltip when accordion is expanded", () => {
+    it("SHOULD not show popover when accordion is expanded", () => {
       render(
         <MenuExpandContext.Provider
           value={{
             expanded: true,
-            showTooltipsWhenCollapsed: true,
             tooltipsPosition: "right",
+            activeAccordionPopover: null,
+            setActiveAccordionPopover: noop,
           }}
         >
           <MenuButtonAccordion
@@ -252,7 +226,7 @@ describe("GIVEN <MenuButton.Accordion />", () => {
         name: labelText,
       });
       expect(button).toBeDefined();
-      expect(screen.queryByTestId("tooltip-container")).toBeNull();
+      expect(screen.getByText(contentText)).toBeDefined();
     });
   });
 });

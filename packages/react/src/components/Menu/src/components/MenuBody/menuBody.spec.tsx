@@ -7,9 +7,19 @@ import { MenuBodyProps } from "./menuBody.types";
 
 const bodyChildren = "Body content";
 
+const noop = () => {
+  // Intentionally empty - no-op function for tests
+};
+
 const makeSut = (rest: Omit<MenuBodyProps, "children">) => {
   render(
-    <MenuExpandContext.Provider value={{ expanded: true }}>
+    <MenuExpandContext.Provider
+      value={{
+        expanded: true,
+        activeAccordionPopover: null,
+        setActiveAccordionPopover: noop,
+      }}
+    >
       <MenuBody {...rest} data-testid="body-element">
         {bodyChildren}
       </MenuBody>

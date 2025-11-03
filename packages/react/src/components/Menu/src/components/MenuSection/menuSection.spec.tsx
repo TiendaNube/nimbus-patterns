@@ -8,12 +8,22 @@ import { MenuSectionProps } from "./menuSection.types";
 const sectionChildren = "Body content";
 const sectionTitle = "Title content";
 
+const noop = () => {
+  // Intentionally empty - no-op function for tests
+};
+
 const makeSut = (
   rest: Omit<MenuSectionProps, "children">,
   expanded: boolean
 ) => {
   render(
-    <MenuExpandContext.Provider value={{ expanded }}>
+    <MenuExpandContext.Provider
+      value={{
+        expanded,
+        activeAccordionPopover: null,
+        setActiveAccordionPopover: noop,
+      }}
+    >
       <MenuSection {...rest} data-testid="section-element">
         {sectionChildren}
       </MenuSection>

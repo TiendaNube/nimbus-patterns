@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Box, BoxProps } from "@nimbus-ds/components";
 import { MenuExpandContext } from "@common/contexts";
 
@@ -15,9 +15,24 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
   tooltipsPosition = "right",
   ...rest
 }: MenuProps) => {
+  const [activeAccordionPopover, setActiveAccordionPopover] = useState<
+    string | null
+  >(null);
+
   const providerValue = useMemo(
-    () => ({ expanded, showTooltipsWhenCollapsed, tooltipsPosition }),
-    [expanded, showTooltipsWhenCollapsed, tooltipsPosition]
+    () => ({
+      expanded,
+      showTooltipsWhenCollapsed,
+      tooltipsPosition,
+      activeAccordionPopover,
+      setActiveAccordionPopover,
+    }),
+    [
+      expanded,
+      showTooltipsWhenCollapsed,
+      tooltipsPosition,
+      activeAccordionPopover,
+    ]
   );
 
   const dynamicProps: BoxProps = useMemo(

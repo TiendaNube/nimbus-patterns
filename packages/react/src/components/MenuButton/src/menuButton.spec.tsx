@@ -7,6 +7,10 @@ import { MenuButton, MenuButtonProps } from "./MenuButton";
 const labelText = "Button label";
 const mockedClickFunction = jest.fn();
 
+const noop = () => {
+  // Intentionally empty - no-op function for tests
+};
+
 const makeSut = (rest: Omit<MenuButtonProps, "label">) => {
   render(
     <MenuButton {...rest} label={labelText} data-testid="button-element" />
@@ -34,7 +38,13 @@ describe("GIVEN <MenuButton />", () => {
 
     it("SHOULD render collapsed correctly reading from the context", () => {
       render(
-        <MenuExpandContext.Provider value={{ expanded: false }}>
+        <MenuExpandContext.Provider
+          value={{
+            expanded: false,
+            activeAccordionPopover: null,
+            setActiveAccordionPopover: noop,
+          }}
+        >
           <MenuButton label={labelText} data-testid="button-element" />
         </MenuExpandContext.Provider>
       );
@@ -46,7 +56,13 @@ describe("GIVEN <MenuButton />", () => {
 
     it("SHOULD render expanded correctly reading from the context", () => {
       render(
-        <MenuExpandContext.Provider value={{ expanded: true }}>
+        <MenuExpandContext.Provider
+          value={{
+            expanded: true,
+            activeAccordionPopover: null,
+            setActiveAccordionPopover: noop,
+          }}
+        >
           <MenuButton label={labelText} data-testid="button-element" />
         </MenuExpandContext.Provider>
       );
@@ -81,6 +97,8 @@ describe("GIVEN <MenuButton />", () => {
             expanded: false,
             showTooltipsWhenCollapsed: true,
             tooltipsPosition: "right",
+            activeAccordionPopover: null,
+            setActiveAccordionPopover: noop,
           }}
         >
           <MenuButton label={labelText} />
@@ -98,6 +116,8 @@ describe("GIVEN <MenuButton />", () => {
           value={{
             expanded: false,
             showTooltipsWhenCollapsed: false,
+            activeAccordionPopover: null,
+            setActiveAccordionPopover: noop,
           }}
         >
           <MenuButton label={labelText} />
@@ -117,6 +137,8 @@ describe("GIVEN <MenuButton />", () => {
             expanded: false,
             showTooltipsWhenCollapsed: true,
             tooltipsPosition: "left",
+            activeAccordionPopover: null,
+            setActiveAccordionPopover: noop,
           }}
         >
           <MenuButton label={labelText} tooltipText={customTooltip} />
@@ -134,6 +156,8 @@ describe("GIVEN <MenuButton />", () => {
             expanded: true,
             showTooltipsWhenCollapsed: true,
             tooltipsPosition: "right",
+            activeAccordionPopover: null,
+            setActiveAccordionPopover: noop,
           }}
         >
           <MenuButton label={labelText} />

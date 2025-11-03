@@ -3,11 +3,12 @@ import React, {
   forwardRef,
   useMemo,
   useState,
+  useId,
 } from "react";
-import { Box, Tooltip } from "@nimbus-ds/components";
+import { Box, Popover } from "@nimbus-ds/components";
 import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
-import { useMenuExpandContext } from "@common/contexts";
+import { MenuExpandContext, useMenuExpandContext } from "@common/contexts";
 import { MenuButtonAccordionBaseProps } from "./menuButtonAccordion.types";
 import { MenuButton } from "../../MenuButton";
 
@@ -22,20 +23,30 @@ const MenuButtonAccordion = forwardRef(
       children,
       as,
       expanded: expandedProp,
-      tooltipText,
       ...rest
     }: MenuButtonAccordionBaseProps & { as: any },
     ref
   ) => {
+    const accordionId = useId();
     const {
       expanded: contextExpanded,
-      showTooltipsWhenCollapsed,
       tooltipsPosition,
+      showTooltipsWhenCollapsed,
+      activeAccordionPopover,
+      setActiveAccordionPopover,
     } = useMenuExpandContext(false);
     const expanded = expandedProp ?? contextExpanded;
 
     const [isOpen, setOpen] = useState(false);
     const handleOpen = () => setOpen((prevState) => !prevState);
+
+    const isPopoverOpen = useMemo(
+      () =>
+        !expanded &&
+        !!activeAccordionPopover &&
+        activeAccordionPopover === accordionId,
+      [expanded, activeAccordionPopover, accordionId]
+    );
 
     const open = useMemo(
       () => controlledOpen ?? isOpen,
@@ -66,6 +77,8 @@ const MenuButtonAccordion = forwardRef(
           }
           active={active}
           aria-expanded={open && expanded}
+          showTooltipsWhenCollapsed={false}
+          expanded={expanded}
         />
         {open && expanded && (
           <Box
@@ -86,15 +99,51 @@ const MenuButtonAccordion = forwardRef(
       </Box>
     );
 
-    const tooltipContent = tooltipText ?? menuButton.label;
-
-    return !expanded && showTooltipsWhenCollapsed && tooltipContent ? (
-      <Tooltip content={tooltipContent} position={tooltipsPosition} arrow>
-        {content}
-      </Tooltip>
-    ) : (
-      content
+    const popoverContextValue = useMemo(
+      () => ({
+        expanded: true,
+        tooltipsPosition,
+        activeAccordionPopover: null,
+        setActiveAccordionPopover: () => void 0,
+      }),
+      [tooltipsPosition]
     );
+
+    if (!expanded && showTooltipsWhenCollapsed) {
+      return (
+        <Popover
+          content={
+            <MenuExpandContext.Provider value={popoverContextValue}>
+              <Box
+                minWidth="200px"
+                display="flex"
+                flexDirection="column"
+                gap="0-5"
+              >
+                {children}
+              </Box>
+            </MenuExpandContext.Provider>
+          }
+          arrow
+          position={tooltipsPosition ?? "right"}
+          padding="small"
+          onVisibility={(visible) => {
+            setActiveAccordionPopover((prev) => {
+              if (visible) {
+                return accordionId;
+              }
+              return prev === accordionId ? null : prev;
+            });
+          }}
+          enabledHover
+          visible={isPopoverOpen}
+        >
+          {content}
+        </Popover>
+      );
+    }
+
+    return content;
   }
 ) as PolymorphicForwardRefComponent<
   "button" | "a",

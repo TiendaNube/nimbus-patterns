@@ -20,17 +20,20 @@ const MenuButton = forwardRef(
       as = "button",
       expanded: expandedProp,
       tooltipText,
+      showTooltipsWhenCollapsed,
       ...rest
     }: MenuButtonBaseProps & { as: any },
     ref
   ) => {
     const {
       expanded: contextExpanded,
-      showTooltipsWhenCollapsed,
+      showTooltipsWhenCollapsed: contextShowTooltipsWhenCollapsed,
       tooltipsPosition,
     } = useMenuExpandContext(false);
 
     const expanded = expandedProp ?? contextExpanded;
+    const shouldShowTooltip =
+      showTooltipsWhenCollapsed ?? contextShowTooltipsWhenCollapsed ?? true;
 
     const activeColor = active ? "primary-interactive" : "neutral-textHigh";
     const disabledColor = rest.disabled ? "neutral-textDisabled" : activeColor;
@@ -102,7 +105,7 @@ const MenuButton = forwardRef(
 
     const tooltipContent = tooltipText ?? label;
 
-    return !expanded && showTooltipsWhenCollapsed && tooltipContent ? (
+    return !expanded && shouldShowTooltip && tooltipContent ? (
       <Tooltip content={tooltipContent} position={tooltipsPosition} arrow>
         {content}
       </Tooltip>

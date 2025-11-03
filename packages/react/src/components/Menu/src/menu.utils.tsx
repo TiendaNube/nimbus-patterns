@@ -101,7 +101,19 @@ export const MenuStories = (props?: MenuProps) => (
           <Menu.Button label="Lista de ventas" />
           <Menu.Button label="Exportar lista" />
         </Menu.ButtonAccordion>
-        <Menu.Button startIcon={TagIcon} label="Productos" />
+        <Menu.ButtonAccordion
+          open
+          contentid="content-2"
+          menuButton={{
+            id: "control-2",
+            startIcon: TagIcon,
+            label: "Productos",
+            "aria-controls": "content-2",
+          }}
+        >
+          <Menu.Button label="Productos" />
+          <Menu.Button label="Exportar lista" />
+        </Menu.ButtonAccordion>
         <Menu.Button startIcon={UserIcon} label="Clientes">
           <Tag appearance="primary">Nuevo</Tag>
         </Menu.Button>

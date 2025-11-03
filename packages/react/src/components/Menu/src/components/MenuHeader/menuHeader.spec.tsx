@@ -7,9 +7,19 @@ import { MenuHeaderProps } from "./menuHeader.types";
 
 const headerChildren = "Header content";
 
+const noop = () => {
+  // Intentionally empty - no-op function for tests
+};
+
 const makeSut = (rest: Omit<MenuHeaderProps, "children">) => {
   render(
-    <MenuExpandContext.Provider value={{ expanded: true }}>
+    <MenuExpandContext.Provider
+      value={{
+        expanded: true,
+        activeAccordionPopover: null,
+        setActiveAccordionPopover: noop,
+      }}
+    >
       <MenuHeader {...rest} data-testid="header-element">
         {headerChildren}
       </MenuHeader>
