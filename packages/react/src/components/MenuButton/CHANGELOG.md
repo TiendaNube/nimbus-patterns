@@ -2,6 +2,12 @@
 
 MenuButton component is meant to be used inside Menus and navigation, and allows the user to navigate between different sections of an application.
 
+## 2025-11-04 `1.10.0`
+
+#### 🎉 New features
+
+- Adds support for popovers inside `MenuButton.Accordion` component. ([#131](https://github.com/TiendaNube/nimbus-patterns/pull/131) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-10-09 `1.9.0`
 
 #### 🎉 New features
