@@ -151,7 +151,6 @@ export const accordionMenuButtonCollapsed: Story = {
 
 export const accordionNavigationPattern: Story = {
   render: () => {
-    const [expanded, setExpanded] = useState(false);
     const [activeRoute, setActiveRoute] = useState("");
     const [activeAccordionPopover, setActiveAccordionPopover] = useState<
       string | null
@@ -160,7 +159,7 @@ export const accordionNavigationPattern: Story = {
     return (
       <MenuExpandContext.Provider
         value={{
-          expanded,
+          expanded: false,
           showTooltipsWhenCollapsed: true,
           activeAccordionPopover,
           setActiveAccordionPopover,
@@ -168,8 +167,7 @@ export const accordionNavigationPattern: Story = {
       >
         <Box display="flex" flexDirection="column" gap="4">
           <Box>
-            Current Route: <strong>{activeRoute}</strong> - Menu is{" "}
-            {expanded ? "expanded" : "collapsed"}
+            Current Route: <strong>{activeRoute}</strong> - Menu is collapsed
           </Box>
           <Box display="flex" gap="4">
             <Box maxWidth="200px">
@@ -182,9 +180,6 @@ export const accordionNavigationPattern: Story = {
                   id: "products-control",
                   "aria-controls": "products-content",
                   onClick: () => {
-                    if (!expanded) {
-                      setExpanded(true);
-                    }
                     setActiveRoute("products-list");
                   },
                 }}
