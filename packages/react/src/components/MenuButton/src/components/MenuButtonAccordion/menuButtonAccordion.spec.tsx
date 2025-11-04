@@ -124,7 +124,7 @@ describe("GIVEN <MenuButton.Accordion />", () => {
     });
   });
 
-  it("should override context expanded state when expanded is provided", () => {
+  it("SHOULD override context expanded state with prop", () => {
     render(
       <MenuExpandContext.Provider
         value={{
@@ -151,42 +151,28 @@ describe("GIVEN <MenuButton.Accordion />", () => {
     expect(screen.queryByText(contentText)).toBeNull();
   });
 
-  it("should override context collapsed state when expanded is provided", () => {
-    render(
-      <MenuExpandContext.Provider
-        value={{
-          expanded: false,
-          activeAccordionPopover: null,
-          setActiveAccordionPopover: noop,
-        }}
-      >
-        <MenuButtonAccordion
-          open
-          contentid="content-id"
-          expanded
-          menuButton={{ label: labelText }}
-        >
-          {contentText}
-        </MenuButtonAccordion>
-      </MenuExpandContext.Provider>
-    );
+  it("SHOULD pass active state to MenuButton", () => {
+    makeSut({ active: true });
 
     const button = screen.getByRole<HTMLButtonElement>("button", {
       name: labelText,
     });
-    expect(button.getAttribute("aria-expanded")).toBe("true");
-    expect(screen.getByText(contentText)).toBeDefined();
+    expect(button.getAttribute("data-active")).toBe("true");
   });
 
-  describe("WHEN collapsed", () => {
-    it("SHOULD wrap accordion with popover showing children", () => {
+  describe("WHEN collapsed with showTooltipsWhenCollapsed enabled", () => {
+    it("SHOULD manage popover visibility through activeAccordionPopover state", () => {
+      const setActiveAccordionPopover = jest.fn();
+      const accordionId = "test-id";
+
       render(
         <MenuExpandContext.Provider
           value={{
             expanded: false,
+            showTooltipsWhenCollapsed: true,
             tooltipsPosition: "right",
-            activeAccordionPopover: null,
-            setActiveAccordionPopover: noop,
+            activeAccordionPopover: accordionId,
+            setActiveAccordionPopover,
           }}
         >
           <MenuButtonAccordion
@@ -201,19 +187,47 @@ describe("GIVEN <MenuButton.Accordion />", () => {
       expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
     });
 
-    it("SHOULD not show popover when accordion is expanded", () => {
+    it("SHOULD call setActiveAccordionPopover when popover becomes visible", () => {
+      const setActiveAccordionPopover = jest.fn();
+
+      const { container } = render(
+        <MenuExpandContext.Provider
+          value={{
+            expanded: false,
+            showTooltipsWhenCollapsed: true,
+            tooltipsPosition: "right",
+            activeAccordionPopover: null,
+            setActiveAccordionPopover,
+          }}
+        >
+          <MenuButtonAccordion
+            contentid="content-id"
+            menuButton={{ label: labelText }}
+          >
+            {contentText}
+          </MenuButtonAccordion>
+        </MenuExpandContext.Provider>
+      );
+
+      const popoverTrigger = container.querySelector("[data-testid], button");
+      if (popoverTrigger) {
+        fireEvent.mouseEnter(popoverTrigger);
+      }
+
+      expect(setActiveAccordionPopover).toHaveBeenCalled();
+    });
+
+    it("SHOULD not render popover content when showTooltipsWhenCollapsed is undefined", () => {
       render(
         <MenuExpandContext.Provider
           value={{
-            expanded: true,
-            tooltipsPosition: "right",
+            expanded: false,
             activeAccordionPopover: null,
             setActiveAccordionPopover: noop,
           }}
         >
           <MenuButtonAccordion
             contentid="content-id"
-            open
             menuButton={{ label: labelText }}
           >
             {contentText}
@@ -225,7 +239,26 @@ describe("GIVEN <MenuButton.Accordion />", () => {
         name: labelText,
       });
       expect(button).toBeDefined();
-      expect(screen.getByText(contentText)).toBeDefined();
+      expect(screen.queryByText(contentText)).not.toBeInTheDocument();
+    });
+  });
+
+  describe("WHEN rendering as different element", () => {
+    it("SHOULD render as anchor when as prop is 'a'", () => {
+      const { container } = render(
+        <MenuButtonAccordion
+          as="a"
+          href="/test"
+          contentid="content-id"
+          menuButton={{ label: labelText }}
+        >
+          {contentText}
+        </MenuButtonAccordion>
+      );
+
+      const link = container.querySelector("a");
+      expect(link).toBeDefined();
+      expect(link?.getAttribute("href")).toBe("/test");
     });
   });
 });
