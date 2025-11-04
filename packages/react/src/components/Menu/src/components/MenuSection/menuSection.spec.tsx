@@ -2,15 +2,12 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 
 import { MenuExpandContext } from "@common/contexts";
+import { noop } from "@common/utils";
 import { MenuSection } from "./MenuSection";
 import { MenuSectionProps } from "./menuSection.types";
 
 const sectionChildren = "Body content";
 const sectionTitle = "Title content";
-
-const noop = () => {
-  // Intentionally empty - no-op function for tests
-};
 
 const makeSut = (
   rest: Omit<MenuSectionProps, "children">,

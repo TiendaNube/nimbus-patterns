@@ -2,13 +2,12 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 
 import { MenuExpandContext } from "@common/contexts";
+import { noop } from "@common/utils";
 import {
   MenuButtonAccordion,
   MenuButtonAccordionProps,
 } from "./MenuButtonAccordion";
 import { MenuButtonProperties } from "../../menuButton.types";
-
-const noop = () => void 0;
 
 jest.mock("../../MenuButton", () => ({
   MenuButton: ({

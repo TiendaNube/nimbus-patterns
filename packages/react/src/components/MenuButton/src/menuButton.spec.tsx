@@ -2,14 +2,11 @@ import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import { MenuExpandContext } from "@common/contexts";
+import { noop } from "@common/utils";
 import { MenuButton, MenuButtonProps } from "./MenuButton";
 
 const labelText = "Button label";
 const mockedClickFunction = jest.fn();
-
-const noop = () => {
-  // Intentionally empty - no-op function for tests
-};
 
 const makeSut = (rest: Omit<MenuButtonProps, "label">) => {
   render(
