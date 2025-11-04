@@ -53,6 +53,16 @@ const MenuButtonAccordion = forwardRef(
       [controlledOpen, isOpen]
     );
 
+    const popoverContextValue = useMemo(
+      () => ({
+        expanded: true,
+        tooltipsPosition,
+        activeAccordionPopover: null,
+        setActiveAccordionPopover: () => void 0,
+      }),
+      [tooltipsPosition]
+    );
+
     const getBackgroundColor = () => {
       if (active) {
         return "primary-surface";
@@ -97,16 +107,6 @@ const MenuButtonAccordion = forwardRef(
           </Box>
         )}
       </Box>
-    );
-
-    const popoverContextValue = useMemo(
-      () => ({
-        expanded: true,
-        tooltipsPosition,
-        activeAccordionPopover: null,
-        setActiveAccordionPopover: () => void 0,
-      }),
-      [tooltipsPosition]
     );
 
     if (!expanded && showTooltipsWhenCollapsed) {
