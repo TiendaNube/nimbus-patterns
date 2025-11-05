@@ -127,6 +127,7 @@ const MenuButtonAccordion = forwardRef(
           arrow
           position={tooltipsPosition ?? "right"}
           padding="small"
+          enabledClick={false}
           onVisibility={(visible) => {
             setActiveAccordionPopover((prev) => {
               if (visible) {
