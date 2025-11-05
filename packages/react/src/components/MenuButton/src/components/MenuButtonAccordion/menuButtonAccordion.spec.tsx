@@ -135,14 +135,14 @@ describe("GIVEN <MenuButton.Accordion />", () => {
     expect(button).toBeDefined();
   });
 
-  describe("WHEN collapsed with showTooltipsWhenCollapsed enabled", () => {
-    it("SHOULD wrap accordion with popover when collapsed and showTooltipsWhenCollapsed is true", () => {
+  describe("WHEN collapsed with showPopoversWhenCollapsed enabled", () => {
+    it("SHOULD wrap accordion with popover when collapsed and showPopoversWhenCollapsed is true", () => {
       render(
         <MenuExpandContext.Provider
           value={{
             expanded: false,
-            showTooltipsWhenCollapsed: true,
-            tooltipsPosition: "right",
+            showPopoversWhenCollapsed: true,
+            popoverPosition: "right",
             activeAccordionPopover: null,
             setActiveAccordionPopover: noop,
           }}
@@ -165,8 +165,8 @@ describe("GIVEN <MenuButton.Accordion />", () => {
         <MenuExpandContext.Provider
           value={{
             expanded: false,
-            showTooltipsWhenCollapsed: true,
-            tooltipsPosition: "right",
+            showPopoversWhenCollapsed: true,
+            popoverPosition: "right",
             activeAccordionPopover: null,
             setActiveAccordionPopover: noop,
           }}
@@ -183,7 +183,7 @@ describe("GIVEN <MenuButton.Accordion />", () => {
       expect(screen.queryByText(contentText)).toBeNull();
     });
 
-    it("SHOULD not render popover when showTooltipsWhenCollapsed is undefined", () => {
+    it("SHOULD not render popover when showPopoversWhenCollapsed is undefined", () => {
       render(
         <MenuExpandContext.Provider
           value={{

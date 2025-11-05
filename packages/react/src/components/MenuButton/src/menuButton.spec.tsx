@@ -87,13 +87,13 @@ describe("GIVEN <MenuButton />", () => {
   });
 
   describe("WHEN collapsed with popover configuration", () => {
-    it("SHOULD wrap button with popover when collapsed and showTooltipsWhenCollapsed is true", () => {
+    it("SHOULD wrap button with popover when collapsed and showPopoversWhenCollapsed is true", () => {
       render(
         <MenuExpandContext.Provider
           value={{
             expanded: false,
-            showTooltipsWhenCollapsed: true,
-            tooltipsPosition: "right",
+            showPopoversWhenCollapsed: true,
+            popoverPosition: "right",
             activeAccordionPopover: null,
             setActiveAccordionPopover: noop,
           }}
@@ -107,12 +107,12 @@ describe("GIVEN <MenuButton />", () => {
       expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
     });
 
-    it("SHOULD not wrap button with popover when showTooltipsWhenCollapsed is false", () => {
+    it("SHOULD not wrap button with popover when showPopoversWhenCollapsed is false", () => {
       render(
         <MenuExpandContext.Provider
           value={{
             expanded: false,
-            showTooltipsWhenCollapsed: false,
+            showPopoversWhenCollapsed: false,
             activeAccordionPopover: null,
             setActiveAccordionPopover: noop,
           }}
@@ -126,33 +126,13 @@ describe("GIVEN <MenuButton />", () => {
       expect(screen.queryByText(labelText)).toBeNull();
     });
 
-    it("SHOULD use custom tooltipText when provided", () => {
-      const customTooltip = "Custom tooltip text";
-      render(
-        <MenuExpandContext.Provider
-          value={{
-            expanded: false,
-            showTooltipsWhenCollapsed: true,
-            tooltipsPosition: "left",
-            activeAccordionPopover: null,
-            setActiveAccordionPopover: noop,
-          }}
-        >
-          <MenuButton label={labelText} tooltipText={customTooltip} />
-        </MenuExpandContext.Provider>
-      );
-
-      const popoverContainer = screen.getByTestId("popover-container");
-      expect(popoverContainer).toBeDefined();
-    });
-
     it("SHOULD not show popover when button is expanded", () => {
       render(
         <MenuExpandContext.Provider
           value={{
             expanded: true,
-            showTooltipsWhenCollapsed: true,
-            tooltipsPosition: "right",
+            showPopoversWhenCollapsed: true,
+            popoverPosition: "right",
             activeAccordionPopover: null,
             setActiveAccordionPopover: noop,
           }}

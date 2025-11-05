@@ -39,14 +39,9 @@ export interface MenuButtonProperties {
   expanded?: boolean;
 
   /**
-   * Text to be displayed in the tooltip when the button is collapsed. If not provided, the label will be used.
+   * Whether to show popovers when the button is collapsed. Defaults to true.
    */
-  tooltipText?: string;
-
-  /**
-   * Whether to show tooltips when the button is collapsed. Defaults to true.
-   */
-  showTooltipsWhenCollapsed?: boolean;
+  showPopoversWhenCollapsed?: boolean;
 }
 
 export type MenuButtonBaseProps = MenuButtonProperties &

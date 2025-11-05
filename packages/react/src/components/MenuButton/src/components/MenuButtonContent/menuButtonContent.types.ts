@@ -19,7 +19,4 @@ export interface MenuButtonContentProperties {
 }
 
 export type MenuButtonContentProps = MenuButtonContentProperties &
-  Omit<
-    MenuButtonBaseProps,
-    "expanded" | "tooltipText" | "showTooltipsWhenCollapsed"
-  >;
+  Omit<MenuButtonBaseProps, "expanded" | "showPopoversWhenCollapsed">;

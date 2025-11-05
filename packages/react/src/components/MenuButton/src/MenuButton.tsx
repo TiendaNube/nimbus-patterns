@@ -24,8 +24,7 @@ const MenuButton = forwardRef(
       active = false,
       as = "button",
       expanded: expandedProp,
-      tooltipText,
-      showTooltipsWhenCollapsed,
+      showPopoversWhenCollapsed,
       ...rest
     }: MenuButtonBaseProps & { as: any },
     ref
@@ -33,15 +32,15 @@ const MenuButton = forwardRef(
     const menuButtonId = useId();
     const {
       expanded: contextExpanded,
-      showTooltipsWhenCollapsed: contextShowTooltipsWhenCollapsed,
-      tooltipsPosition,
+      showPopoversWhenCollapsed: contextShowPopoversWhenCollapsed,
+      popoverPosition,
       activeAccordionPopover,
       setActiveAccordionPopover,
     } = useMenuExpandContext(false);
 
     const expanded = expandedProp ?? contextExpanded;
-    const shouldShowTooltip =
-      showTooltipsWhenCollapsed ?? contextShowTooltipsWhenCollapsed ?? true;
+    const shouldShowPopover =
+      showPopoversWhenCollapsed ?? contextShowPopoversWhenCollapsed ?? true;
 
     const isPopoverOpen = useMemo(
       () =>
@@ -69,7 +68,7 @@ const MenuButton = forwardRef(
       </MenuButtonContent>
     );
 
-    return !expanded && shouldShowTooltip ? (
+    return !expanded && shouldShowPopover ? (
       <Popover
         content={
           <MenuButtonContent
@@ -87,7 +86,7 @@ const MenuButton = forwardRef(
           </MenuButtonContent>
         }
         arrow
-        position={tooltipsPosition ?? "right"}
+        position={popoverPosition ?? "right"}
         padding="small"
         onVisibility={(visible) => {
           setActiveAccordionPopover((prev) => {

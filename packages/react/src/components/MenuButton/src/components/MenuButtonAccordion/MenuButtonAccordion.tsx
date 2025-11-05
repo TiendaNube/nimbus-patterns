@@ -30,8 +30,8 @@ const MenuButtonAccordion = forwardRef(
     const accordionId = useId();
     const {
       expanded: contextExpanded,
-      tooltipsPosition,
-      showTooltipsWhenCollapsed,
+      popoverPosition,
+      showPopoversWhenCollapsed,
       activeAccordionPopover,
       setActiveAccordionPopover,
     } = useMenuExpandContext(false);
@@ -56,11 +56,11 @@ const MenuButtonAccordion = forwardRef(
     const popoverContextValue = useMemo(
       () => ({
         expanded: true,
-        tooltipsPosition,
+        popoverPosition,
         activeAccordionPopover: null,
         setActiveAccordionPopover: () => void 0,
       }),
-      [tooltipsPosition]
+      [popoverPosition]
     );
 
     const getBackgroundColor = () => {
@@ -87,7 +87,7 @@ const MenuButtonAccordion = forwardRef(
           }
           active={active}
           aria-expanded={open && expanded}
-          showTooltipsWhenCollapsed={false}
+          showPopoversWhenCollapsed={false}
           expanded={expanded}
         />
         {open && expanded && (
@@ -109,7 +109,7 @@ const MenuButtonAccordion = forwardRef(
       </Box>
     );
 
-    if (!expanded && showTooltipsWhenCollapsed) {
+    if (!expanded && showPopoversWhenCollapsed) {
       return (
         <Popover
           content={
@@ -125,7 +125,7 @@ const MenuButtonAccordion = forwardRef(
             </MenuExpandContext.Provider>
           }
           arrow
-          position={tooltipsPosition ?? "right"}
+          position={popoverPosition ?? "right"}
           padding="small"
           enabledClick={false}
           onVisibility={(visible) => {

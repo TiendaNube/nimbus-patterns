@@ -160,7 +160,7 @@ export const accordionNavigationPattern: Story = {
       <MenuExpandContext.Provider
         value={{
           expanded: false,
-          showTooltipsWhenCollapsed: true,
+          showPopoversWhenCollapsed: true,
           activeAccordionPopover,
           setActiveAccordionPopover,
         }}

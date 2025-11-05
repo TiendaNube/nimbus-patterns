@@ -11,8 +11,8 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
   style: _style,
   children,
   expanded = true,
-  showTooltipsWhenCollapsed = true,
-  tooltipsPosition = "right",
+  showPopoversWhenCollapsed = true,
+  popoverPosition = "right",
   ...rest
 }: MenuProps) => {
   const [activeAccordionPopover, setActiveAccordionPopover] = useState<
@@ -22,15 +22,15 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
   const providerValue = useMemo(
     () => ({
       expanded,
-      showTooltipsWhenCollapsed,
-      tooltipsPosition,
+      showPopoversWhenCollapsed,
+      popoverPosition,
       activeAccordionPopover,
       setActiveAccordionPopover,
     }),
     [
       expanded,
-      showTooltipsWhenCollapsed,
-      tooltipsPosition,
+      showPopoversWhenCollapsed,
+      popoverPosition,
       activeAccordionPopover,
     ]
   );
