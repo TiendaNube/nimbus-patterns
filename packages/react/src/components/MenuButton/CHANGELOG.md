@@ -2,7 +2,7 @@
 
 MenuButton component is meant to be used inside Menus and navigation, and allows the user to navigate between different sections of an application.
 
-## 2025-11-04 `1.10.0`
+## 2025-11-04 `2.0.0`
 
 #### 🎉 New features
 
