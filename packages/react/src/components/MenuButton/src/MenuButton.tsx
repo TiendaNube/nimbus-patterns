@@ -72,7 +72,6 @@ const MenuButton = forwardRef(
       <Popover
         content={
           <MenuButtonContent
-            ref={ref}
             expanded
             disabledColor={disabledColor}
             label={label}

@@ -4,6 +4,10 @@ MenuButton component is meant to be used inside Menus and navigation, and allows
 
 ## 2025-11-04 `2.0.0`
 
+#### 🛠 Breaking changes
+
+- Renamed `showTooltipsWhenCollapsed` prop to `showPopoversWhenCollapsed` in `MenuButton` and `MenuButton.Accordion` components. ([#131](https://github.com/TiendaNube/nimbus-patterns/pull/131) by [@joacotornello](https://github.com/joacotornello))
+
 #### 🎉 New features
 
 - Adds support for popovers inside `MenuButton.Accordion` component. ([#131](https://github.com/TiendaNube/nimbus-patterns/pull/131) by [@joacotornello](https://github.com/joacotornello))

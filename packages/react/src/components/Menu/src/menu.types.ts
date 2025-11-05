@@ -26,12 +26,12 @@ export interface MenuProperties {
   expanded?: boolean;
 
   /**
-   * Whether to show tooltips for buttons when the menu is collapsed. Defaults to true.
+   * Whether to show popover for buttons when the menu is collapsed. Defaults to true.
    */
   showPopoversWhenCollapsed?: boolean;
 
   /**
-   * Position of the tooltips for buttons when the menu is collapsed. Defaults to "right".
+   * Position of the popovers for buttons when the menu is collapsed. Defaults to "right".
    */
   popoverPosition?: PopoverPlacement;
 }
