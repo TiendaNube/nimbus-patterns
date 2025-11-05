@@ -86,8 +86,8 @@ describe("GIVEN <MenuButton />", () => {
     });
   });
 
-  describe("WHEN collapsed with tooltip configuration", () => {
-    it("SHOULD wrap button with tooltip when collapsed and showTooltipsWhenCollapsed is true", () => {
+  describe("WHEN collapsed with popover configuration", () => {
+    it("SHOULD wrap button with popover when collapsed and showTooltipsWhenCollapsed is true", () => {
       render(
         <MenuExpandContext.Provider
           value={{
@@ -102,12 +102,12 @@ describe("GIVEN <MenuButton />", () => {
         </MenuExpandContext.Provider>
       );
 
-      const tooltipContainer = screen.getByTestId("tooltip-container");
-      expect(tooltipContainer).toBeDefined();
+      const popoverContainer = screen.getByTestId("popover-container");
+      expect(popoverContainer).toBeDefined();
       expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
     });
 
-    it("SHOULD not wrap button with tooltip when showTooltipsWhenCollapsed is false", () => {
+    it("SHOULD not wrap button with popover when showTooltipsWhenCollapsed is false", () => {
       render(
         <MenuExpandContext.Provider
           value={{
@@ -122,7 +122,7 @@ describe("GIVEN <MenuButton />", () => {
       );
 
       expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
-      expect(screen.queryByTestId("tooltip-container")).toBeNull();
+      expect(screen.queryByTestId("popover-container")).toBeNull();
       expect(screen.queryByText(labelText)).toBeNull();
     });
 
@@ -142,11 +142,11 @@ describe("GIVEN <MenuButton />", () => {
         </MenuExpandContext.Provider>
       );
 
-      const tooltipContainer = screen.getByTestId("tooltip-container");
-      expect(tooltipContainer).toBeDefined();
+      const popoverContainer = screen.getByTestId("popover-container");
+      expect(popoverContainer).toBeDefined();
     });
 
-    it("SHOULD not show tooltip when button is expanded", () => {
+    it("SHOULD not show popover when button is expanded", () => {
       render(
         <MenuExpandContext.Provider
           value={{
@@ -162,7 +162,7 @@ describe("GIVEN <MenuButton />", () => {
       );
 
       expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
-      expect(screen.queryByTestId("tooltip-container")).toBeNull();
+      expect(screen.queryByTestId("popover-container")).toBeNull();
     });
   });
 });

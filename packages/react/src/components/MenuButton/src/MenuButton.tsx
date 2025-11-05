@@ -5,12 +5,12 @@ import React, {
   useId,
 } from "react";
 
-import { Icon, Box, Text, BoxProperties, Popover } from "@nimbus-ds/components";
+import { Popover } from "@nimbus-ds/components";
 import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
-import { MenuExpandContext, useMenuExpandContext } from "@common/contexts";
+import { useMenuExpandContext } from "@common/contexts";
 import { MenuButtonBaseProps, MenuButtonComponents } from "./menuButton.types";
-import { MenuButtonAccordion } from "./components";
+import { MenuButtonAccordion, MenuButtonContent } from "./components";
 
 const MenuButton = forwardRef(
   (
@@ -50,95 +50,41 @@ const MenuButton = forwardRef(
         activeAccordionPopover === menuButtonId,
       [expanded, activeAccordionPopover, menuButtonId]
     );
-
-    const popoverContextValue = useMemo(
-      () => ({
-        expanded: true,
-        tooltipsPosition,
-        activeAccordionPopover: null,
-        setActiveAccordionPopover: () => void 0,
-      }),
-      [tooltipsPosition]
-    );
-
     const activeColor = active ? "primary-interactive" : "neutral-textHigh";
     const disabledColor = rest.disabled ? "neutral-textDisabled" : activeColor;
 
-    const Content = ({ expanded }: { expanded: boolean }) => {
-      const collapsedProps: BoxProperties = !expanded
-        ? {
-            justifyContent: "center",
-            paddingX: "none",
-          }
-        : {};
+    const content = (
+      <MenuButtonContent
+        ref={ref}
+        expanded={expanded}
+        disabledColor={disabledColor}
+        label={label}
+        startIcon={IconSrc}
+        active={active}
+        as={as}
+        onClick={onClick}
+        {...rest}
+      >
+        {children}
+      </MenuButtonContent>
+    );
 
-      return (
-        <Box
-          {...rest}
-          ref={ref}
-          as={as}
-          type="button"
-          onClick={onClick}
-          alignItems="center"
-          textDecoration="none"
-          backgroundColor={{
-            xs: active ? "primary-surface" : "transparent",
-            hover: "primary-surface",
-            active: "primary-surfaceHighlight",
-            disabled: "neutral-surfaceDisabled",
-          }}
-          borderRadius="2"
-          borderWidth="none"
-          cursor={{
-            xs: "pointer",
-            disabled: "not-allowed",
-          }}
-          display="flex"
-          gap="2"
-          px="2"
-          py={{
-            xs: "2",
-            md: "1",
-          }}
-          width="100%"
-          transitionProperty="all"
-          transitionDuration="base"
-          transitionTimingFunction="ease-in-out"
-          maxHeight={{
-            xs: "34px",
-            md: "26px",
-          }}
-          {...collapsedProps}
-        >
-          {IconSrc && (
-            <Icon color={disabledColor} source={<IconSrc size={16} />} />
-          )}
-
-          {expanded && (
-            <Box display="inline-flex" flex="1">
-              <Text
-                fontSize="base"
-                color={disabledColor}
-                lineClamp={1}
-                wordBreak="break-all"
-              >
-                {label}
-              </Text>
-            </Box>
-          )}
-          {expanded && children}
-        </Box>
-      );
-    };
-
-    const tooltipContent = tooltipText ?? label;
-
-    return !expanded && shouldShowTooltip && tooltipContent ? (
+    return !expanded && shouldShowTooltip ? (
       <Popover
         content={
-          <MenuExpandContext.Provider value={popoverContextValue}>
-            <Content expanded={true} />
-          </MenuExpandContext.Provider>
+          <MenuButtonContent
+            ref={ref}
+            expanded
+            disabledColor={disabledColor}
+            label={label}
+            startIcon={IconSrc}
+            active={active}
+            as={as}
+            onClick={onClick}
+            {...rest}
+          >
+            {children}
+          </MenuButtonContent>
         }
         arrow
         position={tooltipsPosition ?? "right"}
@@ -155,10 +101,10 @@ const MenuButton = forwardRef(
         enabledClick={false}
         visible={isPopoverOpen}
       >
-        <Content expanded={expanded} />
+        {content}
       </Popover>
     ) : (
-      <Content expanded={expanded} />
+      content
     );
   }
 ) as PolymorphicForwardRefComponent<"button" | "a", MenuButtonBaseProps> &
@@ -167,7 +113,6 @@ const MenuButton = forwardRef(
 MenuButton.Accordion = MenuButtonAccordion;
 
 MenuButton.displayName = "MenuButton";
-MenuButton.Accordion.displayName = "MenuButton.Accordion";
 
 export type MenuButtonProps = ComponentPropsWithRef<typeof MenuButton>;
 export { MenuButton };

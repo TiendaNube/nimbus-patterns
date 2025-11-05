@@ -8,11 +8,14 @@ import { MenuBodyProps } from "./menuBody.types";
 
 const bodyChildren = "Body content";
 
-const makeSut = (rest: Omit<MenuBodyProps, "children">) => {
+const makeSut = (
+  rest: Omit<MenuBodyProps, "children">,
+  contextExpanded = true
+) => {
   render(
     <MenuExpandContext.Provider
       value={{
-        expanded: true,
+        expanded: contextExpanded,
         activeAccordionPopover: null,
         setActiveAccordionPopover: noop,
       }}
@@ -28,6 +31,11 @@ describe("GIVEN <MenuBody />", () => {
   describe("WHEN rendered", () => {
     it("SHOULD render children correctly", () => {
       makeSut({});
+      expect(screen.getByText(bodyChildren)).toBeDefined();
+    });
+
+    it("SHOULD render children when collapsed", () => {
+      makeSut({}, false);
       expect(screen.getByText(bodyChildren)).toBeDefined();
     });
   });

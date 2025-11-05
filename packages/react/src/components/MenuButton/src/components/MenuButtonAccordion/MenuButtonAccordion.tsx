@@ -151,7 +151,6 @@ const MenuButtonAccordion = forwardRef(
   MenuButtonAccordionBaseProps
 >;
 
-MenuButtonAccordion.displayName = "MenuButtonAccordion";
 export type MenuButtonAccordionProps = ComponentPropsWithRef<
   typeof MenuButtonAccordion
 >;
