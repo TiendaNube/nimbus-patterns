@@ -234,4 +234,66 @@ describe("GIVEN <MenuButton.Accordion />", () => {
       expect(link?.getAttribute("href")).toBe("/test");
     });
   });
+
+  describe("WHEN popover onVisibility callback logic", () => {
+    const createOnVisibilityCallback =
+      (accordionId: string, setActiveAccordionPopover: jest.Mock) =>
+      (visible: boolean) => {
+        setActiveAccordionPopover((prev: string | null) => {
+          if (visible) {
+            return accordionId;
+          }
+          return prev === accordionId ? null : prev;
+        });
+      };
+
+    it("SHOULD set activeAccordionPopover to accordionId when visible becomes true", () => {
+      const accordionId = ":r1:";
+      const setActiveAccordionPopover = jest.fn();
+      const onVisibilityCallback = createOnVisibilityCallback(
+        accordionId,
+        setActiveAccordionPopover
+      );
+
+      onVisibilityCallback(true);
+
+      expect(setActiveAccordionPopover).toHaveBeenCalledTimes(1);
+      const updaterFunction = setActiveAccordionPopover.mock.calls[0][0];
+      const result = updaterFunction(null);
+      expect(result).toBe(accordionId);
+    });
+
+    it("SHOULD clear activeAccordionPopover when visible becomes false and ID matches", () => {
+      const accordionId = ":r1:";
+      const setActiveAccordionPopover = jest.fn();
+      const onVisibilityCallback = createOnVisibilityCallback(
+        accordionId,
+        setActiveAccordionPopover
+      );
+
+      onVisibilityCallback(false);
+
+      expect(setActiveAccordionPopover).toHaveBeenCalledTimes(1);
+      const updaterFunction = setActiveAccordionPopover.mock.calls[0][0];
+      const resultWhenMatches = updaterFunction(accordionId);
+      expect(resultWhenMatches).toBeNull();
+    });
+
+    it("SHOULD preserve activeAccordionPopover when visible becomes false and ID does not match", () => {
+      const accordionId = ":r1:";
+      const differentId = ":r2:";
+      const setActiveAccordionPopover = jest.fn();
+      const onVisibilityCallback = createOnVisibilityCallback(
+        accordionId,
+        setActiveAccordionPopover
+      );
+
+      onVisibilityCallback(false);
+
+      expect(setActiveAccordionPopover).toHaveBeenCalledTimes(1);
+      const updaterFunction = setActiveAccordionPopover.mock.calls[0][0];
+      const resultWhenDoesNotMatch = updaterFunction(differentId);
+      expect(resultWhenDoesNotMatch).toBe(differentId);
+    });
+  });
 });

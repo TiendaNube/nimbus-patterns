@@ -1,12 +1,7 @@
 import React, { forwardRef } from "react";
 
-import {
-  Icon,
-  Box,
-  Text,
-  BoxProperties,
-  PolymorphicForwardRefComponent,
-} from "@nimbus-ds/components";
+import { Icon, Box, Text, type BoxProperties } from "@nimbus-ds/components";
+import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
 import { MenuButtonContentProps } from "./menuButtonContent.types";
 
