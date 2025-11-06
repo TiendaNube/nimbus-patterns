@@ -103,6 +103,16 @@
               "default": false,
               "type": "boolean",
               "title": "fullWidth"
+            },
+            "size": {
+              "description": "Change the size of the button.",
+              "default": "medium",
+              "enum": [
+                "medium",
+                "small"
+              ],
+              "type": "string",
+              "title": "size"
             }
           },
           "additionalProperties": false,
@@ -110,7 +120,8 @@
             "children",
             "appearance",
             "disabled",
-            "fullWidth"
+            "fullWidth",
+            "size"
           ],
           "required": [
             "children"
@@ -150,6 +161,16 @@
               "default": false,
               "type": "boolean",
               "title": "fullWidth"
+            },
+            "size": {
+              "description": "Change the size of the button.",
+              "default": "medium",
+              "enum": [
+                "medium",
+                "small"
+              ],
+              "type": "string",
+              "title": "size"
             }
           },
           "additionalProperties": false,
@@ -157,7 +178,8 @@
             "children",
             "appearance",
             "disabled",
-            "fullWidth"
+            "fullWidth",
+            "size"
           ],
           "required": [
             "children"

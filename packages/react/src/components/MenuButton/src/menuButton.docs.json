@@ -61,60 +61,11 @@
       "required": false
     },
     {
-      "description": "Text to be displayed in the tooltip when the button is collapsed. If not provided, the label will be used.",
-      "type": "string",
-      "title": "tooltipText",
+      "description": "Whether to show popovers when the button is collapsed. Defaults to true.",
+      "type": "boolean",
+      "title": "showPopoversWhenCollapsed",
       "required": false
     }
   ],
-  "subComponents": [
-    {
-      "name": "MenuButton.Accordion",
-      "totalProps": 7,
-      "props": [
-        {
-          "description": "Content of the menu.",
-          "type": "React.ReactNode",
-          "title": "children",
-          "required": true
-        },
-        {
-          "description": "It will be the accordion anchor and can contain all the props available in the MenuButton component's API.",
-          "type": "React.ReactNode",
-          "title": "menuButton",
-          "required": true
-        },
-        {
-          "description": "Required ID used to maintain correct component accessibility, it will be passed on to MenuButtonAccordion's children.",
-          "type": "string",
-          "title": "contentid",
-          "required": true
-        },
-        {
-          "description": "Changes the component usage so that control of open and close is controlled from outside the component.",
-          "type": "boolean",
-          "title": "open",
-          "required": false
-        },
-        {
-          "description": "Sets the state of the button as active/inactive.",
-          "type": "boolean",
-          "title": "active",
-          "required": false
-        },
-        {
-          "description": "Whether the MenuButtonAccordion is expanded.\nIf `undefined`, it follows `MenuExpandContext`.\nIf provided, it overrides the context.",
-          "type": "boolean",
-          "title": "expanded",
-          "required": false
-        },
-        {
-          "description": "Text to be displayed in the tooltip when the button is collapsed. If not provided, the label will be used.",
-          "type": "string",
-          "title": "tooltipText",
-          "required": false
-        }
-      ]
-    }
-  ]
+  "subComponents": []
 }

@@ -19,21 +19,29 @@
       "required": false
     },
     {
-      "description": "Whether to show tooltips for buttons when the menu is collapsed. Defaults to true.",
+      "description": "Whether to show popover for buttons when the menu is collapsed. Defaults to true.",
       "type": "boolean",
-      "title": "showTooltipsWhenCollapsed",
+      "title": "showPopoversWhenCollapsed",
       "required": false
     },
     {
-      "description": "Position of the tooltips for buttons when the menu is collapsed. Defaults to \"right\".",
+      "description": "Position of the popovers for buttons when the menu is collapsed. Defaults to \"right\".",
       "enum": [
         "bottom",
+        "bottom-end",
+        "bottom-start",
         "left",
+        "left-end",
+        "left-start",
         "right",
-        "top"
+        "right-end",
+        "right-start",
+        "top",
+        "top-end",
+        "top-start"
       ],
       "type": "string",
-      "title": "tooltipsPosition",
+      "title": "popoverPosition",
       "required": false
     }
   ],
@@ -115,9 +123,9 @@
           "required": false
         },
         {
-          "description": "Text to be displayed in the tooltip when the button is collapsed. If not provided, the label will be used.",
-          "type": "string",
-          "title": "tooltipText",
+          "description": "Whether to show popovers when the button is collapsed. Defaults to true.",
+          "type": "boolean",
+          "title": "showPopoversWhenCollapsed",
           "required": false
         }
       ]
