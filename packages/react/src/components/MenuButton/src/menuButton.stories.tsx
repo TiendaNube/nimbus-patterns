@@ -101,12 +101,16 @@ export const menuButtonCollapsed: Story = {
   render: (args) => {
     const [expanded, setExpanded] = useState(false);
     return (
-      <MenuExpandContext.Provider value={{ expanded }}>
+      <>
         Click the button to {expanded ? "collapse" : "expand"}
         <Box maxWidth="200px">
-          <MenuButton {...args} onClick={() => setExpanded(!expanded)} />
+          <MenuButton
+            {...args}
+            expanded={expanded}
+            onClick={() => setExpanded(!expanded)}
+          />
         </Box>
-      </MenuExpandContext.Provider>
+      </>
     );
   },
   args: {
@@ -119,7 +123,7 @@ export const accordionMenuButtonCollapsed: Story = {
   render: (args) => {
     const [expanded, setExpanded] = useState(false);
     return (
-      <MenuExpandContext.Provider value={{ expanded }}>
+      <>
         Click the accordion to {expanded ? "collapse" : "expand"}
         <Box maxWidth="200px">
           <MenuButton.Accordion
@@ -130,16 +134,78 @@ export const accordionMenuButtonCollapsed: Story = {
               "aria-controls": "content-1",
             }}
             onClick={() => setExpanded(!expanded)}
+            expanded={expanded}
           >
             <MenuButton label="First item" />
             <MenuButton label="Second item" />
           </MenuButton.Accordion>
         </Box>
-      </MenuExpandContext.Provider>
+      </>
     );
   },
   args: {
     label: "Button collapsed",
     startIcon: HomeIcon,
+  },
+};
+
+export const accordionNavigationPattern: Story = {
+  render: () => {
+    const [activeRoute, setActiveRoute] = useState("");
+    const [activeAccordionPopover, setActiveAccordionPopover] = useState<
+      string | null
+    >(null);
+
+    return (
+      <MenuExpandContext.Provider
+        value={{
+          expanded: false,
+          showPopoversWhenCollapsed: true,
+          activeAccordionPopover,
+          setActiveAccordionPopover,
+        }}
+      >
+        <Box display="flex" flexDirection="column" gap="4">
+          <Box>
+            Current Route: <strong>{activeRoute}</strong> - Menu is collapsed
+          </Box>
+          <Box display="flex" gap="4">
+            <Box maxWidth="200px">
+              <MenuButton.Accordion
+                contentid="products-content"
+                active={activeRoute.startsWith("products")}
+                menuButton={{
+                  label: "Products",
+                  startIcon: HomeIcon,
+                  id: "products-control",
+                  "aria-controls": "products-content",
+                  onClick: () => {
+                    setActiveRoute("products-list");
+                  },
+                }}
+              >
+                <MenuButton
+                  label="Product List"
+                  active={activeRoute === "products-list"}
+                  onClick={() => setActiveRoute("products-list")}
+                />
+                <MenuButton
+                  label="Inventory"
+                  active={activeRoute === "products-inventory"}
+                  onClick={() => setActiveRoute("products-inventory")}
+                >
+                  <Tag appearance="primary">100</Tag>
+                </MenuButton>
+                <MenuButton
+                  label="Categories"
+                  active={activeRoute === "products-categories"}
+                  onClick={() => setActiveRoute("products-categories")}
+                />
+              </MenuButton.Accordion>
+            </Box>
+          </Box>
+        </Box>
+      </MenuExpandContext.Provider>
+    );
   },
 };

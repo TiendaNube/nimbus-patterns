@@ -1,11 +1,16 @@
-import React, { ComponentPropsWithRef, forwardRef } from "react";
+import React, {
+  ComponentPropsWithRef,
+  forwardRef,
+  useMemo,
+  useId,
+} from "react";
 
-import { Icon, Box, Text, BoxProperties, Tooltip } from "@nimbus-ds/components";
+import { Popover } from "@nimbus-ds/components";
 import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
 import { useMenuExpandContext } from "@common/contexts";
 import { MenuButtonBaseProps, MenuButtonComponents } from "./menuButton.types";
-import { MenuButtonAccordion } from "./components";
+import { MenuButtonAccordion, MenuButtonContent } from "./components";
 
 const MenuButton = forwardRef(
   (
@@ -19,93 +24,83 @@ const MenuButton = forwardRef(
       active = false,
       as = "button",
       expanded: expandedProp,
-      tooltipText,
+      showPopoversWhenCollapsed,
       ...rest
     }: MenuButtonBaseProps & { as: any },
     ref
   ) => {
+    const menuButtonId = useId();
     const {
       expanded: contextExpanded,
-      showTooltipsWhenCollapsed,
-      tooltipsPosition,
+      showPopoversWhenCollapsed: contextShowPopoversWhenCollapsed,
+      popoverPosition,
+      activeAccordionPopover,
+      setActiveAccordionPopover,
     } = useMenuExpandContext(false);
 
     const expanded = expandedProp ?? contextExpanded;
+    const shouldShowPopover =
+      showPopoversWhenCollapsed ?? contextShowPopoversWhenCollapsed ?? true;
 
+    const isPopoverOpen = useMemo(
+      () =>
+        !expanded &&
+        !!activeAccordionPopover &&
+        activeAccordionPopover === menuButtonId,
+      [expanded, activeAccordionPopover, menuButtonId]
+    );
     const activeColor = active ? "primary-interactive" : "neutral-textHigh";
     const disabledColor = rest.disabled ? "neutral-textDisabled" : activeColor;
 
-    const collapsedProps: BoxProperties = !expanded
-      ? {
-          justifyContent: "center",
-          paddingX: "none",
-        }
-      : {};
-
     const content = (
-      <Box
-        {...rest}
+      <MenuButtonContent
         ref={ref}
+        expanded={expanded}
+        disabledColor={disabledColor}
+        label={label}
+        startIcon={IconSrc}
+        active={active}
         as={as}
-        type="button"
         onClick={onClick}
-        alignItems="center"
-        textDecoration="none"
-        backgroundColor={{
-          xs: active ? "primary-surface" : "transparent",
-          hover: "primary-surface",
-          active: "primary-surfaceHighlight",
-          disabled: "neutral-surfaceDisabled",
-        }}
-        borderRadius="2"
-        borderWidth="none"
-        cursor={{
-          xs: "pointer",
-          disabled: "not-allowed",
-        }}
-        display="flex"
-        gap="2"
-        px="2"
-        py={{
-          xs: "2",
-          md: "1",
-        }}
-        width="100%"
-        transitionProperty="all"
-        transitionDuration="base"
-        transitionTimingFunction="ease-in-out"
-        maxHeight={{
-          xs: "34px",
-          md: "26px",
-        }}
-        {...collapsedProps}
+        {...rest}
       >
-        {IconSrc && (
-          <Icon color={disabledColor} source={<IconSrc size={16} />} />
-        )}
-
-        {expanded && (
-          <Box display="inline-flex" flex="1">
-            <Text
-              fontSize="base"
-              color={disabledColor}
-              lineClamp={1}
-              wordBreak="break-all"
-            >
-              {label}
-            </Text>
-          </Box>
-        )}
-        {expanded && children}
-      </Box>
+        {children}
+      </MenuButtonContent>
     );
 
-    const tooltipContent = tooltipText ?? label;
-
-    return !expanded && showTooltipsWhenCollapsed && tooltipContent ? (
-      <Tooltip content={tooltipContent} position={tooltipsPosition} arrow>
+    return !expanded && shouldShowPopover ? (
+      <Popover
+        content={
+          <MenuButtonContent
+            expanded
+            disabledColor={disabledColor}
+            label={label}
+            startIcon={IconSrc}
+            active={active}
+            as={as}
+            onClick={onClick}
+            {...rest}
+          >
+            {children}
+          </MenuButtonContent>
+        }
+        arrow
+        position={popoverPosition ?? "right"}
+        padding="small"
+        onVisibility={(visible) => {
+          setActiveAccordionPopover((prev) => {
+            if (visible) {
+              return menuButtonId;
+            }
+            return prev === menuButtonId ? null : prev;
+          });
+        }}
+        enabledHover
+        enabledClick={false}
+        visible={isPopoverOpen}
+      >
         {content}
-      </Tooltip>
+      </Popover>
     ) : (
       content
     );
@@ -116,7 +111,6 @@ const MenuButton = forwardRef(
 MenuButton.Accordion = MenuButtonAccordion;
 
 MenuButton.displayName = "MenuButton";
-MenuButton.Accordion.displayName = "MenuButton.Accordion";
 
 export type MenuButtonProps = ComponentPropsWithRef<typeof MenuButton>;
 export { MenuButton };

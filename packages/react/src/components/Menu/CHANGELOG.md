@@ -2,6 +2,16 @@
 
 The Menu component allows the user to create in-app menus that navigate through different sections of an application.
 
+## 2025-11-04 `2.0.0`
+
+#### 🛠 Breaking changes
+
+- Renamed `showTooltipsWhenCollapsed` prop to `showPopoversWhenCollapsed` in `Menu` component. ([#131](https://github.com/TiendaNube/nimbus-patterns/pull/131) by [@joacotornello](https://github.com/joacotornello))
+
+#### 🎉 New features
+
+- Adds support for popovers inside `MenuButton.Accordion` component. ([#131](https://github.com/TiendaNube/nimbus-patterns/pull/131) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-10-09 `1.7.0`
 
 #### 🎉 New features

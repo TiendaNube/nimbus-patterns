@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 
 import { MenuExpandContext } from "@common/contexts";
+import { noop } from "@common/utils";
 import { MenuSection } from "./MenuSection";
 import { MenuSectionProps } from "./menuSection.types";
 
@@ -13,7 +14,13 @@ const makeSut = (
   expanded: boolean
 ) => {
   render(
-    <MenuExpandContext.Provider value={{ expanded }}>
+    <MenuExpandContext.Provider
+      value={{
+        expanded,
+        activeAccordionPopover: null,
+        setActiveAccordionPopover: noop,
+      }}
+    >
       <MenuSection {...rest} data-testid="section-element">
         {sectionChildren}
       </MenuSection>

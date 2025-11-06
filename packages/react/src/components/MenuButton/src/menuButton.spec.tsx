@@ -2,6 +2,7 @@ import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import { MenuExpandContext } from "@common/contexts";
+import { noop } from "@common/utils";
 import { MenuButton, MenuButtonProps } from "./MenuButton";
 
 const labelText = "Button label";
@@ -34,7 +35,13 @@ describe("GIVEN <MenuButton />", () => {
 
     it("SHOULD render collapsed correctly reading from the context", () => {
       render(
-        <MenuExpandContext.Provider value={{ expanded: false }}>
+        <MenuExpandContext.Provider
+          value={{
+            expanded: false,
+            activeAccordionPopover: null,
+            setActiveAccordionPopover: noop,
+          }}
+        >
           <MenuButton label={labelText} data-testid="button-element" />
         </MenuExpandContext.Provider>
       );
@@ -46,7 +53,13 @@ describe("GIVEN <MenuButton />", () => {
 
     it("SHOULD render expanded correctly reading from the context", () => {
       render(
-        <MenuExpandContext.Provider value={{ expanded: true }}>
+        <MenuExpandContext.Provider
+          value={{
+            expanded: true,
+            activeAccordionPopover: null,
+            setActiveAccordionPopover: noop,
+          }}
+        >
           <MenuButton label={labelText} data-testid="button-element" />
         </MenuExpandContext.Provider>
       );
@@ -73,31 +86,35 @@ describe("GIVEN <MenuButton />", () => {
     });
   });
 
-  describe("WHEN collapsed with tooltip configuration", () => {
-    it("SHOULD wrap button with tooltip when collapsed and showTooltipsWhenCollapsed is true", () => {
+  describe("WHEN collapsed with popover configuration", () => {
+    it("SHOULD wrap button with popover when collapsed and showPopoversWhenCollapsed is true", () => {
       render(
         <MenuExpandContext.Provider
           value={{
             expanded: false,
-            showTooltipsWhenCollapsed: true,
-            tooltipsPosition: "right",
+            showPopoversWhenCollapsed: true,
+            popoverPosition: "right",
+            activeAccordionPopover: null,
+            setActiveAccordionPopover: noop,
           }}
         >
           <MenuButton label={labelText} />
         </MenuExpandContext.Provider>
       );
 
-      const tooltipContainer = screen.getByTestId("tooltip-container");
-      expect(tooltipContainer).toBeDefined();
+      const popoverContainer = screen.getByTestId("popover-container");
+      expect(popoverContainer).toBeDefined();
       expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
     });
 
-    it("SHOULD not wrap button with tooltip when showTooltipsWhenCollapsed is false", () => {
+    it("SHOULD not wrap button with popover when showPopoversWhenCollapsed is false", () => {
       render(
         <MenuExpandContext.Provider
           value={{
             expanded: false,
-            showTooltipsWhenCollapsed: false,
+            showPopoversWhenCollapsed: false,
+            activeAccordionPopover: null,
+            setActiveAccordionPopover: noop,
           }}
         >
           <MenuButton label={labelText} />
@@ -105,35 +122,19 @@ describe("GIVEN <MenuButton />", () => {
       );
 
       expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
-      expect(screen.queryByTestId("tooltip-container")).toBeNull();
+      expect(screen.queryByTestId("popover-container")).toBeNull();
       expect(screen.queryByText(labelText)).toBeNull();
     });
 
-    it("SHOULD use custom tooltipText when provided", () => {
-      const customTooltip = "Custom tooltip text";
-      render(
-        <MenuExpandContext.Provider
-          value={{
-            expanded: false,
-            showTooltipsWhenCollapsed: true,
-            tooltipsPosition: "left",
-          }}
-        >
-          <MenuButton label={labelText} tooltipText={customTooltip} />
-        </MenuExpandContext.Provider>
-      );
-
-      const tooltipContainer = screen.getByTestId("tooltip-container");
-      expect(tooltipContainer).toBeDefined();
-    });
-
-    it("SHOULD not show tooltip when button is expanded", () => {
+    it("SHOULD not show popover when button is expanded", () => {
       render(
         <MenuExpandContext.Provider
           value={{
             expanded: true,
-            showTooltipsWhenCollapsed: true,
-            tooltipsPosition: "right",
+            showPopoversWhenCollapsed: true,
+            popoverPosition: "right",
+            activeAccordionPopover: null,
+            setActiveAccordionPopover: noop,
           }}
         >
           <MenuButton label={labelText} />
@@ -141,7 +142,69 @@ describe("GIVEN <MenuButton />", () => {
       );
 
       expect(screen.getByRole<HTMLButtonElement>("button")).toBeDefined();
-      expect(screen.queryByTestId("tooltip-container")).toBeNull();
+      expect(screen.queryByTestId("popover-container")).toBeNull();
+    });
+  });
+
+  describe("WHEN popover onVisibility callback logic", () => {
+    const createOnVisibilityCallback =
+      (menuButtonId: string, setActiveAccordionPopover: jest.Mock) =>
+      (visible: boolean) => {
+        setActiveAccordionPopover((prev: string | null) => {
+          if (visible) {
+            return menuButtonId;
+          }
+          return prev === menuButtonId ? null : prev;
+        });
+      };
+
+    it("SHOULD set activeAccordionPopover to menuButtonId when visible becomes true", () => {
+      const menuButtonId = ":r1:";
+      const setActiveAccordionPopover = jest.fn();
+      const onVisibilityCallback = createOnVisibilityCallback(
+        menuButtonId,
+        setActiveAccordionPopover
+      );
+
+      onVisibilityCallback(true);
+
+      expect(setActiveAccordionPopover).toHaveBeenCalledTimes(1);
+      const updaterFunction = setActiveAccordionPopover.mock.calls[0][0];
+      const result = updaterFunction(null);
+      expect(result).toBe(menuButtonId);
+    });
+
+    it("SHOULD clear activeAccordionPopover when visible becomes false and ID matches", () => {
+      const menuButtonId = ":r1:";
+      const setActiveAccordionPopover = jest.fn();
+      const onVisibilityCallback = createOnVisibilityCallback(
+        menuButtonId,
+        setActiveAccordionPopover
+      );
+
+      onVisibilityCallback(false);
+
+      expect(setActiveAccordionPopover).toHaveBeenCalledTimes(1);
+      const updaterFunction = setActiveAccordionPopover.mock.calls[0][0];
+      const resultWhenMatches = updaterFunction(menuButtonId);
+      expect(resultWhenMatches).toBeNull();
+    });
+
+    it("SHOULD preserve activeAccordionPopover when visible becomes false and ID does not match", () => {
+      const menuButtonId = ":r1:";
+      const differentId = ":r2:";
+      const setActiveAccordionPopover = jest.fn();
+      const onVisibilityCallback = createOnVisibilityCallback(
+        menuButtonId,
+        setActiveAccordionPopover
+      );
+
+      onVisibilityCallback(false);
+
+      expect(setActiveAccordionPopover).toHaveBeenCalledTimes(1);
+      const updaterFunction = setActiveAccordionPopover.mock.calls[0][0];
+      const resultWhenDoesNotMatch = updaterFunction(differentId);
+      expect(resultWhenDoesNotMatch).toBe(differentId);
     });
   });
 });

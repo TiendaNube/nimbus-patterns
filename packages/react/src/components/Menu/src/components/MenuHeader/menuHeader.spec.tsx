@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 
 import { MenuExpandContext } from "@common/contexts";
+import { noop } from "@common/utils";
 import { MenuHeader } from "./MenuHeader";
 import { MenuHeaderProps } from "./menuHeader.types";
 
@@ -9,7 +10,13 @@ const headerChildren = "Header content";
 
 const makeSut = (rest: Omit<MenuHeaderProps, "children">) => {
   render(
-    <MenuExpandContext.Provider value={{ expanded: true }}>
+    <MenuExpandContext.Provider
+      value={{
+        expanded: true,
+        activeAccordionPopover: null,
+        setActiveAccordionPopover: noop,
+      }}
+    >
       <MenuHeader {...rest} data-testid="header-element">
         {headerChildren}
       </MenuHeader>

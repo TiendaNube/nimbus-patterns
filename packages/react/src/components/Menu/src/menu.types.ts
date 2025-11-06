@@ -1,4 +1,5 @@
 import { ReactNode, HTMLAttributes } from "react";
+import { PopoverPlacement } from "@nimbus-ds/components";
 import { MenuButton } from "@nimbus-ds/menubutton";
 import { MenuSection, MenuHeader, MenuBody, MenuFooter } from "./components";
 
@@ -25,14 +26,14 @@ export interface MenuProperties {
   expanded?: boolean;
 
   /**
-   * Whether to show tooltips for buttons when the menu is collapsed. Defaults to true.
+   * Whether to show popover for buttons when the menu is collapsed. Defaults to true.
    */
-  showTooltipsWhenCollapsed?: boolean;
+  showPopoversWhenCollapsed?: boolean;
 
   /**
-   * Position of the tooltips for buttons when the menu is collapsed. Defaults to "right".
+   * Position of the popovers for buttons when the menu is collapsed. Defaults to "right".
    */
-  tooltipsPosition?: "top" | "bottom" | "left" | "right";
+  popoverPosition?: PopoverPlacement;
 }
 
 export type MenuProps = MenuProperties &

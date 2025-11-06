@@ -21,8 +21,8 @@ const ContextConsumer: React.FC = () => {
     <div data-testid="context-value">
       {JSON.stringify({
         expanded: context.expanded,
-        showTooltipsWhenCollapsed: context.showTooltipsWhenCollapsed,
-        tooltipsPosition: context.tooltipsPosition,
+        showPopoversWhenCollapsed: context.showPopoversWhenCollapsed,
+        popoverPosition: context.popoverPosition,
       })}
     </div>
   );
@@ -37,12 +37,12 @@ describe("GIVEN <Menu />", () => {
   });
 
   describe("WHEN tooltip configuration is provided", () => {
-    it("SHOULD pass showTooltipsWhenCollapsed and tooltipsPosition to context", () => {
+    it("SHOULD pass showPopoversWhenCollapsed and popoverPosition to context", () => {
       render(
         <Menu
           expanded={false}
-          showTooltipsWhenCollapsed={false}
-          tooltipsPosition="left"
+          showPopoversWhenCollapsed={false}
+          popoverPosition="left"
         >
           <ContextConsumer />
         </Menu>
@@ -53,8 +53,8 @@ describe("GIVEN <Menu />", () => {
       );
 
       expect(contextValue.expanded).toBe(false);
-      expect(contextValue.showTooltipsWhenCollapsed).toBe(false);
-      expect(contextValue.tooltipsPosition).toBe("left");
+      expect(contextValue.showPopoversWhenCollapsed).toBe(false);
+      expect(contextValue.popoverPosition).toBe("left");
     });
 
     it("SHOULD use default values when tooltip props are not provided", () => {
@@ -69,8 +69,8 @@ describe("GIVEN <Menu />", () => {
       );
 
       expect(contextValue.expanded).toBe(true);
-      expect(contextValue.showTooltipsWhenCollapsed).toBe(true);
-      expect(contextValue.tooltipsPosition).toBe("right");
+      expect(contextValue.showPopoversWhenCollapsed).toBe(true);
+      expect(contextValue.popoverPosition).toBe("right");
     });
   });
 });
