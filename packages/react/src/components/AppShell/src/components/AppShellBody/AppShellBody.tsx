@@ -11,7 +11,6 @@ const AppShellBody: React.FC<AppShellBodyProps> = ({
   <Box
     backgroundColor="neutral-surface"
     width="100%"
-    gap="2"
     overflow="auto"
     height="100%"
     {...rest}
