@@ -2,6 +2,12 @@
 
 The AppShell component is the main outer frame of an application. It provides the basic architecture to build an application inside of our admin.
 
+## 2025-11-07 `1.8.3`
+
+#### 💡 Others
+
+- Updated `AppShell` chat component sizes for better layout consistency. ([#132](https://github.com/TiendaNube/nimbus-patterns/pull/132) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-10-09 `1.8.2`
 
 #### 💡 Others
