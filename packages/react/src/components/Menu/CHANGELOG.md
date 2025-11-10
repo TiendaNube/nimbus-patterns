@@ -6,7 +6,7 @@ The Menu component allows the user to create in-app menus that navigate through 
 
 #### 💡 Others
 
-- Improved menu items alignment when menu is collapsed. ([#132](https://github.com/TiendaNube/nimbus-patterns/pull/132) by [@joacotornello](https://github.com/joacotornello))
+- Improved menu items alignment when menu is collapsed. ([#133](https://github.com/TiendaNube/nimbus-patterns/pull/133) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-11-04 `2.0.0`
 
