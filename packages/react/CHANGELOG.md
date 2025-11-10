@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2025-11-10 `1.25.1`
+
+#### 💡 Others
+
+- Improved menu items alignment when menu is collapsed. ([#132](https://github.com/TiendaNube/nimbus-patterns/pull/132) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-11-04 `1.25.0`
 
 #### 💡 Others
