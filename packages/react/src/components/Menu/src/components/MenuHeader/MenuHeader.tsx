@@ -15,14 +15,14 @@ const MenuHeader: React.FC<MenuHeaderProps> = ({
 
   const dynamicProps: BoxProperties = useMemo(
     () =>
-      !expanded
+      expanded
         ? {
-            justifyContent: "center",
-            paddingX: "3",
-            paddingY: "4",
+            padding: "4",
           }
         : {
-            padding: "4",
+            justifyContent: "center",
+            pl: "1",
+            paddingY: "4",
           },
     [expanded]
   );

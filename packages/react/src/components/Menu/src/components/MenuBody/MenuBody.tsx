@@ -14,12 +14,14 @@ const MenuBody: React.FC<MenuBodyProps> = ({
 
   const dynamicProps: BoxProperties = useMemo(
     () =>
-      !expanded
+      expanded
         ? {
-            alignItems: "center",
+            pb: "4",
+            px: "2",
           }
         : {
-            pb: "4",
+            alignItems: "center",
+            pl: "1",
           },
     [expanded]
   );
@@ -31,7 +33,6 @@ const MenuBody: React.FC<MenuBodyProps> = ({
       flexDirection="column"
       flex="1 1 auto"
       gap="2"
-      paddingX="2"
       width="100%"
       overflowY="auto"
       overflowX="hidden"
