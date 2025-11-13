@@ -12,7 +12,7 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
     height="100%"
     maxWidth={{
       xs: "300px",
-      xl: "378px",
+      xxl: "378px",
     }}
     minWidth="300px"
     top="0"
