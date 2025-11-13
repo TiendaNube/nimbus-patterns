@@ -58,6 +58,10 @@
             "xl": {
               "type": "string",
               "title": "xl"
+            },
+            "xxl": {
+              "type": "string",
+              "title": "xxl"
             }
           },
           "additionalProperties": false,
@@ -65,7 +69,8 @@
             "xs",
             "md",
             "lg",
-            "xl"
+            "xl",
+            "xxl"
           ]
         },
         {
@@ -97,6 +102,10 @@
             "xl": {
               "type": "string",
               "title": "xl"
+            },
+            "xxl": {
+              "type": "string",
+              "title": "xxl"
             }
           },
           "additionalProperties": false,
@@ -104,7 +113,8 @@
             "xs",
             "md",
             "lg",
-            "xl"
+            "xl",
+            "xxl"
           ]
         },
         {
@@ -173,6 +183,19 @@
               ],
               "type": "string",
               "title": "xl"
+            },
+            "xxl": {
+              "enum": [
+                "danger-surfaceHighlight",
+                "neutral-background",
+                "neutral-surfaceHighlight",
+                "primary-interactiveHover",
+                "primary-surfaceHighlight",
+                "success-surfaceHighlight",
+                "warning-surfaceHighlight"
+              ],
+              "type": "string",
+              "title": "xxl"
             }
           },
           "additionalProperties": false,
@@ -180,7 +203,8 @@
             "xs",
             "md",
             "lg",
-            "xl"
+            "xl",
+            "xxl"
           ]
         },
         {
@@ -257,6 +281,19 @@
               ],
               "type": "string",
               "title": "xl"
+            },
+            "xxl": {
+              "enum": [
+                "danger-surfaceHighlight",
+                "neutral-background",
+                "neutral-surfaceHighlight",
+                "primary-interactiveHover",
+                "primary-surfaceHighlight",
+                "success-surfaceHighlight",
+                "warning-surfaceHighlight"
+              ],
+              "type": "string",
+              "title": "xxl"
             }
           },
           "additionalProperties": false,
@@ -264,7 +301,8 @@
             "xs",
             "md",
             "lg",
-            "xl"
+            "xl",
+            "xxl"
           ]
         },
         {
@@ -304,6 +342,10 @@
             "xl": {
               "type": "string",
               "title": "xl"
+            },
+            "xxl": {
+              "type": "string",
+              "title": "xxl"
             }
           },
           "additionalProperties": false,
@@ -311,7 +353,8 @@
             "xs",
             "md",
             "lg",
-            "xl"
+            "xl",
+            "xxl"
           ]
         },
         {
@@ -366,6 +409,16 @@
               ],
               "type": "string",
               "title": "xl"
+            },
+            "xxl": {
+              "enum": [
+                "auto",
+                "hidden",
+                "scroll",
+                "visible"
+              ],
+              "type": "string",
+              "title": "xxl"
             }
           },
           "additionalProperties": false,
@@ -373,7 +426,8 @@
             "xs",
             "md",
             "lg",
-            "xl"
+            "xl",
+            "xxl"
           ]
         },
         {
@@ -475,6 +529,21 @@
               ],
               "type": "string",
               "title": "xl"
+            },
+            "xxl": {
+              "enum": [
+                "100",
+                "200",
+                "300",
+                "400",
+                "500",
+                "600",
+                "700",
+                "800",
+                "900"
+              ],
+              "type": "string",
+              "title": "xxl"
             }
           },
           "additionalProperties": false,
@@ -482,7 +551,8 @@
             "xs",
             "md",
             "lg",
-            "xl"
+            "xl",
+            "xxl"
           ]
         },
         {

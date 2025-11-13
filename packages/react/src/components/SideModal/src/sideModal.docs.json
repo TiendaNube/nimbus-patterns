@@ -224,6 +224,10 @@
             "xl": {
               "type": "string",
               "title": "xl"
+            },
+            "xxl": {
+              "type": "string",
+              "title": "xxl"
             }
           },
           "additionalProperties": false,
@@ -231,7 +235,8 @@
             "xs",
             "md",
             "lg",
-            "xl"
+            "xl",
+            "xxl"
           ]
         },
         {
@@ -329,6 +334,21 @@
               ],
               "type": "string",
               "title": "xl"
+            },
+            "xxl": {
+              "enum": [
+                "100",
+                "200",
+                "300",
+                "400",
+                "500",
+                "600",
+                "700",
+                "800",
+                "900"
+              ],
+              "type": "string",
+              "title": "xxl"
             }
           },
           "additionalProperties": false,
@@ -336,7 +356,8 @@
             "xs",
             "md",
             "lg",
-            "xl"
+            "xl",
+            "xxl"
           ]
         },
         {
