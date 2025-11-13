@@ -4,3 +4,5 @@ releases:
 
 declined:
   - nimbus-patterns
+  - "@nimbus-ds/menu"
+  - "@nimbus-ds/menubutton"
