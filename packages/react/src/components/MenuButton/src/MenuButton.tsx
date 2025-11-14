@@ -75,7 +75,6 @@ const MenuButton = forwardRef(
             expanded
             disabledColor={disabledColor}
             label={label}
-            startIcon={IconSrc}
             active={active}
             as={as}
             onClick={onClick}

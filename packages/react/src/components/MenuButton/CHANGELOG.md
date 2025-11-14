@@ -2,6 +2,12 @@
 
 MenuButton component is meant to be used inside Menus and navigation, and allows the user to navigate between different sections of an application.
 
+## 2025-11-14 `2.0.1`
+
+#### 🐛 Bug fixes
+
+- Don't render start icon in popover content when menu is collapsed. ([#135](https://github.com/TiendaNube/nimbus-patterns/pull/135) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-11-04 `2.0.0`
 
 #### 🛠 Breaking changes
