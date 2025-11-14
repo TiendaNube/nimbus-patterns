@@ -6,7 +6,7 @@ Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team 
 
 #### 🐛 Bug fixes
 
-- Don't render start icon in popover content when menu is collapsed. ([#135](https://github.com/TiendaNube/nimbus-patterns/pull/135) by [@joacotornello](https://github.com/joacotornello))
+- Don't render start icon in popover content when menu is collapsed. ([#134](https://github.com/TiendaNube/nimbus-patterns/pull/134) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-11-07 `1.25.2`
 
