@@ -74,3 +74,21 @@ export const WithTagAndChildren: Story = {
     ),
   },
 };
+
+export const WithTagPrimary: Story = {
+  args: {
+    ...Default.args,
+    tagIcon: RedoIcon,
+    tagText: "In subscription",
+    tagAppearance: "primary",
+  },
+};
+
+export const WithTagSuccess: Story = {
+  args: {
+    ...Default.args,
+    tagIcon: RedoIcon,
+    tagText: "Active",
+    tagAppearance: "success",
+  },
+};

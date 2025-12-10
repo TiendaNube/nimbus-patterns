@@ -170,4 +170,27 @@ describe("ProductDataListItem", () => {
     expect(screen.getByText("In subscription")).toBeInTheDocument();
     expect(screen.getByText(childText)).toBeInTheDocument();
   });
+
+  it("renders tag with default warning appearance", () => {
+    render(
+      <ProductDataListItem
+        {...defaultProps}
+        tagIcon={RedoIcon}
+        tagText="In subscription"
+      />
+    );
+    expect(screen.getByText("In subscription")).toBeInTheDocument();
+  });
+
+  it("renders tag with custom appearance", () => {
+    render(
+      <ProductDataListItem
+        {...defaultProps}
+        tagIcon={RedoIcon}
+        tagText="In subscription"
+        tagAppearance="primary"
+      />
+    );
+    expect(screen.getByText("In subscription")).toBeInTheDocument();
+  });
 });

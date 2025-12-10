@@ -44,6 +44,11 @@ export interface ProductDataListItemProperties {
    * Text content for the tag
    */
   tagText?: string;
+  /**
+   * Appearance style for the tag
+   * @default "warning"
+   */
+  tagAppearance?: "warning" | "primary" | "neutral" | "success" | "danger";
 }
 
 /**

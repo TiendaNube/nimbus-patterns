@@ -23,6 +23,7 @@ const ProductDataListItem: React.FC<ProductDataListItemProps> = ({
   children,
   tagIcon,
   tagText,
+  tagAppearance = "warning",
 }) => {
   const component = (
     <Box display="flex" flexDirection="column" gap="2">
@@ -58,7 +59,7 @@ const ProductDataListItem: React.FC<ProductDataListItemProps> = ({
               const TagIconComponent = tagIcon;
               return (
                 <Box display="flex" flexWrap="wrap" gap="2" pt="2">
-                  <Tag appearance="warning">
+                  <Tag appearance={tagAppearance}>
                     <Icon color="currentColor" source={<TagIconComponent />} />
                     {tagText}
                   </Tag>
