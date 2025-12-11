@@ -50,7 +50,7 @@ export const WithRemoveButton: Story = {
 export const WithTag: Story = {
   args: {
     ...Default.args,
-    tagIcon: RedoIcon,
+    tagIcon: <RedoIcon />,
     tagText: "In subscription",
   },
 };
@@ -65,7 +65,7 @@ export const DraggableWithTag: Story = {
 export const WithTagAndChildren: Story = {
   args: {
     ...Default.args,
-    tagIcon: RedoIcon,
+    tagIcon: <RedoIcon />,
     tagText: "In subscription",
     children: (
       <Text color="neutral-textLow">
@@ -78,7 +78,7 @@ export const WithTagAndChildren: Story = {
 export const WithTagPrimary: Story = {
   args: {
     ...Default.args,
-    tagIcon: RedoIcon,
+    tagIcon: <RedoIcon />,
     tagText: "In subscription",
     tagAppearance: "primary",
   },
@@ -87,7 +87,7 @@ export const WithTagPrimary: Story = {
 export const WithTagSuccess: Story = {
   args: {
     ...Default.args,
-    tagIcon: RedoIcon,
+    tagIcon: <RedoIcon />,
     tagText: "Active",
     tagAppearance: "success",
   },

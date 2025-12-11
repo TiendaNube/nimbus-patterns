@@ -77,7 +77,7 @@ describe("ProductDataListItem", () => {
     render(
       <ProductDataListItem
         {...defaultProps}
-        tagIcon={RedoIcon}
+        tagIcon={<RedoIcon />}
         tagText="In subscription"
       />
     );
@@ -85,7 +85,7 @@ describe("ProductDataListItem", () => {
   });
 
   it("does not render tag when only tagIcon is provided", () => {
-    render(<ProductDataListItem {...defaultProps} tagIcon={RedoIcon} />);
+    render(<ProductDataListItem {...defaultProps} tagIcon={<RedoIcon />} />);
     expect(screen.queryByText("In subscription")).not.toBeInTheDocument();
   });
 
@@ -99,7 +99,7 @@ describe("ProductDataListItem", () => {
     render(
       <ProductDataListItem
         {...defaultProps}
-        tagIcon={RedoIcon}
+        tagIcon={<RedoIcon />}
         tagText="In subscription"
       >
         <div>{childText}</div>
@@ -129,7 +129,7 @@ describe("ProductDataListItem", () => {
       <ProductDataListItem
         {...defaultProps}
         isDraggable
-        tagIcon={RedoIcon}
+        tagIcon={<RedoIcon />}
         tagText="In subscription"
       />
     );
@@ -143,7 +143,7 @@ describe("ProductDataListItem", () => {
     render(
       <ProductDataListItem
         {...defaultProps}
-        tagIcon={RedoIcon}
+        tagIcon={<RedoIcon />}
         tagText="In subscription"
         onRemove={onRemove}
       />
@@ -160,7 +160,7 @@ describe("ProductDataListItem", () => {
         {...defaultProps}
         imageUrl="test-image.jpg"
         imageAlt="Test image"
-        tagIcon={RedoIcon}
+        tagIcon={<RedoIcon />}
         tagText="In subscription"
       >
         <div>{childText}</div>
@@ -175,7 +175,7 @@ describe("ProductDataListItem", () => {
     render(
       <ProductDataListItem
         {...defaultProps}
-        tagIcon={RedoIcon}
+        tagIcon={<RedoIcon />}
         tagText="In subscription"
       />
     );
@@ -186,7 +186,7 @@ describe("ProductDataListItem", () => {
     render(
       <ProductDataListItem
         {...defaultProps}
-        tagIcon={RedoIcon}
+        tagIcon={<RedoIcon />}
         tagText="In subscription"
         tagAppearance="primary"
       />

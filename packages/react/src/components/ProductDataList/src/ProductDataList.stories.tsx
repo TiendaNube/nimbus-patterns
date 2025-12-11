@@ -230,7 +230,7 @@ export const WithSortableItems: Story = {
                 isDraggable
                 onRemove={() => handleRemove(product.id)}
                 withDivider
-                tagIcon={RedoIcon}
+                tagIcon={<RedoIcon />}
                 tagText="In subscription"
               />
             )}
@@ -294,7 +294,7 @@ export const WithVerticalScroll: Story = {
                 isDraggable
                 onRemove={() => handleRemove(product.id)}
                 withDivider
-                tagIcon={RedoIcon}
+                tagIcon={<RedoIcon />}
                 tagText="In subscription"
               />
             )}

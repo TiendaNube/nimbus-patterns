@@ -1,4 +1,4 @@
-import { ReactNode, ComponentType } from "react";
+import { ReactNode } from "react";
 
 /**
  * Properties specific to the ProductDataListItem component
@@ -39,7 +39,7 @@ export interface ProductDataListItemProperties {
   /**
    * Icon component for the tag
    */
-  tagIcon?: ComponentType<any>;
+  tagIcon?: ReactNode;
   /**
    * Text content for the tag
    */

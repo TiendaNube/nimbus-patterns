@@ -21,7 +21,7 @@ const ProductDataListItem: React.FC<ProductDataListItemProps> = ({
   withDivider = false,
   onRemove,
   children,
-  tagIcon,
+  tagIcon: TagIcon,
   tagText,
   tagAppearance = "warning",
 }) => {
@@ -53,19 +53,14 @@ const ProductDataListItem: React.FC<ProductDataListItemProps> = ({
 
         <Box flex="1" display="flex" flexDirection="column" gap="1">
           <Text>{title}</Text>
-          {tagText &&
-            tagIcon &&
-            (() => {
-              const TagIconComponent = tagIcon;
-              return (
-                <Box display="flex" flexWrap="wrap" gap="2" pt="2">
-                  <Tag appearance={tagAppearance}>
-                    <Icon color="currentColor" source={<TagIconComponent />} />
-                    {tagText}
-                  </Tag>
-                </Box>
-              );
-            })()}
+          {tagText && TagIcon && (
+            <Box display="flex" flexWrap="wrap" gap="2" pt="2">
+              <Tag appearance={tagAppearance}>
+                <Icon color="currentColor" source={TagIcon} />
+                {tagText}
+              </Tag>
+            </Box>
+          )}
           {children && (
             <Box display="flex" flexWrap="wrap" gap="2" pt="2">
               {children}
