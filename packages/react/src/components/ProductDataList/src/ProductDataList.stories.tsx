@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Link, Icon, Tag, Card, Box, Radio } from "@nimbus-ds/components";
-import { EditIcon, PlusCircleIcon, TagIcon } from "@nimbus-ds/icons";
+import { EditIcon, PlusCircleIcon, TagIcon, RedoIcon } from "@nimbus-ds/icons";
 import { ProductDataList } from "./ProductDataList";
 import { ProductDataListItem } from "./components/ProductDataListItem";
 
@@ -230,6 +230,8 @@ export const WithSortableItems: Story = {
                 isDraggable
                 onRemove={() => handleRemove(product.id)}
                 withDivider
+                tagIcon={<RedoIcon />}
+                tagText="In subscription"
               />
             )}
           />
@@ -292,6 +294,8 @@ export const WithVerticalScroll: Story = {
                 isDraggable
                 onRemove={() => handleRemove(product.id)}
                 withDivider
+                tagIcon={<RedoIcon />}
+                tagText="In subscription"
               />
             )}
           />

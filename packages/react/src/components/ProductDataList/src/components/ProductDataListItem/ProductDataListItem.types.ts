@@ -36,6 +36,19 @@ export interface ProductDataListItemProperties {
    * Additional content to be rendered
    */
   children?: ReactNode;
+  /**
+   * Icon component for the tag
+   */
+  tagIcon?: ReactNode;
+  /**
+   * Text content for the tag
+   */
+  tagText?: string;
+  /**
+   * Appearance style for the tag
+   * @default "warning"
+   */
+  tagAppearance?: "warning" | "primary" | "neutral" | "success" | "danger";
 }
 
 /**

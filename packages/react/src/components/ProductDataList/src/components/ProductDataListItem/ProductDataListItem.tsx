@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, IconButton, Text, Thumbnail } from "@nimbus-ds/components";
+import {
+  Box,
+  IconButton,
+  Text,
+  Thumbnail,
+  Tag,
+  Icon,
+} from "@nimbus-ds/components";
 import { DragDotsIcon, TrashIcon } from "@nimbus-ds/icons";
 import { Sortable } from "@nimbus-ds/sortable";
 import type { ProductDataListItemProps } from "./ProductDataListItem.types";
@@ -14,6 +21,9 @@ const ProductDataListItem: React.FC<ProductDataListItemProps> = ({
   withDivider = false,
   onRemove,
   children,
+  tagIcon: TagIcon,
+  tagText,
+  tagAppearance = "warning",
 }) => {
   const component = (
     <Box display="flex" flexDirection="column" gap="2">
@@ -43,7 +53,19 @@ const ProductDataListItem: React.FC<ProductDataListItemProps> = ({
 
         <Box flex="1" display="flex" flexDirection="column" gap="1">
           <Text>{title}</Text>
-          {children}
+          {tagText && TagIcon && (
+            <Box display="flex" flexWrap="wrap" gap="2" pt="2">
+              <Tag appearance={tagAppearance}>
+                <Icon color="currentColor" source={TagIcon} />
+                {tagText}
+              </Tag>
+            </Box>
+          )}
+          {children && (
+            <Box display="flex" flexWrap="wrap" gap="2" pt="2">
+              {children}
+            </Box>
+          )}
         </Box>
 
         {onRemove && (

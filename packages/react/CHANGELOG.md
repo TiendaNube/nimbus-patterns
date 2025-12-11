@@ -2,6 +2,14 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2025-12-11 `1.26.0`
+
+#### 🎉 New features
+
+- Added `tagIcon` and `tagText` props to `ProductDataListItem` component
+- Added `tagAppearance` prop to `ProductDataListItem` component
+- Added `tagIcon` and `tagText` props to `ProductDataListSortable` component
+
 ## 2025-11-14 `1.25.3`
 
 #### 🐛 Bug fixes
