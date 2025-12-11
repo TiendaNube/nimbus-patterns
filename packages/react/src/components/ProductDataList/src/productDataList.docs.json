@@ -22,7 +22,7 @@
   "subComponents": [
     {
       "name": "ProductDataList.Item",
-      "totalProps": 8,
+      "totalProps": 11,
       "props": [
         {
           "description": "The id of the product",
@@ -72,6 +72,32 @@
           "$ref": "#/definitions/React.ReactNode",
           "description": "Additional content to be rendered",
           "title": "children",
+          "required": false
+        },
+        {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Icon component for the tag",
+          "title": "tagIcon",
+          "required": false
+        },
+        {
+          "description": "Text content for the tag",
+          "type": "string",
+          "title": "tagText",
+          "required": false
+        },
+        {
+          "description": "Appearance style for the tag",
+          "default": "warning",
+          "enum": [
+            "danger",
+            "neutral",
+            "primary",
+            "success",
+            "warning"
+          ],
+          "type": "string",
+          "title": "tagAppearance",
           "required": false
         }
       ]
