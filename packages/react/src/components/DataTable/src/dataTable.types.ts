@@ -1,6 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { TableProperties } from "@nimbus-ds/components";
+import { TableProperties, BoxProps } from "@nimbus-ds/components";
 
 import {
   DataTableBulkActions,
@@ -39,6 +39,11 @@ export interface DataTableProperties {
    * @TJS-type React.ReactNode
    */
   children: ReactNode;
+  /**
+   * Props passed to the container box element.
+   * @TJS-type BoxProps
+   */
+  containerProps?: BoxProps;
 }
 
 export type DataTableProps = DataTableProperties &

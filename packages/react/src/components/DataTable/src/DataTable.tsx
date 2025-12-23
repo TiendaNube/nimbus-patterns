@@ -19,6 +19,7 @@ const DataTable: React.FC<DataTableProps> & DataTableComponents = ({
   header,
   footer,
   children,
+  containerProps,
   ...rest
 }: DataTableProps) => (
   <Box>
@@ -28,6 +29,7 @@ const DataTable: React.FC<DataTableProps> & DataTableComponents = ({
       borderColor="neutral-surfaceHighlight"
       borderStyle="solid"
       borderWidth="1"
+      {...containerProps}
       // overflow="hidden"
     >
       {bulkActions}
