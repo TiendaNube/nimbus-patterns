@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2025-12-23 `1.27.0`
+
+#### 🎉 New features
+
+- Added `containerProps` prop to `DataTable` component to allow passing props to the container element. ([#136](https://github.com/TiendaNube/nimbus-patterns/pull/136) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-12-11 `1.26.0`
 
 #### 🎉 New features
