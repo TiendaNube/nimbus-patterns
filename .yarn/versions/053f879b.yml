@@ -1,6 +1,0 @@
-releases:
-  "@nimbus-ds/data-table": minor
-  "@nimbus-ds/patterns": minor
-
-declined:
-  - nimbus-patterns

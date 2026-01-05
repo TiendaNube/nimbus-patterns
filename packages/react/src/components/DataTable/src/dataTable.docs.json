@@ -1,7 +1,7 @@
 {
   "id": "dataTable",
   "name": "DataTable",
-  "totalProps": 4,
+  "totalProps": 5,
   "packageName": "@nimbus-ds/data-table",
   "version": "1.2.5",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/data-table",
@@ -29,6 +29,12 @@
       "type": "React.ReactNode",
       "title": "children",
       "required": true
+    },
+    {
+      "description": "Props passed to the container box element.",
+      "type": "BoxProps",
+      "title": "containerProps",
+      "required": false
     }
   ],
   "subComponents": [
