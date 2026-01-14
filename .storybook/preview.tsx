@@ -4,11 +4,9 @@ import type { Preview } from "@storybook/react";
 import { light, dark, ThemeDocsProvider, ThemeNimbusProvider } from "./theme";
 import "@nimbus-ds/styles/dist/index.css";
 import "./static/style.css";
-// import "./static/editor.css";
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -25,7 +23,6 @@ const preview: Preview = {
     },
     docs: {
       container: ThemeDocsProvider,
-      autodocs: true,
     },
     options: {
       storySort: {
@@ -37,10 +34,9 @@ const preview: Preview = {
     },
     layout: "fullscreen",
   },
+  decorators: [
+    (renderStory) => <ThemeNimbusProvider>{renderStory()}</ThemeNimbusProvider>,
+  ],
 };
 
 export default preview;
-
-export const decorators = [
-  (renderStory) => <ThemeNimbusProvider>{renderStory()}</ThemeNimbusProvider>,
-];
