@@ -4053,7 +4053,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-docs@npm:8.6.15, @storybook/addon-docs@npm:^8.4.7":
+"@storybook/addon-docs@npm:8.6.15, @storybook/addon-docs@npm:^8.6.14":
   version: 8.6.15
   resolution: "@storybook/addon-docs@npm:8.6.15"
   dependencies:
@@ -12462,7 +12462,7 @@ __metadata:
     "@nimbus-ds/scripts": ^1.8.2
     "@nimbus-ds/styles": ^9.50.0
     "@nimbus-ds/tokens": ^9.5.0
-    "@storybook/addon-docs": ^8.4.7
+    "@storybook/addon-docs": ^8.6.14
     "@storybook/addon-essentials": ^8.6.14
     "@storybook/addon-interactions": ^8.6.14
     "@storybook/addon-links": ^8.6.14
