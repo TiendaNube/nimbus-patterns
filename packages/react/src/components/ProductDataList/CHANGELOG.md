@@ -1,5 +1,11 @@
 # @nimbus-ds/product-data-list
 
+## 2026-01-15 `1.1.1`
+
+#### 🎉 New features
+
+- Fixes types to adapt with React 18. ([#137](https://github.com/TiendaNube/nimbus-patterns/pull/137) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-12-11 `1.1.0`
 
 ### New Features

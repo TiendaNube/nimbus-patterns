@@ -9,4 +9,4 @@ export type ProductDataListSectionProperties = PropsWithChildren<{
 }>;
 
 export type ProductDataListSectionProps = ProductDataListSectionProperties &
-  Omit<BoxProps, "padding" | "display" | "flexDirection" | "gap">;
+  Omit<BoxProps, "padding" | "display" | "flexDirection" | "gap" | "content">;

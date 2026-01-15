@@ -3,6 +3,12 @@
 This is the log of notable changes to the Nimbus Patterns that are developer-facing.
 Package-specific changes not released in any package will be added here just before the release. Until then, you can find them in changelogs of the individual packages (see [packages](./packages) directory).
 
+## 2026-01-15
+
+#### 🎉 New features
+
+- Updated Storybook to version 8.6.14. ([#137](https://github.com/TiendaNube/nimbus-patterns/pull/137) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-08-08
 
 #### 🎉 New features
@@ -16,13 +22,11 @@ Package-specific changes not released in any package will be added here just bef
 - Added Cursor Rules to the project. ([#109](https://github.com/TiendaNube/nimbus-patterns/pull/109) by [@joacotornello](https://github.com/joacotornello))
 - Added CodeRabbit config to the project. ([#109](https://github.com/TiendaNube/nimbus-patterns/pull/109) by [@joacotornello](https://github.com/joacotornello))
 
-
 ## 2025-04-24
 
 #### 🎉 New features
 
 - Added a [workflow](https://github.com/TiendaNube/nimbus-patterns/blob/master/.github/workflows/preview-storybook.yml) to build and deploy a Storybook preview to an S3 bucket when a pull request is opened, synchronized, or reopened. ([#110](https://github.com/TiendaNube/nimbus-patterns/pull/110) by [@harrytiendanube](https://github.com/harrytiendanube))
-
 
 ## 2023-12-22
 

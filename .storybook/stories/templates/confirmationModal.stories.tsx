@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useArgs } from "@storybook/client-api";
+import { useArgs } from "@storybook/preview-api";
 
 import { Page } from "../../../packages/react/src/components/Page/src";
 import { Layout } from "../../../packages/react/src/components/Layout/src";
@@ -42,7 +42,6 @@ const meta: Meta = {
 
 export default meta;
 type Story = StoryObj;
-
 
 export const basic: Story = {
   render: (args) => {
@@ -96,7 +95,9 @@ export const basic: Story = {
             <Box display="flex" flexDirection="column" gap="2">
               <Box display="flex" gap="1">
                 <Input.Search placeholder="Buscar" />
-                <Button><Icon color="currentColor" source={<SearchIcon />} /></Button>
+                <Button>
+                  <Icon color="currentColor" source={<SearchIcon />} />
+                </Button>
               </Box>
               <Box display="flex" gap="2" alignItems="center">
                 <Text>150 órdenes</Text>
@@ -117,7 +118,9 @@ export const basic: Story = {
                 borderWidth="1"
                 borderRadius="2"
               >
-                <Button appearance="danger" onClick={handleOpen}>Abrir modal de confirmación</Button>
+                <Button appearance="danger" onClick={handleOpen}>
+                  Abrir modal de confirmación
+                </Button>
               </Box>
             </Layout>
           </Page.Body>
@@ -133,7 +136,7 @@ export const basic: Story = {
           </Modal.Footer>
         </Modal>
       </>
-    )
+    );
   },
   args: {},
 };

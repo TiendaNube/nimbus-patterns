@@ -20,7 +20,7 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-essentials"),
     getAbsolutePath("@storybook/addon-interactions"),
     getAbsolutePath("storybook-dark-mode"),
-    getAbsolutePath("@storybook/addon-mdx-gfm"),
+    getAbsolutePath("@storybook/addon-webpack5-compiler-babel"),
   ],
   framework: {
     name: getAbsolutePath("@storybook/react-webpack5"),

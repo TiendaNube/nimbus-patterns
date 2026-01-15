@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useArgs } from "@storybook/client-api";
+import { useArgs } from "@storybook/preview-api";
 
 import { Page } from "../../../packages/react/src/components/Page/src";
 import { Layout } from "../../../packages/react/src/components/Layout/src";
@@ -17,7 +17,11 @@ import {
   Tag,
   Button,
 } from "@nimbus-ds/components";
-import { ChevronDownIcon, ChevronUpIcon, ExternalLinkIcon } from "@nimbus-ds/icons";
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  ExternalLinkIcon,
+} from "@nimbus-ds/icons";
 
 const meta: Meta = {
   title: "Templates/SettingsPage",
@@ -34,7 +38,6 @@ const meta: Meta = {
 
 export default meta;
 type Story = StoryObj;
-
 
 export const basic: Story = {
   render: (args) => {
@@ -166,7 +169,7 @@ export const basic: Story = {
           </Layout>
         </Page.Body>
       </Page>
-    )
+    );
   },
   args: {},
 };

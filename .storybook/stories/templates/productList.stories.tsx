@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useArgs } from "@storybook/client-api";
+import { useArgs } from "@storybook/preview-api";
 
 import { ResponsiveComponent } from "../components";
 
@@ -49,7 +49,6 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-
 export const basic: Story = {
   render: (args) => {
     const [{ editMode }, updateArgs] = useArgs();
@@ -73,7 +72,7 @@ export const basic: Story = {
         </Button>
       </>
     );
-  
+
     const tableHeader = (
       <DataTable.Header
         checkbox={{
@@ -89,7 +88,7 @@ export const basic: Story = {
         <Table.Cell width="80px">Acciones</Table.Cell>
       </DataTable.Header>
     );
-  
+
     const tableFooter = (
       <DataTable.Footer
         itemCount="Mostrando 1-20 productos de 40"
@@ -100,26 +99,23 @@ export const basic: Story = {
         }}
       />
     );
-  
+
     const mobileContent = (
       <>
         <Box px="4">
-          <Link as="button" onClick={handleEditMode}>{editMode ? "Cancelar" : "Editar"}</Link>
+          <Link as="button" onClick={handleEditMode}>
+            {editMode ? "Cancelar" : "Editar"}
+          </Link>
         </Box>
         <DataList>
           {Array.from({ length: 20 }, (_, index) => (
-            <DataList.Row
-              key={index}
-              flexDirection="row"
-              gap="2"
-            >
-              {editMode && (
-                <Checkbox
-                  name={`check-${index}`}
-                  checked={false}
-                />
-              )}
-              <Thumbnail aspectRatio="1/1" width="64px" alt="Nombre del producto" />
+            <DataList.Row key={index} flexDirection="row" gap="2">
+              {editMode && <Checkbox name={`check-${index}`} checked={false} />}
+              <Thumbnail
+                aspectRatio="1/1"
+                width="64px"
+                alt="Nombre del producto"
+              />
               <Box display="flex" flexDirection="column" gap="1">
                 <Text color="primary-interactive">Nombre del producto</Text>
                 <Tag appearance="warning">
@@ -133,12 +129,9 @@ export const basic: Story = {
         </DataList>
       </>
     );
-  
+
     const desktopContent = (
-      <DataTable
-        header={tableHeader}
-        footer={tableFooter}
-      >
+      <DataTable header={tableHeader} footer={tableFooter}>
         {Array.from({ length: 20 }, (_, index) => (
           <DataTable.Row
             key={index}
@@ -153,7 +146,11 @@ export const basic: Story = {
           >
             <Table.Cell>
               <Box display="flex" gap="2">
-                <Thumbnail aspectRatio="1/1" width="64px" alt="Nombre del producto" />
+                <Thumbnail
+                  aspectRatio="1/1"
+                  width="64px"
+                  alt="Nombre del producto"
+                />
                 <Box display="flex" flexDirection="column" gap="1">
                   <Text color="primary-interactive">Nombre del producto</Text>
                   <Tag appearance="warning">Tag de producto</Tag>
@@ -174,31 +171,24 @@ export const basic: Story = {
             </Table.Cell>
             <Table.Cell>
               <Box display="flex" gap="2">
-                <IconButton
-                  source={<EllipsisIcon />}
-                  size="2rem"
-                />
-                <IconButton
-                  source={<EllipsisIcon />}
-                  size="2rem"
-                />
+                <IconButton source={<EllipsisIcon />} size="2rem" />
+                <IconButton source={<EllipsisIcon />} size="2rem" />
               </Box>
             </Table.Cell>
           </DataTable.Row>
         ))}
       </DataTable>
     );
-  
+
     return (
       <Page maxWidth="1200px">
-        <Page.Header
-          title="Listado de productos"
-          buttonStack={buttonStack}
-        >
+        <Page.Header title="Listado de productos" buttonStack={buttonStack}>
           <Box display="flex" flexDirection="column" gap="2">
             <Box display="flex" gap="1">
               <Input.Search placeholder="Buscar" />
-              <Button><Icon color="currentColor" source={<SlidersIcon />} /></Button>
+              <Button>
+                <Icon color="currentColor" source={<SlidersIcon />} />
+              </Button>
             </Box>
             <Box display="flex" gap="2" alignItems="center">
               <Text>150 productos</Text>

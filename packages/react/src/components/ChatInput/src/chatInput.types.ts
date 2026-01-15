@@ -15,7 +15,8 @@ export interface ChatInputComponents {
    * ChatInput Field textarea component.
    */
   Field: React.ForwardRefExoticComponent<
-    ChatInputFieldBaseProps & React.RefAttributes<HTMLTextAreaElement>
+    Omit<ChatInputFieldBaseProps, "ref"> &
+      React.RefAttributes<HTMLTextAreaElement>
   >;
   /**
    * ChatInput Popover provides pre-configured popover settings for upload actions.
