@@ -108,6 +108,7 @@
               "description": "Change the size of the button.",
               "default": "medium",
               "enum": [
+                "large",
                 "medium",
                 "small"
               ],
@@ -166,6 +167,7 @@
               "description": "Change the size of the button.",
               "default": "medium",
               "enum": [
+                "large",
                 "medium",
                 "small"
               ],
@@ -196,10 +198,14 @@
       "title": "footer"
     },
     {
-      "description": "Determines if the sidebar is shown or not.",
-      "default": true,
-      "type": "boolean",
-      "title": "open",
+      "description": "Side from which the sidebar will appear.",
+      "default": "right",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "type": "string",
+      "title": "position",
       "required": false
     },
     {
@@ -256,17 +262,6 @@
       ],
       "type": "string",
       "title": "padding",
-      "required": false
-    },
-    {
-      "description": "Side from which the sidebar will appear.",
-      "default": "right",
-      "enum": [
-        "left",
-        "right"
-      ],
-      "type": "string",
-      "title": "position",
       "required": false
     },
     {
@@ -379,10 +374,10 @@
       "required": false
     },
     {
-      "description": "The attribute name to ignore when checking for outside clicks.",
-      "default": "data-nimbus-outside-press-ignore",
-      "type": "string",
-      "title": "ignoreAttributeName",
+      "description": "Determines if the sidebar is shown or not.",
+      "default": true,
+      "type": "boolean",
+      "title": "open",
       "required": false
     },
     {
@@ -398,6 +393,13 @@
       "default": true,
       "type": "boolean",
       "title": "needRemoveScroll",
+      "required": false
+    },
+    {
+      "description": "The attribute name to ignore when checking for outside clicks.",
+      "default": "data-nimbus-outside-press-ignore",
+      "type": "string",
+      "title": "ignoreAttributeName",
       "required": false
     }
   ],

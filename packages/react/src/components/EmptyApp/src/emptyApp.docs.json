@@ -47,11 +47,13 @@
         },
         {
           "$ref": "#/definitions/React.ReactNode",
+          "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
           "title": "actions",
           "required": false
         },
         {
           "$ref": "#/definitions/React.ReactNode",
+          "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
           "title": "children",
           "required": false
         }
@@ -89,6 +91,7 @@
         },
         {
           "$ref": "#/definitions/React.ReactNode",
+          "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
           "title": "titleChildren",
           "required": false
         },
@@ -104,6 +107,7 @@
         },
         {
           "$ref": "#/definitions/React.ReactNode",
+          "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
           "title": "actions",
           "required": false
         },
@@ -136,6 +140,7 @@
         },
         {
           "$ref": "#/definitions/React.ReactNode",
+          "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
           "title": "children",
           "required": false
         }

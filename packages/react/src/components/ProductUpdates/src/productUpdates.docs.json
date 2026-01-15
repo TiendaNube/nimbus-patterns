@@ -31,199 +31,6 @@
       "required": false
     },
     {
-      "description": "Offest displaces the floating element from its core placement along the specified axes.",
-      "default": 10,
-      "type": "number",
-      "title": "offset",
-      "required": false
-    },
-    {
-      "description": "The height property specifies the height of a popover's content area.",
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "xs": {
-              "type": "string",
-              "title": "xs"
-            },
-            "md": {
-              "type": "string",
-              "title": "md"
-            },
-            "lg": {
-              "type": "string",
-              "title": "lg"
-            },
-            "xl": {
-              "type": "string",
-              "title": "xl"
-            },
-            "xxl": {
-              "type": "string",
-              "title": "xxl"
-            }
-          },
-          "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl",
-            "xxl"
-          ]
-        },
-        {
-          "type": "string"
-        }
-      ],
-      "title": "height",
-      "required": false
-    },
-    {
-      "description": "The width property specifies the width of a popover's content area.",
-      "default": "fit-content",
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "xs": {
-              "type": "string",
-              "title": "xs"
-            },
-            "md": {
-              "type": "string",
-              "title": "md"
-            },
-            "lg": {
-              "type": "string",
-              "title": "lg"
-            },
-            "xl": {
-              "type": "string",
-              "title": "xl"
-            },
-            "xxl": {
-              "type": "string",
-              "title": "xxl"
-            }
-          },
-          "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl",
-            "xxl"
-          ]
-        },
-        {
-          "type": "string"
-        }
-      ],
-      "title": "width",
-      "required": false
-    },
-    {
-      "description": "The backgroundColor property sets the background color of the popover.",
-      "default": "neutral-background",
-      "examples": "[\"neutral-interactive\", { xs: \"neutral-surface\", md: \"neutral-interactive\" }]",
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "xs": {
-              "enum": [
-                "danger-surfaceHighlight",
-                "neutral-background",
-                "neutral-surfaceHighlight",
-                "primary-interactiveHover",
-                "primary-surfaceHighlight",
-                "success-surfaceHighlight",
-                "warning-surfaceHighlight"
-              ],
-              "type": "string",
-              "title": "xs"
-            },
-            "md": {
-              "enum": [
-                "danger-surfaceHighlight",
-                "neutral-background",
-                "neutral-surfaceHighlight",
-                "primary-interactiveHover",
-                "primary-surfaceHighlight",
-                "success-surfaceHighlight",
-                "warning-surfaceHighlight"
-              ],
-              "type": "string",
-              "title": "md"
-            },
-            "lg": {
-              "enum": [
-                "danger-surfaceHighlight",
-                "neutral-background",
-                "neutral-surfaceHighlight",
-                "primary-interactiveHover",
-                "primary-surfaceHighlight",
-                "success-surfaceHighlight",
-                "warning-surfaceHighlight"
-              ],
-              "type": "string",
-              "title": "lg"
-            },
-            "xl": {
-              "enum": [
-                "danger-surfaceHighlight",
-                "neutral-background",
-                "neutral-surfaceHighlight",
-                "primary-interactiveHover",
-                "primary-surfaceHighlight",
-                "success-surfaceHighlight",
-                "warning-surfaceHighlight"
-              ],
-              "type": "string",
-              "title": "xl"
-            },
-            "xxl": {
-              "enum": [
-                "danger-surfaceHighlight",
-                "neutral-background",
-                "neutral-surfaceHighlight",
-                "primary-interactiveHover",
-                "primary-surfaceHighlight",
-                "success-surfaceHighlight",
-                "warning-surfaceHighlight"
-              ],
-              "type": "string",
-              "title": "xxl"
-            }
-          },
-          "additionalProperties": false,
-          "propertyOrder": [
-            "xs",
-            "md",
-            "lg",
-            "xl",
-            "xxl"
-          ]
-        },
-        {
-          "enum": [
-            "danger-surfaceHighlight",
-            "neutral-background",
-            "neutral-surfaceHighlight",
-            "primary-interactiveHover",
-            "primary-surfaceHighlight",
-            "success-surfaceHighlight",
-            "warning-surfaceHighlight"
-          ],
-          "type": "string"
-        }
-      ],
-      "title": "backgroundColor",
-      "required": false
-    },
-    {
       "description": "The color property is used to set the color of the popover.",
       "default": "neutral-background",
       "anyOf": [
@@ -319,6 +126,120 @@
         }
       ],
       "title": "color",
+      "required": false
+    },
+    {
+      "description": "An HTML element, or a function that returns one. It's used to set the position of the popover.",
+      "type": "React.ReactNode | ((data: { open: boolean, setVisibility: (visibility: boolean) => void }) => React.ReactNode);",
+      "title": "children",
+      "required": true
+    },
+    {
+      "description": "Position of the popover.",
+      "default": "bottom",
+      "enum": [
+        "bottom",
+        "bottom-end",
+        "bottom-start",
+        "left",
+        "left-end",
+        "left-start",
+        "right",
+        "right-end",
+        "right-start",
+        "top",
+        "top-end",
+        "top-start"
+      ],
+      "type": "string",
+      "title": "position",
+      "required": false
+    },
+    {
+      "description": "The width property specifies the width of a popover's content area.",
+      "default": "fit-content",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "xs": {
+              "type": "string",
+              "title": "xs"
+            },
+            "md": {
+              "type": "string",
+              "title": "md"
+            },
+            "lg": {
+              "type": "string",
+              "title": "lg"
+            },
+            "xl": {
+              "type": "string",
+              "title": "xl"
+            },
+            "xxl": {
+              "type": "string",
+              "title": "xxl"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": [
+            "xs",
+            "md",
+            "lg",
+            "xl",
+            "xxl"
+          ]
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "width",
+      "required": false
+    },
+    {
+      "description": "The height property specifies the height of a popover's content area.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "xs": {
+              "type": "string",
+              "title": "xs"
+            },
+            "md": {
+              "type": "string",
+              "title": "md"
+            },
+            "lg": {
+              "type": "string",
+              "title": "lg"
+            },
+            "xl": {
+              "type": "string",
+              "title": "xl"
+            },
+            "xxl": {
+              "type": "string",
+              "title": "xxl"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": [
+            "xs",
+            "md",
+            "lg",
+            "xl",
+            "xxl"
+          ]
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "height",
       "required": false
     },
     {
@@ -444,24 +365,102 @@
       "required": false
     },
     {
-      "description": "Position of the popover.",
-      "default": "bottom",
-      "enum": [
-        "bottom",
-        "bottom-end",
-        "bottom-start",
-        "left",
-        "left-end",
-        "left-start",
-        "right",
-        "right-end",
-        "right-start",
-        "top",
-        "top-end",
-        "top-start"
+      "description": "The backgroundColor property sets the background color of the popover.",
+      "default": "neutral-background",
+      "examples": "[\"neutral-interactive\", { xs: \"neutral-surface\", md: \"neutral-interactive\" }]",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "xs": {
+              "enum": [
+                "danger-surfaceHighlight",
+                "neutral-background",
+                "neutral-surfaceHighlight",
+                "primary-interactiveHover",
+                "primary-surfaceHighlight",
+                "success-surfaceHighlight",
+                "warning-surfaceHighlight"
+              ],
+              "type": "string",
+              "title": "xs"
+            },
+            "md": {
+              "enum": [
+                "danger-surfaceHighlight",
+                "neutral-background",
+                "neutral-surfaceHighlight",
+                "primary-interactiveHover",
+                "primary-surfaceHighlight",
+                "success-surfaceHighlight",
+                "warning-surfaceHighlight"
+              ],
+              "type": "string",
+              "title": "md"
+            },
+            "lg": {
+              "enum": [
+                "danger-surfaceHighlight",
+                "neutral-background",
+                "neutral-surfaceHighlight",
+                "primary-interactiveHover",
+                "primary-surfaceHighlight",
+                "success-surfaceHighlight",
+                "warning-surfaceHighlight"
+              ],
+              "type": "string",
+              "title": "lg"
+            },
+            "xl": {
+              "enum": [
+                "danger-surfaceHighlight",
+                "neutral-background",
+                "neutral-surfaceHighlight",
+                "primary-interactiveHover",
+                "primary-surfaceHighlight",
+                "success-surfaceHighlight",
+                "warning-surfaceHighlight"
+              ],
+              "type": "string",
+              "title": "xl"
+            },
+            "xxl": {
+              "enum": [
+                "danger-surfaceHighlight",
+                "neutral-background",
+                "neutral-surfaceHighlight",
+                "primary-interactiveHover",
+                "primary-surfaceHighlight",
+                "success-surfaceHighlight",
+                "warning-surfaceHighlight"
+              ],
+              "type": "string",
+              "title": "xxl"
+            }
+          },
+          "additionalProperties": false,
+          "propertyOrder": [
+            "xs",
+            "md",
+            "lg",
+            "xl",
+            "xxl"
+          ]
+        },
+        {
+          "enum": [
+            "danger-surfaceHighlight",
+            "neutral-background",
+            "neutral-surfaceHighlight",
+            "primary-interactiveHover",
+            "primary-surfaceHighlight",
+            "success-surfaceHighlight",
+            "warning-surfaceHighlight"
+          ],
+          "type": "string"
+        }
       ],
-      "type": "string",
-      "title": "position",
+      "title": "backgroundColor",
       "required": false
     },
     {
@@ -574,21 +573,16 @@
       "required": false
     },
     {
-      "description": "If true, the component is shown.",
-      "type": "boolean",
-      "title": "visible",
+      "description": "Offest displaces the floating element from its core placement along the specified axes.",
+      "default": 10,
+      "type": "number",
+      "title": "offset",
       "required": false
     },
     {
-      "description": "An HTML element, or a function that returns one. It's used to set the position of the popover.",
-      "type": "React.ReactNode | ((data: { open: boolean, setVisibility: (visibility: boolean) => void }) => React.ReactNode);",
-      "title": "children",
-      "required": true
-    },
-    {
-      "description": "Function to control popover opening and closing.",
-      "type": "(visible: boolean) => void;",
-      "title": "onVisibility",
+      "description": "If true, the component is shown.",
+      "type": "boolean",
+      "title": "visible",
       "required": false
     },
     {
@@ -596,6 +590,12 @@
       "default": true,
       "type": "boolean",
       "title": "arrow",
+      "required": false
+    },
+    {
+      "description": "Function to control popover opening and closing.",
+      "type": "(visible: boolean) => void;",
+      "title": "onVisibility",
       "required": false
     },
     {

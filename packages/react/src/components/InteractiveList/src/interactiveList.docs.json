@@ -8,6 +8,7 @@
   "props": [
     {
       "$ref": "#/definitions/React.ReactNode",
+      "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
       "title": "children",
       "required": false
     },
@@ -58,14 +59,6 @@
           "description": "Button props inherited from Nimbus components",
           "type": "object",
           "properties": {
-            "appearance": {
-              "description": "AI gradient background appearance for the button container.\nWhen provided, container color/border sprinkles are ignored in favor of gradient styles.",
-              "enum": [
-                "ai-generative"
-              ],
-              "type": "string",
-              "title": "appearance"
-            },
             "color": {
               "description": "Set the color for the inner Icon fill.",
               "default": "neutral-textHigh",
@@ -108,13 +101,21 @@
               ],
               "type": "string",
               "title": "as"
+            },
+            "appearance": {
+              "description": "AI gradient background appearance for the button container.\nWhen provided, container color/border sprinkles are ignored in favor of gradient styles.",
+              "enum": [
+                "ai-generative"
+              ],
+              "type": "string",
+              "title": "appearance"
             }
           },
           "additionalProperties": false,
           "propertyOrder": [
-            "appearance",
             "color",
-            "as"
+            "as",
+            "appearance"
           ],
           "title": "iconButton",
           "required": true

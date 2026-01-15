@@ -239,6 +239,149 @@
           "required": false
         },
         {
+          "description": "The borderTopWidth property defines the width of the border at the top of a box.",
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "focus"
+                },
+                "focusWithin": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "focusWithin"
+                },
+                "active": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "active"
+                },
+                "hover": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "hover"
+                },
+                "disabled": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "disabled"
+                },
+                "xs": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "xs"
+                },
+                "md": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "md"
+                },
+                "lg": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "lg"
+                },
+                "xl": {
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "xl"
+                }
+              },
+              "additionalProperties": false,
+              "propertyOrder": [
+                "focus",
+                "focusWithin",
+                "active",
+                "hover",
+                "disabled",
+                "xs",
+                "md",
+                "lg",
+                "xl"
+              ]
+            },
+            {
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "none"
+              ],
+              "type": "string"
+            }
+          ],
+          "title": "borderTopWidth",
+          "required": false
+        },
+        {
           "description": "The borderBottomWidth property defines the width of the border at the bottom of a box.",
           "anyOf": [
             {
@@ -766,149 +909,6 @@
           ],
           "title": "borderStyle",
           "required": false
-        },
-        {
-          "description": "The borderTopWidth property defines the width of the border at the top of a box.",
-          "anyOf": [
-            {
-              "type": "object",
-              "properties": {
-                "focus": {
-                  "enum": [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "none"
-                  ],
-                  "type": "string",
-                  "title": "focus"
-                },
-                "focusWithin": {
-                  "enum": [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "none"
-                  ],
-                  "type": "string",
-                  "title": "focusWithin"
-                },
-                "active": {
-                  "enum": [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "none"
-                  ],
-                  "type": "string",
-                  "title": "active"
-                },
-                "hover": {
-                  "enum": [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "none"
-                  ],
-                  "type": "string",
-                  "title": "hover"
-                },
-                "disabled": {
-                  "enum": [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "none"
-                  ],
-                  "type": "string",
-                  "title": "disabled"
-                },
-                "xs": {
-                  "enum": [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "none"
-                  ],
-                  "type": "string",
-                  "title": "xs"
-                },
-                "md": {
-                  "enum": [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "none"
-                  ],
-                  "type": "string",
-                  "title": "md"
-                },
-                "lg": {
-                  "enum": [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "none"
-                  ],
-                  "type": "string",
-                  "title": "lg"
-                },
-                "xl": {
-                  "enum": [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "none"
-                  ],
-                  "type": "string",
-                  "title": "xl"
-                }
-              },
-              "additionalProperties": false,
-              "propertyOrder": [
-                "focus",
-                "focusWithin",
-                "active",
-                "hover",
-                "disabled",
-                "xs",
-                "md",
-                "lg",
-                "xl"
-              ]
-            },
-            {
-              "enum": [
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "none"
-              ],
-              "type": "string"
-            }
-          ],
-          "title": "borderTopWidth",
-          "required": false
         }
       ]
     },
@@ -918,26 +918,31 @@
       "props": [
         {
           "$ref": "#/definitions/React.ReactNode",
+          "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
           "title": "title",
           "required": false
         },
         {
           "$ref": "#/definitions/React.ReactNode",
+          "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
           "title": "description",
           "required": false
         },
         {
           "$ref": "#/definitions/React.ReactNode",
+          "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
           "title": "content",
           "required": false
         },
         {
           "$ref": "#/definitions/React.ReactNode",
+          "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
           "title": "link",
           "required": false
         },
         {
           "$ref": "#/definitions/React.ReactNode",
+          "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
           "title": "children",
           "required": false
         }

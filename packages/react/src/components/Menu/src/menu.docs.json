@@ -93,9 +93,9 @@
       "totalProps": 6,
       "props": [
         {
-          "description": "Sets the state of the button as active/inactive.",
-          "type": "boolean",
-          "title": "active",
+          "description": "Function executed when clicking the button.",
+          "type": "() => void;",
+          "title": "onClick",
           "required": false
         },
         {
@@ -105,21 +105,21 @@
           "required": false
         },
         {
-          "description": "Controlled override for menu expansion state. This prop does not manage internal state\nand is not forwarded to the DOM as an attribute. It is used only for layout and visual\nstate determination.\nIf not provided, the expanded state will be determined by the context.",
-          "type": "boolean",
-          "title": "expanded",
-          "required": false
-        },
-        {
-          "description": "Function executed when clicking the button.",
-          "type": "() => void;",
-          "title": "onClick",
-          "required": false
-        },
-        {
           "description": "Sets an icon element on the left of the button.",
           "type": "React.FC<IconProps>",
           "title": "startIcon",
+          "required": false
+        },
+        {
+          "description": "Sets the state of the button as active/inactive.",
+          "type": "boolean",
+          "title": "active",
+          "required": false
+        },
+        {
+          "description": "Controlled override for menu expansion state. This prop does not manage internal state\nand is not forwarded to the DOM as an attribute. It is used only for layout and visual\nstate determination.\nIf not provided, the expanded state will be determined by the context.",
+          "type": "boolean",
+          "title": "expanded",
           "required": false
         },
         {

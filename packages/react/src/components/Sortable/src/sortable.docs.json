@@ -95,6 +95,86 @@
             {
               "type": "object",
               "properties": {
+                "delay": {
+                  "type": "number",
+                  "title": "delay"
+                },
+                "tolerance": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "propertyOrder": [
+                        "x",
+                        "y"
+                      ],
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "type": "number",
+                          "title": "x"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "propertyOrder": [
+                        "x"
+                      ],
+                      "required": [
+                        "x"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "y": {
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "propertyOrder": [
+                        "y"
+                      ],
+                      "required": [
+                        "y"
+                      ]
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "title": "tolerance"
+                }
+              },
+              "additionalProperties": false,
+              "propertyOrder": [
+                "delay",
+                "tolerance"
+              ],
+              "required": [
+                "delay",
+                "tolerance"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
                 "distance": {
                   "anyOf": [
                     {
@@ -227,86 +307,6 @@
               ],
               "required": [
                 "distance"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "delay": {
-                  "type": "number",
-                  "title": "delay"
-                },
-                "tolerance": {
-                  "anyOf": [
-                    {
-                      "type": "object",
-                      "properties": {
-                        "x": {
-                          "type": "number",
-                          "title": "x"
-                        },
-                        "y": {
-                          "type": "number",
-                          "title": "y"
-                        }
-                      },
-                      "additionalProperties": false,
-                      "propertyOrder": [
-                        "x",
-                        "y"
-                      ],
-                      "required": [
-                        "x",
-                        "y"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "x": {
-                          "type": "number",
-                          "title": "x"
-                        }
-                      },
-                      "additionalProperties": false,
-                      "propertyOrder": [
-                        "x"
-                      ],
-                      "required": [
-                        "x"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "y": {
-                          "type": "number",
-                          "title": "y"
-                        }
-                      },
-                      "additionalProperties": false,
-                      "propertyOrder": [
-                        "y"
-                      ],
-                      "required": [
-                        "y"
-                      ]
-                    },
-                    {
-                      "type": "number"
-                    }
-                  ],
-                  "title": "tolerance"
-                }
-              },
-              "additionalProperties": false,
-              "propertyOrder": [
-                "delay",
-                "tolerance"
-              ],
-              "required": [
-                "delay",
-                "tolerance"
               ]
             },
             {
@@ -465,6 +465,19 @@
       "description": "Configuration for the drag overlay appearance and behavior",
       "type": "object",
       "properties": {
+        "className": {
+          "type": "string",
+          "title": "className"
+        },
+        "children": {
+          "$ref": "#/definitions/React.ReactNode",
+          "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
+          "title": "children"
+        },
+        "zIndex": {
+          "type": "number",
+          "title": "zIndex"
+        },
         "transition": {
           "anyOf": [
             {
@@ -478,17 +491,9 @@
           ],
           "title": "transition"
         },
-        "zIndex": {
-          "type": "number",
-          "title": "zIndex"
-        },
-        "className": {
-          "type": "string",
-          "title": "className"
-        },
-        "children": {
-          "$ref": "#/definitions/React.ReactNode",
-          "title": "children"
+        "adjustScale": {
+          "type": "boolean",
+          "title": "adjustScale"
         },
         "modifiers": {
           "type": "array",
@@ -499,12 +504,13 @@
           },
           "title": "modifiers"
         },
-        "adjustScale": {
-          "type": "boolean",
-          "title": "adjustScale"
-        },
         "dropAnimation": {
           "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyOrder": []
+            },
             {
               "type": "object",
               "properties": {
@@ -545,11 +551,6 @@
               ]
             },
             {
-              "type": "object",
-              "additionalProperties": false,
-              "propertyOrder": []
-            },
-            {
               "type": "null"
             }
           ],
@@ -558,12 +559,12 @@
       },
       "additionalProperties": false,
       "propertyOrder": [
-        "transition",
-        "zIndex",
         "className",
         "children",
-        "modifiers",
+        "zIndex",
+        "transition",
         "adjustScale",
+        "modifiers",
         "dropAnimation"
       ],
       "title": "overlaySettings",
@@ -576,39 +577,6 @@
         "id": {
           "type": "string",
           "title": "id"
-        },
-        "modifiers": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "propertyOrder": []
-          },
-          "title": "modifiers"
-        },
-        "onDragAbort": {
-          "type": "object",
-          "additionalProperties": false,
-          "propertyOrder": [],
-          "title": "onDragAbort"
-        },
-        "onDragPending": {
-          "type": "object",
-          "additionalProperties": false,
-          "propertyOrder": [],
-          "title": "onDragPending"
-        },
-        "onDragMove": {
-          "type": "object",
-          "additionalProperties": false,
-          "propertyOrder": [],
-          "title": "onDragMove"
-        },
-        "onDragCancel": {
-          "type": "object",
-          "additionalProperties": false,
-          "propertyOrder": [],
-          "title": "onDragCancel"
         },
         "autoScroll": {
           "anyOf": [
@@ -811,19 +779,52 @@
             "dragOverlay"
           ],
           "title": "measuring"
+        },
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "propertyOrder": []
+          },
+          "title": "modifiers"
+        },
+        "onDragAbort": {
+          "type": "object",
+          "additionalProperties": false,
+          "propertyOrder": [],
+          "title": "onDragAbort"
+        },
+        "onDragPending": {
+          "type": "object",
+          "additionalProperties": false,
+          "propertyOrder": [],
+          "title": "onDragPending"
+        },
+        "onDragMove": {
+          "type": "object",
+          "additionalProperties": false,
+          "propertyOrder": [],
+          "title": "onDragMove"
+        },
+        "onDragCancel": {
+          "type": "object",
+          "additionalProperties": false,
+          "propertyOrder": [],
+          "title": "onDragCancel"
         }
       },
       "additionalProperties": false,
       "propertyOrder": [
         "id",
+        "autoScroll",
+        "cancelDrop",
+        "measuring",
         "modifiers",
         "onDragAbort",
         "onDragPending",
         "onDragMove",
-        "onDragCancel",
-        "autoScroll",
-        "cancelDrop",
-        "measuring"
+        "onDragCancel"
       ],
       "title": "dndContextSettings",
       "required": false

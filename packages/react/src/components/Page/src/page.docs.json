@@ -13,6 +13,7 @@
     },
     {
       "$ref": "#/definitions/React.ReactNode",
+      "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
       "title": "children",
       "required": false
     }
