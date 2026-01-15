@@ -1,4 +1,6 @@
 releases:
+  "@nimbus-ds/patterns-webpack": patch
+  "@nimbus-ds/sortable": patch
   "@nimbus-ds/app-shell": patch
   "@nimbus-ds/calendar": patch
   "@nimbus-ds/callout-card": patch
@@ -22,7 +24,6 @@ releases:
   "@nimbus-ds/product-data-list": patch
   "@nimbus-ds/productupdates": patch
   "@nimbus-ds/sidemodal": patch
-  "@nimbus-ds/sortable": patch
   "@nimbus-ds/thumbnail-with-action": patch
 
 declined:
