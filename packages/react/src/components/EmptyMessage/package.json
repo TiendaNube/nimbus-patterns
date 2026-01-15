@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/empty-message",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",

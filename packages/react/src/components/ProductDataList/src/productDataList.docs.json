@@ -89,7 +89,13 @@
         {
           "description": "Appearance style for the tag",
           "default": "warning",
-          "enum": ["danger", "neutral", "primary", "success", "warning"],
+          "enum": [
+            "danger",
+            "neutral",
+            "primary",
+            "success",
+            "warning"
+          ],
           "type": "string",
           "title": "tagAppearance",
           "required": false
@@ -109,13 +115,20 @@
             "properties": {
               "id": {
                 "description": "Unique identifier for the sortable item",
-                "type": ["string", "number"],
+                "type": [
+                  "string",
+                  "number"
+                ],
                 "title": "id"
               }
             },
             "additionalProperties": false,
-            "propertyOrder": ["id"],
-            "required": ["id"]
+            "propertyOrder": [
+              "id"
+            ],
+            "required": [
+              "id"
+            ]
           },
           "title": "items",
           "required": true
@@ -232,47 +245,110 @@
               "type": "object",
               "properties": {
                 "focus": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "focus"
                 },
                 "focusWithin": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "focusWithin"
                 },
                 "active": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "active"
                 },
                 "hover": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "hover"
                 },
                 "disabled": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "disabled"
                 },
                 "xs": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "xs"
                 },
                 "md": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "md"
                 },
                 "lg": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "lg"
                 },
                 "xl": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "xl"
                 }
@@ -291,7 +367,14 @@
               ]
             },
             {
-              "enum": ["1", "2", "3", "4", "5", "none"],
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "none"
+              ],
               "type": "string"
             }
           ],
@@ -305,47 +388,110 @@
               "type": "object",
               "properties": {
                 "focus": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "focus"
                 },
                 "focusWithin": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "focusWithin"
                 },
                 "active": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "active"
                 },
                 "hover": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "hover"
                 },
                 "disabled": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "disabled"
                 },
                 "xs": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "xs"
                 },
                 "md": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "md"
                 },
                 "lg": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "lg"
                 },
                 "xl": {
-                  "enum": ["1", "2", "3", "4", "5", "none"],
+                  "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "none"
+                  ],
                   "type": "string",
                   "title": "xl"
                 }
@@ -364,7 +510,14 @@
               ]
             },
             {
-              "enum": ["1", "2", "3", "4", "5", "none"],
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "none"
+              ],
               "type": "string"
             }
           ],
@@ -631,47 +784,101 @@
               "type": "object",
               "properties": {
                 "focus": {
-                  "enum": ["dashed", "dotted", "hidden", "none", "solid"],
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
                   "type": "string",
                   "title": "focus"
                 },
                 "focusWithin": {
-                  "enum": ["dashed", "dotted", "hidden", "none", "solid"],
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
                   "type": "string",
                   "title": "focusWithin"
                 },
                 "active": {
-                  "enum": ["dashed", "dotted", "hidden", "none", "solid"],
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
                   "type": "string",
                   "title": "active"
                 },
                 "hover": {
-                  "enum": ["dashed", "dotted", "hidden", "none", "solid"],
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
                   "type": "string",
                   "title": "hover"
                 },
                 "disabled": {
-                  "enum": ["dashed", "dotted", "hidden", "none", "solid"],
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
                   "type": "string",
                   "title": "disabled"
                 },
                 "xs": {
-                  "enum": ["dashed", "dotted", "hidden", "none", "solid"],
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
                   "type": "string",
                   "title": "xs"
                 },
                 "md": {
-                  "enum": ["dashed", "dotted", "hidden", "none", "solid"],
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
                   "type": "string",
                   "title": "md"
                 },
                 "lg": {
-                  "enum": ["dashed", "dotted", "hidden", "none", "solid"],
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
                   "type": "string",
                   "title": "lg"
                 },
                 "xl": {
-                  "enum": ["dashed", "dotted", "hidden", "none", "solid"],
+                  "enum": [
+                    "dashed",
+                    "dotted",
+                    "hidden",
+                    "none",
+                    "solid"
+                  ],
                   "type": "string",
                   "title": "xl"
                 }
@@ -690,7 +897,13 @@
               ]
             },
             {
-              "enum": ["dashed", "dotted", "hidden", "none", "solid"],
+              "enum": [
+                "dashed",
+                "dotted",
+                "hidden",
+                "none",
+                "solid"
+              ],
               "type": "string"
             }
           ],
