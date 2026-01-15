@@ -3747,7 +3747,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/patterns-webpack@workspace:packages/core/webpack"
   dependencies:
-    "@nimbus-ds/webpack": 1.5.0
+    "@nimbus-ds/webpack": 1.7.2-rc.1
     "@types/webpack": ^5.28.0
     "@vanilla-extract/webpack-plugin": ^2.2.0
     css-minimizer-webpack-plugin: ^4.2.2
@@ -3919,10 +3919,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/webpack@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@nimbus-ds/webpack@npm:1.5.0"
-  checksum: 773836f7b39a9a2c05d053471940b0de306955ccf40aa64358fe666c7bff6178f755a3dbaefa6f67a035c42ae6436755d3be6fd7b0475fecd47b27b091b48147
+"@nimbus-ds/webpack@npm:1.7.2-rc.1":
+  version: 1.7.2-rc.1
+  resolution: "@nimbus-ds/webpack@npm:1.7.2-rc.1"
+  checksum: 53739e7330830f694ecd980ad92116fdeac433bce13273196221a0e92e26b645a1c9852a7447b835011d5e471779dc6bd75b93fb8d0ac88bbb0bc919deed692c
   languageName: node
   linkType: hard
 
@@ -15604,7 +15604,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript-json-schema@npm:^0.55.0":
+"typescript-json-schema@npm:0.55.0":
   version: 0.55.0
   resolution: "typescript-json-schema@npm:0.55.0"
   dependencies:
@@ -15619,6 +15619,24 @@ __metadata:
   bin:
     typescript-json-schema: bin/typescript-json-schema
   checksum: 4188e9d4cc1f1fc3201e2aa06b8d87d35695b0eaf049ff9d2cd3027d87406efc6978c4f90c2bf06f4fcd8d6dd40ceb65e744dc3cf9b412e1f74b8eb5bae96a05
+  languageName: node
+  linkType: hard
+
+"typescript-json-schema@patch:typescript-json-schema@npm%3A0.55.0#./.yarn/patches/typescript-json-schema-npm-0.55.0-8fc27dfa81.patch::locator=nimbus-patterns%40workspace%3A.":
+  version: 0.55.0
+  resolution: "typescript-json-schema@patch:typescript-json-schema@npm%3A0.55.0#./.yarn/patches/typescript-json-schema-npm-0.55.0-8fc27dfa81.patch::version=0.55.0&hash=c95d01&locator=nimbus-patterns%40workspace%3A."
+  dependencies:
+    "@types/json-schema": "npm:^7.0.9"
+    "@types/node": "npm:^16.9.2"
+    glob: "npm:^7.1.7"
+    path-equal: "npm:^1.1.2"
+    safe-stable-stringify: "npm:^2.2.0"
+    ts-node: "npm:^10.9.1"
+    typescript: "npm:~4.8.2"
+    yargs: "npm:^17.1.1"
+  bin:
+    typescript-json-schema: bin/typescript-json-schema
+  checksum: 14425cf16e4b7a8e3bba486c4b8b4bf15cb9b3ea9817dd57d0c3b79c78892a059e7b5d6333576a1d0c9e99ecc2b8383fde6ed2dc085bf3d94ee95a77cb381ab4
   languageName: node
   linkType: hard
 

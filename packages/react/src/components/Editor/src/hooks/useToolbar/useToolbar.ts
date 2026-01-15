@@ -85,7 +85,7 @@ export const useToolbar = () => {
 
       dispatch({
         type: EditorActionKind.IS_LINK,
-        payload: !!($isLinkNode(parent) || $isLinkNode(node)) ?? false,
+        payload: !!($isLinkNode(parent) || $isLinkNode(node)),
       });
 
       if (elementDOM !== null) {
