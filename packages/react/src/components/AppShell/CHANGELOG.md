@@ -6,7 +6,7 @@ The AppShell component is the main outer frame of an application. It provides th
 
 #### 📚 3rd party library updates
 
-- Extends support to React 19.
+- Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-11-07 `1.8.3`
 

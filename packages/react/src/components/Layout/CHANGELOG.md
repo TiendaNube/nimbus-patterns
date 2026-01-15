@@ -6,7 +6,7 @@ The Layout component is intended for building single or multi-column layouts usi
 
 #### 📚 3rd party library updates
 
-- Extends support to React 19.
+- Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-06-04 `1.3.5`
 

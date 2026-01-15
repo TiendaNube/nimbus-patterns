@@ -6,7 +6,7 @@ The `InitialScreen` component provides a consistent layout and spacing for displ
 
 #### 📚 3rd party library updates
 
-- Extends support to React 19.
+- Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-10-16 `1.0.4`
 

@@ -6,7 +6,7 @@ This component is used to provide the user with useful information, tips, tutori
 
 #### 📚 3rd party library updates
 
-- Extends support to React 19.
+- Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-03-18 `1.7.0`
 

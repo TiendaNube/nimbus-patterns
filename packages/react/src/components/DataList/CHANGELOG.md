@@ -6,7 +6,7 @@ DataList is a flexible list-style component that enables the organization of cus
 
 #### 📚 3rd party library updates
 
-- Extends support to React 19.
+- Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-06-04 `1.2.3`
 

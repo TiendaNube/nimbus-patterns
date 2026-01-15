@@ -6,7 +6,7 @@ The FormField component allows the user to enter or edit information in text for
 
 #### 📚 3rd party library updates
 
-- Extends support to React 19.
+- Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-08-29 `1.8.0`
 

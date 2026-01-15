@@ -6,7 +6,7 @@ The NavTabs component represents the main navigation dock for an application on 
 
 #### 📚 3rd party library updates
 
-- Extends support to React 19.
+- Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-06-04 `1.2.5`
 

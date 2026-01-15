@@ -6,7 +6,7 @@ DataTable is a highly versatile component used to organize large quantities of t
 
 #### 📚 3rd party library updates
 
-- Extends support to React 19.
+- Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-12-23 `1.2.6`
 

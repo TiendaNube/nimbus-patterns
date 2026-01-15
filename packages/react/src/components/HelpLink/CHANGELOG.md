@@ -6,7 +6,7 @@ Help Link component is intended for adding helpful links with tutorials or educa
 
 #### 📚 3rd party library updates
 
-- Extends support to React 19.
+- Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-03-18 `1.1.3`
 
