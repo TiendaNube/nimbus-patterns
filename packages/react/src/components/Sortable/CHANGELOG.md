@@ -6,7 +6,7 @@ The Sortable component provides drag and drop functionality to create sortable l
 
 #### 🐛 Bug fixes
 
-- Fixes build by skipping lib check. ([#125](https://github.com/TiendaNube/nimbus-patterns/pull/125) by [@joacotornello](https://github.com/joacotornello))
+- Fixes build by skipping lib check. ([#139](https://github.com/TiendaNube/nimbus-patterns/pull/139) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2026-01-15 `1.0.1`
 
