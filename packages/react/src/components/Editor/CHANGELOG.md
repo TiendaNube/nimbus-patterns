@@ -7,6 +7,7 @@ The editor component was built using the [Lexical](https://lexical.dev) API and 
 #### 📚 3rd party library updates
 
 - Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
+- Fixes type conditional checks. ([#139](https://github.com/TiendaNube/nimbus-patterns/pull/139) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-03-18 `1.1.0`
 

@@ -8,6 +8,7 @@ Package-specific changes not released in any package will be added here just bef
 #### 🎉 New features
 
 - Updated Storybook to version 8.6.14. ([#137](https://github.com/TiendaNube/nimbus-patterns/pull/137) by [@joacotornello](https://github.com/joacotornello))
+- Applies a patch to `typescript-json-schema` to fix unsupported bigint type. ([#139](https://github.com/TiendaNube/nimbus-patterns/pull/139) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-08-08
 

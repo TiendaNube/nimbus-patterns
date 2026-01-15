@@ -2,6 +2,12 @@
 
 This package is intended for internal use in generating builds of each design system package. It contains all the necessary settings and dependencies to optimize the creation of our builds.
 
+## 2026-01-15 `0.3.1`
+
+#### 🎉 New features
+
+- Adds @dnd-kit packages to external libs. ([#125](https://github.com/TiendaNube/nimbus-patterns/pull/125) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-03-18 `0.2.0`
 
 #### 🎉 New features

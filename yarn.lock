@@ -2114,8 +2114,8 @@ __metadata:
   version: 7.0.2
   resolution: "@dnd-kit/sortable@npm:7.0.2"
   dependencies:
-    "@dnd-kit/utilities": "npm:^3.2.0"
-    tslib: "npm:^2.0.0"
+    "@dnd-kit/utilities": ^3.2.0
+    tslib: ^2.0.0
   peerDependencies:
     "@dnd-kit/core": ^6.0.7
     react: ">=16.8.0"
@@ -3747,7 +3747,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/patterns-webpack@workspace:packages/core/webpack"
   dependencies:
-    "@nimbus-ds/webpack": 1.5.0
+    "@nimbus-ds/webpack": 1.7.2-rc.1
     "@types/webpack": ^5.28.0
     "@vanilla-extract/webpack-plugin": ^2.2.0
     css-minimizer-webpack-plugin: ^4.2.2
@@ -3919,10 +3919,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/webpack@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@nimbus-ds/webpack@npm:1.5.0"
-  checksum: 773836f7b39a9a2c05d053471940b0de306955ccf40aa64358fe666c7bff6178f755a3dbaefa6f67a035c42ae6436755d3be6fd7b0475fecd47b27b091b48147
+"@nimbus-ds/webpack@npm:1.7.2-rc.1":
+  version: 1.7.2-rc.1
+  resolution: "@nimbus-ds/webpack@npm:1.7.2-rc.1"
+  checksum: 53739e7330830f694ecd980ad92116fdeac433bce13273196221a0e92e26b645a1c9852a7447b835011d5e471779dc6bd75b93fb8d0ac88bbb0bc919deed692c
   languageName: node
   linkType: hard
 
@@ -7860,14 +7860,14 @@ __metadata:
   linkType: hard
 
 "dts-bundle-generator@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "dts-bundle-generator@npm:8.0.0"
+  version: 8.1.2
+  resolution: "dts-bundle-generator@npm:8.1.2"
   dependencies:
-    typescript: "npm:>=5.0.2"
-    yargs: "npm:^17.6.0"
+    typescript: ">=5.0.2"
+    yargs: ^17.6.0
   bin:
     dts-bundle-generator: dist/bin/dts-bundle-generator.js
-  checksum: fd806f275be633bc59645c2ed209759c896e1749b97287bc23b43cad3c2b4c5dcd8fb7594b6f7d86d93b1ea17eb3fa091fe146b2b64ca8532327b05d968ff6b9
+  checksum: 6ab02656e5d6ea05a57ec13db5440a5116f2ea58ea3a6bdbca1f2028d4f6488dbbf152469fce41885dcfa7b53461ef519463a840580f54d70545158583bbf55a
   languageName: node
   linkType: hard
 
@@ -15604,7 +15604,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript-json-schema@npm:^0.55.0":
+"typescript-json-schema@npm:0.55.0":
   version: 0.55.0
   resolution: "typescript-json-schema@npm:0.55.0"
   dependencies:
@@ -15622,13 +15622,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript-json-schema@patch:typescript-json-schema@npm%3A0.55.0#./.yarn/patches/typescript-json-schema-npm-0.55.0-8fc27dfa81.patch::locator=nimbus-patterns%40workspace%3A.":
+  version: 0.55.0
+  resolution: "typescript-json-schema@patch:typescript-json-schema@npm%3A0.55.0#./.yarn/patches/typescript-json-schema-npm-0.55.0-8fc27dfa81.patch::version=0.55.0&hash=c95d01&locator=nimbus-patterns%40workspace%3A."
+  dependencies:
+    "@types/json-schema": "npm:^7.0.9"
+    "@types/node": "npm:^16.9.2"
+    glob: "npm:^7.1.7"
+    path-equal: "npm:^1.1.2"
+    safe-stable-stringify: "npm:^2.2.0"
+    ts-node: "npm:^10.9.1"
+    typescript: "npm:~4.8.2"
+    yargs: "npm:^17.1.1"
+  bin:
+    typescript-json-schema: bin/typescript-json-schema
+  checksum: 14425cf16e4b7a8e3bba486c4b8b4bf15cb9b3ea9817dd57d0c3b79c78892a059e7b5d6333576a1d0c9e99ecc2b8383fde6ed2dc085bf3d94ee95a77cb381ab4
+  languageName: node
+  linkType: hard
+
 "typescript@npm:>=5.0.2":
-  version: 5.0.3
-  resolution: "typescript@npm:5.0.3"
+  version: 5.9.3
+  resolution: "typescript@npm:5.9.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 3cce0576d218cb4277ff8b6adfef1a706e9114a98b4261a38ad658a7642f1b274a8396394f6cbff8c0ba852996d7ed2e233e9b8431d5d55ac7c2f6fea645af02
+  checksum: 0d0ffb84f2cd072c3e164c79a2e5a1a1f4f168e84cb2882ff8967b92afe1def6c2a91f6838fb58b168428f9458c57a2ba06a6737711fdd87a256bbe83e9a217f
   languageName: node
   linkType: hard
 
@@ -15662,6 +15680,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@patch:typescript@>=5.0.2#~builtin<compat/typescript>":
+  version: 5.9.3
+  resolution: "typescript@patch:typescript@npm%3A5.9.3#~builtin<compat/typescript>::version=5.9.3&hash=f456af"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 8bb8d86819ac86a498eada254cad7fb69c5f74778506c700c2a712daeaff21d3a6f51fd0d534fe16903cb010d1b74f89437a3d02d4d0ff5ca2ba9a4660de8497
+  languageName: node
+  linkType: hard
+
 "typescript@patch:typescript@^4.9.3#~builtin<compat/typescript>, typescript@patch:typescript@npm%3A^4.6.4#~builtin<compat/typescript>":
   version: 4.9.5
   resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=f456af"
@@ -15669,16 +15697,6 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 2eee5c37cad4390385db5db5a8e81470e42e8f1401b0358d7390095d6f681b410f2c4a0c496c6ff9ebd775423c7785cdace7bcdad76c7bee283df3d9718c0f20
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A>=5.0.2#~builtin<compat/typescript>":
-  version: 5.0.3
-  resolution: "typescript@patch:typescript@npm%3A5.0.3#~builtin<compat/typescript>::version=5.0.3&hash=f456af"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 9ec0a8eed38d46cc2c8794555b7674e413604c56c159f71b8ff21ce7f17334a44127a68724cb2ef8221ff3b19369f8f05654e8a5266621d7d962aeed889bd630
   languageName: node
   linkType: hard
 

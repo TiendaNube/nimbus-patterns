@@ -13,6 +13,9 @@ export const externalLibs = {
   "date-fns": "date-fns",
   "@lexical/react": "@lexical/react",
   lexical: "lexical",
+  "@dnd-kit/core": "@dnd-kit/core",
+  "@dnd-kit/sortable": "@dnd-kit/sortable",
+  "@dnd-kit/utilities": "@dnd-kit/utilities",
 };
 
 export const externalPackages = {
