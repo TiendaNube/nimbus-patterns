@@ -1,2 +1,6 @@
+releases:
+  "@nimbus-ds/chat-input": patch
+  "@nimbus-ds/product-data-list": patch
+
 declined:
   - nimbus-patterns
