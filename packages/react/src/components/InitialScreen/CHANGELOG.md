@@ -2,6 +2,12 @@
 
 The `InitialScreen` component provides a consistent layout and spacing for displaying a landing or welcome screen. It introduces users to an application or service, offering options to access more information or proceed further.
 
+## 2026-01-15 `1.1.5`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19.
+
 ## 2025-10-16 `1.0.4`
 
 ### 💡 Others

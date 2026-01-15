@@ -2,6 +2,12 @@
 
 DataList is a flexible list-style component that enables the organization of customizable row elements in a vertical manner, with visual separators between rows.
 
+## 2026-01-15 `1.2.4`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19.
+
 ## 2025-06-04 `1.2.3`
 
 #### 💡 Others

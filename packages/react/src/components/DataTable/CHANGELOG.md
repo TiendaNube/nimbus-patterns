@@ -2,6 +2,12 @@
 
 DataTable is a highly versatile component used to organize large quantities of tabular data. It supports pagination to help navigate through the data easily and efficiently, and also allows the user to sort and filter the data by columns. Additionally, it offers the ability to select one or multiple rows using checkboxes, which can be useful for performing batch actions or manipulating the data in other ways.
 
+## 2026-01-15 `1.2.7`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19.
+
 ## 2025-12-23 `1.2.6`
 
 #### 🎉 New features

@@ -2,6 +2,12 @@
 
 EmptyApp allows the user to build marketing-style landing pages for apps. It features internal components meant to build hero sections, content sections with images and text with features, and payment plans.
 
+## 2026-01-15 `1.1.1`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19.
+
 ## 2025-09-05 `1.1.0`
 
 ### 🐛 Bug fixes

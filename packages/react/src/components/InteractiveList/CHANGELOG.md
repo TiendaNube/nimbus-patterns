@@ -2,6 +2,12 @@
 
 Interactive List allows users to build lists with multiple options that have some kind of interaction. It can be, and is not limited to, checkboxes, radios, toggles and buttons. This component is built on top of the DataList component that allows the creation of scrollable lists with multiple entries of different kinds of data.
 
+## 2026-01-15 `1.3.7`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19.
+
 ## 2025-06-04 `1.3.6`
 
 #### 💡 Others

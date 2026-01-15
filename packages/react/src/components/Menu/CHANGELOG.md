@@ -2,6 +2,12 @@
 
 The Menu component allows the user to create in-app menus that navigate through different sections of an application.
 
+## 2026-01-15 `2.0.2`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19.
+
 ## 2025-11-10 `2.0.1`
 
 #### 💡 Others

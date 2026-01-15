@@ -2,6 +2,12 @@
 
 Sidemodal navigation provides access to the parts within its application. The side sections have the supplementary content that is linked on the left or right side of the screen.
 
+## 2026-01-15 `1.8.1`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19.
+
 ## 2025-09-04 `1.8.0`
 
 #### 🎉 New features

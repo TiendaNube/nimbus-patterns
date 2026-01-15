@@ -2,6 +2,12 @@
 
 ChatInput allows the user to build chat inputs for apps. It features internal components meant to build chat inputs with popovers, actions, and fields.
 
+## 2026-01-15 `1.0.2`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19.
+
 ## 2026-01-15 `1.0.1`
 
 #### 🎉 New features

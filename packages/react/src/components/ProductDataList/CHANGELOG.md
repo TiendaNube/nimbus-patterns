@@ -1,5 +1,11 @@
 # @nimbus-ds/product-data-list
 
+## 2026-01-15 `1.1.2`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19.
+
 ## 2026-01-15 `1.1.1`
 
 #### 🎉 New features

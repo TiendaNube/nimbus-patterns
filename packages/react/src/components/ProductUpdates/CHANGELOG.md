@@ -2,6 +2,12 @@
 
 ProductUpdates component allows the user to showcase new features or updates in a non-distractive way by displaying the information in a floating popover with a high-contrast setting that catches the eye of the user.
 
+## 2026-01-15 `1.5.1`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19.
+
 ## 2025-03-18 `1.5.0`
 
 #### 🎉 New features

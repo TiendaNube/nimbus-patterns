@@ -2,6 +2,12 @@
 
 The Sortable component provides drag and drop functionality to create sortable lists, with support for both vertical and horizontal orientations, keyboard navigation, and customizable drag handles.
 
+## 2026-01-15 `1.0.1`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19.
+
 ## 2024-03-19 `1.0.0`
 
 #### 🎉 New features

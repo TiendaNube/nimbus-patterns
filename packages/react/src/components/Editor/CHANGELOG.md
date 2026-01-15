@@ -2,6 +2,12 @@
 
 The editor component was built using the [Lexical](https://lexical.dev) API and was developed to be used in rich text fields.
 
+## 2026-01-15 `1.1.1`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19.
+
 ## 2025-03-18 `1.1.0`
 
 #### 🎉 New features

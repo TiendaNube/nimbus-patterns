@@ -2,6 +2,12 @@
 
 The Empty Message component can be used in multiple scenarios. To communicate whenever a search returns no results, if a page has no content, or if there is an error loading data. It can include an icon or illustration to support the written content, as well as a title and additional content text, and an optional node with actions that can be provided to the user so as to engage in next steps if there is an error on the page.
 
+## 2026-01-15 `1.2.5`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19.
+
 ## 2025-03-18 `1.2.4`
 
 ### 💡 Others

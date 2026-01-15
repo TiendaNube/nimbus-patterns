@@ -2,6 +2,12 @@
 
 Help Link component is intended for adding helpful links with tutorials or educational content on the UI.
 
+## 2026-01-15 `1.1.4`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19.
+
 ## 2025-03-18 `1.1.3`
 
 ### 💡 Others
