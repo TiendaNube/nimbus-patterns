@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-01-15 `1.28.0`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-12-23 `1.27.0`
 
 #### 🎉 New features

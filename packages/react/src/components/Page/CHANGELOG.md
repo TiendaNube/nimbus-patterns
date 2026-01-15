@@ -2,6 +2,12 @@
 
 Page component allows the user to build application pages with all the necessary attributes for constructing a variety of layouts.
 
+## 2026-01-15 `1.3.6`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-06-04 `1.3.5`
 
 #### 💡 Others

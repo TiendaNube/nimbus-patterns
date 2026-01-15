@@ -3470,8 +3470,8 @@ __metadata:
     "@nimbus-ds/page": "workspace:^"
   peerDependencies:
     "@nimbus-ds/components": ^5
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3486,8 +3486,8 @@ __metadata:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
     "@nimbus-ds/tokens": ^9.0.0
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3497,8 +3497,8 @@ __metadata:
   peerDependencies:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3508,8 +3508,8 @@ __metadata:
   peerDependencies:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3547,8 +3547,8 @@ __metadata:
     "@faker-js/faker": ^7.6.0
   peerDependencies:
     "@nimbus-ds/components": ^5
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3559,8 +3559,8 @@ __metadata:
     "@faker-js/faker": ^7.6.0
   peerDependencies:
     "@nimbus-ds/components": ^5
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3577,8 +3577,8 @@ __metadata:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
     "@nimbus-ds/tokens": ^9.0.0
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3592,8 +3592,8 @@ __metadata:
   peerDependencies:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3604,8 +3604,8 @@ __metadata:
     "@nimbus-ds/icons": ^1
   peerDependencies:
     "@nimbus-ds/components": ^5
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3616,8 +3616,8 @@ __metadata:
     "@nimbus-ds/icons": ^1
   peerDependencies:
     "@nimbus-ds/components": ^5
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3627,8 +3627,8 @@ __metadata:
   peerDependencies:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3665,8 +3665,8 @@ __metadata:
   peerDependencies:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3678,8 +3678,8 @@ __metadata:
   peerDependencies:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3688,8 +3688,8 @@ __metadata:
   resolution: "@nimbus-ds/layout@workspace:packages/react/src/components/Layout"
   peerDependencies:
     "@nimbus-ds/components": ^5
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3701,8 +3701,8 @@ __metadata:
   peerDependencies:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3714,8 +3714,8 @@ __metadata:
     "@nimbus-ds/typings": ^1.1.0
   peerDependencies:
     "@nimbus-ds/components": ^5
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3726,8 +3726,8 @@ __metadata:
     "@nimbus-ds/icons": ^1
   peerDependencies:
     "@nimbus-ds/components": ^5
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3738,8 +3738,8 @@ __metadata:
     "@nimbus-ds/icons": ^1
   peerDependencies:
     "@nimbus-ds/components": ^5
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3779,8 +3779,8 @@ __metadata:
     "@dnd-kit/utilities": ^3.2.2
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3794,8 +3794,8 @@ __metadata:
   peerDependencies:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3809,8 +3809,8 @@ __metadata:
   peerDependencies:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/sortable": ^1
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3820,8 +3820,8 @@ __metadata:
   peerDependencies:
     "@nimbus-ds/components": ^5
     "@nimbus-ds/icons": ^1
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3842,8 +3842,8 @@ __metadata:
     "@nimbus-ds/icons": ^1
   peerDependencies:
     "@nimbus-ds/components": ^5
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3860,8 +3860,8 @@ __metadata:
     "@dnd-kit/sortable": ^7.0.2
     "@dnd-kit/utilities": ^3.2.2
     "@nimbus-ds/components": ^5
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -3886,8 +3886,8 @@ __metadata:
     "@nimbus-ds/tokens": ^9.0.0
   peerDependencies:
     "@nimbus-ds/components": ^5
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
   languageName: unknown
   linkType: soft
 
@@ -4659,22 +4659,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^8.5.0":
-  version: 8.20.0
-  resolution: "@testing-library/dom@npm:8.20.0"
-  dependencies:
-    "@babel/code-frame": "npm:^7.10.4"
-    "@babel/runtime": "npm:^7.12.5"
-    "@types/aria-query": "npm:^5.0.1"
-    aria-query: "npm:^5.0.0"
-    chalk: "npm:^4.1.0"
-    dom-accessibility-api: "npm:^0.5.9"
-    lz-string: "npm:^1.4.4"
-    pretty-format: "npm:^27.0.2"
-  checksum: 1e599129a2fe91959ce80900a0a4897232b89e2a8e22c1f5950c36d39c97629ea86b4986b60b173b5525a05de33fde1e35836ea597b03de78cc51b122835c6f0
-  languageName: node
-  linkType: hard
-
 "@testing-library/jest-dom@npm:6.5.0":
   version: 6.5.0
   resolution: "@testing-library/jest-dom@npm:6.5.0"
@@ -4705,17 +4689,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:^13.4.0":
-  version: 13.4.0
-  resolution: "@testing-library/react@npm:13.4.0"
+"@testing-library/react@npm:^16.0.0":
+  version: 16.3.1
+  resolution: "@testing-library/react@npm:16.3.1"
   dependencies:
-    "@babel/runtime": "npm:^7.12.5"
-    "@testing-library/dom": "npm:^8.5.0"
-    "@types/react-dom": "npm:^18.0.0"
+    "@babel/runtime": ^7.12.5
   peerDependencies:
-    react: ^18.0.0
-    react-dom: ^18.0.0
-  checksum: 51ec548c1fdb1271089a5c63e0908f0166f2c7fcd9cacd3108ebbe0ce64cb4351812d885892020dc37608418cfb15698514856502b3cab0e5cc58d6cc1bd4a3e
+    "@testing-library/dom": ^10.0.0
+    "@types/react": ^18.0.0 || ^19.0.0
+    "@types/react-dom": ^18.0.0 || ^19.0.0
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 33c62acc913045f04276e4db08a8d87f3f247313e9eed89c2a72afc00044804138fed720a41c7397d51cbe34c96e91fe819f0b77ca9b43bad4aae2e6b391248c
   languageName: node
   linkType: hard
 
@@ -5076,49 +5066,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prop-types@npm:*":
-  version: 15.7.5
-  resolution: "@types/prop-types@npm:15.7.5"
-  checksum: 5b43b8b15415e1f298243165f1d44390403bb2bd42e662bca3b5b5633fdd39c938e91b7fce3a9483699db0f7a715d08cef220c121f723a634972fdf596aec980
-  languageName: node
-  linkType: hard
-
-"@types/react-dom@npm:^18.0.0":
-  version: 18.0.10
-  resolution: "@types/react-dom@npm:18.0.10"
-  dependencies:
-    "@types/react": "npm:*"
-  checksum: ff8282d5005a0b1cd95fb65bf79d3d8485e4cfe2aaf052129033a178684b940014a3f4536bc20d573f8a01cf4c6f4770c74988cef7c2b5cac3041d9f172647e3
-  languageName: node
-  linkType: hard
-
-"@types/react-dom@npm:^18.2.0":
-  version: 18.3.7
-  resolution: "@types/react-dom@npm:18.3.7"
+"@types/react-dom@npm:^19.0.0":
+  version: 19.2.3
+  resolution: "@types/react-dom@npm:19.2.3"
   peerDependencies:
-    "@types/react": ^18.0.0
-  checksum: c8b63ec944d2a68992b4dba474003fe55ee1d949c4b9c8fe97eecb2290de23f76acfb670b2f7ceb46a5fc8e46808d1745369b03edda48a7a0cf730eff4c5d315
+    "@types/react": ^19.2.0
+  checksum: b9c548f7378979cd8384444ae6c96f7a933b98e341c271c33e74231f27bf3082f04ad7c2927f1b1e6d8af35ccf83e549fce4978ebe0a02ded5a8803aa5f80e06
   languageName: node
   linkType: hard
 
-"@types/react@npm:*":
-  version: 18.0.27
-  resolution: "@types/react@npm:18.0.27"
+"@types/react@npm:^19.0.0":
+  version: 19.2.8
+  resolution: "@types/react@npm:19.2.8"
   dependencies:
-    "@types/prop-types": "npm:*"
-    "@types/scheduler": "npm:*"
-    csstype: "npm:^3.0.2"
-  checksum: 600fdbc39a92ea4a77047db3e12f05f67776a710f5918248c0189a59ac2a38900c9db5a5d2e433a16df528a3ecab1aa114b322cacea573bb1ca2fc0b094c52d1
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^18.2.0":
-  version: 18.3.27
-  resolution: "@types/react@npm:18.3.27"
-  dependencies:
-    "@types/prop-types": "*"
     csstype: ^3.2.2
-  checksum: c74d0ab5155226998a52b568f6280536205f8fe4317f77bd5d5258bc131cc9134a2db68dc818cb8e8402a2f229843c4a5bde339faf7e64d441630e569a9e5421
+  checksum: 9cff78fd1e5856eaae867a432a7de5a8d2b6a672f7a3d39a716e3fcf1432bcf17e09886102095d48ddd1b3189b2120344bc0f6ca24b5cb74d8722edf4403dbd2
   languageName: node
   linkType: hard
 
@@ -5126,13 +5088,6 @@ __metadata:
   version: 1.20.6
   resolution: "@types/resolve@npm:1.20.6"
   checksum: dc35f5517606b6687cd971c0281ac58bdee2c50c051b030f04647d3991688be2259c304ee97e5b5d4b9936072c36767eb5933b54611a407d6557972bb6fea4f6
-  languageName: node
-  linkType: hard
-
-"@types/scheduler@npm:*":
-  version: 0.16.2
-  resolution: "@types/scheduler@npm:0.16.2"
-  checksum: b6b4dcfeae6deba2e06a70941860fb1435730576d3689225a421280b7742318d1548b3d22c1f66ab68e414f346a9542f29240bc955b6332c5b11e561077583bc
   languageName: node
   linkType: hard
 
@@ -7529,13 +7484,6 @@ __metadata:
   dependencies:
     cssom: "npm:~0.3.6"
   checksum: 5f05e6fd2e3df0b44695c2f08b9ef38b011862b274e320665176467c0725e44a53e341bc4959a41176e83b66064ab786262e7380fd1cabeae6efee0d255bb4e3
-  languageName: node
-  linkType: hard
-
-"csstype@npm:^3.0.2":
-  version: 3.1.1
-  resolution: "csstype@npm:3.1.1"
-  checksum: 1f7b4f5fdd955b7444b18ebdddf3f5c699159f13e9cf8ac9027ae4a60ae226aef9bbb14a6e12ca7dba3358b007cee6354b116e720262867c398de6c955ea451d
   languageName: node
   linkType: hard
 
@@ -11505,7 +11453,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -11554,15 +11502,6 @@ __metadata:
   version: 7.14.1
   resolution: "lru-cache@npm:7.14.1"
   checksum: d72c6713c6a6d86836a7a6523b3f1ac6764768cca47ec99341c3e76db06aacd4764620e5e2cda719a36848785a52a70e531822dc2b33fb071fa709683746c104
-  languageName: node
-  linkType: hard
-
-"lz-string@npm:^1.4.4":
-  version: 1.4.4
-  resolution: "lz-string@npm:1.4.4"
-  bin:
-    lz-string: bin/bin.js
-  checksum: 54e31238a61a84d8f664d9860a9fba7310c5b97a52c444f80543069bc084815eff40b8d4474ae1d93992fdf6c252dca37cf27f6adbeb4dbc3df2f3ac773d0e61
   languageName: node
   linkType: hard
 
@@ -12499,15 +12438,15 @@ __metadata:
     "@storybook/test": ^8.6.14
     "@svgr/webpack": ^6.5.1
     "@testing-library/jest-dom": ^6.6.3
-    "@testing-library/react": ^13.4.0
+    "@testing-library/react": ^16.0.0
     "@testing-library/user-event": ^14.6.1
     "@tiendanube/eslint-config": ^0.3.2
     "@types/babel__core": ^7
     "@types/eslint": ^8
     "@types/jest": ^29.2.1
     "@types/prettier": ^2
-    "@types/react": ^18.2.0
-    "@types/react-dom": ^18.2.0
+    "@types/react": ^19.0.0
+    "@types/react-dom": ^19.0.0
     "@typescript-eslint/eslint-plugin": ^5.42.0
     "@typescript-eslint/parser": ^5.42.0
     babel-loader: ^8.3.0
@@ -12533,8 +12472,8 @@ __metadata:
     jest-environment-jsdom: ^29.2.2
     lint-staged: ^13.0.3
     prettier: ^2.7.1
-    react: ^18.2.0
-    react-dom: ^18.2.0
+    react: ^19.0.0
+    react-dom: ^19.0.0
     storybook: ^8.6.14
     storybook-dark-mode: ^4.0.2
     ts-jest: ^29.0.3
@@ -13862,7 +13801,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0":
+"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0, react-dom@npm:^19.0.0":
   version: 19.2.3
   resolution: "react-dom@npm:19.2.3"
   dependencies:
@@ -13870,18 +13809,6 @@ __metadata:
   peerDependencies:
     react: ^19.2.3
   checksum: cb1f95df052802f5332cae78303b7fc6f58092d5c7f8d01f0401188b2e0157c1d273a041b900fcc4801f730c70ed17249bd5af170038692878ebe257f641488b
-  languageName: node
-  linkType: hard
-
-"react-dom@npm:^18.2.0":
-  version: 18.2.0
-  resolution: "react-dom@npm:18.2.0"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-    scheduler: "npm:^0.23.0"
-  peerDependencies:
-    react: ^18.2.0
-  checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
   languageName: node
   linkType: hard
 
@@ -13931,19 +13858,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0":
+"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0, react@npm:^19.0.0":
   version: 19.2.3
   resolution: "react@npm:19.2.3"
   checksum: 506e369ae13cb46b7f303c0201aadf856642f482cdf5b1c3730c3a6d1762fd5a3ae1dd31196a4686bfbbe56456dcd0c48a4656c75cbcb45620e3028c54789ae9
-  languageName: node
-  linkType: hard
-
-"react@npm:^18.2.0":
-  version: 18.2.0
-  resolution: "react@npm:18.2.0"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
   languageName: node
   linkType: hard
 
@@ -14436,15 +14354,6 @@ __metadata:
   dependencies:
     xmlchars: "npm:^2.2.0"
   checksum: d3fa3e2aaf6c65ed52ee993aff1891fc47d5e47d515164b5449cbf5da2cbdc396137e55590472e64c5c436c14ae64a8a03c29b9e7389fc6f14035cf4e982ef3b
-  languageName: node
-  linkType: hard
-
-"scheduler@npm:^0.23.0":
-  version: 0.23.0
-  resolution: "scheduler@npm:0.23.0"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-  checksum: d79192eeaa12abef860c195ea45d37cbf2bbf5f66e3c4dcd16f54a7da53b17788a70d109ee3d3dde1a0fd50e6a8fc171f4300356c5aee4fc0171de526bf35f8a
   languageName: node
   linkType: hard
 

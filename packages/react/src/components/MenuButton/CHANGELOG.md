@@ -2,6 +2,12 @@
 
 MenuButton component is meant to be used inside Menus and navigation, and allows the user to navigate between different sections of an application.
 
+## 2026-01-15 `2.0.2`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-11-14 `2.0.1`
 
 #### 🐛 Bug fixes

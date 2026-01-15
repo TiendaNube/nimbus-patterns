@@ -2,6 +2,12 @@
 
 The AppShell component is the main outer frame of an application. It provides the basic architecture to build an application inside of our admin.
 
+## 2026-01-15 `1.8.4`
+
+#### 📚 3rd party library updates
+
+- Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2025-11-07 `1.8.3`
 
 #### 💡 Others
