@@ -12,7 +12,7 @@ const DataTableRow: React.FC<DataTableRowProps> = ({
   ...rest
 }: DataTableRowProps) => (
   <Table.Row {...rest}>
-    <Table.Cell width="1rem">
+    <Table.Cell width="1rem" column={0}>
       <Checkbox {...checkbox} />
     </Table.Cell>
     {children}
