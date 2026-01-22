@@ -1,9 +1,9 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { DataTable } from "./DataTable";
-import { DataTableRender } from "./dataTable.utils";
 import { Button, Icon, TableColumnLayout } from "@nimbus-ds/components";
 import { EditIcon } from "@nimbus-ds/icons";
+import { DataTable } from "./DataTable";
+import { DataTableRender } from "./dataTable.utils";
 import { DataTableProperties } from "./dataTable.types";
 
 type ExtendedDataTableProps = DataTableProperties & {
@@ -36,7 +36,7 @@ export const withFixedLeftColumn: Story = {
     const columnLayout: TableColumnLayout[] = [
       { id: "column-id", width: "80px", fixed: "left" },
       { id: "column-name", width: "150px", fixed: "left" },
-      { id: "column-email", grow: 1  },
+      { id: "column-email", grow: 1 },
       { id: "column-actions", grow: 1 },
     ];
 
@@ -88,9 +88,19 @@ export const withFixedLeftColumn: Story = {
       },
     ];
 
-
     return (
-      <DataTable columnLayout={columnLayout} header={<DataTable.Header checkbox={{ name: "check-all-rows", checked: false }}><DataTable.Cell column={1}>Name</DataTable.Cell><DataTable.Cell column={2}>Email</DataTable.Cell><DataTable.Cell column={3}>Actions</DataTable.Cell></DataTable.Header>}>
+      <DataTable
+        columnLayout={columnLayout}
+        header={
+          <DataTable.Header
+            checkbox={{ name: "check-all-rows", checked: false }}
+          >
+            <DataTable.Cell column={1}>Name</DataTable.Cell>
+            <DataTable.Cell column={2}>Email</DataTable.Cell>
+            <DataTable.Cell column={3}>Actions</DataTable.Cell>
+          </DataTable.Header>
+        }
+      >
         <DataTable.Row checkbox={{ name: "check-all-rows", checked: false }}>
           <DataTable.Cell column={1}>{data[0].name}</DataTable.Cell>
           <DataTable.Cell column={2}>{data[0].email}</DataTable.Cell>

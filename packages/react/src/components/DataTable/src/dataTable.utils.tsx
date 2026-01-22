@@ -6,7 +6,13 @@ import {
   ChevronUpIcon,
   ChevronDownIcon,
 } from "@nimbus-ds/icons";
-import { Tag, Box, Chip, IconButton, TableColumnLayout } from "@nimbus-ds/components";
+import {
+  Tag,
+  Box,
+  Chip,
+  IconButton,
+  TableColumnLayout,
+} from "@nimbus-ds/components";
 import { DataTable } from "./DataTable";
 
 export interface RowProps {
@@ -150,10 +156,18 @@ export const DataTableRender = (args: any) => {
           />
         </Box>
       </DataTable.Cell>
-      <DataTable.Cell column={2} width="auto">Client name</DataTable.Cell>
-      <DataTable.Cell column={3} width="120px">Total</DataTable.Cell>
-      <DataTable.Cell column={4} width="120px">Qty. of products</DataTable.Cell>
-      <DataTable.Cell column={5} width="120px">Order status</DataTable.Cell>
+      <DataTable.Cell column={2} width="auto">
+        Client name
+      </DataTable.Cell>
+      <DataTable.Cell column={3} width="120px">
+        Total
+      </DataTable.Cell>
+      <DataTable.Cell column={4} width="120px">
+        Qty. of products
+      </DataTable.Cell>
+      <DataTable.Cell column={5} width="120px">
+        Order status
+      </DataTable.Cell>
     </DataTable.Header>
   );
 
@@ -192,9 +206,19 @@ export const DataTableRender = (args: any) => {
     />
   );
 
+  const { fixedLeftColumn } = args;
+
   const columnLayout: TableColumnLayout[] = [
-    { id: "column-checkbox", width: "40px", fixed: args.fixedLeftColumn ? "left" : undefined },
-    { id: "column-order-number", width: "80px", fixed: args.fixedLeftColumn ? "left" : undefined},
+    {
+      id: "column-checkbox",
+      width: "40px",
+      fixed: fixedLeftColumn ? "left" : undefined,
+    },
+    {
+      id: "column-order-number",
+      width: "80px",
+      fixed: fixedLeftColumn ? "left" : undefined,
+    },
     { id: "column-client-name", width: "150px" },
     { id: "column-total", grow: 1 },
     { id: "column-qty", grow: 1 },
