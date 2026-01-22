@@ -13,7 +13,7 @@ const DataTableHeader: React.FC<DataTableHeaderProps> = ({
 }: DataTableHeaderProps) => (
   <Table.Head {...rest}>
     <Table.Row backgroundColor="neutral-surface">
-      <Table.Cell as="th" width="1rem">
+      <Table.Cell as="th" column={0} width="1rem">
         <Checkbox {...checkbox} />
       </Table.Cell>
       {children}

@@ -6,7 +6,13 @@ import {
   ChevronUpIcon,
   ChevronDownIcon,
 } from "@nimbus-ds/icons";
-import { Tag, Box, Chip, IconButton } from "@nimbus-ds/components";
+import {
+  Tag,
+  Box,
+  Chip,
+  IconButton,
+  TableColumnLayout,
+} from "@nimbus-ds/components";
 import { DataTable } from "./DataTable";
 
 export interface RowProps {
@@ -134,7 +140,7 @@ export const DataTableRender = (args: any) => {
         indeterminate: headerIndeterminateStatus,
       }}
     >
-      <DataTable.Cell width="120px">
+      <DataTable.Cell column={1} width="120px">
         <Box display="flex" gap="2" alignItems="center">
           Order no.
           <IconButton
@@ -150,10 +156,18 @@ export const DataTableRender = (args: any) => {
           />
         </Box>
       </DataTable.Cell>
-      <DataTable.Cell width="auto">Client name</DataTable.Cell>
-      <DataTable.Cell width="120px">Total</DataTable.Cell>
-      <DataTable.Cell width="120px">Qty. of products</DataTable.Cell>
-      <DataTable.Cell width="120px">Order status</DataTable.Cell>
+      <DataTable.Cell column={2} width="auto">
+        Client name
+      </DataTable.Cell>
+      <DataTable.Cell column={3} width="120px">
+        Total
+      </DataTable.Cell>
+      <DataTable.Cell column={4} width="120px">
+        Qty. of products
+      </DataTable.Cell>
+      <DataTable.Cell column={5} width="120px">
+        Order status
+      </DataTable.Cell>
     </DataTable.Header>
   );
 
@@ -192,12 +206,33 @@ export const DataTableRender = (args: any) => {
     />
   );
 
+  const { fixedLeftColumn } = args;
+
+  const columnLayout: TableColumnLayout[] = [
+    {
+      id: "column-checkbox",
+      width: "40px",
+      fixed: fixedLeftColumn ? "left" : undefined,
+    },
+    {
+      id: "column-order-number",
+      width: "80px",
+      fixed: fixedLeftColumn ? "left" : undefined,
+    },
+    { id: "column-client-name", width: "150px" },
+    { id: "column-total", grow: 1 },
+    { id: "column-qty", grow: 1 },
+    { id: "column-status", width: "120px", grow: 1 },
+  ];
+
   return (
     <DataTable
+      columnLayout={columnLayout}
       {...args}
       header={tableHeader}
       footer={tableFooter}
       bulkActions={hasBulkActions}
+      minWidth="600px"
     >
       {displayedRows.map((row) => {
         const { id, status } = row;
@@ -229,11 +264,11 @@ export const DataTableRender = (args: any) => {
               onClick: () => handleRowClick(id),
             }}
           >
-            <DataTable.Cell>#{row.id}</DataTable.Cell>
-            <DataTable.Cell>{row.clientName}</DataTable.Cell>
-            <DataTable.Cell>{row.total}</DataTable.Cell>
-            <DataTable.Cell>{row.qty}</DataTable.Cell>
-            <DataTable.Cell>
+            <DataTable.Cell column={1}>#{row.id}</DataTable.Cell>
+            <DataTable.Cell column={2}>{row.clientName}</DataTable.Cell>
+            <DataTable.Cell column={3}>{row.total}</DataTable.Cell>
+            <DataTable.Cell column={4}>{row.qty}</DataTable.Cell>
+            <DataTable.Cell column={5}>
               <Tag appearance={statusAppearance}>
                 {statusIcon}
                 {statusMsg}

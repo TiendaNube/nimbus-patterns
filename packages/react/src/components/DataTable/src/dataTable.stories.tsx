@@ -1,8 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { DataTable } from "./DataTable";
 import { DataTableRender } from "./dataTable.utils";
+import { DataTableProperties } from "./dataTable.types";
 
-const meta: Meta<typeof DataTable> = {
+type ExtendedDataTableProps = DataTableProperties & {
+  fixedLeftColumn: boolean;
+};
+
+const meta: Meta<ExtendedDataTableProps> = {
   title: "Patterns/DataTable",
   component: DataTable,
   argTypes: {
@@ -10,6 +15,7 @@ const meta: Meta<typeof DataTable> = {
     header: { control: { disable: true } },
     footer: { control: { disable: true } },
     children: { control: { disable: true } },
+    fixedLeftColumn: { control: { type: "boolean" } },
   },
   tags: ["autodocs"],
   render: DataTableRender,

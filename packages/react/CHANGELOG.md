@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-01-22 `1.28.1`
+
+#### 🐛 Bug fixes
+
+- Fixed `DataTable.Cell` component to correctly use the `column` prop. ([#140](https://github.com/TiendaNube/nimbus-patterns/pull/140) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2026-01-15 `1.28.0`
 
 #### 📚 3rd party library updates
