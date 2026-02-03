@@ -4,10 +4,14 @@ import { Box, Table } from "@nimbus-ds/components";
 
 import {
   DataTableBulkActions,
+  DataTableCell,
+  DataTableDropdown,
+  DataTableDropdownAction,
+  DataTableDropdownDivider,
+  DataTableDropdownSection,
   DataTableFooter,
   DataTableHeader,
   DataTableRow,
-  DataTableCell,
 } from "./components";
 
 import { DataTableProps, DataTableComponents } from "./dataTable.types";
@@ -47,13 +51,21 @@ export { DataTable };
 DataTable.displayName = "DataTable";
 
 DataTable.BulkActions = DataTableBulkActions;
-DataTable.Header = DataTableHeader;
-DataTable.Footer = DataTableFooter;
-DataTable.Row = DataTableRow;
 DataTable.Cell = DataTableCell;
+DataTable.Dropdown = DataTableDropdown;
+DataTable.DropdownAction = DataTableDropdownAction;
+DataTable.DropdownDivider = DataTableDropdownDivider;
+DataTable.DropdownSection = DataTableDropdownSection;
+DataTable.Footer = DataTableFooter;
+DataTable.Header = DataTableHeader;
+DataTable.Row = DataTableRow;
 
 DataTable.BulkActions.displayName = "DataTable.BulkActions";
-DataTable.Header.displayName = "DataTable.Header";
-DataTable.Footer.displayName = "DataTable.Footer";
-DataTable.Row.displayName = "DataTable.Row";
 DataTable.Cell.displayName = "DataTable.Cell";
+DataTable.Dropdown.displayName = "DataTable.Dropdown";
+DataTable.DropdownAction.displayName = "DataTable.DropdownAction";
+DataTable.DropdownDivider.displayName = "DataTable.DropdownDivider";
+DataTable.DropdownSection.displayName = "DataTable.DropdownSection";
+DataTable.Footer.displayName = "DataTable.Footer";
+DataTable.Header.displayName = "DataTable.Header";
+DataTable.Row.displayName = "DataTable.Row";

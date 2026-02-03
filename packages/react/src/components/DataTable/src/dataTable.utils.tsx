@@ -2,17 +2,15 @@ import React, { useState, useEffect } from "react";
 import { faker } from "@faker-js/faker";
 import {
   CheckCircleIcon,
-  ExclamationTriangleIcon,
-  ChevronUpIcon,
   ChevronDownIcon,
+  ChevronUpIcon,
+  ExclamationTriangleIcon,
+  GenerativeStarsIcon,
+  TrashIcon,
+  EyeIcon,
+  EyeOffIcon,
 } from "@nimbus-ds/icons";
-import {
-  Tag,
-  Box,
-  Chip,
-  IconButton,
-  TableColumnLayout,
-} from "@nimbus-ds/components";
+import { Tag, Box, IconButton, TableColumnLayout } from "@nimbus-ds/components";
 import { DataTable } from "./DataTable";
 
 export interface RowProps {
@@ -192,16 +190,33 @@ export const DataTableRender = (args: any) => {
       }}
       label={`${checkedRows.length} selected`}
       action={
-        <Box display="flex" gap="1">
-          <Chip
-            onClick={() => handleBulkUpdateStatusClick(true)}
-            text="Fulfill orders"
-          />
-          <Chip
-            onClick={() => handleBulkUpdateStatusClick(false)}
-            text="Unfulfill orders"
-          />
-        </Box>
+        <DataTable.Dropdown placeholder="Choose an action">
+          <DataTable.DropdownSection>
+            <DataTable.DropdownAction
+              icon={<TrashIcon />}
+              label="Exclude"
+              onClick={() => handleBulkUpdateStatusClick(true)}
+            />
+            <DataTable.DropdownAction
+              icon={<EyeIcon />}
+              label="View in store"
+              onClick={() => handleBulkUpdateStatusClick(false)}
+            />
+            <DataTable.DropdownAction
+              icon={<EyeOffIcon />}
+              label="Hide from store"
+              onClick={() => handleBulkUpdateStatusClick(false)}
+            />
+          </DataTable.DropdownSection>
+          <DataTable.DropdownDivider />
+          <DataTable.DropdownSection>
+            <DataTable.DropdownAction
+              icon={<GenerativeStarsIcon />}
+              label="Delete orders"
+              onClick={() => console.log("delete orders")}
+            />
+          </DataTable.DropdownSection>
+        </DataTable.Dropdown>
       }
     />
   );
