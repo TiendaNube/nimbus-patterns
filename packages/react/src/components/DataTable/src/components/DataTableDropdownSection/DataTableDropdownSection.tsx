@@ -3,7 +3,7 @@ import { Box } from "@nimbus-ds/components";
 import type { DataTableDropdownSectionProps } from "./dataTableDropdownSection.types";
 
 /**
- * Divider component for separating groups of actions in the DataTable Dropdown.
+ * Section component for separating groups of actions in the DataTable Dropdown.
  */
 const DataTableDropdownSection: React.FC<DataTableDropdownSectionProps> = ({
   children,
