@@ -206,6 +206,7 @@ export const DataTableRender = (args: any) => {
               icon={<EyeOffIcon />}
               label="Hide from store"
               onClick={() => handleBulkUpdateStatusClick(false)}
+              disabled
             />
           </DataTable.DropdownSection>
           <DataTable.DropdownDivider />

@@ -15,6 +15,10 @@ export interface DataTableDropdownActionProperties {
    * Click handler for the action.
    */
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  /**
+   * Whether the action is disabled.
+   */
+  disabled?: boolean;
 }
 
 export type DataTableDropdownActionProps = DataTableDropdownActionProperties &
