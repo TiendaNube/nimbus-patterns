@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 export interface SummaryStatsStatProperties {
   /**
@@ -25,6 +25,12 @@ export interface SummaryStatsStatProperties {
    * Tooltip content for the info icon. If provided, displays an info icon.
    */
   infoTooltip?: string;
+  /**
+   * Content to display when this stat is selected (for expandable variant).
+   * This content will be rendered in the expandable area below the stats row.
+   * @TJS-type React.ReactNode
+   */
+  children?: ReactNode;
 }
 
 export type SummaryStatsStatProps = SummaryStatsStatProperties &

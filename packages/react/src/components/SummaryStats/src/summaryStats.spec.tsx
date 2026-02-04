@@ -13,17 +13,18 @@ const makeSut = (props?: Partial<SummaryStatsProps>) => {
         description="Total Sales"
         trend="up"
         trendText="15%"
-      />
+      >
+        <div data-testid="expandable-content">Content here</div>
+      </SummaryStats.Stat>
       <SummaryStats.Stat
         id="stat-2"
         value="150"
         description="Orders"
         trend="down"
         trendText="8%"
-      />
-      <SummaryStats.Content>
-        <div data-testid="expandable-content">Content here</div>
-      </SummaryStats.Content>
+      >
+        <div data-testid="orders-content">Orders content</div>
+      </SummaryStats.Stat>
     </SummaryStats>
   );
 };

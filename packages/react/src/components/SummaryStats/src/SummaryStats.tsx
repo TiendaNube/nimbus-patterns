@@ -2,11 +2,7 @@ import React, { useState, useMemo, useCallback } from "react";
 
 import { Box } from "@nimbus-ds/components";
 
-import {
-  SummaryStatsStat,
-  SummaryStatsContent,
-  SummaryStatsCarousel,
-} from "./components";
+import { SummaryStatsStat, SummaryStatsCarousel } from "./components";
 import { SummaryStatsContext } from "./contexts";
 
 import {
@@ -63,6 +59,27 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
   const statChildren = React.Children.toArray(children).filter(
     (child) => React.isValidElement(child) && child.type === SummaryStatsStat
   );
+
+  // Find the selected stat's children (expanded content)
+  const selectedStatContent = useMemo(() => {
+    if (!expandable || !selectedId) return null;
+
+    const selectedStat = statChildren.find(
+      (child) =>
+        React.isValidElement(child) &&
+        (child.props as { id?: string }).id === selectedId
+    );
+
+    if (
+      selectedStat &&
+      React.isValidElement(selectedStat) &&
+      (selectedStat.props as { children?: React.ReactNode }).children
+    ) {
+      return (selectedStat.props as { children?: React.ReactNode }).children;
+    }
+
+    return null;
+  }, [expandable, selectedId, statChildren]);
 
   // Determine if carousel should be used on mobile
   // Only for horizontal layout with more than 3 items
@@ -133,26 +150,30 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
           <SummaryStatsCarousel>{statChildren}</SummaryStatsCarousel>
         )}
 
-        {/* Content area (inside the card) */}
-        {React.Children.map(children, (child) => {
-          if (
-            React.isValidElement(child) &&
-            child.type === SummaryStatsContent
-          ) {
-            return child;
-          }
-          return null;
-        })}
+        {/* Content area from selected Stat's children */}
+        {selectedStatContent && (
+          <Box
+            display="flex"
+            flexDirection="column"
+            padding="4"
+            margin="4"
+            borderStyle="dashed"
+            borderWidth="1"
+            borderColor="neutral-surfaceHighlight"
+            borderRadius="2"
+            backgroundColor="neutral-background"
+          >
+            {selectedStatContent}
+          </Box>
+        )}
       </Box>
     </SummaryStatsContext.Provider>
   );
 };
 
 SummaryStats.Stat = SummaryStatsStat;
-SummaryStats.Content = SummaryStatsContent;
 
 SummaryStats.displayName = "SummaryStats";
 SummaryStats.Stat.displayName = "SummaryStats.Stat";
-SummaryStats.Content.displayName = "SummaryStats.Content";
 
 export { SummaryStats };

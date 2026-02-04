@@ -49,66 +49,76 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
       {...rest}
       display="flex"
       flexDirection="column"
-      gap="1"
-      padding="4"
-      backgroundColor={isSelected ? "neutral-surface" : "neutral-background"}
+      padding={isSelected ? "2" : "none"}
+      backgroundColor="neutral-background"
       borderStyle="solid"
       borderWidth="none"
       borderBottomWidth={{ xs: "1", md: layout === "grid" ? "1" : "none" }}
-      borderColor={
-        isSelected ? "primary-interactive" : "neutral-surfaceHighlight"
-      }
+      borderColor="neutral-surfaceHighlight"
       flex="1"
-      cursor={expandable ? "pointer" : undefined}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      tabIndex={expandable ? 0 : undefined}
-      role={expandable ? "button" : undefined}
-      aria-expanded={expandable ? isSelected : undefined}
-      aria-label={
-        trend && trendText
-          ? `${description}: ${value}, ${trendConfig[trend].label} of ${trendText}`
-          : undefined
-      }
     >
-      {/* First row: Value + Trend + Chevron */}
-      <Box display="flex" alignItems="center" justifyContent="space-between">
-        <Box display="flex" alignItems="center" gap="1">
-          <Text fontSize="highlight" fontWeight="bold" color="neutral-textHigh">
-            {value}
-          </Text>
-          {trend && (
-            <SummaryStatsTrendIndicator trend={trend} text={trendText} />
+      <Box
+        display="flex"
+        flexDirection="column"
+        gap="1"
+        padding={isSelected ? "2" : "4"}
+        backgroundColor={isSelected ? "primary-surface" : "neutral-background"}
+        borderRadius={isSelected ? "2" : "none"}
+        cursor={expandable ? "pointer" : undefined}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        tabIndex={expandable ? 0 : undefined}
+        role={expandable ? "button" : undefined}
+        aria-expanded={expandable ? isSelected : undefined}
+        aria-label={
+          trend && trendText
+            ? `${description}: ${value}, ${trendConfig[trend].label} of ${trendText}`
+            : undefined
+        }
+      >
+        {/* First row: Value + Trend + Chevron */}
+        <Box display="flex" alignItems="center" justifyContent="space-between">
+          <Box display="flex" alignItems="center" gap="1">
+            <Text
+              fontSize="highlight"
+              fontWeight="bold"
+              color="neutral-textHigh"
+            >
+              {value}
+            </Text>
+            {trend && (
+              <SummaryStatsTrendIndicator trend={trend} text={trendText} />
+            )}
+          </Box>
+          {expandable && (
+            <Icon
+              source={
+                isSelected ? (
+                  <ChevronUpIcon size="small" />
+                ) : (
+                  <ChevronDownIcon size="small" />
+                )
+              }
+              color="neutral-textLow"
+            />
           )}
         </Box>
-        {expandable && (
-          <Icon
-            source={
-              isSelected ? (
-                <ChevronUpIcon size="small" />
-              ) : (
-                <ChevronDownIcon size="small" />
-              )
-            }
-            color="neutral-textLow"
-          />
-        )}
-      </Box>
 
-      {/* Second row: Description + Info icon */}
-      <Box display="flex" alignItems="center" gap="1">
-        <Text fontSize="caption" color="neutral-textLow">
-          {description}
-        </Text>
-        {infoTooltip && (
-          <Tooltip content={infoTooltip} position="top">
-            <Icon
-              source={<InfoCircleIcon size="small" />}
-              color="neutral-textLow"
-              cursor="pointer"
-            />
-          </Tooltip>
-        )}
+        {/* Second row: Description + Info icon */}
+        <Box display="flex" alignItems="center" gap="1">
+          <Text fontSize="caption" color="neutral-textLow">
+            {description}
+          </Text>
+          {infoTooltip && (
+            <Tooltip content={infoTooltip} position="top">
+              <Icon
+                source={<InfoCircleIcon size="small" />}
+                color="neutral-textLow"
+                cursor="pointer"
+              />
+            </Tooltip>
+          )}
+        </Box>
       </Box>
     </Box>
   );

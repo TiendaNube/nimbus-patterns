@@ -1,16 +1,15 @@
 import { HTMLAttributes, ReactNode } from "react";
 
-import { SummaryStatsStat, SummaryStatsContent } from "./components";
+import { SummaryStatsStat } from "./components";
 
 export interface SummaryStatsComponents {
   Stat: typeof SummaryStatsStat;
-  Content: typeof SummaryStatsContent;
 }
 
 export interface SummaryStatsProperties {
   /**
    * Content to be rendered inside the SummaryStats component.
-   * Typically composed of SummaryStats.Stat and SummaryStats.Content subcomponents.
+   * Composed of SummaryStats.Stat subcomponents.
    * @TJS-type React.ReactNode
    */
   children: ReactNode;

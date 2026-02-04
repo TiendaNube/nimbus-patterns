@@ -87,9 +87,11 @@ function MyComponent() {
 
 ### Expandable (Interactive)
 
+Each stat can have its own expanded content as children:
+
 ```tsx
 import { SummaryStats } from "@nimbus-ds/summary-stats";
-import { Box, Text } from "@nimbus-ds/components";
+import { Text } from "@nimbus-ds/components";
 
 function MyComponent() {
   return (
@@ -100,19 +102,18 @@ function MyComponent() {
         description="Total Sales"
         trend="up"
         trendText="15%"
-      />
+      >
+        <Text>Sales chart and detailed breakdown would go here.</Text>
+      </SummaryStats.Stat>
       <SummaryStats.Stat
         id="orders"
         value="156"
         description="Orders"
         trend="down"
         trendText="8%"
-      />
-      <SummaryStats.Content>
-        <Box padding="4">
-          <Text>Charts and detailed information go here</Text>
-        </Box>
-      </SummaryStats.Content>
+      >
+        <Text>Orders details and analytics would go here.</Text>
+      </SummaryStats.Stat>
     </SummaryStats>
   );
 }
@@ -122,31 +123,27 @@ function MyComponent() {
 
 ### SummaryStats
 
-| Prop              | Type                     | Default        | Description                                                        |
-| ----------------- | ------------------------ | -------------- | ------------------------------------------------------------------ |
-| children          | `ReactNode`              | -              | Content (typically `SummaryStats.Stat` and `SummaryStats.Content`) |
-| layout            | `"horizontal" \| "grid"` | `"horizontal"` | Layout variant: row or 2-column grid                               |
-| expandable        | `boolean`                | `false`        | Enables expandable mode where stats can be clicked                 |
-| defaultSelectedId | `string`                 | -              | ID of the initially selected stat (uncontrolled)                   |
-| selectedId        | `string`                 | -              | Controlled selected stat ID                                        |
-| onSelect          | `(id: string) => void`   | -              | Callback fired when a stat is selected                             |
+| Prop              | Type                     | Default        | Description                                             |
+| ----------------- | ------------------------ | -------------- | ------------------------------------------------------- |
+| children          | `ReactNode`              | -              | Content (composed of `SummaryStats.Stat` subcomponents) |
+| layout            | `"horizontal" \| "grid"` | `"horizontal"` | Layout variant: row or 2-column grid                    |
+| expandable        | `boolean`                | `false`        | Enables expandable mode where stats can be clicked      |
+| defaultSelectedId | `string`                 | -              | ID of the initially selected stat (uncontrolled)        |
+| selectedId        | `string`                 | -              | Controlled selected stat ID                             |
+| onSelect          | `(id: string) => void`   | -              | Callback fired when a stat is selected                  |
+| mobileLayout      | `"stack" \| "carousel"`  | `"carousel"`   | Mobile layout for horizontal with >3 items              |
 
 ### SummaryStats.Stat
 
-| Prop        | Type                          | Default | Description                                      |
-| ----------- | ----------------------------- | ------- | ------------------------------------------------ |
-| id          | `string`                      | -       | Unique identifier (required for expandable mode) |
-| value       | `string`                      | -       | The main value to display (required)             |
-| description | `string`                      | -       | Brief label text (required)                      |
-| trend       | `"up" \| "down" \| "neutral"` | -       | Trend indicator direction                        |
-| trendText   | `string`                      | -       | Text describing the trend (e.g., "15%")          |
-| infoTooltip | `string`                      | -       | Tooltip content for the info icon                |
-
-### SummaryStats.Content
-
-| Prop     | Type        | Description                                    |
-| -------- | ----------- | ---------------------------------------------- |
-| children | `ReactNode` | Content for the expandable area (charts, etc.) |
+| Prop        | Type                          | Default | Description                                       |
+| ----------- | ----------------------------- | ------- | ------------------------------------------------- |
+| id          | `string`                      | -       | Unique identifier (required for expandable mode)  |
+| value       | `string`                      | -       | The main value to display (required)              |
+| description | `string`                      | -       | Brief label text (required)                       |
+| trend       | `"up" \| "down" \| "neutral"` | -       | Trend indicator direction                         |
+| trendText   | `string`                      | -       | Text describing the trend (e.g., "15%")           |
+| infoTooltip | `string`                      | -       | Tooltip content for the info icon                 |
+| children    | `ReactNode`                   | -       | Expanded content shown when this stat is selected |
 
 ## Accessibility
 
