@@ -2,10 +2,6 @@ import { HTMLAttributes, ReactNode } from "react";
 
 export interface SummaryStatsStatProperties {
   /**
-   * Unique identifier for this stat (required for expandable variant).
-   */
-  id?: string;
-  /**
    * The main value to display (e.g., "$0.00", "156").
    */
   value: string;
@@ -26,12 +22,17 @@ export interface SummaryStatsStatProperties {
    */
   infoTooltip?: string;
   /**
-   * Content to display when this stat is selected (for expandable variant).
+   * Content to display when this stat is active (for expandable variant).
    * This content will be rendered in the expandable area below the stats row.
    * @TJS-type React.ReactNode
    */
   children?: ReactNode;
+  /**
+   * Internal prop injected by parent. Do not use directly.
+   * @internal
+   */
+  _index?: number;
 }
 
 export type SummaryStatsStatProps = SummaryStatsStatProperties &
-  Omit<HTMLAttributes<HTMLElement>, "color" | "id">;
+  Omit<HTMLAttributes<HTMLElement>, "color">;

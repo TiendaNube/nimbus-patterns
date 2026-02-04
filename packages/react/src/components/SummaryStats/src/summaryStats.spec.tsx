@@ -8,7 +8,6 @@ const makeSut = (props?: Partial<SummaryStatsProps>) => {
   render(
     <SummaryStats {...props} data-testid="summary-stats-element">
       <SummaryStats.Stat
-        id="stat-1"
         value="$1,000"
         description="Total Sales"
         trend="up"
@@ -17,7 +16,6 @@ const makeSut = (props?: Partial<SummaryStatsProps>) => {
         <div data-testid="expandable-content">Content here</div>
       </SummaryStats.Stat>
       <SummaryStats.Stat
-        id="stat-2"
         value="150"
         description="Orders"
         trend="down"
@@ -84,9 +82,18 @@ describe("GIVEN <SummaryStats />", () => {
       expect(screen.queryByTestId("expandable-content")).toBeNull();
     });
 
-    it("THEN should show content with defaultSelectedId", () => {
-      makeSut({ expandable: true, defaultSelectedId: "stat-1" });
+    it("THEN should switch between stats when clicking different ones", () => {
+      makeSut({ expandable: true });
+
+      // Click first stat
+      fireEvent.click(screen.getByText("$1,000"));
       expect(screen.getByTestId("expandable-content")).toBeDefined();
+      expect(screen.queryByTestId("orders-content")).toBeNull();
+
+      // Click second stat
+      fireEvent.click(screen.getByText("150"));
+      expect(screen.queryByTestId("expandable-content")).toBeNull();
+      expect(screen.getByTestId("orders-content")).toBeDefined();
     });
   });
 });

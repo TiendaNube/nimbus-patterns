@@ -1,12 +1,12 @@
 export interface SummaryStatsContextValue {
   /**
-   * The ID of the currently selected stat (for expandable variant).
+   * The index of the currently active stat (for expandable variant).
    */
-  selectedId: string | null;
+  activeIndex: number | null;
   /**
-   * Function to select a stat by ID.
+   * Function to toggle a stat by index.
    */
-  onSelect: (id: string) => void;
+  onToggle: (index: number) => void;
   /**
    * Whether the SummaryStats container is in expandable mode.
    */

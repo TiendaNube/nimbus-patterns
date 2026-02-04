@@ -26,18 +26,6 @@ export interface SummaryStatsProperties {
    */
   expandable?: boolean;
   /**
-   * The ID of the initially selected stat (for expandable variant).
-   */
-  defaultSelectedId?: string;
-  /**
-   * Controlled selected stat ID (for expandable variant).
-   */
-  selectedId?: string;
-  /**
-   * Callback fired when a stat is selected (for expandable variant).
-   */
-  onSelect?: (id: string) => void;
-  /**
    * Layout behavior on mobile devices when more than 3 items are present.
    * - "stack": Items stack vertically (default mobile behavior).
    * - "carousel": Items display in a horizontal carousel with swipe support.

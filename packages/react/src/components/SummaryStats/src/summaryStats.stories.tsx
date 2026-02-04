@@ -92,7 +92,6 @@ export const Expandable: Story = {
   render: (args) => (
     <SummaryStats {...args} expandable>
       <SummaryStats.Stat
-        id="sales"
         value="$12,450.00"
         trend="up"
         trendText="15%"
@@ -105,7 +104,6 @@ export const Expandable: Story = {
         </Text>
       </SummaryStats.Stat>
       <SummaryStats.Stat
-        id="orders"
         value="156"
         trend="down"
         trendText="8%"
@@ -117,7 +115,6 @@ export const Expandable: Story = {
         </Text>
       </SummaryStats.Stat>
       <SummaryStats.Stat
-        id="customers"
         value="89"
         trend="neutral"
         trendText="0%"
@@ -127,7 +124,6 @@ export const Expandable: Story = {
         <Text>Customers details: Unique customers who made a purchase.</Text>
       </SummaryStats.Stat>
       <SummaryStats.Stat
-        id="conversion"
         value="3.2%"
         trend="up"
         trendText="0.5%"
@@ -187,46 +183,6 @@ export const SixStats: Story = {
         description="Description"
         infoTooltip="Metric explanation"
       />
-    </SummaryStats>
-  ),
-};
-
-export const ExpandableWithDefaultSelected: Story = {
-  render: (args) => (
-    <SummaryStats {...args} expandable defaultSelectedId="orders">
-      <SummaryStats.Stat
-        id="sales"
-        value="$12,450.00"
-        trend="up"
-        trendText="15%"
-        description="Total Sales"
-      >
-        <Text>Sales details and charts would go here.</Text>
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
-        id="orders"
-        value="156"
-        trend="down"
-        trendText="8%"
-        description="Orders"
-      >
-        <Box display="flex" flexDirection="column" gap="2">
-          <Text fontWeight="bold">Orders Details</Text>
-          <Text>
-            This content is shown by default because defaultSelectedId is set to
-            orders.
-          </Text>
-        </Box>
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
-        id="customers"
-        value="89"
-        trend="up"
-        trendText="12%"
-        description="Customers"
-      >
-        <Text>Customers analytics would go here.</Text>
-      </SummaryStats.Stat>
     </SummaryStats>
   ),
 };
@@ -361,7 +317,6 @@ export const LayoutGridExpandable: Story = {
   render: (args) => (
     <SummaryStats {...args} layout="grid" expandable>
       <SummaryStats.Stat
-        id="sales"
         value="$12,450.00"
         trend="up"
         trendText="15%"
@@ -371,7 +326,6 @@ export const LayoutGridExpandable: Story = {
         <Text>Sales: Total revenue from all completed orders.</Text>
       </SummaryStats.Stat>
       <SummaryStats.Stat
-        id="orders"
         value="156"
         trend="down"
         trendText="8%"
@@ -381,7 +335,6 @@ export const LayoutGridExpandable: Story = {
         <Text>Orders: Number of orders placed in the period.</Text>
       </SummaryStats.Stat>
       <SummaryStats.Stat
-        id="customers"
         value="89"
         trend="up"
         trendText="12%"
@@ -391,7 +344,6 @@ export const LayoutGridExpandable: Story = {
         <Text>Customers: Unique customers who made a purchase.</Text>
       </SummaryStats.Stat>
       <SummaryStats.Stat
-        id="conversion"
         value="3.2%"
         trend="neutral"
         trendText="0%"
@@ -561,7 +513,6 @@ export const MobileCarouselExpandable: Story = {
   render: (args) => (
     <SummaryStats {...args} mobileLayout="carousel" expandable>
       <SummaryStats.Stat
-        id="sales"
         value="$12,450.00"
         trend="up"
         trendText="15%"
@@ -573,7 +524,6 @@ export const MobileCarouselExpandable: Story = {
         </Text>
       </SummaryStats.Stat>
       <SummaryStats.Stat
-        id="orders"
         value="156"
         trend="down"
         trendText="8%"
@@ -583,7 +533,6 @@ export const MobileCarouselExpandable: Story = {
         <Text>Orders details. Tap on any stat to see its content.</Text>
       </SummaryStats.Stat>
       <SummaryStats.Stat
-        id="customers"
         value="89"
         trend="neutral"
         trendText="0%"
@@ -593,7 +542,6 @@ export const MobileCarouselExpandable: Story = {
         <Text>Customers analytics and insights.</Text>
       </SummaryStats.Stat>
       <SummaryStats.Stat
-        id="conversion"
         value="3.2%"
         trend="up"
         trendText="0.5%"
@@ -614,7 +562,6 @@ export const ExpandableWithContentPerStat: Story = {
   render: (args) => (
     <SummaryStats {...args} expandable>
       <SummaryStats.Stat
-        id="sales"
         value="$12,450.00"
         trend="up"
         trendText="15%"
@@ -630,7 +577,6 @@ export const ExpandableWithContentPerStat: Story = {
         </Box>
       </SummaryStats.Stat>
       <SummaryStats.Stat
-        id="orders"
         value="156"
         trend="down"
         trendText="8%"
@@ -646,7 +592,6 @@ export const ExpandableWithContentPerStat: Story = {
         </Box>
       </SummaryStats.Stat>
       <SummaryStats.Stat
-        id="customers"
         value="89"
         trend="neutral"
         trendText="0%"
@@ -662,7 +607,6 @@ export const ExpandableWithContentPerStat: Story = {
         </Box>
       </SummaryStats.Stat>
       <SummaryStats.Stat
-        id="conversion"
         value="3.2%"
         trend="up"
         trendText="0.5%"
@@ -676,46 +620,6 @@ export const ExpandableWithContentPerStat: Story = {
             previous period, showing improved funnel performance.
           </Text>
         </Box>
-      </SummaryStats.Stat>
-    </SummaryStats>
-  ),
-};
-
-/**
- * Expandable with Content per Stat and default selected.
- */
-export const ExpandableContentPerStatWithDefault: Story = {
-  render: (args) => (
-    <SummaryStats {...args} expandable defaultSelectedId="orders">
-      <SummaryStats.Stat
-        id="sales"
-        value="$12,450.00"
-        trend="up"
-        trendText="15%"
-        description="Total Sales"
-      >
-        <Text>Sales chart and detailed breakdown would go here.</Text>
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
-        id="orders"
-        value="156"
-        trend="down"
-        trendText="8%"
-        description="Orders"
-      >
-        <Text>
-          Orders details are shown by default because defaultSelectedId is set
-          to orders. This content is specific to the Orders stat.
-        </Text>
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
-        id="customers"
-        value="89"
-        trend="up"
-        trendText="12%"
-        description="Customers"
-      >
-        <Text>Customer analytics and segments would go here.</Text>
       </SummaryStats.Stat>
     </SummaryStats>
   ),

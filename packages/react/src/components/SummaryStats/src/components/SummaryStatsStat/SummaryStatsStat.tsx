@@ -1,4 +1,4 @@
-import React, { useId } from "react";
+import React from "react";
 
 import { Box, Text, Icon, Tooltip } from "@nimbus-ds/components";
 import {
@@ -17,30 +17,32 @@ import { SummaryStatsStatProps } from "./summaryStatsStat.types";
 const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   className: _className,
   style: _style,
-  id: providedId,
   value,
   description,
   trend,
   trendText,
   infoTooltip,
+  _index,
   ...rest
 }: SummaryStatsStatProps) => {
-  const generatedId = useId();
-  const id = providedId ?? generatedId;
-  const { selectedId, onSelect, expandable, layout } =
+  const { activeIndex, onToggle, expandable, layout } =
     useSummaryStatsContext(false);
-  const isSelected = selectedId === id;
+  const isActive = _index !== undefined && activeIndex === _index;
 
   const handleClick = () => {
-    if (expandable) {
-      onSelect(id);
+    if (expandable && _index !== undefined) {
+      onToggle(_index);
     }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (expandable && (event.key === "Enter" || event.key === " ")) {
+    if (
+      expandable &&
+      _index !== undefined &&
+      (event.key === "Enter" || event.key === " ")
+    ) {
       event.preventDefault();
-      onSelect(id);
+      onToggle(_index);
     }
   };
 
@@ -49,7 +51,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
       {...rest}
       display="flex"
       flexDirection="column"
-      padding={isSelected ? "2" : "none"}
+      padding={isActive ? "2" : "none"}
       backgroundColor="neutral-background"
       borderStyle="solid"
       borderWidth="none"
@@ -61,15 +63,15 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
         display="flex"
         flexDirection="column"
         gap="1"
-        padding={isSelected ? "2" : "4"}
-        backgroundColor={isSelected ? "primary-surface" : "neutral-background"}
-        borderRadius={isSelected ? "2" : "none"}
+        padding={isActive ? "2" : "4"}
+        backgroundColor={isActive ? "primary-surface" : "neutral-background"}
+        borderRadius={isActive ? "2" : "none"}
         cursor={expandable ? "pointer" : undefined}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         tabIndex={expandable ? 0 : undefined}
         role={expandable ? "button" : undefined}
-        aria-expanded={expandable ? isSelected : undefined}
+        aria-expanded={expandable ? isActive : undefined}
         aria-label={
           trend && trendText
             ? `${description}: ${value}, ${trendConfig[trend].label} of ${trendText}`
@@ -93,7 +95,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
           {expandable && (
             <Icon
               source={
-                isSelected ? (
+                isActive ? (
                   <ChevronUpIcon size="small" />
                 ) : (
                   <ChevronDownIcon size="small" />

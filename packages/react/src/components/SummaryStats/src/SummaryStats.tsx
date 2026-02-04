@@ -16,43 +16,24 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
   children,
   layout = "horizontal",
   expandable = false,
-  defaultSelectedId,
-  selectedId: controlledSelectedId,
-  onSelect,
   mobileLayout = "carousel",
   ...rest
 }: SummaryStatsProps) => {
-  const [internalSelectedId, setInternalSelectedId] = useState<string | null>(
-    defaultSelectedId ?? null
-  );
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  // Use controlled value if provided, otherwise use internal state
-  const selectedId = controlledSelectedId ?? internalSelectedId;
-
-  const handleSelect = useCallback(
-    (id: string) => {
-      // Toggle selection: if already selected, deselect
-      const newSelectedId = selectedId === id ? null : id;
-
-      if (controlledSelectedId === undefined) {
-        setInternalSelectedId(newSelectedId);
-      }
-
-      if (onSelect && newSelectedId) {
-        onSelect(newSelectedId);
-      }
-    },
-    [selectedId, controlledSelectedId, onSelect]
-  );
+  const handleToggle = useCallback((index: number) => {
+    // Toggle: if already active, deactivate
+    setActiveIndex((current) => (current === index ? null : index));
+  }, []);
 
   const contextValue = useMemo(
     () => ({
-      selectedId,
-      onSelect: handleSelect,
+      activeIndex,
+      onToggle: handleToggle,
       expandable,
       layout,
     }),
-    [selectedId, handleSelect, expandable, layout]
+    [activeIndex, handleToggle, expandable, layout]
   );
 
   // Filter stat children for reuse
@@ -60,26 +41,22 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
     (child) => React.isValidElement(child) && child.type === SummaryStatsStat
   );
 
-  // Find the selected stat's children (expanded content)
-  const selectedStatContent = useMemo(() => {
-    if (!expandable || !selectedId) return null;
+  // Find the active stat's children (expanded content)
+  const activeStatContent = useMemo(() => {
+    if (!expandable || activeIndex === null) return null;
 
-    const selectedStat = statChildren.find(
-      (child) =>
-        React.isValidElement(child) &&
-        (child.props as { id?: string }).id === selectedId
-    );
+    const activeStat = statChildren[activeIndex];
 
     if (
-      selectedStat &&
-      React.isValidElement(selectedStat) &&
-      (selectedStat.props as { children?: React.ReactNode }).children
+      activeStat &&
+      React.isValidElement(activeStat) &&
+      (activeStat.props as { children?: React.ReactNode }).children
     ) {
-      return (selectedStat.props as { children?: React.ReactNode }).children;
+      return (activeStat.props as { children?: React.ReactNode }).children;
     }
 
     return null;
-  }, [expandable, selectedId, statChildren]);
+  }, [expandable, activeIndex, statChildren]);
 
   // Determine if carousel should be used on mobile
   // Only for horizontal layout with more than 3 items
@@ -120,12 +97,20 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
         >
           {statChildren.map((child, index) => {
             const key = React.isValidElement(child)
-              ? (child.props as { id?: string }).id ?? child.key
-              : null;
+              ? child.key ?? index
+              : index;
+
+            // Clone child to inject the index
+            const clonedChild = React.isValidElement(child)
+              ? React.cloneElement(child, { _index: index } as Record<
+                  string,
+                  unknown
+                >)
+              : child;
 
             return (
               <React.Fragment key={key}>
-                {child}
+                {clonedChild}
                 {/* Render vertical divider between items (not after last) for horizontal layout */}
                 {layout === "horizontal" && index < statChildren.length - 1 && (
                   <Box
@@ -152,12 +137,20 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
               <Box display="flex" gap="none">
                 {statChildren.map((child, index) => {
                   const key = React.isValidElement(child)
-                    ? (child.props as { id?: string }).id ?? child.key ?? index
+                    ? child.key ?? index
                     : index;
 
                   const itemCount = statChildren.length;
                   const visibleItems = Math.min(3, itemCount);
                   const itemWidthPercent = 100 / visibleItems;
+
+                  // Clone child to inject the index
+                  const clonedChild = React.isValidElement(child)
+                    ? React.cloneElement(child, { _index: index } as Record<
+                        string,
+                        unknown
+                      >)
+                    : child;
 
                   return (
                     <React.Fragment key={key}>
@@ -169,7 +162,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
                           minWidth: `${itemWidthPercent}%`,
                         }}
                       >
-                        {child}
+                        {clonedChild}
                       </Box>
                       {/* Render vertical divider between items (not after last) */}
                       {index < itemCount - 1 && (
@@ -194,8 +187,8 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
           </Box>
         )}
 
-        {/* Content area from selected Stat's children */}
-        {selectedStatContent && (
+        {/* Content area from active Stat's children */}
+        {activeStatContent && (
           <Box
             display="flex"
             flexDirection="column"
@@ -207,7 +200,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
             borderRadius="2"
             backgroundColor="neutral-background"
           >
-            {selectedStatContent}
+            {activeStatContent}
           </Box>
         )}
       </Box>
