@@ -394,3 +394,203 @@ export const LayoutGridExpandable: Story = {
     </SummaryStats>
   ),
 };
+
+/**
+ * Mobile Carousel Layout - Shows a horizontal carousel on mobile when more than 3 items.
+ * Resize the viewport to mobile to see the carousel behavior.
+ */
+export const MobileCarousel: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
+    },
+  },
+  render: (args) => (
+    <SummaryStats {...args} mobileLayout="carousel">
+      <SummaryStats.Stat
+        value="$12,450.00"
+        trend="up"
+        trendText="15%"
+        description="Total Sales"
+        infoTooltip="Total revenue"
+      />
+      <SummaryStats.Stat
+        value="156"
+        trend="down"
+        trendText="8%"
+        description="Orders"
+        infoTooltip="Number of orders"
+      />
+      <SummaryStats.Stat
+        value="89"
+        trend="neutral"
+        trendText="0%"
+        description="Customers"
+        infoTooltip="Unique customers"
+      />
+      <SummaryStats.Stat
+        value="3.2%"
+        trend="up"
+        trendText="0.5%"
+        description="Conversion Rate"
+        infoTooltip="Conversion percentage"
+      />
+    </SummaryStats>
+  ),
+};
+
+/**
+ * Mobile Carousel with 6 items - Demonstrates carousel with more items.
+ * Swipe horizontally to see all items.
+ */
+export const MobileCarouselSixItems: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
+    },
+  },
+  render: (args) => (
+    <SummaryStats {...args} mobileLayout="carousel">
+      <SummaryStats.Stat
+        value="$0.00"
+        trend="up"
+        trendText="0%"
+        description="Description"
+        infoTooltip="Metric explanation"
+      />
+      <SummaryStats.Stat
+        value="$0.00"
+        trend="up"
+        trendText="0%"
+        description="Description"
+        infoTooltip="Metric explanation"
+      />
+      <SummaryStats.Stat
+        value="$0.00"
+        trend="up"
+        trendText="0%"
+        description="Description"
+        infoTooltip="Metric explanation"
+      />
+      <SummaryStats.Stat
+        value="$0.00"
+        trend="up"
+        trendText="0%"
+        description="Description"
+        infoTooltip="Metric explanation"
+      />
+      <SummaryStats.Stat
+        value="$0.00"
+        trend="up"
+        trendText="0%"
+        description="Description"
+        infoTooltip="Metric explanation"
+      />
+      <SummaryStats.Stat
+        value="$0.00"
+        trend="up"
+        trendText="0%"
+        description="Description"
+        infoTooltip="Metric explanation"
+      />
+    </SummaryStats>
+  ),
+};
+
+/**
+ * Mobile Stack Layout - Disables carousel and stacks items vertically on mobile.
+ */
+export const MobileStack: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
+    },
+  },
+  render: (args) => (
+    <SummaryStats {...args} mobileLayout="stack">
+      <SummaryStats.Stat
+        value="$12,450.00"
+        trend="up"
+        trendText="15%"
+        description="Total Sales"
+        infoTooltip="Total revenue"
+      />
+      <SummaryStats.Stat
+        value="156"
+        trend="down"
+        trendText="8%"
+        description="Orders"
+        infoTooltip="Number of orders"
+      />
+      <SummaryStats.Stat
+        value="89"
+        trend="neutral"
+        trendText="0%"
+        description="Customers"
+        infoTooltip="Unique customers"
+      />
+      <SummaryStats.Stat
+        value="3.2%"
+        trend="up"
+        trendText="0.5%"
+        description="Conversion Rate"
+        infoTooltip="Conversion percentage"
+      />
+    </SummaryStats>
+  ),
+};
+
+/**
+ * Mobile Carousel with Expandable content.
+ */
+export const MobileCarouselExpandable: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
+    },
+  },
+  render: (args) => (
+    <SummaryStats {...args} mobileLayout="carousel" expandable>
+      <SummaryStats.Stat
+        id="sales"
+        value="$12,450.00"
+        trend="up"
+        trendText="15%"
+        description="Total Sales"
+        infoTooltip="Total revenue"
+      />
+      <SummaryStats.Stat
+        id="orders"
+        value="156"
+        trend="down"
+        trendText="8%"
+        description="Orders"
+        infoTooltip="Number of orders"
+      />
+      <SummaryStats.Stat
+        id="customers"
+        value="89"
+        trend="neutral"
+        trendText="0%"
+        description="Customers"
+        infoTooltip="Unique customers"
+      />
+      <SummaryStats.Stat
+        id="conversion"
+        value="3.2%"
+        trend="up"
+        trendText="0.5%"
+        description="Conversion Rate"
+        infoTooltip="Conversion percentage"
+      />
+      <SummaryStats.Content>
+        <Box padding="4">
+          <Text>
+            Tap on any stat above to see this content. Swipe horizontally to
+            navigate between stats.
+          </Text>
+        </Box>
+      </SummaryStats.Content>
+    </SummaryStats>
+  ),
+};

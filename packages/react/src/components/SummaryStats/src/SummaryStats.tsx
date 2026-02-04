@@ -2,7 +2,11 @@ import React, { useState, useMemo, useCallback } from "react";
 
 import { Box } from "@nimbus-ds/components";
 
-import { SummaryStatsStat, SummaryStatsContent } from "./components";
+import {
+  SummaryStatsStat,
+  SummaryStatsContent,
+  SummaryStatsCarousel,
+} from "./components";
 import { SummaryStatsContext } from "./contexts";
 
 import {
@@ -19,6 +23,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
   defaultSelectedId,
   selectedId: controlledSelectedId,
   onSelect,
+  mobileLayout = "carousel",
   ...rest
 }: SummaryStatsProps) => {
   const [internalSelectedId, setInternalSelectedId] = useState<string | null>(
@@ -54,6 +59,18 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
     [selectedId, handleSelect, expandable, layout]
   );
 
+  // Filter stat children for reuse
+  const statChildren = React.Children.toArray(children).filter(
+    (child) => React.isValidElement(child) && child.type === SummaryStatsStat
+  );
+
+  // Determine if carousel should be used on mobile
+  // Only for horizontal layout with more than 3 items
+  const shouldUseCarousel =
+    layout === "horizontal" &&
+    mobileLayout === "carousel" &&
+    statChildren.length > 3;
+
   return (
     <SummaryStatsContext.Provider value={contextValue}>
       {/* Card container with border and rounded corners */}
@@ -69,9 +86,13 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
         borderRadius="2"
         overflow="hidden"
       >
-        {/* Stats row */}
+        {/* Desktop stats row (always visible on md+, hidden on xs if carousel is used) */}
         <Box
-          display={layout === "grid" ? "grid" : "flex"}
+          display={
+            layout === "grid"
+              ? "grid"
+              : { xs: shouldUseCarousel ? "none" : "flex", md: "flex" }
+          }
           flexDirection={
             layout === "horizontal" ? { xs: "column", md: "row" } : undefined
           }
@@ -80,40 +101,37 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
             layout === "grid" ? { xs: "1fr", md: "1fr 1fr" } : undefined
           }
         >
-          {(() => {
-            const statChildren = React.Children.toArray(children).filter(
-              (child) =>
-                React.isValidElement(child) && child.type === SummaryStatsStat
+          {statChildren.map((child, index) => {
+            const key = React.isValidElement(child)
+              ? (child.props as { id?: string }).id ?? child.key
+              : null;
+
+            return (
+              <React.Fragment key={key}>
+                {child}
+                {/* Render vertical divider between items (not after last) for horizontal layout */}
+                {layout === "horizontal" && index < statChildren.length - 1 && (
+                  <Box
+                    display={{ xs: "none", md: "flex" }}
+                    alignItems="center"
+                    paddingY="2"
+                  >
+                    <Box
+                      backgroundColor="neutral-surfaceHighlight"
+                      width="1px"
+                      height="100%"
+                    />
+                  </Box>
+                )}
+              </React.Fragment>
             );
-
-            return statChildren.map((child, index) => {
-              const key = React.isValidElement(child)
-                ? (child.props as { id?: string }).id ?? child.key
-                : null;
-
-              return (
-                <React.Fragment key={key}>
-                  {child}
-                  {/* Render vertical divider between items (not after last) for horizontal layout */}
-                  {layout === "horizontal" &&
-                    index < statChildren.length - 1 && (
-                      <Box
-                        display={{ xs: "none", md: "flex" }}
-                        alignItems="center"
-                        paddingY="2"
-                      >
-                        <Box
-                          backgroundColor="neutral-surfaceHighlight"
-                          width="1px"
-                          height="100%"
-                        />
-                      </Box>
-                    )}
-                </React.Fragment>
-              );
-            });
-          })()}
+          })}
         </Box>
+
+        {/* Mobile carousel (only visible on xs when carousel is enabled) */}
+        {shouldUseCarousel && (
+          <SummaryStatsCarousel>{statChildren}</SummaryStatsCarousel>
+        )}
 
         {/* Content area (inside the card) */}
         {React.Children.map(children, (child) => {

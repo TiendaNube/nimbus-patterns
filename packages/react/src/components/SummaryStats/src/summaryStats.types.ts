@@ -38,6 +38,14 @@ export interface SummaryStatsProperties {
    * Callback fired when a stat is selected (for expandable variant).
    */
   onSelect?: (id: string) => void;
+  /**
+   * Layout behavior on mobile devices when more than 3 items are present.
+   * - "stack": Items stack vertically (default mobile behavior).
+   * - "carousel": Items display in a horizontal carousel with swipe support.
+   * Only applies to "horizontal" layout with more than 3 items.
+   * @default "carousel"
+   */
+  mobileLayout?: "stack" | "carousel";
 }
 
 export type SummaryStatsProps = SummaryStatsProperties &
