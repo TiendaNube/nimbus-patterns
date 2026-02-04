@@ -1,8 +1,8 @@
 import React, { useState, useMemo, useCallback } from "react";
 
-import { Box } from "@nimbus-ds/components";
+import { Box, ScrollPane } from "@nimbus-ds/components";
 
-import { SummaryStatsStat, SummaryStatsCarousel } from "./components";
+import { SummaryStatsStat } from "./components";
 import { SummaryStatsContext } from "./contexts";
 
 import {
@@ -145,9 +145,53 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
           })}
         </Box>
 
-        {/* Mobile carousel (only visible on xs when carousel is enabled) */}
+        {/* Mobile carousel using ScrollPane (only visible on xs when carousel is enabled) */}
         {shouldUseCarousel && (
-          <SummaryStatsCarousel>{statChildren}</SummaryStatsCarousel>
+          <Box display={{ xs: "block", md: "none" }}>
+            <ScrollPane enableGrabScroll>
+              <Box display="flex" gap="none">
+                {statChildren.map((child, index) => {
+                  const key = React.isValidElement(child)
+                    ? (child.props as { id?: string }).id ?? child.key ?? index
+                    : index;
+
+                  const itemCount = statChildren.length;
+                  const visibleItems = Math.min(3, itemCount);
+                  const itemWidthPercent = 100 / visibleItems;
+
+                  return (
+                    <React.Fragment key={key}>
+                      <Box
+                        display="flex"
+                        flexShrink="0"
+                        style={{
+                          width: `${itemWidthPercent}%`,
+                          minWidth: `${itemWidthPercent}%`,
+                        }}
+                      >
+                        {child}
+                      </Box>
+                      {/* Render vertical divider between items (not after last) */}
+                      {index < itemCount - 1 && (
+                        <Box
+                          display="flex"
+                          alignItems="center"
+                          paddingY="2"
+                          flexShrink="0"
+                        >
+                          <Box
+                            backgroundColor="neutral-surfaceHighlight"
+                            width="1px"
+                            height="100%"
+                          />
+                        </Box>
+                      )}
+                    </React.Fragment>
+                  );
+                })}
+              </Box>
+            </ScrollPane>
+          </Box>
         )}
 
         {/* Content area from selected Stat's children */}
