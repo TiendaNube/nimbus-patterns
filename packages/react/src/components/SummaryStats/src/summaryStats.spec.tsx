@@ -60,24 +60,19 @@ describe("GIVEN <SummaryStats />", () => {
     it("THEN should show content when a stat is clicked", () => {
       makeSut({ expandable: true });
 
-      // Content should not be visible initially
       expect(screen.queryByTestId("expandable-content")).toBeNull();
 
-      // Click on first stat
       fireEvent.click(screen.getByText("$1,000"));
 
-      // Content should now be visible
       expect(screen.getByTestId("expandable-content")).toBeDefined();
     });
 
     it("THEN should toggle selection on click", () => {
       makeSut({ expandable: true });
 
-      // Click to select
       fireEvent.click(screen.getByText("$1,000"));
       expect(screen.getByTestId("expandable-content")).toBeDefined();
 
-      // Click again to deselect
       fireEvent.click(screen.getByText("$1,000"));
       expect(screen.queryByTestId("expandable-content")).toBeNull();
     });
@@ -85,12 +80,10 @@ describe("GIVEN <SummaryStats />", () => {
     it("THEN should switch between stats when clicking different ones", () => {
       makeSut({ expandable: true });
 
-      // Click first stat
       fireEvent.click(screen.getByText("$1,000"));
       expect(screen.getByTestId("expandable-content")).toBeDefined();
       expect(screen.queryByTestId("orders-content")).toBeNull();
 
-      // Click second stat
       fireEvent.click(screen.getByText("150"));
       expect(screen.queryByTestId("expandable-content")).toBeNull();
       expect(screen.getByTestId("orders-content")).toBeDefined();

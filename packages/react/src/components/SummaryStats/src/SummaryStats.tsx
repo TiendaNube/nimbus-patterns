@@ -16,13 +16,11 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
   children,
   layout = "horizontal",
   expandable = false,
-  mobileLayout = "carousel",
   ...rest
 }: SummaryStatsProps) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const handleToggle = useCallback((index: number) => {
-    // Toggle: if already active, deactivate
     setActiveIndex((current) => (current === index ? null : index));
   }, []);
 
@@ -36,12 +34,10 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
     [activeIndex, handleToggle, expandable, layout]
   );
 
-  // Filter stat children for reuse
   const statChildren = React.Children.toArray(children).filter(
     (child) => React.isValidElement(child) && child.type === SummaryStatsStat
   );
 
-  // Find the active stat's children (expanded content)
   const activeStatContent = useMemo(() => {
     if (!expandable || activeIndex === null) return null;
 
@@ -58,16 +54,10 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
     return null;
   }, [expandable, activeIndex, statChildren]);
 
-  // Determine if carousel should be used on mobile
-  // Only for horizontal layout with more than 3 items
-  const shouldUseCarousel =
-    layout === "horizontal" &&
-    mobileLayout === "carousel" &&
-    statChildren.length > 3;
+  const shouldUseCarousel = statChildren.length > 3;
 
   return (
     <SummaryStatsContext.Provider value={contextValue}>
-      {/* Card container with border and rounded corners */}
       <Box
         {...rest}
         display="flex"
@@ -80,7 +70,6 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
         borderRadius="2"
         overflow="hidden"
       >
-        {/* Desktop stats row (always visible on md+, hidden on xs if carousel is used) */}
         <Box
           display={
             layout === "grid"
@@ -100,7 +89,6 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
               ? child.key ?? index
               : index;
 
-            // Clone child to inject the index
             const clonedChild = React.isValidElement(child)
               ? React.cloneElement(child, { _index: index } as Record<
                   string,
@@ -111,7 +99,6 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
             return (
               <React.Fragment key={key}>
                 {clonedChild}
-                {/* Render vertical divider between items (not after last) for horizontal layout */}
                 {layout === "horizontal" && index < statChildren.length - 1 && (
                   <Box
                     display={{ xs: "none", md: "flex" }}
@@ -130,7 +117,6 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
           })}
         </Box>
 
-        {/* Mobile carousel using ScrollPane (only visible on xs when carousel is enabled) */}
         {shouldUseCarousel && (
           <Box display={{ xs: "block", md: "none" }}>
             <ScrollPane enableGrabScroll>
@@ -144,7 +130,6 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
                   const visibleItems = Math.min(3, itemCount);
                   const itemWidthPercent = 100 / visibleItems;
 
-                  // Clone child to inject the index
                   const clonedChild = React.isValidElement(child)
                     ? React.cloneElement(child, { _index: index } as Record<
                         string,
@@ -164,7 +149,6 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
                       >
                         {clonedChild}
                       </Box>
-                      {/* Render vertical divider between items (not after last) */}
                       {index < itemCount - 1 && (
                         <Box
                           display="flex"
@@ -187,7 +171,6 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
           </Box>
         )}
 
-        {/* Content area from active Stat's children */}
         {activeStatContent && (
           <Box
             display="flex"

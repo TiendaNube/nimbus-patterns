@@ -367,7 +367,7 @@ export const MobileCarousel: Story = {
     },
   },
   render: (args) => (
-    <SummaryStats {...args} mobileLayout="carousel">
+    <SummaryStats {...args}>
       <SummaryStats.Stat
         value="$12,450.00"
         trend="up"
@@ -411,7 +411,7 @@ export const MobileCarouselSixItems: Story = {
     },
   },
   render: (args) => (
-    <SummaryStats {...args} mobileLayout="carousel">
+    <SummaryStats {...args}>
       <SummaryStats.Stat
         value="$0.00"
         trend="up"
@@ -453,49 +453,6 @@ export const MobileCarouselSixItems: Story = {
         trendText="0%"
         description="Description"
         infoTooltip="Metric explanation"
-      />
-    </SummaryStats>
-  ),
-};
-
-/**
- * Mobile Stack Layout - Disables carousel and stacks items vertically on mobile.
- */
-export const MobileStack: Story = {
-  parameters: {
-    viewport: {
-      defaultViewport: "mobile1",
-    },
-  },
-  render: (args) => (
-    <SummaryStats {...args} mobileLayout="stack">
-      <SummaryStats.Stat
-        value="$12,450.00"
-        trend="up"
-        trendText="15%"
-        description="Total Sales"
-        infoTooltip="Total revenue"
-      />
-      <SummaryStats.Stat
-        value="156"
-        trend="down"
-        trendText="8%"
-        description="Orders"
-        infoTooltip="Number of orders"
-      />
-      <SummaryStats.Stat
-        value="89"
-        trend="neutral"
-        trendText="0%"
-        description="Customers"
-        infoTooltip="Unique customers"
-      />
-      <SummaryStats.Stat
-        value="3.2%"
-        trend="up"
-        trendText="0.5%"
-        description="Conversion Rate"
-        infoTooltip="Conversion percentage"
       />
     </SummaryStats>
   ),
@@ -511,7 +468,7 @@ export const MobileCarouselExpandable: Story = {
     },
   },
   render: (args) => (
-    <SummaryStats {...args} mobileLayout="carousel" expandable>
+    <SummaryStats {...args} expandable>
       <SummaryStats.Stat
         value="$12,450.00"
         trend="up"

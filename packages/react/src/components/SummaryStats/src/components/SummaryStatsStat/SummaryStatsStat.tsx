@@ -78,7 +78,6 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
             : undefined
         }
       >
-        {/* First row: Value + Trend + Chevron */}
         <Box display="flex" alignItems="center" justifyContent="space-between">
           <Box display="flex" alignItems="center" gap="1">
             <Text
@@ -106,7 +105,6 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
           )}
         </Box>
 
-        {/* Second row: Description + Info icon */}
         <Box display="flex" alignItems="center" gap="1">
           <Text fontSize="caption" color="neutral-textLow">
             {description}

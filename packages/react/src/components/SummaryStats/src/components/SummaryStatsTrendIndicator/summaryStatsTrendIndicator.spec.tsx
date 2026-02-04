@@ -47,7 +47,6 @@ describe("GIVEN <SummaryStatsTrendIndicator />", () => {
       makeSut({ trend: "neutral" });
       const element = screen.getByTestId("trend-indicator-element");
       expect(element).toBeDefined();
-      // Neutral trend has no icon, so container should be empty without text
       expect(element.textContent).toBe("");
     });
   });

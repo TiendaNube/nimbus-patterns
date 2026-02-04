@@ -131,7 +131,6 @@ function MyComponent() {
 | defaultSelectedId | `string`                 | -              | ID of the initially selected stat (uncontrolled)        |
 | selectedId        | `string`                 | -              | Controlled selected stat ID                             |
 | onSelect          | `(id: string) => void`   | -              | Callback fired when a stat is selected                  |
-| mobileLayout      | `"stack" \| "carousel"`  | `"carousel"`   | Mobile layout for horizontal with >3 items              |
 
 ### SummaryStats.Stat
 

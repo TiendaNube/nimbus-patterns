@@ -65,7 +65,6 @@ describe("GIVEN <SummaryStatsStat />", () => {
         description: "Total Sales",
         infoTooltip: "This is a tooltip",
       });
-      // The tooltip trigger (info icon) should be present
       expect(screen.getByTestId("summary-stats-stat-element")).toBeDefined();
     });
   });
