@@ -73,7 +73,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
         <Box
           display={
             layout === "grid"
-              ? "grid"
+              ? { xs: shouldUseCarousel ? "none" : "grid", md: "grid" }
               : { xs: shouldUseCarousel ? "none" : "flex", md: "flex" }
           }
           flexDirection={
