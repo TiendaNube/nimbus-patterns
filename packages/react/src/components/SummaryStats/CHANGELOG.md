@@ -10,19 +10,15 @@ Summary Stats component is intended for displaying key statistics and metrics in
 - Added `layout` property to `SummaryStats` with two variants:
   - `horizontal`: Items in a single row (2-6 items recommended).
   - `grid`: Items in a 2-column grid layout (2 or 4 items recommended).
+- Added `expandable` property to `SummaryStats` to enable interactive mode where stats can be clicked to show additional content.
 - Added `SummaryStats.Stat` subcomponent with the following properties:
-  - `id`: Unique identifier for expandable mode.
   - `value`: The main numerical value to display.
   - `description`: Brief label text identifying the metric.
   - `trend`: Trend indicator (`up`, `down`, `neutral`) with colored arrows.
   - `trendText`: Text describing the trend percentage.
   - `infoTooltip`: Optional tooltip content for the info icon.
-- Added `SummaryStats.Content` subcomponent for expandable content area.
-- Added support for expandable/interactive variant with the following properties:
-  - `expandable`: Enables interactive mode.
-  - `defaultSelectedId`: Initial selected stat (uncontrolled).
-  - `selectedId`: Controlled selected stat.
-  - `onSelect`: Callback for selection changes.
+  - `children`: Content to display when this stat is active (for expandable variant).
+- Added mobile carousel support for more than 3 items with horizontal scrolling.
 - Added keyboard navigation support (Tab, Enter, Space) for accessibility.
 - Added ARIA attributes for screen reader support.
 - Added stories documentation for all components and variants.
