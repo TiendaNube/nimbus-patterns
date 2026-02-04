@@ -2,33 +2,17 @@ import React, { useId } from "react";
 
 import { Box, Text, Icon, Tooltip } from "@nimbus-ds/components";
 import {
-  ArrowupIcon,
-  ArrowDownIcon,
   ChevronDownIcon,
   ChevronUpIcon,
   InfoCircleIcon,
 } from "@nimbus-ds/icons";
 
 import { useSummaryStatsContext } from "../../contexts";
+import {
+  SummaryStatsTrendIndicator,
+  trendConfig,
+} from "../SummaryStatsTrendIndicator";
 import { SummaryStatsStatProps } from "./summaryStatsStat.types";
-
-const trendConfig = {
-  up: {
-    icon: ArrowupIcon,
-    color: "success-textLow" as const,
-    label: "increase",
-  },
-  down: {
-    icon: ArrowDownIcon,
-    color: "danger-textLow" as const,
-    label: "decrease",
-  },
-  neutral: {
-    icon: null,
-    color: "neutral-textLow" as const,
-    label: "no change",
-  },
-};
 
 const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   className: _className,
@@ -46,7 +30,6 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   const { selectedId, onSelect, expandable, layout } =
     useSummaryStatsContext(false);
   const isSelected = selectedId === id;
-  const trendInfo = trend ? trendConfig[trend] : null;
 
   const handleClick = () => {
     if (expandable) {
@@ -94,20 +77,8 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
           <Text fontSize="highlight" fontWeight="bold" color="neutral-textHigh">
             {value}
           </Text>
-          {trend && trendInfo && (
-            <Box display="flex" alignItems="center" gap="0-5">
-              {trendInfo.icon && (
-                <Icon
-                  source={<trendInfo.icon size="small" />}
-                  color={trendInfo.color}
-                />
-              )}
-              {trendText && (
-                <Text fontSize="caption" color={trendInfo.color}>
-                  {trendText}
-                </Text>
-              )}
-            </Box>
+          {trend && (
+            <SummaryStatsTrendIndicator trend={trend} text={trendText} />
           )}
         </Box>
         {expandable && (
