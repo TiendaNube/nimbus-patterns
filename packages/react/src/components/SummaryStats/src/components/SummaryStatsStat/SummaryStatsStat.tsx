@@ -78,7 +78,9 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
       borderBottomWidth={showBottomBorder}
       borderColor="neutral-surfaceHighlight"
       flex="1"
-      padding="2"
+      paddingLeft="2"
+      paddingRight={isLastStat ? "2" : undefined}
+      paddingY="2"
     >
       <Box
         display="flex"
@@ -148,7 +150,6 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
         </Box>
       </Box>
 
-      {/* Vertical separator - hidden on last stat, shown in mobile carousel */}
       {!isLastStat && (
         <Box
           display={isMobileCarousel ? "flex" : { xs: "none", md: "flex" }}
