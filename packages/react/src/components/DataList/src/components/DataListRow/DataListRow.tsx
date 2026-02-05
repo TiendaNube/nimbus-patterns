@@ -9,6 +9,7 @@ const DataListRow: React.FC<DataListRowProps> = ({
   style: _style,
   children,
   padding = "base",
+  paddingBottom = "base",
   topDivider = true,
   ...rest
 }: DataListRowProps) => (
@@ -21,6 +22,7 @@ const DataListRow: React.FC<DataListRowProps> = ({
     display="flex"
     flexDirection="column"
     padding={rowPadding[padding]}
+    paddingBottom={rowPadding[paddingBottom]}
     {...rest}
   >
     {children}

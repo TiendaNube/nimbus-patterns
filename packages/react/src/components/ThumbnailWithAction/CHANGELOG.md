@@ -4,9 +4,9 @@ The Thumbnail With Action pattern allows you to add interactive elements to imag
 
 ## 2026-01-15 `1.2.7`
 
-#### 📚 3rd party library updates
+#### 🎉 New features
 
-- Extends support to React 19. ([#138](https://github.com/TiendaNube/nimbus-patterns/pull/138) by [@joacotornello](https://github.com/joacotornello))
+- Allow `paddingBottom` prop to `DataList.Row` sub-component to allow custom padding bottom definition to rows. ([#141](https://github.com/TiendaNube/nimbus-patterns/pull/141) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2025-06-04 `1.2.6`
 

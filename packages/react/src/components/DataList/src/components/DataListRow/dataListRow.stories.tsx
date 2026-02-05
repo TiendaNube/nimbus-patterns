@@ -59,3 +59,9 @@ type Story = StoryObj<typeof DataList.Row>;
 export const base: Story = {
   args: {},
 };
+
+export const noPaddingBottom = {
+  args: {
+    paddingBottom: "none",
+  },
+};
