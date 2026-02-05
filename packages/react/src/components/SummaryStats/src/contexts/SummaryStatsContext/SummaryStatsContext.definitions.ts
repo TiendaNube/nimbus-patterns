@@ -10,4 +10,5 @@ export const initialSummaryStatsContextValue: SummaryStatsContextValue = {
   registerStat: () => {
     /* noop */
   },
+  statIds: [],
 };

@@ -26,11 +26,11 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   ...rest
 }: SummaryStatsStatProps) => {
   const id = useId();
-  const { activeId, onToggle, expandable, layout, registerStat } =
+  const { activeId, onToggle, expandable, layout, registerStat, statIds } =
     useSummaryStatsContext(false);
   const isActive = activeId === id;
+  const isLastStat = statIds.length > 0 && statIds[statIds.length - 1] === id;
 
-  // Register this stat and its expandable content
   useEffect(() => {
     registerStat(id, children);
   }, [id, children, registerStat]);
@@ -52,20 +52,22 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
     <Box
       {...rest}
       display="flex"
-      flexDirection="column"
-      padding={isActive ? "2" : "none"}
+      flexDirection="row"
+      alignItems="stretch"
       backgroundColor="neutral-background"
       borderStyle="solid"
       borderWidth="none"
       borderBottomWidth={{ xs: "1", md: layout === "grid" ? "1" : "none" }}
       borderColor="neutral-surfaceHighlight"
       flex="1"
+      padding="2"
     >
       <Box
         display="flex"
         flexDirection="column"
         gap="1"
-        padding={isActive ? "2" : "4"}
+        padding="2"
+        flex="1"
         backgroundColor={isActive ? "primary-surface" : "neutral-background"}
         borderRadius={isActive ? "2" : "none"}
         cursor={expandable ? "pointer" : undefined}
@@ -122,6 +124,22 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
           )}
         </Box>
       </Box>
+
+      {/* Vertical separator - hidden on last stat */}
+      {!isLastStat && (
+        <Box
+          display={{ xs: "none", md: "flex" }}
+          alignItems="center"
+          paddingY="2"
+          marginLeft="2"
+        >
+          <Box
+            width="1px"
+            height="100%"
+            backgroundColor="neutral-surfaceHighlight"
+          />
+        </Box>
+      )}
     </Box>
   );
 };

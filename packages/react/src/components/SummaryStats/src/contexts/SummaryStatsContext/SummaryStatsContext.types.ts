@@ -21,4 +21,8 @@ export interface SummaryStatsContextValue {
    * Registers a stat and its expandable content.
    */
   registerStat: (id: string, content: ReactNode) => void;
+  /**
+   * Array of registered stat IDs in order.
+   */
+  statIds: string[];
 }

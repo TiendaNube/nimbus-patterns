@@ -24,6 +24,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
   const [statsRegistry, setStatsRegistry] = useState<Map<string, ReactNode>>(
     new Map()
   );
+  const [statIds, setStatIds] = useState<string[]>([]);
 
   const handleToggle = useCallback((id: string) => {
     setActiveId((current) => (current === id ? null : id));
@@ -31,6 +32,10 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
 
   const registerStat = useCallback((id: string, content: ReactNode) => {
     setStatsRegistry((prev) => new Map(prev).set(id, content));
+    setStatIds((prev) => {
+      if (prev.includes(id)) return prev;
+      return [...prev, id];
+    });
   }, []);
 
   const activeContent = useMemo(() => {
@@ -45,8 +50,9 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
       expandable: isExpandable,
       layout,
       registerStat,
+      statIds,
     }),
-    [activeId, handleToggle, isExpandable, layout, registerStat]
+    [activeId, handleToggle, isExpandable, layout, registerStat, statIds]
   );
 
   return (
