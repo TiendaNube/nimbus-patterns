@@ -2,7 +2,7 @@
 
 DataList is a flexible list-style component that enables the organization of customizable row elements in a vertical manner, with visual separators between rows.
 
-## 2026-01-15 `1.3.0`
+## 2026-02-05 `1.3.0`
 
 #### 🎉 New features
 
