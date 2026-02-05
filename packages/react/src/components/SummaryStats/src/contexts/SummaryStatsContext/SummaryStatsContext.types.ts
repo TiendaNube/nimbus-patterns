@@ -1,12 +1,14 @@
+import { ReactNode } from "react";
+
 export interface SummaryStatsContextValue {
   /**
-   * The index of the currently active stat (for expandable variant).
+   * The id of the currently active stat (for expandable variant).
    */
-  activeIndex: number | null;
+  activeId: string | null;
   /**
-   * Function to toggle a stat by index.
+   * Function to toggle a stat by id.
    */
-  onToggle: (index: number) => void;
+  onToggle: (id: string) => void;
   /**
    * Whether the SummaryStats container is in expandable mode.
    */
@@ -15,4 +17,8 @@ export interface SummaryStatsContextValue {
    * The layout type of the SummaryStats container.
    */
   layout: "horizontal" | "grid";
+  /**
+   * Registers a stat and its expandable content.
+   */
+  registerStat: (id: string, content: ReactNode) => void;
 }

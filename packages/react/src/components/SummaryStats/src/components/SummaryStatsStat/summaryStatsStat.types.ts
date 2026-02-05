@@ -27,11 +27,6 @@ export interface SummaryStatsStatProperties {
    * @TJS-type React.ReactNode
    */
   children?: ReactNode;
-  /**
-   * Internal prop injected by parent. Do not use directly.
-   * @internal
-   */
-  _index?: number;
 }
 
 export type SummaryStatsStatProps = SummaryStatsStatProperties &

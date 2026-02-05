@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useId, useEffect } from "react";
 
 import { Box, Text, Icon, Tooltip } from "@nimbus-ds/components";
 import {
@@ -17,32 +17,34 @@ import { SummaryStatsStatProps } from "./summaryStatsStat.types";
 const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   className: _className,
   style: _style,
+  children,
   value,
   description,
   trend,
   trendText,
   infoTooltip,
-  _index,
   ...rest
 }: SummaryStatsStatProps) => {
-  const { activeIndex, onToggle, expandable, layout } =
+  const id = useId();
+  const { activeId, onToggle, expandable, layout, registerStat } =
     useSummaryStatsContext(false);
-  const isActive = _index !== undefined && activeIndex === _index;
+  const isActive = activeId === id;
+
+  // Register this stat and its expandable content
+  useEffect(() => {
+    registerStat(id, children);
+  }, [id, children, registerStat]);
 
   const handleClick = () => {
-    if (expandable && _index !== undefined) {
-      onToggle(_index);
+    if (expandable) {
+      onToggle(id);
     }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (
-      expandable &&
-      _index !== undefined &&
-      (event.key === "Enter" || event.key === " ")
-    ) {
+    if (expandable && (event.key === "Enter" || event.key === " ")) {
       event.preventDefault();
-      onToggle(_index);
+      onToggle(id);
     }
   };
 
