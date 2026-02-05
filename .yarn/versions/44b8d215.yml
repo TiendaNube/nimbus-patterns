@@ -1,9 +1,0 @@
-releases:
-  "@nimbus-ds/data-list": minor
-  "@nimbus-ds/interactive-list": patch
-  "@nimbus-ds/patterns": minor
-
-declined:
-  - nimbus-patterns
-  - "@nimbus-ds/data-table"
-  - "@nimbus-ds/menu"

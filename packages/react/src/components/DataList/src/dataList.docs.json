@@ -23,7 +23,7 @@
   "subComponents": [
     {
       "name": "DataList.Row",
-      "totalProps": 3,
+      "totalProps": 4,
       "props": [
         {
           "description": "Optional padding for the row.",
@@ -35,6 +35,18 @@
           ],
           "type": "string",
           "title": "padding",
+          "required": false
+        },
+        {
+          "description": "Optional padding bottom for the row.",
+          "default": "base",
+          "enum": [
+            "base",
+            "none",
+            "small"
+          ],
+          "type": "string",
+          "title": "paddingBottom",
           "required": false
         },
         {
