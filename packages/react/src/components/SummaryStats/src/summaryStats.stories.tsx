@@ -313,49 +313,6 @@ export const LayoutGridTwoItems: Story = {
   ),
 };
 
-export const LayoutGridExpandable: Story = {
-  render: (args) => (
-    <SummaryStats {...args} layout="grid" expandable>
-      <SummaryStats.Stat
-        value="$12,450.00"
-        trend="up"
-        trendText="15%"
-        description="Total Sales"
-        infoTooltip="Total revenue"
-      >
-        <Text>Sales: Total revenue from all completed orders.</Text>
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
-        value="156"
-        trend="down"
-        trendText="8%"
-        description="Orders"
-        infoTooltip="Number of orders"
-      >
-        <Text>Orders: Number of orders placed in the period.</Text>
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
-        value="89"
-        trend="up"
-        trendText="12%"
-        description="Customers"
-        infoTooltip="Unique customers"
-      >
-        <Text>Customers: Unique customers who made a purchase.</Text>
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
-        value="3.2%"
-        trend="neutral"
-        trendText="0%"
-        description="Conversion Rate"
-        infoTooltip="Conversion percentage"
-      >
-        <Text>Conversion: Grid layout is ideal for dashboard summaries.</Text>
-      </SummaryStats.Stat>
-    </SummaryStats>
-  ),
-};
-
 /**
  * Mobile Carousel Layout - Shows a horizontal carousel on mobile when more than 3 items.
  * Resize the viewport to mobile to see the carousel behavior.

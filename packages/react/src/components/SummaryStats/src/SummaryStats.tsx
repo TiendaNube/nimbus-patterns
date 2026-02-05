@@ -18,6 +18,8 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
   expandable = false,
   ...rest
 }: SummaryStatsProps) => {
+  const isExpandable = layout === "horizontal" && expandable;
+
   const [activeId, setActiveId] = useState<string | null>(null);
   const [statsRegistry, setStatsRegistry] = useState<Map<string, ReactNode>>(
     new Map()
@@ -32,19 +34,19 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
   }, []);
 
   const activeContent = useMemo(() => {
-    if (!expandable || activeId === null) return null;
+    if (!isExpandable || activeId === null) return null;
     return statsRegistry.get(activeId) ?? null;
-  }, [expandable, activeId, statsRegistry]);
+  }, [isExpandable, activeId, statsRegistry]);
 
   const contextValue = useMemo(
     () => ({
       activeId,
       onToggle: handleToggle,
-      expandable,
+      expandable: isExpandable,
       layout,
       registerStat,
     }),
-    [activeId, handleToggle, expandable, layout, registerStat]
+    [activeId, handleToggle, isExpandable, layout, registerStat]
   );
 
   return (
