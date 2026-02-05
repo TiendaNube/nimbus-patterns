@@ -5,3 +5,5 @@ releases:
 
 declined:
   - nimbus-patterns
+  - "@nimbus-ds/data-table"
+  - "@nimbus-ds/menu"
