@@ -11,4 +11,5 @@ export const initialSummaryStatsContextValue: SummaryStatsContextValue = {
     /* noop */
   },
   statIds: [],
+  isMobileCarousel: false,
 };

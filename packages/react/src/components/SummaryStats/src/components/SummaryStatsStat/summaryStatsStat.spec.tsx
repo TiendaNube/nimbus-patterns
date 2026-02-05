@@ -5,6 +5,12 @@ import { SummaryStats } from "../../SummaryStats";
 import { SummaryStatsStat } from "./SummaryStatsStat";
 import { SummaryStatsStatProps } from "./summaryStatsStat.types";
 
+global.ResizeObserver = jest.fn().mockImplementation(() => ({
+  observe: jest.fn(),
+  unobserve: jest.fn(),
+  disconnect: jest.fn(),
+}));
+
 const makeSut = (props: SummaryStatsStatProps) => {
   render(
     <SummaryStats>
@@ -17,8 +23,10 @@ describe("GIVEN <SummaryStatsStat />", () => {
   describe("WHEN rendered with required props", () => {
     it("THEN should render value and description correctly", () => {
       makeSut({ value: "$1,000", description: "Total Sales" });
-      expect(screen.getByText("$1,000")).toBeDefined();
-      expect(screen.getByText("Total Sales")).toBeDefined();
+      expect(screen.getAllByText("$1,000").length).toBeGreaterThanOrEqual(1);
+      expect(screen.getAllByText("Total Sales").length).toBeGreaterThanOrEqual(
+        1
+      );
     });
   });
 
@@ -30,7 +38,7 @@ describe("GIVEN <SummaryStatsStat />", () => {
         trend: "up",
         trendText: "15%",
       });
-      expect(screen.getByText("15%")).toBeDefined();
+      expect(screen.getAllByText("15%").length).toBeGreaterThanOrEqual(1);
     });
   });
 
@@ -42,7 +50,7 @@ describe("GIVEN <SummaryStatsStat />", () => {
         trend: "down",
         trendText: "8%",
       });
-      expect(screen.getByText("8%")).toBeDefined();
+      expect(screen.getAllByText("8%").length).toBeGreaterThanOrEqual(1);
     });
   });
 
@@ -54,7 +62,7 @@ describe("GIVEN <SummaryStatsStat />", () => {
         trend: "neutral",
         trendText: "0%",
       });
-      expect(screen.getByText("0%")).toBeDefined();
+      expect(screen.getAllByText("0%").length).toBeGreaterThanOrEqual(1);
     });
   });
 
@@ -65,7 +73,9 @@ describe("GIVEN <SummaryStatsStat />", () => {
         description: "Total Sales",
         infoTooltip: "This is a tooltip",
       });
-      expect(screen.getByTestId("summary-stats-stat-element")).toBeDefined();
+      expect(
+        screen.getAllByTestId("summary-stats-stat-element").length
+      ).toBeGreaterThanOrEqual(1);
     });
   });
 });

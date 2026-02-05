@@ -25,4 +25,8 @@ export interface SummaryStatsContextValue {
    * Array of registered stat IDs in order.
    */
   statIds: string[];
+  /**
+   * Whether the stats are displayed in mobile carousel mode.
+   */
+  isMobileCarousel: boolean;
 }

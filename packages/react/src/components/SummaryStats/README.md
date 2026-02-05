@@ -76,7 +76,7 @@ function MyComponent() {
       />
       <SummaryStats.Stat
         value="3.2%"
-        description="Conversion Rate"
+        description="Conversion"
         trend="neutral"
         trendText="0%"
       />

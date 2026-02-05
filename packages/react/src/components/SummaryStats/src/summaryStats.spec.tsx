@@ -4,6 +4,12 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { SummaryStats } from "./SummaryStats";
 import { SummaryStatsProps } from "./summaryStats.types";
 
+global.ResizeObserver = jest.fn().mockImplementation(() => ({
+  observe: jest.fn(),
+  unobserve: jest.fn(),
+  disconnect: jest.fn(),
+}));
+
 const makeSut = (props?: Partial<SummaryStatsProps>) => {
   render(
     <SummaryStats {...props} data-testid="summary-stats-element">
@@ -31,10 +37,12 @@ describe("GIVEN <SummaryStats />", () => {
   describe("WHEN rendered", () => {
     it("THEN should render stats correctly", () => {
       makeSut();
-      expect(screen.getByText("$1,000")).toBeDefined();
-      expect(screen.getByText("Total Sales")).toBeDefined();
-      expect(screen.getByText("150")).toBeDefined();
-      expect(screen.getByText("Orders")).toBeDefined();
+      expect(screen.getAllByText("$1,000").length).toBeGreaterThanOrEqual(1);
+      expect(screen.getAllByText("Total Sales").length).toBeGreaterThanOrEqual(
+        1
+      );
+      expect(screen.getAllByText("150").length).toBeGreaterThanOrEqual(1);
+      expect(screen.getAllByText("Orders").length).toBeGreaterThanOrEqual(1);
     });
 
     it("THEN should render the container with correct test id", () => {
@@ -44,8 +52,8 @@ describe("GIVEN <SummaryStats />", () => {
 
     it("THEN should render trend indicators", () => {
       makeSut();
-      expect(screen.getByText("15%")).toBeDefined();
-      expect(screen.getByText("8%")).toBeDefined();
+      expect(screen.getAllByText("15%").length).toBeGreaterThanOrEqual(1);
+      expect(screen.getAllByText("8%").length).toBeGreaterThanOrEqual(1);
     });
   });
 
@@ -62,7 +70,7 @@ describe("GIVEN <SummaryStats />", () => {
 
       expect(screen.queryByTestId("expandable-content")).toBeNull();
 
-      fireEvent.click(screen.getByText("$1,000"));
+      fireEvent.click(screen.getAllByText("$1,000")[0]);
 
       expect(screen.getByTestId("expandable-content")).toBeDefined();
     });
@@ -70,21 +78,21 @@ describe("GIVEN <SummaryStats />", () => {
     it("THEN should toggle selection on click", () => {
       makeSut({ expandable: true });
 
-      fireEvent.click(screen.getByText("$1,000"));
+      fireEvent.click(screen.getAllByText("$1,000")[0]);
       expect(screen.getByTestId("expandable-content")).toBeDefined();
 
-      fireEvent.click(screen.getByText("$1,000"));
+      fireEvent.click(screen.getAllByText("$1,000")[0]);
       expect(screen.queryByTestId("expandable-content")).toBeNull();
     });
 
     it("THEN should switch between stats when clicking different ones", () => {
       makeSut({ expandable: true });
 
-      fireEvent.click(screen.getByText("$1,000"));
+      fireEvent.click(screen.getAllByText("$1,000")[0]);
       expect(screen.getByTestId("expandable-content")).toBeDefined();
       expect(screen.queryByTestId("orders-content")).toBeNull();
 
-      fireEvent.click(screen.getByText("150"));
+      fireEvent.click(screen.getAllByText("150")[0]);
       expect(screen.queryByTestId("expandable-content")).toBeNull();
       expect(screen.getByTestId("orders-content")).toBeDefined();
     });

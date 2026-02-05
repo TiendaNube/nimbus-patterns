@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Text } from "@nimbus-ds/components";
+import { Text } from "@nimbus-ds/components";
 
 import { SummaryStats } from "./SummaryStats";
 
@@ -43,7 +43,7 @@ export const Basic: Story = {
         value="3.2%"
         trend="up"
         trendText="0.5%"
-        description="Conversion Rate"
+        description="Conversion"
       />
     </SummaryStats>
   ),
@@ -81,7 +81,7 @@ export const WithInfoTooltip: Story = {
         value="3.2%"
         trend="up"
         trendText="0.5%"
-        description="Conversion Rate"
+        description="Conversion"
         infoTooltip="Percentage of visitors who completed a purchase"
       />
     </SummaryStats>
@@ -127,7 +127,7 @@ export const Expandable: Story = {
         value="3.2%"
         trend="up"
         trendText="0.5%"
-        description="Conversion Rate"
+        description="Conversion"
         infoTooltip="Visitors who completed a purchase"
       >
         <Text>
@@ -215,7 +215,7 @@ export const WithDownTrends: Story = {
         value="1.8%"
         trend="down"
         trendText="0.8%"
-        description="Conversion Rate"
+        description="Conversion"
         infoTooltip="Lower conversion this month"
       />
     </SummaryStats>
@@ -350,66 +350,8 @@ export const MobileCarousel: Story = {
         value="3.2%"
         trend="up"
         trendText="0.5%"
-        description="Conversion Rate"
+        description="Conversion"
         infoTooltip="Conversion percentage"
-      />
-    </SummaryStats>
-  ),
-};
-
-/**
- * Mobile Carousel with 6 items - Demonstrates carousel with more items.
- * Swipe horizontally to see all items.
- */
-export const MobileCarouselSixItems: Story = {
-  parameters: {
-    viewport: {
-      defaultViewport: "mobile1",
-    },
-  },
-  render: (args) => (
-    <SummaryStats {...args}>
-      <SummaryStats.Stat
-        value="$0.00"
-        trend="up"
-        trendText="0%"
-        description="Description"
-        infoTooltip="Metric explanation"
-      />
-      <SummaryStats.Stat
-        value="$0.00"
-        trend="up"
-        trendText="0%"
-        description="Description"
-        infoTooltip="Metric explanation"
-      />
-      <SummaryStats.Stat
-        value="$0.00"
-        trend="up"
-        trendText="0%"
-        description="Description"
-        infoTooltip="Metric explanation"
-      />
-      <SummaryStats.Stat
-        value="$0.00"
-        trend="up"
-        trendText="0%"
-        description="Description"
-        infoTooltip="Metric explanation"
-      />
-      <SummaryStats.Stat
-        value="$0.00"
-        trend="up"
-        trendText="0%"
-        description="Description"
-        infoTooltip="Metric explanation"
-      />
-      <SummaryStats.Stat
-        value="$0.00"
-        trend="up"
-        trendText="0%"
-        description="Description"
-        infoTooltip="Metric explanation"
       />
     </SummaryStats>
   ),
@@ -459,81 +401,10 @@ export const MobileCarouselExpandable: Story = {
         value="3.2%"
         trend="up"
         trendText="0.5%"
-        description="Conversion Rate"
+        description="Conversion"
         infoTooltip="Conversion percentage"
       >
         <Text>Conversion rate breakdown and trends.</Text>
-      </SummaryStats.Stat>
-    </SummaryStats>
-  ),
-};
-
-/**
- * Expandable with Content per Stat - Each stat has its own expanded content.
- * This is the recommended API for expandable stats.
- */
-export const ExpandableWithContentPerStat: Story = {
-  render: (args) => (
-    <SummaryStats {...args} expandable>
-      <SummaryStats.Stat
-        value="$12,450.00"
-        trend="up"
-        trendText="15%"
-        description="Total Sales"
-        infoTooltip="Total revenue from all completed orders"
-      >
-        <Box display="flex" flexDirection="column" gap="2">
-          <Text fontWeight="bold">Sales Details</Text>
-          <Text>
-            Total revenue generated from all completed orders in the selected
-            period. This includes all payment methods and excludes refunds.
-          </Text>
-        </Box>
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
-        value="156"
-        trend="down"
-        trendText="8%"
-        description="Orders"
-        infoTooltip="Number of orders placed"
-      >
-        <Box display="flex" flexDirection="column" gap="2">
-          <Text fontWeight="bold">Orders Details</Text>
-          <Text>
-            Total number of orders placed during the selected period. Down 8%
-            compared to the previous period.
-          </Text>
-        </Box>
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
-        value="89"
-        trend="neutral"
-        trendText="0%"
-        description="Customers"
-        infoTooltip="Unique customers"
-      >
-        <Box display="flex" flexDirection="column" gap="2">
-          <Text fontWeight="bold">Customers Details</Text>
-          <Text>
-            Number of unique customers who made a purchase. No change from the
-            previous period.
-          </Text>
-        </Box>
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
-        value="3.2%"
-        trend="up"
-        trendText="0.5%"
-        description="Conversion Rate"
-        infoTooltip="Visitors who completed a purchase"
-      >
-        <Box display="flex" flexDirection="column" gap="2">
-          <Text fontWeight="bold">Conversion Rate Details</Text>
-          <Text>
-            Percentage of visitors who completed a purchase. Up 0.5% from the
-            previous period, showing improved funnel performance.
-          </Text>
-        </Box>
       </SummaryStats.Stat>
     </SummaryStats>
   ),

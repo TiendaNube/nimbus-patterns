@@ -26,8 +26,15 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   ...rest
 }: SummaryStatsStatProps) => {
   const id = useId();
-  const { activeId, onToggle, expandable, layout, registerStat, statIds } =
-    useSummaryStatsContext(false);
+  const {
+    activeId,
+    onToggle,
+    expandable,
+    layout,
+    registerStat,
+    statIds,
+    isMobileCarousel,
+  } = useSummaryStatsContext(false);
   const isActive = activeId === id;
   const isLastStat = statIds.length > 0 && statIds[statIds.length - 1] === id;
 
@@ -48,6 +55,17 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
     }
   };
 
+  // In mobile carousel mode, don't show bottom border (show separator instead)
+  const showBottomBorder = isMobileCarousel
+    ? {
+        xs: "none" as const,
+        md: layout === "grid" ? ("1" as const) : ("none" as const),
+      }
+    : {
+        xs: "1" as const,
+        md: layout === "grid" ? ("1" as const) : ("none" as const),
+      };
+
   return (
     <Box
       {...rest}
@@ -57,7 +75,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
       backgroundColor="neutral-background"
       borderStyle="solid"
       borderWidth="none"
-      borderBottomWidth={{ xs: "1", md: layout === "grid" ? "1" : "none" }}
+      borderBottomWidth={showBottomBorder}
       borderColor="neutral-surfaceHighlight"
       flex="1"
       padding="2"
@@ -82,7 +100,12 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
             : undefined
         }
       >
-        <Box display="flex" alignItems="center" justifyContent="space-between">
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          gap="2"
+        >
           <Box display="flex" alignItems="center" gap="1">
             <Text
               fontSize="highlight"
@@ -125,10 +148,10 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
         </Box>
       </Box>
 
-      {/* Vertical separator - hidden on last stat */}
+      {/* Vertical separator - hidden on last stat, shown in mobile carousel */}
       {!isLastStat && (
         <Box
-          display={{ xs: "none", md: "flex" }}
+          display={isMobileCarousel ? "flex" : { xs: "none", md: "flex" }}
           alignItems="center"
           paddingY="2"
           marginLeft="2"

@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback, ReactNode } from "react";
 
-import { Box } from "@nimbus-ds/components";
+import { Box, ScrollPane } from "@nimbus-ds/components";
 
 import { SummaryStatsStat } from "./components";
 import { SummaryStatsContext } from "./contexts";
@@ -43,6 +43,8 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
     return statsRegistry.get(activeId) ?? null;
   }, [isExpandable, activeId, statsRegistry]);
 
+  const isMobileCarousel = layout === "horizontal";
+
   const contextValue = useMemo(
     () => ({
       activeId,
@@ -51,8 +53,17 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
       layout,
       registerStat,
       statIds,
+      isMobileCarousel,
     }),
-    [activeId, handleToggle, isExpandable, layout, registerStat, statIds]
+    [
+      activeId,
+      handleToggle,
+      isExpandable,
+      layout,
+      registerStat,
+      statIds,
+      isMobileCarousel,
+    ]
   );
 
   return (
@@ -69,18 +80,35 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
         borderRadius="2"
         overflow="hidden"
       >
-        <Box
-          display={layout === "grid" ? "grid" : "flex"}
-          flexDirection={
-            layout === "horizontal" ? { xs: "column", md: "row" } : undefined
-          }
-          alignItems="stretch"
-          gridTemplateColumns={
-            layout === "grid" ? { xs: "1fr", md: "1fr 1fr" } : undefined
-          }
-        >
-          {children}
-        </Box>
+        {layout === "grid" && (
+          <Box
+            display="grid"
+            alignItems="stretch"
+            gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr" }}
+          >
+            {children}
+          </Box>
+        )}
+
+        {layout === "horizontal" && (
+          <Box display={{ xs: "block", md: "none" }}>
+            <ScrollPane showGradients enableGrabScroll>
+              <Box display="flex" flexDirection="row" alignItems="stretch">
+                {children}
+              </Box>
+            </ScrollPane>
+          </Box>
+        )}
+
+        {layout === "horizontal" && (
+          <Box
+            display={{ xs: "none", md: "flex" }}
+            flexDirection="row"
+            alignItems="stretch"
+          >
+            {children}
+          </Box>
+        )}
 
         {activeContent && (
           <Box
