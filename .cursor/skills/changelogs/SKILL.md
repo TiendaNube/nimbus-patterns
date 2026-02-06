@@ -59,7 +59,7 @@ Determine the change type based on commit messages and diff:
 
 #### <emoji> <category>
 
-- <Summary of the change>. ([#PR](https://github.com/TiendaNube/nimbus-design-system/pull/PR) by [@contributor](https://github.com/contributor))
+- <Summary of the change>. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@contributor](https://github.com/contributor))
 ```
 
 **Writing Guidelines:**
