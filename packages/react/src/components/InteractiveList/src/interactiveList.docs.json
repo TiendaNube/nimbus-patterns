@@ -3,7 +3,7 @@
   "name": "InteractiveList",
   "totalProps": 2,
   "packageName": "@nimbus-ds/interactive-list",
-  "version": "1.3.8",
+  "version": "1.3.9",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/interactive-list",
   "props": [
     {
