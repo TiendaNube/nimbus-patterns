@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-02-06 `1.31.0`
+
+#### 🎉 New features
+
+- Added auto-close behavior to `DataTable.Dropdown` when an action is clicked. ([#143](https://github.com/TiendaNube/nimbus-patterns/pull/143) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2026-02-05 `1.30.0`
 
 #### 🎉 New features

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import { Box, Icon, Text } from "@nimbus-ds/components";
 
+import { useDataTableDropdownContext } from "../DataTableDropdown";
 import { DataTableDropdownActionProps } from "./dataTableDropdownAction.types";
 
 /**
  * Action item for the DataTable Dropdown component.
  * Renders a clickable button with an optional icon and label.
+ * Hides the parent dropdown before firing the provided onClick handler.
  */
 const DataTableDropdownAction: React.FC<DataTableDropdownActionProps> = ({
   icon,
@@ -15,7 +17,16 @@ const DataTableDropdownAction: React.FC<DataTableDropdownActionProps> = ({
   disabled,
   ...rest
 }: DataTableDropdownActionProps) => {
+  const { setDropdownVisibility } = useDataTableDropdownContext();
   const textColor = disabled ? "neutral-textDisabled" : "neutral-textHigh";
+
+  const handleClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      setDropdownVisibility(false);
+      onClick?.(event);
+    },
+    [onClick, setDropdownVisibility]
+  );
 
   return (
     <Box
@@ -43,7 +54,7 @@ const DataTableDropdownAction: React.FC<DataTableDropdownActionProps> = ({
       transitionDuration="fast"
       transitionProperty="background-color"
       transitionTimingFunction="ease-in-out"
-      onClick={onClick}
+      onClick={handleClick}
     >
       {icon && <Icon source={icon} color={textColor} />}
       <Text color={textColor} fontSize="base" lineHeight="base">
