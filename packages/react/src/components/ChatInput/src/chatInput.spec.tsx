@@ -19,13 +19,15 @@ describe("GIVEN <ChatInput />", () => {
     expect(screen.getByPlaceholderText("Type...")).toBeDefined();
   });
 
-  it("SHOULD render Actions with custom layout props", () => {
+  it("SHOULD render Actions with custom layout props forwarded to Box", () => {
     render(
       <ChatInput>
         <ChatInput.Actions
           justifyContent="flex-end"
           alignItems="flex-start"
           gap="2"
+          pb="1"
+          px="2"
           data-testid="custom-actions"
         >
           <div>action1</div>
@@ -33,8 +35,17 @@ describe("GIVEN <ChatInput />", () => {
         </ChatInput.Actions>
       </ChatInput>
     );
+    const actionsEl = screen.getByTestId("custom-actions");
+    expect(actionsEl).toBeDefined();
     expect(screen.getByText("action1")).toBeDefined();
     expect(screen.getByText("action2")).toBeDefined();
-    expect(screen.getByTestId("custom-actions")).toBeDefined();
+
+    // Verify custom layout props generate the expected atomic CSS classes
+    const classes = actionsEl.getAttribute("class") ?? "";
+    expect(classes).toContain("justifyContent");
+    expect(classes).toContain("alignItems");
+    expect(classes).toContain("gap");
+    expect(classes).toContain("paddingBottom");
+    expect(classes).toContain("paddingLeft");
   });
 });
