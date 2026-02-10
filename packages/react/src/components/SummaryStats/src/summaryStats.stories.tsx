@@ -1,8 +1,18 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Text } from "@nimbus-ds/components";
+import { Box } from "@nimbus-ds/components";
 
 import { SummaryStats } from "./SummaryStats";
+
+const ChartMockup: React.FC<{
+  color: "neutral-textLow" | "success-interactive" | "danger-interactive";
+}> = ({ color = "neutral-textLow" }) => (
+  <Box display="flex" alignItems="flex-end" gap="1" height="300px">
+    {[40, 65, 45, 80, 55, 70, 90, 60, 75, 85, 50, 95].map((height) => (
+      <Box width="100%" height={`${height}%`} backgroundColor={color} />
+    ))}
+  </Box>
+);
 
 const meta: Meta<typeof SummaryStats> = {
   title: "Patterns/SummaryStats",
@@ -98,10 +108,7 @@ export const Expandable: Story = {
         description="Total Sales"
         infoTooltip="Total revenue from all completed orders"
       >
-        <Text>
-          Sales details: Total revenue from all completed orders in the selected
-          period.
-        </Text>
+        <ChartMockup color="success-interactive" />
       </SummaryStats.Stat>
       <SummaryStats.Stat
         value="156"
@@ -110,9 +117,7 @@ export const Expandable: Story = {
         description="Orders"
         infoTooltip="Number of orders placed"
       >
-        <Text>
-          Orders details: Number of orders placed in the selected period.
-        </Text>
+        <ChartMockup color="danger-interactive" />
       </SummaryStats.Stat>
       <SummaryStats.Stat
         value="89"
@@ -121,7 +126,7 @@ export const Expandable: Story = {
         description="Customers"
         infoTooltip="Unique customers"
       >
-        <Text>Customers details: Unique customers who made a purchase.</Text>
+        <ChartMockup color="neutral-textLow" />
       </SummaryStats.Stat>
       <SummaryStats.Stat
         value="3.2%"
@@ -130,9 +135,7 @@ export const Expandable: Story = {
         description="Conversion"
         infoTooltip="Visitors who completed a purchase"
       >
-        <Text>
-          Conversion details: Percentage of visitors who completed a purchase.
-        </Text>
+        <ChartMockup color="success-interactive" />
       </SummaryStats.Stat>
     </SummaryStats>
   ),

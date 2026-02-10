@@ -116,10 +116,6 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
             flexDirection="column"
             padding="4"
             margin="4"
-            borderStyle="dashed"
-            borderWidth="1"
-            borderColor="neutral-surfaceHighlight"
-            borderRadius="2"
             backgroundColor="neutral-background"
           >
             {activeContent}
