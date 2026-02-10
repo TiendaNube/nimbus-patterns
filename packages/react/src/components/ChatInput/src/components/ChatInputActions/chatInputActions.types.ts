@@ -10,8 +10,5 @@ export interface ChatInputActionsProperties {
 }
 
 export type ChatInputActionsProps = ChatInputActionsProperties &
-  Omit<
-    BoxProperties,
-    "children" | "display" | "justifyContent" | "alignItems"
-  > &
+  Omit<BoxProperties, "children" | "display"> &
   HTMLAttributes<HTMLElement>;
