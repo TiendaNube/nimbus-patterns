@@ -9,7 +9,7 @@ const DataListRow: React.FC<DataListRowProps> = ({
   style: _style,
   children,
   padding = "base",
-  paddingBottom = "base",
+  paddingBottom = "none",
   topDivider = true,
   ...rest
 }: DataListRowProps) => (
