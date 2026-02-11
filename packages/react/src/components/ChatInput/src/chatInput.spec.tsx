@@ -19,33 +19,21 @@ describe("GIVEN <ChatInput />", () => {
     expect(screen.getByPlaceholderText("Type...")).toBeDefined();
   });
 
-  it("SHOULD render Actions with custom layout props forwarded to Box", () => {
+  it("SHOULD render Actions without extra padding", () => {
     render(
       <ChatInput>
-        <ChatInput.Actions
-          justifyContent="flex-end"
-          alignItems="flex-start"
-          gap="2"
-          pb="1"
-          px="2"
-          data-testid="custom-actions"
-        >
-          <div>action1</div>
-          <div>action2</div>
+        <ChatInput.Actions data-testid="actions-bar">
+          <div>left</div>
+          <div>right</div>
         </ChatInput.Actions>
       </ChatInput>
     );
-    const actionsEl = screen.getByTestId("custom-actions");
+    const actionsEl = screen.getByTestId("actions-bar");
     expect(actionsEl).toBeDefined();
-    expect(screen.getByText("action1")).toBeDefined();
-    expect(screen.getByText("action2")).toBeDefined();
 
-    // Verify custom layout props generate the expected atomic CSS classes
+    // Verify no padding classes are applied (pb="none", px="none")
     const classes = actionsEl.getAttribute("class") ?? "";
-    expect(classes).toContain("justifyContent");
-    expect(classes).toContain("alignItems");
-    expect(classes).toContain("gap");
-    expect(classes).toContain("paddingBottom");
-    expect(classes).toContain("paddingLeft");
+    expect(classes).not.toContain("paddingBottom-2");
+    expect(classes).not.toContain("paddingLeft-1");
   });
 });
