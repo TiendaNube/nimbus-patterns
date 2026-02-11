@@ -6,7 +6,7 @@ Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team 
 
 #### 🐛 Bug fixes
 
-- Fixed `paddingBottom` prop default value to `none` in `DataList.Row` sub-component. ([#144](https://github.com/TiendaNube/nimbus-patterns/pull/144) by [@joacotornello](https://github.com/joacotornello))
+- Fixed `paddingBottom` prop default value to `none` in `DataList.Row` sub-component. ([#147](https://github.com/TiendaNube/nimbus-patterns/pull/147) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2026-02-06 `1.31.0`
 

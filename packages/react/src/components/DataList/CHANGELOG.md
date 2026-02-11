@@ -6,7 +6,7 @@ DataList is a flexible list-style component that enables the organization of cus
 
 #### 🐛 Bug fixes
 
-- Fixed `paddingBottom` prop default value to `none` in `DataList.Row` sub-component. ([#144](https://github.com/TiendaNube/nimbus-patterns/pull/144) by [@joacotornello](https://github.com/joacotornello))
+- Fixed `paddingBottom` prop default value to `none` in `DataList.Row` sub-component. ([#147](https://github.com/TiendaNube/nimbus-patterns/pull/147) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2026-02-05 `1.3.0`
 
