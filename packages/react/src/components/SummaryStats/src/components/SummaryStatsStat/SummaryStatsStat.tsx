@@ -38,6 +38,16 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   const isActive = activeId === id;
   const isLastStat = statIds.length > 0 && statIds[statIds.length - 1] === id;
 
+  const statIndex = statIds.indexOf(id);
+  const isLastInRow = layout === "grid" && (statIndex + 1) % 2 === 0; // positions 2, 4, 6...
+  const isInLastRow = layout === "grid" && statIndex >= statIds.length - 2; // last 2 positions
+
+  const showVerticalSeparator =
+    !isLastStat && !(layout === "grid" && isLastInRow);
+
+  const showHorizontalSeparatorLine =
+    !isLastStat && !(layout === "grid" && isInLastRow);
+
   useEffect(() => {
     registerStat(id, children);
   }, [id, children, registerStat]);
@@ -55,114 +65,117 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
     }
   };
 
-  // In mobile carousel mode, don't show bottom border (show separator instead)
-  const showBottomBorder = isMobileCarousel
-    ? {
-        xs: "none" as const,
-        md: layout === "grid" ? ("1" as const) : ("none" as const),
-      }
-    : {
-        xs: "1" as const,
-        md: layout === "grid" ? ("1" as const) : ("none" as const),
-      };
+  const showHorizontalSeparator = {
+    xs: isMobileCarousel ? "none" : "block",
+    md: layout === "grid" ? "block" : "none",
+  } as const;
 
   return (
     <Box
       {...rest}
       display="flex"
-      flexDirection="row"
-      alignItems="stretch"
+      flexDirection="column"
       backgroundColor="neutral-background"
-      borderStyle="solid"
-      borderWidth="none"
-      borderBottomWidth={showBottomBorder}
-      borderColor="neutral-surfaceHighlight"
       flex="1"
-      paddingLeft="2"
-      paddingRight={isLastStat ? "2" : undefined}
-      paddingY="2"
     >
       <Box
         display="flex"
-        flexDirection="column"
-        gap="1"
-        padding="2"
+        flexDirection="row"
+        alignItems="stretch"
         flex="1"
-        backgroundColor={isActive ? "primary-surface" : "neutral-background"}
-        borderRadius={isActive ? "2" : "none"}
-        cursor={expandable ? "pointer" : undefined}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        tabIndex={expandable ? 0 : undefined}
-        role={expandable ? "button" : undefined}
-        aria-expanded={expandable ? isActive : undefined}
-        aria-label={
-          trend && trendText
-            ? `${description}: ${value}, ${trendConfig[trend].label} of ${trendText}`
-            : undefined
-        }
+        paddingLeft="2"
+        paddingRight={isLastStat ? "2" : undefined}
       >
         <Box
           display="flex"
-          alignItems="center"
-          justifyContent="space-between"
-          gap="2"
-        >
-          <Box display="flex" alignItems="center" gap="1">
-            <Text
-              fontSize="highlight"
-              fontWeight="bold"
-              color="neutral-textHigh"
-            >
-              {value}
-            </Text>
-            {trend && (
-              <SummaryStatsTrendIndicator trend={trend} text={trendText} />
-            )}
-          </Box>
-          {expandable && (
-            <Icon
-              source={
-                isActive ? (
-                  <ChevronUpIcon size="small" />
-                ) : (
-                  <ChevronDownIcon size="small" />
-                )
-              }
-              color="neutral-textLow"
-            />
-          )}
-        </Box>
-
-        <Box display="flex" alignItems="center" gap="1">
-          <Text fontSize="caption" color="neutral-textLow">
-            {description}
-          </Text>
-          {infoTooltip && (
-            <Tooltip content={infoTooltip} position="top">
-              <Icon
-                source={<InfoCircleIcon size="small" />}
-                color="neutral-textLow"
-                cursor="pointer"
-              />
-            </Tooltip>
-          )}
-        </Box>
-      </Box>
-
-      {!isLastStat && (
-        <Box
-          display={isMobileCarousel ? "flex" : { xs: "none", md: "flex" }}
-          alignItems="center"
+          flexDirection="column"
+          gap="1"
           paddingY="2"
-          marginLeft="2"
+          flex="1"
+          backgroundColor={isActive ? "primary-surface" : "neutral-background"}
+          borderRadius={isActive ? "2" : "none"}
+          cursor={expandable ? "pointer" : undefined}
+          onClick={handleClick}
+          onKeyDown={handleKeyDown}
+          tabIndex={expandable ? 0 : undefined}
+          role={expandable ? "button" : undefined}
+          aria-expanded={expandable ? isActive : undefined}
+          aria-label={
+            trend && trendText
+              ? `${description}: ${value}, ${trendConfig[trend].label} of ${trendText}`
+              : undefined
+          }
         >
           <Box
-            width="1px"
-            height="100%"
-            backgroundColor="neutral-surfaceHighlight"
-          />
+            display="flex"
+            alignItems="center"
+            justifyContent="space-between"
+            gap="2"
+          >
+            <Box display="flex" alignItems="center" gap="1">
+              <Text
+                fontSize="base"
+                fontWeight="medium"
+                color="neutral-textHigh"
+              >
+                {value}
+              </Text>
+              {trend && (
+                <SummaryStatsTrendIndicator trend={trend} text={trendText} />
+              )}
+            </Box>
+            {expandable && (
+              <Icon
+                source={
+                  isActive ? (
+                    <ChevronUpIcon size="small" />
+                  ) : (
+                    <ChevronDownIcon size="small" />
+                  )
+                }
+                color="neutral-textLow"
+              />
+            )}
+          </Box>
+
+          <Box display="flex" alignItems="center" gap="1">
+            <Text fontSize="caption" color="neutral-textLow">
+              {description}
+            </Text>
+            {infoTooltip && (
+              <Tooltip content={infoTooltip} position="bottom">
+                <Icon
+                  source={<InfoCircleIcon size="small" />}
+                  color="neutral-textLow"
+                  cursor="pointer"
+                />
+              </Tooltip>
+            )}
+          </Box>
         </Box>
+
+        {showVerticalSeparator && (
+          <Box
+            display={isMobileCarousel ? "flex" : { xs: "none", md: "flex" }}
+            alignItems="center"
+            marginLeft="2"
+          >
+            <Box
+              width="1px"
+              height="100%"
+              backgroundColor="neutral-surfaceHighlight"
+            />
+          </Box>
+        )}
+      </Box>
+
+      {showHorizontalSeparatorLine && (
+        <Box
+          display={showHorizontalSeparator}
+          width="100%"
+          height="1px"
+          backgroundColor="neutral-surfaceHighlight"
+        />
       )}
     </Box>
   );

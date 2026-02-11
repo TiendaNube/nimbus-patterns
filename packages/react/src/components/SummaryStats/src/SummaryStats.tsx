@@ -85,6 +85,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
             display="grid"
             alignItems="stretch"
             gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr" }}
+            padding="1"
           >
             {children}
           </Box>
@@ -105,6 +106,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
             display={{ xs: "none", md: "flex" }}
             flexDirection="row"
             alignItems="stretch"
+            padding="1"
           >
             {children}
           </Box>
