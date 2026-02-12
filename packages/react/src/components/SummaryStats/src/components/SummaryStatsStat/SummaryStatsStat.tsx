@@ -7,7 +7,10 @@ import {
   InfoCircleIcon,
 } from "@nimbus-ds/icons";
 
-import { useSummaryStatsContext } from "../../contexts";
+import {
+  useSummaryStatsContext,
+  type SummaryStatsLayout,
+} from "../../contexts";
 import {
   SummaryStatsTrendIndicator,
   trendConfig,
@@ -19,7 +22,7 @@ function getSeparatorConfig(
   statIndex: number,
   statIds: string[],
   id: string,
-  layout: "horizontal" | "grid",
+  layout: SummaryStatsLayout,
   isHorizontalLayout: boolean
 ): {
   showVerticalSeparator: boolean;

@@ -1,6 +1,13 @@
 import { ReactNode } from "react";
 
 /**
+ * Layout variant for the SummaryStats container.
+ * - "horizontal": single row (optionally with scroll/expand).
+ * - "grid": 2-column grid.
+ */
+export type SummaryStatsLayout = "horizontal" | "grid";
+
+/**
  * Value provided by SummaryStatsContext. Drives layout, expandable state, stat registration,
  * and active stat selection for the SummaryStats compound component.
  */
@@ -20,7 +27,7 @@ export interface SummaryStatsContextValue {
   /**
    * The layout type of the SummaryStats container.
    */
-  layout: "horizontal" | "grid";
+  layout: SummaryStatsLayout;
   /**
    * When true, this stat is inside the ScrollPane block (horizontal/mobile). Used so the last stat in that block does not show a trailing separator.
    */

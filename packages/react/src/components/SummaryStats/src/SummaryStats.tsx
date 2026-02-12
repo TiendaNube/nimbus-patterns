@@ -10,6 +10,23 @@ import {
   SummaryStatsComponents,
 } from "./summaryStats.types";
 
+/**
+ * SummaryStats displays a set of stat blocks in a configurable layout. Use
+ * {@link SummaryStatsProps} for the full props type and {@link SummaryStatsComponents}
+ * for the compound component API (e.g. SummaryStats.Stat).
+ *
+ * Layout can be horizontal (single row, optionally with scroll/expand) or grid
+ * (2-column). When layout is "horizontal" and expandable is true, clicking a
+ * stat toggles an expanded area below showing that stat's extra content.
+ *
+ * @param props - See SummaryStatsProps
+ * @param props.className - Optional CSS class for the root element
+ * @param props.style - Optional inline styles for the root element
+ * @param props.children - Stat items, typically SummaryStats.Stat components
+ * @param props.layout - "horizontal" (default) or "grid"; controls row vs grid layout
+ * @param props.expandable - When true and layout is horizontal, stats are expandable
+ * @param props.rest - Remaining HTML element attributes (spread to root Box)
+ */
 const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
   className: _className,
   style: _style,
