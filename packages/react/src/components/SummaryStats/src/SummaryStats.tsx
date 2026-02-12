@@ -43,7 +43,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
     return statsRegistry.get(activeId) ?? null;
   }, [isExpandable, activeId, statsRegistry]);
 
-  const isMobileCarousel = layout === "horizontal";
+  const isHorizontalLayout = layout === "horizontal";
 
   const contextValue = useMemo(
     () => ({
@@ -53,7 +53,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
       layout,
       registerStat,
       statIds,
-      isMobileCarousel,
+      isHorizontalLayout,
     }),
     [
       activeId,
@@ -62,7 +62,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
       layout,
       registerStat,
       statIds,
-      isMobileCarousel,
+      isHorizontalLayout,
     ]
   );
 

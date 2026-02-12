@@ -30,7 +30,7 @@ export interface SummaryStatsContextValue {
    */
   statIds: string[];
   /**
-   * Whether the stats are displayed in mobile carousel mode.
+   * Whether the stats row uses horizontal layout (single row). True when layout is "horizontal".
    */
-  isMobileCarousel: boolean;
+  isHorizontalLayout: boolean;
 }

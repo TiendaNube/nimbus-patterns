@@ -3,7 +3,7 @@ import { SummaryStatsContextValue } from "./SummaryStatsContext.types";
 /**
  * Default context value when SummaryStatsContext is consumed outside a provider.
  * activeId and onToggle/registerStat are no-ops; expandable is false, layout horizontal,
- * statIds empty, isMobileCarousel false.
+ * statIds empty, isHorizontalLayout false.
  */
 export const initialSummaryStatsContextValue: SummaryStatsContextValue = {
   activeId: null,
@@ -16,5 +16,5 @@ export const initialSummaryStatsContextValue: SummaryStatsContextValue = {
     /* noop */
   },
   statIds: [],
-  isMobileCarousel: false,
+  isHorizontalLayout: false,
 };

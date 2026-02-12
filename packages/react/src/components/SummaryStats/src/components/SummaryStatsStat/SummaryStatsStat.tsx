@@ -43,7 +43,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
     layout,
     registerStat,
     statIds,
-    isMobileCarousel,
+    isHorizontalLayout,
   } = useSummaryStatsContext(false);
   const isActive = activeId === id;
   const isLastStat = statIds.length > 0 && statIds[statIds.length - 1] === id;
@@ -56,9 +56,9 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   const showVerticalSeparator = layout === "grid" ? isFirstColumn : !isLastStat;
 
   const shouldShow = layout === "grid" && !isInLastRow;
-  const shouldAlwaysBeFlex = layout === "grid" || isMobileCarousel;
+  const shouldAlwaysBeFlex = layout === "grid" || isHorizontalLayout;
   const isGridVisible = layout === "grid" && !isInLastRow;
-  const isListVisible = layout !== "grid" && !isMobileCarousel && !isLastStat;
+  const isListVisible = layout !== "grid" && !isHorizontalLayout && !isLastStat;
 
   const verticalSeparatorDisplay = shouldAlwaysBeFlex
     ? "flex"

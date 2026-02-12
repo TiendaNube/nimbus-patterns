@@ -4,7 +4,7 @@ import { initialSummaryStatsContextValue } from "./SummaryStatsContext.definitio
 
 /**
  * React context for the SummaryStats compound component. Holds SummaryStatsContextValue
- * (activeId, onToggle, registerStat, expandable, layout, statIds, isMobileCarousel).
+ * (activeId, onToggle, registerStat, expandable, layout, statIds, isHorizontalLayout).
  * Consume via useSummaryStatsContext() inside SummaryStats children.
  */
 export const SummaryStatsContext = createContext<
