@@ -25,18 +25,29 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
     new Map()
   );
   const [statIds, setStatIds] = useState<string[]>([]);
+  const [scrollPaneStatIds, setScrollPaneStatIds] = useState<string[]>([]);
 
   const handleToggle = useCallback((id: string) => {
     setActiveId((current) => (current === id ? null : id));
   }, []);
 
-  const registerStat = useCallback((id: string, content: ReactNode) => {
-    setStatsRegistry((prev) => new Map(prev).set(id, content));
-    setStatIds((prev) => {
-      if (prev.includes(id)) return prev;
-      return [...prev, id];
-    });
-  }, []);
+  const registerStat = useCallback(
+    (id: string, content: ReactNode, isScrollPane?: boolean) => {
+      setStatsRegistry((prev) => new Map(prev).set(id, content));
+      if (isScrollPane) {
+        setScrollPaneStatIds((prev) => {
+          if (prev.includes(id)) return prev;
+          return [...prev, id];
+        });
+      } else {
+        setStatIds((prev) => {
+          if (prev.includes(id)) return prev;
+          return [...prev, id];
+        });
+      }
+    },
+    []
+  );
 
   const activeContent = useMemo(() => {
     if (!isExpandable || activeId === null) return null;
@@ -45,7 +56,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
 
   const isHorizontalLayout = layout === "horizontal";
 
-  const contextValue = useMemo(
+  const baseContextValue = useMemo(
     () => ({
       activeId,
       onToggle: handleToggle,
@@ -67,8 +78,26 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
     ]
   );
 
+  const scrollPaneContextValue = useMemo(
+    () => ({
+      ...baseContextValue,
+      isScrollPaneBlock: true as const,
+      statIds: scrollPaneStatIds,
+      visibleStatIds: scrollPaneStatIds,
+    }),
+    [baseContextValue, scrollPaneStatIds]
+  );
+
+  const desktopContextValue = useMemo(
+    () => ({
+      ...baseContextValue,
+      isScrollPaneBlock: false as const,
+    }),
+    [baseContextValue]
+  );
+
   return (
-    <SummaryStatsContext.Provider value={contextValue}>
+    <SummaryStatsContext.Provider value={baseContextValue}>
       <Box
         {...rest}
         display="flex"
@@ -91,24 +120,28 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
         )}
 
         {layout === "horizontal" && (
-          <Box display={{ xs: "block", md: "none" }}>
-            <ScrollPane showGradients enableGrabScroll>
-              <Box display="flex" flexDirection="row" alignItems="stretch">
-                {children}
-              </Box>
-            </ScrollPane>
-          </Box>
+          <SummaryStatsContext.Provider value={scrollPaneContextValue}>
+            <Box display={{ xs: "block", md: "none" }}>
+              <ScrollPane showGradients enableGrabScroll>
+                <Box display="flex" flexDirection="row" alignItems="stretch">
+                  {children}
+                </Box>
+              </ScrollPane>
+            </Box>
+          </SummaryStatsContext.Provider>
         )}
 
         {layout === "horizontal" && (
-          <Box
-            display={{ xs: "none", md: "flex" }}
-            flexDirection="row"
-            alignItems="stretch"
-            padding="1"
-          >
-            {children}
-          </Box>
+          <SummaryStatsContext.Provider value={desktopContextValue}>
+            <Box
+              display={{ xs: "none", md: "flex" }}
+              flexDirection="row"
+              alignItems="stretch"
+              padding="1"
+            >
+              {children}
+            </Box>
+          </SummaryStatsContext.Provider>
         )}
 
         {activeContent && (

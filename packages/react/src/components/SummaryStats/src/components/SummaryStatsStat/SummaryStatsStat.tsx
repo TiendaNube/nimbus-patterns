@@ -113,6 +113,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
     registerStat,
     statIds,
     isHorizontalLayout,
+    isScrollPaneBlock,
   } = useSummaryStatsContext(false);
   const isActive = activeId === id;
   const statIndex = statIds.indexOf(id);
@@ -135,8 +136,8 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   );
 
   useEffect(() => {
-    registerStat(id, children);
-  }, [children, id, registerStat]);
+    registerStat(id, children, isScrollPaneBlock);
+  }, [children, id, registerStat, isScrollPaneBlock]);
 
   const handleClick = useCallback(() => {
     if (expandable) {

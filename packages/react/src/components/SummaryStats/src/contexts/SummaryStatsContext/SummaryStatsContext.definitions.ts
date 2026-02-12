@@ -7,6 +7,7 @@ import { SummaryStatsContextValue } from "./SummaryStatsContext.types";
  */
 export const initialSummaryStatsContextValue: SummaryStatsContextValue = {
   activeId: null,
+  isScrollPaneBlock: undefined,
   onToggle: () => {
     /* noop */
   },

@@ -134,15 +134,15 @@ function MyComponent() {
 
 ### SummaryStats.Stat
 
-| Prop        | Type                          | Default | Description                                       |
-| ----------- | ----------------------------- | ------- | ------------------------------------------------- |
-| id          | `string`                      | -       | Unique identifier (required for expandable mode)  |
-| value       | `string`                      | -       | The main value to display (required)              |
-| description | `string`                      | -       | Brief label text (required)                       |
-| trend       | `"up" \| "down" \| "neutral"` | -       | Trend indicator direction                         |
-| trendText   | `string`                      | -       | Text describing the trend (e.g., "15%")           |
-| infoTooltip | `string`                      | -       | Tooltip content for the info icon                 |
-| children    | `ReactNode`                   | -       | Expanded content shown when this stat is selected |
+| Prop        | Type                          | Default | Description                                                |
+| ----------- | ----------------------------- | ------- | ---------------------------------------------------------- |
+| id          | `string`                      | -       | Unique identifier (**required** when `expandable` is true) |
+| value       | `string`                      | -       | The main value to display (required)                       |
+| description | `string`                      | -       | Brief label text (required)                                |
+| trend       | `"up" \| "down" \| "neutral"` | -       | Trend indicator direction                                  |
+| trendText   | `string`                      | -       | Text describing the trend (e.g., "15%")                    |
+| infoTooltip | `string`                      | -       | Tooltip content for the info icon                          |
+| children    | `ReactNode`                   | -       | Expanded content shown when this stat is selected          |
 
 ## Accessibility
 

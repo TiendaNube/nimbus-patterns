@@ -61,12 +61,17 @@ describe("GIVEN <SummaryStatsStat />", () => {
 
   describe("WHEN rendered with required props", () => {
     it("THEN should render value and description correctly", () => {
-      makeSut({ value: "$1,000", description: "Total Sales" });
-      const stats = getStatElements();
-      expect(stats.length).toBeGreaterThan(0);
-      const stat = stats[0];
-      expect(within(stat).getByText("$1,000")).toBeDefined();
-      expect(within(stat).getByText("Total Sales")).toBeDefined();
+      render(
+        <SummaryStats layout="grid">
+          <SummaryStatsStat
+            value="$1,000"
+            description="Total Sales"
+            data-testid="summary-stats-stat-element"
+          />
+        </SummaryStats>
+      );
+      expect(screen.getByText("$1,000")).toBeDefined();
+      expect(screen.getByText("Total Sales")).toBeDefined();
     });
   });
 

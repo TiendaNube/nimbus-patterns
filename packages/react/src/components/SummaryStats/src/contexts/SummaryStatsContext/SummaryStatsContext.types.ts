@@ -22,11 +22,19 @@ export interface SummaryStatsContextValue {
    */
   layout: "horizontal" | "grid";
   /**
-   * Registers a stat and its expandable content.
+   * When true, this stat is inside the ScrollPane block (horizontal/mobile). Used so the last stat in that block does not show a trailing separator.
    */
-  registerStat: (id: string, content: ReactNode) => void;
+  isScrollPaneBlock?: boolean;
   /**
-   * Array of registered stat IDs in order.
+   * Registers a stat and its expandable content. Pass isScrollPane true when inside the ScrollPane block.
+   */
+  registerStat: (
+    id: string,
+    content: ReactNode,
+    isScrollPane?: boolean
+  ) => void;
+  /**
+   * Array of registered stat IDs in order (or, in ScrollPane block, only ids of that block).
    */
   statIds: string[];
   /**
