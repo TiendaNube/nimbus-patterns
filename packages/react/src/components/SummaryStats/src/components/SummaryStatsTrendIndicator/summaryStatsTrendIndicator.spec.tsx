@@ -17,35 +17,35 @@ describe("GIVEN <SummaryStatsTrendIndicator />", () => {
   describe("WHEN rendered with trend up", () => {
     it("THEN should render the text", () => {
       makeSut({ trend: "up", text: "15%" });
-      expect(screen.getByText("15%")).toBeInTheDocument();
+      expect(screen.getByText("15%")).toBeDefined();
     });
   });
 
   describe("WHEN rendered with trend down", () => {
     it("THEN should render the text", () => {
       makeSut({ trend: "down", text: "8%" });
-      expect(screen.getByText("8%")).toBeInTheDocument();
+      expect(screen.getByText("8%")).toBeDefined();
     });
   });
 
   describe("WHEN rendered with neutral trend", () => {
     it("THEN should render the text", () => {
       makeSut({ trend: "neutral", text: "0%" });
-      expect(screen.getByText("0%")).toBeInTheDocument();
+      expect(screen.getByText("0%")).toBeDefined();
     });
   });
 
   describe("WHEN rendered without text", () => {
     it("THEN should render the icon only", () => {
       makeSut({ trend: "up" });
-      expect(screen.getByTestId("trend-indicator-element")).toBeInTheDocument();
+      expect(screen.getByTestId("trend-indicator-element")).toBeDefined();
     });
   });
 
   describe("WHEN rendered with trend down without text", () => {
     it("THEN should render the icon only", () => {
       makeSut({ trend: "down" });
-      expect(screen.getByTestId("trend-indicator-element")).toBeInTheDocument();
+      expect(screen.getByTestId("trend-indicator-element")).toBeDefined();
     });
   });
 
@@ -53,7 +53,7 @@ describe("GIVEN <SummaryStatsTrendIndicator />", () => {
     it("THEN should render empty container (no icon for neutral)", () => {
       makeSut({ trend: "neutral" });
       const element = screen.getByTestId("trend-indicator-element");
-      expect(element).toBeInTheDocument();
+      expect(element).toBeDefined();
       expect(element.textContent).toBe("");
     });
   });

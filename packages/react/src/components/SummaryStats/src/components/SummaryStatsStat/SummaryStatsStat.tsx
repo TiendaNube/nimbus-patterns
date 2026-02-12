@@ -196,6 +196,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
             display={verticalSeparatorDisplay}
             alignItems="center"
             marginLeft="1"
+            data-testid="summary-stats-stat-vertical-separator"
           >
             <Box
               width="1px"
