@@ -116,6 +116,16 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   } = useSummaryStatsContext(false);
   const isActive = activeId === id;
   const statIndex = statIds.indexOf(id);
+  const isLastStatInOddGrid =
+    layout === "grid" &&
+    statIds.length % 2 !== 0 &&
+    statIds.length > 0 &&
+    statIds.at(-1) === id;
+  const isSecondToLastInOddGrid =
+    layout === "grid" &&
+    statIds.length % 2 !== 0 &&
+    statIds.length >= 2 &&
+    statIds[statIds.length - 2] === id;
   const separator = getSeparatorConfig(
     statIndex,
     statIds,
@@ -151,6 +161,11 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
       flexDirection="column"
       backgroundColor="neutral-background"
       flex="1"
+      style={
+        isLastStatInOddGrid
+          ? { ...(_style as React.CSSProperties), gridColumn: "span 2" }
+          : _style
+      }
     >
       <Box
         display="flex"
@@ -214,7 +229,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
           </Box>
         </Box>
 
-        {separator.showVerticalSeparator && (
+        {separator.showVerticalSeparator && !isLastStatInOddGrid && (
           <Box
             display={separator.verticalSeparatorDisplay}
             alignItems="center"
@@ -231,7 +246,14 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
       </Box>
 
       <Box
-        display={separator.showHorizontalSeparator}
+        display={
+          isSecondToLastInOddGrid
+            ? { xs: "block" as const, md: "block" as const }
+            : separator.showHorizontalSeparator || {
+                xs: "none" as const,
+                md: "none" as const,
+              }
+        }
         width="100%"
         height="1px"
         backgroundColor="neutral-surfaceDisabled"
