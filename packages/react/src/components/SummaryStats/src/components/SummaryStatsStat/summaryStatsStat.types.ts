@@ -1,5 +1,11 @@
 import { HTMLAttributes, ReactNode } from "react";
 
+import type { TrendDirection } from "../SummaryStatsTrendIndicator/summaryStatsTrendIndicator.types";
+
+/**
+ * Props for the SummaryStatsStat component. Defines the primary value, description,
+ * optional trend indicator, tooltip, and expandable children used when the stat is active.
+ */
 export interface SummaryStatsStatProperties {
   /**
    * The main value to display (e.g., "$0.00", "156").
@@ -12,7 +18,7 @@ export interface SummaryStatsStatProperties {
   /**
    * Trend indicator showing the change direction.
    */
-  trend?: "up" | "down" | "neutral";
+  trend?: TrendDirection;
   /**
    * Text describing the trend or change (e.g., "+15%", "-5%", "0%").
    */

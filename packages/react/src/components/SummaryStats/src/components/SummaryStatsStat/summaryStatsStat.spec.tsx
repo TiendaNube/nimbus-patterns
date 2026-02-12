@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 
 import { SummaryStats } from "../../SummaryStats";
 import { SummaryStatsStat } from "./SummaryStatsStat";
@@ -20,13 +20,18 @@ const makeSut = (props: SummaryStatsStatProps) => {
 };
 
 describe("GIVEN <SummaryStatsStat />", () => {
+  // SummaryStats renders the stat twice (mobile + desktop layout), so we use getAllByTestId and assert on the first instance.
+  const getStatElements = () =>
+    screen.getAllByTestId("summary-stats-stat-element");
+
   describe("WHEN rendered with required props", () => {
     it("THEN should render value and description correctly", () => {
       makeSut({ value: "$1,000", description: "Total Sales" });
-      expect(screen.getAllByText("$1,000").length).toBeGreaterThanOrEqual(1);
-      expect(screen.getAllByText("Total Sales").length).toBeGreaterThanOrEqual(
-        1
-      );
+      const stats = getStatElements();
+      expect(stats.length).toBeGreaterThan(0);
+      const stat = stats[0];
+      expect(within(stat).getByText("$1,000")).toBeDefined();
+      expect(within(stat).getByText("Total Sales")).toBeDefined();
     });
   });
 
@@ -38,7 +43,8 @@ describe("GIVEN <SummaryStatsStat />", () => {
         trend: "up",
         trendText: "15%",
       });
-      expect(screen.getAllByText("15%").length).toBeGreaterThanOrEqual(1);
+      const stat = getStatElements()[0];
+      expect(within(stat).getByText("15%")).toBeDefined();
     });
   });
 
@@ -50,7 +56,8 @@ describe("GIVEN <SummaryStatsStat />", () => {
         trend: "down",
         trendText: "8%",
       });
-      expect(screen.getAllByText("8%").length).toBeGreaterThanOrEqual(1);
+      const stat = getStatElements()[0];
+      expect(within(stat).getByText("8%")).toBeDefined();
     });
   });
 
@@ -62,7 +69,8 @@ describe("GIVEN <SummaryStatsStat />", () => {
         trend: "neutral",
         trendText: "0%",
       });
-      expect(screen.getAllByText("0%").length).toBeGreaterThanOrEqual(1);
+      const stat = getStatElements()[0];
+      expect(within(stat).getByText("0%")).toBeDefined();
     });
   });
 
@@ -73,9 +81,11 @@ describe("GIVEN <SummaryStatsStat />", () => {
         description: "Total Sales",
         infoTooltip: "This is a tooltip",
       });
+      const stats = getStatElements();
+      expect(stats.length).toBeGreaterThan(0);
       expect(
-        screen.getAllByTestId("summary-stats-stat-element").length
-      ).toBeGreaterThanOrEqual(1);
+        within(stats[0]).getByTestId("summary-stats-stat-info-icon")
+      ).toBeDefined();
     });
   });
 });

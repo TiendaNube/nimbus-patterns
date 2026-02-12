@@ -1,5 +1,9 @@
 import { ReactNode } from "react";
 
+/**
+ * Value provided by SummaryStatsContext. Drives layout, expandable state, stat registration,
+ * and active stat selection for the SummaryStats compound component.
+ */
 export interface SummaryStatsContextValue {
   /**
    * The id of the currently active stat (for expandable variant).

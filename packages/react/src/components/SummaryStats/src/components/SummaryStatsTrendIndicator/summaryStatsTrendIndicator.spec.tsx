@@ -15,30 +15,37 @@ const makeSut = (props: SummaryStatsTrendIndicatorProps) => {
 
 describe("GIVEN <SummaryStatsTrendIndicator />", () => {
   describe("WHEN rendered with trend up", () => {
-    it("THEN should render the text with success color", () => {
+    it("THEN should render the text", () => {
       makeSut({ trend: "up", text: "15%" });
-      expect(screen.getByText("15%")).toBeDefined();
+      expect(screen.getByText("15%")).toBeInTheDocument();
     });
   });
 
   describe("WHEN rendered with trend down", () => {
-    it("THEN should render the text with danger color", () => {
+    it("THEN should render the text", () => {
       makeSut({ trend: "down", text: "8%" });
-      expect(screen.getByText("8%")).toBeDefined();
+      expect(screen.getByText("8%")).toBeInTheDocument();
     });
   });
 
   describe("WHEN rendered with neutral trend", () => {
-    it("THEN should render the text with neutral color", () => {
+    it("THEN should render the text", () => {
       makeSut({ trend: "neutral", text: "0%" });
-      expect(screen.getByText("0%")).toBeDefined();
+      expect(screen.getByText("0%")).toBeInTheDocument();
     });
   });
 
   describe("WHEN rendered without text", () => {
     it("THEN should render the icon only", () => {
       makeSut({ trend: "up" });
-      expect(screen.getByTestId("trend-indicator-element")).toBeDefined();
+      expect(screen.getByTestId("trend-indicator-element")).toBeInTheDocument();
+    });
+  });
+
+  describe("WHEN rendered with trend down without text", () => {
+    it("THEN should render the icon only", () => {
+      makeSut({ trend: "down" });
+      expect(screen.getByTestId("trend-indicator-element")).toBeInTheDocument();
     });
   });
 
@@ -46,7 +53,7 @@ describe("GIVEN <SummaryStatsTrendIndicator />", () => {
     it("THEN should render empty container (no icon for neutral)", () => {
       makeSut({ trend: "neutral" });
       const element = screen.getByTestId("trend-indicator-element");
-      expect(element).toBeDefined();
+      expect(element).toBeInTheDocument();
       expect(element.textContent).toBe("");
     });
   });

@@ -1,4 +1,4 @@
-import React, { useId, useEffect } from "react";
+import React, { useId, useEffect, useCallback } from "react";
 
 import { Box, Text, Icon, Tooltip } from "@nimbus-ds/components";
 import {
@@ -14,6 +14,16 @@ import {
 } from "../SummaryStatsTrendIndicator";
 import { SummaryStatsStatProps } from "./summaryStatsStat.types";
 
+/**
+ * SummaryStatsStat displays a single stat card with a primary value, description,
+ * optional trend indicator (up/down/neutral), and optional info tooltip. When used
+ * inside SummaryStats with expandable mode, it can show additional content on click.
+ *
+ * @example
+ * <SummaryStats>
+ *   <SummaryStats.Stat value="$1,000" description="Total Sales" trend="up" trendText="15%" />
+ * </SummaryStats>
+ */
 const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   className: _className,
   style: _style,
@@ -61,20 +71,23 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
 
   useEffect(() => {
     registerStat(id, children);
-  }, [id, children, registerStat]);
+  }, [children, id, registerStat]);
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     if (expandable) {
       onToggle(id);
     }
-  };
+  }, [expandable, onToggle, id]);
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (expandable && (event.key === "Enter" || event.key === " ")) {
-      event.preventDefault();
-      onToggle(id);
-    }
-  };
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (expandable && (event.key === "Enter" || event.key === " ")) {
+        event.preventDefault();
+        onToggle(id);
+      }
+    },
+    [expandable, onToggle, id]
+  );
 
   return (
     <Box
@@ -109,7 +122,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
           aria-label={
             trend && trendText
               ? `${description}: ${value}, ${trendConfig[trend].label} of ${trendText}`
-              : undefined
+              : `${description}: ${value}`
           }
         >
           <Box
@@ -154,6 +167,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
                   source={<InfoCircleIcon size="small" />}
                   color="neutral-textLow"
                   cursor="pointer"
+                  data-testid="summary-stats-stat-info-icon"
                 />
               </Tooltip>
             )}

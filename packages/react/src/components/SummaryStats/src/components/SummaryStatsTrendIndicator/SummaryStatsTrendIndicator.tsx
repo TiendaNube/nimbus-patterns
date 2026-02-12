@@ -23,6 +23,13 @@ const trendConfig = {
   },
 };
 
+/**
+ * SummaryStatsTrendIndicator renders an icon and optional text for a trend direction
+ * (up, down, or neutral) with semantic colors. Used inside SummaryStats.Stat.
+ *
+ * @param props - SummaryStatsTrendIndicatorProps (trend, optional text, className, style, rest)
+ * @returns JSX with icon and optional text based on trendConfig
+ */
 const SummaryStatsTrendIndicator: React.FC<SummaryStatsTrendIndicatorProps> = ({
   className: _className,
   style: _style,
@@ -33,7 +40,13 @@ const SummaryStatsTrendIndicator: React.FC<SummaryStatsTrendIndicatorProps> = ({
   const trendInfo = trendConfig[trend];
 
   return (
-    <Box {...rest} display="flex" alignItems="center" gap="0-5">
+    <Box
+      {...rest}
+      display="flex"
+      alignItems="center"
+      gap="0-5"
+      aria-label={trendInfo.label}
+    >
       {trendInfo.icon && (
         <Icon
           source={<trendInfo.icon size="small" />}
