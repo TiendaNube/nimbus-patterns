@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen, within, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import { SummaryStats } from "../../SummaryStats";
 import { SummaryStatsStat } from "./SummaryStatsStat";
@@ -183,6 +184,22 @@ describe("GIVEN <SummaryStatsStat />", () => {
       fireEvent.click(button);
       expect(button.getAttribute("aria-expanded")).toBe("true");
     });
+
+    it("THEN should show active state (aria-expanded and visible content) on the stat element when selected", () => {
+      makeSutExpandable({
+        value: "$1,000",
+        description: "Total Sales",
+        children: <div data-testid="expandable-content">Extra content</div>,
+      });
+      const statElement = screen.getAllByTestId(
+        "summary-stats-stat-element"
+      )[0];
+      const button = within(statElement).getByRole("button");
+      expect(button.getAttribute("aria-expanded")).toBe("false");
+      fireEvent.click(button);
+      expect(button.getAttribute("aria-expanded")).toBe("true");
+      expect(screen.queryByTestId("expandable-content")).not.toBeNull();
+    });
   });
 
   describe("WHEN expandable and keyboard navigation", () => {
@@ -204,10 +221,34 @@ describe("GIVEN <SummaryStatsStat />", () => {
       const stat = getStatElements()[0];
       expect(within(stat).getByRole("button")).toBeDefined();
     });
+
+    it("THEN stat button should receive focus via Tab", async () => {
+      const user = userEvent.setup();
+      makeSutExpandable({
+        value: "$1,000",
+        description: "Total Sales",
+      });
+      const stat = screen.getAllByTestId("summary-stats-stat-element")[0];
+      const button = within(stat).getByRole("button");
+      await user.tab();
+      expect(document.activeElement).toBe(button);
+    });
   });
 
   describe("WHEN rendered with multiple stats (separator)", () => {
-    it("THEN first stat should show vertical separator", () => {
+    it("THEN single stat (isLastStat true) should not render vertical separator on the last stat element", () => {
+      makeSut({ value: "$1,000", description: "Total Sales" });
+      const stats = screen.getAllByTestId("summary-stats-stat-element");
+      expect(stats.length).toBeGreaterThan(0);
+      const lastStatElement = stats[stats.length - 1];
+      expect(
+        within(lastStatElement).queryByTestId(
+          "summary-stats-stat-vertical-separator"
+        )
+      ).toBeNull();
+    });
+
+    it("THEN first stat (isLastStat false) should show vertical separator", () => {
       makeSutTwoStats();
       const stats = screen.getAllByTestId("summary-stats-stat-element");
       expect(stats.length).toBeGreaterThanOrEqual(2);
@@ -216,7 +257,7 @@ describe("GIVEN <SummaryStatsStat />", () => {
       ).toBeDefined();
     });
 
-    it("THEN last stat should not show vertical separator", () => {
+    it("THEN last stat (isLastStat true) should not show vertical separator", () => {
       makeSutTwoStats();
       const stats = screen.getAllByTestId("summary-stats-stat-element");
       expect(stats.length).toBeGreaterThanOrEqual(2);
