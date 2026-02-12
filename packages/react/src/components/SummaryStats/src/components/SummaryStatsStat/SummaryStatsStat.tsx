@@ -13,6 +13,53 @@ import {
   trendConfig,
 } from "../SummaryStatsTrendIndicator";
 import { SummaryStatsStatProps } from "./summaryStatsStat.types";
+import type { TrendDirection } from "../SummaryStatsTrendIndicator/summaryStatsTrendIndicator.types";
+
+function getSeparatorConfig(
+  statIndex: number,
+  statIds: string[],
+  id: string,
+  layout: "horizontal" | "grid",
+  isHorizontalLayout: boolean
+) {
+  const isLastStat = statIds.length > 0 && statIds[statIds.length - 1] === id;
+  const isFirstColumn = (statIndex + 1) % 2 !== 0;
+  const isInLastRow = statIndex >= statIds.length - 2;
+  const showVerticalSeparator = layout === "grid" ? isFirstColumn : !isLastStat;
+  const shouldAlwaysBeFlex = layout === "grid" || isHorizontalLayout;
+  const shouldShow = layout === "grid" && !isInLastRow;
+  const isGridVisible = layout === "grid" && !isInLastRow;
+  const isListVisible = layout !== "grid" && !isHorizontalLayout && !isLastStat;
+
+  return {
+    showVerticalSeparator,
+    paddingRight: (isLastStat ? "1" : undefined) as "1" | undefined,
+    verticalSeparatorDisplay: shouldAlwaysBeFlex
+      ? ("flex" as const)
+      : { xs: "none" as const, md: "flex" as const },
+    showHorizontalSeparator: {
+      xs: isGridVisible || isListVisible ? "block" : "none",
+      md: shouldShow ? "block" : "none",
+    } as const,
+  };
+}
+
+function getAriaLabel(
+  description: string,
+  value: string,
+  trend?: TrendDirection,
+  trendText?: string
+): string {
+  if (trend && trendText) {
+    return `${description}: ${value}, ${trendConfig[trend].label} of ${trendText}`;
+  }
+  return `${description}: ${value}`;
+}
+
+const ExpandableChevron: React.FC<{ isActive: boolean }> = ({ isActive }) => {
+  const IconSource = isActive ? ChevronUpIcon : ChevronDownIcon;
+  return <Icon source={<IconSource size="small" />} color="neutral-textLow" />;
+};
 
 /**
  * Displays a single stat card with a primary value, description, optional trend
@@ -63,28 +110,14 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
     isHorizontalLayout,
   } = useSummaryStatsContext(false);
   const isActive = activeId === id;
-  const isLastStat = statIds.length > 0 && statIds[statIds.length - 1] === id;
-
   const statIndex = statIds.indexOf(id);
-  const isSecondColumn = (statIndex + 1) % 2 === 0;
-  const isFirstColumn = !isSecondColumn;
-  const isInLastRow = statIndex >= statIds.length - 2;
-
-  const showVerticalSeparator = layout === "grid" ? isFirstColumn : !isLastStat;
-
-  const shouldShow = layout === "grid" && !isInLastRow;
-  const shouldAlwaysBeFlex = layout === "grid" || isHorizontalLayout;
-  const isGridVisible = layout === "grid" && !isInLastRow;
-  const isListVisible = layout !== "grid" && !isHorizontalLayout && !isLastStat;
-
-  const verticalSeparatorDisplay = shouldAlwaysBeFlex
-    ? "flex"
-    : { xs: "none" as const, md: "flex" as const };
-
-  const showHorizontalSeparator = {
-    xs: isGridVisible || isListVisible ? "block" : "none",
-    md: shouldShow ? "block" : "none",
-  } as const;
+  const separator = getSeparatorConfig(
+    statIndex,
+    statIds,
+    id,
+    layout,
+    isHorizontalLayout
+  );
 
   useEffect(() => {
     registerStat(id, children);
@@ -120,7 +153,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
         alignItems="stretch"
         flex="1"
         paddingLeft="1"
-        paddingRight={isLastStat ? "1" : undefined}
+        paddingRight={separator.paddingRight}
       >
         <Box
           display="flex"
@@ -136,11 +169,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
           tabIndex={expandable ? 0 : undefined}
           role={expandable ? "button" : undefined}
           aria-expanded={expandable ? isActive : undefined}
-          aria-label={
-            trend && trendText
-              ? `${description}: ${value}, ${trendConfig[trend].label} of ${trendText}`
-              : `${description}: ${value}`
-          }
+          aria-label={getAriaLabel(description, value, trend, trendText)}
         >
           <Box
             display="flex"
@@ -160,18 +189,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
                 <SummaryStatsTrendIndicator trend={trend} text={trendText} />
               )}
             </Box>
-            {expandable && (
-              <Icon
-                source={
-                  isActive ? (
-                    <ChevronUpIcon size="small" />
-                  ) : (
-                    <ChevronDownIcon size="small" />
-                  )
-                }
-                color="neutral-textLow"
-              />
-            )}
+            {expandable && <ExpandableChevron isActive={isActive} />}
           </Box>
 
           <Box display="flex" alignItems="center" gap="1">
@@ -191,9 +209,9 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
           </Box>
         </Box>
 
-        {showVerticalSeparator && (
+        {separator.showVerticalSeparator && (
           <Box
-            display={verticalSeparatorDisplay}
+            display={separator.verticalSeparatorDisplay}
             alignItems="center"
             marginLeft="1"
             data-testid="summary-stats-stat-vertical-separator"
@@ -208,7 +226,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
       </Box>
 
       <Box
-        display={showHorizontalSeparator}
+        display={separator.showHorizontalSeparator}
         width="100%"
         height="1px"
         backgroundColor="neutral-surfaceDisabled"
