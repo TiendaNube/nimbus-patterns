@@ -45,7 +45,25 @@ describe("GIVEN <SummaryStatsTrendIndicator />", () => {
   describe("WHEN rendered with trend down without text", () => {
     it("THEN should render the icon only", () => {
       makeSut({ trend: "down" });
-      expect(screen.getByTestId("trend-indicator-element")).toBeDefined();
+      const element = screen.getByTestId("trend-indicator-element");
+      expect(element).toBeDefined();
+      expect(element.getAttribute("aria-label")).toBe("decrease");
+    });
+  });
+
+  describe("WHEN rendered for accessibility", () => {
+    it("THEN should expose trend label for screen readers (up)", () => {
+      makeSut({ trend: "up" });
+      const element = screen.getByTestId("trend-indicator-element");
+      expect(element.getAttribute("role")).toBe("img");
+      expect(element.getAttribute("aria-label")).toBe("increase");
+    });
+
+    it("THEN should expose trend label for screen readers (neutral)", () => {
+      makeSut({ trend: "neutral" });
+      const element = screen.getByTestId("trend-indicator-element");
+      expect(element.getAttribute("role")).toBe("img");
+      expect(element.getAttribute("aria-label")).toBe("no change");
     });
   });
 

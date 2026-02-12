@@ -3,8 +3,15 @@ import { HTMLAttributes, ReactNode } from "react";
 import type { TrendDirection } from "../SummaryStatsTrendIndicator/summaryStatsTrendIndicator.types";
 
 /**
- * Props for the SummaryStatsStat component. Defines the primary value, description,
- * optional trend indicator, tooltip, and expandable children used when the stat is active.
+ * Props for the SummaryStatsStat component.
+ *
+ * Defines the props used to render a single stat: a primary value, description,
+ * optional trend indicator, optional tooltip, and optional expandable content
+ * (children). Used by the SummaryStatsStat component to display one metric in
+ * a summary stats row.
+ *
+ * @see SummaryStatsStat - Component that consumes these props.
+ * @property children - Optional ReactNode rendered in the expandable area when this stat is active.
  */
 export interface SummaryStatsStatProperties {
   /**

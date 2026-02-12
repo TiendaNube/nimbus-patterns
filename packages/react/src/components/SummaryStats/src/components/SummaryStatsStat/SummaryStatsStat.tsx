@@ -58,10 +58,14 @@ function getAriaLabel(
   trend?: TrendDirection,
   trendText?: string
 ): string {
-  if (trend && trendText) {
-    return `${description}: ${value}, ${trendConfig[trend].label} of ${trendText}`;
+  const base = `${description}: ${value}`;
+  if (trend && trendConfig[trend]) {
+    const trendSegment = trendText
+      ? `, ${trendConfig[trend].label} of ${trendText}`
+      : `, ${trendConfig[trend].label}`;
+    return base + trendSegment;
   }
-  return `${description}: ${value}`;
+  return base;
 }
 
 const ExpandableChevron: React.FC<{ isActive: boolean }> = ({ isActive }) => {

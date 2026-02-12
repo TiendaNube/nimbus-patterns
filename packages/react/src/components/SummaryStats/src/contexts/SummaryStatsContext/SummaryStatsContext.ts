@@ -3,9 +3,17 @@ import { SummaryStatsContextValue } from "./SummaryStatsContext.types";
 import { initialSummaryStatsContextValue } from "./SummaryStatsContext.definitions";
 
 /**
- * React context for the SummaryStats compound component. Holds SummaryStatsContextValue
- * (activeId, onToggle, registerStat, expandable, layout, statIds, isHorizontalLayout).
- * Consume via useSummaryStatsContext() inside SummaryStats children.
+ * React context that powers the SummaryStats compound component pattern.
+ * It holds shared state and callbacks (activeId, onToggle, registerStat, expandable,
+ * layout, statIds, isHorizontalLayout) so child components (e.g. SummaryStatsStat,
+ * SummaryStatsTrendIndicator) can coordinate without prop drilling.
+ *
+ * **Type:** `SummaryStatsContextValue | undefined` — undefined when consumed
+ * outside a provider.
+ *
+ * **Usage:** Consumers should not read this context directly. Use the
+ * {@link useSummaryStatsContext} hook instead to get typed access and proper
+ * handling when used outside a SummaryStats provider.
  */
 export const SummaryStatsContext = createContext<
   SummaryStatsContextValue | undefined
