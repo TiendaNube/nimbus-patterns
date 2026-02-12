@@ -21,6 +21,13 @@ const meta: Meta<typeof SummaryStats> = {
     children: {
       control: { disable: true },
     },
+    layout: {
+      control: { type: "inline-radio" },
+      options: ["horizontal", "grid"],
+    },
+    expandable: {
+      control: { type: "boolean" },
+    },
   },
   tags: ["autodocs"],
 };

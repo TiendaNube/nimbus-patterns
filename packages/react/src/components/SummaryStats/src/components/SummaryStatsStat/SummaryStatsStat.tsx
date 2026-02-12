@@ -125,7 +125,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
     layout === "grid" &&
     statIds.length % 2 !== 0 &&
     statIds.length >= 2 &&
-    statIds[statIds.length - 2] === id;
+    statIds.at(-2) === id;
   const separator = getSeparatorConfig(
     statIndex,
     statIds,
