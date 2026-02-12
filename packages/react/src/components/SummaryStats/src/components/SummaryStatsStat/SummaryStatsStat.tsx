@@ -70,26 +70,63 @@ const ExpandableChevron: React.FC<{ isActive: boolean }> = ({ isActive }) => {
 };
 
 /**
- * Displays a single stat card with a primary value, description, optional trend
- * indicator, and optional info tooltip. Used as a child of SummaryStats. In
- * expandable mode, shows additional content on click.
+ * A single stat card for the SummaryStats component. Renders a stat display with a
+ * primary value and description, an optional trend indicator (up/down/neutral with
+ * text), and an optional info icon with tooltip. When used inside an expandable
+ * SummaryStats, the stat is clickable and reveals additional content (children) in
+ * an expandable area below the stats row.
+ *
+ * **Returns:** A stat display (Box-based layout) showing value and description,
+ * with optional trend indicator and info tooltip. In expandable mode it behaves as
+ * a button that toggles the expanded content.
+ *
+ * **Required props:** `value`, `description`.
+ * **Optional props:** `trend`, `trendText`, `infoTooltip`, `children`, `className`,
+ * `style`, and any valid HTML element attributes (rest props).
  *
  * @param props - SummaryStatsStatProps
- * @param props.value - Main value to display (e.g. "$1,000", "156").
- * @param props.description - Short label for the metric.
- * @param props.trend - Trend direction: "up" | "down" | "neutral".
- * @param props.trendText - Trend label (e.g. "15%", "-8%").
- * @param props.infoTooltip - If set, shows an info icon with this tooltip content.
- * @param props.children - Content shown in the expandable area when this stat is active.
- * @param props.className - Optional CSS class (passed to root).
- * @param props.style - Optional inline styles (passed to root).
+ * @param props.value - **Required.** Main value to display (e.g. "$1,000", "156").
+ *   Type: `string`.
+ * @param props.description - **Required.** Short label for the metric (e.g. "Total Sales").
+ *   Type: `string`.
+ * @param props.trend - **Optional.** Trend direction for the indicator. Type: `"up" | "down" | "neutral"`.
+ *   When set, a trend icon and optional `trendText` are shown next to the value.
+ * @param props.trendText - **Optional.** Text shown next to the trend icon (e.g. "15%", "-8%").
+ *   Type: `string`. Meaningful when `trend` is provided.
+ * @param props.infoTooltip - **Optional.** If provided, an info icon is shown next to the
+ *   description; hovering shows this string as tooltip content. Type: `string`.
+ * @param props.children - **Optional.** Content rendered in the expandable area when this
+ *   stat is active (only when SummaryStats has `expandable`). Type: `ReactNode`.
+ * @param props.className - **Optional.** CSS class name applied to the root element.
+ *   Type: `string`.
+ * @param props.style - **Optional.** Inline styles applied to the root element.
+ *   Type: `React.CSSProperties`.
+ * @param props - **Rest.** Any other HTML element attributes (e.g. `data-*`, `aria-*`)
+ *   are forwarded to the root Box element.
  *
  * @example
+ * // Basic stat with trend
  * <SummaryStats>
- *   <SummaryStats.Stat value="$1,000" description="Total Sales" trend="up" trendText="15%" />
+ *   <SummaryStats.Stat
+ *     value="$1,000"
+ *     description="Total Sales"
+ *     trend="up"
+ *     trendText="15%"
+ *   />
  * </SummaryStats>
  *
  * @example
+ * // Stat with info tooltip
+ * <SummaryStats>
+ *   <SummaryStats.Stat
+ *     value="156"
+ *     description="Orders"
+ *     infoTooltip="Total orders in the last 30 days."
+ *   />
+ * </SummaryStats>
+ *
+ * @example
+ * // Expandable stat with children
  * <SummaryStats expandable>
  *   <SummaryStats.Stat value="$1,000" description="Total Sales">
  *     <Chart />

@@ -123,9 +123,10 @@ describe("GIVEN <SummaryStatsStat />", () => {
       });
       const stats = getStatElements();
       expect(stats.length).toBeGreaterThan(0);
-      expect(
-        within(stats[0]).getByTestId("summary-stats-stat-info-icon")
-      ).toBeDefined();
+      const infoIcon = within(stats[0]).getByTestId(
+        "summary-stats-stat-info-icon"
+      );
+      expect(infoIcon).toBeDefined();
     });
   });
 
