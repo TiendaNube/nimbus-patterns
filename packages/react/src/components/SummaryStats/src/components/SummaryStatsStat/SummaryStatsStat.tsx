@@ -21,8 +21,13 @@ function getSeparatorConfig(
   id: string,
   layout: "horizontal" | "grid",
   isHorizontalLayout: boolean
-) {
-  const isLastStat = statIds.length > 0 && statIds[statIds.length - 1] === id;
+): {
+  showVerticalSeparator: boolean;
+  paddingRight: "1" | undefined;
+  verticalSeparatorDisplay: "flex" | { xs: "none"; md: "flex" };
+  showHorizontalSeparator: { xs: "block" | "none"; md: "block" | "none" };
+} {
+  const isLastStat = statIds.length > 0 && statIds.at(-1) === id;
   const isFirstColumn = (statIndex + 1) % 2 !== 0;
   const isInLastRow = statIndex >= statIds.length - 2;
   const showVerticalSeparator = layout === "grid" ? isFirstColumn : !isLastStat;
@@ -33,7 +38,7 @@ function getSeparatorConfig(
 
   return {
     showVerticalSeparator,
-    paddingRight: (isLastStat ? "1" : undefined) as "1" | undefined,
+    paddingRight: isLastStat ? "1" : undefined,
     verticalSeparatorDisplay: shouldAlwaysBeFlex
       ? ("flex" as const)
       : { xs: "none" as const, md: "flex" as const },

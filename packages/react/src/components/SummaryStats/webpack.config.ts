@@ -8,4 +8,6 @@ const config = {
   },
 };
 
-export default () => configuration.getConfiguration(config);
+export default function getWebpackConfig() {
+  return configuration.getConfiguration(config);
+}
