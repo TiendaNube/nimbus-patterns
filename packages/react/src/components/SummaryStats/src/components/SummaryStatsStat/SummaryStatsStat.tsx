@@ -15,13 +15,30 @@ import {
 import { SummaryStatsStatProps } from "./summaryStatsStat.types";
 
 /**
- * SummaryStatsStat displays a single stat card with a primary value, description,
- * optional trend indicator (up/down/neutral), and optional info tooltip. When used
- * inside SummaryStats with expandable mode, it can show additional content on click.
+ * Displays a single stat card with a primary value, description, optional trend
+ * indicator, and optional info tooltip. Used as a child of SummaryStats. In
+ * expandable mode, shows additional content on click.
+ *
+ * @param props - SummaryStatsStatProps
+ * @param props.value - Main value to display (e.g. "$1,000", "156").
+ * @param props.description - Short label for the metric.
+ * @param props.trend - Trend direction: "up" | "down" | "neutral".
+ * @param props.trendText - Trend label (e.g. "15%", "-8%").
+ * @param props.infoTooltip - If set, shows an info icon with this tooltip content.
+ * @param props.children - Content shown in the expandable area when this stat is active.
+ * @param props.className - Optional CSS class (passed to root).
+ * @param props.style - Optional inline styles (passed to root).
  *
  * @example
  * <SummaryStats>
  *   <SummaryStats.Stat value="$1,000" description="Total Sales" trend="up" trendText="15%" />
+ * </SummaryStats>
+ *
+ * @example
+ * <SummaryStats expandable>
+ *   <SummaryStats.Stat value="$1,000" description="Total Sales">
+ *     <Chart />
+ *   </SummaryStats.Stat>
  * </SummaryStats>
  */
 const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
