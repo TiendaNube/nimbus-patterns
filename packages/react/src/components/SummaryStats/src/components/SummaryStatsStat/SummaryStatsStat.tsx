@@ -39,14 +39,25 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   const isLastStat = statIds.length > 0 && statIds[statIds.length - 1] === id;
 
   const statIndex = statIds.indexOf(id);
-  const isLastInRow = layout === "grid" && (statIndex + 1) % 2 === 0; // positions 2, 4, 6...
-  const isInLastRow = layout === "grid" && statIndex >= statIds.length - 2; // last 2 positions
+  const isSecondColumn = (statIndex + 1) % 2 === 0;
+  const isFirstColumn = !isSecondColumn;
+  const isInLastRow = statIndex >= statIds.length - 2;
 
-  const showVerticalSeparator =
-    !isLastStat && !(layout === "grid" && isLastInRow);
+  const showVerticalSeparator = layout === "grid" ? isFirstColumn : !isLastStat;
 
-  const showHorizontalSeparatorLine =
-    !isLastStat && !(layout === "grid" && isInLastRow);
+  const shouldShow = layout === "grid" && !isInLastRow;
+  const shouldAlwaysBeFlex = layout === "grid" || isMobileCarousel;
+  const isGridVisible = layout === "grid" && !isInLastRow;
+  const isListVisible = layout !== "grid" && !isMobileCarousel && !isLastStat;
+
+  const verticalSeparatorDisplay = shouldAlwaysBeFlex
+    ? "flex"
+    : { xs: "none" as const, md: "flex" as const };
+
+  const showHorizontalSeparator = {
+    xs: isGridVisible || isListVisible ? "block" : "none",
+    md: shouldShow ? "block" : "none",
+  } as const;
 
   useEffect(() => {
     registerStat(id, children);
@@ -65,11 +76,6 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
     }
   };
 
-  const showHorizontalSeparator = {
-    xs: isMobileCarousel ? "none" : "block",
-    md: layout === "grid" ? "block" : "none",
-  } as const;
-
   return (
     <Box
       {...rest}
@@ -83,14 +89,14 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
         flexDirection="row"
         alignItems="stretch"
         flex="1"
-        paddingLeft="2"
-        paddingRight={isLastStat ? "2" : undefined}
+        paddingLeft="1"
+        paddingRight={isLastStat ? "1" : undefined}
       >
         <Box
           display="flex"
           flexDirection="column"
           gap="1"
-          paddingY="2"
+          padding="1"
           flex="1"
           backgroundColor={isActive ? "primary-surface" : "neutral-background"}
           borderRadius={isActive ? "2" : "none"}
@@ -156,27 +162,25 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
 
         {showVerticalSeparator && (
           <Box
-            display={isMobileCarousel ? "flex" : { xs: "none", md: "flex" }}
+            display={verticalSeparatorDisplay}
             alignItems="center"
-            marginLeft="2"
+            marginLeft="1"
           >
             <Box
               width="1px"
               height="100%"
-              backgroundColor="neutral-surfaceHighlight"
+              backgroundColor="neutral-surfaceDisabled"
             />
           </Box>
         )}
       </Box>
 
-      {showHorizontalSeparatorLine && (
-        <Box
-          display={showHorizontalSeparator}
-          width="100%"
-          height="1px"
-          backgroundColor="neutral-surfaceHighlight"
-        />
-      )}
+      <Box
+        display={showHorizontalSeparator}
+        width="100%"
+        height="1px"
+        backgroundColor="neutral-surfaceDisabled"
+      />
     </Box>
   );
 };
