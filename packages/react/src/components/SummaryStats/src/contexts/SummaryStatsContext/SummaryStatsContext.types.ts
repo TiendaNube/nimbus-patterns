@@ -33,4 +33,8 @@ export interface SummaryStatsContextValue {
    * Whether the stats row uses horizontal layout (single row). True when layout is "horizontal".
    */
   isHorizontalLayout: boolean;
+  /**
+   * Array of stat IDs that are visible. Used for conditional rendering or filtering.
+   */
+  visibleStatIds: string[];
 }

@@ -17,4 +17,5 @@ export const initialSummaryStatsContextValue: SummaryStatsContextValue = {
   },
   statIds: [],
   isHorizontalLayout: false,
+  visibleStatIds: [],
 };

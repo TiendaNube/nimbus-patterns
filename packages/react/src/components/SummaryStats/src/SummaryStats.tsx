@@ -54,6 +54,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
       registerStat,
       statIds,
       isHorizontalLayout,
+      visibleStatIds: statIds,
     }),
     [
       activeId,
