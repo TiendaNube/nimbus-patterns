@@ -15,8 +15,6 @@ const ChatInputActions: React.FC<ChatInputActionsProps> = ({
     display="flex"
     alignItems="center"
     justifyContent="space-between"
-    pb="none"
-    px="none"
   >
     {children}
   </Box>
