@@ -6,7 +6,7 @@ Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team 
 
 #### 🐛 Bug fixes
 
-- Removed hardcoded `pb` and `px` props from `ChatInput.Actions` to allow proper layout flexibility. ([#146](https://github.com/TiendaNube/nimbus-patterns/pull/146) by [@karemcarvalho-hue](https://github.com/karemcarvalho-hue))
+- Removed hardcoded `pb` and `px` props from `ChatInput.Actions` to allow proper layout flexibility. ([#149](https://github.com/TiendaNube/nimbus-patterns/pull/149) by [@karemcarvalho-hue](https://github.com/karemcarvalho-hue))
 
 ## 2026-02-11 `1.31.2`
 
