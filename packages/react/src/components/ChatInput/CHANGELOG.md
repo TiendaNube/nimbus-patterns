@@ -2,6 +2,12 @@
 
 ChatInput allows the user to build chat inputs for apps. It features internal components meant to build chat inputs with popovers, actions, and fields.
 
+## 2026-02-13 `1.0.3`
+
+#### 🐛 Bug fixes
+
+- Removed hardcoded `pb` and `px` props from `ChatInput.Actions` to allow proper layout flexibility. ([#146](https://github.com/TiendaNube/nimbus-patterns/pull/146) by [@karemcarvalho-hue](https://github.com/karemcarvalho-hue))
+
 ## 2026-01-15 `1.0.2`
 
 #### 📚 3rd party library updates

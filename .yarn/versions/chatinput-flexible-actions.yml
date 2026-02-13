@@ -1,6 +1,6 @@
 releases:
-  "@nimbus-ds/chat-input": minor
-  "@nimbus-ds/patterns": minor
+  "@nimbus-ds/chat-input": patch
+  "@nimbus-ds/patterns": patch
 
 declined:
   - nimbus-patterns
