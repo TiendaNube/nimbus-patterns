@@ -18,4 +18,5 @@ describe("GIVEN <ChatInput />", () => {
     expect(screen.getByText("right")).toBeDefined();
     expect(screen.getByPlaceholderText("Type...")).toBeDefined();
   });
+
 });
