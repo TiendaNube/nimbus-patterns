@@ -90,11 +90,12 @@ const Editor: React.FC<EditorProps> = ({
         >
           <TranslateContext.Provider value={context}>
             <Toolbar className={editorStyles.classnames.toolbar}>
-              {modules ??
-                defaultModules.map((defaultModule) => {
-                  const Module = aliasModules[defaultModule] ?? null;
-                  return <Module key={defaultModule} />;
-                })}
+              {(modules ?? defaultModules)
+                .map((key) => {
+                  const Component = aliasModules[key];
+                  return Component ? <Component key={key} /> : null;
+                })
+                .filter(Boolean)}
             </Toolbar>
             <Box position="relative">
               <RichTextPlugin

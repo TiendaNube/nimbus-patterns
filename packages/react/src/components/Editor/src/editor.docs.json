@@ -7,19 +7,22 @@
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/editor",
   "props": [
     {
-      "enum": [
-        "bold",
-        "clearFormating",
-        "divider",
-        "header",
-        "history",
-        "italic",
-        "link",
-        "orderedList",
-        "unorderedList",
-        "video"
-      ],
-      "type": "string",
+      "type": "array",
+      "items": {
+        "enum": [
+          "bold",
+          "clearFormating",
+          "divider",
+          "header",
+          "history",
+          "italic",
+          "link",
+          "orderedList",
+          "unorderedList",
+          "video"
+        ],
+        "type": "string"
+      },
       "title": "modules",
       "required": false
     },
