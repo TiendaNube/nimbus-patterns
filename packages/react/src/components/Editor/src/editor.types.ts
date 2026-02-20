@@ -18,11 +18,8 @@ export type Module =
 export type Parser = "html" | "json";
 
 export interface EditorProperties {
-  /**
-   * List of toolbar module keys to display. Only these modules are loaded in the toolbar.
-   * When omitted, the default toolbar with all modules is used.
-   */
-  modules?: Module[];
+  modules?: Module;
+  renderModules?: Module[];
   placeholder?: string;
   value?: string;
   parser?: Parser;

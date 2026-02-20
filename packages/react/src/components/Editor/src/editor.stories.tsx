@@ -7,10 +7,10 @@ const meta: Meta<typeof Editor> = {
   component: Editor,
   tags: ["autodocs"],
   args: {
-    modules: defaultModules,
+    renderModules: defaultModules,
   },
   argTypes: {
-    modules: {
+    renderModules: {
       control: { type: "object" },
       description:
         "List of toolbar module keys (strings). Example: [\"bold\", \"italic\", \"link\"]. Only these modules are loaded in the toolbar.",

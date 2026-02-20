@@ -1,0 +1,6 @@
+releases:
+  "@nimbus-ds/editor": minor
+  "@nimbus-ds/patterns": minor
+
+declined:
+  - nimbus-patterns
