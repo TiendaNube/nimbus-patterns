@@ -19,6 +19,7 @@ export type Parser = "html" | "json";
 
 export interface EditorProperties {
   modules?: Module;
+  renderModules?: Module[];
   placeholder?: string;
   value?: string;
   parser?: Parser;

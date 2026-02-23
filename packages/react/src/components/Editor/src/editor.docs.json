@@ -1,7 +1,7 @@
 {
   "id": "editor",
   "name": "Editor",
-  "totalProps": 10,
+  "totalProps": 11,
   "packageName": "@nimbus-ds/editor",
   "version": "1.1.1",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/editor",
@@ -21,6 +21,26 @@
       ],
       "type": "string",
       "title": "modules",
+      "required": false
+    },
+    {
+      "type": "array",
+      "items": {
+        "enum": [
+          "bold",
+          "clearFormating",
+          "divider",
+          "header",
+          "history",
+          "italic",
+          "link",
+          "orderedList",
+          "unorderedList",
+          "video"
+        ],
+        "type": "string"
+      },
+      "title": "renderModules",
       "required": false
     },
     {
