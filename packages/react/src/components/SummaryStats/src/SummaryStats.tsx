@@ -25,6 +25,8 @@ import {
  * @param props.children - Stat items, typically SummaryStats.Stat components
  * @param props.layout - "horizontal" (default) or "grid"; controls row vs grid layout
  * @param props.expandable - When true and layout is horizontal, stats are expandable
+ * @param props.activeStatId - Optional. Controlled active stat id. Pass `null` for none.
+ * @param props.onActiveStatIdChange - Optional. Callback when active stat changes.
  * @param props.rest - Remaining HTML element attributes (spread to root Box)
  */
 const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
@@ -33,20 +35,32 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
   children,
   layout = "horizontal",
   expandable = false,
+  activeStatId,
+  onActiveStatIdChange,
   ...rest
 }: SummaryStatsProps) => {
   const isExpandable = layout === "horizontal" && expandable;
+  const isControlled = activeStatId !== undefined;
 
-  const [activeId, setActiveId] = useState<string | null>(null);
+  const [internalActiveId, setInternalActiveId] = useState<string | null>(null);
+  const activeId = isControlled ? activeStatId ?? null : internalActiveId;
+
   const [statsRegistry, setStatsRegistry] = useState<Map<string, ReactNode>>(
     new Map()
   );
   const [statIds, setStatIds] = useState<string[]>([]);
   const [scrollPaneStatIds, setScrollPaneStatIds] = useState<string[]>([]);
 
-  const handleToggle = useCallback((id: string) => {
-    setActiveId((current) => (current === id ? null : id));
-  }, []);
+  const handleToggle = useCallback(
+    (id: string) => {
+      const nextId = activeId === id ? null : id;
+      if (!isControlled) {
+        setInternalActiveId(nextId);
+      }
+      onActiveStatIdChange?.(nextId);
+    },
+    [activeId, isControlled, onActiveStatIdChange]
+  );
 
   const registerStat = useCallback(
     (id: string, content: ReactNode, isScrollPane?: boolean) => {
@@ -66,16 +80,21 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
     []
   );
 
-  const unregisterStat = useCallback((id: string) => {
-    setStatsRegistry((prev) => {
-      const next = new Map(prev);
-      next.delete(id);
-      return next;
-    });
-    setStatIds((prev) => prev.filter((sid) => sid !== id));
-    setScrollPaneStatIds((prev) => prev.filter((sid) => sid !== id));
-    setActiveId((current) => (current === id ? null : current));
-  }, []);
+  const unregisterStat = useCallback(
+    (id: string) => {
+      setStatsRegistry((prev) => {
+        const next = new Map(prev);
+        next.delete(id);
+        return next;
+      });
+      setStatIds((prev) => prev.filter((sid) => sid !== id));
+      setScrollPaneStatIds((prev) => prev.filter((sid) => sid !== id));
+      if (!isControlled) {
+        setInternalActiveId((current) => (current === id ? null : current));
+      }
+    },
+    [isControlled]
+  );
 
   const activeContent = useMemo(() => {
     if (!isExpandable || activeId === null) return null;
