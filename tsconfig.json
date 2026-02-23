@@ -83,7 +83,12 @@
       "@nimbus-ds/product-data-list": [
         "./packages/react/src/components/ProductDataList/src"
       ],
-      "@nimbus-ds/chat-input": ["./packages/react/src/components/ChatInput/src"]
+      "@nimbus-ds/chat-input": [
+        "./packages/react/src/components/ChatInput/src"
+      ],
+      "@nimbus-ds/summary-stats": [
+        "./packages/react/src/components/SummaryStats/src"
+      ]
     }
   }
 }
