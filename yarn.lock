@@ -3872,10 +3872,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/styles@npm:^9.50.0":
-  version: 9.50.0
-  resolution: "@nimbus-ds/styles@npm:9.50.0"
-  checksum: 8c5041d6cb8033dc52251a05bab2ba1466ca7eb31c75bc35acc0cca998b9d333b8280ec352f5731f8c47c9c010a21bb4d970125a259c14c0751a1214a0f2d726
+"@nimbus-ds/styles@npm:^9.57.0":
+  version: 9.57.0
+  resolution: "@nimbus-ds/styles@npm:9.57.0"
+  checksum: 26ec82aac6420d466c8b973f48c50676bfc794a52374c39767b0e6fed13b20a68ac35cd44e0d83be17172556ace7c1ff5118bec4e47534231e075ae773b483f8
   languageName: node
   linkType: hard
 
@@ -12436,7 +12436,7 @@ __metadata:
     "@nimbus-ds/components": ^5.46.0
     "@nimbus-ds/icons": ^1.15.1
     "@nimbus-ds/scripts": ^1.8.2
-    "@nimbus-ds/styles": ^9.50.0
+    "@nimbus-ds/styles": ^9.57.0
     "@nimbus-ds/tokens": ^9.5.0
     "@storybook/addon-docs": ^8.6.14
     "@storybook/addon-essentials": ^8.6.14

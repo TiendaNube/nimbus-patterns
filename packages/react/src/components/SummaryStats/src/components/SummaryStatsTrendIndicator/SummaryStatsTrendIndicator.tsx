@@ -8,7 +8,7 @@ import { SummaryStatsTrendIndicatorProps } from "./summaryStatsTrendIndicator.ty
 const trendConfig = {
   up: {
     icon: ArrowupIcon,
-    color: "success-interactive" as const,
+    color: "success-interactivePressed" as const,
     label: "increase",
   },
   down: {

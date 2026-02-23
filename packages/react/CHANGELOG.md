@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-02-23 `1.29.0`
+
+#### 🎉 New features
+
+- Added new `SummaryStats` component for displaying key statistics with trend indicators, info tooltips, and expandable content areas. ([#145](https://github.com/TiendaNube/nimbus-patterns/pull/145) by [@jetchart-tiendanube](https://github.com/jetchart-tiendanube))
+
 ## 2026-01-22 `1.28.1`
 
 #### 🐛 Bug fixes
