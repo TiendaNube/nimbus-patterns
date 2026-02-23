@@ -44,3 +44,15 @@ export interface SummaryStatsStatProperties {
 
 export type SummaryStatsStatProps = SummaryStatsStatProperties &
   Omit<HTMLAttributes<HTMLElement>, "color">;
+
+/**
+ * Return type for the separator configuration helper.
+ * Determines visibility and display modes of vertical/horizontal separators
+ * between stat items based on layout and position.
+ */
+export interface SeparatorConfig {
+  showVerticalSeparator: boolean;
+  paddingRight: "1" | undefined;
+  verticalSeparatorDisplay: "flex" | { xs: "none"; md: "flex" };
+  showHorizontalSeparator: { xs: "block" | "none"; md: "block" | "none" };
+}

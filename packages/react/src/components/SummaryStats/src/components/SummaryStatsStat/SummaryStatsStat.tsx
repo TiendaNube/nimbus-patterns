@@ -1,57 +1,15 @@
 import React, { useId, useEffect, useCallback } from "react";
 
 import { Box, Text, Icon, Tooltip } from "@nimbus-ds/components";
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-  InfoCircleIcon,
-} from "@nimbus-ds/icons";
+import { InfoCircleIcon } from "@nimbus-ds/icons";
 
-import {
-  useSummaryStatsContext,
-  type SummaryStatsLayout,
-} from "../../contexts";
+import { useSummaryStatsContext } from "../../contexts";
 import { SummaryStatsTrendIndicator } from "../SummaryStatsTrendIndicator";
+import {
+  ExpandableChevron,
+  getSeparatorConfig,
+} from "./summaryStatsStat.definitions";
 import { SummaryStatsStatProps } from "./summaryStatsStat.types";
-
-function getSeparatorConfig(
-  statIndex: number,
-  statIds: string[],
-  id: string,
-  layout: SummaryStatsLayout,
-  isHorizontalLayout: boolean
-): {
-  showVerticalSeparator: boolean;
-  paddingRight: "1" | undefined;
-  verticalSeparatorDisplay: "flex" | { xs: "none"; md: "flex" };
-  showHorizontalSeparator: { xs: "block" | "none"; md: "block" | "none" };
-} {
-  const isLastStat = statIds.length > 0 && statIds.at(-1) === id;
-  const isFirstColumn = (statIndex + 1) % 2 !== 0;
-  const isInLastRow = statIndex >= statIds.length - 2;
-  const showVerticalSeparator = layout === "grid" ? isFirstColumn : !isLastStat;
-  const shouldAlwaysBeFlex = layout === "grid" || isHorizontalLayout;
-  const shouldShow = layout === "grid" && !isInLastRow;
-  const isGridVisible = layout === "grid" && !isInLastRow;
-  const isListVisible = layout !== "grid" && !isHorizontalLayout && !isLastStat;
-
-  return {
-    showVerticalSeparator,
-    paddingRight: isLastStat ? "1" : undefined,
-    verticalSeparatorDisplay: shouldAlwaysBeFlex
-      ? ("flex" as const)
-      : { xs: "none" as const, md: "flex" as const },
-    showHorizontalSeparator: {
-      xs: isGridVisible || isListVisible ? "block" : "none",
-      md: shouldShow ? "block" : "none",
-    } as const,
-  };
-}
-
-const ExpandableChevron: React.FC<{ isActive: boolean }> = ({ isActive }) => {
-  const IconSource = isActive ? ChevronUpIcon : ChevronDownIcon;
-  return <Icon source={<IconSource size="small" />} color="neutral-textLow" />;
-};
 
 /**
  * A single stat card for the SummaryStats component. Renders a stat display with a
