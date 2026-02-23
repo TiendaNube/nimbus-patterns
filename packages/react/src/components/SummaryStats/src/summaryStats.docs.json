@@ -1,0 +1,100 @@
+{
+  "id": "summaryStats",
+  "name": "SummaryStats",
+  "totalProps": 5,
+  "packageName": "@nimbus-ds/summary-stats",
+  "version": "0.0.0",
+  "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/summary-stats",
+  "props": [
+    {
+      "description": "Content to be rendered inside the SummaryStats component.\nComposed of SummaryStats.Item subcomponents.",
+      "type": "React.ReactNode",
+      "title": "children",
+      "required": true
+    },
+    {
+      "description": "Layout variant for the stats container.\n- \"horizontal\": Items in a single row (2-6 items recommended).\n- \"grid\": Items in a 2-column grid layout (2 or 4 items recommended).",
+      "default": "horizontal",
+      "enum": [
+        "grid",
+        "horizontal"
+      ],
+      "type": "string",
+      "title": "layout",
+      "required": false
+    },
+    {
+      "description": "Enables expandable mode where stats can be clicked to show additional content.",
+      "default": false,
+      "type": "boolean",
+      "title": "expandable",
+      "required": false
+    },
+    {
+      "description": "The id of the currently active stat (controlled mode).\nWhen provided, the component becomes controlled and `onActiveStatIdChange`\nshould be used to handle state changes. Pass `null` for no active stat.",
+      "type": [
+        "null",
+        "string"
+      ],
+      "title": "activeStatId",
+      "required": false
+    },
+    {
+      "description": "Callback fired when the active stat changes (controlled mode).\nReceives the new active stat id, or `null` when the active stat is deselected.",
+      "type": "object",
+      "additionalProperties": false,
+      "propertyOrder": [],
+      "title": "onActiveStatIdChange",
+      "required": false
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "SummaryStats.Item",
+      "totalProps": 6,
+      "props": [
+        {
+          "description": "The main value to display (e.g., \"$0.00\", \"156\").",
+          "type": "string",
+          "title": "value",
+          "required": true
+        },
+        {
+          "description": "Brief text that identifies the metric.",
+          "type": "string",
+          "title": "description",
+          "required": true
+        },
+        {
+          "description": "Trend indicator showing the change direction.",
+          "enum": [
+            "down",
+            "neutral",
+            "up"
+          ],
+          "type": "string",
+          "title": "trend",
+          "required": false
+        },
+        {
+          "description": "Text describing the trend or change (e.g., \"+15%\", \"-5%\", \"0%\").",
+          "type": "string",
+          "title": "trendText",
+          "required": false
+        },
+        {
+          "description": "Tooltip content for the info icon. If provided, displays an info icon.",
+          "type": "string",
+          "title": "infoTooltip",
+          "required": false
+        },
+        {
+          "description": "Content to display when this stat is active (for expandable variant).\nThis content will be rendered in the expandable area below the stats row.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

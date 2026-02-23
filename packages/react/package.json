@@ -1,6 +1,6 @@
 {
   "name": "@nimbus-ds/patterns",
-  "version": "1.32.0",
+  "version": "1.33.0",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
@@ -138,6 +138,10 @@
     "./Sortable": {
       "import": "./dist/Sortable/index.js",
       "require": "./dist/Sortable/index.js"
+    },
+    "./SummaryStats": {
+      "import": "./dist/SummaryStats/index.js",
+      "require": "./dist/SummaryStats/index.js"
     },
     "./ThumbnailWithAction": {
       "import": "./dist/ThumbnailWithAction/index.js",

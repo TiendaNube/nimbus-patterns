@@ -5603,6 +5603,7 @@
                   "properties": {
                     "focus": {
                       "enum": [
+                        "ai-generative-interactiveHover",
                         "danger-interactive",
                         "danger-surface",
                         "danger-surfaceHighlight",
@@ -5626,6 +5627,7 @@
                     },
                     "focusVisible": {
                       "enum": [
+                        "ai-generative-interactiveHover",
                         "danger-interactive",
                         "danger-surface",
                         "danger-surfaceHighlight",
@@ -5649,6 +5651,7 @@
                     },
                     "focusWithin": {
                       "enum": [
+                        "ai-generative-interactiveHover",
                         "danger-interactive",
                         "danger-surface",
                         "danger-surfaceHighlight",
@@ -5672,6 +5675,7 @@
                     },
                     "active": {
                       "enum": [
+                        "ai-generative-interactiveHover",
                         "danger-interactive",
                         "danger-surface",
                         "danger-surfaceHighlight",
@@ -5695,6 +5699,7 @@
                     },
                     "hover": {
                       "enum": [
+                        "ai-generative-interactiveHover",
                         "danger-interactive",
                         "danger-surface",
                         "danger-surfaceHighlight",
@@ -5718,6 +5723,7 @@
                     },
                     "disabled": {
                       "enum": [
+                        "ai-generative-interactiveHover",
                         "danger-interactive",
                         "danger-surface",
                         "danger-surfaceHighlight",
@@ -5741,6 +5747,7 @@
                     },
                     "xs": {
                       "enum": [
+                        "ai-generative-interactiveHover",
                         "danger-interactive",
                         "danger-surface",
                         "danger-surfaceHighlight",
@@ -5764,6 +5771,7 @@
                     },
                     "md": {
                       "enum": [
+                        "ai-generative-interactiveHover",
                         "danger-interactive",
                         "danger-surface",
                         "danger-surfaceHighlight",
@@ -5787,6 +5795,7 @@
                     },
                     "lg": {
                       "enum": [
+                        "ai-generative-interactiveHover",
                         "danger-interactive",
                         "danger-surface",
                         "danger-surfaceHighlight",
@@ -5810,6 +5819,7 @@
                     },
                     "xl": {
                       "enum": [
+                        "ai-generative-interactiveHover",
                         "danger-interactive",
                         "danger-surface",
                         "danger-surfaceHighlight",
@@ -5833,6 +5843,7 @@
                     },
                     "xxl": {
                       "enum": [
+                        "ai-generative-interactiveHover",
                         "danger-interactive",
                         "danger-surface",
                         "danger-surfaceHighlight",
@@ -5872,6 +5883,7 @@
                 },
                 {
                   "enum": [
+                    "ai-generative-interactiveHover",
                     "danger-interactive",
                     "danger-surface",
                     "danger-surfaceHighlight",
