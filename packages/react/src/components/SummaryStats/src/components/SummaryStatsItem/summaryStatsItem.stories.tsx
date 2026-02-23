@@ -3,11 +3,11 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Box, Text } from "@nimbus-ds/components";
 
 import { SummaryStats } from "../../SummaryStats";
-import { SummaryStatsStat } from "./SummaryStatsStat";
+import { SummaryStatsItem } from "./SummaryStatsItem";
 
-const meta: Meta<typeof SummaryStatsStat> = {
-  title: "Patterns/SummaryStats/Stat",
-  component: SummaryStatsStat,
+const meta: Meta<typeof SummaryStatsItem> = {
+  title: "Patterns/SummaryStats/Item",
+  component: SummaryStatsItem,
   decorators: [
     (Story) => (
       <SummaryStats>
@@ -64,7 +64,7 @@ const meta: Meta<typeof SummaryStatsStat> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof SummaryStatsStat>;
+type Story = StoryObj<typeof SummaryStatsItem>;
 
 export const Basic: Story = {
   args: {

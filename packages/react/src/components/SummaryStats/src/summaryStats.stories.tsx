@@ -38,25 +38,25 @@ type Story = StoryObj<typeof SummaryStats>;
 export const Basic: Story = {
   render: (args) => (
     <SummaryStats {...args}>
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$12,450.00"
         trend="up"
         trendText="15%"
         description="Total Sales"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="156"
         trend="down"
         trendText="8%"
         description="Orders"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="89"
         trend="neutral"
         trendText="0%"
         description="Customers"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="3.2%"
         trend="up"
         trendText="0.5%"
@@ -73,28 +73,28 @@ export const WithInfoTooltip: Story = {
 
   render: (args) => (
     <SummaryStats {...args}>
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$12,450.00"
         trend="up"
         trendText="15%"
         description="Total Sales"
         infoTooltip="Total revenue from all completed orders in the selected period"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="156"
         trend="down"
         trendText="8%"
         description="Orders"
         infoTooltip="Number of orders placed in the selected period"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="89"
         trend="neutral"
         trendText="0%"
         description="Customers"
         infoTooltip="Unique customers who made a purchase"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="3.2%"
         trend="up"
         trendText="0.5%"
@@ -108,7 +108,7 @@ export const WithInfoTooltip: Story = {
 export const Expandable: Story = {
   render: (args) => (
     <SummaryStats {...args} expandable>
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$12,450.00"
         trend="up"
         trendText="15%"
@@ -116,8 +116,8 @@ export const Expandable: Story = {
         infoTooltip="Total revenue from all completed orders"
       >
         <ChartMockup color="success-interactive" />
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
+      </SummaryStats.Item>
+      <SummaryStats.Item
         value="156"
         trend="down"
         trendText="8%"
@@ -125,8 +125,8 @@ export const Expandable: Story = {
         infoTooltip="Number of orders placed"
       >
         <ChartMockup color="danger-interactive" />
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
+      </SummaryStats.Item>
+      <SummaryStats.Item
         value="89"
         trend="neutral"
         trendText="0%"
@@ -134,8 +134,8 @@ export const Expandable: Story = {
         infoTooltip="Unique customers"
       >
         <ChartMockup color="neutral-textLow" />
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
+      </SummaryStats.Item>
+      <SummaryStats.Item
         value="3.2%"
         trend="up"
         trendText="0.5%"
@@ -143,7 +143,7 @@ export const Expandable: Story = {
         infoTooltip="Visitors who completed a purchase"
       >
         <ChartMockup color="success-interactive" />
-      </SummaryStats.Stat>
+      </SummaryStats.Item>
     </SummaryStats>
   ),
 };
@@ -151,42 +151,42 @@ export const Expandable: Story = {
 export const SixStats: Story = {
   render: (args) => (
     <SummaryStats {...args}>
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
         description="Description"
         infoTooltip="Metric explanation"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
         description="Description"
         infoTooltip="Metric explanation"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
         description="Description"
         infoTooltip="Metric explanation"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
         description="Description"
         infoTooltip="Metric explanation"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
         description="Description"
         infoTooltip="Metric explanation"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
@@ -200,28 +200,28 @@ export const SixStats: Story = {
 export const WithDownTrends: Story = {
   render: (args) => (
     <SummaryStats {...args}>
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$8,200.00"
         trend="down"
         trendText="12%"
         description="Total Sales"
         infoTooltip="Decreased compared to last month"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="98"
         trend="down"
         trendText="25%"
         description="Orders"
         infoTooltip="Fewer orders this period"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="45"
         trend="down"
         trendText="5%"
         description="Customers"
         infoTooltip="Slight decrease in customers"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="1.8%"
         trend="down"
         trendText="0.8%"
@@ -235,28 +235,28 @@ export const WithDownTrends: Story = {
 export const LayoutHorizontal: Story = {
   render: (args) => (
     <SummaryStats {...args} layout="horizontal">
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
         description="Description"
         infoTooltip="Metric explanation"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
         description="Description"
         infoTooltip="Metric explanation"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
         description="Description"
         infoTooltip="Metric explanation"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
@@ -270,28 +270,28 @@ export const LayoutHorizontal: Story = {
 export const LayoutGridFourItems: Story = {
   render: (args) => (
     <SummaryStats {...args} layout="grid">
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
         description="Description"
         infoTooltip="Metric explanation"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
         description="Description"
         infoTooltip="Metric explanation"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
         description="Description"
         infoTooltip="Metric explanation"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
@@ -305,14 +305,14 @@ export const LayoutGridFourItems: Story = {
 export const LayoutGridTwoItems: Story = {
   render: (args) => (
     <SummaryStats {...args} layout="grid">
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"
         description="Description"
         infoTooltip="Metric explanation"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$0.00"
         trend="up"
         trendText="0%"

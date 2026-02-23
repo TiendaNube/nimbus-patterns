@@ -2,7 +2,7 @@ import React, { useState, useMemo, useCallback, ReactNode } from "react";
 
 import { Box, ScrollPane } from "@nimbus-ds/components";
 
-import { SummaryStatsStat } from "./components";
+import { SummaryStatsItem } from "./components";
 import { SummaryStatsContext } from "./contexts";
 
 import {
@@ -13,7 +13,7 @@ import {
 /**
  * SummaryStats displays a set of stat blocks in a configurable layout. Use
  * {@link SummaryStatsProps} for the full props type and {@link SummaryStatsComponents}
- * for the compound component API (e.g. SummaryStats.Stat).
+ * for the compound component API (e.g. SummaryStats.Item).
  *
  * Layout can be horizontal (single row, optionally with scroll/expand) or grid
  * (2-column). When layout is "horizontal" and expandable is true, clicking a
@@ -22,7 +22,7 @@ import {
  * @param props - See SummaryStatsProps
  * @param props.className - Optional CSS class for the root element
  * @param props.style - Optional inline styles for the root element
- * @param props.children - Stat items, typically SummaryStats.Stat components
+ * @param props.children - Stat items, typically SummaryStats.Item components
  * @param props.layout - "horizontal" (default) or "grid"; controls row vs grid layout
  * @param props.expandable - When true and layout is horizontal, stats are expandable
  * @param props.activeStatId - Optional. Controlled active stat id. Pass `null` for none.
@@ -209,9 +209,9 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
   );
 };
 
-SummaryStats.Stat = SummaryStatsStat;
+SummaryStats.Item = SummaryStatsItem;
 
 SummaryStats.displayName = "SummaryStats";
-SummaryStats.Stat.displayName = "SummaryStats.Stat";
+SummaryStats.Item.displayName = "SummaryStats.Item";
 
 export { SummaryStats };

@@ -1,19 +1,19 @@
 import { HTMLAttributes, ReactNode } from "react";
 
-import { SummaryStatsStat } from "./components";
+import { SummaryStatsItem } from "./components";
 import type { SummaryStatsLayout } from "./contexts";
 
 /**
- * Subcomponents exposed on SummaryStats (e.g. SummaryStats.Stat).
- * Use {@link SummaryStatsStat} for the Stat subcomponent type and API.
+ * Subcomponents exposed on SummaryStats (e.g. SummaryStats.Item).
+ * Use {@link SummaryStatsItem} for the Item subcomponent type and API.
  */
 export interface SummaryStatsComponents {
-  Stat: typeof SummaryStatsStat;
+  Item: typeof SummaryStatsItem;
 }
 
 /**
- * Props specific to SummaryStats. Children should be {@link SummaryStatsStat}
- * nodes (SummaryStats.Stat). Layout is "horizontal" (default) or "grid".
+ * Props specific to SummaryStats. Children should be {@link SummaryStatsItem}
+ * nodes (SummaryStats.Item). Layout is "horizontal" (default) or "grid".
  * Defaults: layout "horizontal", expandable false.
  *
  * Supports both controlled and uncontrolled modes for the active stat:
@@ -25,7 +25,7 @@ export interface SummaryStatsComponents {
 export interface SummaryStatsProperties {
   /**
    * Content to be rendered inside the SummaryStats component.
-   * Composed of SummaryStats.Stat subcomponents.
+   * Composed of SummaryStats.Item subcomponents.
    * @TJS-type React.ReactNode
    */
   children: ReactNode;

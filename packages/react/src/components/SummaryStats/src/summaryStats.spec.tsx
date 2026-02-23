@@ -13,22 +13,22 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
 const makeSut = (props?: Partial<SummaryStatsProps>) => {
   render(
     <SummaryStats {...props} data-testid="summary-stats-element">
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$1,000"
         description="Total Sales"
         trend="up"
         trendText="15%"
       >
         <div data-testid="expandable-content">Content here</div>
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
+      </SummaryStats.Item>
+      <SummaryStats.Item
         value="150"
         description="Orders"
         trend="down"
         trendText="8%"
       >
         <div data-testid="orders-content">Orders content</div>
-      </SummaryStats.Stat>
+      </SummaryStats.Item>
     </SummaryStats>
   );
 };

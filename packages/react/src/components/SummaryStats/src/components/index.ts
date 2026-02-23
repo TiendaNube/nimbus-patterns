@@ -1,2 +1,2 @@
-export * from "./SummaryStatsStat";
+export * from "./SummaryStatsItem";
 export * from "./SummaryStatsTrendIndicator";

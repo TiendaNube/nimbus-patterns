@@ -5,7 +5,7 @@ import { initialSummaryStatsContextValue } from "./SummaryStatsContext.definitio
 /**
  * React context that powers the SummaryStats compound component pattern.
  * It holds shared state and callbacks (activeId, onToggle, registerStat, expandable,
- * layout, statIds, isHorizontalLayout) so child components (e.g. SummaryStatsStat,
+ * layout, statIds, isHorizontalLayout) so child components (e.g. SummaryStatsItem,
  * SummaryStatsTrendIndicator) can coordinate without prop drilling.
  *
  * **Type:** `SummaryStatsContextValue | undefined` — undefined when consumed

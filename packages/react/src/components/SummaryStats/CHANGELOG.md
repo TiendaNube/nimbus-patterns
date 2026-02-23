@@ -11,7 +11,7 @@ Summary Stats component is intended for displaying key statistics and metrics in
   - `horizontal`: Items in a single row (2-6 items recommended).
   - `grid`: Items in a 2-column grid layout (2 or 4 items recommended).
 - Added `expandable` property to `SummaryStats` to enable interactive mode where stats can be clicked to show additional content. ([#145](https://github.com/TiendaNube/nimbus-patterns/pull/145) by [@jetchart-tiendanube](https://github.com/jetchart-tiendanube))
-- Added `SummaryStats.Stat` subcomponent with the following properties. ([#145](https://github.com/TiendaNube/nimbus-patterns/pull/145) by [@jetchart-tiendanube](https://github.com/jetchart-tiendanube))
+- Added `SummaryStats.Item` subcomponent with the following properties. ([#145](https://github.com/TiendaNube/nimbus-patterns/pull/145) by [@jetchart-tiendanube](https://github.com/jetchart-tiendanube))
   - `value`: The main numerical value to display.
   - `description`: Brief label text identifying the metric.
   - `trend`: Trend indicator (`up`, `down`, `neutral`) with colored arrows.

@@ -4,7 +4,7 @@ import { Icon } from "@nimbus-ds/components";
 import { ChevronDownIcon, ChevronUpIcon } from "@nimbus-ds/icons";
 
 import type { SummaryStatsLayout } from "../../contexts";
-import type { SeparatorConfig } from "./summaryStatsStat.types";
+import type { SeparatorConfig } from "./summaryStatsItem.types";
 
 export const ExpandableChevron: React.FC<{ isActive: boolean }> = ({
   isActive,

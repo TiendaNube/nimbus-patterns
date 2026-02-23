@@ -3,8 +3,8 @@ import { render, screen, within, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { SummaryStats } from "../../SummaryStats";
-import { SummaryStatsStat } from "./SummaryStatsStat";
-import { SummaryStatsStatProps } from "./summaryStatsStat.types";
+import { SummaryStatsItem } from "./SummaryStatsItem";
+import { SummaryStatsItemProps } from "./summaryStatsItem.types";
 
 global.ResizeObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
@@ -12,16 +12,16 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
   disconnect: jest.fn(),
 }));
 
-const makeSut = (props: SummaryStatsStatProps) => {
+const makeSut = (props: SummaryStatsItemProps) => {
   render(
     <SummaryStats>
-      <SummaryStatsStat {...props} data-testid="summary-stats-stat-element" />
+      <SummaryStatsItem {...props} data-testid="summary-stats-item-element" />
     </SummaryStats>
   );
 };
 
 const makeSutExpandable = (
-  statProps: SummaryStatsStatProps & { children?: React.ReactNode }
+  statProps: SummaryStatsItemProps & { children?: React.ReactNode }
 ) => {
   const { children, ...rest } = statProps;
   render(
@@ -30,9 +30,9 @@ const makeSutExpandable = (
       layout="horizontal"
       data-testid="summary-stats-element"
     >
-      <SummaryStatsStat {...rest} data-testid="summary-stats-stat-element">
+      <SummaryStatsItem {...rest} data-testid="summary-stats-item-element">
         {children}
-      </SummaryStatsStat>
+      </SummaryStatsItem>
     </SummaryStats>
   );
 };
@@ -40,33 +40,32 @@ const makeSutExpandable = (
 const makeSutTwoStats = () => {
   render(
     <SummaryStats layout="horizontal" data-testid="summary-stats-element">
-      <SummaryStatsStat
+      <SummaryStatsItem
         value="$1,000"
         description="Total Sales"
-        data-testid="summary-stats-stat-element"
+        data-testid="summary-stats-item-element"
       />
-      <SummaryStatsStat
+      <SummaryStatsItem
         value="150"
         description="Orders"
-        data-testid="summary-stats-stat-element"
+        data-testid="summary-stats-item-element"
       />
     </SummaryStats>
   );
 };
 
-describe("GIVEN <SummaryStatsStat />", () => {
-  // SummaryStats renders the stat twice (mobile + desktop layout), so we use getAllByTestId and assert on the first instance.
+describe("GIVEN <SummaryStatsItem />", () => {
   const getStatElements = () =>
-    screen.getAllByTestId("summary-stats-stat-element");
+    screen.getAllByTestId("summary-stats-item-element");
 
   describe("WHEN rendered with required props", () => {
     it("THEN should render value and description correctly", () => {
       render(
         <SummaryStats layout="grid">
-          <SummaryStatsStat
+          <SummaryStatsItem
             value="$1,000"
             description="Total Sales"
-            data-testid="summary-stats-stat-element"
+            data-testid="summary-stats-item-element"
           />
         </SummaryStats>
       );
@@ -124,7 +123,7 @@ describe("GIVEN <SummaryStatsStat />", () => {
       const stats = getStatElements();
       expect(stats.length).toBeGreaterThan(0);
       const infoIcon = within(stats[0]).getByTestId(
-        "summary-stats-stat-info-icon"
+        "summary-stats-item-info-icon"
       );
       expect(infoIcon).toBeDefined();
     });
@@ -198,7 +197,7 @@ describe("GIVEN <SummaryStatsStat />", () => {
         children: <div data-testid="expandable-content">Extra content</div>,
       });
       const statElement = screen.getAllByTestId(
-        "summary-stats-stat-element"
+        "summary-stats-item-element"
       )[0];
       const button = within(statElement).getByRole("button");
       expect(button.getAttribute("aria-expanded")).toBe("false");
@@ -234,7 +233,7 @@ describe("GIVEN <SummaryStatsStat />", () => {
         value: "$1,000",
         description: "Total Sales",
       });
-      const stat = screen.getAllByTestId("summary-stats-stat-element")[0];
+      const stat = screen.getAllByTestId("summary-stats-item-element")[0];
       const button = within(stat).getByRole("button");
       await user.tab();
       expect(document.activeElement).toBe(button);
@@ -244,32 +243,32 @@ describe("GIVEN <SummaryStatsStat />", () => {
   describe("WHEN rendered with multiple stats (separator)", () => {
     it("THEN single stat (isLastStat true) should not render vertical separator on the last stat element", () => {
       makeSut({ value: "$1,000", description: "Total Sales" });
-      const stats = screen.getAllByTestId("summary-stats-stat-element");
+      const stats = screen.getAllByTestId("summary-stats-item-element");
       expect(stats.length).toBeGreaterThan(0);
       const lastStatElement = stats[stats.length - 1];
       expect(
         within(lastStatElement).queryByTestId(
-          "summary-stats-stat-vertical-separator"
+          "summary-stats-item-vertical-separator"
         )
       ).toBeNull();
     });
 
     it("THEN first stat (isLastStat false) should show vertical separator", () => {
       makeSutTwoStats();
-      const stats = screen.getAllByTestId("summary-stats-stat-element");
+      const stats = screen.getAllByTestId("summary-stats-item-element");
       expect(stats.length).toBeGreaterThanOrEqual(2);
       expect(
-        within(stats[0]).getByTestId("summary-stats-stat-vertical-separator")
+        within(stats[0]).getByTestId("summary-stats-item-vertical-separator")
       ).toBeDefined();
     });
 
     it("THEN last stat (isLastStat true) should not show vertical separator", () => {
       makeSutTwoStats();
-      const stats = screen.getAllByTestId("summary-stats-stat-element");
+      const stats = screen.getAllByTestId("summary-stats-item-element");
       expect(stats.length).toBeGreaterThanOrEqual(2);
       expect(
         within(stats[stats.length - 1]).queryByTestId(
-          "summary-stats-stat-vertical-separator"
+          "summary-stats-item-vertical-separator"
         )
       ).toBeNull();
     });

@@ -3,17 +3,17 @@ import { HTMLAttributes, ReactNode } from "react";
 import type { TrendDirection } from "../SummaryStatsTrendIndicator/summaryStatsTrendIndicator.types";
 
 /**
- * Props for the SummaryStatsStat component.
+ * Props for the SummaryStatsItem component.
  *
  * Defines the props used to render a single stat: a primary value, description,
  * optional trend indicator, optional tooltip, and optional expandable content
- * (children). Used by the SummaryStatsStat component to display one metric in
+ * (children). Used by the SummaryStatsItem component to display one metric in
  * a summary stats row.
  *
- * @see SummaryStatsStat - Component that consumes these props.
+ * @see SummaryStatsItem - Component that consumes these props.
  * @property children - Optional ReactNode rendered in the expandable area when this stat is active.
  */
-export interface SummaryStatsStatProperties {
+export interface SummaryStatsItemProperties {
   /**
    * The main value to display (e.g., "$0.00", "156").
    */
@@ -42,7 +42,7 @@ export interface SummaryStatsStatProperties {
   children?: ReactNode;
 }
 
-export type SummaryStatsStatProps = SummaryStatsStatProperties &
+export type SummaryStatsItemProps = SummaryStatsItemProperties &
   Omit<HTMLAttributes<HTMLElement>, "color">;
 
 /**

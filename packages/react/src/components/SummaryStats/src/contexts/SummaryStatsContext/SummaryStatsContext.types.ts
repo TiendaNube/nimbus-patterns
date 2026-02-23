@@ -10,7 +10,7 @@ export type SummaryStatsLayout = "horizontal" | "grid";
 /**
  * Shape of the context provided by SummaryStats. Includes activeId, onToggle, expandable,
  * layout, registerStat, statIds, isHorizontalLayout, visibleStatIds, and optional isScrollPaneBlock.
- * Use this type when building expandable or layout-aware stat components (e.g. SummaryStatsStat)
+ * Use this type when building expandable or layout-aware stat components (e.g. SummaryStatsItem)
  * that need to read or react to the container’s expand/collapse state or layout.
  * Invariants: `activeId` is `null` when no stat is expanded; stat registration and ordering
  * are reflected in `statIds`.

@@ -8,8 +8,8 @@ import { SummaryStatsTrendIndicator } from "../SummaryStatsTrendIndicator";
 import {
   ExpandableChevron,
   getSeparatorConfig,
-} from "./summaryStatsStat.definitions";
-import { SummaryStatsStatProps } from "./summaryStatsStat.types";
+} from "./summaryStatsItem.definitions";
+import { SummaryStatsItemProps } from "./summaryStatsItem.types";
 
 /**
  * A single stat card for the SummaryStats component. Renders a stat display with a
@@ -26,7 +26,7 @@ import { SummaryStatsStatProps } from "./summaryStatsStat.types";
  * **Optional props:** `trend`, `trendText`, `infoTooltip`, `children`,
  * and any valid HTML element attributes (rest props).
  *
- * @param props - SummaryStatsStatProps
+ * @param props - SummaryStatsItemProps
  * @param props.value - **Required.** Main value to display (e.g. "$1,000", "156").
  *   Type: `string`.
  * @param props.description - **Required.** Short label for the metric (e.g. "Total Sales").
@@ -48,7 +48,7 @@ import { SummaryStatsStatProps } from "./summaryStatsStat.types";
  * @example
  * // Basic stat with trend
  * <SummaryStats>
- *   <SummaryStats.Stat
+ *   <SummaryStats.Item
  *     value="$1,000"
  *     description="Total Sales"
  *     trend="up"
@@ -59,7 +59,7 @@ import { SummaryStatsStatProps } from "./summaryStatsStat.types";
  * @example
  * // Stat with info tooltip
  * <SummaryStats>
- *   <SummaryStats.Stat
+ *   <SummaryStats.Item
  *     value="156"
  *     description="Orders"
  *     infoTooltip="Total orders in the last 30 days."
@@ -69,12 +69,12 @@ import { SummaryStatsStatProps } from "./summaryStatsStat.types";
  * @example
  * // Expandable stat with children
  * <SummaryStats expandable>
- *   <SummaryStats.Stat value="$1,000" description="Total Sales">
+ *   <SummaryStats.Item value="$1,000" description="Total Sales">
  *     <Chart />
- *   </SummaryStats.Stat>
+ *   </SummaryStats.Item>
  * </SummaryStats>
  */
-const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
+const SummaryStatsItem: React.FC<SummaryStatsItemProps> = ({
   className: _className,
   style: _style,
   children,
@@ -85,7 +85,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   infoTooltip,
   "aria-label": ariaLabel,
   ...rest
-}: SummaryStatsStatProps) => {
+}: SummaryStatsItemProps) => {
   const id = useId();
   const {
     activeId,
@@ -204,7 +204,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
                   source={<InfoCircleIcon size="small" />}
                   color="neutral-textLow"
                   cursor="pointer"
-                  data-testid="summary-stats-stat-info-icon"
+                  data-testid="summary-stats-item-info-icon"
                 />
               </Tooltip>
             )}
@@ -216,7 +216,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
             display={separator.verticalSeparatorDisplay}
             alignItems="center"
             marginLeft="1"
-            data-testid="summary-stats-stat-vertical-separator"
+            data-testid="summary-stats-item-vertical-separator"
           >
             <Box
               width="1px"
@@ -244,6 +244,6 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   );
 };
 
-SummaryStatsStat.displayName = "SummaryStatsStat";
+SummaryStatsItem.displayName = "SummaryStatsItem";
 
-export { SummaryStatsStat };
+export { SummaryStatsItem };

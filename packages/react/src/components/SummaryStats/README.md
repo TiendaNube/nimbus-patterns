@@ -22,21 +22,21 @@ import { SummaryStats } from "@nimbus-ds/summary-stats";
 function MyComponent() {
   return (
     <SummaryStats>
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$12,450.00"
         description="Total Sales"
         trend="up"
         trendText="15%"
         infoTooltip="Total revenue from all completed orders"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="156"
         description="Orders"
         trend="down"
         trendText="8%"
         infoTooltip="Number of orders placed"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="89"
         description="Customers"
         trend="neutral"
@@ -56,25 +56,25 @@ import { SummaryStats } from "@nimbus-ds/summary-stats";
 function MyComponent() {
   return (
     <SummaryStats layout="grid">
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="$12,450.00"
         description="Total Sales"
         trend="up"
         trendText="15%"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="156"
         description="Orders"
         trend="down"
         trendText="8%"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="89"
         description="Customers"
         trend="up"
         trendText="12%"
       />
-      <SummaryStats.Stat
+      <SummaryStats.Item
         value="3.2%"
         description="Conversion"
         trend="neutral"
@@ -96,7 +96,7 @@ import { Text } from "@nimbus-ds/components";
 function MyComponent() {
   return (
     <SummaryStats expandable>
-      <SummaryStats.Stat
+      <SummaryStats.Item
         id="sales"
         value="$12,450.00"
         description="Total Sales"
@@ -104,8 +104,8 @@ function MyComponent() {
         trendText="15%"
       >
         <Text>Sales chart and detailed breakdown would go here.</Text>
-      </SummaryStats.Stat>
-      <SummaryStats.Stat
+      </SummaryStats.Item>
+      <SummaryStats.Item
         id="orders"
         value="156"
         description="Orders"
@@ -113,7 +113,7 @@ function MyComponent() {
         trendText="8%"
       >
         <Text>Orders details and analytics would go here.</Text>
-      </SummaryStats.Stat>
+      </SummaryStats.Item>
     </SummaryStats>
   );
 }
@@ -125,14 +125,14 @@ function MyComponent() {
 
 | Prop              | Type                     | Default        | Description                                             |
 | ----------------- | ------------------------ | -------------- | ------------------------------------------------------- |
-| children          | `ReactNode`              | -              | Content (composed of `SummaryStats.Stat` subcomponents) |
+| children          | `ReactNode`              | -              | Content (composed of `SummaryStats.Item` subcomponents) |
 | layout            | `"horizontal" \| "grid"` | `"horizontal"` | Layout variant: row or 2-column grid                    |
 | expandable        | `boolean`                | `false`        | Enables expandable mode where stats can be clicked      |
 | defaultSelectedId | `string`                 | -              | ID of the initially selected stat (uncontrolled)        |
 | selectedId        | `string`                 | -              | Controlled selected stat ID                             |
 | onSelect          | `(id: string) => void`   | -              | Callback fired when a stat is selected                  |
 
-### SummaryStats.Stat
+### SummaryStats.Item
 
 | Prop        | Type                          | Default | Description                                                |
 | ----------- | ----------------------------- | ------- | ---------------------------------------------------------- |
