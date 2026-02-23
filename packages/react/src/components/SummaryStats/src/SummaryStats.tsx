@@ -66,6 +66,17 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
     []
   );
 
+  const unregisterStat = useCallback((id: string) => {
+    setStatsRegistry((prev) => {
+      const next = new Map(prev);
+      next.delete(id);
+      return next;
+    });
+    setStatIds((prev) => prev.filter((sid) => sid !== id));
+    setScrollPaneStatIds((prev) => prev.filter((sid) => sid !== id));
+    setActiveId((current) => (current === id ? null : current));
+  }, []);
+
   const activeContent = useMemo(() => {
     if (!isExpandable || activeId === null) return null;
     return statsRegistry.get(activeId) ?? null;
@@ -80,6 +91,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
       expandable: isExpandable,
       layout,
       registerStat,
+      unregisterStat,
       statIds,
       isHorizontalLayout,
       visibleStatIds: statIds,
@@ -90,6 +102,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
       isExpandable,
       layout,
       registerStat,
+      unregisterStat,
       statIds,
       isHorizontalLayout,
     ]

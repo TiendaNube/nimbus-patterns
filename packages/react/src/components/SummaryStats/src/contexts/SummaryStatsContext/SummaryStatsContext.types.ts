@@ -45,6 +45,10 @@ export interface SummaryStatsContextValue {
     isScrollPane?: boolean
   ) => void;
   /**
+   * Removes a stat from the registry and ID lists on unmount.
+   */
+  unregisterStat: (id: string) => void;
+  /**
    * Array of registered stat IDs in order (or, in ScrollPane block, only ids of that block).
    */
   statIds: string[];

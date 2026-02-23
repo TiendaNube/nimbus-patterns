@@ -139,6 +139,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
     expandable,
     layout,
     registerStat,
+    unregisterStat,
     statIds,
     isHorizontalLayout,
     isScrollPaneBlock,
@@ -165,7 +166,10 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
 
   useEffect(() => {
     registerStat(id, children, isScrollPaneBlock);
-  }, [children, id, registerStat, isScrollPaneBlock]);
+    return () => {
+      unregisterStat(id);
+    };
+  }, [children, id, registerStat, unregisterStat, isScrollPaneBlock]);
 
   const handleClick = useCallback(() => {
     if (expandable) {

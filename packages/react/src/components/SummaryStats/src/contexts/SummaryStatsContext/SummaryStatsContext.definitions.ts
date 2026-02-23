@@ -19,6 +19,9 @@ export const initialSummaryStatsContextValue: SummaryStatsContextValue = {
   registerStat: () => {
     /* noop */
   },
+  unregisterStat: () => {
+    /* noop */
+  },
   statIds: [],
   isHorizontalLayout: false,
   visibleStatIds: [],
