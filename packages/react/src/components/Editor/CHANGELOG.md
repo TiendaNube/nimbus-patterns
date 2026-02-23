@@ -2,6 +2,12 @@
 
 The editor component was built using the [Lexical](https://lexical.dev) API and was developed to be used in rich text fields.
 
+## 2026-02-23 `1.2.0`
+
+#### 🎉 New features
+
+- Added `renderModules` prop to allow customization of the editor toolbar. (by [@edersoares](https://github.com/edersoares))
+
 ## 2026-01-15 `1.1.1`
 
 #### 📚 3rd party library updates

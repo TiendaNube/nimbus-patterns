@@ -39,6 +39,7 @@ const Editor: React.FC<EditorProps> = ({
   className: _className,
   theme,
   modules,
+  renderModules,
   placeholder,
   value,
   parser = "json",
@@ -90,11 +91,17 @@ const Editor: React.FC<EditorProps> = ({
         >
           <TranslateContext.Provider value={context}>
             <Toolbar className={editorStyles.classnames.toolbar}>
-              {modules ??
-                defaultModules.map((defaultModule) => {
-                  const Module = aliasModules[defaultModule] ?? null;
-                  return <Module key={defaultModule} />;
-                })}
+              {renderModules != null && Array.isArray(renderModules)
+                ? renderModules
+                    .map((key) => {
+                      const Component = aliasModules[key];
+                      return Component ? <Component key={key} /> : null;
+                    })
+                    .filter(Boolean)
+                : modules ?? defaultModules.map((key) => {
+                    const Component = aliasModules[key];
+                    return Component ? <Component key={key} /> : null;
+                  })}
             </Toolbar>
             <Box position="relative">
               <RichTextPlugin
