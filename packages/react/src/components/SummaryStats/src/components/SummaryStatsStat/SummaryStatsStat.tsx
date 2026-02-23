@@ -11,12 +11,8 @@ import {
   useSummaryStatsContext,
   type SummaryStatsLayout,
 } from "../../contexts";
-import {
-  SummaryStatsTrendIndicator,
-  trendConfig,
-} from "../SummaryStatsTrendIndicator";
+import { SummaryStatsTrendIndicator } from "../SummaryStatsTrendIndicator";
 import { SummaryStatsStatProps } from "./summaryStatsStat.types";
-import type { TrendDirection } from "../SummaryStatsTrendIndicator/summaryStatsTrendIndicator.types";
 
 function getSeparatorConfig(
   statIndex: number,
@@ -50,22 +46,6 @@ function getSeparatorConfig(
       md: shouldShow ? "block" : "none",
     } as const,
   };
-}
-
-function getAriaLabel(
-  description: string,
-  value: string,
-  trend?: TrendDirection,
-  trendText?: string
-): string {
-  const base = `${description}: ${value}`;
-  if (trend && trendConfig[trend]) {
-    const trendSegment = trendText
-      ? `, ${trendConfig[trend].label} of ${trendText}`
-      : `, ${trendConfig[trend].label}`;
-    return base + trendSegment;
-  }
-  return base;
 }
 
 const ExpandableChevron: React.FC<{ isActive: boolean }> = ({ isActive }) => {
@@ -105,6 +85,9 @@ const ExpandableChevron: React.FC<{ isActive: boolean }> = ({ isActive }) => {
  *   Type: `string`.
  * @param props.style - **Optional.** Inline styles applied to the root element.
  *   Type: `React.CSSProperties`.
+ * @param props.aria-label - **Optional.** Accessible label for the stat element. Forwarded
+ *   to the inner interactive element (the one with `role="button"` in expandable mode).
+ *   Clients should provide their own for localization. Type: `string`.
  * @param props - **Rest.** Any other HTML element attributes (e.g. `data-*`, `aria-*`)
  *   are forwarded to the root Box element.
  *
@@ -146,6 +129,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
   trend,
   trendText,
   infoTooltip,
+  "aria-label": ariaLabel,
   ...rest
 }: SummaryStatsStatProps) => {
   const id = useId();
@@ -234,7 +218,7 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
           tabIndex={expandable ? 0 : undefined}
           role={expandable ? "button" : undefined}
           aria-expanded={expandable ? isActive : undefined}
-          aria-label={getAriaLabel(description, value, trend, trendText)}
+          aria-label={ariaLabel}
         >
           <Box
             display="flex"
