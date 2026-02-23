@@ -1,9 +1,10 @@
-import React, { useId, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 
 import { Box, Text, Icon, Tooltip } from "@nimbus-ds/components";
 import { InfoCircleIcon } from "@nimbus-ds/icons";
 
 import { useSummaryStatsContext } from "../../contexts";
+import { useStableId } from "../../hooks";
 import { SummaryStatsTrendIndicator } from "../SummaryStatsTrendIndicator";
 import {
   ExpandableChevron,
@@ -86,7 +87,7 @@ const SummaryStatsItem: React.FC<SummaryStatsItemProps> = ({
   "aria-label": ariaLabel,
   ...rest
 }: SummaryStatsItemProps) => {
-  const id = useId();
+  const id = useStableId();
   const {
     activeId,
     onToggle,
