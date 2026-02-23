@@ -2,7 +2,7 @@ import { ReactNode, HTMLAttributes } from "react";
 import { BoxProperties } from "@nimbus-ds/components";
 
 export interface InteractiveListRowProperties
-  extends Omit<BoxProperties, "padding"> {
+  extends Omit<BoxProperties, "padding" | "paddingBottom"> {
   /**
    * Content of the row.
    * @TJS-type React.ReactNode

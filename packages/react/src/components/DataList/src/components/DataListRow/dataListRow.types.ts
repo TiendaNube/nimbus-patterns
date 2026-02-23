@@ -8,6 +8,11 @@ export interface DataListRowProperties {
    */
   padding?: "small" | "base" | "none";
   /**
+   * Optional padding bottom for the row.
+   * @default base
+   */
+  paddingBottom?: "small" | "base" | "none";
+  /**
    * Content of the row.
    * @TJS-type React.ReactNode
    */
