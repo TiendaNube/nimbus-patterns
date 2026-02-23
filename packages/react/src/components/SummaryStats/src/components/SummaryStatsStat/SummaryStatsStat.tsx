@@ -23,8 +23,8 @@ import { SummaryStatsStatProps } from "./summaryStatsStat.types";
  * a button that toggles the expanded content.
  *
  * **Required props:** `value`, `description`.
- * **Optional props:** `trend`, `trendText`, `infoTooltip`, `children`, `className`,
- * `style`, and any valid HTML element attributes (rest props).
+ * **Optional props:** `trend`, `trendText`, `infoTooltip`, `children`,
+ * and any valid HTML element attributes (rest props).
  *
  * @param props - SummaryStatsStatProps
  * @param props.value - **Required.** Main value to display (e.g. "$1,000", "156").
@@ -39,10 +39,6 @@ import { SummaryStatsStatProps } from "./summaryStatsStat.types";
  *   description; hovering shows this string as tooltip content. Type: `string`.
  * @param props.children - **Optional.** Content rendered in the expandable area when this
  *   stat is active (only when SummaryStats has `expandable`). Type: `ReactNode`.
- * @param props.className - **Optional.** CSS class name applied to the root element.
- *   Type: `string`.
- * @param props.style - **Optional.** Inline styles applied to the root element.
- *   Type: `React.CSSProperties`.
  * @param props.aria-label - **Optional.** Accessible label for the stat element. Forwarded
  *   to the inner interactive element (the one with `role="button"` in expandable mode).
  *   Clients should provide their own for localization. Type: `string`.
@@ -152,11 +148,6 @@ const SummaryStatsStat: React.FC<SummaryStatsStatProps> = ({
       flexDirection="column"
       backgroundColor="neutral-background"
       flex="1"
-      style={
-        isLastStatInOddGrid
-          ? { ...(_style as React.CSSProperties), gridColumn: "span 2" }
-          : _style
-      }
     >
       <Box
         display="flex"
