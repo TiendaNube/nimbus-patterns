@@ -25,5 +25,6 @@ export * from "@nimbus-ds/plan-display";
 export * from "@nimbus-ds/sortable";
 export * from "@nimbus-ds/product-data-list";
 export * from "@nimbus-ds/chat-input";
+export * from "@nimbus-ds/summary-stats";
 
 export { MenuExpandContext, useMenuExpandContext } from "@common/contexts";

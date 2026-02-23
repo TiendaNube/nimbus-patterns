@@ -1,0 +1,5 @@
+releases:
+  "@nimbus-ds/patterns": patch
+
+declined:
+  - nimbus-patterns
