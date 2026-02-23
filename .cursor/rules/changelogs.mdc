@@ -9,7 +9,8 @@ alwaysApply: false
 
 1. Each package must have its own `CHANGELOG.md` file in its root directory
 2. The main repository must have a root `CHANGELOG.md` file
-3. Changes must be documented in both the package-specific and root changelogs
+3. Changes must be documented in the package-specific changelog; update the root changelog only when the change is related to root monorepo configuration
+
 
 ## Entry Format
 
@@ -73,7 +74,7 @@ Each entry must follow this format:
 
 4. **Content Guidelines**:
    - Be concise but descriptive
-   - Use present tense
+   - Use past tense
    - Focus on what changed, not how it was implemented
    - Group related changes together
    - List changes in chronological order within each category

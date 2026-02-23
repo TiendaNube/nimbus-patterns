@@ -4,18 +4,26 @@ import { TableProperties, BoxProps } from "@nimbus-ds/components";
 
 import {
   DataTableBulkActions,
-  DataTableHeader,
-  DataTableFooter,
-  DataTableRow,
   DataTableCell,
+  DataTableDropdown,
+  DataTableDropdownAction,
+  DataTableDropdownDivider,
+  DataTableDropdownSection,
+  DataTableFooter,
+  DataTableHeader,
+  DataTableRow,
 } from "./components";
 
 export interface DataTableComponents {
   BulkActions: typeof DataTableBulkActions;
-  Header: typeof DataTableHeader;
-  Footer: typeof DataTableFooter;
-  Row: typeof DataTableRow;
   Cell: typeof DataTableCell;
+  Dropdown: typeof DataTableDropdown;
+  DropdownAction: typeof DataTableDropdownAction;
+  DropdownDivider: typeof DataTableDropdownDivider;
+  DropdownSection: typeof DataTableDropdownSection;
+  Footer: typeof DataTableFooter;
+  Header: typeof DataTableHeader;
+  Row: typeof DataTableRow;
 }
 
 export interface DataTableProperties {

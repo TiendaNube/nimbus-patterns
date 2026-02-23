@@ -3,7 +3,7 @@
   "name": "DataList",
   "totalProps": 2,
   "packageName": "@nimbus-ds/data-list",
-  "version": "1.2.6",
+  "version": "1.3.2",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/data-list",
   "props": [
     {
@@ -23,7 +23,7 @@
   "subComponents": [
     {
       "name": "DataList.Row",
-      "totalProps": 3,
+      "totalProps": 4,
       "props": [
         {
           "description": "Optional padding for the row.",
@@ -35,6 +35,18 @@
           ],
           "type": "string",
           "title": "padding",
+          "required": false
+        },
+        {
+          "description": "Optional padding bottom for the row.",
+          "default": "base",
+          "enum": [
+            "base",
+            "none",
+            "small"
+          ],
+          "type": "string",
+          "title": "paddingBottom",
           "required": false
         },
         {

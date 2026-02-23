@@ -2,11 +2,49 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
-## 2026-02-23 `1.29.0`
+## 2026-02-23 `1.32.0`
 
 #### 🎉 New features
 
 - Added new `SummaryStats` component for displaying key statistics with trend indicators, info tooltips, and expandable content areas. ([#145](https://github.com/TiendaNube/nimbus-patterns/pull/145) by [@jetchart-tiendanube](https://github.com/jetchart-tiendanube))
+## 2026-02-13 `1.31.3`
+
+#### 🐛 Bug fixes
+
+- Removed hardcoded `pb` and `px` props from `ChatInput.Actions` to allow proper layout flexibility. ([#149](https://github.com/TiendaNube/nimbus-patterns/pull/149) by [@karemcarvalho-hue](https://github.com/karemcarvalho-hue))
+
+## 2026-02-11 `1.31.2`
+
+#### 🐛 Bug fixes
+
+- Fixed `paddingBottom` prop default value in `DataList.Row` sub-component. ([#148](https://github.com/TiendaNube/nimbus-patterns/pull/148) by [@joacotornello](https://github.com/joacotornello))
+
+## 2026-02-11 `1.31.1`
+
+#### 🐛 Bug fixes
+
+- Fixed `paddingBottom` prop default value to `none` in `DataList.Row` sub-component. ([#147](https://github.com/TiendaNube/nimbus-patterns/pull/147) by [@joacotornello](https://github.com/joacotornello))
+
+## 2026-02-06 `1.31.0`
+
+#### 🎉 New features
+
+- Added auto-close behavior to `DataTable.Dropdown` when an action is clicked. ([#143](https://github.com/TiendaNube/nimbus-patterns/pull/143) by [@joacotornello](https://github.com/joacotornello))
+
+## 2026-02-05 `1.30.0`
+
+#### 🎉 New features
+
+- Added `paddingBottom` prop to `DataList.Row` sub-component to allow custom padding bottom definition to rows. ([#141](https://github.com/TiendaNube/nimbus-patterns/pull/141) by [@joacotornello](https://github.com/joacotornello))
+
+## 2026-02-03 `1.29.0`
+
+#### 🎉 New features
+
+- Added `DataTable.Dropdown` component. ([#141](https://github.com/TiendaNube/nimbus-patterns/pull/141) by [@joacotornello](https://github.com/joacotornello))
+- Added `DataTable.DropdownAction` component. ([#141](https://github.com/TiendaNube/nimbus-patterns/pull/141) by [@joacotornello](https://github.com/joacotornello))
+- Added `DataTable.DropdownDivider` component. ([#141](https://github.com/TiendaNube/nimbus-patterns/pull/141) by [@joacotornello](https://github.com/joacotornello))
+- Added `DataTable.DropdownSection` component. ([#141](https://github.com/TiendaNube/nimbus-patterns/pull/141) by [@joacotornello](https://github.com/joacotornello))
 
 ## 2026-01-22 `1.28.1`
 
