@@ -6,8 +6,6 @@ import { useRef } from "react";
  */
 export function useRandomId(): string {
   const idRef = useRef<string | null>(null);
-  if (idRef.current === null) {
-    idRef.current = Math.random().toString(36).substring(2, 9);
-  }
+  idRef.current ??= Math.random().toString(36).substring(2, 9);
   return idRef.current;
 }

@@ -1,2 +1,6 @@
 releases:
   "@nimbus-ds/summary-stats": patch
+  nimbus-patterns: patch
+
+declined:
+  - "@nimbus-ds/patterns"
