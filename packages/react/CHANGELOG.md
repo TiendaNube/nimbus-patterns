@@ -2,6 +2,18 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-02-24 `1.32.2`
+
+#### 🐛 Bug fixes
+
+- Replaced React 18's `useId` with a custom `useRandomId` hook in `SummaryStats` to support React 16.8+. ([#152](https://github.com/TiendaNube/nimbus-patterns/pull/152) by [@jetchart-tiendanube](https://github.com/jetchart-tiendanube))
+
+## 2026-02-23 `1.32.1`
+
+#### 🐛 Bug fixes
+
+- Fixed missing `SummaryStats` export from the `@nimbus-ds/react` package entry point. ([#151](https://github.com/TiendaNube/nimbus-patterns/pull/151) by [@jetchart-tiendanube](https://github.com/jetchart-tiendanube))
+
 ## 2026-02-23 `1.32.0`
 
 #### 🎉 New features

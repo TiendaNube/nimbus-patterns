@@ -1,0 +1,3 @@
+releases:
+  "@nimbus-ds/patterns": patch
+  "@nimbus-ds/summary-stats": patch
