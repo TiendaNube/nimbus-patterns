@@ -2,6 +2,18 @@
 
 Summary Stats component is intended for displaying key statistics and metrics in a visually organized manner.
 
+## 2026-02-24 `1.0.2`
+
+### 🐛 Bug fixes
+
+- Replaced React 18's `useId` with a custom `useRandomId` hook to support React 16.8+. ([#152](https://github.com/TiendaNube/nimbus-patterns/pull/152) by [@jetchart-tiendanube](https://github.com/jetchart-tiendanube))
+
+## 2026-02-23 `1.0.1`
+
+### 🐛 Bug fixes
+
+- Fixed missing export of `SummaryStats` from the package entry point and module resolution configuration. ([#151](https://github.com/TiendaNube/nimbus-patterns/pull/151) by [@jetchart-tiendanube](https://github.com/jetchart-tiendanube))
+
 ## 2026-02-04 `1.0.0`
 
 ### 🎉 New features
