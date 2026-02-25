@@ -157,12 +157,14 @@ const SummaryStatsItem: React.FC<SummaryStatsItemProps> = ({
         flex="1"
         paddingLeft="1"
         paddingRight={separator.paddingRight}
+        paddingTop="1"
+        paddingBottom="1"
       >
         <Box
           display="flex"
           flexDirection="column"
           gap="1"
-          padding="1"
+          padding="2"
           flex="1"
           backgroundColor={{
             xs: isActive ? "primary-surface" : "neutral-background",
