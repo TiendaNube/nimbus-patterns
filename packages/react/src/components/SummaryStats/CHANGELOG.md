@@ -2,6 +2,13 @@
 
 Summary Stats component is intended for displaying key statistics and metrics in a visually organized manner.
 
+## 2026-02-25 `1.0.3`
+
+### 🐛 Bug fixes
+
+- Added hover background color to `SummaryStatsItem` so the stat highlights on hover. ([#153](https://github.com/TiendaNube/nimbus-patterns/pull/153) by [@jetchart-tiendanube](https://github.com/jetchart-tiendanube))
+- Increased padding on `SummaryStatsItem` to prevent hover background from overlapping separator lines in grid layout. ([#153](https://github.com/TiendaNube/nimbus-patterns/pull/153) by [@jetchart-tiendanube](https://github.com/jetchart-tiendanube))
+
 ## 2026-02-24 `1.0.2`
 
 ### 🐛 Bug fixes
