@@ -157,8 +157,6 @@ const SummaryStatsItem: React.FC<SummaryStatsItemProps> = ({
         flex="1"
         paddingLeft="1"
         paddingRight={separator.paddingRight}
-        paddingTop="1"
-        paddingBottom="1"
       >
         <Box
           display="flex"
@@ -168,7 +166,9 @@ const SummaryStatsItem: React.FC<SummaryStatsItemProps> = ({
           flex="1"
           backgroundColor={{
             xs: isActive ? "primary-surface" : "neutral-background",
-            hover: isActive ? "primary-surface" : "neutral-surface",
+            ...(expandable && {
+              hover: isActive ? "primary-surface" : "neutral-surface",
+            }),
           }}
           borderRadius="2"
           cursor={expandable ? "pointer" : undefined}
