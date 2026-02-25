@@ -1,0 +1,5 @@
+releases:
+  "@nimbus-ds/summary-stats": minor
+
+declined:
+  - nimbus-patterns
