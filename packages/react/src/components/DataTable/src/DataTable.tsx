@@ -24,12 +24,13 @@ const DataTable: React.FC<DataTableProps> & DataTableComponents = ({
   footer,
   children,
   containerProps,
+  borderRadius = "2",
   ...rest
 }: DataTableProps) => (
   <Box>
     <Box
       position="relative"
-      borderRadius="2"
+      borderRadius={borderRadius}
       borderColor="neutral-surfaceHighlight"
       borderStyle="solid"
       borderWidth="1"
@@ -37,7 +38,7 @@ const DataTable: React.FC<DataTableProps> & DataTableComponents = ({
       // overflow="hidden"
     >
       {bulkActions}
-      <Table {...rest}>
+      <Table {...rest} borderRadius={borderRadius}>
         {header}
         <Table.Body>{children}</Table.Body>
       </Table>
