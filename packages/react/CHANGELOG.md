@@ -2,6 +2,13 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-02-25 `1.32.3`
+
+#### 🐛 Bug fixes
+
+- Added conditional hover background color to `SummaryStatsItem`, only applied when the stat is expandable. ([#153](https://github.com/TiendaNube/nimbus-patterns/pull/153) by [@jetchart-tiendanube](https://github.com/jetchart-tiendanube))
+- Increased padding on `SummaryStatsItem` to prevent hover background from overlapping separator lines in grid layout. ([#153](https://github.com/TiendaNube/nimbus-patterns/pull/153) by [@jetchart-tiendanube](https://github.com/jetchart-tiendanube))
+
 ## 2026-02-24 `1.32.2`
 
 #### 🐛 Bug fixes

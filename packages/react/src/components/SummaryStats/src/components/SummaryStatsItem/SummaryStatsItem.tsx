@@ -162,10 +162,15 @@ const SummaryStatsItem: React.FC<SummaryStatsItemProps> = ({
           display="flex"
           flexDirection="column"
           gap="1"
-          padding="1"
+          padding="2"
           flex="1"
-          backgroundColor={isActive ? "primary-surface" : "neutral-background"}
-          borderRadius={isActive ? "2" : "none"}
+          backgroundColor={{
+            xs: isActive ? "primary-surface" : "neutral-background",
+            ...(expandable && {
+              hover: isActive ? "primary-surface" : "neutral-surface",
+            }),
+          }}
+          borderRadius="2"
           cursor={expandable ? "pointer" : undefined}
           onClick={handleClick}
           onKeyDown={handleKeyDown}
