@@ -4,7 +4,7 @@ ProductUpdates component allows the user to showcase new features or updates in 
 
 ## 2026-03-02 `1.6.0`
 
-#### 🎉 New features
+### 🎉 New features
 
 - Added `ProductUpdates.Paginator` and `ProductUpdates.Footer` as compound sub-components. ([#155](https://github.com/TiendaNube/nimbus-patterns/pull/155) by [@joacotornello](https://github.com/joacotornello))
 - Added `tag` prop to render an optional element inline before the title. ([#155](https://github.com/TiendaNube/nimbus-patterns/pull/155) by [@joacotornello](https://github.com/joacotornello))

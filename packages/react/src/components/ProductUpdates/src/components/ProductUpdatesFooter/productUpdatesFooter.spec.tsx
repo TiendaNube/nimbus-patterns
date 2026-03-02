@@ -35,5 +35,10 @@ describe("GIVEN <ProductUpdatesFooter />", () => {
       expect(screen.getByText("Dots")).toBeDefined();
       expect(screen.getByText("Next")).toBeDefined();
     });
+
+    it("SHOULD render divider when renderDivider is true", () => {
+      makeSut({ renderDivider: true });
+      expect(screen.getByRole("separator")).toBeDefined();
+    });
   });
 });

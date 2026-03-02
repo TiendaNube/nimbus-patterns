@@ -21,5 +21,19 @@ describe("GIVEN <ProductUpdatesPaginator />", () => {
       const paginator = screen.getByTestId("paginator-element");
       expect(paginator.children.length).toBe(5);
     });
+
+    it("SHOULD announce the current step via aria-label", () => {
+      makeSut({ totalItems: 5, activeIndex: 1 });
+      expect(screen.getByRole("img", { name: "Step 2 of 5" })).toBeDefined();
+    });
+
+    it("SHOULD hide individual dots from assistive technology", () => {
+      makeSut({ totalItems: 3, activeIndex: 0 });
+      const paginator = screen.getByTestId("paginator-element");
+      const dots = Array.from(paginator.children);
+      dots.forEach((dot) => {
+        expect(dot.getAttribute("aria-hidden")).toBe("true");
+      });
+    });
   });
 });

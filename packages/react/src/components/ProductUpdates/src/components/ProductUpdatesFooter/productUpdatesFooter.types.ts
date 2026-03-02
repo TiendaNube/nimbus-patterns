@@ -18,6 +18,10 @@ export interface ProductUpdatesFooterProperties {
    */
   rightButton?: ReactNode;
 
+  /**
+   * When true, renders a full-width divider above the footer content.
+   * @default false
+   */
   renderDivider?: boolean;
 }
 

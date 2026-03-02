@@ -31,6 +31,10 @@ const ProductUpdates: React.FC<ProductUpdatesProps> &
 
   const handleVisibility = () => setVisibility(!visible);
 
+  const handleDismiss = rest?.onVisibility
+    ? () => rest.onVisibility?.(false)
+    : handleVisibility;
+
   const productUpdatesContent = (
     <Box display="flex" flexDirection="column" gap="2" width="100%">
       {tag ? (
@@ -61,15 +65,7 @@ const ProductUpdates: React.FC<ProductUpdatesProps> &
     >
       {productUpdatesContent}
       {bodyContent}
-      <Link
-        as="button"
-        onClick={
-          rest?.onVisibility
-            ? () => rest?.onVisibility?.(false)
-            : handleVisibility
-        }
-        appearance="neutral-background"
-      >
+      <Link as="button" onClick={handleDismiss} appearance="neutral-background">
         {dismissLink}
       </Link>
     </Box>
@@ -85,11 +81,8 @@ const ProductUpdates: React.FC<ProductUpdatesProps> &
         {productUpdatesContent}
         <Box position="absolute" top="-16px" right="-16px">
           <IconButton
-            onClick={
-              rest?.onVisibility
-                ? () => rest?.onVisibility?.(false)
-                : handleVisibility
-            }
+            onClick={handleDismiss}
+            aria-label="Close"
             size="2.75rem"
             source={<Icon color="neutral-background" source={<CloseIcon />} />}
             borderColor="transparent"

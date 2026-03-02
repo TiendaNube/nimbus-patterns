@@ -12,4 +12,4 @@ export interface ProductUpdatesPaginatorProperties {
 }
 
 export type ProductUpdatesPaginatorProps = ProductUpdatesPaginatorProperties &
-  Omit<HTMLAttributes<HTMLElement>, "color">;
+  Omit<HTMLAttributes<HTMLElement>, "color" | "className" | "style">;

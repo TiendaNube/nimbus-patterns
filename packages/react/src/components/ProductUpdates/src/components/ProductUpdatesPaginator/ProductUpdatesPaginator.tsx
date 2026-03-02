@@ -5,8 +5,6 @@ import { Box } from "@nimbus-ds/components";
 import { ProductUpdatesPaginatorProps } from "./productUpdatesPaginator.types";
 
 const ProductUpdatesPaginator: React.FC<ProductUpdatesPaginatorProps> = ({
-  className: _className,
-  style: _style,
   totalItems,
   activeIndex,
   ...rest
@@ -16,6 +14,8 @@ const ProductUpdatesPaginator: React.FC<ProductUpdatesPaginatorProps> = ({
     flexDirection="row"
     gap="1-5"
     alignItems="center"
+    role="img"
+    aria-label={`Step ${activeIndex + 1} of ${totalItems}`}
     {...rest}
   >
     {Array.from({ length: totalItems }, (_, index) => index).map((index) => (
@@ -27,6 +27,7 @@ const ProductUpdatesPaginator: React.FC<ProductUpdatesPaginatorProps> = ({
         backgroundColor={
           index === activeIndex ? "neutral-background" : "primary-textLow"
         }
+        aria-hidden="true"
       />
     ))}
   </Box>

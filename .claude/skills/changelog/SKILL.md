@@ -34,8 +34,7 @@ git diff origin/master --name-only
 
 Determine which packages were modified by checking changed file paths:
 
-- `packages/react/src/atomic/<Component>/*` → Update `packages/react/src/atomic/<Component>/CHANGELOG.md` and `react` directory `CHANGELOG.md`
-- `packages/react/src/composite/<Component>/*` → Update `packages/react/src/composite/<Component>/CHANGELOG.md` and `react` directory `CHANGELOG.md`
+- `packages/react/src/{components,atomic,composite}/<Component>/*` → Update `packages/react/src/{components,atomic,composite}/<Component>/CHANGELOG.md` and `packages/react/CHANGELOG.md`
 - `packages/core/styles/*` → Update `packages/core/styles/CHANGELOG.md`
 - `packages/core/tokens/*` → Update `packages/core/tokens/CHANGELOG.md`
 - Any root monorepo configuration change → Also update the root `CHANGELOG.md`
@@ -61,7 +60,7 @@ Determine the change type based on commit messages and diff:
 
 #### <emoji> <category>
 
-- <Summary of the change>. ([#PR](https://github.com/TiendaNube/nimbus-design-system/pull/PR) by [@contributor](https://github.com/contributor))
+- <Summary of the change>. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@contributor](https://github.com/contributor))
 ```
 
 **Writing Guidelines:**

@@ -36,24 +36,30 @@ const ProductUpdatesFooter: React.FC<ProductUpdatesFooterProps> = ({
         </Box>
       )}
 
-      <Box
-        display="flex"
-        flex="2"
-        alignItems="center"
-        justifyContent="flex-start"
-      >
-        {paginator}
-      </Box>
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="flex-end"
-        flex="1"
-      >
-        {rightButton}
-      </Box>
+      {paginator && (
+        <Box
+          display="flex"
+          flex="2"
+          alignItems="center"
+          justifyContent="flex-start"
+        >
+          {paginator}
+        </Box>
+      )}
+      {rightButton && (
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="flex-end"
+          flex="1"
+        >
+          {rightButton}
+        </Box>
+      )}
     </Box>
   </Box>
 );
+
+ProductUpdatesFooter.displayName = "ProductUpdatesFooter";
 
 export { ProductUpdatesFooter };

@@ -86,30 +86,30 @@ export const withTagAndDismissButton: Story = {
 
 export const withLink: Story = {
   render: () => (
-      <ProductUpdates
-        title="Title text"
-        text="Content text"
-        tag={<Tag appearance="primary">Novo</Tag>}
-        visible
-        maxWidth="320px"
-        width="stretch"
-        bodyContent={
-          <ProductUpdates.Footer
-            leftLink={
-              <Link as="button" appearance="neutral-background">
-                Generar
-              </Link>
-            }
-           />
-        }
-        bodyContentProps={{ gap: "none" }}
-      >
-        <Text fontSize="base" color="primary-interactive" textAlign="center">
-          This is a new feature that is being showcased by our Product Updates
-          component
-        </Text>
-      </ProductUpdates>
-    ),
+    <ProductUpdates
+      title="Title text"
+      text="Content text"
+      tag={<Tag appearance="primary">Novo</Tag>}
+      visible
+      maxWidth="320px"
+      width="stretch"
+      bodyContent={
+        <ProductUpdates.Footer
+          leftLink={
+            <Link as="button" appearance="neutral-background">
+              Generar
+            </Link>
+          }
+        />
+      }
+      bodyContentProps={{ gap: "none" }}
+    >
+      <Text fontSize="base" color="primary-interactive" textAlign="center">
+        This is a new feature that is being showcased by our Product Updates
+        component
+      </Text>
+    </ProductUpdates>
+  ),
 };
 
 export const withFooter: Story = {
