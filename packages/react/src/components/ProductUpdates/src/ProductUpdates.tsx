@@ -9,15 +9,22 @@ import {
   Popover,
 } from "@nimbus-ds/components";
 import { CloseIcon } from "@nimbus-ds/icons";
-import { ProductUpdatesProps } from "./productUpdates.types";
+import {
+  ProductUpdatesProps,
+  ProductUpdatesComponents,
+} from "./productUpdates.types";
+import { ProductUpdatesPaginator, ProductUpdatesFooter } from "./components";
 
-const ProductUpdates: React.FC<ProductUpdatesProps> = ({
+const ProductUpdates: React.FC<ProductUpdatesProps> &
+  ProductUpdatesComponents = ({
   className: _className,
   style: _style,
   title,
   text,
+  tag,
   bodyContent,
   dismissLink,
+  bodyContentProps,
   ...rest
 }: ProductUpdatesProps) => {
   const [visible, setVisibility] = useState(!!rest.visible);
@@ -26,9 +33,18 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
 
   const productUpdatesContent = (
     <Box display="flex" flexDirection="column" gap="2" width="100%">
-      <Text color="neutral-background" fontSize="base" fontWeight="bold">
-        {title}
-      </Text>
+      {tag ? (
+        <Box display="flex" flexDirection="row" alignItems="center" gap="2">
+          {tag}
+          <Text color="neutral-background" fontSize="base" fontWeight="bold">
+            {title}
+          </Text>
+        </Box>
+      ) : (
+        <Text color="neutral-background" fontSize="base" fontWeight="bold">
+          {title}
+        </Text>
+      )}
       <Text color="neutral-background" fontSize="base">
         {text}
       </Text>
@@ -36,7 +52,13 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
   );
 
   const hasDismissLink = dismissLink ? (
-    <Box display="flex" flexDirection="column" gap="4" width="100%">
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="4"
+      width="100%"
+      {...bodyContentProps}
+    >
       {productUpdatesContent}
       {bodyContent}
       <Link
@@ -52,7 +74,13 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
       </Link>
     </Box>
   ) : (
-    <Box display="flex" flexDirection="column" gap="4" width="100%">
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="4"
+      width="100%"
+      {...bodyContentProps}
+    >
       <Box pr="8" position="relative">
         {productUpdatesContent}
         <Box position="absolute" top="-16px" right="-16px">
@@ -89,6 +117,11 @@ const ProductUpdates: React.FC<ProductUpdatesProps> = ({
   );
 };
 
+ProductUpdates.Paginator = ProductUpdatesPaginator;
+ProductUpdates.Footer = ProductUpdatesFooter;
+
 ProductUpdates.displayName = "ProductUpdates";
+ProductUpdates.Paginator.displayName = "ProductUpdates.Paginator";
+ProductUpdates.Footer.displayName = "ProductUpdates.Footer";
 
 export { ProductUpdates };
