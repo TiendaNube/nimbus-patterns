@@ -87,6 +87,47 @@ reviews:
         - Ensure type names are descriptive and follow PascalCase convention
         - Avoid type 'any' - use 'unknown' for truly unknown types
         Flag any deviations from these patterns.
+  pre_merge_checks:
+    docstrings:
+      mode: "warning"
+      threshold: 70
+    title:
+      mode: "warning"
+      requirements: "Follow format 'chore/fix/feat(PackageName): Title'. Use 'feat!' prefix for breaking changes."
+    description:
+      mode: "warning"
+    issue_assessment:
+      mode: "warning"
+    custom_checks:
+      - name: "Unversioned Breaking Changes"
+        mode: "error"
+        instructions: |
+          Pass/fail criteria: All breaking changes MUST have a MAJOR version bump (x.0.0) in package.json.
+          
+          Detect breaking changes by scanning for:
+          1. **Props API changes** in *.types.ts: Removed props, renamed props, type narrowing (e.g., `string | number` → `string`), optional→required changes
+          2. **Export removals** in index.ts: Any previously exported symbol (component, type, hook, utility) removed
+          4. **Default value changes**: Changed defaultProps or default parameter values that alter behavior
+          
+          PASS if: No breaking changes detected, OR all breaking changes have corresponding MAJOR version bumps in package.json
+          FAIL if: Breaking changes detected but package.json shows MINOR (0.x.0) or PATCH (0.0.x) bump, or no version bump at all
+          
+          When failing, list each breaking change found and the expected MAJOR version.
+      - name: "Breaking Change Documentation Verification"
+        mode: "error"
+        instructions: |
+          Pass/fail criteria: If package.json has MAJOR version bump OR code contains breaking changes, CHANGELOG.md MUST have "#### 🛠 Breaking changes" section.
+          
+          Cross-reference:
+          1. Check if any package.json in PR has MAJOR version bump (x.0.0)
+          2. Check if breaking changes detected in code (props removed, exports removed, tokens changed, CSS modified)
+          3. Verify CHANGELOG.md contains "#### 🛠 Breaking changes" or "### 🛠 Breaking changes" section
+          4. Verify each breaking change is documented with description and PR reference
+          
+          PASS if: No breaking changes and no MAJOR bump, OR breaking changes exist with proper CHANGELOG documentation
+          FAIL if: MAJOR bump without "🛠 Breaking changes" section, OR breaking changes in code without documentation
+          
+          Documentation format required: "- Description of breaking change. ([#PR](url) by [@author](url))"
   abort_on_close: true
   auto_review:
     # Automatically review PRs when they are opened.

@@ -2,6 +2,14 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-03-02 `1.33.0`
+
+#### 🎉 New features
+
+- `ProductUpdates`: Added `ProductUpdates.Paginator` and `ProductUpdates.Footer` as compound sub-components. ([#155](https://github.com/TiendaNube/nimbus-patterns/pull/155) by [@joacotornello](https://github.com/joacotornello))
+- `ProductUpdates`: Added `tag` prop to render an optional element inline before the title. ([#155](https://github.com/TiendaNube/nimbus-patterns/pull/155) by [@joacotornello](https://github.com/joacotornello))
+- `ProductUpdates`: Added `bodyContentProps` prop to pass extra properties to the popover body container. ([#155](https://github.com/TiendaNube/nimbus-patterns/pull/155) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2026-02-25 `1.32.3`
 
 #### 🐛 Bug fixes
