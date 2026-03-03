@@ -3513,9 +3513,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/components@npm:5.56.0":
-  version: 5.56.0
-  resolution: "@nimbus-ds/components@npm:5.56.0"
+"@nimbus-ds/components@npm:5.56.1":
+  version: 5.56.1
+  resolution: "@nimbus-ds/components@npm:5.56.1"
   dependencies:
     "@floating-ui/react": ^0.27.5
     "@nimbus-ds/icons": ^1.17.0
@@ -3523,7 +3523,7 @@ __metadata:
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0 || ^19.0
     react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
-  checksum: 2f56cf40eb5ba20593232e1c920b7a8e9f152154a09e157c86a75d78f5e407a233b7208e7ad134b48de33a7790a6a9b244e34397071a0618a4df33232f3dbf30
+  checksum: 971e15fc298609a2e0d6fc08f6bdb91db1d4dd2fda63afde15d4386d030e0257e2f8f3420875a5f43e59a528c728684015bc839500721b95b1f5e493c4d33052
   languageName: node
   linkType: hard
 
@@ -3874,10 +3874,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/styles@npm:9.61.0":
-  version: 9.61.0
-  resolution: "@nimbus-ds/styles@npm:9.61.0"
-  checksum: a0ead17096139d38bf0faaf569c4f91f83833de29c8531668da78644b2d2f787c487c10148cba7ae5022627b937bfa39480509936fe1207df38cfddaed201067
+"@nimbus-ds/styles@npm:9.61.1":
+  version: 9.61.1
+  resolution: "@nimbus-ds/styles@npm:9.61.1"
+  checksum: 2a003aff355a2107a7b6e03250a7140ec76f69fe8d3362fc1c558b6bfb7732e082b5679d9531004f03a2ec7b2c148034999054baa2cc9fc4237aa3746c388aed
   languageName: node
   linkType: hard
 
@@ -12442,10 +12442,10 @@ __metadata:
     "@commitlint/config-conventional": ^17.2.0
     "@jest/types": ^29.2.1
     "@mdx-js/react": ^3.0.0
-    "@nimbus-ds/components": 5.56.0
+    "@nimbus-ds/components": 5.56.1
     "@nimbus-ds/icons": ^1.15.1
     "@nimbus-ds/scripts": ^1.8.2
-    "@nimbus-ds/styles": 9.61.0
+    "@nimbus-ds/styles": 9.61.1
     "@nimbus-ds/tokens": ^9.5.0
     "@storybook/addon-docs": ^8.6.14
     "@storybook/addon-essentials": ^8.6.14
