@@ -5,7 +5,6 @@ import { Text, Pagination, Box } from "@nimbus-ds/components";
 import { DataTableFooterProps } from "./dataTableFooter.types";
 
 const DataTableFooter: React.FC<DataTableFooterProps> = ({
-  className: _className,
   style: _style,
   itemCount,
   pagination,

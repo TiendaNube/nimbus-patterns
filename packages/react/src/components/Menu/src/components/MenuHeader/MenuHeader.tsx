@@ -6,7 +6,6 @@ import { useMenuExpandContext } from "@common/contexts";
 import { MenuHeaderProps } from "./menuHeader.types";
 
 const MenuHeader: React.FC<MenuHeaderProps> = ({
-  className: _className,
   style: _style,
   children,
   ...rest

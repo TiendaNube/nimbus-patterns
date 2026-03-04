@@ -9,7 +9,6 @@ import { LayoutProps, LayoutComponents } from "./layout.types";
 import { colQuantity } from "./layout.definitions";
 
 const Layout: React.FC<LayoutProps> & LayoutComponents = ({
-  className: _className,
   style: _style,
   children,
   columns = "1",

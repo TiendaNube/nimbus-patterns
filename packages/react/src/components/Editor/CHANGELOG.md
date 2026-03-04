@@ -2,6 +2,12 @@
 
 The editor component was built using the [Lexical](https://lexical.dev) API and was developed to be used in rich text fields.
 
+## 2026-03-04 `1.2.1`
+
+#### 🐛 Bug fixes
+
+- Fixed `className` prop not being passed through to the underlying element. ([#156](https://github.com/TiendaNube/nimbus-patterns/pull/156) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2026-02-23 `1.2.0`
 
 #### 🎉 New features

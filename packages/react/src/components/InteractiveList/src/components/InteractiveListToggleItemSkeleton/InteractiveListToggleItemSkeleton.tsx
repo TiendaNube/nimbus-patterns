@@ -8,12 +8,12 @@ import { InteractiveList } from "../../InteractiveList";
 const InteractiveListToggleItemSkeleton: React.FC<
   InteractiveListToggleItemSkeletonProps
 > = ({
-  className: _className,
+  className,
   style: _style,
   toggle,
   ...rest
 }: InteractiveListToggleItemSkeletonProps) => (
-  <InteractiveListRow>
+  <InteractiveListRow className={className}>
     <InteractiveList.StructureSkeleton {...rest} />
     <Skeleton
       width="2rem"

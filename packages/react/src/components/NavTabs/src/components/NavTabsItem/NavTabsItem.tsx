@@ -5,7 +5,6 @@ import { Icon, Box } from "@nimbus-ds/components";
 import { NavTabsItemProps } from "./navTabsItem.types";
 
 const NavTabsItem: React.FC<NavTabsItemProps> = ({
-  className: _className,
   style: _style,
   icon,
   active = false,
@@ -16,7 +15,6 @@ const NavTabsItem: React.FC<NavTabsItemProps> = ({
 }: NavTabsItemProps) => (
   <Box
     {...rest}
-    className={_className}
     style={_style}
     backgroundColor={active ? "primary-surface" : "transparent"}
     borderColor="transparent"

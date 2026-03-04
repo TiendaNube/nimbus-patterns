@@ -3,6 +3,12 @@
 The Calendar component allows the user to select a date or range of dates in a simple, straitforward and flexible UI thats based off of [ReactDayPicker](https://react-day-picker.js.org/).
 It extends the properties of the ReactDayPicker component. Refer to the [documentation site](https://react-day-picker.js.org/reference) for a complete reference of the component's API.
 
+## 2026-03-04 `1.1.3`
+
+#### 🐛 Bug fixes
+
+- Fixed `className` prop not being passed through to the underlying element. ([#156](https://github.com/TiendaNube/nimbus-patterns/pull/156) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2026-01-15 `1.1.2`
 
 #### 📚 3rd party library updates

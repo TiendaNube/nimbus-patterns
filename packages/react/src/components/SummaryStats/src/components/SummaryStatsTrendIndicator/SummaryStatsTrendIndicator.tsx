@@ -40,7 +40,6 @@ const trendConfig = {
  * @returns JSX element: a Box with icon and optional Text, with aria-label from trendConfig.
  */
 const SummaryStatsTrendIndicator: React.FC<SummaryStatsTrendIndicatorProps> = ({
-  className: _className,
   style: _style,
   trend,
   text,

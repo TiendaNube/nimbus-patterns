@@ -5,7 +5,6 @@ import { Box } from "@nimbus-ds/components";
 import { ChatInputActionsProps } from "./chatInputActions.types";
 
 const ChatInputActions: React.FC<ChatInputActionsProps> = ({
-  className: _className,
   style: _style,
   children,
   ...rest

@@ -7,8 +7,7 @@ import { ThumbnailWithActionProps } from "./thumbnailWithAction.types";
 import { contentPositions } from "./thumbnailWithAction.definitions";
 
 const ThumbnailWithAction: React.FC<ThumbnailWithActionProps> = ({
-  className: _className,
-  style: _style,
+  style,
   thumbnail,
   children,
   contentPosition = "top-right",
@@ -25,8 +24,7 @@ const ThumbnailWithAction: React.FC<ThumbnailWithActionProps> = ({
     >
       <Box
         {...rest}
-        style={_style}
-        className={_className}
+        style={style}
         position="absolute"
         zIndex="100"
         top={top}

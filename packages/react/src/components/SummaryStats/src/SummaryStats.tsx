@@ -30,7 +30,6 @@ import {
  * @param props.rest - Remaining HTML element attributes (spread to root Box)
  */
 const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
-  className: _className,
   style: _style,
   children,
   layout = "horizontal",

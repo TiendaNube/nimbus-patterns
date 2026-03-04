@@ -36,7 +36,7 @@ import { TranslateContext, initialTranslationContext } from "./contexts";
 
 const Editor: React.FC<EditorProps> = ({
   style: _style,
-  className: _className,
+  className,
   theme,
   modules,
   renderModules,
@@ -78,9 +78,9 @@ const Editor: React.FC<EditorProps> = ({
       <div
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={0}
-        className={
+        className={`${
           editorStyles.classnames.container[editorAppearance[appearance]]
-        }
+        }${className ? ` ${className}` : ""}`}
         {...rest}
       >
         <Box
@@ -98,7 +98,8 @@ const Editor: React.FC<EditorProps> = ({
                       return Component ? <Component key={key} /> : null;
                     })
                     .filter(Boolean)
-                : modules ?? defaultModules.map((key) => {
+                : modules ??
+                  defaultModules.map((key) => {
                     const Component = aliasModules[key];
                     return Component ? <Component key={key} /> : null;
                   })}

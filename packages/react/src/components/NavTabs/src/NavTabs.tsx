@@ -7,14 +7,12 @@ import { NavTabsProps, NavTabsComponents } from "./navTabs.types";
 import { NavTabsItem } from "./components";
 
 const NavTabs: React.FC<NavTabsProps> & NavTabsComponents = ({
-  className: _className,
   style: _style,
   children,
   ...rest
 }: NavTabsProps) => (
   <Box
     {...rest}
-    className={_className}
     style={_style}
     alignItems="center"
     backgroundColor="neutral-background"

@@ -22,7 +22,6 @@ import {
 
 const InteractiveList: React.FC<InteractiveListProps> &
   InteractiveListComponents = ({
-  className: _className,
   style: _style,
   children,
   ...rest

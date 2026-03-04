@@ -5,7 +5,6 @@ import { DataListRowProps } from "./dataListRow.types";
 import { rowPadding } from "./dataListRow.definitions";
 
 const DataListRow: React.FC<DataListRowProps> = ({
-  className: _className,
   style: _style,
   children,
   padding = "base",

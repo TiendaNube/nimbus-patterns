@@ -5,7 +5,6 @@ import { Box } from "@nimbus-ds/components";
 import { AppShellHeaderProps } from "./appShellHeader.types";
 
 const AppShellHeader: React.FC<AppShellHeaderProps> = ({
-  className: _className,
   style: _style,
   leftSlot,
   rightSlot,

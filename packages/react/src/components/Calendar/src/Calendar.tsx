@@ -8,7 +8,7 @@ import { CalendarProps } from "./calendar.types";
 import { CustomCaptionLabel, CustomDay, Weekdays, Wrapper } from "./components";
 
 const Calendar: React.FC<CalendarProps> = ({
-  className: _className,
+  className,
   style: _style,
   hideBorder = false,
   containerProps,
@@ -25,6 +25,7 @@ const Calendar: React.FC<CalendarProps> = ({
       data-style="nimbus-calendar"
       overflowY="auto"
       position="relative"
+      className={className}
       {...containerProps}
     >
       {rest.numberOfMonths && rest.numberOfMonths > 1 && stickyWeekdays && (

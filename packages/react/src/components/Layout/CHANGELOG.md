@@ -2,6 +2,12 @@
 
 The Layout component is intended for building single or multi-column layouts using predefined typologies.
 
+## 2026-03-04 `1.3.7`
+
+#### 🐛 Bug fixes
+
+- Fixed `className` prop not being passed through to the underlying element. ([#156](https://github.com/TiendaNube/nimbus-patterns/pull/156) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2026-01-15 `1.3.6`
 
 #### 📚 3rd party library updates
