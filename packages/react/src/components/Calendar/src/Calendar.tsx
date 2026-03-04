@@ -25,8 +25,8 @@ const Calendar: React.FC<CalendarProps> = ({
       data-style="nimbus-calendar"
       overflowY="auto"
       position="relative"
-      className={className}
       {...containerProps}
+      className={[containerProps?.className, className].filter(Boolean).join(" ")}
     >
       {rest.numberOfMonths && rest.numberOfMonths > 1 && stickyWeekdays && (
         <Weekdays />
