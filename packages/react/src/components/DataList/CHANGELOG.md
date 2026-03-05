@@ -2,6 +2,12 @@
 
 DataList is a flexible list-style component that enables the organization of customizable row elements in a vertical manner, with visual separators between rows.
 
+## 2026-03-04 `1.3.3`
+
+#### 🐛 Bug fixes
+
+- Fixed `className` prop not being passed through to the underlying element. ([#156](https://github.com/TiendaNube/nimbus-patterns/pull/156) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2026-02-11 `1.3.2`
 
 #### 🐛 Bug fixes

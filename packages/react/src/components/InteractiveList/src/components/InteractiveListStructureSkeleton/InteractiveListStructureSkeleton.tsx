@@ -6,7 +6,6 @@ import { InteractiveListStructureSkeletonProps } from "./interactiveListStructur
 const InteractiveListStructureSkeleton: React.FC<
   InteractiveListStructureSkeletonProps
 > = ({
-  className: _className,
   style: _style,
   title,
   showTitle = true,
@@ -15,7 +14,6 @@ const InteractiveListStructureSkeleton: React.FC<
   ...rest
 }: InteractiveListStructureSkeletonProps) => (
   <Box
-    className={_className}
     style={_style}
     display="flex"
     flexDirection="column"

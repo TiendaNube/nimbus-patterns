@@ -6,7 +6,6 @@ import { QuestionCircleIcon } from "@nimbus-ds/icons";
 import { HelpLinkProps } from "./helpLink.types";
 
 const HelpLink: React.FC<HelpLinkProps> = ({
-  className: _className,
   style: _style,
   children,
   ...rest

@@ -2,6 +2,12 @@
 
 ChatInput allows the user to build chat inputs for apps. It features internal components meant to build chat inputs with popovers, actions, and fields.
 
+## 2026-03-04 `1.0.4`
+
+#### 🐛 Bug fixes
+
+- Fixed `className` prop not being passed through to the underlying element. ([#156](https://github.com/TiendaNube/nimbus-patterns/pull/156) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2026-02-13 `1.0.3`
 
 #### 🐛 Bug fixes

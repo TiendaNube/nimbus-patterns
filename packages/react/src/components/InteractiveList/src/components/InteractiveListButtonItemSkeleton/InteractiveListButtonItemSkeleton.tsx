@@ -9,11 +9,11 @@ import { InteractiveList } from "../../InteractiveList";
 const InteractiveListButtonItemSkeleton: React.FC<
   InteractiveListButtonItemSkeletonProps
 > = ({
-  className: _className,
+  className,
   style: _style,
   ...rest
 }: InteractiveListButtonItemSkeletonProps) => (
-  <InteractiveListRow>
+  <InteractiveListRow className={className}>
     <InteractiveList.StructureSkeleton {...rest} />
     <IconButton.Skeleton />
   </InteractiveListRow>

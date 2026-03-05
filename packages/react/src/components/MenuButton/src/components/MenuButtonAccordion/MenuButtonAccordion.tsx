@@ -15,7 +15,6 @@ import { MenuButton } from "../../MenuButton";
 const MenuButtonAccordion = forwardRef(
   (
     {
-      className: _className,
       style: _style,
       open: controlledOpen,
       active,

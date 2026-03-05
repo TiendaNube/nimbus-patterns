@@ -2,6 +2,12 @@
 
 Help Link component is intended for adding helpful links with tutorials or educational content on the UI.
 
+## 2026-03-04 `1.1.5`
+
+#### 🐛 Bug fixes
+
+- Fixed `className` prop not being passed through to the underlying element. ([#156](https://github.com/TiendaNube/nimbus-patterns/pull/156) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2026-01-15 `1.1.4`
 
 #### 📚 3rd party library updates

@@ -2,6 +2,12 @@
 
 ProductUpdates component allows the user to showcase new features or updates in a non-distractive way by displaying the information in a floating popover with a high-contrast setting that catches the eye of the user.
 
+## 2026-03-04 `1.6.1`
+
+#### 🐛 Bug fixes
+
+- Fixed `className` prop not being passed through to the underlying element. ([#156](https://github.com/TiendaNube/nimbus-patterns/pull/156) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2026-03-02 `1.6.0`
 
 ### 🎉 New features

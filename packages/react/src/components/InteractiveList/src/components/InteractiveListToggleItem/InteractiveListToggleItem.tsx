@@ -7,7 +7,7 @@ import { InteractiveListStructure, InteractiveListRow } from "..";
 import { generateID } from "../../interactiveList.definitions";
 
 const InteractiveListToggleItem: React.FC<InteractiveListToggleItemProps> = ({
-  className: _className,
+  className,
   style: _style,
   toggle,
   ...rest
@@ -16,6 +16,7 @@ const InteractiveListToggleItem: React.FC<InteractiveListToggleItemProps> = ({
 
   return (
     <InteractiveListRow
+      className={className}
       role="menuitem"
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore

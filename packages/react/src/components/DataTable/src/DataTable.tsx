@@ -17,7 +17,7 @@ import {
 import { DataTableProps, DataTableComponents } from "./dataTable.types";
 
 const DataTable: React.FC<DataTableProps> & DataTableComponents = ({
-  className: _className,
+  className,
   style: _style,
   bulkActions,
   header,
@@ -26,7 +26,7 @@ const DataTable: React.FC<DataTableProps> & DataTableComponents = ({
   containerProps,
   ...rest
 }: DataTableProps) => (
-  <Box>
+  <Box className={className}>
     <Box
       position="relative"
       borderRadius="2"

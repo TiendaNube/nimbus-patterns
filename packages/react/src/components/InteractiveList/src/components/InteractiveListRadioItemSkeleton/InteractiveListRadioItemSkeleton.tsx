@@ -8,11 +8,11 @@ import { InteractiveList } from "../../InteractiveList";
 const InteractiveListRadioItemSkeleton: React.FC<
   InteractiveListRadioItemSkeletonProps
 > = ({
-  className: _className,
+  className,
   style: _style,
   ...rest
 }: InteractiveListRadioItemSkeletonProps) => (
-  <InteractiveListRow>
+  <InteractiveListRow className={className}>
     <Skeleton width="1rem" height="1rem" borderRadius="0.75rem" />
     <InteractiveList.StructureSkeleton {...rest} />
   </InteractiveListRow>

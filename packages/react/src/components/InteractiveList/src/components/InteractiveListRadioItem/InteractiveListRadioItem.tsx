@@ -7,7 +7,7 @@ import { InteractiveListStructure, InteractiveListRow } from "..";
 import { generateID } from "../../interactiveList.definitions";
 
 const InteractiveListRadioItem: React.FC<InteractiveListRadioItemProps> = ({
-  className: _className,
+  className,
   style: _style,
   radio,
   ...rest
@@ -16,6 +16,7 @@ const InteractiveListRadioItem: React.FC<InteractiveListRadioItemProps> = ({
 
   return (
     <InteractiveListRow
+      className={className}
       role="menuitemradio"
       aria-checked={radio.checked}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment

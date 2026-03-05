@@ -8,7 +8,7 @@ import { InteractiveListStructure, InteractiveListRow } from "..";
 import { generateID } from "../../interactiveList.definitions";
 
 const InteractiveListButtonItem: React.FC<InteractiveListButtonItemProps> = ({
-  className: _className,
+  className,
   style: _style,
   iconButton,
   ...rest
@@ -17,6 +17,7 @@ const InteractiveListButtonItem: React.FC<InteractiveListButtonItemProps> = ({
 
   return (
     <InteractiveListRow
+      className={className}
       alignItems="center"
       role="menuitem"
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment

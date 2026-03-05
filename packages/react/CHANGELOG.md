@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-03-04 `1.33.1`
+
+#### 🐛 Bug fixes
+
+- Fixed `className` prop not being passed through to the underlying elements across all pattern components. ([#156](https://github.com/TiendaNube/nimbus-patterns/pull/156) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2026-03-02 `1.33.0`
 
 #### 🎉 New features

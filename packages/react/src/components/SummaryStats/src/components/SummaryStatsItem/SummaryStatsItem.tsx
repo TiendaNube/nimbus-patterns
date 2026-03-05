@@ -76,7 +76,6 @@ import { SummaryStatsItemProps } from "./summaryStatsItem.types";
  * </SummaryStats>
  */
 const SummaryStatsItem: React.FC<SummaryStatsItemProps> = ({
-  className: _className,
   style: _style,
   children,
   value,

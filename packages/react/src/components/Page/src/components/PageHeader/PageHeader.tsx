@@ -5,7 +5,6 @@ import { Box, Title, Text } from "@nimbus-ds/components";
 import { PageHeaderProps } from "./pageHeader.types";
 
 const PageHeader: React.FC<PageHeaderProps> = ({
-  className: _className,
   style: _style,
   title,
   subtitle,

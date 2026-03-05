@@ -5,7 +5,6 @@ import { Table, Checkbox } from "@nimbus-ds/components";
 import { DataTableRowProps } from "./dataTableRow.types";
 
 const DataTableRow: React.FC<DataTableRowProps> = ({
-  className: _className,
   style: _style,
   checkbox,
   children,

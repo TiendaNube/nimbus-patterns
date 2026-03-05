@@ -5,7 +5,6 @@ import { Box, Checkbox, Label, Text } from "@nimbus-ds/components";
 import { DataTableBulkActionsProps } from "./dataTableBulkActions.types";
 
 const DataTableBulkActions: React.FC<DataTableBulkActionsProps> = ({
-  className: _className,
   style: _style,
   checkbox,
   link,

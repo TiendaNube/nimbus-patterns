@@ -17,7 +17,6 @@ import { ProductUpdatesPaginator, ProductUpdatesFooter } from "./components";
 
 const ProductUpdates: React.FC<ProductUpdatesProps> &
   ProductUpdatesComponents = ({
-  className: _className,
   style: _style,
   title,
   text,

@@ -11,7 +11,6 @@ import {
 } from "./components";
 
 const ChatInput: React.FC<ChatInputProps> & ChatInputComponents = ({
-  className: _className,
   style: _style,
   children,
   aiFocused,

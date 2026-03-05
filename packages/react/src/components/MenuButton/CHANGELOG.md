@@ -2,6 +2,12 @@
 
 MenuButton component is meant to be used inside Menus and navigation, and allows the user to navigate between different sections of an application.
 
+## 2026-03-04 `2.0.3`
+
+#### 🐛 Bug fixes
+
+- Fixed `className` prop not being passed through to the underlying element. ([#156](https://github.com/TiendaNube/nimbus-patterns/pull/156) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2026-01-15 `2.0.2`
 
 #### 📚 3rd party library updates

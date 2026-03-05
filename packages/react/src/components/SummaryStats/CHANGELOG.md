@@ -2,6 +2,12 @@
 
 Summary Stats component is intended for displaying key statistics and metrics in a visually organized manner.
 
+## 2026-03-04 `1.0.4`
+
+#### 🐛 Bug fixes
+
+- Fixed `className` prop not being passed through to the underlying element. ([#156](https://github.com/TiendaNube/nimbus-patterns/pull/156) by [@joacotornello](https://github.com/joacotornello))
+
 ## 2026-02-25 `1.0.3`
 
 ### 🐛 Bug fixes

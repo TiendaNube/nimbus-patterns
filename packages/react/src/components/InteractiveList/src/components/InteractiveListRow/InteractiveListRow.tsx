@@ -5,7 +5,6 @@ import { DataList } from "@nimbus-ds/data-list";
 import { InteractiveListRowProps } from "./interactiveListRow.types";
 
 const InteractiveListRow: React.FC<InteractiveListRowProps> = ({
-  className: _className,
   style: _style,
   children,
   topDivider = true,

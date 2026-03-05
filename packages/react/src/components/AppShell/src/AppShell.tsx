@@ -18,7 +18,6 @@ import { AppShellProps, AppShellComponents } from "./appShell.types";
 import { AppShellMenuContext } from "./contexts/AppShellMenuContext";
 
 const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
-  className: _className,
   style: _style,
   children,
   contentProperties,

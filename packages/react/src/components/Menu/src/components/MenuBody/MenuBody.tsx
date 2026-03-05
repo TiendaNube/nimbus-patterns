@@ -5,7 +5,6 @@ import { useMenuExpandContext } from "@common/contexts";
 import { MenuBodyProps } from "./menuBody.types";
 
 const MenuBody: React.FC<MenuBodyProps> = ({
-  className: _className,
   style: _style,
   children,
   ...rest

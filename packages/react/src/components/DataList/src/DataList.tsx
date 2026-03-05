@@ -7,7 +7,6 @@ import { DataListProps, DataListComponents } from "./dataList.types";
 import { DataListRow } from "./components";
 
 const DataList: React.FC<DataListProps> & DataListComponents = ({
-  className: _className,
   style: _style,
   children,
   bottomDivider = true,

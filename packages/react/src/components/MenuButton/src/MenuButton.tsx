@@ -15,7 +15,6 @@ import { MenuButtonAccordion, MenuButtonContent } from "./components";
 const MenuButton = forwardRef(
   (
     {
-      className: _className,
       style: _style,
       label,
       onClick,

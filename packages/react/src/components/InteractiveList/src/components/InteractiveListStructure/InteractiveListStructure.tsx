@@ -5,7 +5,6 @@ import { Box, Text } from "@nimbus-ds/components";
 import { InteractiveListStructureProps } from "./interactiveListStructure.types";
 
 const InteractiveListStructure: React.FC<InteractiveListStructureProps> = ({
-  className: _className,
   style: _style,
   title,
   showTitle = true,
@@ -14,7 +13,6 @@ const InteractiveListStructure: React.FC<InteractiveListStructureProps> = ({
   ...rest
 }: InteractiveListStructureProps) => (
   <Box
-    className={_className}
     style={_style}
     display="flex"
     flexDirection="column"

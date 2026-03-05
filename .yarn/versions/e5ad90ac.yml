@@ -1,0 +1,25 @@
+releases:
+  "@nimbus-ds/app-shell": patch
+  "@nimbus-ds/calendar": patch
+  "@nimbus-ds/chat-input": patch
+  "@nimbus-ds/data-list": patch
+  "@nimbus-ds/data-table": patch
+  "@nimbus-ds/editor": patch
+  "@nimbus-ds/empty-message": patch
+  "@nimbus-ds/help-link": patch
+  "@nimbus-ds/interactive-list": patch
+  "@nimbus-ds/layout": patch
+  "@nimbus-ds/menu": patch
+  "@nimbus-ds/menubutton": patch
+  "@nimbus-ds/nav-tabs": patch
+  "@nimbus-ds/page": patch
+  "@nimbus-ds/patterns": patch
+  "@nimbus-ds/productupdates": patch
+  "@nimbus-ds/summary-stats": patch
+  "@nimbus-ds/thumbnail-with-action": patch
+
+declined:
+  - nimbus-patterns
+  - "@nimbus-ds/empty-app"
+  - "@nimbus-ds/initial-screen"
+  - "@nimbus-ds/plan-display"

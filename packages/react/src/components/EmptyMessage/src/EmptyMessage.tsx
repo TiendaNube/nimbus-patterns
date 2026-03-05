@@ -5,7 +5,7 @@ import { Box, Icon as NimbusIcon, Title, Text } from "@nimbus-ds/components";
 import { EmptyMessageProps } from "./emptyMessage.types";
 
 const EmptyMessage: React.FC<EmptyMessageProps> = ({
-  className: _className,
+  className,
   style: _style,
   illustration,
   icon,
@@ -17,6 +17,7 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
   const emptyMessageContent = (
     <Box
       {...rest}
+      className={!illustration ? className : undefined}
       display="flex"
       flexDirection="column"
       gap="1"
@@ -31,7 +32,7 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
         as="h4"
         textAlign={{
           xs: "center",
-          lg: illustration ? "left" : "center"
+          lg: illustration ? "left" : "center",
         }}
       >
         {title}
@@ -48,7 +49,7 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
           display="flex"
           justifyContent={{
             xs: "center",
-            lg: "flex-start"
+            lg: "flex-start",
           }}
           gap="2"
           mt="1"
@@ -61,14 +62,15 @@ const EmptyMessage: React.FC<EmptyMessageProps> = ({
   );
   return illustration ? (
     <Box
+      className={className}
       display="grid"
       gridTemplateColumns={{
         xs: "1fr",
-        lg: "1fr 1fr"
+        lg: "1fr 1fr",
       }}
       gridTemplateAreas={{
         xs: "auto auto",
-        lg: "auto"
+        lg: "auto",
       }}
       gap="4"
     >

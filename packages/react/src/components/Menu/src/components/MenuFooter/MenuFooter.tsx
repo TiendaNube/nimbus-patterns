@@ -7,7 +7,7 @@ import { useMenuExpandContext } from "@common/contexts";
 import { MenuFooterProps } from "./menuFooter.types";
 
 const MenuFooter: React.FC<MenuFooterProps> = ({
-  className: _className,
+  className,
   style: _style,
   ...rest
 }: MenuFooterProps) => {
@@ -27,6 +27,7 @@ const MenuFooter: React.FC<MenuFooterProps> = ({
 
   return (
     <Box
+      className={className}
       boxSizing="border-box"
       display="flex"
       flex="0 1 auto"

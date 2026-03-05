@@ -7,7 +7,6 @@ import { MenuProps, MenuComponents } from "./menu.types";
 import { MenuSection, MenuHeader, MenuBody, MenuFooter } from "./components";
 
 const Menu: React.FC<MenuProps> & MenuComponents = ({
-  className: _className,
   style: _style,
   children,
   expanded = true,

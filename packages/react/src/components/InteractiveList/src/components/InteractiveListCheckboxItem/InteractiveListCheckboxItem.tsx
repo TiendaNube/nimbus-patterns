@@ -9,7 +9,7 @@ import { generateID } from "../../interactiveList.definitions";
 const InteractiveListCheckboxItem: React.FC<
   InteractiveListCheckboxItemProps
 > = ({
-  className: _className,
+  className,
   style: _style,
   checkbox,
   ...rest
@@ -18,6 +18,7 @@ const InteractiveListCheckboxItem: React.FC<
 
   return (
     <InteractiveListRow
+      className={className}
       role="menuitemcheckbox"
       aria-checked={checkbox.checked}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
