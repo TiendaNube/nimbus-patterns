@@ -26,7 +26,13 @@ const DataTableDropdown: React.FC<DataTableDropdownProps> = ({
     <DataTableDropdownContext.Provider value={contextValue}>
       <Popover
         content={
-          <Box display="flex" flexDirection="column" width="100%">
+          <Box
+            display="flex"
+            flexDirection="column"
+            width="100%"
+            maxHeight="370px"
+            overflowY="auto"
+          >
             {children}
           </Box>
         }
