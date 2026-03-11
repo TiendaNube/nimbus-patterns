@@ -1,5 +1,5 @@
-import React from "react";
-import { render, screen, act } from "@testing-library/react";
+import React, { useState } from "react";
+import { render, screen, act, fireEvent } from "@testing-library/react";
 
 import { AppShellChat } from "./AppShellChat";
 import { AppShellChatProps } from "./AppShellChat.types";
@@ -11,6 +11,17 @@ const makeSut = (rest: Omit<AppShellChatProps, "children">) => {
     <AppShellChat {...rest} data-testid="app-shell-chat-element">
       {bodyChildren}
     </AppShellChat>
+  );
+};
+
+const StatefulInput: React.FC = () => {
+  const [value, setValue] = useState("");
+  return (
+    <input
+      data-testid="stateful-input"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
   );
 };
 
@@ -45,19 +56,18 @@ describe("GIVEN <AppShellChat />", () => {
       expect(screen.getByText(bodyChildren)).toBeDefined();
     });
 
-    it("SHOULD render the placeholder without children", () => {
+    it("SHOULD render a spacer element for flex layout", () => {
       makeSut({ expanded: true });
-      const placeholder = screen.getByTestId("app-shell-chat-element");
-      expect(placeholder).toBeDefined();
-      expect(placeholder.textContent).toBe("");
+      const container = screen.getByTestId("app-shell-chat-element");
+      expect(container.parentElement?.children.length).toBeGreaterThanOrEqual(
+        2
+      );
     });
   });
 
   describe("WHEN defaultExpanded is true", () => {
     it("SHOULD start with children in the fullscreen overlay", () => {
       makeSut({ defaultExpanded: true });
-      const placeholder = screen.getByTestId("app-shell-chat-element");
-      expect(placeholder.textContent).toBe("");
       expect(screen.getByText(bodyChildren)).toBeDefined();
     });
   });
@@ -90,6 +100,41 @@ describe("GIVEN <AppShellChat />", () => {
 
       const container = screen.getByTestId("app-shell-chat-element");
       expect(container.textContent).toBe(bodyChildren);
+    });
+
+    it("SHOULD preserve child component state across expand and collapse", () => {
+      const { rerender } = render(
+        <AppShellChat expanded={false} data-testid="app-shell-chat-element">
+          <StatefulInput />
+        </AppShellChat>
+      );
+
+      const input = screen.getByTestId("stateful-input") as HTMLInputElement;
+      fireEvent.change(input, { target: { value: "draft message" } });
+      expect(input.value).toBe("draft message");
+
+      rerender(
+        <AppShellChat expanded data-testid="app-shell-chat-element">
+          <StatefulInput />
+        </AppShellChat>
+      );
+      expect(
+        (screen.getByTestId("stateful-input") as HTMLInputElement).value
+      ).toBe("draft message");
+
+      rerender(
+        <AppShellChat expanded={false} data-testid="app-shell-chat-element">
+          <StatefulInput />
+        </AppShellChat>
+      );
+
+      act(() => {
+        jest.advanceTimersByTime(300);
+      });
+
+      expect(
+        (screen.getByTestId("stateful-input") as HTMLInputElement).value
+      ).toBe("draft message");
     });
   });
 });

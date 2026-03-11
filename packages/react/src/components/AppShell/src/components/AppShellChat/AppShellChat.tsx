@@ -67,50 +67,57 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
     }
   }, [isExpanded]);
 
-  const showChildrenInPlace = !portalMounted;
-
   const safeParentLeft = Math.max(parentLeft, 0);
   const safeParentTop = Math.max(parentTop, 0);
   const expandedWidth = `calc(100% - ${safeParentLeft}px)`;
   const expandedHeight = `calc(100vh - ${safeParentTop}px)`;
 
+  const collapsedProps = {
+    position: "sticky" as const,
+    height: "100%",
+    maxWidth: { xs: "300px", xxl: "378px" } as const,
+    minWidth: COLLAPSED_WIDTH,
+    top: "0",
+    flex: "1",
+    py: "2" as const,
+    mx: "2" as const,
+    zIndex: "700" as const,
+  };
+
+  const expandedProps = {
+    position: "fixed" as const,
+    top: `${safeParentTop}px`,
+    right: "0",
+    width: portalFullWidth ? expandedWidth : COLLAPSED_WIDTH,
+    height: expandedHeight,
+    zIndex: "500" as const,
+    transitionProperty: "width" as const,
+    transitionDuration: "fast" as const,
+    transitionTimingFunction: "ease-out" as const,
+    p: "2" as const,
+  };
+
   return (
     <>
-      <Box
-        height="100%"
-        maxWidth={{
-          xs: "300px",
-          xxl: "378px",
-        }}
-        minWidth={COLLAPSED_WIDTH}
-        top="0"
-        flex="1"
-        py="2"
-        mx="2"
-        zIndex={portalMounted ? "100" : "700"}
-        pointerEvents={portalMounted ? "none" : "auto"}
-        {...rest}
-        position="sticky"
-        ref={placeholderRef}
-      >
-        {showChildrenInPlace && children}
-      </Box>
       {portalMounted && (
         <Box
-          position="fixed"
-          top={`${safeParentTop}px`}
-          right="0"
-          width={portalFullWidth ? expandedWidth : COLLAPSED_WIDTH}
-          height={expandedHeight}
-          zIndex="500"
-          transitionProperty="width"
-          transitionDuration="fast"
-          transitionTimingFunction="ease-out"
-          p="2"
-        >
-          {children}
-        </Box>
+          height="100%"
+          maxWidth={{ xs: "300px", xxl: "378px" }}
+          minWidth={COLLAPSED_WIDTH}
+          flex="1"
+          py="2"
+          mx="2"
+          pointerEvents="none"
+          aria-hidden="true"
+        />
       )}
+      <Box
+        {...(portalMounted ? expandedProps : collapsedProps)}
+        {...rest}
+        ref={placeholderRef}
+      >
+        {children}
+      </Box>
     </>
   );
 };
