@@ -804,3 +804,111 @@ export const rightChatCollapsibleMenuWithAnchoredSideModal: Story = {
   },
   args: {},
 };
+
+const ExpandableChatPanel: React.FC<{
+  expanded: boolean;
+  onExpandedChange: (expanded: boolean) => void;
+}> = ({ expanded, onExpandedChange }) => (
+  <Box
+    backgroundColor="primary-surface"
+    borderColor="primary-interactive"
+    borderStyle="dashed"
+    borderWidth="1"
+    borderRadius="2"
+    width="100%"
+    height="100%"
+    display="flex"
+    flexDirection="column"
+    alignItems="center"
+    justifyContent="center"
+    gap="4"
+    data-nimbus-outside-press-ignore
+  >
+    <Text fontSize="base" color="primary-interactive">
+      {expanded ? "Fullscreen chat" : "Chat content"}
+    </Text>
+    <Button onClick={() => onExpandedChange(!expanded)}>
+      {expanded ? "Collapse chat" : "Expand chat"}
+    </Button>
+  </Box>
+);
+
+export const rightChatExpandable: Story = {
+  render: () => {
+    const [chatOpen, setChatOpen] = React.useState(false);
+    const [chatExpanded, setChatExpanded] = React.useState(false);
+    const [menuExpandedBase, setMenuExpandedBase] = React.useState(true);
+
+    const effectiveMenuExpanded = chatOpen ? false : menuExpandedBase;
+    const effectiveMenuBehavior = chatOpen ? "popover" : "inline";
+
+    const handleChatOpenChange = (open: boolean) => {
+      setChatOpen(open);
+      if (!open) setChatExpanded(false);
+      setMenuExpandedBase(false);
+    };
+
+    return (
+      <AppShell
+        menu={
+          <CollapsibleAppMenu
+            menuExpanded={effectiveMenuExpanded}
+            onMenuExpandedChange={setMenuExpandedBase}
+          />
+        }
+        menuExpanded={effectiveMenuExpanded}
+        menuBehavior={effectiveMenuBehavior}
+        menuFlyout={{ trigger: "hover", open: menuExpandedBase }}
+      >
+        <AppShell.Header
+          rightSlot={
+            <Box display="flex" gap="2" alignItems="center">
+              {buttonStack}
+              <Button
+                onClick={() => handleChatOpenChange(!chatOpen)}
+                appearance={chatOpen ? "neutral" : "primary"}
+              >
+                {chatOpen ? "Close chat" : "Open chat"}
+              </Button>
+            </Box>
+          }
+        />
+        <AppShell.Body>
+          <Box flex="1" position="relative">
+            <Page maxWidth="800px" position="relative">
+              <Page.Header title="Expandable Chat demo" />
+              <Page.Body>
+                <Box
+                  mt="4"
+                  backgroundColor="primary-surface"
+                  borderColor="primary-interactive"
+                  borderStyle="dashed"
+                  borderWidth="1"
+                  borderRadius="2"
+                  width="100%"
+                  height="50vh"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <Text fontSize="base" color="primary-interactive">
+                    Body content (stays intact when chat expands)
+                  </Text>
+                </Box>
+              </Page.Body>
+            </Page>
+          </Box>
+          {chatOpen && (
+            <AppShell.Chat expanded={chatExpanded}>
+              <ExpandableChatPanel
+                expanded={chatExpanded}
+                onExpandedChange={setChatExpanded}
+              />
+            </AppShell.Chat>
+          )}
+        </AppShell.Body>
+      </AppShell>
+    );
+  },
+  args: {},
+};

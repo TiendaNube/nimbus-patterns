@@ -1,0 +1,3 @@
+releases:
+  "@nimbus-ds/app-shell": major
+  nimbus-patterns: minor
