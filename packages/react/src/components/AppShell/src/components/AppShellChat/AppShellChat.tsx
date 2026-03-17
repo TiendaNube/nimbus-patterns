@@ -19,42 +19,49 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
 
   const [portalMounted, setPortalMounted] = useState(false);
   const [portalFullWidth, setPortalFullWidth] = useState(false);
-  const [parentLeft, setParentLeft] = useState(0);
-  const [parentTop, setParentTop] = useState(0);
+  const [bounds, setBounds] = useState({
+    parentLeft: 0,
+    parentTop: 0,
+    collapsedWidth: COLLAPSED_WIDTH,
+  });
 
-  const measureParentBounds = () => {
+  const measureBounds = () => {
     if (placeholderRef.current?.parentElement) {
+      const placeholderRect = placeholderRef.current.getBoundingClientRect();
       const rect = placeholderRef.current.parentElement.getBoundingClientRect();
-      setParentLeft(rect.left);
-      setParentTop(rect.top);
+      setBounds({
+        collapsedWidth: `${placeholderRect.width}px`,
+        parentLeft: rect.left,
+        parentTop: rect.top,
+      });
     }
   };
 
   useEffect(() => {
     if (!isExpanded) return undefined;
 
-    measureParentBounds();
+    measureBounds();
 
     const parentElement = placeholderRef.current?.parentElement;
     const resizeObserver =
       parentElement && typeof ResizeObserver !== "undefined"
-        ? new ResizeObserver(measureParentBounds)
+        ? new ResizeObserver(measureBounds)
         : null;
 
     if (resizeObserver && parentElement) {
       resizeObserver.observe(parentElement);
     }
-    window.addEventListener("resize", measureParentBounds);
+    window.addEventListener("resize", measureBounds);
 
     return () => {
       resizeObserver?.disconnect();
-      window.removeEventListener("resize", measureParentBounds);
+      window.removeEventListener("resize", measureBounds);
     };
   }, [isExpanded]);
 
   useEffect(() => {
     if (isExpanded) {
-      measureParentBounds();
+      measureBounds();
       setPortalMounted(true);
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
@@ -67,35 +74,34 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
     }
   }, [isExpanded]);
 
-  const safeParentLeft = Math.max(parentLeft, 0);
-  const safeParentTop = Math.max(parentTop, 0);
+  const safeParentLeft = Math.max(bounds.parentLeft, 0);
+  const safeParentTop = Math.max(bounds.parentTop, 0);
   const expandedWidth = `calc(100% - ${safeParentLeft}px)`;
   const expandedHeight = `calc(100vh - ${safeParentTop}px)`;
 
   const collapsedProps = {
-    position: "sticky" as const,
+    position: "sticky",
     height: "100%",
-    maxWidth: { xs: "300px", xxl: "378px" } as const,
+    maxWidth: { xs: "300px", xxl: "378px" },
     minWidth: COLLAPSED_WIDTH,
     top: "0",
     flex: "1",
-    py: "2" as const,
-    mx: "2" as const,
-    zIndex: "700" as const,
-  };
+    py: "2",
+    mx: "2",
+  } as const;
 
   const expandedProps = {
-    position: "fixed" as const,
+    position: "fixed",
     top: `${safeParentTop}px`,
     right: "0",
-    width: portalFullWidth ? expandedWidth : COLLAPSED_WIDTH,
+    width: portalFullWidth ? expandedWidth : bounds.collapsedWidth,
     height: expandedHeight,
-    zIndex: "500" as const,
-    transitionProperty: "width" as const,
-    transitionDuration: "fast" as const,
-    transitionTimingFunction: "ease-out" as const,
-    p: "2" as const,
-  };
+    zIndex: "500",
+    transitionProperty: "width",
+    transitionDuration: "fast",
+    transitionTimingFunction: "ease-out",
+    p: "2",
+  } as const;
 
   return (
     <>
