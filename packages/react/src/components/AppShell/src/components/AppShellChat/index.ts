@@ -1,2 +1,5 @@
 export { AppShellChat } from "./AppShellChat";
-export type { AppShellChatProps } from "./AppShellChat.types";
+export type {
+  AppShellChatProperties,
+  AppShellChatProps,
+} from "./AppShellChat.types";

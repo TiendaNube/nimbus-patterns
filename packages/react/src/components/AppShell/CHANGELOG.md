@@ -2,6 +2,12 @@
 
 The AppShell component is the main outer frame of an application. It provides the basic architecture to build an application inside of our admin.
 
+## 2026-03-11 `1.9.0`
+
+#### 🎉 New features
+
+- Added fullscreen expansion support to `AppShellChat` via `expanded` and `defaultExpanded` props. ([#157](https://github.com/TiendaNube/nimbus-patterns/pull/157) by [@jffs](https://github.com/jffs))
+
 ## 2026-03-04 `1.8.5`
 
 #### 🐛 Bug fixes
