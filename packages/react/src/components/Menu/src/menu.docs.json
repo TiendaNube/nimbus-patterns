@@ -3,7 +3,7 @@
   "name": "Menu",
   "totalProps": 4,
   "packageName": "@nimbus-ds/menu",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/menu",
   "props": [
     {
@@ -105,6 +105,12 @@
           "required": false
         },
         {
+          "description": "Controlled override for menu expansion state. This prop does not manage internal state\nand is not forwarded to the DOM as an attribute. It is used only for layout and visual\nstate determination.\nIf not provided, the expanded state will be determined by the context.",
+          "type": "boolean",
+          "title": "expanded",
+          "required": false
+        },
+        {
           "description": "Sets the state of the button as active/inactive.",
           "type": "boolean",
           "title": "active",
@@ -114,12 +120,6 @@
           "description": "Sets an icon element on the left of the button.",
           "type": "React.FC<IconProps>",
           "title": "startIcon",
-          "required": false
-        },
-        {
-          "description": "Controlled override for menu expansion state. This prop does not manage internal state\nand is not forwarded to the DOM as an attribute. It is used only for layout and visual\nstate determination.\nIf not provided, the expanded state will be determined by the context.",
-          "type": "boolean",
-          "title": "expanded",
           "required": false
         },
         {

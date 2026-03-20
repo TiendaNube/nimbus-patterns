@@ -3,7 +3,7 @@
   "name": "SummaryStats",
   "totalProps": 5,
   "packageName": "@nimbus-ds/summary-stats",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/summary-stats",
   "props": [
     {
