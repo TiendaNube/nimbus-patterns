@@ -3,7 +3,7 @@
   "name": "HelpLink",
   "totalProps": 1,
   "packageName": "@nimbus-ds/help-link",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/help-link",
   "props": [
     {
