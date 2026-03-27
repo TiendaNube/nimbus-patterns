@@ -2728,20 +2728,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/react@npm:^0.26.0":
-  version: 0.26.0
-  resolution: "@floating-ui/react@npm:0.26.0"
-  dependencies:
-    "@floating-ui/react-dom": "npm:^2.0.2"
-    "@floating-ui/utils": "npm:^0.1.5"
-    tabbable: "npm:^6.0.1"
-  peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-  checksum: f3a49868194ff3d097aec317491790fe0794028674b0bb6ce38113bb6934f21e8118cd7319a1f0ca0b2bbd74f2891f3412fbd66cd5f5115f3f9e0b620b3b6fa3
-  languageName: node
-  linkType: hard
-
 "@floating-ui/react@npm:^0.26.1":
   version: 0.26.1
   resolution: "@floating-ui/react@npm:0.26.1"
@@ -3513,30 +3499,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/components@npm:5.56.1":
-  version: 5.56.1
-  resolution: "@nimbus-ds/components@npm:5.56.1"
+"@nimbus-ds/components@npm:5.57.2-rc.2":
+  version: 5.57.2-rc.2
+  resolution: "@nimbus-ds/components@npm:5.57.2-rc.2"
   dependencies:
     "@floating-ui/react": ^0.27.5
-    "@nimbus-ds/icons": ^1.17.0
+    "@nimbus-ds/icons": ^1.21.0
     react-indiana-drag-scroll: ^2.2.0
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0 || ^19.0
     react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
-  checksum: 971e15fc298609a2e0d6fc08f6bdb91db1d4dd2fda63afde15d4386d030e0257e2f8f3420875a5f43e59a528c728684015bc839500721b95b1f5e493c4d33052
-  languageName: node
-  linkType: hard
-
-"@nimbus-ds/components@npm:^5":
-  version: 5.10.0
-  resolution: "@nimbus-ds/components@npm:5.10.0"
-  dependencies:
-    "@floating-ui/react": "npm:^0.26.0"
-    "@nimbus-ds/icons": "npm:^1.7.0"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: b136c337fb07094b8fbfc89d72bab74f9169039c9a7722f133f4725944b032eabb15f1b1544255ae4d282809eda209b6c56a0ba66777cac629f1c87adb0c4c17
+  checksum: 50f8dd190abe550d39513749cf61645ad8c9d1858d7dfc8e06300e4feaf9e0662c58092089c24d0b6421d74bb0543f6cc725945c5be981b1492eef1130f1b4e6
   languageName: node
   linkType: hard
 
@@ -3648,19 +3621,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/icons@npm:^1.17.0":
-  version: 1.17.0
-  resolution: "@nimbus-ds/icons@npm:1.17.0"
+"@nimbus-ds/icons@npm:^1.21.0":
+  version: 1.21.0
+  resolution: "@nimbus-ds/icons@npm:1.21.0"
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0 || ^19.0
-  checksum: d9b5d7a95c81815cf85a92a6c4803573b6aef045a585d7177581358de7265feed30fc0f66d89c5895b5a427161c746af0c433d467691a69443b46ca2d7c10220
-  languageName: node
-  linkType: hard
-
-"@nimbus-ds/icons@npm:^1.7.0":
-  version: 1.7.0
-  resolution: "@nimbus-ds/icons@npm:1.7.0"
-  checksum: 64646f6988874855729b88270192783e236ed3150fd4ff840b86e5f56de2eada444c3236223d1cc825333ebdb04957cd21410af2d656353be1cfad8bcc593ae2
+  checksum: f1c00fb1164d7b5cc440ebed3c79416afbdaa4844ea865e9b34eb059630028e1f6494467dd280dbfb69d9b33b1dfbe06a3c1c4b99cb1badc9e3c61e513f5d36e
   languageName: node
   linkType: hard
 
@@ -3874,17 +3840,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/styles@npm:9.61.1":
-  version: 9.61.1
-  resolution: "@nimbus-ds/styles@npm:9.61.1"
-  checksum: 2a003aff355a2107a7b6e03250a7140ec76f69fe8d3362fc1c558b6bfb7732e082b5679d9531004f03a2ec7b2c148034999054baa2cc9fc4237aa3746c388aed
-  languageName: node
-  linkType: hard
-
-"@nimbus-ds/styles@npm:^9.11.0":
-  version: 9.11.0
-  resolution: "@nimbus-ds/styles@npm:9.11.0"
-  checksum: 4ebce6f620277c8f555920b4fca53bfdca02eebf09457f90f9ae47254f51e36a75e29d83b992b934fa47a2acedf592fdb4055b9317b154bca3a95e06a8c8f7d2
+"@nimbus-ds/styles@npm:9.62.1-rc.5":
+  version: 9.62.1-rc.5
+  resolution: "@nimbus-ds/styles@npm:9.62.1-rc.5"
+  checksum: cb70a7d4d988cd202dd59542b5361a90d6f948463c9ba8bfb2fde4472650fcbaa986b24bea07620dccf795c81de133960c30556f24582f81a0e7ca6e38e09b59
   languageName: node
   linkType: hard
 
@@ -3911,24 +3870,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/tokens@npm:^9.0.0":
-  version: 9.0.0
-  resolution: "@nimbus-ds/tokens@npm:9.0.0"
-  checksum: be832f91c7ab225a47db0c34535c85b75ae53d825e94c5ed82ab0780724256e72ca7eb26c92df23fd1cf48cb8cbfc4f498e0a67c45b0a9176214aa5d5ea23fa0
-  languageName: node
-  linkType: hard
-
-"@nimbus-ds/tokens@npm:^9.1.0":
-  version: 9.1.0
-  resolution: "@nimbus-ds/tokens@npm:9.1.0"
-  checksum: 42e4ad8c73588b93754a2a0bb6868b1c43fb306b4ccfb493e26237a7425bbfec3d4682fe922f760822fa49b5adf0ae996fcbd32ea7983803317be1e5acba9829
-  languageName: node
-  linkType: hard
-
-"@nimbus-ds/tokens@npm:^9.5.0":
-  version: 9.5.0
-  resolution: "@nimbus-ds/tokens@npm:9.5.0"
-  checksum: 22605538f3abf5eac52d648aebfa18a75b95b4d853cbe14761d8aaff4aca8ed0e94c0de70e50565fd061be40f25544148cfb2e5f0fa5fcf95b46d3d35051b236
+"@nimbus-ds/tokens@npm:9.5.1-rc.5":
+  version: 9.5.1-rc.5
+  resolution: "@nimbus-ds/tokens@npm:9.5.1-rc.5"
+  checksum: 3534a8b715a34e5684f61125ef2630dfa057d6f3f65417ead58a3d1a54944da96f94ac18640d8230e46f8018f88163ed63795905f6416ae081bf0a33d9fc0daa
   languageName: node
   linkType: hard
 

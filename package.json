@@ -127,6 +127,9 @@
   },
   "packageManager": "yarn@3.2.2",
   "resolutions": {
-    "typescript-json-schema": "patch:typescript-json-schema@npm%3A0.55.0#./.yarn/patches/typescript-json-schema-npm-0.55.0-8fc27dfa81.patch"
+    "typescript-json-schema": "patch:typescript-json-schema@npm%3A0.55.0#./.yarn/patches/typescript-json-schema-npm-0.55.0-8fc27dfa81.patch",
+    "@nimbus-ds/styles": "9.62.1-rc.5",
+    "@nimbus-ds/tokens": "9.5.1-rc.5",
+    "@nimbus-ds/components": "5.57.2-rc.2"
   }
 }
