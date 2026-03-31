@@ -36,7 +36,7 @@ describe("GIVEN <Menu />", () => {
     });
   });
 
-  describe("WHEN tooltip configuration is provided", () => {
+  describe("WHEN popover configuration is provided", () => {
     it("SHOULD pass showPopoversWhenCollapsed and popoverPosition to context", () => {
       render(
         <Menu
@@ -57,7 +57,7 @@ describe("GIVEN <Menu />", () => {
       expect(contextValue.popoverPosition).toBe("left");
     });
 
-    it("SHOULD use default values when tooltip props are not provided", () => {
+    it("SHOULD use default values when popover props are not provided", () => {
       render(
         <Menu>
           <ContextConsumer />

@@ -22,6 +22,7 @@ const MenuButtonAccordion = forwardRef(
       children,
       as,
       expanded: expandedProp,
+      contentid,
       ...rest
     }: MenuButtonAccordionBaseProps & { as: any },
     ref
@@ -91,7 +92,7 @@ const MenuButtonAccordion = forwardRef(
         />
         {open && expanded && (
           <Box
-            id="content-1"
+            id={contentid}
             aria-hidden={!open}
             height={open ? "auto" : "0"}
             overflow="hidden"
