@@ -65,7 +65,7 @@ const MenuButtonAccordion = forwardRef(
 
     const getBackgroundColor = () => {
       if (active) {
-        return "primary-surface";
+        return "neutral-surface";
       }
       return open ? "neutral-surface" : "transparent";
     };

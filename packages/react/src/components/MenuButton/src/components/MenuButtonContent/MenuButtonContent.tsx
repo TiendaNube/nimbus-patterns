@@ -40,9 +40,9 @@ const MenuButtonContent = forwardRef<
         alignItems="center"
         textDecoration="none"
         backgroundColor={{
-          xs: active ? "neutral-background" : "transparent",
+          xs: active ? "neutral-surface" : "transparent",
           hover: "neutral-interactive",
-          active: "neutral-background",
+          active: "neutral-surface",
           disabled: "neutral-surfaceDisabled",
         }}
         borderRadius="2"
