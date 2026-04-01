@@ -3499,17 +3499,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/components@npm:5.55.0":
-  version: 5.55.0
-  resolution: "@nimbus-ds/components@npm:5.55.0"
+"@nimbus-ds/components@npm:5.57.2-rc.5":
+  version: 5.57.2-rc.5
+  resolution: "@nimbus-ds/components@npm:5.57.2-rc.5"
   dependencies:
     "@floating-ui/react": ^0.27.5
-    "@nimbus-ds/icons": ^1.17.0
+    "@nimbus-ds/icons": ^1.21.0
     react-indiana-drag-scroll: ^2.2.0
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0 || ^19.0
     react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
-  checksum: efc92472a9c05a201eb562e6cf9802c4c6160191342af819ce74ab00c83785ed26e878de68ec7d557e896a88a1432e709202dc867a160cd012f3f3f4a5c2f990
+  checksum: 8e05449d5f1ff48dbe3a8345d8a802533a183d66049edc9d47ce112a7408fd4206c9fa619b228319d8caf48eca5cdea349bb332221e1d525086b95b36e502845
   languageName: node
   linkType: hard
 
@@ -3621,7 +3621,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nimbus-ds/icons@npm:^1.17.0":
+"@nimbus-ds/icons@npm:^1.21.0":
   version: 1.21.0
   resolution: "@nimbus-ds/icons@npm:1.21.0"
   peerDependencies:
@@ -12387,7 +12387,7 @@ __metadata:
     "@commitlint/config-conventional": ^17.2.0
     "@jest/types": ^29.2.1
     "@mdx-js/react": ^3.0.0
-    "@nimbus-ds/components": 5.55.0
+    "@nimbus-ds/components": 5.57.2-rc.5
     "@nimbus-ds/icons": ^1.15.1
     "@nimbus-ds/scripts": ^1.8.2
     "@nimbus-ds/styles": 9.61.1
