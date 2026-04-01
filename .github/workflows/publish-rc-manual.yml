@@ -18,6 +18,11 @@ on:
           - minor
           - major
 
+concurrency:
+  group: publish-rc-packages
+  cancel-in-progress: false
+
+
 jobs:
   publish-rc-packages:
     runs-on: ubuntu-latest
@@ -28,10 +33,10 @@ jobs:
 
       - uses: ./.github/actions/setup-node-deps
 
-      - name: Build packages
+      - name: Build components
         run: |
           export NODE_OPTIONS="--max_old_space_size=8192"
-          yarn build
+          yarn build:components
 
       - name: Publish RC packages
         run: |
@@ -43,7 +48,7 @@ jobs:
             if [ -n "$package" ]; then
               echo "📦 Publishing RC for $package with bump type: ${{ github.event.inputs.bump_type }}"
               set +e
-              echo "y" | yarn publish:rc "$package" "${{ github.event.inputs.bump_type }}" --skip-build
+              echo "y" | yarn publish:rc "$package" "${{ github.event.inputs.bump_type }}"
               EXIT_CODE=$?
               set -e
               if [ $EXIT_CODE -ne 0 ]; then
