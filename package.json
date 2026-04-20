@@ -63,11 +63,11 @@
     "@commitlint/config-conventional": "^17.2.0",
     "@jest/types": "^29.2.1",
     "@mdx-js/react": "^3.0.0",
-    "@nimbus-ds/components": "5.57.7-rc.1",
+    "@nimbus-ds/components": "5.57.7-rc.2",
     "@nimbus-ds/icons": "^1.15.1",
     "@nimbus-ds/scripts": "^1.8.2",
-    "@nimbus-ds/styles": "9.62.7-rc.1",
-    "@nimbus-ds/tokens": "9.5.3-rc.4",
+    "@nimbus-ds/styles": "9.62.7-rc.2",
+    "@nimbus-ds/tokens": "9.5.3-rc.5",
     "@storybook/addon-docs": "^8.6.14",
     "@storybook/addon-essentials": "^8.6.14",
     "@storybook/addon-interactions": "^8.6.14",
@@ -128,8 +128,8 @@
   "packageManager": "yarn@3.2.2",
   "resolutions": {
     "typescript-json-schema": "patch:typescript-json-schema@npm%3A0.55.0#./.yarn/patches/typescript-json-schema-npm-0.55.0-8fc27dfa81.patch",
-    "@nimbus-ds/styles": "9.62.7-rc.1",
-    "@nimbus-ds/tokens": "9.5.3-rc.4",
-    "@nimbus-ds/components": "5.57.7-rc.1"
+    "@nimbus-ds/styles": "9.62.7-rc.2",
+    "@nimbus-ds/tokens": "9.5.3-rc.5",
+    "@nimbus-ds/components": "5.57.7-rc.2"
   }
 }
