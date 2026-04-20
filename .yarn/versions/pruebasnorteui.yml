@@ -6,3 +6,5 @@ releases:
 
 declined:
   - nimbus-patterns
+  - "@nimbus-ds/calendar"
+  - "@nimbus-ds/editor"
