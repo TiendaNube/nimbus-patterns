@@ -1,0 +1,7 @@
+declined:
+  - nimbus-patterns
+patch:
+  - "@nimbus-ds/app-shell"
+  - "@nimbus-ds/menu"
+  - "@nimbus-ds/menubutton"
+  - "@nimbus-ds/productupdates"
