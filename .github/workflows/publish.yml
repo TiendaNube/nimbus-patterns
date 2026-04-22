@@ -12,15 +12,22 @@ on:
 jobs:
   publish-packages-npm:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set Node version
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
           cache: "yarn"
+          registry-url: 'https://registry.npmjs.org/'
+          auth-oidc: true
 
       - name: Cache NPM dependencies
         uses: actions/cache@v3
@@ -37,9 +44,13 @@ jobs:
       - name: Publish
         run: |
           export NODE_OPTIONS="--max_old_space_size=8192"
+          if [ -f ".yarnrc.yml" ]; then
+            yarn config set npmAuthIdent ""
+            yarn config set npmAlwaysAuth false
+          fi
           yarn publish:stable
         env:
-          YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION_FROM_JUNIOR_CONQUISTA }}
+          NODE_AUTH_TOKEN: ""
 
       - name: Create release PR
         uses: peter-evans/create-pull-request@v7
