@@ -74,6 +74,17 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
     }
   }, [isExpanded]);
 
+  useEffect(() => {
+    if (!isExpanded || typeof document === "undefined") return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isExpanded]);
+
   const safeParentLeft = Math.max(bounds.parentLeft, 0);
   const safeParentTop = Math.max(bounds.parentTop, 0);
   const expandedWidth = `calc(100% - ${safeParentLeft}px)`;

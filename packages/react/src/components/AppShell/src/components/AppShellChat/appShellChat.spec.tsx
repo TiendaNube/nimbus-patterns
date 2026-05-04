@@ -63,6 +63,24 @@ describe("GIVEN <AppShellChat />", () => {
         2
       );
     });
+
+    it("SHOULD lock body scroll while expanded and restore on collapse", () => {
+      document.body.style.overflow = "auto";
+
+      const { rerender } = render(
+        <AppShellChat expanded data-testid="app-shell-chat-element">
+          {bodyChildren}
+        </AppShellChat>
+      );
+      expect(document.body.style.overflow).toBe("hidden");
+
+      rerender(
+        <AppShellChat expanded={false} data-testid="app-shell-chat-element">
+          {bodyChildren}
+        </AppShellChat>
+      );
+      expect(document.body.style.overflow).toBe("auto");
+    });
   });
 
   describe("WHEN defaultExpanded is true", () => {
