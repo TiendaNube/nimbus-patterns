@@ -1,0 +1,3 @@
+releases:
+  "@nimbus-ds/app-shell": patch
+  "@nimbus-ds/patterns": patch
