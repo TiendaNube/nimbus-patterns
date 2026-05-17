@@ -53,7 +53,7 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
         display="flex"
         flexDirection="column"
         height="100%"
-        backgroundColor="neutral-background"
+        backgroundColor="neutral-surfaceHighlight"
         boxSizing="border-box"
         {...dynamicProps}
       >

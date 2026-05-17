@@ -76,7 +76,7 @@ export const MenuStories = (props?: MenuProps) => (
       {/* <Icon source={<TiendanubeIcon />} color="primary-interactive" /> */}
 
       {props?.expanded ? (
-        <Icon source={<TiendanubeLogo />} color="primary-interactive" />
+        <Icon source={<TiendanubeLogo />} color="neutral-textHigh" />
       ) : (
         <Icon source={<TiendanubeIcon />} color="primary-interactive" />
       )}

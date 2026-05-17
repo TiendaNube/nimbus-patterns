@@ -34,5 +34,5 @@ export interface MenuButtonAccordionProperties {
 }
 
 export type MenuButtonAccordionBaseProps = MenuButtonAccordionProperties & {
-  menuButton: Omit<MenuButtonProps, "expanded" | "tooltipText">;
+  menuButton: Omit<MenuButtonProps, "expanded" | "showPopoversWhenCollapsed">;
 } & Omit<HTMLAttributes<HTMLElement>, "color">;
