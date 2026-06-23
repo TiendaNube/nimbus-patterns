@@ -152,7 +152,272 @@ export const Default: Story = {
   ),
 };
 
+/**
+ * Two-plan layout: a current plan (with tag) and a featured upgrade (with ribbon).
+ */
+export const TwoPlans: Story = {
+  render: () => (
+    <PlanDisplay minPlanWidth="236px">
+      {/* Card with tag */}
+      <PlanDisplay.Card>
+        <PlanDisplay.Header
+          subtitle="Esencial"
+          tag={<Tag appearance="neutral">Plan actual</Tag>}
+          title={
+            <PlanDisplay.Price
+              price="$24.999"
+              previousPrice="$29.999"
+              period="/mes"
+              annualNote={
+                <>
+                  $269.990/año.{" "}
+                  <Text as="span" color="primary-textLow" fontSize="caption">
+                    Ahorra $30.000.
+                  </Text>
+                </>
+              }
+            />
+          }
+        />
+        <PlanDisplay.Content>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>Potenciá tu marca y vendé como una tienda profesional.</Text>
+            <Button fullWidth>Subir de plan</Button>
+          </Box>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Incluye todo lo del plan anterior, más:
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Carga masiva de productos
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Dominio propio
+          </PlanDisplay.Bullet>
+        </PlanDisplay.Content>
+      </PlanDisplay.Card>
+
+      {/* Featured card with ribbon */}
+      <PlanDisplay.Card ribbonLabel="Más escogido">
+        <PlanDisplay.Header
+          subtitle="Avanzado"
+          title={<PlanDisplay.Price price="$219.999" period="/mes" />}
+        />
+        <PlanDisplay.Content>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>Gestión avanzada y control total para tu negocio.</Text>
+            <Button appearance="primary" fullWidth>
+              Subir de plan
+            </Button>
+          </Box>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Incluye todo lo del plan anterior, más:
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Campos personalizados en productos y órdenes
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<GenerativeStarsIcon />}>
+            IA ilimitada para potenciar tu gestión
+          </PlanDisplay.Bullet>
+        </PlanDisplay.Content>
+      </PlanDisplay.Card>
+    </PlanDisplay>
+  ),
+};
+
+/**
+ * Three-plan layout: starter, current plan (with tag) and a featured upgrade (with ribbon).
+ */
+export const ThreePlans: Story = {
+  render: () => (
+    <PlanDisplay minPlanWidth="236px">
+      {/* Default card */}
+      <PlanDisplay.Card>
+        <PlanDisplay.Header
+          subtitle="Inicial"
+          title={<PlanDisplay.Price price="Gratis" />}
+        />
+        <PlanDisplay.Content>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>Todo lo que necesitas para empezar a vender online.</Text>
+            <Button fullWidth>Comenzar gratis</Button>
+          </Box>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Tu tienda lista para empezar a vender
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Productos y visitas sin límite
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Medios de pago y envío de Tiendanube
+          </PlanDisplay.Bullet>
+        </PlanDisplay.Content>
+      </PlanDisplay.Card>
+
+      {/* Card with tag */}
+      <PlanDisplay.Card>
+        <PlanDisplay.Header
+          subtitle="Esencial"
+          tag={<Tag appearance="neutral">Plan actual</Tag>}
+          title={
+            <PlanDisplay.Price
+              price="$24.999"
+              previousPrice="$29.999"
+              period="/mes"
+              annualNote={
+                <>
+                  $269.990/año.{" "}
+                  <Text as="span" color="primary-textLow" fontSize="caption">
+                    Ahorra $30.000.
+                  </Text>
+                </>
+              }
+            />
+          }
+        />
+        <PlanDisplay.Content>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>Potenciá tu marca y vendé como una tienda profesional.</Text>
+            <Button fullWidth>Subir de plan</Button>
+          </Box>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Incluye todo lo del plan anterior, más:
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Carga masiva de productos
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Dominio propio
+          </PlanDisplay.Bullet>
+        </PlanDisplay.Content>
+      </PlanDisplay.Card>
+
+      {/* Featured card with ribbon */}
+      <PlanDisplay.Card ribbonLabel="Más escogido">
+        <PlanDisplay.Header
+          subtitle="Avanzado"
+          title={<PlanDisplay.Price price="$219.999" period="/mes" />}
+        />
+        <PlanDisplay.Content>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>Gestión avanzada y control total para tu negocio.</Text>
+            <Button appearance="primary" fullWidth>
+              Subir de plan
+            </Button>
+          </Box>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Incluye todo lo del plan anterior, más:
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Campos personalizados en productos y órdenes
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<GenerativeStarsIcon />}>
+            IA ilimitada para potenciar tu gestión
+          </PlanDisplay.Bullet>
+        </PlanDisplay.Content>
+      </PlanDisplay.Card>
+    </PlanDisplay>
+  ),
+};
+
+/**
+ * Horizontal (desktop) layout: plan info on the left — name, price, description and CTA — separated
+ * by a vertical divider from a single column of feature bullets, vertically centered.
+ */
+export const Horizontal: Story = {
+  render: () => (
+    <Box style={{ maxWidth: 740 }}>
+      <PlanDisplay.Card>
+        <Box display="flex" gap="6" alignItems="center">
+          {/* Plan info */}
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap="3"
+            justifyContent="center"
+            style={{ flex: "0 0 253px" }}
+          >
+            <PlanDisplay.Header
+              subtitle="Inicial"
+              title={<PlanDisplay.Price price="Gratis" />}
+            />
+            <Box display="flex" flexDirection="column" gap="3">
+              <Text>Tudo o que você precisa para começar a vender online.</Text>
+              <Button fullWidth>Bajar de plan</Button>
+            </Box>
+          </Box>
+
+          {/* Vertical divider */}
+          <Box
+            alignSelf="stretch"
+            backgroundColor="neutral-surfaceHighlight"
+            style={{ width: "1px", flexShrink: 0 }}
+          />
+
+          {/* Feature bullets */}
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap="3"
+            style={{ flex: "1 1 0" }}
+          >
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Sua loja autogerenciável e pronta para vender
+            </PlanDisplay.Bullet>
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Produtos e visitas sem limite
+            </PlanDisplay.Bullet>
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Meios de pagamento e envio da Nuvemshop
+            </PlanDisplay.Bullet>
+          </Box>
+        </Box>
+      </PlanDisplay.Card>
+    </Box>
+  ),
+};
+
+/**
+ * Mobile layout of the same plan: the horizontal card stacks vertically. The header, description + CTA
+ * and feature bullets are separated by spacing only, matching the horizontal desktop layout.
+ */
+export const HorizontalMobile: Story = {
+  render: () => (
+    <Box style={{ maxWidth: 361 }}>
+      <PlanDisplay.Card>
+        <Box display="flex" flexDirection="column" gap="6">
+          {/* Plan info */}
+          <Box display="flex" flexDirection="column" gap="3">
+            <PlanDisplay.Header
+              subtitle="Inicial"
+              title={<PlanDisplay.Price price="Gratis" />}
+            />
+            <Box display="flex" flexDirection="column" gap="3">
+              <Text>Tudo o que você precisa para começar a vender online.</Text>
+              <Button fullWidth>Bajar de plan</Button>
+            </Box>
+          </Box>
+
+          {/* Feature bullets */}
+          <Box display="flex" flexDirection="column" gap="3">
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Sua loja autogerenciável e pronta para vender
+            </PlanDisplay.Bullet>
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Produtos e visitas sem limite
+            </PlanDisplay.Bullet>
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Meios de pagamento e envio da Nuvemshop
+            </PlanDisplay.Bullet>
+          </Box>
+        </Box>
+      </PlanDisplay.Card>
+    </Box>
+  ),
+};
+
 type PlaygroundArgs = {
+  showRibbon: boolean;
+  showGradient: boolean;
   showTag: boolean;
   showDiscount: boolean;
   showSuffix: boolean;
@@ -167,6 +432,8 @@ type PlaygroundArgs = {
  */
 export const Playground: StoryObj<PlaygroundArgs> = {
   args: {
+    showRibbon: true,
+    showGradient: false,
     showTag: true,
     showDiscount: true,
     showSuffix: true,
@@ -175,6 +442,8 @@ export const Playground: StoryObj<PlaygroundArgs> = {
     showFooter: true,
   },
   argTypes: {
+    showRibbon: { control: "boolean" },
+    showGradient: { control: "boolean" },
     showTag: { control: "boolean" },
     showDiscount: { control: "boolean" },
     showSuffix: { control: "boolean" },
@@ -183,6 +452,8 @@ export const Playground: StoryObj<PlaygroundArgs> = {
     showFooter: { control: "boolean" },
   },
   render: ({
+    showRibbon,
+    showGradient,
     showTag,
     showDiscount,
     showSuffix,
@@ -191,7 +462,10 @@ export const Playground: StoryObj<PlaygroundArgs> = {
     showFooter,
   }) => (
     <PlanDisplay minPlanWidth="236px">
-      <PlanDisplay.Card ribbonLabel="Más escogido">
+      <PlanDisplay.Card
+        ribbonLabel={showRibbon ? "Más escogido" : undefined}
+        gradient={showGradient}
+      >
         <PlanDisplay.Header
           subtitle="Avanzado"
           tag={showTag ? <Tag appearance="neutral">Plan actual</Tag> : undefined}

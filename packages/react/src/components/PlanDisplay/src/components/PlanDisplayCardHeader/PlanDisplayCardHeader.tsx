@@ -16,7 +16,7 @@ const PlanDisplayCardHeader: React.FC<PlanDisplayCardHeaderProps> = ({
         alignItems="center"
         gap="2"
       >
-        <Text fontWeight="bold" fontSize="highlight">
+        <Text fontWeight="bold" fontSize="highlight" color="neutral-textHigh">
           {subtitle}
         </Text>
         {tag}
