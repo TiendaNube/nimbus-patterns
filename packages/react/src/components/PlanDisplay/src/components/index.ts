@@ -4,3 +4,4 @@ export * from "./PlanDisplayCardContent";
 export * from "./PlanDisplayCardFooter";
 export * from "./PlanDisplayCardSpacing";
 export * from "./PlanDisplayBullet";
+export * from "./PlanDisplayCardPrice";

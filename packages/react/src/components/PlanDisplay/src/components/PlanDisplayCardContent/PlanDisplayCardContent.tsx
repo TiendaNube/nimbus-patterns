@@ -9,7 +9,7 @@ const PlanDisplayCardContent: React.FC<PlanDisplayCardContentProperties> = ({
   <Card.Body>
     <PlanDisplayCardSpacing />
 
-    <Box display="flex" flexDirection="column" gap="1" py="4">
+    <Box display="flex" flexDirection="column" gap="1" pb="4">
       {children}
     </Box>
   </Card.Body>

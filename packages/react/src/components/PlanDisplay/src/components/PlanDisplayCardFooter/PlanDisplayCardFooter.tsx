@@ -1,15 +1,26 @@
 import React from "react";
-import { Box } from "@nimbus-ds/components";
+import { Box, Divider } from "@nimbus-ds/components";
 import { PlanDisplayCardFooterProperties } from "./planDisplayCardFooter.types";
-import PlanDisplayCardSpacing from "../PlanDisplayCardSpacing";
 
 const PlanDisplayCardFooter: React.FC<PlanDisplayCardFooterProperties> = ({
+  icon,
   children,
 }) => (
-  <Box display="flex" flexDirection="column" gap="4">
-    <PlanDisplayCardSpacing />
+  <Box display="flex" flexDirection="column">
+    <Box mb="3">
+      <Divider />
+    </Box>
 
-    <Box>{children}</Box>
+    {icon ? (
+      <Box display="flex" gap="2" alignItems="flex-start">
+        <Box display="flex" alignItems="center">
+          {icon}
+        </Box>
+        <Box>{children}</Box>
+      </Box>
+    ) : (
+      <Box>{children}</Box>
+    )}
   </Box>
 );
 
