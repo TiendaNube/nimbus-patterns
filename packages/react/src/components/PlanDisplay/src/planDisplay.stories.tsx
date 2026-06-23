@@ -168,14 +168,6 @@ export const TwoPlans: Story = {
               price="$24.999"
               previousPrice="$29.999"
               period="/mes"
-              annualNote={
-                <>
-                  $269.990/año.{" "}
-                  <Text as="span" color="primary-textLow" fontSize="caption">
-                    Ahorra $30.000.
-                  </Text>
-                </>
-              }
             />
           }
         />
@@ -263,14 +255,6 @@ export const ThreePlans: Story = {
               price="$24.999"
               previousPrice="$29.999"
               period="/mes"
-              annualNote={
-                <>
-                  $269.990/año.{" "}
-                  <Text as="span" color="primary-textLow" fontSize="caption">
-                    Ahorra $30.000.
-                  </Text>
-                </>
-              }
             />
           }
         />

@@ -24,7 +24,7 @@ const PlanDisplay: React.FC<PlanDisplayProps> & PlanDisplayComponents = ({
     gridTemplateColumns={`repeat(auto-fit, minmax(${minPlanWidth}, 1fr))`}
     gap="6"
     justifyContent="center"
-    alignItems="flex-start"
+    alignItems="stretch"
     {...rest}
   >
     {children}
