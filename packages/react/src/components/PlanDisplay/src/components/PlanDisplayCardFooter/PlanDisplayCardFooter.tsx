@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Divider } from "@nimbus-ds/components";
+import { Box, Divider, Text } from "@nimbus-ds/components";
 import { PlanDisplayCardFooterProperties } from "./planDisplayCardFooter.types";
 
 const PlanDisplayCardFooter: React.FC<PlanDisplayCardFooterProperties> = ({
@@ -15,9 +15,11 @@ const PlanDisplayCardFooter: React.FC<PlanDisplayCardFooterProperties> = ({
 
     {icon ? (
       <Box display="flex" gap="2" alignItems="flex-start">
-        <Box display="flex" alignItems="center">
-          {icon}
-        </Box>
+        <Text as="span" color="primary-interactive">
+          <Box display="flex" alignItems="center">
+            {icon}
+          </Box>
+        </Text>
         <Box>{children}</Box>
       </Box>
     ) : (
