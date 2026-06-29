@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-06-25 `1.36.0`
+
+#### 🎉 New features
+
+- Added `collapsedWidth` prop and exported the `APPSHELL_CHAT_DEFAULT_WIDTH` constant on `AppShell.Chat`, allowing consumer-controlled panel sizing. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@jffs](https://github.com/jffs))
+
 ## 2026-03-04 `1.33.1`
 
 #### 🐛 Bug fixes

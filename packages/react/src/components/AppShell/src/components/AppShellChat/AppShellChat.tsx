@@ -4,12 +4,14 @@ import { Box } from "@nimbus-ds/components";
 
 import { AppShellChatProps } from "./AppShellChat.types";
 
-const COLLAPSED_WIDTH = "300px";
+export const APPSHELL_CHAT_DEFAULT_WIDTH = "300px";
+const COLLAPSED_WIDTH = APPSHELL_CHAT_DEFAULT_WIDTH;
 
 const AppShellChat: React.FC<AppShellChatProps> = ({
   children,
   expanded: controlledExpanded,
   defaultExpanded = false,
+  collapsedWidth = COLLAPSED_WIDTH,
   ...rest
 }: AppShellChatProps) => {
   const [uncontrolledExpanded] = useState(defaultExpanded);
@@ -22,7 +24,7 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
   const [bounds, setBounds] = useState({
     parentLeft: 0,
     parentTop: 0,
-    collapsedWidth: COLLAPSED_WIDTH,
+    collapsedWidth,
   });
 
   const measureBounds = () => {
@@ -82,8 +84,8 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
   const collapsedProps = {
     position: "sticky",
     height: "100%",
-    maxWidth: { xs: "300px", xxl: "378px" },
-    minWidth: COLLAPSED_WIDTH,
+    maxWidth: collapsedWidth,
+    minWidth: collapsedWidth,
     top: "0",
     flex: "1",
     py: "2",
@@ -108,8 +110,8 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
       {portalMounted && (
         <Box
           height="100%"
-          maxWidth={{ xs: "300px", xxl: "378px" }}
-          minWidth={COLLAPSED_WIDTH}
+          maxWidth={collapsedWidth}
+          minWidth={collapsedWidth}
           flex="1"
           py="2"
           mx="2"

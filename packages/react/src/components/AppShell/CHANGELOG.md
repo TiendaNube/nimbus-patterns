@@ -2,6 +2,13 @@
 
 The AppShell component is the main outer frame of an application. It provides the basic architecture to build an application inside of our admin.
 
+## 2026-06-25 `1.10.0`
+
+#### 🎉 New features
+
+- Added `collapsedWidth` prop to `AppShell.Chat` to allow consumer-controlled panel sizing, enabling patterns such as a drag-to-resize handle. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@jffs](https://github.com/jffs))
+- Exported `APPSHELL_CHAT_DEFAULT_WIDTH` constant so consumers can use the default panel width as a reference without hardcoding it. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@jffs](https://github.com/jffs))
+
 ## 2026-03-11 `1.9.0`
 
 #### 🎉 New features
