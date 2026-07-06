@@ -15,11 +15,12 @@ export interface AppShellChatProperties {
   expanded?: boolean;
   /**
    * Width of the chat panel in collapsed (non-expanded) mode.
-   * Accepts any valid CSS length value (e.g. "300px", "25vw").
+   * Accepts any valid CSS length value (e.g. "300px", "25vw") or a responsive
+   * object keyed by breakpoint (e.g. `{ xs: "300px", xxl: "378px" }`).
    * Useful for consumer-controlled resize interactions such as a drag handle.
-   * Defaults to "300px".
+   * When omitted, defaults to the responsive `{ xs: "300px", xxl: "378px" }`.
    */
-  collapsedWidth?: string;
+  collapsedWidth?: BoxProps["maxWidth"];
 }
 
 export type AppShellChatProps = AppShellChatProperties &
