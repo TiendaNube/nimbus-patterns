@@ -8,6 +8,12 @@ Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team 
 
 - Added `collapsedWidth` prop and exported the `APPSHELL_CHAT_DEFAULT_WIDTH` constant on `AppShell.Chat`, allowing consumer-controlled panel sizing. ([#PR](https://github.com/TiendaNube/nimbus-patterns/pull/PR) by [@jffs](https://github.com/jffs))
 
+## 2026-05-04 `1.33.2`
+
+#### 🐛 Bug fixes
+
+- Fixed page scroll not being locked while `AppShellChat` is expanded in fullscreen mode. ([#167](https://github.com/TiendaNube/nimbus-patterns/pull/167) by [@jffs](https://github.com/jffs))
+
 ## 2026-03-04 `1.33.1`
 
 #### 🐛 Bug fixes
