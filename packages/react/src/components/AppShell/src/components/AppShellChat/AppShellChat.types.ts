@@ -20,7 +20,7 @@ export interface AppShellChatProperties {
    * Useful for consumer-controlled resize interactions such as a drag handle.
    * When omitted, defaults to the responsive `{ xs: "300px", xxl: "378px" }`.
    */
-  collapsedWidth?: BoxProps["maxWidth"];
+  collapsedWidth?: NonNullable<BoxProps["maxWidth"]>;
 }
 
 export type AppShellChatProps = AppShellChatProperties &
