@@ -9,7 +9,7 @@ const PlanDisplayCardFooter: React.FC<PlanDisplayCardFooterProperties> = ({
   // `marginTop: auto` pins the footer to the bottom of the (full-height, flex-column) card
   // so footers stay aligned across cards in the same row.
   <Box display="flex" flexDirection="column" style={{ marginTop: "auto" }}>
-    <Box mb="3">
+    <Box mt="3" mb="3">
       <Divider />
     </Box>
 
