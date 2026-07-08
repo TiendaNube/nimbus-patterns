@@ -4,7 +4,7 @@ import { Box } from "@nimbus-ds/components";
 
 import { AppShellChatProps } from "./AppShellChat.types";
 
-export const APPSHELL_CHAT_DEFAULT_WIDTH = "300px";
+export const APPSHELL_CHAT_DEFAULT_WIDTH = "360px";
 const COLLAPSED_WIDTH = APPSHELL_CHAT_DEFAULT_WIDTH;
 const DEFAULT_COLLAPSED_MAX_WIDTH = {
   xs: APPSHELL_CHAT_DEFAULT_WIDTH,
