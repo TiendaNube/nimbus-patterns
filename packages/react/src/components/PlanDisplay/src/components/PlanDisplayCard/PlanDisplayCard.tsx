@@ -45,7 +45,6 @@ const PlanDisplayCard: React.FC<PlanDisplayCardProps> = ({
         flex="1 1 auto"
         display="flex"
         flexDirection="column"
-        padding="4"
         backgroundColor="neutral-background"
         borderRadius="2"
         overflow="hidden"
@@ -56,12 +55,23 @@ const PlanDisplayCard: React.FC<PlanDisplayCardProps> = ({
               borderWidth: "2",
             }
           : { boxShadow: "2" })}
-        style={{
-          background: gradient && !hasRibbon ? GRADIENT_BACKGROUND : undefined,
-          ...style,
-        }}
       >
-        {children}
+        {/* Content lives in a native element because @nimbus-ds/components Box drops the
+            `style` prop (it renders only sprinkle-generated styles). Routing the gradient
+            background and any consumer `style` through here is the only way they take effect.
+            The div fills the card as a flex column so footers still anchor with `margin-top: auto`. */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            flex: "1 1 auto",
+            padding: "var(--nimbus-spacing-4)",
+            background: gradient && !hasRibbon ? GRADIENT_BACKGROUND : undefined,
+            ...style,
+          }}
+        >
+          {children}
+        </div>
       </Box>
     </Box>
   );

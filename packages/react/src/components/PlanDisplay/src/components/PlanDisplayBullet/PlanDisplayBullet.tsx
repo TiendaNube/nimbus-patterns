@@ -25,14 +25,16 @@ const PlanDisplayBullet: React.FC<PlanDisplayBulletProps> = ({
         color={disabled ? "neutral-interactive" : "neutral-textLow"}
       >
         {children}{" "}
-        <Box
-          as="span"
-          display="inline-flex"
-          gap="2"
-          style={{ verticalAlign: "middle" }}
+        {/* Native span: Box drops `style`, so `vertical-align` would never apply on a Box. */}
+        <span
+          style={{
+            display: "inline-flex",
+            gap: "var(--nimbus-spacing-2)",
+            verticalAlign: "middle",
+          }}
         >
           {badge}
-        </Box>
+        </span>
       </Text>
     ) : (
       <Text

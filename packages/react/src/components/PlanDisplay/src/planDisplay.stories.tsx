@@ -309,16 +309,18 @@ export const ThreePlans: Story = {
  */
 export const Horizontal: Story = {
   render: () => (
-    <Box style={{ maxWidth: 740 }}>
+    <div style={{ maxWidth: 740 }}>
       <PlanDisplay.Card>
         <Box display="flex" gap="6" alignItems="center">
           {/* Plan info */}
-          <Box
-            display="flex"
-            flexDirection="column"
-            gap="3"
-            justifyContent="center"
-            style={{ flex: "0 0 253px" }}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "var(--nimbus-spacing-3)",
+              justifyContent: "center",
+              flex: "0 0 253px",
+            }}
           >
             <PlanDisplay.Header
               subtitle="Inicial"
@@ -328,21 +330,26 @@ export const Horizontal: Story = {
               <Text>Tudo o que você precisa para começar a vender online.</Text>
               <Button fullWidth>Bajar de plan</Button>
             </Box>
-          </Box>
+          </div>
 
           {/* Vertical divider */}
-          <Box
-            alignSelf="stretch"
-            backgroundColor="neutral-surfaceHighlight"
-            style={{ width: "1px", flexShrink: 0 }}
+          <div
+            style={{
+              alignSelf: "stretch",
+              backgroundColor: "var(--nimbus-colors-neutral-surfaceHighlight)",
+              width: "1px",
+              flexShrink: 0,
+            }}
           />
 
           {/* Feature bullets */}
-          <Box
-            display="flex"
-            flexDirection="column"
-            gap="3"
-            style={{ flex: "1 1 0" }}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "var(--nimbus-spacing-3)",
+              flex: "1 1 0",
+            }}
           >
             <PlanDisplay.Bullet icon={<CheckIcon />}>
               Sua loja autogerenciável e pronta para vender
@@ -353,10 +360,10 @@ export const Horizontal: Story = {
             <PlanDisplay.Bullet icon={<CheckIcon />}>
               Meios de pagamento e envio da Nuvemshop
             </PlanDisplay.Bullet>
-          </Box>
+          </div>
         </Box>
       </PlanDisplay.Card>
-    </Box>
+    </div>
   ),
 };
 
@@ -366,7 +373,7 @@ export const Horizontal: Story = {
  */
 export const HorizontalMobile: Story = {
   render: () => (
-    <Box style={{ maxWidth: 361 }}>
+    <div style={{ maxWidth: 361 }}>
       <PlanDisplay.Card>
         <Box display="flex" flexDirection="column" gap="6">
           {/* Plan info */}
@@ -395,7 +402,7 @@ export const HorizontalMobile: Story = {
           </Box>
         </Box>
       </PlanDisplay.Card>
-    </Box>
+    </div>
   ),
 };
 
