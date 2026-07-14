@@ -6,6 +6,16 @@ import tokens from "@nimbus-ds/tokens/dist/js/tokens";
 
 import { NavTabsItemProps } from "./navTabsItem.types";
 
+const interactiveButtonProps = {
+  borderColor: "transparent",
+  borderRadius: "2",
+  cursor: "pointer",
+  as: "button",
+  type: "button",
+  p: "2-5",
+  position: "relative",
+} as const;
+
 const Badge: React.FC = () => (
   <Box
     borderRadius="full"
@@ -52,15 +62,9 @@ const NavTabsItem: React.FC<NavTabsItemProps> = ({
       >
         <Box
           {...rest}
+          {...interactiveButtonProps}
           style={_style}
           backgroundColor="neutral-background"
-          borderColor="transparent"
-          borderRadius="2"
-          cursor="pointer"
-          as="button"
-          type="button"
-          p="2-5"
-          position="relative"
           onClick={onClick}
           aria-label={ariaLabel}
         >
@@ -77,15 +81,9 @@ const NavTabsItem: React.FC<NavTabsItemProps> = ({
   return (
     <Box
       {...rest}
+      {...interactiveButtonProps}
       style={_style}
       backgroundColor={active ? "primary-surface" : "transparent"}
-      borderColor="transparent"
-      borderRadius="2"
-      cursor="pointer"
-      as="button"
-      type="button"
-      p="2-5"
-      position="relative"
       onClick={onClick}
       aria-label={ariaLabel}
     >
