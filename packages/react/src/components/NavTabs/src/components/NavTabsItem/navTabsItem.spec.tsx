@@ -92,6 +92,20 @@ describe("GIVEN <NavTabsItem />", () => {
       expect(mockedClickFunction).toHaveBeenCalled();
     });
 
+    it("SHOULD reject `active` at the type level", () => {
+      render(
+        // @ts-expect-error `active` is not accepted when appearance="ai-generative"
+        <NavTabsItem
+          active
+          appearance="ai-generative"
+          onClick={mockedClickFunction}
+          ariaLabel="nav-tabs-item"
+        />
+      );
+
+      expect(screen.getByRole("button")).toBeDefined();
+    });
+
     it("SHOULD render the badge when requested", () => {
       const { container: withoutBadge } = render(
         <NavTabsItem

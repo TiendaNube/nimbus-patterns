@@ -33,7 +33,7 @@
           "required": true
         },
         {
-          "description": "Controls whether the button is active or not.",
+          "description": "Controls whether the button is active or not. Not accepted when `appearance` is \"ai-generative\".",
           "type": "boolean",
           "title": "active",
           "required": false

@@ -21,7 +21,7 @@ export interface NavTabsItemProperties {
    */
   icon: ReactNode;
   /**
-   * Controls whether the button is active or not.
+   * Controls whether the button is active or not. Not accepted when `appearance` is "ai-generative".
    */
   active?: boolean;
   /**
@@ -75,7 +75,7 @@ export interface NavTabsItemNeutralProperties
 }
 
 export interface NavTabsItemAIGenerativeProperties
-  extends NavTabsItemBaseProperties {
+  extends Omit<NavTabsItemBaseProperties, "active"> {
   /**
    * Visual variant of the button.
    * "ai-generative" renders a fixed AI icon with a gradient border and does not accept a custom `icon`.
@@ -83,6 +83,11 @@ export interface NavTabsItemAIGenerativeProperties
    */
   appearance: "ai-generative";
   icon?: never;
+  // No active state: the AI treatment (gradient border + frozen icon)
+  // never changes, and the one real usage (the Lumi nav entry point)
+  // isn't visible while its own panel — the thing "active" would
+  // reflect — is open.
+  active?: never;
 }
 
 export type NavTabsItemVariantProperties =
