@@ -31,8 +31,5 @@
   },
   "dependencies": {
     "@nimbus-ds/tokens": "^9.5.0"
-  },
-  "devDependencies": {
-    "@nimbus-ds/icons": "^1.15.1"
   }
 }

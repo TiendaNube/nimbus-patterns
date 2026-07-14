@@ -3732,7 +3732,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/nav-tabs@workspace:packages/react/src/components/NavTabs"
   dependencies:
-    "@nimbus-ds/icons": ^1.15.1
     "@nimbus-ds/tokens": ^9.5.0
   peerDependencies:
     "@nimbus-ds/components": ^5
