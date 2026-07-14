@@ -79,9 +79,10 @@ export interface NavTabsItemAIGenerativeProperties
   /**
    * Visual variant of the button.
    * "ai-generative" renders a fixed AI icon with a gradient border and does not accept a custom `icon`.
-   * @default "neutral"
    */
   appearance: "ai-generative";
+  // No custom icon: this appearance always renders its own frozen AI icon
+  // (GenerativeStarsIcon), so a consumer-provided icon is disallowed.
   icon?: never;
   // No active state: the AI treatment (gradient border + frozen icon)
   // never changes, and the one real usage (the Lumi nav entry point)
