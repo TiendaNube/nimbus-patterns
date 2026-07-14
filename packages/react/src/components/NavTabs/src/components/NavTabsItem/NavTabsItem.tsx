@@ -2,7 +2,6 @@ import React from "react";
 
 import { Icon, Box } from "@nimbus-ds/components";
 import { GenerativeStarsIcon } from "@nimbus-ds/icons";
-import { useTheme } from "@nimbus-ds/styles";
 import tokens from "@nimbus-ds/tokens/dist/js/tokens";
 
 import { NavTabsItemProps } from "./navTabsItem.types";
@@ -29,12 +28,11 @@ const NavTabsItem: React.FC<NavTabsItemProps> = ({
   ariaLabel,
   ...rest
 }: NavTabsItemProps) => {
-  const { currentTheme } = useTheme();
-  const theme =
-    currentTheme === "base" || currentTheme === "next" ? "light" : "dark";
-
   if (appearance === "ai-generative") {
-    const gradient = `linear-gradient(66deg, ${tokens.color[theme].aiGradient["blue-high"].value} 0%, ${tokens.color[theme].aiGradient["purple-high"].value} 50%, ${tokens.color[theme].aiGradient["pink-high"].value} 100%)`;
+    // aiGradient stops are identical across light/dark themes (a fixed AI
+    // brand accent), so no theme lookup is needed here.
+    const { aiGradient } = tokens.color.light;
+    const gradient = `linear-gradient(66deg, ${aiGradient["blue-high"].value} 0%, ${aiGradient["purple-high"].value} 50%, ${aiGradient["pink-high"].value} 100%)`;
 
     return (
       // Plain div, not Box: this wrapper is purely decorative (no `as`, no
