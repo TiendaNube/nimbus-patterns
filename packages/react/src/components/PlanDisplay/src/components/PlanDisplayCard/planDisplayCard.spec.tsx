@@ -18,9 +18,16 @@ describe("GIVEN <PlanDisplayCard />", () => {
       expect(screen.getByText("Body content")).toBeDefined();
     });
 
-    it("SHOULD render highlighted state correctly", () => {
-      makeSut({ highlighted: true });
+    it("SHOULD render the gradient variant correctly", () => {
+      makeSut({ gradient: true });
 
+      expect(screen.getByText("Body content")).toBeDefined();
+    });
+
+    it("SHOULD render the ribbon label when provided", () => {
+      makeSut({ ribbonLabel: "Más escogido" });
+
+      expect(screen.getByText("Más escogido")).toBeDefined();
       expect(screen.getByText("Body content")).toBeDefined();
     });
   });

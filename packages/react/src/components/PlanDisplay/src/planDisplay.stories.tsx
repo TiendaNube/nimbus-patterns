@@ -1,8 +1,8 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Box, Button, Text, Title } from "@nimbus-ds/components";
-import { CheckIcon, CloseIcon } from "@nimbus-ds/icons";
+import { Box, Button, Link, Tag, Text } from "@nimbus-ds/components";
+import { CashierIcon, CheckIcon, GenerativeStarsIcon } from "@nimbus-ds/icons";
 import { PlanDisplay } from "./PlanDisplay";
 
 const meta: Meta<typeof PlanDisplay> = {
@@ -17,345 +17,505 @@ const meta: Meta<typeof PlanDisplay> = {
 export default meta;
 type Story = StoryObj<typeof PlanDisplay>;
 
-export const twoPlans: Story = {
+export const Default: Story = {
   render: () => (
-    <PlanDisplay>
+    <PlanDisplay minPlanWidth="236px">
+      {/* Default card */}
       <PlanDisplay.Card>
         <PlanDisplay.Header
-          subtitle="Punto de venta"
-          title={
-            <Box display="flex" gap="1">
-              <Title as="h3" color="neutral-textLow">
-                Plan
-              </Title>
-              <Title as="h3" color="neutral-textHigh">
-                Básico
-              </Title>
-            </Box>
-          }
-        >
-          <Title as="h5">Suscripción gratuita</Title>
-          <Text fontWeight="bold" fontSize="highlight">
-            1.5% costo por transacción
-          </Text>
-        </PlanDisplay.Header>
+          subtitle="Inicial"
+          title={<PlanDisplay.Price price="Gratis" />}
+        />
         <PlanDisplay.Content>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>Todo lo que necesitas para empezar a vender online.</Text>
+            <Button fullWidth>Comenzar gratis</Button>
+          </Box>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Descuentos personalizados
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Registro de clientes
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Búsqueda de clientes
+            Tu tienda lista para empezar a vender
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Venta con envío
+            Productos y visitas sin límite
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Venta sin stock
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Registro de medio de pago
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Escaneo de producto
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Gestión de caja
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Asignación de vendedor
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Creación de productos durante la venta
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Guardar carritos
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Atajos de teclado
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Medios de pago y envío de Tiendanube
           </PlanDisplay.Bullet>
         </PlanDisplay.Content>
       </PlanDisplay.Card>
-      <PlanDisplay.Card highlighted>
+
+      {/* Card with tag */}
+      <PlanDisplay.Card>
         <PlanDisplay.Header
-          subtitle="Punto de venta"
+          subtitle="Esencial"
+          tag={<Tag appearance="neutral">Plan actual</Tag>}
           title={
-            <Box display="flex" gap="1">
-              <Title as="h3" color="neutral-textLow">
-                Plan
-              </Title>
-              <Title as="h3" color="neutral-textHigh">
-                Avanzado
-              </Title>
-            </Box>
+            <PlanDisplay.Price
+              price="$24.999"
+              previousPrice="$29.999"
+              period="/mes"
+              annualNote={
+                <>
+                  $269.990/año.{" "}
+                  <Text as="span" color="primary-textLow" fontSize="caption">
+                    Ahorra $30.000.
+                  </Text>
+                </>
+              }
+            />
           }
-        >
-          <Title as="h5">$14.999 / mes</Title>
-          <Text fontWeight="bold" fontSize="highlight">
-            0.15% costo por transacción
-          </Text>
-        </PlanDisplay.Header>
+        />
         <PlanDisplay.Content>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>Potenciá tu marca y vendé como una tienda profesional.</Text>
+            <Button fullWidth>Subir de plan</Button>
+          </Box>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Descuentos personalizados
+            Incluye todo lo del plan anterior, más:
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Registro de clientes
+            Carga masiva de productos
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Búsqueda de clientes
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Venta con envío
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Venta sin stock
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Registro de medio de pago
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Escaneo de producto
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Gestión de caja
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Asignación de vendedor
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Creación de productos durante la venta
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Guardar carritos
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Atajos de teclado
+            Dominio propio
           </PlanDisplay.Bullet>
         </PlanDisplay.Content>
-        <PlanDisplay.Footer>
-          <Box
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            width="100%"
-            gap="2"
-          >
-            <Button appearance="primary">
-              <Text fontSize="base" color="currentColor">
-                Comenzar gratis por 7 días*
-              </Text>
+      </PlanDisplay.Card>
+
+      {/* Featured card with ribbon */}
+      <PlanDisplay.Card ribbonLabel="Más escogido">
+        <PlanDisplay.Header
+          subtitle="Avanzado"
+          title={<PlanDisplay.Price price="$219.999" period="/mes" />}
+        />
+        <PlanDisplay.Content>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>Gestión avanzada y control total para tu negocio.</Text>
+            <Button appearance="primary" fullWidth>
+              Subir de plan
             </Button>
-            <Text fontSize="caption">
-              *Al finalizar la prueba podrás elegir cancelar, continuar o
-              cambiar de plan
-            </Text>
           </Box>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Incluye todo lo del plan anterior, más:
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Campos personalizados en productos y órdenes
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet
+            icon={<CheckIcon />}
+            badge={<Tag appearance="primary">Nuevo</Tag>}
+          >
+            Hasta 3 tablas de precios mayoristas
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<GenerativeStarsIcon />}>
+            IA ilimitada para potenciar tu gestión
+          </PlanDisplay.Bullet>
+        </PlanDisplay.Content>
+        <PlanDisplay.Footer icon={<CashierIcon />}>
+          <Text>
+            Obtén{" "}
+            <Link
+              as="a"
+              href="#"
+              appearance="primary"
+              textDecoration="underline"
+            >
+              Punto de venta Plus
+            </Link>{" "}
+            extra por $149.90/mes
+          </Text>
         </PlanDisplay.Footer>
+      </PlanDisplay.Card>
+
+      {/* Gradient card */}
+      <PlanDisplay.Card gradient>
+        <PlanDisplay.Header
+          subtitle="Evolución"
+          title={<PlanDisplay.Price price="$439.999" period="/mes" />}
+        />
+        <PlanDisplay.Content>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>La solución completa para escalar sin límites.</Text>
+            <Button fullWidth>Subir de plan</Button>
+          </Box>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Incluye todo lo del plan anterior, más:
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Soporte prioritario y ejecutivo de cuenta
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<GenerativeStarsIcon />}>
+            IA ilimitada para potenciar tu gestión
+          </PlanDisplay.Bullet>
+        </PlanDisplay.Content>
       </PlanDisplay.Card>
     </PlanDisplay>
   ),
 };
 
-export const threePlans: Story = {
+/**
+ * Two-plan layout: a current plan (with tag) and a featured upgrade (with ribbon).
+ */
+export const TwoPlans: Story = {
   render: () => (
-    <PlanDisplay>
+    <PlanDisplay minPlanWidth="236px">
+      {/* Card with tag */}
       <PlanDisplay.Card>
         <PlanDisplay.Header
-          subtitle="Punto de venta"
+          subtitle="Esencial"
+          tag={<Tag appearance="neutral">Plan actual</Tag>}
           title={
-            <Box display="flex" gap="1">
-              <Title as="h3" color="neutral-textLow">
-                Plan
-              </Title>
-              <Title as="h3" color="neutral-textHigh">
-                Básico
-              </Title>
-            </Box>
+            <PlanDisplay.Price
+              price="$24.999"
+              previousPrice="$29.999"
+              period="/mes"
+            />
           }
-        >
-          <Title as="h5">Suscripción gratuita</Title>
-          <Text fontWeight="bold" fontSize="highlight">
-            1.5% costo por transacción
-          </Text>
-        </PlanDisplay.Header>
+        />
         <PlanDisplay.Content>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Descuentos personalizados
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Registro de clientes
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Búsqueda de clientes
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Venta con envío
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Venta sin stock
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Registro de medio de pago
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Escaneo de producto
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Gestión de caja
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Asignación de vendedor
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Creación de productos durante la venta
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Guardar carritos
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Atajos de teclado
-          </PlanDisplay.Bullet>
-        </PlanDisplay.Content>
-      </PlanDisplay.Card>
-      <PlanDisplay.Card>
-        <PlanDisplay.Header
-          subtitle="Punto de venta"
-          title={
-            <Box display="flex" gap="1">
-              <Title as="h3" color="neutral-textLow">
-                Plan
-              </Title>
-              <Title as="h3" color="neutral-textHigh">
-                Emprendedor
-              </Title>
-            </Box>
-          }
-        >
-          <Title as="h5">$6.999 / mes</Title>
-          <Text fontWeight="bold" fontSize="highlight">
-            0.5% costo por transacción
-          </Text>
-        </PlanDisplay.Header>
-        <PlanDisplay.Content>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Descuentos personalizados
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Registro de clientes
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Búsqueda de clientes
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Venta con envío
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Venta sin stock
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Registro de medio de pago
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Escaneo de producto
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Gestión de caja
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Asignación de vendedor
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Creación de productos durante la venta
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Guardar carritos
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
-            Atajos de teclado
-          </PlanDisplay.Bullet>
-        </PlanDisplay.Content>
-      </PlanDisplay.Card>
-      <PlanDisplay.Card highlighted>
-        <PlanDisplay.Header
-          subtitle="Punto de venta"
-          title={
-            <Box display="flex" gap="1">
-              <Title as="h3" color="neutral-textLow">
-                Plan
-              </Title>
-              <Title as="h3" color="neutral-textHigh">
-                Avanzado
-              </Title>
-            </Box>
-          }
-        >
-          <Title as="h5">$14.999 / mes</Title>
-          <Text fontWeight="bold" fontSize="highlight">
-            0.15% costo por transacción
-          </Text>
-        </PlanDisplay.Header>
-        <PlanDisplay.Content>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Descuentos personalizados
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Registro de clientes
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Búsqueda de clientes
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Venta con envío
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Venta sin stock
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Registro de medio de pago
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Escaneo de producto
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Gestión de caja
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Asignación de vendedor
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Creación de productos durante la venta
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Guardar carritos
-          </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CheckIcon />}>
-            Atajos de teclado
-          </PlanDisplay.Bullet>
-        </PlanDisplay.Content>
-        <PlanDisplay.Footer>
-          <Box
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            width="100%"
-            gap="2"
-          >
-            <Button appearance="primary">
-              <Text fontSize="base" color="currentColor">
-                Comenzar gratis por 7 días*
-              </Text>
-            </Button>
-            <Text fontSize="caption">
-              *Al finalizar la prueba podrás elegir cancelar, continuar o
-              cambiar de plan
-            </Text>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>Potenciá tu marca y vendé como una tienda profesional.</Text>
+            <Button fullWidth>Subir de plan</Button>
           </Box>
-        </PlanDisplay.Footer>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Incluye todo lo del plan anterior, más:
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Carga masiva de productos
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Dominio propio
+          </PlanDisplay.Bullet>
+        </PlanDisplay.Content>
+      </PlanDisplay.Card>
+
+      {/* Featured card with ribbon */}
+      <PlanDisplay.Card ribbonLabel="Más escogido">
+        <PlanDisplay.Header
+          subtitle="Avanzado"
+          title={<PlanDisplay.Price price="$219.999" period="/mes" />}
+        />
+        <PlanDisplay.Content>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>Gestión avanzada y control total para tu negocio.</Text>
+            <Button appearance="primary" fullWidth>
+              Subir de plan
+            </Button>
+          </Box>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Incluye todo lo del plan anterior, más:
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Campos personalizados en productos y órdenes
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<GenerativeStarsIcon />}>
+            IA ilimitada para potenciar tu gestión
+          </PlanDisplay.Bullet>
+        </PlanDisplay.Content>
+      </PlanDisplay.Card>
+    </PlanDisplay>
+  ),
+};
+
+/**
+ * Three-plan layout: starter, current plan (with tag) and a featured upgrade (with ribbon).
+ */
+export const ThreePlans: Story = {
+  render: () => (
+    <PlanDisplay minPlanWidth="236px">
+      {/* Default card */}
+      <PlanDisplay.Card>
+        <PlanDisplay.Header
+          subtitle="Inicial"
+          title={<PlanDisplay.Price price="Gratis" />}
+        />
+        <PlanDisplay.Content>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>Todo lo que necesitas para empezar a vender online.</Text>
+            <Button fullWidth>Comenzar gratis</Button>
+          </Box>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Tu tienda lista para empezar a vender
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Productos y visitas sin límite
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Medios de pago y envío de Tiendanube
+          </PlanDisplay.Bullet>
+        </PlanDisplay.Content>
+      </PlanDisplay.Card>
+
+      {/* Card with tag */}
+      <PlanDisplay.Card>
+        <PlanDisplay.Header
+          subtitle="Esencial"
+          tag={<Tag appearance="neutral">Plan actual</Tag>}
+          title={
+            <PlanDisplay.Price
+              price="$24.999"
+              previousPrice="$29.999"
+              period="/mes"
+            />
+          }
+        />
+        <PlanDisplay.Content>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>Potenciá tu marca y vendé como una tienda profesional.</Text>
+            <Button fullWidth>Subir de plan</Button>
+          </Box>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Incluye todo lo del plan anterior, más:
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Carga masiva de productos
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Dominio propio
+          </PlanDisplay.Bullet>
+        </PlanDisplay.Content>
+      </PlanDisplay.Card>
+
+      {/* Featured card with ribbon */}
+      <PlanDisplay.Card ribbonLabel="Más escogido">
+        <PlanDisplay.Header
+          subtitle="Avanzado"
+          title={<PlanDisplay.Price price="$219.999" period="/mes" />}
+        />
+        <PlanDisplay.Content>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>Gestión avanzada y control total para tu negocio.</Text>
+            <Button appearance="primary" fullWidth>
+              Subir de plan
+            </Button>
+          </Box>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Incluye todo lo del plan anterior, más:
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Campos personalizados en productos y órdenes
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<GenerativeStarsIcon />}>
+            IA ilimitada para potenciar tu gestión
+          </PlanDisplay.Bullet>
+        </PlanDisplay.Content>
+      </PlanDisplay.Card>
+    </PlanDisplay>
+  ),
+};
+
+/**
+ * Horizontal (desktop) layout: plan info on the left — name, price, description and CTA — separated
+ * by a vertical divider from a single column of feature bullets, vertically centered.
+ */
+export const Horizontal: Story = {
+  render: () => (
+    <div style={{ maxWidth: 740 }}>
+      <PlanDisplay.Card>
+        <Box display="flex" gap="6" alignItems="center">
+          {/* Plan info */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "var(--nimbus-spacing-3)",
+              justifyContent: "center",
+              flex: "0 0 253px",
+            }}
+          >
+            <PlanDisplay.Header
+              subtitle="Inicial"
+              title={<PlanDisplay.Price price="Gratis" />}
+            />
+            <Box display="flex" flexDirection="column" gap="3">
+              <Text>Tudo o que você precisa para começar a vender online.</Text>
+              <Button fullWidth>Bajar de plan</Button>
+            </Box>
+          </div>
+
+          {/* Vertical divider */}
+          <div
+            style={{
+              alignSelf: "stretch",
+              backgroundColor: "var(--nimbus-colors-neutral-surfaceHighlight)",
+              width: "1px",
+              flexShrink: 0,
+            }}
+          />
+
+          {/* Feature bullets */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "var(--nimbus-spacing-3)",
+              flex: "1 1 0",
+            }}
+          >
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Sua loja autogerenciável e pronta para vender
+            </PlanDisplay.Bullet>
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Produtos e visitas sem limite
+            </PlanDisplay.Bullet>
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Meios de pagamento e envio da Nuvemshop
+            </PlanDisplay.Bullet>
+          </div>
+        </Box>
+      </PlanDisplay.Card>
+    </div>
+  ),
+};
+
+/**
+ * Mobile layout of the same plan: the horizontal card stacks vertically. The header, description + CTA
+ * and feature bullets are separated by spacing only, matching the horizontal desktop layout.
+ */
+export const HorizontalMobile: Story = {
+  render: () => (
+    <div style={{ maxWidth: 361 }}>
+      <PlanDisplay.Card>
+        <Box display="flex" flexDirection="column" gap="6">
+          {/* Plan info */}
+          <Box display="flex" flexDirection="column" gap="3">
+            <PlanDisplay.Header
+              subtitle="Inicial"
+              title={<PlanDisplay.Price price="Gratis" />}
+            />
+            <Box display="flex" flexDirection="column" gap="3">
+              <Text>Tudo o que você precisa para começar a vender online.</Text>
+              <Button fullWidth>Bajar de plan</Button>
+            </Box>
+          </Box>
+
+          {/* Feature bullets */}
+          <Box display="flex" flexDirection="column" gap="3">
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Sua loja autogerenciável e pronta para vender
+            </PlanDisplay.Bullet>
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Produtos e visitas sem limite
+            </PlanDisplay.Bullet>
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Meios de pagamento e envio da Nuvemshop
+            </PlanDisplay.Bullet>
+          </Box>
+        </Box>
+      </PlanDisplay.Card>
+    </div>
+  ),
+};
+
+type PlaygroundArgs = {
+  showRibbon: boolean;
+  showGradient: boolean;
+  showTag: boolean;
+  showDiscount: boolean;
+  showSuffix: boolean;
+  showDescription: boolean;
+  showButton: boolean;
+  showFooter: boolean;
+};
+
+/**
+ * Mirrors the configurable properties of the Figma master component. Each toggle maps to an
+ * optional slot/prop, showing how every part of a plan card is opt-in through composition.
+ */
+export const Playground: StoryObj<PlaygroundArgs> = {
+  args: {
+    showRibbon: true,
+    showGradient: false,
+    showTag: true,
+    showDiscount: true,
+    showSuffix: true,
+    showDescription: true,
+    showButton: true,
+    showFooter: true,
+  },
+  argTypes: {
+    showRibbon: { control: "boolean" },
+    showGradient: { control: "boolean" },
+    showTag: { control: "boolean" },
+    showDiscount: { control: "boolean" },
+    showSuffix: { control: "boolean" },
+    showDescription: { control: "boolean" },
+    showButton: { control: "boolean" },
+    showFooter: { control: "boolean" },
+  },
+  render: ({
+    showRibbon,
+    showGradient,
+    showTag,
+    showDiscount,
+    showSuffix,
+    showDescription,
+    showButton,
+    showFooter,
+  }) => (
+    <PlanDisplay minPlanWidth="236px">
+      <PlanDisplay.Card
+        ribbonLabel={showRibbon ? "Más escogido" : undefined}
+        gradient={showGradient}
+      >
+        <PlanDisplay.Header
+          subtitle="Avanzado"
+          tag={showTag ? <Tag appearance="neutral">Plan actual</Tag> : undefined}
+          title={
+            <PlanDisplay.Price
+              price="$24.999"
+              previousPrice={showDiscount ? "$29.999" : undefined}
+              period={showSuffix ? "/mes" : undefined}
+              annualNote={
+                showDescription ? (
+                  <>
+                    $269.990/año.{" "}
+                    <Text as="span" color="primary-textLow" fontSize="caption">
+                      Ahorra $30.000.
+                    </Text>
+                  </>
+                ) : undefined
+              }
+            />
+          }
+        />
+        <PlanDisplay.Content>
+          <Box display="flex" flexDirection="column" gap="3" pb="2">
+            <Text>Gestión avanzada y control total para tu negocio.</Text>
+            {showButton && (
+              <Button appearance="primary" fullWidth>
+                Subir de plan
+              </Button>
+            )}
+          </Box>
+          <PlanDisplay.Bullet icon={<CheckIcon />}>
+            Incluye todo lo del plan anterior, más:
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet
+            icon={<CheckIcon />}
+            badge={<Tag appearance="primary">Nuevo</Tag>}
+          >
+            Hasta 3 tablas de precios mayoristas
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<GenerativeStarsIcon />}>
+            IA ilimitada para potenciar tu gestión
+          </PlanDisplay.Bullet>
+        </PlanDisplay.Content>
+        {showFooter && (
+          <PlanDisplay.Footer icon={<CashierIcon />}>
+            <Text>
+              Obtén{" "}
+              <Link
+                as="a"
+                href="#"
+                appearance="primary"
+                textDecoration="underline"
+              >
+                Punto de venta Plus
+              </Link>{" "}
+              extra por $149.90/mes
+            </Text>
+          </PlanDisplay.Footer>
+        )}
       </PlanDisplay.Card>
     </PlanDisplay>
   ),

@@ -25,5 +25,16 @@ describe("GIVEN <PlanDisplayCardHeader />", () => {
       expect(screen.getByText("Subtitle")).toBeDefined();
       expect(screen.getByText("Title")).toBeDefined();
     });
+
+    it("SHOULD render the tag slot when provided", () => {
+      makeSut({
+        subtitle: "Subtitle",
+        title: <Text>Title</Text>,
+        tag: <span>Plan actual</span>,
+      });
+
+      expect(screen.getByText("Plan actual")).toBeDefined();
+      expect(screen.getByText("Subtitle")).toBeDefined();
+    });
   });
 });
