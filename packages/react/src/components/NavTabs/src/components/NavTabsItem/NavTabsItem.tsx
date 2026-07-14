@@ -43,6 +43,10 @@ const NavTabsItem: React.FC<NavTabsItemProps> = ({
     // brand accent), so no theme lookup is needed here.
     const { aiGradient } = tokens.color.light;
     const gradient = `linear-gradient(66deg, ${aiGradient["blue-high"].value} 0%, ${aiGradient["purple-high"].value} 50%, ${aiGradient["pink-high"].value} 100%)`;
+    // Same token as the inner button's borderRadius="2", read from the
+    // token module (not a CSS var — those aren't reliably resolvable here)
+    // so the wrapper's radius can't drift out of sync with the button's.
+    const buttonRadius = tokens.shape.border.radius["2"].value;
 
     return (
       // Plain div, not Box: this wrapper is purely decorative (no `as`, no
@@ -54,9 +58,9 @@ const NavTabsItem: React.FC<NavTabsItemProps> = ({
         style={{
           display: "inline-flex",
           backgroundImage: gradient,
-          // 10px = the inner button's 8px radius (borderRadius="2") + the
-          // 2px padding below, so the gradient ring is concentric.
-          borderRadius: "10px",
+          // Button radius + the 2px padding below, so the gradient ring
+          // stays concentric with the button's corners.
+          borderRadius: `calc(${buttonRadius} + 2px)`,
           padding: "2px",
         }}
       >

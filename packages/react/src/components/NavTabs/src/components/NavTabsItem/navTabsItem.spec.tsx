@@ -1,5 +1,6 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
+import tokens from "@nimbus-ds/tokens/dist/js/tokens";
 
 import { NavTabsItem } from "./NavTabsItem";
 import {
@@ -126,7 +127,9 @@ describe("GIVEN <NavTabsItem />", () => {
       expect(wrapper.tagName).toBe("DIV");
       expect(wrapper.style.display).toBe("inline-flex");
       expect(wrapper.style.padding).toBe("2px");
-      expect(wrapper.style.borderRadius).toBe("10px");
+      expect(wrapper.style.borderRadius).toBe(
+        `calc(${tokens.shape.border.radius["2"].value} + 2px)`
+      );
       // jsdom's style engine can't validate/store `linear-gradient()` on
       // background-image (a known jsdom limitation), so the gradient itself
       // isn't asserted here — verified visually in Storybook instead.
