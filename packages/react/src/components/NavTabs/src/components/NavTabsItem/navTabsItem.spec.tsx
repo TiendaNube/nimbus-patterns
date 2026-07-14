@@ -108,8 +108,8 @@ describe("GIVEN <NavTabsItem />", () => {
         />
       );
 
-      expect(withBadge.querySelectorAll("div").length).toBeGreaterThan(
-        withoutBadge.querySelectorAll("div").length
+      expect(withBadge.querySelectorAll("div").length).toBe(
+        withoutBadge.querySelectorAll("div").length + 1
       );
     });
 
