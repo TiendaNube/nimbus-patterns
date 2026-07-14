@@ -16,10 +16,18 @@
   "subComponents": [
     {
       "name": "NavTabs.Item",
-      "totalProps": 5,
+      "totalProps": 6,
       "props": [
         {
-          "description": "Icon element to be rendered inside the button.",
+          "description": "Visual variant of the button.\n\"ai-generative\" renders a fixed AI icon with a gradient border and does not accept a custom `icon`.",
+          "default": "neutral",
+          "enum": ["ai-generative", "neutral"],
+          "type": "string",
+          "title": "appearance",
+          "required": false
+        },
+        {
+          "description": "Icon element to be rendered inside the button. Ignored when `appearance` is \"ai-generative\".",
           "type": "React.ReactNode",
           "title": "icon",
           "required": true

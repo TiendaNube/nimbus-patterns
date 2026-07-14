@@ -46,3 +46,39 @@ export const basic: Story = {
     ),
   },
 };
+
+export const withAIGenerativeItem: Story = {
+  args: {
+    children: (
+      <>
+        <NavTabs.Item
+          active
+          icon={<HomeIcon size="medium" />}
+          onClick={() => false}
+          ariaLabel="Home"
+        />
+        <NavTabs.Item
+          badge
+          icon={<MoneyIcon size="medium" />}
+          onClick={() => false}
+          ariaLabel="Orders"
+        />
+        <NavTabs.Item
+          icon={<TagIcon size="medium" />}
+          onClick={() => false}
+          ariaLabel="Products"
+        />
+        <NavTabs.Item
+          icon={<MenuIcon size="medium" />}
+          onClick={() => false}
+          ariaLabel="Menu"
+        />
+        <NavTabs.Item
+          appearance="ai-generative"
+          onClick={() => false}
+          ariaLabel="Lumi assistant"
+        />
+      </>
+    ),
+  },
+};
