@@ -2,6 +2,12 @@
 
 The NavTabs component represents the main navigation dock for an application on a mobile device, including up to 5 tabs or buttons for different sections. The component has a fixed position on the bottom of the screen.
 
+## 2026-07-15 `1.4.0`
+
+#### 🎉 New features
+
+- Added an `appearance` prop to `NavTabs.Item`, with an `"ai-generative"` variant that renders a gradient border and a fixed AI icon for AI entry points such as an assistant button. ([#176](https://github.com/TiendaNube/nimbus-patterns/pull/176) by [@jffs](https://github.com/jffs))
+
 ## 2026-03-04 `1.2.7`
 
 #### 🐛 Bug fixes
