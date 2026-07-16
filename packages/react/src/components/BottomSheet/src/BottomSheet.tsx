@@ -225,6 +225,9 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
         <Grabber
           ref={grabberRef}
           onPointerDown={grabberHandlers.onPointerDown}
+          snapIndex={snapIndex}
+          snapCount={snaps.length}
+          onSnapChange={setSnapIndex}
         />
         <Box display="flex" flexDirection="column" flex="1" minHeight="0">
           {labeledChildren}

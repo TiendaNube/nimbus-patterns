@@ -269,21 +269,25 @@ describe("GIVEN <BottomSheet />", () => {
 
       fireEvent.click(opener);
 
+      const grabber = screen.getByRole("separator");
       const bodyButton = screen.getByRole("button", {
         name: "Focusable body button",
       });
       const confirmButton = screen.getByRole("button", { name: "Confirm" });
 
-      // Initial focus lands on the first focusable element.
+      // Initial focus skips the grabber (chrome, not content) and lands on
+      // the first real content element.
       expect(bodyButton).toHaveFocus();
 
-      // Tab from the last focusable wraps to the first.
+      // The grabber is keyboard-focusable and comes first in the DOM, so it
+      // IS the wrap boundary: Tab from the last focusable wraps to it, not to
+      // bodyButton.
       confirmButton.focus();
       fireEvent.keyDown(confirmButton, { key: "Tab" });
-      expect(bodyButton).toHaveFocus();
+      expect(grabber).toHaveFocus();
 
-      // Shift+Tab from the first focusable wraps to the last.
-      fireEvent.keyDown(bodyButton, { key: "Tab", shiftKey: true });
+      // Shift+Tab from the grabber (the first focusable) wraps to the last.
+      fireEvent.keyDown(grabber, { key: "Tab", shiftKey: true });
       expect(confirmButton).toHaveFocus();
 
       // Closing the sheet restores focus to the element that opened it.
@@ -664,6 +668,57 @@ describe("GIVEN <BottomSheet />", () => {
       // guards against), it would resolve the drag recorded above and call
       // onRemove despite the component being gone.
       firePointerEvent(document, "pointerup", 650, 41);
+
+      expect(onRemove).not.toHaveBeenCalled();
+    });
+
+    it("THEN the grabber should expose its snap position via ARIA and be keyboard-focusable", () => {
+      dragSut(0);
+      const grabber = screen.getByRole("separator");
+
+      expect(grabber).toHaveAttribute("tabindex", "0");
+      expect(grabber).toHaveAttribute("aria-valuenow", "0");
+      expect(grabber).toHaveAttribute("aria-valuemin", "0");
+      expect(grabber).toHaveAttribute("aria-valuemax", "1"); // 2 snaps: indices 0-1
+    });
+
+    it("THEN ArrowUp/ArrowDown on the grabber should step to the adjacent snap", () => {
+      dragSut(0);
+      const grabber = screen.getByRole("separator");
+      const panel = screen.getByRole("dialog");
+      expect(panel.style.height).toBe("320px");
+
+      fireEvent.keyDown(grabber, { key: "ArrowUp" });
+      expect(panel.style.height).toBe("640px");
+      expect(grabber).toHaveAttribute("aria-valuenow", "1");
+
+      fireEvent.keyDown(grabber, { key: "ArrowDown" });
+      expect(panel.style.height).toBe("320px");
+      expect(grabber).toHaveAttribute("aria-valuenow", "0");
+
+      // Already at the lowest snap: ArrowDown clamps instead of going out of bounds.
+      fireEvent.keyDown(grabber, { key: "ArrowDown" });
+      expect(panel.style.height).toBe("320px");
+    });
+
+    it("THEN Home/End on the grabber should jump to the lowest/tallest snap", () => {
+      dragSut(0);
+      const grabber = screen.getByRole("separator");
+      const panel = screen.getByRole("dialog");
+
+      fireEvent.keyDown(grabber, { key: "End" });
+      expect(panel.style.height).toBe("640px");
+
+      fireEvent.keyDown(grabber, { key: "Home" });
+      expect(panel.style.height).toBe("320px");
+    });
+
+    it("THEN keyboard-driven snap changes should never dismiss the sheet", () => {
+      const { onRemove } = dragSut(0);
+      const grabber = screen.getByRole("separator");
+
+      fireEvent.keyDown(grabber, { key: "ArrowDown" });
+      fireEvent.keyDown(grabber, { key: "Home" });
 
       expect(onRemove).not.toHaveBeenCalled();
     });

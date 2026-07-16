@@ -12,6 +12,19 @@ const FOCUSABLE_SELECTOR = [
 const getFocusable = (container: HTMLElement): HTMLElement[] =>
   Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR));
 
+// The grabber (role="separator") is focusable/tabbable so keyboard users can
+// reach it, and it correctly participates in the Tab/Shift+Tab wrap cycle as
+// the sheet's first element. But it's chrome, not content: initial
+// focus-on-open should still land on the first real content element, same as
+// any dialog putting focus on its content rather than its own toolbar.
+const getInitialFocusTarget = (
+  focusables: HTMLElement[],
+  container: HTMLElement
+): HTMLElement =>
+  focusables.find((el) => el.getAttribute("role") !== "separator") ??
+  focusables[0] ??
+  container;
+
 /**
  * Traps focus within `containerRef` while `active`, moving focus into the
  * sheet on activation and restoring it to the previously focused element on
@@ -29,7 +42,7 @@ export const useFocusTrap = (
     const previouslyFocused = document.activeElement as HTMLElement | null;
 
     const focusables = getFocusable(container);
-    (focusables[0] ?? container).focus();
+    getInitialFocusTarget(focusables, container).focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "Tab") return;
