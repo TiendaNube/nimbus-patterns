@@ -13,6 +13,8 @@ const config: Config.InitialOptions = {
     // components
     "@nimbus-ds/app-shell":
       "<rootDir>/packages/react/src/components/AppShell/src",
+    "@nimbus-ds/bottomsheet":
+      "<rootDir>/packages/react/src/components/BottomSheet/src",
     "@nimbus-ds/callout-card":
       "<rootDir>/packages/react/src/components/CalloutCard/src",
     "@nimbus-ds/data-list":
