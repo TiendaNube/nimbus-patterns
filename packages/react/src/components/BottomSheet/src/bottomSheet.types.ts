@@ -6,7 +6,7 @@ export type BottomSheetPadding = "none" | "base";
  * A snap point expressed as a viewport-height percentage (e.g. "60%") or the
  * keyword "full" (which stops just below the status bar, not full-bleed).
  */
-export type BottomSheetSnapPoint = string;
+export type BottomSheetSnapPoint = `${number}%` | "full";
 
 /**
  * Predicate variant of `closeOnOutsidePress`: receives the DOM event and
