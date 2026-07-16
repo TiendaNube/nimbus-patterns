@@ -460,6 +460,9 @@ describe("GIVEN <BottomSheet />", () => {
       makeSut();
       const panel = screen.getByRole("dialog");
       expect(panel.style.bottom).toBe("0px");
+      // containerHeight(800) - offset(320) - keyboardInset(0) for the default
+      // 60% snap.
+      expect(panel.style.height).toBe("480px");
 
       mockViewport.height = 500;
       act(() => {
@@ -467,6 +470,11 @@ describe("GIVEN <BottomSheet />", () => {
       });
 
       expect(panel.style.bottom).toBe("300px");
+      // Height must shrink by the same 300px the keyboard covers (480 - 300 =
+      // 180), not stay fixed: bottom(300) + height(180) = 480 = the original
+      // top offset, so the panel's top edge stays put instead of the whole
+      // fixed-height block sliding up past the viewport's top edge.
+      expect(panel.style.height).toBe("180px");
     });
 
     it("THEN should degrade gracefully when the Visual Viewport API is unavailable", () => {

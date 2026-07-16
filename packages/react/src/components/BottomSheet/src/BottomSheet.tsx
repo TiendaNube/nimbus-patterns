@@ -94,7 +94,11 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
 
   if (!open) return null;
 
-  const visibleHeight = Math.max(0, containerHeight - offset);
+  // Subtracting keyboardInset (rather than leaving height fixed and only
+  // moving `bottom`) keeps the panel's top edge stable as the keyboard opens:
+  // the panel shrinks from the bottom instead of the whole fixed-height block
+  // sliding upward past the top of the viewport.
+  const visibleHeight = Math.max(0, containerHeight - offset - keyboardInset);
   // Defaults to the nearest Nimbus <ThemeProvider>'s own wrapper element
   // (refThemeProvider), not document.body directly. This matches the
   // convention Sidebar/Modal/Popover already follow internally: they all
