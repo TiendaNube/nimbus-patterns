@@ -24,6 +24,8 @@ import { Grabber } from "./subcomponents/Grabber";
 const clampIndex = (index: number, length: number) =>
   Math.min(Math.max(index, 0), Math.max(length - 1, 0));
 
+let headerIdCounter = 0;
+
 const BottomSheetBase: React.FC<BottomSheetProps> = ({
   open = false,
   onRemove,
@@ -45,6 +47,15 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
   const grabberRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<HTMLElement | null>(null);
   rootRef.current = root ?? null;
+  // Stable fallback id for associating BottomSheet.Header with the dialog via
+  // aria-labelledby when the consumer hasn't provided their own aria-label(ledby).
+  // A plain ref (not React's useId) so this also works on React 16.8/17, which
+  // this package's peerDependencies still allow.
+  const fallbackHeaderIdRef = useRef<string | undefined>(undefined);
+  if (!fallbackHeaderIdRef.current) {
+    headerIdCounter += 1;
+    fallbackHeaderIdRef.current = `bottom-sheet-header-${headerIdCounter}`;
+  }
 
   const wasOpenRef = useRef(false);
 
@@ -117,6 +128,23 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
   if (!portalTarget) return null;
 
   const { style: consumerStyle, ...restProps } = rest;
+  // Give the dialog an accessible name from its own Header when the consumer
+  // hasn't explicitly labeled it themselves. Finds the BottomSheet.Header
+  // among children, tags it with a stable id (or reuses one the consumer
+  // already set), and points aria-labelledby at it.
+  const hasExplicitAccessibleName =
+    "aria-label" in restProps || "aria-labelledby" in restProps;
+  let headerId: string | undefined;
+  const labeledChildren = hasExplicitAccessibleName
+    ? children
+    : React.Children.map(children, (child) => {
+        if (React.isValidElement(child) && child.type === BottomSheetHeader) {
+          const headerElement = child as React.ReactElement<{ id?: string }>;
+          headerId = headerElement.props.id ?? fallbackHeaderIdRef.current;
+          return React.cloneElement(headerElement, { id: headerId });
+        }
+        return child;
+      });
   // Marks this sheet's own overlay/panel so that OTHER already-open
   // BottomSheet instances (or Popovers) treat presses inside them as
   // "ignored" rather than an outside press. Without this, sheet #2's portal
@@ -173,6 +201,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
         ref={panelRef}
         role="dialog"
         aria-modal="true"
+        aria-labelledby={hasExplicitAccessibleName ? undefined : headerId}
         tabIndex={-1}
         {...ignoreAttributeProps}
         {...restProps}
@@ -198,7 +227,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
           onPointerDown={grabberHandlers.onPointerDown}
         />
         <Box display="flex" flexDirection="column" flex="1" minHeight="0">
-          {children}
+          {labeledChildren}
         </Box>
       </div>
     </>,

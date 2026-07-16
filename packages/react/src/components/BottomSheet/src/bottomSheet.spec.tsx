@@ -666,4 +666,57 @@ describe("GIVEN <BottomSheet />", () => {
       expect(panel.style.height).toBe("240px");
     });
   });
+
+  describe("WHEN the sheet needs an accessible name", () => {
+    it("THEN should label the dialog via aria-labelledby pointing at its own Header", () => {
+      render(
+        <BottomSheet open>
+          <BottomSheet.Header>
+            <span>Edit product</span>
+          </BottomSheet.Header>
+          <BottomSheet.Body>content</BottomSheet.Body>
+        </BottomSheet>
+      );
+
+      const dialog = screen.getByRole("dialog");
+      const labelledBy = dialog.getAttribute("aria-labelledby");
+      expect(labelledBy).toBeTruthy();
+
+      const header = document.getElementById(labelledBy as string);
+      expect(header).not.toBeNull();
+      expect(header).toHaveTextContent("Edit product");
+    });
+
+    it("THEN should NOT override an explicit aria-label from the consumer", () => {
+      render(
+        <BottomSheet open aria-label="Custom label">
+          <BottomSheet.Header>
+            <span>Edit product</span>
+          </BottomSheet.Header>
+          <BottomSheet.Body>content</BottomSheet.Body>
+        </BottomSheet>
+      );
+
+      const dialog = screen.getByRole("dialog");
+      expect(dialog).toHaveAttribute("aria-label", "Custom label");
+      expect(dialog).not.toHaveAttribute("aria-labelledby");
+    });
+
+    it("THEN should NOT override an explicit aria-labelledby from the consumer", () => {
+      render(
+        <>
+          <span id="external-label">Externally provided label</span>
+          <BottomSheet open aria-labelledby="external-label">
+            <BottomSheet.Header>
+              <span>Edit product</span>
+            </BottomSheet.Header>
+            <BottomSheet.Body>content</BottomSheet.Body>
+          </BottomSheet>
+        </>
+      );
+
+      const dialog = screen.getByRole("dialog");
+      expect(dialog).toHaveAttribute("aria-labelledby", "external-label");
+    });
+  });
 });
