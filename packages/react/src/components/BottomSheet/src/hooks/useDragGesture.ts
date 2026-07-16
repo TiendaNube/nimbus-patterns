@@ -69,13 +69,13 @@ const resolveDragTarget = (
   const isFastFlick = Math.abs(velocity) > DISMISS_VELOCITY_THRESHOLD;
   if (isFastFlick) {
     const nearestPos = ascending.findIndex((s) => s.index === nearest.index);
-    if (velocity > 0 && nearestPos < ascending.length - 1) {
+    if (velocity > 0 && nearestPos > 0) {
       // Flicking down: prefer the next shorter snap unless already lowest.
-      const candidate = ascending[nearestPos + 1];
-      if (candidate.height < nearest.height) nearest = candidate;
-    } else if (velocity < 0 && nearestPos > 0) {
-      // Flicking up: prefer the next taller snap unless already highest.
       const candidate = ascending[nearestPos - 1];
+      if (candidate.height < nearest.height) nearest = candidate;
+    } else if (velocity < 0 && nearestPos < ascending.length - 1) {
+      // Flicking up: prefer the next taller snap unless already highest.
+      const candidate = ascending[nearestPos + 1];
       if (candidate.height > nearest.height) nearest = candidate;
     }
   }

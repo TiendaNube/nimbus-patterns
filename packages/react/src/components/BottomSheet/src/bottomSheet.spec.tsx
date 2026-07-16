@@ -509,25 +509,50 @@ describe("GIVEN <BottomSheet />", () => {
     // same "pointerdown"/"pointermove"/"pointerup" type strings our
     // listeners (and React's own event delegation) match on by name, not by
     // constructor, so this reaches the same code path a real PointerEvent would.
+    //
+    // `timeStamp` is overridden explicitly because jsdom assigns it from a
+    // real clock: events constructed back-to-back in the same synchronous
+    // tick land on the same millisecond, which would make every drag read as
+    // an (effectively) instantaneous, high-velocity flick. Controlling it
+    // lets the distance-only tests simulate a deliberate, non-flick drag and
+    // the flick tests simulate a genuinely fast one. The base timestamp must
+    // be non-zero: React's SyntheticEvent treats a falsy nativeEvent.timeStamp
+    // (i.e. exactly 0) as "unsupported" and substitutes a fresh Date.now()
+    // of its own — only pointerdown goes through React's synthetic system
+    // (pointermove/pointerup are plain document listeners), so a 0 base
+    // would desync pointerdown's clock from the other two.
     const firePointerEvent = (
       target: Document | Element,
       type: string,
-      clientY: number
+      clientY: number,
+      timeStamp: number
     ) => {
-      fireEvent(
-        target,
-        new MouseEvent(type, { clientY, bubbles: true, cancelable: true })
-      );
+      const event = new MouseEvent(type, {
+        clientY,
+        bubbles: true,
+        cancelable: true,
+      });
+      Object.defineProperty(event, "timeStamp", {
+        value: timeStamp,
+        configurable: true,
+      });
+      fireEvent(target, event);
     };
 
-    const drag = (fromClientY: number, toClientY: number) => {
+    // Default duration models a deliberate drag, slow enough that velocity
+    // stays under DISMISS_VELOCITY_THRESHOLD (0.5px/ms) for the small
+    // distances the distance-only tests below use, so only geometric
+    // position decides their outcome. The velocity-flick tests pass a much
+    // shorter duration for the same distance to cross that threshold.
+    const drag = (fromClientY: number, toClientY: number, durationMs = 200) => {
       firePointerEvent(
         screen.getByRole("separator"),
         "pointerdown",
-        fromClientY
+        fromClientY,
+        1
       );
-      firePointerEvent(document, "pointermove", toClientY);
-      firePointerEvent(document, "pointerup", toClientY);
+      firePointerEvent(document, "pointermove", toClientY, 1 + durationMs);
+      firePointerEvent(document, "pointerup", toClientY, 1 + durationMs);
     };
 
     it("THEN should settle at the next snap after dragging past its midpoint", () => {
@@ -549,6 +574,35 @@ describe("GIVEN <BottomSheet />", () => {
 
       // Drag up by only 50px: 480 -> 430, nowhere near the 320 midpoint.
       drag(500, 450);
+
+      expect(panel.style.height).toBe("320px");
+    });
+
+    it("THEN a fast upward flick should settle at the taller snap even without crossing the midpoint", () => {
+      dragSut(0);
+      const panel = screen.getByRole("dialog");
+      expect(panel.style.height).toBe("320px");
+
+      // Drag up by only 40px (480 -> 440, nowhere near the 320 midpoint) but
+      // in just 20ms: velocity = 40/20 = 2px/ms, well past the 0.5px/ms
+      // DISMISS_VELOCITY_THRESHOLD used as the flick threshold. Distance
+      // alone would settle back at the same (320) snap; velocity should
+      // instead bias to the taller (640) one.
+      drag(500, 460, 20);
+
+      expect(panel.style.height).toBe("640px");
+    });
+
+    it("THEN a fast downward flick should settle at the shorter snap even without crossing the midpoint", () => {
+      dragSut(1);
+      const panel = screen.getByRole("dialog");
+      expect(panel.style.height).toBe("640px");
+
+      // Drag down by only 40px (160 -> 200, nowhere near the 320 midpoint)
+      // in just 20ms: velocity = 40/20 = 2px/ms, past the flick threshold.
+      // Distance alone would settle back at the same (640) snap; velocity
+      // should instead bias to the shorter (320) one.
+      drag(200, 240, 20);
 
       expect(panel.style.height).toBe("320px");
     });
