@@ -617,4 +617,45 @@ describe("GIVEN <BottomSheet />", () => {
       expect(onRemove).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe("WHEN snapPoints shrinks while the sheet is already open", () => {
+    const originalInnerHeight = window.innerHeight;
+
+    beforeEach(() => {
+      Object.defineProperty(window, "innerHeight", {
+        value: 800,
+        configurable: true,
+      });
+    });
+
+    afterEach(() => {
+      Object.defineProperty(window, "innerHeight", {
+        value: originalInnerHeight,
+        configurable: true,
+      });
+    });
+
+    it("THEN should clamp the active snap index instead of leaving it out of bounds", () => {
+      const { rerender } = render(
+        <BottomSheet open snapPoints={["30%", "60%", "90%"]} defaultSnap={2}>
+          <BottomSheet.Body>content</BottomSheet.Body>
+        </BottomSheet>
+      );
+
+      const panel = screen.getByRole("dialog");
+      expect(panel.style.height).toBe("720px");
+
+      // Shrinking to a single snap point removes index 2 (the active one).
+      // defaultSnap is intentionally unchanged (still 2) to prove the sheet
+      // isn't just re-reading defaultSnap: it must clamp whatever the
+      // current index was.
+      rerender(
+        <BottomSheet open snapPoints={["30%"]} defaultSnap={2}>
+          <BottomSheet.Body>content</BottomSheet.Body>
+        </BottomSheet>
+      );
+
+      expect(panel.style.height).toBe("240px");
+    });
+  });
 });

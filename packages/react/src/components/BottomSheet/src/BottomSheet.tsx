@@ -46,11 +46,26 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
   const rootRef = useRef<HTMLElement | null>(null);
   rootRef.current = root ?? null;
 
+  const wasOpenRef = useRef(false);
+
   useEffect(() => {
-    if (open) setSnapIndex(clampIndex(defaultSnap, snapPoints.length));
-    // Only re-sync on open transitions, not on every snapPoints/defaultSnap render.
+    if (!open) {
+      wasOpenRef.current = false;
+      return;
+    }
+    if (!wasOpenRef.current) {
+      // Opening transition: (re)initialize from defaultSnap.
+      setSnapIndex(clampIndex(defaultSnap, snapPoints.length));
+    } else {
+      // Already open and snapPoints changed: keep the current snap, just
+      // clamp it back in bounds if the array got shorter.
+      setSnapIndex((current) => clampIndex(current, snapPoints.length));
+    }
+    wasOpenRef.current = true;
+    // defaultSnap intentionally excluded: it should only apply at the moment
+    // of opening, not on every render while already open.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
+  }, [open, snapPoints.length]);
 
   const { snaps, containerHeight } = useSnapPoints(snapPoints, rootRef);
   const keyboardInset = useKeyboardInset(open);
