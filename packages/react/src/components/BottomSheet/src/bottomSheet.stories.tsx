@@ -20,15 +20,43 @@ const meta: Meta<typeof BottomSheet> = {
   argTypes: {
     children: { control: { disable: true } },
     onRemove: { control: { disable: true } },
+    root: { control: { disable: true } },
     open: {
       control: "boolean",
       description: "Controls the sheet visibility",
       table: { type: { summary: "boolean" } },
     },
     snapPoints: {
-      control: { disable: true },
+      control: "object",
       description: "Ordered list of heights the sheet can snap to",
       table: { type: { summary: 'Array<"NN%" | "full">' } },
+    },
+    defaultSnap: {
+      control: "number",
+      description: "Index within snapPoints used as the initial snap point",
+      table: { type: { summary: "number" } },
+    },
+    closeOnOutsidePress: {
+      control: "boolean",
+      description:
+        "Controls whether pressing outside should close the sheet (also accepts a predicate function, not editable via this control)",
+      table: { type: { summary: "boolean | (event) => boolean" } },
+    },
+    needRemoveScroll: {
+      control: "boolean",
+      description:
+        "Determines if background scroll is locked while the sheet is open",
+      table: { type: { summary: "boolean" } },
+    },
+    ignoreAttributeName: {
+      control: "text",
+      description: "Attribute name to ignore when checking for outside presses",
+      table: { type: { summary: "string" } },
+    },
+    zIndex: {
+      control: "number",
+      description: "Explicit z-index for the sheet layer",
+      table: { type: { summary: "number" } },
     },
   },
   tags: ["autodocs"],
