@@ -239,6 +239,57 @@ describe("GIVEN <BottomSheet />", () => {
         screen.getByRole("button", { name: "Focusable body button" })
       ).toHaveFocus();
     });
+
+    it("THEN Tab/Shift+Tab should wrap focus among the sheet's focusable elements, and closing should restore focus to the opener", () => {
+      const Story = () => {
+        const [open, setOpen] = useState(false);
+        return (
+          <>
+            <button type="button" onClick={() => setOpen(true)}>
+              Open
+            </button>
+            <BottomSheet open={open} onRemove={() => setOpen(false)}>
+              <BottomSheet.Header>
+                <span data-testid="header-content">Header</span>
+              </BottomSheet.Header>
+              <BottomSheet.Body>
+                <button type="button">Focusable body button</button>
+              </BottomSheet.Body>
+              <BottomSheet.Footer>
+                <button type="button">Confirm</button>
+              </BottomSheet.Footer>
+            </BottomSheet>
+          </>
+        );
+      };
+      render(<Story />);
+
+      const opener = screen.getByRole("button", { name: "Open" });
+      opener.focus();
+
+      fireEvent.click(opener);
+
+      const bodyButton = screen.getByRole("button", {
+        name: "Focusable body button",
+      });
+      const confirmButton = screen.getByRole("button", { name: "Confirm" });
+
+      // Initial focus lands on the first focusable element.
+      expect(bodyButton).toHaveFocus();
+
+      // Tab from the last focusable wraps to the first.
+      confirmButton.focus();
+      fireEvent.keyDown(confirmButton, { key: "Tab" });
+      expect(bodyButton).toHaveFocus();
+
+      // Shift+Tab from the first focusable wraps to the last.
+      fireEvent.keyDown(bodyButton, { key: "Tab", shiftKey: true });
+      expect(confirmButton).toHaveFocus();
+
+      // Closing the sheet restores focus to the element that opened it.
+      fireEvent.keyDown(document, { key: "Escape" });
+      expect(opener).toHaveFocus();
+    });
   });
 
   describe("WHEN the user presses Escape", () => {
