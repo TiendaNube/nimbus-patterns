@@ -63,12 +63,15 @@ export interface BottomSheetProperties {
   needRemoveScroll?: boolean;
   /**
    * Explicit z-index for the sheet layer. Omitted by default: like Nimbus's
-   * own Sidebar/Modal/Popover, the sheet relies on DOM mount order (its
-   * portal is appended to document.body, so later-opened overlays paint on
-   * top of earlier ones) rather than a z-index, so it stacks correctly
-   * against Popover and other BottomSheet instances. Only set this to force
-   * a specific stacking order against something outside Nimbus's own
-   * z-index-less convention.
+   * own Sidebar/Modal/Popover, the sheet relies on DOM mount order rather
+   * than a z-index. Its portal mounts into the nearest Nimbus
+   * <ThemeProvider>'s own wrapper element (the same container
+   * Sidebar/Modal/Popover portal into), falling back to document.body only
+   * when no ThemeProvider is present. In both cases, later-mounted siblings
+   * paint on top of earlier ones as long as neither sets a z-index, so this
+   * keeps the sheet correctly stacked against Popover and other BottomSheet
+   * instances. Only set this to force a specific stacking order against
+   * something outside that convention.
    */
   zIndex?: number;
 }
@@ -76,9 +79,12 @@ export interface BottomSheetProperties {
 export type BottomSheetProps = BottomSheetProperties & {
   /**
    * Root element where the portal should be mounted. When provided and not
-   * null, the portal renders inside this element; otherwise it renders into
-   * document.body. Useful to scope the sheet within a container (e.g.,
-   * AppShell.Chat).
+   * null, the portal renders inside this element. Otherwise it renders into
+   * the nearest Nimbus <ThemeProvider>'s own wrapper element (same as
+   * Sidebar/Modal/Popover), so it inherits the active theme's CSS custom
+   * properties and stacks correctly against them; it falls back to
+   * document.body only when no ThemeProvider is present. Useful to scope the
+   * sheet within a container (e.g., AppShell.Chat).
    */
   root?: HTMLElement | null;
   // "color" is omitted because HTMLAttributes carries the native (deprecated)
