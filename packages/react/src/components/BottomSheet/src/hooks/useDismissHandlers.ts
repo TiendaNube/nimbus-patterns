@@ -2,6 +2,15 @@ import { RefObject, useEffect } from "react";
 
 import { CloseOnOutsidePress } from "../bottomSheet.types";
 
+/**
+ * Tracks currently-enabled sheet instances in mount order (same convention as
+ * their DOM stacking: later-mounted is on top). Escape is a single
+ * document-level event that every open sheet listens for independently, so
+ * without this only the topmost instance may act on it — otherwise one
+ * Escape press would close every open sheet at once.
+ */
+const openSheets: object[] = [];
+
 interface UseDismissHandlersOptions {
   /** Whether the handlers are active (sheet open). */
   enabled: boolean;
@@ -44,6 +53,9 @@ export const useDismissHandlers = ({
   useEffect(() => {
     if (!enabled || typeof document === "undefined") return undefined;
 
+    const token = {};
+    openSheets.push(token);
+
     const shouldClose = (event: PointerEvent | MouseEvent) =>
       typeof closeOnOutsidePress === "function"
         ? closeOnOutsidePress(event)
@@ -72,7 +84,10 @@ export const useDismissHandlers = ({
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onRequestClose();
+      if (event.key !== "Escape") return;
+      // Only the topmost open sheet reacts; others ignore the same press.
+      if (openSheets[openSheets.length - 1] !== token) return;
+      onRequestClose();
     };
 
     document.addEventListener("pointerdown", handlePointerDown, true);
@@ -81,6 +96,8 @@ export const useDismissHandlers = ({
     return () => {
       document.removeEventListener("pointerdown", handlePointerDown, true);
       document.removeEventListener("keydown", handleKeyDown);
+      const index = openSheets.indexOf(token);
+      if (index !== -1) openSheets.splice(index, 1);
     };
   }, [
     enabled,

@@ -398,6 +398,26 @@ describe("GIVEN <BottomSheet />", () => {
       expect(onRemoveSecond).toHaveBeenCalledTimes(1);
       expect(onRemoveFirst).not.toHaveBeenCalled();
     });
+
+    it("THEN pressing Escape once should dismiss only the topmost (second) sheet", () => {
+      const onRemoveFirst = jest.fn();
+      const onRemoveSecond = jest.fn();
+      render(
+        <>
+          <BottomSheet open onRemove={onRemoveFirst}>
+            <BottomSheet.Body>First sheet content</BottomSheet.Body>
+          </BottomSheet>
+          <BottomSheet open onRemove={onRemoveSecond}>
+            <BottomSheet.Body>Second sheet content</BottomSheet.Body>
+          </BottomSheet>
+        </>
+      );
+
+      fireEvent.keyDown(document, { key: "Escape" });
+
+      expect(onRemoveSecond).toHaveBeenCalledTimes(1);
+      expect(onRemoveFirst).not.toHaveBeenCalled();
+    });
   });
 
   describe("WHEN the press lands inside the panel content", () => {
