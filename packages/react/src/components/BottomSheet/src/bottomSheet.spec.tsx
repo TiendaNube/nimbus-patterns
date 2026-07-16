@@ -624,6 +624,49 @@ describe("GIVEN <BottomSheet />", () => {
 
       expect(onRemove).toHaveBeenCalledTimes(1);
     });
+
+    it("THEN a pointercancel should stop the drag and detach its listeners instead of leaving them stuck", () => {
+      dragSut(0);
+      const panel = screen.getByRole("dialog");
+
+      firePointerEvent(screen.getByRole("separator"), "pointerdown", 500, 1);
+      firePointerEvent(document, "pointermove", 300, 21);
+
+      // Mid-drag: no settle transition, height tracks the live (unresolved) offset.
+      expect(panel.style.transition).toBe("none");
+
+      firePointerEvent(document, "pointercancel", 300, 21);
+
+      // Cancelled, not released: reverts to the original snap height (not the
+      // dragged-to offset) and re-enables the settle transition.
+      expect(panel.style.height).toBe("320px");
+      expect(panel.style.transition).not.toBe("none");
+
+      // A pointermove after pointercancel must be a no-op: if the listener
+      // were still attached (the bug this test guards against), this would
+      // move the panel again.
+      firePointerEvent(document, "pointermove", 100, 41);
+      expect(panel.style.height).toBe("320px");
+    });
+
+    it("THEN unmounting mid-drag should detach its listeners instead of firing on a gone component", () => {
+      const { onRemove, unmount } = dragSut(0);
+
+      firePointerEvent(screen.getByRole("separator"), "pointerdown", 500, 1);
+      // Drag down 150px (past DISMISS_DISTANCE_THRESHOLD): handlePointerUp
+      // resolves from this recorded offset/velocity, not from pointerup's own
+      // clientY, so the dismiss-worthy state must be set here before unmount.
+      firePointerEvent(document, "pointermove", 650, 21);
+
+      unmount();
+
+      // If pointerup were still attached after unmount (the bug this test
+      // guards against), it would resolve the drag recorded above and call
+      // onRemove despite the component being gone.
+      firePointerEvent(document, "pointerup", 650, 41);
+
+      expect(onRemove).not.toHaveBeenCalled();
+    });
   });
 
   describe("WHEN snapPoints shrinks while the sheet is already open", () => {

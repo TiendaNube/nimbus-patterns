@@ -1,6 +1,7 @@
 import {
   PointerEvent as ReactPointerEvent,
   useCallback,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -103,6 +104,29 @@ export const useDragGesture = ({
     currentOffset: number;
   } | null>(null);
 
+  // Remembers exactly which handler functions are currently attached to
+  // document, so the unmount effect below can remove precisely those (its own
+  // closures would otherwise be whatever was current at mount time, which can
+  // be a different, stale identity than what a later pointerdown attached).
+  const activeListenersRef = useRef<{
+    move: (event: PointerEvent) => void;
+    up: () => void;
+    cancel: () => void;
+  } | null>(null);
+
+  // Reads the exact functions that were attached (rather than closing over
+  // handlePointerUp/handlePointerCancel by name) so pointerup, pointercancel
+  // and the unmount effect can all remove them without depending on each
+  // other's identity or declaration order.
+  const removeActiveListeners = () => {
+    const active = activeListenersRef.current;
+    if (!active) return;
+    document.removeEventListener("pointermove", active.move);
+    document.removeEventListener("pointerup", active.up);
+    document.removeEventListener("pointercancel", active.cancel);
+    activeListenersRef.current = null;
+  };
+
   const clamp = useCallback(
     (value: number) => {
       const ascending = sortByHeight(snaps);
@@ -157,9 +181,20 @@ export const useDragGesture = ({
       onSnapChange(result.index);
     }
 
-    document.removeEventListener("pointermove", handlePointerMove);
-    document.removeEventListener("pointerup", handlePointerUp);
-  }, [snaps, snapIndex, onSnapChange, onDismiss, handlePointerMove]);
+    removeActiveListeners();
+  }, [snaps, snapIndex, onSnapChange, onDismiss]);
+
+  // Fires instead of pointerup when the browser/OS interrupts the gesture
+  // (e.g. a system swipe or multi-touch conflict takes over mid-drag).
+  // Unlike handlePointerUp, this never resolves a snap/dismiss — the
+  // gesture was invalid, not released — it only tears the drag down cleanly
+  // so it can't leave dangling listeners or a stuck isDragging state.
+  const handlePointerCancel = useCallback(() => {
+    dragState.current = null;
+    setIsDragging(false);
+    setLiveOffset(null);
+    removeActiveListeners();
+  }, []);
 
   const onPointerDown = useCallback(
     (event: ReactPointerEvent) => {
@@ -175,8 +210,26 @@ export const useDragGesture = ({
       setIsDragging(true);
       document.addEventListener("pointermove", handlePointerMove);
       document.addEventListener("pointerup", handlePointerUp);
+      document.addEventListener("pointercancel", handlePointerCancel);
+      activeListenersRef.current = {
+        move: handlePointerMove,
+        up: handlePointerUp,
+        cancel: handlePointerCancel,
+      };
     },
-    [activeSnap, handlePointerMove, handlePointerUp]
+    [activeSnap, handlePointerMove, handlePointerUp, handlePointerCancel]
+  );
+
+  // Safety net for unmounting mid-drag (e.g. the consumer stops rendering the
+  // sheet while dragging): removes whatever listeners are actually attached
+  // right now and drops the drag ref, instead of leaving them on document
+  // forever with closures over an unmounted render.
+  useEffect(
+    () => () => {
+      removeActiveListeners();
+      dragState.current = null;
+    },
+    []
   );
 
   const offset = liveOffset ?? activeSnap?.offset ?? 0;
