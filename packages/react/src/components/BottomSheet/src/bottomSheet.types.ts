@@ -76,6 +76,11 @@ export interface BottomSheetProperties {
   zIndex?: number;
 }
 
+/**
+ * Public props for `BottomSheet`. Combines `BottomSheetProperties` (the
+ * sheet's own behavior — visibility, snap points, dismissal, stacking) with
+ * `root` and every native `div` attribute except `color`.
+ */
 export type BottomSheetProps = BottomSheetProperties & {
   /**
    * Root element where the portal should be mounted. When provided and not
@@ -104,6 +109,11 @@ export interface BottomSheetHeaderProperties {
   padding?: BottomSheetPadding;
 }
 
+/**
+ * Public props for `BottomSheet.Header`. Combines `BottomSheetHeaderProperties`
+ * with every native element attribute except `color` (same reason as
+ * `BottomSheetProps`: it conflicts with Box's own color-token sprinkle).
+ */
 export type BottomSheetHeaderProps = BottomSheetHeaderProperties &
   Omit<HTMLAttributes<HTMLElement>, "color">;
 
@@ -120,6 +130,11 @@ export interface BottomSheetBodyProperties {
   padding?: BottomSheetPadding;
 }
 
+/**
+ * Public props for `BottomSheet.Body`. Combines `BottomSheetBodyProperties`
+ * (`children` is required, unlike `Header`'s) with every native element
+ * attribute except `color`.
+ */
 export type BottomSheetBodyProps = BottomSheetBodyProperties &
   Omit<HTMLAttributes<HTMLElement>, "color">;
 
@@ -136,11 +151,26 @@ export interface BottomSheetFooterProperties {
   padding?: BottomSheetPadding;
 }
 
+/**
+ * Public props for `BottomSheet.Footer`. Combines `BottomSheetFooterProperties`
+ * (`children` is required, same as `Body`) with every native element
+ * attribute except `color`. `BottomSheet.Footer` itself is optional to
+ * render at all — omitting it entirely is how a sheet renders without a
+ * footer region.
+ */
 export type BottomSheetFooterProps = BottomSheetFooterProperties &
   Omit<HTMLAttributes<HTMLElement>, "color">;
 
+/**
+ * The composable subcomponents attached to `BottomSheet`
+ * (`BottomSheet.Header`, `BottomSheet.Body`, `BottomSheet.Footer`), used to
+ * compose the sheet's `children`.
+ */
 export interface BottomSheetComponents {
+  /** Chrome region above the body; the drag grabber is pinned above it. */
   Header: FC<BottomSheetHeaderProps>;
+  /** The scrollable content region. */
   Body: FC<BottomSheetBodyProps>;
+  /** Optional chrome region below the body (e.g. action buttons). */
   Footer: FC<BottomSheetFooterProps>;
 }
