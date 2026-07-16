@@ -235,6 +235,25 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
   );
 };
 
+/**
+ * A mobile-first modal sheet that slides up from the bottom edge, with
+ * configurable snap points and a pointer-driven drag gesture to resize
+ * between them or dismiss by dragging down.
+ *
+ * Controlled via `open`/`onRemove`, the same contract as `Sidebar`: the
+ * component never changes its own visibility, it only requests to close (via
+ * overlay press, Escape, or a downward dismiss gesture) — the consumer sets
+ * `open` to `false` in response.
+ *
+ * Compose with `BottomSheet.Header` (optional), `BottomSheet.Body`
+ * (required), and `BottomSheet.Footer` (optional) as `children`.
+ *
+ * Behaves as a modal: renders as `role="dialog"`/`aria-modal="true"`, dims
+ * and blocks the background, traps focus while open, and restores it to the
+ * previously focused element on close. Automatically labels the dialog via
+ * `aria-labelledby` pointing at `BottomSheet.Header` when one is present;
+ * pass an explicit `aria-label`/`aria-labelledby` to override that.
+ */
 export const BottomSheet = BottomSheetBase as typeof BottomSheetBase & {
   Header: typeof BottomSheetHeader;
   Body: typeof BottomSheetBody;
