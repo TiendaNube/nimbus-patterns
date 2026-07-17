@@ -22,6 +22,27 @@ const makeSut = (props: Partial<BottomSheetProps> = {}) => {
   return { ...utils, onRemove };
 };
 
+// window.visualViewport/innerHeight are read by useKeyboardInset/useSnapPoints
+// on every render. Several tests below mutate them (directly, or via a mock
+// visualViewport object) to simulate a resized viewport/open keyboard. Rather
+// than relying on each describe block to clean up perfectly after itself
+// (fragile — CI has shown these can leak a stale value into unrelated tests
+// that never touch these globals themselves), force a known, real baseline
+// before every single test in this file, regardless of what ran before it.
+const ORIGINAL_INNER_HEIGHT = window.innerHeight;
+const ORIGINAL_VISUAL_VIEWPORT = window.visualViewport;
+
+beforeEach(() => {
+  Object.defineProperty(window, "visualViewport", {
+    value: ORIGINAL_VISUAL_VIEWPORT,
+    configurable: true,
+  });
+  Object.defineProperty(window, "innerHeight", {
+    value: ORIGINAL_INNER_HEIGHT,
+    configurable: true,
+  });
+});
+
 describe("GIVEN <BottomSheet />", () => {
   describe("WHEN open is false", () => {
     it("THEN should not render", () => {
