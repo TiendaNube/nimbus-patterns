@@ -39,10 +39,14 @@ const ORIGINAL_INNER_HEIGHT = window.innerHeight;
 const ORIGINAL_VISUAL_VIEWPORT = window.visualViewport;
 
 beforeEach(() => {
-  Object.defineProperty(window, "visualViewport", {
-    value: ORIGINAL_VISUAL_VIEWPORT,
-    configurable: true,
-  });
+  // Plain assignment, not Object.defineProperty: CI's full parallel
+  // test:ci run showed defineProperty's own attributes (configurable/
+  // enumerable/writable) landing correctly on window.visualViewport while
+  // the `value` it was given silently became undefined — reproducibly,
+  // only under that full run, never locally or in isolation. Plain
+  // assignment is a simpler property-set path that isn't affected by
+  // whatever that was.
+  window.visualViewport = ORIGINAL_VISUAL_VIEWPORT;
   Object.defineProperty(window, "innerHeight", {
     value: ORIGINAL_INNER_HEIGHT,
     configurable: true,
@@ -464,10 +468,7 @@ describe("GIVEN <BottomSheet />", () => {
     const originalInnerHeight = window.innerHeight;
 
     afterEach(() => {
-      Object.defineProperty(window, "visualViewport", {
-        value: originalVisualViewport,
-        configurable: true,
-      });
+      window.visualViewport = originalVisualViewport;
       // The first test below mutates window.innerHeight directly (not scoped
       // to this describe); without restoring it here, a stale keyboardInset
       // from that mutation could otherwise leak into every later test in this
@@ -497,36 +498,20 @@ describe("GIVEN <BottomSheet />", () => {
         addEventListener,
         removeEventListener,
       };
-      Object.defineProperty(window, "visualViewport", {
-        value: mockViewport,
-        configurable: true,
-      });
+      // Plain assignment, not Object.defineProperty: CI's full parallel
+      // test:ci run showed defineProperty's own attributes (configurable/
+      // enumerable/writable) landing correctly while the `value` it was
+      // given silently became undefined — reproducibly, only under that
+      // full run, never locally or in isolation. Plain assignment is a
+      // simpler property-set path that isn't affected by whatever that was.
+      window.visualViewport = mockViewport as unknown as VisualViewport;
       Object.defineProperty(window, "innerHeight", {
         value: 800,
         configurable: true,
       });
-      // The previous CI run showed window.visualViewport as undefined AFTER
-      // render, ruling out a React-effect-timing issue (the global itself
-      // was gone, not just unseen yet). This checks the descriptor right
-      // where it's assigned, before render even starts: if THIS already
-      // fails, Object.defineProperty itself never took effect on window in
-      // that CI environment. If this passes but the post-render check below
-      // fails, something during render (not the assignment itself) clears
-      // it.
-      expect(Object.getOwnPropertyDescriptor(window, "visualViewport")).toEqual(
-        expect.objectContaining({ value: mockViewport })
-      );
 
       makeSut();
       const panel = screen.getByRole("dialog");
-      // Narrows down WHERE the previous CI failure (addEventListener called 0
-      // times) actually comes from: if this assertion also fails, the global
-      // itself got reset/lost between the Object.defineProperty call above
-      // and this point (an environment-level issue). If this PASSES but the
-      // addEventListener assertion below still fails, the global is fine and
-      // the effect body itself simply isn't seeing it (a React-effect-timing
-      // issue, not a global-state issue).
-      expect(window.visualViewport).toBe(mockViewport);
       // Definitive, assertion-based (not console.log-based) proof of whether
       // useKeyboardInset's effect actually subscribed to this mock: CI's
       // debug logs from inside the hook never appeared at all for any test
@@ -562,10 +547,7 @@ describe("GIVEN <BottomSheet />", () => {
     });
 
     it("THEN should degrade gracefully when the Visual Viewport API is unavailable", () => {
-      Object.defineProperty(window, "visualViewport", {
-        value: undefined,
-        configurable: true,
-      });
+      window.visualViewport = undefined as unknown as VisualViewport;
 
       expect(() => makeSut()).not.toThrow();
       expect(screen.getByRole("dialog").style.bottom).toBe("0px");
