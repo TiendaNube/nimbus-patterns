@@ -506,6 +506,13 @@ describe("GIVEN <BottomSheet />", () => {
 
       makeSut();
       const panel = screen.getByRole("dialog");
+      // eslint-disable-next-line no-console
+      console.log("[DEBUG-BOTTOMSHEET] after makeSut", {
+        currentVisualViewport: window.visualViewport === mockViewport,
+        listenersResizeCount: listeners.resize?.length ?? 0,
+        panelBottom: panel.style.bottom,
+        panelHeight: panel.style.height,
+      });
       expect(panel.style.bottom).toBe("0px");
       // containerHeight(800) - offset(320) - keyboardInset(0) for the default
       // 60% snap.
@@ -529,6 +536,15 @@ describe("GIVEN <BottomSheet />", () => {
       await waitFor(() => {
         act(() => {
           listeners.resize?.forEach((cb) => cb());
+        });
+        // eslint-disable-next-line no-console
+        console.log("[DEBUG-BOTTOMSHEET] waitFor poll", {
+          currentVisualViewport: window.visualViewport === mockViewport,
+          mockViewportHeight: mockViewport.height,
+          windowInnerHeight: window.innerHeight,
+          listenersResizeCount: listeners.resize?.length ?? 0,
+          panelBottom: panel.style.bottom,
+          panelHeight: panel.style.height,
         });
         expect(panel.style.bottom).toBe("300px");
         expect(panel.style.height).toBe("180px");
