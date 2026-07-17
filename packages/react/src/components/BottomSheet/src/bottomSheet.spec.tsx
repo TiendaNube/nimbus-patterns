@@ -434,10 +434,19 @@ describe("GIVEN <BottomSheet />", () => {
 
   describe("WHEN the on-screen keyboard covers part of the viewport", () => {
     const originalVisualViewport = window.visualViewport;
+    const originalInnerHeight = window.innerHeight;
 
     afterEach(() => {
       Object.defineProperty(window, "visualViewport", {
         value: originalVisualViewport,
+        configurable: true,
+      });
+      // The first test below mutates window.innerHeight directly (not scoped
+      // to this describe); without restoring it here, a stale keyboardInset
+      // from that mutation could otherwise leak into every later test in this
+      // file that computes heights against window.innerHeight.
+      Object.defineProperty(window, "innerHeight", {
+        value: originalInnerHeight,
         configurable: true,
       });
     });
