@@ -512,19 +512,24 @@ describe("GIVEN <BottomSheet />", () => {
       expect(panel.style.height).toBe("480px");
 
       mockViewport.height = 500;
-      act(() => {
-        listeners.resize?.forEach((cb) => cb());
-      });
 
-      // Height must shrink by the same 300px the keyboard covers (480 - 300 =
-      // 180), not stay fixed: bottom(300) + height(180) = 480 = the original
-      // top offset, so the panel's top edge stays put instead of the whole
-      // fixed-height block sliding up past the viewport's top edge. Asserted
-      // via waitFor (not a bare synchronous expect) since this only needs to
-      // observe the state React already committed inside the act() above —
-      // it resolves on the first check under normal conditions, but tolerates
-      // any extra tick a slower/instrumented CI run might need.
+      // Re-fire the currently-registered resize listeners on every poll,
+      // not just once: CI showed this effect's addEventListener call can
+      // still be pending (or transiently unregistered between an effect
+      // cleanup and its re-run) at the exact moment a single synchronous
+      // trigger right after makeSut() would fire — a race that's wider on a
+      // slower/contended runner than on a fast local machine. Retrying the
+      // trigger itself, not just the assertion, means whichever poll catches
+      // the listener already attached is the one that makes the state
+      // change happen. Height must shrink by the same 300px the keyboard
+      // covers (480 - 300 = 180), not stay fixed: bottom(300) + height(180)
+      // = 480 = the original top offset, so the panel's top edge stays put
+      // instead of the whole fixed-height block sliding up past the
+      // viewport's top edge.
       await waitFor(() => {
+        act(() => {
+          listeners.resize?.forEach((cb) => cb());
+        });
         expect(panel.style.bottom).toBe("300px");
         expect(panel.style.height).toBe("180px");
       });
