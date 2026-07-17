@@ -508,6 +508,14 @@ describe("GIVEN <BottomSheet />", () => {
 
       makeSut();
       const panel = screen.getByRole("dialog");
+      // Narrows down WHERE the previous CI failure (addEventListener called 0
+      // times) actually comes from: if this assertion also fails, the global
+      // itself got reset/lost between the Object.defineProperty call above
+      // and this point (an environment-level issue). If this PASSES but the
+      // addEventListener assertion below still fails, the global is fine and
+      // the effect body itself simply isn't seeing it (a React-effect-timing
+      // issue, not a global-state issue).
+      expect(window.visualViewport).toBe(mockViewport);
       // Definitive, assertion-based (not console.log-based) proof of whether
       // useKeyboardInset's effect actually subscribed to this mock: CI's
       // debug logs from inside the hook never appeared at all for any test
