@@ -480,20 +480,22 @@ describe("GIVEN <BottomSheet />", () => {
 
     it("THEN should reposition the sheet above the keyboard using the Visual Viewport API", async () => {
       const listeners: Record<string, Array<() => void>> = {};
+      const addEventListener = jest.fn((event: string, cb: () => void) => {
+        listeners[event] = [...(listeners[event] ?? []), cb];
+      });
+      // A real (not bare jest.fn()) removal, so a double-subscribe in any
+      // render pass (e.g. an effect re-running) can't leave a duplicate,
+      // stale listener behind that this test can't see.
+      const removeEventListener = jest.fn((event: string, cb: () => void) => {
+        listeners[event] = (listeners[event] ?? []).filter(
+          (registered) => registered !== cb
+        );
+      });
       const mockViewport = {
         height: 800,
         offsetTop: 0,
-        addEventListener: (event: string, cb: () => void) => {
-          listeners[event] = [...(listeners[event] ?? []), cb];
-        },
-        // A real (not jest.fn()) removal, so a double-subscribe in any
-        // render pass (e.g. an effect re-running) can't leave a duplicate,
-        // stale listener behind that this test can't see.
-        removeEventListener: (event: string, cb: () => void) => {
-          listeners[event] = (listeners[event] ?? []).filter(
-            (registered) => registered !== cb
-          );
-        },
+        addEventListener,
+        removeEventListener,
       };
       Object.defineProperty(window, "visualViewport", {
         value: mockViewport,
@@ -506,13 +508,17 @@ describe("GIVEN <BottomSheet />", () => {
 
       makeSut();
       const panel = screen.getByRole("dialog");
-      // eslint-disable-next-line no-console
-      console.log("[DEBUG-BOTTOMSHEET] after makeSut", {
-        currentVisualViewport: window.visualViewport === mockViewport,
-        listenersResizeCount: listeners.resize?.length ?? 0,
-        panelBottom: panel.style.bottom,
-        panelHeight: panel.style.height,
-      });
+      // Definitive, assertion-based (not console.log-based) proof of whether
+      // useKeyboardInset's effect actually subscribed to this mock: CI's
+      // debug logs from inside the hook never appeared at all for any test
+      // in this file, which console.log output from unrelated files in the
+      // same run did — pointing at the effect body never running there,
+      // not at swallowed output. A jest.fn() call assertion can't be
+      // ambiguous the way a maybe-swallowed log can.
+      expect(addEventListener).toHaveBeenCalledWith(
+        "resize",
+        expect.any(Function)
+      );
       expect(panel.style.bottom).toBe("0px");
       // containerHeight(800) - offset(320) - keyboardInset(0) for the default
       // 60% snap.
@@ -520,31 +526,16 @@ describe("GIVEN <BottomSheet />", () => {
 
       mockViewport.height = 500;
 
-      // Re-fire the currently-registered resize listeners on every poll,
-      // not just once: CI showed this effect's addEventListener call can
-      // still be pending (or transiently unregistered between an effect
-      // cleanup and its re-run) at the exact moment a single synchronous
-      // trigger right after makeSut() would fire — a race that's wider on a
-      // slower/contended runner than on a fast local machine. Retrying the
-      // trigger itself, not just the assertion, means whichever poll catches
-      // the listener already attached is the one that makes the state
-      // change happen. Height must shrink by the same 300px the keyboard
-      // covers (480 - 300 = 180), not stay fixed: bottom(300) + height(180)
-      // = 480 = the original top offset, so the panel's top edge stays put
-      // instead of the whole fixed-height block sliding up past the
-      // viewport's top edge.
+      // Height must shrink by the same 300px the keyboard covers
+      // (480 - 300 = 180), not stay fixed: bottom(300) + height(180) = 480 =
+      // the original top offset, so the panel's top edge stays put instead
+      // of the whole fixed-height block sliding up past the viewport's top
+      // edge. Re-fires the currently-registered listeners on every poll
+      // (not just once) as a defensive retry, in case a fresh CI run still
+      // shows the state settling a tick later than expected.
       await waitFor(() => {
         act(() => {
           listeners.resize?.forEach((cb) => cb());
-        });
-        // eslint-disable-next-line no-console
-        console.log("[DEBUG-BOTTOMSHEET] waitFor poll", {
-          currentVisualViewport: window.visualViewport === mockViewport,
-          mockViewportHeight: mockViewport.height,
-          windowInnerHeight: window.innerHeight,
-          listenersResizeCount: listeners.resize?.length ?? 0,
-          panelBottom: panel.style.bottom,
-          panelHeight: panel.style.height,
         });
         expect(panel.style.bottom).toBe("300px");
         expect(panel.style.height).toBe("180px");
