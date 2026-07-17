@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Alert, Button, Modal, Popover, Text } from "@nimbus-ds/components";
 import { ThemeProvider } from "@nimbus-ds/styles";
@@ -472,7 +478,7 @@ describe("GIVEN <BottomSheet />", () => {
       });
     });
 
-    it("THEN should reposition the sheet above the keyboard using the Visual Viewport API", () => {
+    it("THEN should reposition the sheet above the keyboard using the Visual Viewport API", async () => {
       const listeners: Record<string, Array<() => void>> = {};
       const mockViewport = {
         height: 800,
@@ -480,7 +486,14 @@ describe("GIVEN <BottomSheet />", () => {
         addEventListener: (event: string, cb: () => void) => {
           listeners[event] = [...(listeners[event] ?? []), cb];
         },
-        removeEventListener: jest.fn(),
+        // A real (not jest.fn()) removal, so a double-subscribe in any
+        // render pass (e.g. an effect re-running) can't leave a duplicate,
+        // stale listener behind that this test can't see.
+        removeEventListener: (event: string, cb: () => void) => {
+          listeners[event] = (listeners[event] ?? []).filter(
+            (registered) => registered !== cb
+          );
+        },
       };
       Object.defineProperty(window, "visualViewport", {
         value: mockViewport,
@@ -503,12 +516,18 @@ describe("GIVEN <BottomSheet />", () => {
         listeners.resize?.forEach((cb) => cb());
       });
 
-      expect(panel.style.bottom).toBe("300px");
       // Height must shrink by the same 300px the keyboard covers (480 - 300 =
       // 180), not stay fixed: bottom(300) + height(180) = 480 = the original
       // top offset, so the panel's top edge stays put instead of the whole
-      // fixed-height block sliding up past the viewport's top edge.
-      expect(panel.style.height).toBe("180px");
+      // fixed-height block sliding up past the viewport's top edge. Asserted
+      // via waitFor (not a bare synchronous expect) since this only needs to
+      // observe the state React already committed inside the act() above —
+      // it resolves on the first check under normal conditions, but tolerates
+      // any extra tick a slower/instrumented CI run might need.
+      await waitFor(() => {
+        expect(panel.style.bottom).toBe("300px");
+        expect(panel.style.height).toBe("180px");
+      });
     });
 
     it("THEN should degrade gracefully when the Visual Viewport API is unavailable", () => {
