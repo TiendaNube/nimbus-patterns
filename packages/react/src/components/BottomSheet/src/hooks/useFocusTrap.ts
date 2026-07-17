@@ -52,7 +52,9 @@ export const useFocusTrap = (
         return;
       }
       const first = items[0];
-      const last = items[items.length - 1];
+      // Non-null: the `items.length === 0` guard above already ruled out an
+      // empty array, so .at(-1) is always defined here.
+      const last = items.at(-1)!;
       const activeEl = document.activeElement;
 
       if (event.shiftKey && activeEl === first) {

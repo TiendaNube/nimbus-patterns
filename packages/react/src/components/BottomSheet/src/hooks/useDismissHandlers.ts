@@ -86,7 +86,7 @@ export const useDismissHandlers = ({
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
       // Only the topmost open sheet reacts; others ignore the same press.
-      if (openSheets[openSheets.length - 1] !== token) return;
+      if (openSheets.at(-1) !== token) return;
       onRequestClose();
     };
 

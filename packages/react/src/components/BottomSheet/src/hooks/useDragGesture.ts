@@ -61,10 +61,12 @@ const resolveDragTarget = (
     return { dismiss: true };
   }
 
-  let nearest = ascending.reduce((closest, snap) =>
-    Math.abs(offset - snap.offset) < Math.abs(offset - closest.offset)
-      ? snap
-      : closest
+  let nearest = ascending.reduce(
+    (closest, snap) =>
+      Math.abs(offset - snap.offset) < Math.abs(offset - closest.offset)
+        ? snap
+        : closest,
+    ascending[0]
   );
 
   const isFastFlick = Math.abs(velocity) > DISMISS_VELOCITY_THRESHOLD;
@@ -130,7 +132,7 @@ export const useDragGesture = ({
   const clamp = useCallback(
     (value: number) => {
       const ascending = sortByHeight(snaps);
-      const minOffset = ascending[ascending.length - 1]?.offset ?? 0;
+      const minOffset = ascending.at(-1)?.offset ?? 0;
       const maxOffset =
         (ascending[0]?.offset ?? containerHeight) +
         DISMISS_DISTANCE_THRESHOLD * 2;
