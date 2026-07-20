@@ -455,6 +455,80 @@ describe("GIVEN <BottomSheet />", () => {
     });
   });
 
+  describe("WHEN the sheet locks background scroll", () => {
+    let scrollToSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+      // jsdom's real window.scrollTo just logs "not implemented"; a spy lets
+      // the unlock-restores-position test assert on it cleanly.
+      scrollToSpy = jest.spyOn(window, "scrollTo").mockImplementation();
+      Object.defineProperty(window, "scrollY", {
+        value: 240,
+        configurable: true,
+      });
+    });
+
+    afterEach(() => {
+      scrollToSpy.mockRestore();
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+    });
+
+    it("THEN should fix the body in place at its current scroll offset, not just set overflow: hidden", () => {
+      // overflow: hidden alone doesn't block touch-driven scroll on iOS
+      // Safari/WebViews — fixing the body's position (with nothing left to
+      // scroll) does, regardless of platform.
+      makeSut();
+
+      expect(document.body.style.overflow).toBe("hidden");
+      expect(document.body.style.position).toBe("fixed");
+      expect(document.body.style.top).toBe("-240px");
+      expect(document.body.style.width).toBe("100%");
+    });
+
+    it("THEN should restore the exact scroll position, not just remove the fixed positioning", () => {
+      const { rerender } = makeSut();
+
+      rerender(
+        <BottomSheet open={false} onRemove={jest.fn()}>
+          <BottomSheet.Body>Body</BottomSheet.Body>
+        </BottomSheet>
+      );
+
+      expect(document.body.style.position).toBe("");
+      expect(document.body.style.overflow).toBe("");
+      expect(scrollToSpy).toHaveBeenCalledWith(0, 240);
+    });
+
+    it("THEN two stacked sheets should share a single lock, released only when the last one closes", () => {
+      const { rerender: rerenderFirst } = render(
+        <BottomSheet open onRemove={jest.fn()}>
+          <BottomSheet.Body>First</BottomSheet.Body>
+        </BottomSheet>
+      );
+      render(
+        <BottomSheet open onRemove={jest.fn()}>
+          <BottomSheet.Body>Second</BottomSheet.Body>
+        </BottomSheet>
+      );
+
+      expect(document.body.style.position).toBe("fixed");
+
+      rerenderFirst(
+        <BottomSheet open={false} onRemove={jest.fn()}>
+          <BottomSheet.Body>First</BottomSheet.Body>
+        </BottomSheet>
+      );
+
+      // The second sheet is still open: the lock must survive the first
+      // sheet's own close instead of being released early.
+      expect(document.body.style.position).toBe("fixed");
+      expect(scrollToSpy).not.toHaveBeenCalled();
+    });
+  });
+
   describe("WHEN the press lands inside the panel content", () => {
     it("THEN should NOT call onRemove", () => {
       const { onRemove } = makeSut();
