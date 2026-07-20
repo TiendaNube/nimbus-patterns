@@ -11,6 +11,27 @@ const meta: Meta<typeof NavTabs> = {
     children: { control: { disable: true } },
   },
   tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      // NavTabs uses `position: fixed`, which targets the real browser
+      // viewport unless an ancestor establishes a new containing block.
+      // Storybook's Docs page renders stories inline rather than in a
+      // full-height iframe (unlike Canvas), so without this the bar
+      // escapes the small preview box and it renders empty. `transform`
+      // creates that containing block; the fixed height gives the
+      // preview box something to show (fixed content adds no flow height).
+      <div
+        style={{
+          position: "relative",
+          height: "80px",
+          overflow: "hidden",
+          transform: "translateZ(0)",
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
