@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Tracks how much the on-screen keyboard is currently covering the viewport
@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
  */
 export const useKeyboardInset = (active: boolean): number => {
   const [inset, setInset] = useState(0);
+  const maxViewportHeightRef = useRef(0);
 
   useEffect(() => {
     if (!active || typeof window === "undefined" || !window.visualViewport) {
@@ -18,9 +19,22 @@ export const useKeyboardInset = (active: boolean): number => {
     }
 
     const viewport = window.visualViewport;
+    maxViewportHeightRef.current = viewport.height;
 
     const handleViewportChange = () => {
-      const covered = window.innerHeight - viewport.height - viewport.offsetTop;
+      // Deliberately not window.innerHeight: on mobile browsers it tracks the
+      // layout viewport, which the browser's own chrome (address bar/toolbar)
+      // grows or shrinks based on the page's scroll position *before* the
+      // sheet ever opened, independent of the keyboard — and once the sheet
+      // locks background scroll, that chrome state can no longer change on
+      // its own, so it stays wrong for as long as the sheet is open. Tracking
+      // the visual viewport's own largest-seen height instead is immune to
+      // that: it only actually shrinks when the keyboard covers part of it.
+      if (viewport.height > maxViewportHeightRef.current) {
+        maxViewportHeightRef.current = viewport.height;
+      }
+      const covered =
+        maxViewportHeightRef.current - viewport.height - viewport.offsetTop;
       setInset(Math.max(0, Math.round(covered)));
     };
 
