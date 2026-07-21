@@ -92,7 +92,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
     onDismiss: handleRequestClose,
   });
 
-  useScrollLock(open && needRemoveScroll);
+  useScrollLock(open && needRemoveScroll, panelRef);
   useFocusTrap(panelRef, open);
   useDismissHandlers({
     enabled: open,

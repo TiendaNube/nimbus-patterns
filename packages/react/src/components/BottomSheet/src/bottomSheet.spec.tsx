@@ -456,39 +456,37 @@ describe("GIVEN <BottomSheet />", () => {
   });
 
   describe("WHEN the sheet locks background scroll", () => {
-    let scrollToSpy: jest.SpyInstance;
-
-    beforeEach(() => {
-      // jsdom's real window.scrollTo just logs "not implemented"; a spy lets
-      // the unlock-restores-position test assert on it cleanly.
-      scrollToSpy = jest.spyOn(window, "scrollTo").mockImplementation();
-      Object.defineProperty(window, "scrollY", {
-        value: 240,
-        configurable: true,
-      });
-    });
-
     afterEach(() => {
-      scrollToSpy.mockRestore();
       document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
     });
 
-    it("THEN should fix the body in place at its current scroll offset, not just set overflow: hidden", () => {
-      // overflow: hidden alone doesn't block touch-driven scroll on iOS
-      // Safari/WebViews — fixing the body's position (with nothing left to
-      // scroll) does, regardless of platform.
+    const fireTouchMove = (target: Element) => {
+      const event = new Event("touchmove", {
+        bubbles: true,
+        cancelable: true,
+      });
+      target.dispatchEvent(event);
+      return event;
+    };
+
+    it("THEN should set overflow: hidden on the body without moving its position", () => {
+      // Deliberately NOT position: fixed + a captured/restored scroll offset
+      // (the technique some other libraries use for the same iOS touch-
+      // scroll gap): forcing that layout change on document.body can itself
+      // make the browser's own chrome (address bar/toolbar) animate to a
+      // different size right as the sheet opens, corrupting
+      // useKeyboardInset/useSnapPoints's viewport-based measurements taken
+      // around that same moment. Blocking the touch gesture itself (below)
+      // instead means the page's real scroll position never has to move at
+      // all, so there's nothing for that chrome-jank to react to.
       makeSut();
 
       expect(document.body.style.overflow).toBe("hidden");
-      expect(document.body.style.position).toBe("fixed");
-      expect(document.body.style.top).toBe("-240px");
-      expect(document.body.style.width).toBe("100%");
+      expect(document.body.style.position).toBe("");
+      expect(document.body.style.top).toBe("");
     });
 
-    it("THEN should restore the exact scroll position, not just remove the fixed positioning", () => {
+    it("THEN should restore overflow on unlock", () => {
       const { rerender } = makeSut();
 
       rerender(
@@ -497,35 +495,80 @@ describe("GIVEN <BottomSheet />", () => {
         </BottomSheet>
       );
 
-      expect(document.body.style.position).toBe("");
       expect(document.body.style.overflow).toBe("");
-      expect(scrollToSpy).toHaveBeenCalledWith(0, 240);
     });
 
-    it("THEN two stacked sheets should share a single lock, released only when the last one closes", () => {
+    it("THEN should NOT prevent a touchmove that lands inside the sheet's own panel", () => {
+      // The sheet's own content (Body's overflowY: auto) and the grabber's
+      // drag gesture both rely on their own touchmove events reaching them
+      // untouched — this is the case that happens constantly in normal use,
+      // so it must never be blocked.
+      makeSut();
+      const bodyButton = screen.getByRole("button", {
+        name: "Focusable body button",
+      });
+
+      const event = fireTouchMove(bodyButton);
+
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it("THEN should prevent a touchmove that lands outside the sheet (the background)", () => {
+      makeSut();
+      const background = document.createElement("div");
+      document.body.appendChild(background);
+
+      const event = fireTouchMove(background);
+
+      expect(event.defaultPrevented).toBe(true);
+      document.body.removeChild(background);
+    });
+
+    it("THEN two stacked sheets should share a single lock, each one's own content still scrollable, released only when the last one closes", () => {
       const { rerender: rerenderFirst } = render(
         <BottomSheet open onRemove={jest.fn()}>
-          <BottomSheet.Body>First</BottomSheet.Body>
+          <BottomSheet.Body>
+            <button type="button">First sheet button</button>
+          </BottomSheet.Body>
         </BottomSheet>
       );
       render(
         <BottomSheet open onRemove={jest.fn()}>
-          <BottomSheet.Body>Second</BottomSheet.Body>
+          <BottomSheet.Body>
+            <button type="button">Second sheet button</button>
+          </BottomSheet.Body>
         </BottomSheet>
       );
 
-      expect(document.body.style.position).toBe("fixed");
+      expect(document.body.style.overflow).toBe("hidden");
+      expect(
+        fireTouchMove(
+          screen.getByRole("button", { name: "First sheet button" })
+        ).defaultPrevented
+      ).toBe(false);
+      expect(
+        fireTouchMove(
+          screen.getByRole("button", { name: "Second sheet button" })
+        ).defaultPrevented
+      ).toBe(false);
 
       rerenderFirst(
         <BottomSheet open={false} onRemove={jest.fn()}>
-          <BottomSheet.Body>First</BottomSheet.Body>
+          <BottomSheet.Body>
+            <button type="button">First sheet button</button>
+          </BottomSheet.Body>
         </BottomSheet>
       );
 
       // The second sheet is still open: the lock must survive the first
-      // sheet's own close instead of being released early.
-      expect(document.body.style.position).toBe("fixed");
-      expect(scrollToSpy).not.toHaveBeenCalled();
+      // sheet's own close instead of being released early, and the second
+      // sheet's own content must still scroll normally.
+      expect(document.body.style.overflow).toBe("hidden");
+      expect(
+        fireTouchMove(
+          screen.getByRole("button", { name: "Second sheet button" })
+        ).defaultPrevented
+      ).toBe(false);
     });
   });
 
