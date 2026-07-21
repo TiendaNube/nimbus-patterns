@@ -663,15 +663,18 @@ describe("GIVEN <BottomSheet />", () => {
       });
     });
 
-    it("THEN should compute the keyboard inset from the visual viewport's own shrink, not from window.innerHeight", async () => {
-      // Regression for a real-device bug: on mobile browsers, window.innerHeight
-      // (the layout viewport) is deflated or inflated by the browser's own
-      // chrome (address bar/toolbar) collapsing or expanding based on the
-      // page's scroll position *before* the sheet ever opened — independent
-      // of the keyboard. Once the sheet locks background scroll, that chrome
-      // state is frozen and can no longer correct itself. Here innerHeight
-      // (700) is stale/smaller than the visual viewport's true full height
-      // (800) from the very start, simulating that mismatch.
+    it("THEN should NOT double-count the browser chrome's own height change as keyboard coverage", async () => {
+      // Regression for a real-device bug: the browser's own chrome (address
+      // bar/toolbar) showing shrinks BOTH window.innerHeight and the visual
+      // viewport's height together, since it genuinely reduces the page's
+      // real layout space — useSnapPoints's containerHeight (read from
+      // window.innerHeight) already accounts for that on its own. If
+      // useKeyboardInset reacted to the visual viewport's shrink in
+      // isolation (ignoring that window.innerHeight shrank by the same
+      // amount), it would treat that already-handled space as ALSO covered
+      // by a keyboard, subtracting it a second time and leaving a
+      // permanent gap at the bottom whenever the chrome happens to be
+      // visible — with no keyboard involved at all.
       const listeners: Record<string, Array<() => void>> = {};
       const mockViewport = {
         height: 800,
@@ -683,7 +686,7 @@ describe("GIVEN <BottomSheet />", () => {
       };
       window.visualViewport = mockViewport as unknown as VisualViewport;
       Object.defineProperty(window, "innerHeight", {
-        value: 700,
+        value: 800,
         configurable: true,
       });
 
@@ -691,24 +694,14 @@ describe("GIVEN <BottomSheet />", () => {
       const panel = screen.getByRole("dialog");
       expect(panel.style.bottom).toBe("0px");
 
-      mockViewport.height = 500;
-
-      await waitFor(() => {
-        act(() => {
-          listeners.resize?.forEach((cb) => cb());
-        });
-        // Keyboard covers 800 - 500 = 300px of the visual viewport's own
-        // full height. A window.innerHeight-based calculation would instead
-        // compute 700 - 500 = 200px here — 100px short, leaving a gap where
-        // the background behind the sheet shows through.
-        expect(panel.style.bottom).toBe("300px");
+      // The chrome appears: both shrink together by the same 100px, no
+      // keyboard involved.
+      mockViewport.height = 700;
+      Object.defineProperty(window, "innerHeight", {
+        value: 700,
+        configurable: true,
       });
 
-      // If the viewport grows past its previous max (keyboard closes and,
-      // e.g., a device rotation or late toolbar collapse also frees up more
-      // space), the tracked baseline must move up with it instead of staying
-      // pinned to whatever was seen at mount.
-      mockViewport.height = 850;
       await waitFor(() => {
         act(() => {
           listeners.resize?.forEach((cb) => cb());

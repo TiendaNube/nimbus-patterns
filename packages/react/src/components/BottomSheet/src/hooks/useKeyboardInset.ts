@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 /**
  * Tracks how much the on-screen keyboard is currently covering the viewport
@@ -10,7 +10,6 @@ import { useEffect, useRef, useState } from "react";
  */
 export const useKeyboardInset = (active: boolean): number => {
   const [inset, setInset] = useState(0);
-  const maxViewportHeightRef = useRef(0);
 
   useEffect(() => {
     if (!active || typeof window === "undefined" || !window.visualViewport) {
@@ -19,22 +18,20 @@ export const useKeyboardInset = (active: boolean): number => {
     }
 
     const viewport = window.visualViewport;
-    maxViewportHeightRef.current = viewport.height;
 
     const handleViewportChange = () => {
-      // Deliberately not window.innerHeight: on mobile browsers it tracks the
-      // layout viewport, which the browser's own chrome (address bar/toolbar)
-      // grows or shrinks based on the page's scroll position *before* the
-      // sheet ever opened, independent of the keyboard — and once the sheet
-      // locks background scroll, that chrome state can no longer change on
-      // its own, so it stays wrong for as long as the sheet is open. Tracking
-      // the visual viewport's own largest-seen height instead is immune to
-      // that: it only actually shrinks when the keyboard covers part of it.
-      if (viewport.height > maxViewportHeightRef.current) {
-        maxViewportHeightRef.current = viewport.height;
-      }
-      const covered =
-        maxViewportHeightRef.current - viewport.height - viewport.offsetTop;
+      // window.innerHeight (the layout viewport) and viewport.height (the
+      // visual viewport) shrink TOGETHER when the browser's own chrome
+      // (address bar/toolbar) shows, since that genuinely reduces the page's
+      // real layout space — useSnapPoints's containerHeight (itself read
+      // from window.innerHeight) already accounts for that. The on-screen
+      // keyboard, in contrast, only shrinks the visual viewport: it covers
+      // part of the page without changing its layout at all. Reading both
+      // live in the same handler call means a chrome-driven change cancels
+      // out in this subtraction (both operands shrink equally), isolating
+      // only the keyboard's own contribution — so this is never a redundant,
+      // second deduction on top of what containerHeight already subtracted.
+      const covered = window.innerHeight - viewport.height - viewport.offsetTop;
       setInset(Math.max(0, Math.round(covered)));
     };
 
