@@ -680,6 +680,52 @@ describe("GIVEN <BottomSheet />", () => {
       expect(() => makeSut()).not.toThrow();
       expect(screen.getByRole("dialog").style.bottom).toBe("0px");
     });
+
+    it("THEN should re-measure the container height when only the visual viewport (not window) fires resize", async () => {
+      // Regression for a real-device bug: our own scroll-lock's position:fixed
+      // trick can perturb the browser's chrome (address bar/toolbar) right
+      // around mount, changing window.innerHeight — but that native,
+      // chrome-driven change doesn't reliably fire window's own `resize`
+      // event on all mobile browsers, only visualViewport's `resize`. Without
+      // also re-measuring on that event, a stale containerHeight (and
+      // therefore a wrong panel height, leaving a gap) would stick for the
+      // sheet's entire open lifetime instead of self-correcting.
+      const listeners: Record<string, Array<() => void>> = {};
+      const mockViewport = {
+        height: 800,
+        offsetTop: 0,
+        addEventListener: (event: string, cb: () => void) => {
+          listeners[event] = [...(listeners[event] ?? []), cb];
+        },
+        removeEventListener: jest.fn(),
+      };
+      window.visualViewport = mockViewport as unknown as VisualViewport;
+      Object.defineProperty(window, "innerHeight", {
+        value: 800,
+        configurable: true,
+      });
+
+      makeSut();
+      const panel = screen.getByRole("dialog");
+      // containerHeight(800) * 60% default snap.
+      expect(panel.style.height).toBe("480px");
+
+      Object.defineProperty(window, "innerHeight", {
+        value: 600,
+        configurable: true,
+      });
+
+      await waitFor(() => {
+        // Fires only the visual viewport's own listeners, never window's
+        // "resize" — isolating exactly the re-measurement path this test
+        // covers.
+        act(() => {
+          listeners.resize?.forEach((cb) => cb());
+        });
+        // containerHeight(600) * 60% default snap.
+        expect(panel.style.height).toBe("360px");
+      });
+    });
   });
 
   describe("WHEN the user drags the grabber", () => {

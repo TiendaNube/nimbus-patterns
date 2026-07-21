@@ -52,9 +52,19 @@ export const useSnapPoints = (
 
     window.addEventListener("resize", measure);
     window.addEventListener("orientationchange", measure);
+    // Also re-measure on the visual viewport's own resize: on mobile, the
+    // browser's chrome (address bar/toolbar) can grow or shrink right around
+    // mount time (e.g. our own scroll-lock's position:fixed trick settling
+    // right after the initial measurement above), and that chrome change
+    // doesn't reliably fire window's own `resize` event on all mobile
+    // browsers, but visualViewport's `resize` does — catching and correcting
+    // a stale initial measurement instead of leaving it wrong for the sheet's
+    // whole open lifetime.
+    window.visualViewport?.addEventListener("resize", measure);
     return () => {
       window.removeEventListener("resize", measure);
       window.removeEventListener("orientationchange", measure);
+      window.visualViewport?.removeEventListener("resize", measure);
     };
   }, [measure]);
 
