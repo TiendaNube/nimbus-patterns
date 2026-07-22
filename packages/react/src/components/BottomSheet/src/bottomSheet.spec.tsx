@@ -846,6 +846,134 @@ describe("GIVEN <BottomSheet />", () => {
     });
   });
 
+  describe("WHEN running inside a Capacitor native app shell", () => {
+    afterEach(() => {
+      delete (window as { Capacitor?: unknown }).Capacitor;
+    });
+
+    // Minimal stand-in for @capacitor/keyboard's real plugin shape, built
+    // from the ground up rather than installing the package: this component
+    // deliberately takes no Capacitor dependency (most consumers aren't
+    // Capacitor apps), so there's nothing to import even for tests.
+    const installMockCapacitorKeyboard = () => {
+      const listeners: Record<string, Array<(info?: unknown) => void>> = {};
+      const removeSpies: Record<string, jest.Mock> = {
+        keyboardWillShow: jest.fn(),
+        keyboardWillHide: jest.fn(),
+      };
+      const Keyboard = {
+        addListener: jest.fn(
+          (eventName: string, listener: (info?: unknown) => void) => {
+            listeners[eventName] = [...(listeners[eventName] ?? []), listener];
+            return Promise.resolve({ remove: removeSpies[eventName] });
+          }
+        ),
+      };
+      (window as { Capacitor?: unknown }).Capacitor = {
+        isPluginAvailable: (name: string) => name === "Keyboard",
+        Plugins: { Keyboard },
+      };
+      return { listeners, removeSpies, Keyboard };
+    };
+
+    it("THEN should use the native keyboardWillShow height directly, ignoring the Visual Viewport API entirely", async () => {
+      // Per Capacitor/Ionic's own documented experience, visualViewport is
+      // NOT reliable inside a Capacitor WebView — this path must take over
+      // completely when the native plugin is available, not layer on top
+      // of the browser heuristic (which would risk exactly the kind of
+      // double-compensation bug already fixed for the browser-chrome case).
+      const { listeners } = installMockCapacitorKeyboard();
+      // useSnapPoints legitimately still listens to visualViewport's own
+      // resize on its own terms (unrelated to keyboard detection), so this
+      // mock exists to prove useKeyboardInset itself never reacts to a
+      // change here — not to assert nothing at all subscribes to it.
+      const mockViewport = {
+        height: 800,
+        offsetTop: 0,
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+      };
+      window.visualViewport = mockViewport as unknown as VisualViewport;
+
+      makeSut();
+      const panel = screen.getByRole("dialog");
+      expect(panel.style.bottom).toBe("0px");
+
+      // Shrinking the mocked visual viewport is exactly what would drive a
+      // (wrong, unreliable-in-Capacitor) inset via the browser-only path —
+      // asserting it has NO effect here proves that path is genuinely
+      // bypassed, not just secondary.
+      mockViewport.height = 500;
+      expect(panel.style.bottom).toBe("0px");
+
+      await waitFor(() => {
+        act(() => {
+          listeners.keyboardWillShow?.forEach((cb) =>
+            cb({ keyboardHeight: 300 })
+          );
+        });
+        expect(panel.style.bottom).toBe("300px");
+      });
+    });
+
+    it("THEN should reset the inset to 0 on keyboardWillHide", async () => {
+      const { listeners } = installMockCapacitorKeyboard();
+      makeSut();
+      const panel = screen.getByRole("dialog");
+
+      act(() => {
+        listeners.keyboardWillShow?.forEach((cb) =>
+          cb({ keyboardHeight: 300 })
+        );
+      });
+      await waitFor(() => expect(panel.style.bottom).toBe("300px"));
+
+      act(() => {
+        listeners.keyboardWillHide?.forEach((cb) => cb());
+      });
+      await waitFor(() => expect(panel.style.bottom).toBe("0px"));
+    });
+
+    it("THEN should remove both native listeners on unmount", async () => {
+      const { removeSpies } = installMockCapacitorKeyboard();
+      const { rerender } = makeSut();
+
+      // Let the addListener promises resolve before unmounting.
+      await waitFor(() =>
+        expect(removeSpies.keyboardWillShow).not.toHaveBeenCalled()
+      );
+
+      rerender(
+        <BottomSheet open={false} onRemove={jest.fn()}>
+          <BottomSheet.Body>Body</BottomSheet.Body>
+        </BottomSheet>
+      );
+
+      await waitFor(() => {
+        expect(removeSpies.keyboardWillShow).toHaveBeenCalledTimes(1);
+        expect(removeSpies.keyboardWillHide).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    it("THEN should still remove both listeners if unmounted before the native addListener promise resolves", async () => {
+      const { removeSpies } = installMockCapacitorKeyboard();
+      const { rerender } = makeSut();
+
+      // Unmount synchronously, before the addListener promises (which
+      // resolve on a microtask) have had any chance to settle yet.
+      rerender(
+        <BottomSheet open={false} onRemove={jest.fn()}>
+          <BottomSheet.Body>Body</BottomSheet.Body>
+        </BottomSheet>
+      );
+
+      await waitFor(() => {
+        expect(removeSpies.keyboardWillShow).toHaveBeenCalledTimes(1);
+        expect(removeSpies.keyboardWillHide).toHaveBeenCalledTimes(1);
+      });
+    });
+  });
+
   describe("WHEN the user drags the grabber", () => {
     const originalInnerHeight = window.innerHeight;
 
