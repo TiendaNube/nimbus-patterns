@@ -710,6 +710,50 @@ describe("GIVEN <BottomSheet />", () => {
       });
     });
 
+    it("THEN should re-run when only window (not the visual viewport) fires resize", async () => {
+      // Regression for a real-device bug: scrolling the background right
+      // before opening the sheet, then focusing an input, can make the
+      // browser's own chrome adjustment and the keyboard opening land close
+      // together — and which of "window" or "visualViewport" actually fires
+      // its own resize event for a given change isn't reliable on every
+      // mobile browser. Simulates the case where only window's resize fires
+      // (the keyboard-inset test above already covers the opposite case,
+      // only visualViewport's).
+      const mockViewport = {
+        height: 800,
+        offsetTop: 0,
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+      };
+      window.visualViewport = mockViewport as unknown as VisualViewport;
+      Object.defineProperty(window, "innerHeight", {
+        value: 800,
+        configurable: true,
+      });
+
+      makeSut();
+      const panel = screen.getByRole("dialog");
+      expect(panel.style.bottom).toBe("0px");
+
+      // Chrome shrinks by 100px, keyboard covers a further 300px of the
+      // now-smaller visible area — only window's own resize fires.
+      Object.defineProperty(window, "innerHeight", {
+        value: 700,
+        configurable: true,
+      });
+      mockViewport.height = 400;
+
+      await waitFor(() => {
+        act(() => {
+          window.dispatchEvent(new Event("resize"));
+        });
+        // 700 - 400 = 300px: isolates just the keyboard's own coverage,
+        // unaffected by the chrome's separate 100px reduction (already
+        // handled by containerHeight).
+        expect(panel.style.bottom).toBe("300px");
+      });
+    });
+
     it("THEN should degrade gracefully when the Visual Viewport API is unavailable", () => {
       window.visualViewport = undefined as unknown as VisualViewport;
 

@@ -38,10 +38,23 @@ export const useKeyboardInset = (active: boolean): number => {
     handleViewportChange();
     viewport.addEventListener("resize", handleViewportChange);
     viewport.addEventListener("scroll", handleViewportChange);
+    // Also re-run on window's own resize: when the on-screen keyboard opens
+    // shortly after the browser's own chrome (address bar/toolbar) already
+    // changed size (e.g. the user scrolled the background right before
+    // opening the sheet, then focused an input), both the keyboard and a
+    // further chrome adjustment can land close together, and which of the
+    // two ("window" vs "visualViewport") actually fires its own resize event
+    // for a given change isn't reliable on every mobile browser. Reacting to
+    // either one — recomputing fresh live reads of both window.innerHeight
+    // and the visual viewport's height regardless of which fired — means a
+    // change is never missed just because it happened to signal through the
+    // "other" event.
+    window.addEventListener("resize", handleViewportChange);
 
     return () => {
       viewport.removeEventListener("resize", handleViewportChange);
       viewport.removeEventListener("scroll", handleViewportChange);
+      window.removeEventListener("resize", handleViewportChange);
       setInset(0);
     };
   }, [active]);
