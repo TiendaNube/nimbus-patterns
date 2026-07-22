@@ -6,6 +6,7 @@ import { RefObject, useEffect } from "react";
  */
 let lockCount = 0;
 let previousOverflow = "";
+let lockedScrollY = 0;
 
 /**
  * Every currently-locked sheet's own panel element. A touch is allowed
@@ -59,6 +60,23 @@ const handleTouchMove = (event: TouchEvent) => {
 };
 
 /**
+ * Snaps the page back to its locked scroll position the instant it drifts
+ * away from it, regardless of what caused the drift. `touchmove`
+ * interception only stops a scroll that starts as a touch gesture — it does
+ * nothing against Safari's own native "scroll the focused input into view"
+ * behavior when a text input inside the sheet gets focus (the keyboard
+ * opening), which moves the page programmatically, not via a touch event at
+ * all. Reproduced as: background scroll only when the on-screen keyboard is
+ * open/just opened, on both iOS Safari and iOS Chrome (same WebKit engine
+ * either way).
+ */
+const handleScroll = () => {
+  if (window.scrollY !== lockedScrollY) {
+    window.scrollTo(window.scrollX, lockedScrollY);
+  }
+};
+
+/**
  * Locks background scroll while `active` is true, restoring the previous
  * state when the last active sheet releases the lock. Dependency free (no
  * react-remove-scroll/body-scroll-lock) to respect the DS "no new deps"
@@ -67,14 +85,16 @@ const handleTouchMove = (event: TouchEvent) => {
  * `overflow: hidden` alone is a no-op against touch-driven scroll on iOS
  * Safari/WebViews (a well-known platform gap — it only blocks wheel/mouse
  * scroll), so it's paired with the `touchmove` interception above for that
- * case. Deliberately NOT the `position: fixed` + negative `top` technique
- * some other libraries use for the same iOS gap: forcing that layout change
- * on `document.body` can itself make the browser's own chrome (address
+ * case, and the scroll-position snapback above for non-touch-driven scrolls.
+ * Deliberately NOT the `position: fixed` + negative `top` technique some
+ * other libraries use for the same iOS gap: forcing that layout change on
+ * `document.body` can itself make the browser's own chrome (address
  * bar/toolbar) animate to a different size right as the sheet opens,
  * corrupting `useKeyboardInset`/`useSnapPoints`'s viewport-based
- * measurements taken around that same moment. Never touching the page's
- * real scroll position or `document.body`'s layout at all avoids that
- * failure mode at the source, instead of compensating for it after the fact.
+ * measurements taken around that same moment. Snapping back reactively
+ * (only if and when a scroll actually happens) instead of forcing a
+ * permanent layout change upfront on every open avoids triggering that same
+ * failure mode unconditionally.
  */
 export const useScrollLock = (
   active: boolean,
@@ -88,10 +108,12 @@ export const useScrollLock = (
 
     if (lockCount === 0) {
       previousOverflow = document.body.style.overflow;
+      lockedScrollY = window.scrollY;
       document.body.style.overflow = "hidden";
       document.addEventListener("touchmove", handleTouchMove, {
         passive: false,
       });
+      window.addEventListener("scroll", handleScroll);
     }
     lockCount += 1;
 
@@ -101,6 +123,7 @@ export const useScrollLock = (
       if (lockCount === 0) {
         document.body.style.overflow = previousOverflow;
         document.removeEventListener("touchmove", handleTouchMove);
+        window.removeEventListener("scroll", handleScroll);
       }
     };
   }, [active, panelRef]);

@@ -608,6 +608,38 @@ describe("GIVEN <BottomSheet />", () => {
 
       expect(event.defaultPrevented).toBe(false);
     });
+
+    it("THEN should snap the page back to its locked scroll position if it drifts away for any non-touch reason", () => {
+      // Regression for a real-device bug: Safari's own native "scroll the
+      // focused input into view" behavior (triggered when a text input
+      // inside the sheet gets focus and the keyboard opens) moves the page
+      // programmatically, not via a touch gesture — touchmove interception
+      // alone has no way to see or stop it. Reproduced as: background
+      // scroll only while the on-screen keyboard is open/just opened, on
+      // both iOS Safari and iOS Chrome (same underlying WebKit engine
+      // either way, consistent with this being a platform-level behavior
+      // rather than a browser-specific one).
+      const scrollToSpy = jest.spyOn(window, "scrollTo").mockImplementation();
+      Object.defineProperty(window, "scrollY", {
+        value: 240,
+        configurable: true,
+      });
+
+      makeSut();
+
+      // Simulate the page drifting away from its locked position for a
+      // reason other than a touch gesture (e.g. Safari's own focus-scroll).
+      Object.defineProperty(window, "scrollY", {
+        value: 40,
+        configurable: true,
+      });
+      act(() => {
+        window.dispatchEvent(new Event("scroll"));
+      });
+
+      expect(scrollToSpy).toHaveBeenCalledWith(window.scrollX, 240);
+      scrollToSpy.mockRestore();
+    });
   });
 
   describe("WHEN the press lands inside the panel content", () => {
