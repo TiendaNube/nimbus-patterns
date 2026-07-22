@@ -570,6 +570,44 @@ describe("GIVEN <BottomSheet />", () => {
         ).defaultPrevented
       ).toBe(false);
     });
+
+    it("THEN should NOT prevent a touchmove inside a Modal opened from the sheet", async () => {
+      // Regression: a Modal/Popover/Sidebar opened from inside the sheet
+      // doesn't render as a DOM descendant of the sheet's own panel — like
+      // the sheet itself, it portals into the shared ThemeProvider
+      // container, landing as a SIBLING of the panel (see the "Modal
+      // renders above the sheet" test elsewhere in this file). Without
+      // recognizing that, touch-scrolling inside the Modal (e.g. a
+      // horizontally-scrollable tab strip) would get silently cancelled by
+      // this same touchmove interception, since that content isn't inside
+      // the sheet's own panel either. Reproduced on real devices as: works
+      // on desktop (no touch events at all), broken on mobile.
+      const user = userEvent.setup();
+      const Story = () => {
+        const [modalOpen, setModalOpen] = useState(false);
+        return (
+          <ThemeProvider theme="base">
+            <BottomSheet open onRemove={jest.fn()}>
+              <BottomSheet.Body>
+                <Button onClick={() => setModalOpen(true)}>Open modal</Button>
+                <Modal open={modalOpen} onDismiss={() => setModalOpen(false)}>
+                  <Modal.Body>
+                    <span data-testid="modal-content">Modal content</span>
+                  </Modal.Body>
+                </Modal>
+              </BottomSheet.Body>
+            </BottomSheet>
+          </ThemeProvider>
+        );
+      };
+
+      render(<Story />);
+      await user.click(screen.getByRole("button", { name: "Open modal" }));
+
+      const event = fireTouchMove(screen.getByTestId("modal-content"));
+
+      expect(event.defaultPrevented).toBe(false);
+    });
   });
 
   describe("WHEN the press lands inside the panel content", () => {

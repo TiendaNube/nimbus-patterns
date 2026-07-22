@@ -21,6 +21,24 @@ const isInsideALockedPanel = (target: EventTarget | null): boolean => {
 };
 
 /**
+ * A Modal/Popover/Sidebar opened from inside the sheet doesn't render as a
+ * DOM descendant of the sheet's own panel — like the sheet itself, they
+ * portal into the nearest ThemeProvider's shared container, landing as a
+ * SIBLING of the panel, not inside it (see BottomSheet.tsx's own
+ * `portalTarget` comment). `[data-floating-ui-portal]` is the wrapper every
+ * floating-ui-based Nimbus overlay renders its content into — the same
+ * selector `useDismissHandlers` already uses to recognize a press inside one
+ * of these as NOT an outside press against the sheet. Without this check
+ * here too, touch-scrolling (e.g. a horizontally-scrollable tab strip) inside
+ * a Modal opened from the sheet would get silently cancelled by the
+ * `touchmove` interception below, since that content isn't inside the
+ * sheet's own panel either.
+ */
+const isInsideAFloatingUiPortal = (target: EventTarget | null): boolean =>
+  target instanceof Element &&
+  target.closest("[data-floating-ui-portal]") !== null;
+
+/**
  * Cancels the touch-driven scroll/bounce a background page would otherwise
  * get on iOS Safari/WebViews, without ever moving `document.body` itself
  * (no `position: fixed`, no captured/restored scroll offset). A touch inside
@@ -32,7 +50,10 @@ const isInsideALockedPanel = (target: EventTarget | null): boolean => {
  * passive listener.
  */
 const handleTouchMove = (event: TouchEvent) => {
-  if (!isInsideALockedPanel(event.target)) {
+  if (
+    !isInsideALockedPanel(event.target) &&
+    !isInsideAFloatingUiPortal(event.target)
+  ) {
     event.preventDefault();
   }
 };
