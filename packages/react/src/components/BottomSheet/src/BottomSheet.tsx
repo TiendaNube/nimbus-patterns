@@ -105,11 +105,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
 
   if (!open) return null;
 
-  // Subtracting keyboardInset (rather than leaving height fixed and only
-  // moving `bottom`) keeps the panel's top edge stable as the keyboard opens:
-  // the panel shrinks from the bottom instead of the whole fixed-height block
-  // sliding upward past the top of the viewport.
-  const visibleHeight = Math.max(0, containerHeight - offset - keyboardInset);
+  const visibleHeight = Math.max(0, containerHeight - offset);
   // Defaults to the nearest Nimbus <ThemeProvider>'s own wrapper element
   // (refThemeProvider), not document.body directly. This matches the
   // convention Sidebar/Modal/Popover already follow internally: they all
@@ -214,8 +210,23 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
           flexDirection: "column",
           backgroundColor: "var(--nimbus-colors-neutral-background)",
           boxSizing: "border-box",
-          bottom: keyboardInset,
+          bottom: 0,
           height: visibleHeight,
+          // Panel stays flush to the viewport's bottom edge and reserves
+          // keyboardInset as its OWN padding instead of shrinking/lifting the
+          // whole panel by that amount. Lifting it relied on keyboardInset
+          // being an exact match for how much of the viewport the keyboard
+          // covers — inherently approximate on mobile web (the browser's own
+          // chrome, e.g. the address bar, can be resizing at the same moment,
+          // and Visual Viewport API updates aren't perfectly synced with
+          // either) — so any shortfall exposed the real page behind the sheet
+          // through the gap. Padding fills that same shortfall with this
+          // panel's own background instead, the same technique native apps
+          // and Ionic's own modal use (insetting the content, not shrinking
+          // the sheet) for this platform gap. Grabber/Header/Body/Footer land
+          // at the same visual position the old shrink-and-lift model put
+          // them at either way.
+          paddingBottom: keyboardInset,
           zIndex,
           borderTopLeftRadius: "var(--nimbus-shape-border-radius-6)",
           borderTopRightRadius: "var(--nimbus-shape-border-radius-6)",

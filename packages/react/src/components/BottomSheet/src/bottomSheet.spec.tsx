@@ -711,25 +711,28 @@ describe("GIVEN <BottomSheet />", () => {
         expect.any(Function)
       );
       expect(panel.style.bottom).toBe("0px");
-      // containerHeight(800) - offset(320) - keyboardInset(0) for the default
-      // 60% snap.
+      // containerHeight(800) - offset(320) for the default 60% snap.
       expect(panel.style.height).toBe("480px");
+      expect(panel.style.paddingBottom).toBe("0px");
 
       mockViewport.height = 500;
 
-      // Height must shrink by the same 300px the keyboard covers
-      // (480 - 300 = 180), not stay fixed: bottom(300) + height(180) = 480 =
-      // the original top offset, so the panel's top edge stays put instead
-      // of the whole fixed-height block sliding up past the viewport's top
-      // edge. Re-fires the currently-registered listeners on every poll
-      // (not just once) as a defensive retry, in case a fresh CI run still
-      // shows the state settling a tick later than expected.
+      // The panel stays flush to the bottom (never lifted) and its OWN
+      // height never shrinks either — only its paddingBottom grows by the
+      // 300px the keyboard covers, reserving that space with the panel's own
+      // background (see BottomSheet.tsx's own comment on why: an exact
+      // lift/shrink by keyboardInset would expose the real page behind the
+      // sheet through any measurement shortfall, which padding can't).
+      // Re-fires the currently-registered listeners on every poll (not just
+      // once) as a defensive retry, in case a fresh CI run still shows the
+      // state settling a tick later than expected.
       await waitFor(() => {
         act(() => {
           listeners.resize?.forEach((cb) => cb());
         });
-        expect(panel.style.bottom).toBe("300px");
-        expect(panel.style.height).toBe("180px");
+        expect(panel.style.bottom).toBe("0px");
+        expect(panel.style.height).toBe("480px");
+        expect(panel.style.paddingBottom).toBe("300px");
       });
     });
 
@@ -762,7 +765,7 @@ describe("GIVEN <BottomSheet />", () => {
 
       makeSut();
       const panel = screen.getByRole("dialog");
-      expect(panel.style.bottom).toBe("0px");
+      expect(panel.style.paddingBottom).toBe("0px");
 
       // The chrome appears: both shrink together by the same 100px, no
       // keyboard involved.
@@ -776,7 +779,7 @@ describe("GIVEN <BottomSheet />", () => {
         act(() => {
           listeners.resize?.forEach((cb) => cb());
         });
-        expect(panel.style.bottom).toBe("0px");
+        expect(panel.style.paddingBottom).toBe("0px");
       });
     });
 
@@ -803,7 +806,7 @@ describe("GIVEN <BottomSheet />", () => {
 
       makeSut();
       const panel = screen.getByRole("dialog");
-      expect(panel.style.bottom).toBe("0px");
+      expect(panel.style.paddingBottom).toBe("0px");
 
       // Chrome shrinks by 100px, keyboard covers a further 300px of the
       // now-smaller visible area — only window's own resize fires.
@@ -820,7 +823,7 @@ describe("GIVEN <BottomSheet />", () => {
         // 700 - 400 = 300px: isolates just the keyboard's own coverage,
         // unaffected by the chrome's separate 100px reduction (already
         // handled by containerHeight).
-        expect(panel.style.bottom).toBe("300px");
+        expect(panel.style.paddingBottom).toBe("300px");
       });
     });
 
@@ -829,6 +832,7 @@ describe("GIVEN <BottomSheet />", () => {
 
       expect(() => makeSut()).not.toThrow();
       expect(screen.getByRole("dialog").style.bottom).toBe("0px");
+      expect(screen.getByRole("dialog").style.paddingBottom).toBe("0px");
     });
 
     it("THEN should re-measure the container height when only the visual viewport (not window) fires resize", async () => {
@@ -930,13 +934,14 @@ describe("GIVEN <BottomSheet />", () => {
       makeSut();
       const panel = screen.getByRole("dialog");
       expect(panel.style.bottom).toBe("0px");
+      expect(panel.style.paddingBottom).toBe("0px");
 
       // Shrinking the mocked visual viewport is exactly what would drive a
       // (wrong, unreliable-in-Capacitor) inset via the browser-only path —
       // asserting it has NO effect here proves that path is genuinely
       // bypassed, not just secondary.
       mockViewport.height = 500;
-      expect(panel.style.bottom).toBe("0px");
+      expect(panel.style.paddingBottom).toBe("0px");
 
       await waitFor(() => {
         act(() => {
@@ -944,7 +949,8 @@ describe("GIVEN <BottomSheet />", () => {
             cb({ keyboardHeight: 300 })
           );
         });
-        expect(panel.style.bottom).toBe("300px");
+        expect(panel.style.bottom).toBe("0px");
+        expect(panel.style.paddingBottom).toBe("300px");
       });
     });
 
@@ -958,12 +964,12 @@ describe("GIVEN <BottomSheet />", () => {
           cb({ keyboardHeight: 300 })
         );
       });
-      await waitFor(() => expect(panel.style.bottom).toBe("300px"));
+      await waitFor(() => expect(panel.style.paddingBottom).toBe("300px"));
 
       act(() => {
         listeners.keyboardWillHide?.forEach((cb) => cb());
       });
-      await waitFor(() => expect(panel.style.bottom).toBe("0px"));
+      await waitFor(() => expect(panel.style.paddingBottom).toBe("0px"));
     });
 
     it("THEN should remove both native listeners on unmount", async () => {
