@@ -60,6 +60,32 @@ const meta: Meta<typeof BottomSheet> = {
     },
   },
   tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      // BottomSheet portals into the nearest Nimbus <ThemeProvider>'s own
+      // wrapper (see BottomSheet.tsx's own `portalTarget` comment) — that
+      // wrapper is rendered by this file's global `ThemeNimbusProvider`
+      // decorator (.storybook/preview.tsx), OUTSIDE this decorator, so the
+      // portaled panel ends up a SIBLING of this div, not a descendant of
+      // it. This div's job isn't to become the panel's containing block
+      // itself; its explicit height is what matters — the panel's
+      // `position: fixed` doesn't contribute any flow height on its own, so
+      // without something else in the flow forcing height, the whole
+      // ancestor chain up through Storybook's own per-story preview wrapper
+      // (which happens to apply a `transform`, making it — not the
+      // viewport — the actual CSS containing block for `position: fixed`
+      // inside Storybook's Docs page, unlike Canvas's dedicated full-height
+      // iframe) collapses to just the trigger Button's own height and clips
+      // the sheet as an empty sliver via that wrapper's own overflow:hidden.
+      // Sized to fit even the tallest "full" snap (see
+      // FULL_TOP_GAP_RATIO) without clipping.
+      <div
+        style={{ position: "relative", height: "860px", overflow: "hidden" }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
