@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Box } from "@nimbus-ds/components";
 import { useTheme } from "@nimbus-ds/styles";
@@ -10,6 +10,7 @@ import {
   SETTLE_TRANSITION,
 } from "./bottomSheet.constants";
 import { BottomSheetProps } from "./bottomSheet.types";
+import { clampIndex, isValidAttributeName } from "./bottomSheet.utils";
 import { useDismissHandlers } from "./hooks/useDismissHandlers";
 import { useDragGesture } from "./hooks/useDragGesture";
 import { useFocusTrap } from "./hooks/useFocusTrap";
@@ -20,9 +21,6 @@ import { BottomSheetBody } from "./subcomponents/BottomSheetBody";
 import { BottomSheetFooter } from "./subcomponents/BottomSheetFooter";
 import { BottomSheetHeader } from "./subcomponents/BottomSheetHeader";
 import { Grabber } from "./subcomponents/Grabber";
-
-const clampIndex = (index: number, length: number) =>
-  Math.min(Math.max(index, 0), Math.max(length - 1, 0));
 
 let headerIdCounter = 0;
 
@@ -39,6 +37,16 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
   root,
   ...rest
 }) => {
+  // Falls back to the default convention instead of trusting a
+  // consumer-supplied string outright: this same value is later used both as
+  // a literal DOM attribute name (`setAttribute` throws `InvalidCharacterError`
+  // on an invalid one) and inside a CSS attribute selector (`Element.closest()`
+  // throws a `SyntaxError` on an invalid one) — degrading here once, instead
+  // of crashing render or every future pointerdown on the page.
+  const safeIgnoreAttributeName = isValidAttributeName(ignoreAttributeName)
+    ? ignoreAttributeName
+    : DEFAULT_IGNORE_ATTRIBUTE_NAME;
+
   const [snapIndex, setSnapIndex] = useState(() =>
     clampIndex(defaultSnap, snapPoints.length)
   );
@@ -82,7 +90,15 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
   const keyboardInset = useKeyboardInset(open);
   const { refThemeProvider } = useTheme();
 
-  const handleRequestClose = () => onRemove?.();
+  // Stable across renders (deps only on `onRemove`) so useDismissHandlers'
+  // effect — which depends on this identity to know when to re-subscribe —
+  // doesn't tear down and re-run on every unrelated re-render of an open
+  // sheet (e.g. a window resize updating containerHeight/keyboardInset). A
+  // fresh function every render would re-push this sheet's token to the end
+  // of useDismissHandlers' shared `openSheets` stack each time, corrupting
+  // "last pushed = topmost" for Escape when another sheet is stacked above
+  // (or below) it.
+  const handleRequestClose = useCallback(() => onRemove?.(), [onRemove]);
 
   const { offset, isDragging, grabberHandlers } = useDragGesture({
     snaps,
@@ -99,7 +115,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
     panelRef,
     overlayRef,
     closeOnOutsidePress,
-    ignoreAttributeName,
+    ignoreAttributeName: safeIgnoreAttributeName,
     onRequestClose: handleRequestClose,
   });
 
@@ -146,7 +162,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
   // "ignored" rather than an outside press. Without this, sheet #2's portal
   // is a DOM sibling of sheet #1's, so touching sheet #2 would otherwise look
   // like an outside press to sheet #1's own dismiss handler and close it.
-  const ignoreAttributeProps = { [ignoreAttributeName]: "" };
+  const ignoreAttributeProps = { [safeIgnoreAttributeName]: "" };
 
   // Plain elements (not Box) below: Box silently drops any caller-provided
   // `style` prop (it only forwards its own sprinkle-computed style), so the

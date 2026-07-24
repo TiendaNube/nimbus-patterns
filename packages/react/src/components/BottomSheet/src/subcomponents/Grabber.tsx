@@ -1,6 +1,8 @@
 import React, { forwardRef } from "react";
 import { Box } from "@nimbus-ds/components";
 
+import { clampIndex } from "../bottomSheet.utils";
+
 interface GrabberProps {
   onPointerDown: (event: React.PointerEvent) => void;
   /** Index of the currently active snap, for aria-valuenow and stepping. */
@@ -29,18 +31,16 @@ interface GrabberProps {
 export const Grabber = forwardRef<HTMLDivElement, GrabberProps>(
   ({ onPointerDown, snapIndex, snapCount, onSnapChange }, ref) => {
     const maxIndex = Math.max(snapCount - 1, 0);
-    const clampIndex = (index: number) =>
-      Math.min(Math.max(index, 0), maxIndex);
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
       switch (event.key) {
         case "ArrowUp":
           event.preventDefault();
-          onSnapChange(clampIndex(snapIndex + 1));
+          onSnapChange(clampIndex(snapIndex + 1, snapCount));
           break;
         case "ArrowDown":
           event.preventDefault();
-          onSnapChange(clampIndex(snapIndex - 1));
+          onSnapChange(clampIndex(snapIndex - 1, snapCount));
           break;
         case "Home":
           event.preventDefault();

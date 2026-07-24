@@ -1,5 +1,7 @@
 import { RefObject, useEffect } from "react";
 
+import { FLOATING_UI_PORTAL_SELECTOR } from "../bottomSheet.constants";
+
 /**
  * Reference count so multiple stacked sheets share a single lock and
  * `overflow` is only restored when the last one unlocks.
@@ -37,7 +39,7 @@ const isInsideALockedPanel = (target: EventTarget | null): boolean => {
  */
 const isInsideAFloatingUiPortal = (target: EventTarget | null): boolean =>
   target instanceof Element &&
-  target.closest("[data-floating-ui-portal]") !== null;
+  target.closest(FLOATING_UI_PORTAL_SELECTOR) !== null;
 
 /**
  * Cancels the touch-driven scroll/bounce a background page would otherwise

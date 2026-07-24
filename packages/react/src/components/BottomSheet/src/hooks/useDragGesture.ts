@@ -10,6 +10,7 @@ import {
 import {
   DISMISS_DISTANCE_THRESHOLD,
   DISMISS_VELOCITY_THRESHOLD,
+  VELOCITY_IDLE_RESET_MS,
 } from "../bottomSheet.constants";
 import { ResolvedSnap } from "./useSnapPoints";
 
@@ -38,18 +39,25 @@ const sortByHeight = (snaps: ResolvedSnap[]) =>
     .map((snap, index) => ({ ...snap, index }))
     .sort((a, b) => a.height - b.height);
 
+type AscendingSnaps = ReturnType<typeof sortByHeight>;
+
 /**
  * Resolves the drag target from the released offset and the last drag
  * velocity (px/ms, positive = moving down). Velocity biases toward the
  * neighboring snap in its direction even if the geometric midpoint was not
  * crossed (a fast flick), matching the DS bottom-sheet convention.
+ *
+ * Takes the already-ascending-by-height view rather than sorting its own
+ * `snaps` param: `clamp` needs the identical view on every `pointermove`
+ * during a single drag, so the hook below sorts once (memoized on `snaps`)
+ * and both this function and `clamp` share that one result instead of each
+ * re-sorting from scratch.
  */
 const resolveDragTarget = (
   offset: number,
   velocity: number,
-  snaps: ResolvedSnap[]
+  ascending: AscendingSnaps
 ): { dismiss: true } | { dismiss: false; index: number } => {
-  const ascending = sortByHeight(snaps);
   const lowest = ascending[0];
 
   const pastDismissDistance =
@@ -97,6 +105,30 @@ export const useDragGesture = ({
   const [liveOffset, setLiveOffset] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
 
+  // `clamp`/`resolveDragTarget` used to each re-sort `snaps` from scratch on
+  // every call — and `clamp` runs on every single native `pointermove`
+  // event, not just once per render. `useSnapPoints` returns a new `snaps`
+  // array reference every render (even while dragging), so this still
+  // re-sorts once per render, but that's already far less often than once
+  // per raw pointer event: several `pointermove`s can fire before React
+  // commits the next render, and all of them read the same memoized value
+  // via `boundsRef` below instead of each re-sorting independently.
+  const ascendingSnaps = useMemo(() => sortByHeight(snaps), [snaps]);
+
+  // Mirrors the latest ascendingSnaps/containerHeight for `clamp` and
+  // `handlePointerUp` to read at call time instead of closing over them
+  // directly. `handlePointerMove`/`handlePointerUp` are registered on
+  // `document` once, at pointerdown, and never re-attached for the rest of
+  // that single gesture (see onPointerDown below) — if `clamp` closed over
+  // `snaps`/`containerHeight` directly, a mid-drag viewport change (e.g. a
+  // mobile browser's chrome auto-hiding while dragging) would leave the
+  // drag clamped to bounds computed from the stale values captured at
+  // pointerdown, for the remainder of that gesture. Assigning a ref during
+  // render (not inside an effect) is intentional here: this value is only
+  // ever read later, from event handlers, never during rendering itself.
+  const boundsRef = useRef({ ascendingSnaps, containerHeight });
+  boundsRef.current = { ascendingSnaps, containerHeight };
+
   const dragState = useRef<{
     startClientY: number;
     startOffset: number;
@@ -112,7 +144,7 @@ export const useDragGesture = ({
   // be a different, stale identity than what a later pointerdown attached).
   const activeListenersRef = useRef<{
     move: (event: PointerEvent) => void;
-    up: () => void;
+    up: (event: PointerEvent) => void;
     cancel: () => void;
   } | null>(null);
 
@@ -129,17 +161,14 @@ export const useDragGesture = ({
     activeListenersRef.current = null;
   };
 
-  const clamp = useCallback(
-    (value: number) => {
-      const ascending = sortByHeight(snaps);
-      const minOffset = ascending.at(-1)?.offset ?? 0;
-      const maxOffset =
-        (ascending[0]?.offset ?? containerHeight) +
-        DISMISS_DISTANCE_THRESHOLD * 2;
-      return Math.min(Math.max(value, minOffset), maxOffset);
-    },
-    [snaps, containerHeight]
-  );
+  const clamp = useCallback((value: number) => {
+    const { ascendingSnaps: ascending, containerHeight: height } =
+      boundsRef.current;
+    const minOffset = ascending.at(-1)?.offset ?? 0;
+    const maxOffset =
+      (ascending[0]?.offset ?? height) + DISMISS_DISTANCE_THRESHOLD * 2;
+    return Math.min(Math.max(value, minOffset), maxOffset);
+  }, []);
 
   const handlePointerMove = useCallback(
     (event: PointerEvent) => {
@@ -162,29 +191,50 @@ export const useDragGesture = ({
     [clamp]
   );
 
-  const handlePointerUp = useCallback(() => {
-    // `dragState` is a ref, not React state: handlePointerUp is registered
-    // once (at pointerdown) via addEventListener and never re-attached mid
-    // drag, so any state variable in its closure (e.g. `liveOffset`) would
-    // stay frozen at its pointerdown-time value. Reading the live value back
-    // out of the ref is what keeps this handler correct despite that.
-    const drag = dragState.current;
-    dragState.current = null;
-    setIsDragging(false);
-    setLiveOffset(null);
+  const handlePointerUp = useCallback(
+    (event: PointerEvent) => {
+      // `dragState` is a ref, not React state: handlePointerUp is registered
+      // once (at pointerdown) via addEventListener and never re-attached mid
+      // drag, so any state variable in its closure (e.g. `liveOffset`) would
+      // stay frozen at its pointerdown-time value. Reading the live value
+      // back out of the ref is what keeps this handler correct despite that.
+      const drag = dragState.current;
+      dragState.current = null;
+      setIsDragging(false);
+      setLiveOffset(null);
 
-    if (!drag) return;
+      if (!drag) return;
 
-    const result = resolveDragTarget(drag.currentOffset, drag.velocity, snaps);
+      // `drag.velocity` is only ever updated on `pointermove` (see above) and
+      // never decays on its own — if the pointer stops moving but isn't
+      // lifted for a while, it stays frozen at whatever it was during the
+      // last move. Without this, a fast flick followed by the pointer
+      // coming to rest (held still, not released) still reads as "mid-flick"
+      // at release, biasing toward a dismiss/snap the actual final motion
+      // ("stopped") shouldn't trigger.
+      const idleMs = event.timeStamp - drag.lastTime;
+      const velocity = idleMs > VELOCITY_IDLE_RESET_MS ? 0 : drag.velocity;
 
-    if (result.dismiss) {
-      onDismiss();
-    } else if (result.index !== snapIndex) {
-      onSnapChange(result.index);
-    }
+      // Reads the current bounds via the same ref `clamp` uses (see its own
+      // comment above) instead of the `snaps` closed over at this
+      // callback's own creation time, so a mid-drag viewport change is
+      // reflected here too, not just in `clamp`.
+      const result = resolveDragTarget(
+        drag.currentOffset,
+        velocity,
+        boundsRef.current.ascendingSnaps
+      );
 
-    removeActiveListeners();
-  }, [snaps, snapIndex, onSnapChange, onDismiss]);
+      if (result.dismiss) {
+        onDismiss();
+      } else if (result.index !== snapIndex) {
+        onSnapChange(result.index);
+      }
+
+      removeActiveListeners();
+    },
+    [snapIndex, onSnapChange, onDismiss]
+  );
 
   // Fires instead of pointerup when the browser/OS interrupts the gesture
   // (e.g. a system swipe or multi-touch conflict takes over mid-drag).

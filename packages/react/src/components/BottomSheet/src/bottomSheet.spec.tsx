@@ -381,6 +381,23 @@ describe("GIVEN <BottomSheet />", () => {
 
       document.body.removeChild(ignored);
     });
+
+    it("THEN should fall back to the default convention instead of throwing when given an ignoreAttributeName that isn't a valid attribute name", () => {
+      // "not a valid attr!" is used both as a literal DOM attribute name
+      // (React's setAttribute throws InvalidCharacterError for this on
+      // mount) and inside a CSS attribute-selector fragment passed to
+      // Element.closest() (throws a SyntaxError on every pointerdown) —
+      // without sanitizing it first, just rendering this would already
+      // throw before any interaction happens.
+      const { onRemove } = makeSut({
+        ignoreAttributeName: "not a valid attr!",
+      });
+
+      // Falls back to the default ignore-attribute convention, so an
+      // outside press elsewhere in the document still requests a close.
+      fireEvent.pointerDown(document.body);
+      expect(onRemove).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe("WHEN a second BottomSheet opens above an already open one", () => {
@@ -447,6 +464,48 @@ describe("GIVEN <BottomSheet />", () => {
           </BottomSheet>
         </>
       );
+
+      fireEvent.keyDown(document, { key: "Escape" });
+
+      expect(onRemoveSecond).toHaveBeenCalledTimes(1);
+      expect(onRemoveFirst).not.toHaveBeenCalled();
+    });
+
+    it("THEN a re-render of the first (background) sheet should NOT let it steal Escape from the still-topmost second sheet", () => {
+      const onRemoveFirst = jest.fn();
+      const onRemoveSecond = jest.fn();
+      // The first sheet is mounted inside its own small stateful wrapper so
+      // the test can re-render JUST its subtree (capturing the state setter
+      // into this outer-scope variable during render) without also
+      // re-rendering the second sheet — re-rendering both together wouldn't
+      // reproduce the bug, since React would re-run both sheets' effects in
+      // the same relative order and their stacking would happen to come out
+      // right anyway.
+      let rerenderFirstSheet: () => void = () => undefined;
+      const FirstSheetWrapper: React.FC = () => {
+        const [, setBump] = useState(0);
+        rerenderFirstSheet = () => setBump((n) => n + 1);
+        return (
+          <BottomSheet open onRemove={onRemoveFirst}>
+            <BottomSheet.Body>First sheet content</BottomSheet.Body>
+          </BottomSheet>
+        );
+      };
+      render(
+        <>
+          <FirstSheetWrapper />
+          <BottomSheet open onRemove={onRemoveSecond}>
+            <BottomSheet.Body>Second sheet content</BottomSheet.Body>
+          </BottomSheet>
+        </>
+      );
+
+      // Simulates the first sheet re-rendering for any unrelated reason
+      // (e.g. a window resize updating its own containerHeight/keyboardInset
+      // state) while the second sheet stays open above it, untouched.
+      act(() => {
+        rerenderFirstSheet();
+      });
 
       fireEvent.keyDown(document, { key: "Escape" });
 
@@ -1137,6 +1196,61 @@ describe("GIVEN <BottomSheet />", () => {
       drag(200, 240, 20);
 
       expect(panel.style.height).toBe("320px");
+    });
+
+    it("THEN a fast flick followed by a pause before release should NOT still resolve as a flick", () => {
+      dragSut(0);
+      const panel = screen.getByRole("dialog");
+      expect(panel.style.height).toBe("320px");
+
+      // Same fast upward flick as the test above (40px in 20ms, well past
+      // DISMISS_VELOCITY_THRESHOLD), reaching clientY 460 at t=21...
+      firePointerEvent(screen.getByRole("separator"), "pointerdown", 500, 1);
+      firePointerEvent(document, "pointermove", 460, 21);
+      // ...but this time the pointer stays down, at rest (no further
+      // pointermove at all), for 500ms — well past VELOCITY_IDLE_RESET_MS —
+      // before being released at that same position. The finger genuinely
+      // came to rest before lifting; without decaying the stale velocity
+      // reading based on elapsed idle time, this would still resolve
+      // exactly like the flick test above (settling at the taller snap)
+      // purely because of a value that stopped reflecting reality 500ms
+      // earlier.
+      firePointerEvent(document, "pointerup", 460, 521);
+
+      // Distance alone (480 -> 440, nowhere near the 320 midpoint) should
+      // settle back at the same snap, exactly like the "doesn't cross a
+      // midpoint" test above.
+      expect(panel.style.height).toBe("320px");
+    });
+
+    it("THEN should clamp against fresh drag bounds after the viewport resizes mid-gesture, not the ones captured at drag-start", () => {
+      dragSut(0);
+      const panel = screen.getByRole("dialog");
+
+      firePointerEvent(screen.getByRole("separator"), "pointerdown", 500, 1);
+      // Drag far past the lowest snap's offset: clamps to the bounds
+      // derived from the containerHeight active at drag-start (800) —
+      // maxOffset = 480 + 2*96 = 672.
+      firePointerEvent(document, "pointermove", 1500, 21);
+      expect(panel.style.height).toBe("128px"); // 800 - 672
+
+      // Mid-gesture, the viewport grows (e.g. a mobile browser's own chrome
+      // auto-hiding while dragging), changing containerHeight from 800 to
+      // 1000 — without ever releasing the pointer.
+      act(() => {
+        Object.defineProperty(window, "innerHeight", {
+          value: 1000,
+          configurable: true,
+        });
+        window.dispatchEvent(new Event("resize"));
+      });
+
+      // Same drag continues, still pinned to the same far-down position:
+      // should now clamp against the FRESH bounds (offsets [600, 200] ->
+      // maxOffset = 600 + 192 = 792), not the stale ones captured at
+      // pointerdown.
+      firePointerEvent(document, "pointermove", 1500, 41);
+      expect(panel.style.height).toBe("208px"); // 1000 - 792
     });
 
     it("THEN should dismiss when dragged down past the dismiss threshold from the lowest snap", () => {

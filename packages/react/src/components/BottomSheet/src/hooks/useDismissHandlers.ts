@@ -1,5 +1,6 @@
 import { RefObject, useEffect } from "react";
 
+import { FLOATING_UI_PORTAL_SELECTOR } from "../bottomSheet.constants";
 import { CloseOnOutsidePress } from "../bottomSheet.types";
 
 /**
@@ -75,7 +76,9 @@ export const useDismissHandlers = ({
       if (
         !isOverlayPress &&
         target instanceof Element &&
-        target.closest(`[${ignoreAttributeName}], [data-floating-ui-portal]`)
+        target.closest(
+          `[${ignoreAttributeName}], ${FLOATING_UI_PORTAL_SELECTOR}`
+        )
       ) {
         return;
       }

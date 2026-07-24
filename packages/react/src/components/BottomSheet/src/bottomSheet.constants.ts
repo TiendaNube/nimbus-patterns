@@ -20,6 +20,16 @@ export const DISMISS_DISTANCE_THRESHOLD = 96;
 export const DISMISS_VELOCITY_THRESHOLD = 0.5;
 
 /**
+ * Milliseconds of no `pointermove` before release after which the last
+ * recorded drag velocity is treated as stale (reset to 0) instead of still
+ * biasing the release toward a flick-style dismiss/snap. Without this, a fast
+ * flick followed by the pointer coming to rest (held still, not lifted) for
+ * longer than this keeps reading as "still flicking" at release, even though
+ * the gesture visually ended at rest.
+ */
+export const VELOCITY_IDLE_RESET_MS = 100;
+
+/**
  * CSS transition used when the panel settles to a snap point, dismisses, or
  * repositions above the on-screen keyboard. The panel's visible size is
  * driven by `height` (anchored via `bottom`), not `transform`, so both are
@@ -43,3 +53,12 @@ export const PADDING_TOKEN_MAP = {
  * portaled Popover/Modal content does not close the sheet.
  */
 export const DEFAULT_IGNORE_ATTRIBUTE_NAME = "data-nimbus-outside-press-ignore";
+
+/**
+ * The wrapper attribute every floating-ui-based Nimbus overlay (Popover,
+ * Modal, Sidebar) renders its content into. Shared by useDismissHandlers
+ * (a press inside one shouldn't dismiss the sheet) and useScrollLock (a
+ * touch-scroll inside one shouldn't be cancelled) so both stay in sync if
+ * this ever changes, instead of each hardcoding its own copy of the literal.
+ */
+export const FLOATING_UI_PORTAL_SELECTOR = "[data-floating-ui-portal]";
