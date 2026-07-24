@@ -78,9 +78,22 @@ const meta: Meta<typeof BottomSheet> = {
       // iframe) collapses to just the trigger Button's own height and clips
       // the sheet as an empty sliver via that wrapper's own overflow:hidden.
       // Sized to fit even the tallest "full" snap (see
-      // FULL_TOP_GAP_RATIO) without clipping.
+      // FULL_TOP_GAP_RATIO) without clipping. flexEnd anchors the trigger
+      // Button to this box's own bottom edge — the same edge the panel
+      // itself anchors to once open (both end up flush against the same
+      // inflated containing block) — so the Button stays right where the
+      // sheet appears instead of at the top of an 860px box, out of view
+      // once the sheet's own scroll-lock (see useScrollLock) blocks
+      // scrolling the rest of this Docs page into sight.
       <div
-        style={{ position: "relative", height: "860px", overflow: "hidden" }}
+        style={{
+          position: "relative",
+          height: "860px",
+          overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+        }}
       >
         <Story />
       </div>
