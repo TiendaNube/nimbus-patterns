@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useArgs } from "@storybook/preview-api";
-import {
-  Box,
-  Button,
-  Input,
-  Modal,
-  Popover,
-  Text,
-  Title,
-} from "@nimbus-ds/components";
+import { Box, Button, Text, Title } from "@nimbus-ds/components";
 
 import { BottomSheet } from "./BottomSheet";
 import { BottomSheetProps } from "./bottomSheet.types";
@@ -187,115 +179,6 @@ export const startingFullScreen: Story = {
         <BottomSheet.Body>{placeholderBody}</BottomSheet.Body>
       </>
     ),
-  },
-};
-
-export const withInternalPopover: Story = {
-  render: (args) => {
-    const [open, setOpen] = useState(false);
-    const [popoverVisible, setPopoverVisible] = useState(false);
-    // BottomSheet unmounts its children when it closes, but state owned
-    // outside it (like this popoverVisible) survives that unmount — reset it
-    // alongside the sheet so reopening doesn't come back with the popover
-    // already open.
-    const handleClose = () => {
-      setOpen(false);
-      setPopoverVisible(false);
-    };
-    return (
-      <>
-        <Button onClick={() => setOpen(true)}>Open</Button>
-        <BottomSheet {...args} open={open} onRemove={handleClose}>
-          <BottomSheet.Header>
-            <Title as="h3">Popover stays open above the sheet</Title>
-          </BottomSheet.Header>
-          <BottomSheet.Body>
-            <Box display="inline-flex">
-              <Popover
-                content={
-                  <Box padding="2">
-                    <Text>
-                      This popover renders above the sheet and does not close
-                      it.
-                    </Text>
-                  </Box>
-                }
-                visible={popoverVisible}
-                onVisibility={setPopoverVisible}
-              >
-                {/* Popover already toggles itself via its own click interaction
-                  (enabledClick defaults to true) and reports the change via
-                  onVisibility — no need to also toggle state in onClick here. */}
-                <Button>Toggle popover</Button>
-              </Popover>
-            </Box>
-          </BottomSheet.Body>
-        </BottomSheet>
-      </>
-    );
-  },
-  args: {
-    snapPoints: ["60%", "90%", "full"],
-  },
-};
-
-export const withInternalModal: Story = {
-  render: (args) => {
-    const [open, setOpen] = useState(false);
-    const [modalOpen, setModalOpen] = useState(false);
-    // See withInternalPopover: reset the modal's own state alongside the
-    // sheet's, since it's owned outside the sheet and survives the sheet's
-    // unmount on close.
-    const handleClose = () => {
-      setOpen(false);
-      setModalOpen(false);
-    };
-    return (
-      <>
-        <Button onClick={() => setOpen(true)}>Open</Button>
-        <BottomSheet {...args} open={open} onRemove={handleClose}>
-          <BottomSheet.Header>
-            <Title as="h3">Modal stays open above the sheet</Title>
-          </BottomSheet.Header>
-          <BottomSheet.Body>
-            <Button onClick={() => setModalOpen(true)}>Open modal</Button>
-            <Modal open={modalOpen} onDismiss={() => setModalOpen(false)}>
-              <Modal.Header title="Confirm action" />
-              <Modal.Body>
-                <Text>
-                  This modal renders above the sheet and does not close it.
-                </Text>
-              </Modal.Body>
-            </Modal>
-          </BottomSheet.Body>
-        </BottomSheet>
-      </>
-    );
-  },
-  args: {
-    snapPoints: ["60%", "90%", "full"],
-  },
-};
-
-export const withKeyboardInput: Story = {
-  render: (args) => {
-    const [open, setOpen] = useState(false);
-    return (
-      <>
-        <Button onClick={() => setOpen(true)}>Open</Button>
-        <BottomSheet {...args} open={open} onRemove={() => setOpen(false)}>
-          <BottomSheet.Header>
-            <Title as="h3">Focus the input on a mobile device</Title>
-          </BottomSheet.Header>
-          <BottomSheet.Body>
-            <Input placeholder="Type something..." />
-          </BottomSheet.Body>
-        </BottomSheet>
-      </>
-    );
-  },
-  args: {
-    snapPoints: ["60%", "90%"],
   },
 };
 
