@@ -2,6 +2,7 @@
 
 // components
 export * from "@nimbus-ds/app-shell";
+export * from "@nimbus-ds/bottomsheet";
 export * from "@nimbus-ds/callout-card";
 export * from "@nimbus-ds/data-list";
 export * from "@nimbus-ds/data-table";

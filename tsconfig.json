@@ -41,6 +41,9 @@
       "@common/*": ["./packages/react/src/common/*"],
       "@nimbus-ds/patterns-webpack": ["./packages/core/webpack/src"],
       "@nimbus-ds/app-shell": ["./packages/react/src/components/AppShell/src"],
+      "@nimbus-ds/bottomsheet": [
+        "./packages/react/src/components/BottomSheet/src"
+      ],
       "@nimbus-ds/callout-card": [
         "./packages/react/src/components/CalloutCard/src"
       ],

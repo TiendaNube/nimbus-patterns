@@ -1,0 +1,153 @@
+{
+  "id": "bottomSheet",
+  "name": "BottomSheet",
+  "totalProps": 10,
+  "packageName": "@nimbus-ds/bottomsheet",
+  "version": "1.0.0",
+  "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/bottom-sheet",
+  "props": [
+    {
+      "description": "Determines if the bottom sheet is shown or not.",
+      "default": false,
+      "type": "boolean",
+      "title": "open",
+      "required": false
+    },
+    {
+      "description": "Callback fired when the component requests to be closed (overlay press, close control, Escape, or a downward dismiss gesture).\n() => void;",
+      "type": "object",
+      "additionalProperties": false,
+      "propertyOrder": [],
+      "title": "onRemove",
+      "required": false
+    },
+    {
+      "description": "Ordered list of heights the sheet can snap to. Each entry is a viewport-height percentage (e.g. \"60%\") or the keyword \"full\".",
+      "default": ["60%", "90%", "full"],
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "snapPoints",
+      "required": false
+    },
+    {
+      "description": "Index within snapPoints used as the initial snap point.",
+      "default": 0,
+      "type": "number",
+      "title": "defaultSnap",
+      "required": false
+    },
+    {
+      "description": "Content of the sheet. Compose with BottomSheet.Header, BottomSheet.Body and BottomSheet.Footer.",
+      "type": "React.ReactNode",
+      "title": "children",
+      "required": false
+    },
+    {
+      "description": "Controls whether pressing outside should close the sheet.\n- boolean: enable/disable dismissal on outside press\n- function: receive the DOM event and return true to allow closing",
+      "default": true,
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "propertyOrder": []
+        }
+      ],
+      "title": "closeOnOutsidePress",
+      "required": false
+    },
+    {
+      "description": "The attribute name to ignore when checking for outside presses, so portaled Popover/Modal content does not close the sheet.",
+      "default": "data-nimbus-outside-press-ignore",
+      "type": "string",
+      "title": "ignoreAttributeName",
+      "required": false
+    },
+    {
+      "description": "Determines if background scroll is locked while the sheet is open.",
+      "default": true,
+      "type": "boolean",
+      "title": "needRemoveScroll",
+      "required": false
+    },
+    {
+      "description": "z-index of the sheet layer. High enough to cover the mobile nav bar.",
+      "default": 800,
+      "type": "number",
+      "title": "zIndex",
+      "required": false
+    },
+    {
+      "description": "Root element where the portal should be mounted. When provided and not null, the portal renders inside this element; otherwise it renders into document.body. Useful to scope the sheet within a container (e.g., AppShell.Chat).",
+      "type": "object",
+      "title": "root",
+      "required": false
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "BottomSheet.Header",
+      "totalProps": 1,
+      "props": [
+        {
+          "description": "The content of the sheet header. Accepts any node (title, actions, icons).",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": false
+        },
+        {
+          "description": "The padding around the header content area.",
+          "default": "base",
+          "enum": ["base", "none"],
+          "type": "string",
+          "title": "padding",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "BottomSheet.Body",
+      "totalProps": 2,
+      "props": [
+        {
+          "description": "The scrollable content of the sheet.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": true
+        },
+        {
+          "description": "The padding around the body content area.",
+          "default": "base",
+          "enum": ["base", "none"],
+          "type": "string",
+          "title": "padding",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "BottomSheet.Footer",
+      "totalProps": 2,
+      "props": [
+        {
+          "description": "The content of the sheet footer.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": true
+        },
+        {
+          "description": "The padding around the footer content area.",
+          "default": "base",
+          "enum": ["base", "none"],
+          "type": "string",
+          "title": "padding",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

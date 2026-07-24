@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-07-24 `1.37.0`
+
+#### 🎉 New features
+
+- Added `BottomSheet` component: a mobile-first modal sheet with configurable snap points, a drag gesture to resize or dismiss, focus trapping, background scroll locking, on-screen keyboard handling, and `BottomSheet.Header`/`BottomSheet.Body`/`BottomSheet.Footer` subcomponents. ([#177](https://github.com/TiendaNube/nimbus-patterns/pull/177) by [@jffs](https://github.com/jffs))
+
 ## 2026-06-25 `1.36.0`
 
 #### 🎉 New features

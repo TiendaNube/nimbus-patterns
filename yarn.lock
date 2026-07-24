@@ -3475,6 +3475,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@nimbus-ds/bottomsheet@workspace:packages/react/src/components/BottomSheet":
+  version: 0.0.0-use.local
+  resolution: "@nimbus-ds/bottomsheet@workspace:packages/react/src/components/BottomSheet"
+  dependencies:
+    "@nimbus-ds/icons": ^1
+  peerDependencies:
+    "@nimbus-ds/components": ^5
+    "@nimbus-ds/styles": ^9
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
+  languageName: unknown
+  linkType: soft
+
 "@nimbus-ds/calendar@workspace:packages/react/src/components/Calendar":
   version: 0.0.0-use.local
   resolution: "@nimbus-ds/calendar@workspace:packages/react/src/components/Calendar"
