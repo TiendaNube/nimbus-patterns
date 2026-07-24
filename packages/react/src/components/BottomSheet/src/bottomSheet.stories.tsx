@@ -53,43 +53,52 @@ const meta: Meta<typeof BottomSheet> = {
   },
   tags: ["autodocs"],
   decorators: [
-    (Story) => (
-      // BottomSheet portals into the nearest Nimbus <ThemeProvider>'s own
-      // wrapper (see BottomSheet.tsx's own `portalTarget` comment) — that
-      // wrapper is rendered by this file's global `ThemeNimbusProvider`
-      // decorator (.storybook/preview.tsx), OUTSIDE this decorator, so the
-      // portaled panel ends up a SIBLING of this div, not a descendant of
-      // it. This div's job isn't to become the panel's containing block
-      // itself; its explicit height is what matters — the panel's
-      // `position: fixed` doesn't contribute any flow height on its own, so
-      // without something else in the flow forcing height, the whole
-      // ancestor chain up through Storybook's own per-story preview wrapper
-      // (which happens to apply a `transform`, making it — not the
-      // viewport — the actual CSS containing block for `position: fixed`
-      // inside Storybook's Docs page, unlike Canvas's dedicated full-height
-      // iframe) collapses to just the trigger Button's own height and clips
-      // the sheet as an empty sliver via that wrapper's own overflow:hidden.
-      // Sized to fit even the tallest "full" snap (see
-      // FULL_TOP_GAP_RATIO) without clipping. flexEnd anchors the trigger
-      // Button to this box's own bottom edge — the same edge the panel
-      // itself anchors to once open (both end up flush against the same
-      // inflated containing block) — so the Button stays right where the
-      // sheet appears instead of at the top of an 860px box, out of view
-      // once the sheet's own scroll-lock (see useScrollLock) blocks
-      // scrolling the rest of this Docs page into sight.
-      <div
-        style={{
-          position: "relative",
-          height: "860px",
-          overflow: "hidden",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-end",
-        }}
-      >
-        <Story />
-      </div>
-    ),
+    (Story, context) => {
+      // Only in Storybook's Docs page (viewMode "docs"), not in Canvas
+      // (viewMode "story", each story's own dedicated full-height iframe,
+      // where the sheet already renders correctly with no wrapper at all):
+      // Docs stacks every story inline inside ONE shared iframe, each
+      // wrapped in Storybook's own per-story zoom/scale wrapper, which
+      // applies a `transform` — making it, not the viewport, the actual CSS
+      // containing block for `position: fixed` here. BottomSheet portals
+      // into the nearest Nimbus <ThemeProvider>'s own wrapper (see
+      // BottomSheet.tsx's own `portalTarget` comment), rendered by this
+      // file's global `ThemeNimbusProvider` decorator OUTSIDE this one, so
+      // the portaled panel ends up a SIBLING of the div below, not a
+      // descendant of it — its job isn't to become the panel's containing
+      // block itself, only to give the flow something to size against: the
+      // panel's `position: fixed` contributes no flow height on its own, so
+      // without this, the ancestor chain up through that zoom wrapper
+      // collapses to just the trigger Button's own height and clips the
+      // sheet to an empty sliver via that wrapper's own overflow: hidden
+      // (also reproduced by Sidebar/SideModal's own Docs page — an existing,
+      // unaddressed instance of the same Storybook limitation elsewhere in
+      // this repo).
+      if (context.viewMode !== "docs") return <Story />;
+      return (
+        // Sized to fit even the tallest "full" snap (see FULL_TOP_GAP_RATIO)
+        // without clipping. flexEnd anchors the trigger Button to this box's
+        // own bottom edge — the same edge the panel itself anchors to once
+        // open — so the Button stays right where the sheet appears instead
+        // of at the top of an 860px box, out of view once the sheet's own
+        // scroll-lock (see useScrollLock) blocks scrolling the rest of this
+        // Docs page into sight. Scoped to Docs only: Canvas's own per-story
+        // page has nothing else to scroll to anyway, so forcing this same
+        // height/flex there would just push the Button down for no reason.
+        <div
+          style={{
+            position: "relative",
+            height: "860px",
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+          }}
+        >
+          <Story />
+        </div>
+      );
+    },
   ],
 };
 
