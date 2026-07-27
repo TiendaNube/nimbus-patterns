@@ -21,7 +21,10 @@
         {
           "description": "Visual variant of the button.\n\"ai-generative\" renders a fixed AI icon with a gradient border and does not accept a custom `icon`.",
           "default": "neutral",
-          "enum": ["ai-generative", "neutral"],
+          "enum": [
+            "ai-generative",
+            "neutral"
+          ],
           "type": "string",
           "title": "appearance",
           "required": false
