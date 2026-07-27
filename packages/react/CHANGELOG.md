@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-07-15 `1.37.0`
+
+#### 🎉 New features
+
+- `NavTabs`: Added an `appearance` prop to `NavTabs.Item`, with an `"ai-generative"` variant that renders a gradient border and a fixed AI icon for AI entry points such as an assistant button. ([#176](https://github.com/TiendaNube/nimbus-patterns/pull/176) by [@jffs](https://github.com/jffs))
+
 ## 2026-06-25 `1.36.0`
 
 #### 🎉 New features

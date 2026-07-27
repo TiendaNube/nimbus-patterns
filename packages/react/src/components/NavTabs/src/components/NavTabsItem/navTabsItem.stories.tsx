@@ -24,3 +24,11 @@ export const basic: Story = {
     ariaLabel: "Home",
   },
 };
+
+export const aiGenerative: Story = {
+  args: {
+    appearance: "ai-generative",
+    onClick: () => false,
+    ariaLabel: "Lumi assistant",
+  },
+};
