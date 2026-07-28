@@ -1,5 +1,6 @@
 releases:
   "@nimbus-ds/plan-display": minor
+  "@nimbus-ds/patterns-webpack": patch
 
 declined:
   - nimbus-patterns
