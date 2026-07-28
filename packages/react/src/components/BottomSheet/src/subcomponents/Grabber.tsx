@@ -74,51 +74,85 @@ export const Grabber = forwardRef<HTMLDivElement, GrabberProps>(
     };
 
     return (
-      // A "separator" is non-interactive by default, but the ARIA APG
-      // explicitly allows a focusable, keyboard-operable "movable splitter"
-      // variant (which is what this is — see the ArrowUp/Down/Home/End
-      // handling above), so the tabIndex and event handlers here are
-      // intentional, not an oversight.
-      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-noninteractive-tabindex
+      // Purely a layout frame for the visible chrome row (28px tall) — no
+      // ARIA role, no handlers. The actual interactive element is the
+      // centered circle below; this div only reserves its visual space and
+      // positions the decorative pill.
       <div
-        ref={ref}
-        onPointerDown={onPointerDown}
-        onKeyDown={handleKeyDown}
-        role="separator"
-        aria-orientation="horizontal"
-        aria-label="Drag to resize or dismiss"
-        aria-valuenow={snapIndex}
-        aria-valuemin={0}
-        aria-valuemax={maxIndex}
-        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-        tabIndex={0}
         style={{
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
+          position: "relative",
           width: "100%",
-          paddingTop: "var(--nimbus-spacing-2)",
-          paddingBottom: "var(--nimbus-spacing-2)",
-          touchAction: "none",
-          cursor: "grab",
-          boxSizing: "border-box",
+          height: "28px",
+          boxSizing: "border-box"
         }}
       >
-        {/* Plain div wrapper, not Box: Box silently drops any caller-provided
-            `style` prop (see BottomSheet.tsx's own comment on the same
-            gotcha), and `opacity` isn't one of its sprinkle props either. */}
+        {/*
+          A "separator" is non-interactive by default, but the ARIA APG
+          explicitly allows a focusable, keyboard-operable "movable splitter"
+          variant (which is what this is — see the ArrowUp/Down/Home/End
+          handling above), so the tabIndex and event handlers here are
+          intentional, not an oversight.
+
+          Sized as a centered 56px circle (well past MD3's 48dp minimum for
+          a drag handle), overlapping 8px above the sheet's own top edge into
+          the backdrop — confirmed safe since BottomSheet's panel has no
+          `overflow: hidden` (see BottomSheet.tsx's comment on that).
+          Deliberately a circle, not the old full-width band: narrows the
+          draggable area to right around the pill for precision, trading off
+          edge-to-edge dragging.
+        */}
+        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-noninteractive-tabindex */}
         <div
+          ref={ref}
+          onPointerDown={onPointerDown}
+          onKeyDown={handleKeyDown}
+          role="separator"
+          aria-orientation="horizontal"
+          aria-label="Drag to resize or dismiss"
+          aria-valuenow={snapIndex}
+          aria-valuemin={0}
+          aria-valuemax={maxIndex}
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+          tabIndex={0}
           style={{
-            opacity: pillHidden ? 0 : 1,
-            transition: "opacity 300ms cubic-bezier(0.32, 0.72, 0, 1)",
+            position: "absolute",
+            top: "-8px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "56px",
+            height: "56px",
+            borderRadius: "50%",
+            touchAction: "none",
+            cursor: "grab",
+            boxSizing: "border-box"
           }}
         >
-          <Box
-            width="44px"
-            height="4px"
-            backgroundColor="neutral-surfaceHighlight"
-            borderRadius="full"
-          />
+          {/* Plain div wrapper, not Box: Box silently drops any caller-provided
+              `style` prop (see BottomSheet.tsx's own comment on the same
+              gotcha), and `opacity` isn't one of its sprinkle props either.
+              Positioned absolutely at 16px from this circle's own top edge —
+              since the circle itself starts 8px above the row, that lands the
+              pill exactly 8px below the row's top, same spot it always sat
+              at before the touch target grew. */}
+          <div
+            style={{
+              position: "absolute",
+              top: "16px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              opacity: pillHidden ? 0 : 1,
+              transition: "opacity 300ms cubic-bezier(0.32, 0.72, 0, 1)"
+            }}
+          >
+            <Box
+              width="44px"
+              height="4px"
+              backgroundColor="neutral-surfaceHighlight"
+              borderRadius="full"
+            />
+          </div>
         </div>
       </div>
     );
