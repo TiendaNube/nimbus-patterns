@@ -3475,9 +3475,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nimbus-ds/bottomsheet@workspace:packages/react/src/components/BottomSheet":
+"@nimbus-ds/bottom-sheet@workspace:packages/react/src/components/BottomSheet":
   version: 0.0.0-use.local
-  resolution: "@nimbus-ds/bottomsheet@workspace:packages/react/src/components/BottomSheet"
+  resolution: "@nimbus-ds/bottom-sheet@workspace:packages/react/src/components/BottomSheet"
   dependencies:
     "@nimbus-ds/icons": ^1
   peerDependencies:

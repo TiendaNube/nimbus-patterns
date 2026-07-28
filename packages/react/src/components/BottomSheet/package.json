@@ -1,5 +1,5 @@
 {
-  "name": "@nimbus-ds/bottomsheet",
+  "name": "@nimbus-ds/bottom-sheet",
   "version": "1.0.0",
   "license": "MIT",
   "source": "src/index.ts",

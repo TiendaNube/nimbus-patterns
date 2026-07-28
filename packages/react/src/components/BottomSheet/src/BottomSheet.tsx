@@ -9,7 +9,7 @@ import {
   DEFAULT_SNAP_POINTS,
   SETTLE_TRANSITION,
 } from "./bottomSheet.constants";
-import { BottomSheetProps } from "./bottomSheet.types";
+import { BottomSheetComponents, BottomSheetProps } from "./bottomSheet.types";
 import { clampIndex, isValidAttributeName } from "./bottomSheet.utils";
 import { useDismissHandlers } from "./hooks/useDismissHandlers";
 import { useDragGesture } from "./hooks/useDragGesture";
@@ -284,14 +284,14 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
  * `aria-labelledby` pointing at `BottomSheet.Header` when one is present;
  * pass an explicit `aria-label`/`aria-labelledby` to override that.
  */
-export const BottomSheet = BottomSheetBase as typeof BottomSheetBase & {
-  Header: typeof BottomSheetHeader;
-  Body: typeof BottomSheetBody;
-  Footer: typeof BottomSheetFooter;
-};
+export const BottomSheet = BottomSheetBase as typeof BottomSheetBase &
+  BottomSheetComponents;
 
 BottomSheet.Header = BottomSheetHeader;
 BottomSheet.Body = BottomSheetBody;
 BottomSheet.Footer = BottomSheetFooter;
 
 BottomSheet.displayName = "BottomSheet";
+BottomSheet.Header.displayName = "BottomSheet.Header";
+BottomSheet.Body.displayName = "BottomSheet.Body";
+BottomSheet.Footer.displayName = "BottomSheet.Footer";

@@ -1,5 +1,5 @@
 releases:
-  "@nimbus-ds/bottomsheet": major
+  "@nimbus-ds/bottom-sheet": major
   "@nimbus-ds/patterns": minor
 
 declined:
