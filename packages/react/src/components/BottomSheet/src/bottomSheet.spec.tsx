@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   act,
+  cleanup,
   fireEvent,
   render,
   screen,
@@ -1314,6 +1315,24 @@ describe("GIVEN <BottomSheet />", () => {
       expect(grabber).toHaveAttribute("aria-valuenow", "0");
       expect(grabber).toHaveAttribute("aria-valuemin", "0");
       expect(grabber).toHaveAttribute("aria-valuemax", "1"); // 2 snaps: indices 0-1
+    });
+
+    it("THEN the grabber's aria-label should default to English but be overridable via grabberLabel", () => {
+      dragSut(0);
+      expect(screen.getByRole("separator")).toHaveAttribute(
+        "aria-label",
+        "Drag to resize or dismiss"
+      );
+
+      cleanup();
+      makeSut({
+        snapPoints: ["40%", "80%"],
+        grabberLabel: "Arrastrar para redimensionar o cerrar",
+      });
+      expect(screen.getByRole("separator")).toHaveAttribute(
+        "aria-label",
+        "Arrastrar para redimensionar o cerrar"
+      );
     });
 
     it("THEN ArrowUp/ArrowDown on the grabber should step to the adjacent snap", () => {

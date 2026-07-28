@@ -4,6 +4,7 @@ import { Box } from "@nimbus-ds/components";
 import { useTheme } from "@nimbus-ds/styles";
 
 import {
+  DEFAULT_GRABBER_LABEL,
   DEFAULT_IGNORE_ATTRIBUTE_NAME,
   DEFAULT_SNAP_INDEX,
   DEFAULT_SNAP_POINTS,
@@ -33,6 +34,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
   closeOnOutsidePress = true,
   ignoreAttributeName = DEFAULT_IGNORE_ATTRIBUTE_NAME,
   needRemoveScroll = true,
+  grabberLabel = DEFAULT_GRABBER_LABEL,
   zIndex,
   root,
   ...rest
@@ -266,6 +268,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
           snapCount={snaps.length}
           onSnapChange={setSnapIndex}
           pillHidden={isFlushWithTop}
+          label={grabberLabel}
         />
         <Box display="flex" flexDirection="column" flex="1" minHeight="0">
           {labeledChildren}
