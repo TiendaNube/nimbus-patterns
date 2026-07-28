@@ -1,6 +1,6 @@
 # Changelog
 
-EmptyApp allows the user to build marketing-style landing pages for apps. It features internal components meant to build hero sections, content sections with images and text with features, and payment plans.
+PlanDisplay allows the user to present subscription plans and pricing. It features internal components to build plan cards with headers, prices, feature bullets, and footers — including featured-plan and gradient variants.
 
 ## 2026-06-11 `2.0.0`
 

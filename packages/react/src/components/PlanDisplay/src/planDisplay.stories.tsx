@@ -2,7 +2,12 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Box, Button, Link, Tag, Text } from "@nimbus-ds/components";
-import { CashierIcon, CheckIcon, GenerativeStarsIcon } from "@nimbus-ds/icons";
+import {
+  CashierIcon,
+  CheckIcon,
+  CloseIcon,
+  GenerativeStarsIcon,
+} from "@nimbus-ds/icons";
 import { PlanDisplay } from "./PlanDisplay";
 
 const meta: Meta<typeof PlanDisplay> = {
@@ -39,6 +44,12 @@ export const Default: Story = {
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
             Medios de pago y envío de Tiendanube
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Carga masiva de productos
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Dominio propio
           </PlanDisplay.Bullet>
         </PlanDisplay.Content>
       </PlanDisplay.Card>
@@ -78,6 +89,12 @@ export const Default: Story = {
           <PlanDisplay.Bullet icon={<CheckIcon />}>
             Dominio propio
           </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Campos personalizados en productos y órdenes
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Hasta 3 tablas de precios mayoristas
+          </PlanDisplay.Bullet>
         </PlanDisplay.Content>
       </PlanDisplay.Card>
 
@@ -108,6 +125,9 @@ export const Default: Story = {
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<GenerativeStarsIcon />}>
             IA ilimitada para potenciar tu gestión
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Soporte prioritario y ejecutivo de cuenta
           </PlanDisplay.Bullet>
         </PlanDisplay.Content>
         <PlanDisplay.Footer icon={<CashierIcon />}>
@@ -185,6 +205,9 @@ export const TwoPlans: Story = {
           <PlanDisplay.Bullet icon={<CheckIcon />}>
             Dominio propio
           </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Campos personalizados en productos y órdenes
+          </PlanDisplay.Bullet>
         </PlanDisplay.Content>
       </PlanDisplay.Card>
 
@@ -242,6 +265,12 @@ export const ThreePlans: Story = {
           <PlanDisplay.Bullet icon={<CheckIcon />}>
             Medios de pago y envío de Tiendanube
           </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Carga masiva de productos
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Dominio propio
+          </PlanDisplay.Bullet>
         </PlanDisplay.Content>
       </PlanDisplay.Card>
 
@@ -271,6 +300,9 @@ export const ThreePlans: Story = {
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<CheckIcon />}>
             Dominio propio
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Campos personalizados en productos y órdenes
           </PlanDisplay.Bullet>
         </PlanDisplay.Content>
       </PlanDisplay.Card>
@@ -360,6 +392,9 @@ export const Horizontal: Story = {
             <PlanDisplay.Bullet icon={<CheckIcon />}>
               Meios de pagamento e envio da Nuvemshop
             </PlanDisplay.Bullet>
+            <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+              Domínio próprio
+            </PlanDisplay.Bullet>
           </div>
         </Box>
       </PlanDisplay.Card>
@@ -398,6 +433,9 @@ export const HorizontalMobile: Story = {
             </PlanDisplay.Bullet>
             <PlanDisplay.Bullet icon={<CheckIcon />}>
               Meios de pagamento e envio da Nuvemshop
+            </PlanDisplay.Bullet>
+            <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+              Domínio próprio
             </PlanDisplay.Bullet>
           </Box>
         </Box>
@@ -498,6 +536,9 @@ export const Playground: StoryObj<PlaygroundArgs> = {
           </PlanDisplay.Bullet>
           <PlanDisplay.Bullet icon={<GenerativeStarsIcon />}>
             IA ilimitada para potenciar tu gestión
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+            Soporte prioritario y ejecutivo de cuenta
           </PlanDisplay.Bullet>
         </PlanDisplay.Content>
         {showFooter && (

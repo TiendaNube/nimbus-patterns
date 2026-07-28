@@ -8,7 +8,7 @@ const PlanDisplayBullet: React.FC<PlanDisplayBulletProps> = ({
   badge,
   children,
 }) => (
-  <Box display="flex" gap="2" alignItems="flex-start">
+  <Box display="flex" gap="2" alignItems="center">
     <Box display="flex" alignItems="center">
       <Text
         as="span"

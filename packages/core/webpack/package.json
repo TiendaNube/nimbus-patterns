@@ -10,7 +10,7 @@
   "sideEffects": false,
   "scripts": {
     "clean": "rm -rf dist",
-    "g:webpack": "cd $INIT_CWD && webpack"
+    "g:webpack": "cd \"$INIT_CWD\" && webpack"
   },
   "homepage": "https://nimbus.nuvemshop.com.br/documentation",
   "repository": {
