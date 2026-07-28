@@ -1160,6 +1160,29 @@ describe("GIVEN <BottomSheet />", () => {
       expect(panel.style.height).toBe("640px");
     });
 
+    it("THEN the grabber should render an extra invisible child to extend its touch target past the visible pill, and it should still drive the drag", () => {
+      dragSut(0);
+      const panel = screen.getByRole("dialog");
+      const grabber = screen.getByRole("separator");
+
+      // The visible pill wrapper is the only child before this feature; the
+      // hit-area extension (unstyled, purely to grow the touch target toward
+      // Nimbus's 44px minimum) is added as an extra, earlier sibling instead
+      // of replacing it.
+      expect(grabber.children).toHaveLength(2);
+      const hitAreaExtension = grabber.firstElementChild as HTMLElement;
+      expect(hitAreaExtension).not.toBe(grabber.lastElementChild);
+
+      // A press there has no visual affordance of its own — confirm it still
+      // reaches the same onPointerDown as the visible pill (bubbling), so the
+      // extension isn't just decorative or accidentally non-interactive
+      // (e.g. `pointer-events: none`).
+      firePointerEvent(hitAreaExtension, "pointerdown", 500, 1);
+      firePointerEvent(document, "pointermove", 300, 201);
+      firePointerEvent(document, "pointerup", 300, 201);
+      expect(panel.style.height).toBe("640px");
+    });
+
     it("THEN should snap back to the same snap when the drag doesn't cross a midpoint", () => {
       dragSut(0);
       const panel = screen.getByRole("dialog");

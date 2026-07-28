@@ -108,13 +108,37 @@ export const Grabber = forwardRef<HTMLDivElement, GrabberProps>(
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          paddingTop: "var(--nimbus-spacing-2)",
-          paddingBottom: "var(--nimbus-spacing-2)",
+          position: "relative",
+          paddingTop: "var(--nimbus-spacing-4)",
+          paddingBottom: "var(--nimbus-spacing-4)",
           touchAction: "none",
           cursor: "grab",
           boxSizing: "border-box",
         }}
       >
+        {/*
+          Invisible hit-area extension. The band above (padding + pill) is
+          36px, short of Nimbus's 44px minimum touch target for a mobile
+          drag handle. Growing padding the remaining 8px would push
+          BottomSheet.Header further down than necessary; extending
+          downward instead would land on top of Header's own content
+          (e.g. a consumer's close button), stealing its clicks. This
+          absolutely-positioned strip bleeds upward only, into the dimmed
+          overlay above the panel — whose only behavior is "tap = dismiss" —
+          trading a few px of that zone for a full 44px drag target, the
+          same compromise native bottom sheets make around their own
+          handles. No visual style, so nothing renders there; a pointerdown
+          on it still bubbles up to this div's own onPointerDown.
+        */}
+        <div
+          style={{
+            position: "absolute",
+            top: "calc(-1 * var(--nimbus-spacing-2))",
+            left: 0,
+            right: 0,
+            height: "var(--nimbus-spacing-2)",
+          }}
+        />
         {/* Plain div wrapper, not Box: Box silently drops any caller-provided
             `style` prop (see BottomSheet.tsx's own comment on the same
             gotcha), and `opacity` isn't one of its sprinkle props either. */}
