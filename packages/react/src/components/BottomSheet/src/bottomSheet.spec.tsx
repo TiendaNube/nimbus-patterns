@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import {
   act,
+  cleanup,
   fireEvent,
   render,
   screen,
-  waitFor,
+  waitFor
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Alert, Button, Modal, Popover, Text } from "@nimbus-ds/components";
@@ -49,7 +50,7 @@ beforeEach(() => {
   window.visualViewport = ORIGINAL_VISUAL_VIEWPORT;
   Object.defineProperty(window, "innerHeight", {
     value: ORIGINAL_INNER_HEIGHT,
-    configurable: true,
+    configurable: true
   });
 });
 
@@ -78,7 +79,7 @@ describe("GIVEN <BottomSheet />", () => {
     it("THEN should NOT set overflow: hidden on the panel, so floating content portaled into it (e.g. Popover) isn't clipped (relies on Body's own overflow/minHeight instead)", () => {
       makeSut();
       expect(screen.getByRole("dialog")).not.toHaveStyle({
-        overflow: "hidden",
+        overflow: "hidden"
       });
     });
 
@@ -302,7 +303,7 @@ describe("GIVEN <BottomSheet />", () => {
 
       const grabber = screen.getByRole("separator");
       const bodyButton = screen.getByRole("button", {
-        name: "Focusable body button",
+        name: "Focusable body button"
       });
       const confirmButton = screen.getByRole("button", { name: "Confirm" });
 
@@ -370,7 +371,7 @@ describe("GIVEN <BottomSheet />", () => {
 
     it("THEN should respect a custom ignoreAttributeName", () => {
       const { onRemove } = makeSut({
-        ignoreAttributeName: "data-custom-ignore",
+        ignoreAttributeName: "data-custom-ignore"
       });
       const ignored = document.createElement("div");
       ignored.setAttribute("data-custom-ignore", "");
@@ -390,7 +391,7 @@ describe("GIVEN <BottomSheet />", () => {
       // without sanitizing it first, just rendering this would already
       // throw before any interaction happens.
       const { onRemove } = makeSut({
-        ignoreAttributeName: "not a valid attr!",
+        ignoreAttributeName: "not a valid attr!"
       });
 
       // Falls back to the default ignore-attribute convention, so an
@@ -522,7 +523,7 @@ describe("GIVEN <BottomSheet />", () => {
     const fireTouchMove = (target: Element) => {
       const event = new Event("touchmove", {
         bubbles: true,
-        cancelable: true,
+        cancelable: true
       });
       target.dispatchEvent(event);
       return event;
@@ -564,7 +565,7 @@ describe("GIVEN <BottomSheet />", () => {
       // so it must never be blocked.
       makeSut();
       const bodyButton = screen.getByRole("button", {
-        name: "Focusable body button",
+        name: "Focusable body button"
       });
 
       const event = fireTouchMove(bodyButton);
@@ -681,7 +682,7 @@ describe("GIVEN <BottomSheet />", () => {
       const scrollToSpy = jest.spyOn(window, "scrollTo").mockImplementation();
       Object.defineProperty(window, "scrollY", {
         value: 240,
-        configurable: true,
+        configurable: true
       });
 
       makeSut();
@@ -690,7 +691,7 @@ describe("GIVEN <BottomSheet />", () => {
       // reason other than a touch gesture (e.g. Safari's own focus-scroll).
       Object.defineProperty(window, "scrollY", {
         value: 40,
-        configurable: true,
+        configurable: true
       });
       act(() => {
         window.dispatchEvent(new Event("scroll"));
@@ -721,7 +722,7 @@ describe("GIVEN <BottomSheet />", () => {
       // file that computes heights against window.innerHeight.
       Object.defineProperty(window, "innerHeight", {
         value: originalInnerHeight,
-        configurable: true,
+        configurable: true
       });
     });
 
@@ -742,7 +743,7 @@ describe("GIVEN <BottomSheet />", () => {
         height: 800,
         offsetTop: 0,
         addEventListener,
-        removeEventListener,
+        removeEventListener
       };
       // Plain assignment, not Object.defineProperty: CI's full parallel
       // test:ci run showed defineProperty's own attributes (configurable/
@@ -753,7 +754,7 @@ describe("GIVEN <BottomSheet />", () => {
       window.visualViewport = mockViewport as unknown as VisualViewport;
       Object.defineProperty(window, "innerHeight", {
         value: 800,
-        configurable: true,
+        configurable: true
       });
 
       makeSut();
@@ -814,12 +815,12 @@ describe("GIVEN <BottomSheet />", () => {
         addEventListener: (event: string, cb: () => void) => {
           listeners[event] = [...(listeners[event] ?? []), cb];
         },
-        removeEventListener: jest.fn(),
+        removeEventListener: jest.fn()
       };
       window.visualViewport = mockViewport as unknown as VisualViewport;
       Object.defineProperty(window, "innerHeight", {
         value: 800,
-        configurable: true,
+        configurable: true
       });
 
       makeSut();
@@ -831,7 +832,7 @@ describe("GIVEN <BottomSheet />", () => {
       mockViewport.height = 700;
       Object.defineProperty(window, "innerHeight", {
         value: 700,
-        configurable: true,
+        configurable: true
       });
 
       await waitFor(() => {
@@ -855,12 +856,12 @@ describe("GIVEN <BottomSheet />", () => {
         height: 800,
         offsetTop: 0,
         addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
+        removeEventListener: jest.fn()
       };
       window.visualViewport = mockViewport as unknown as VisualViewport;
       Object.defineProperty(window, "innerHeight", {
         value: 800,
-        configurable: true,
+        configurable: true
       });
 
       makeSut();
@@ -871,7 +872,7 @@ describe("GIVEN <BottomSheet />", () => {
       // now-smaller visible area — only window's own resize fires.
       Object.defineProperty(window, "innerHeight", {
         value: 700,
-        configurable: true,
+        configurable: true
       });
       mockViewport.height = 400;
 
@@ -910,12 +911,12 @@ describe("GIVEN <BottomSheet />", () => {
         addEventListener: (event: string, cb: () => void) => {
           listeners[event] = [...(listeners[event] ?? []), cb];
         },
-        removeEventListener: jest.fn(),
+        removeEventListener: jest.fn()
       };
       window.visualViewport = mockViewport as unknown as VisualViewport;
       Object.defineProperty(window, "innerHeight", {
         value: 800,
-        configurable: true,
+        configurable: true
       });
 
       makeSut();
@@ -925,7 +926,7 @@ describe("GIVEN <BottomSheet />", () => {
 
       Object.defineProperty(window, "innerHeight", {
         value: 600,
-        configurable: true,
+        configurable: true
       });
 
       await waitFor(() => {
@@ -954,7 +955,7 @@ describe("GIVEN <BottomSheet />", () => {
       const listeners: Record<string, Array<(info?: unknown) => void>> = {};
       const removeSpies: Record<string, jest.Mock> = {
         keyboardWillShow: jest.fn(),
-        keyboardWillHide: jest.fn(),
+        keyboardWillHide: jest.fn()
       };
       const Keyboard = {
         addListener: jest.fn(
@@ -962,11 +963,11 @@ describe("GIVEN <BottomSheet />", () => {
             listeners[eventName] = [...(listeners[eventName] ?? []), listener];
             return Promise.resolve({ remove: removeSpies[eventName] });
           }
-        ),
+        )
       };
       (window as { Capacitor?: unknown }).Capacitor = {
         isPluginAvailable: (name: string) => name === "Keyboard",
-        Plugins: { Keyboard },
+        Plugins: { Keyboard }
       };
       return { listeners, removeSpies, Keyboard };
     };
@@ -986,7 +987,7 @@ describe("GIVEN <BottomSheet />", () => {
         height: 800,
         offsetTop: 0,
         addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
+        removeEventListener: jest.fn()
       };
       window.visualViewport = mockViewport as unknown as VisualViewport;
 
@@ -1077,14 +1078,14 @@ describe("GIVEN <BottomSheet />", () => {
     beforeEach(() => {
       Object.defineProperty(window, "innerHeight", {
         value: 800,
-        configurable: true,
+        configurable: true
       });
     });
 
     afterEach(() => {
       Object.defineProperty(window, "innerHeight", {
         value: originalInnerHeight,
-        configurable: true,
+        configurable: true
       });
     });
 
@@ -1121,11 +1122,11 @@ describe("GIVEN <BottomSheet />", () => {
       const event = new MouseEvent(type, {
         clientY,
         bubbles: true,
-        cancelable: true,
+        cancelable: true
       });
       Object.defineProperty(event, "timeStamp", {
         value: timeStamp,
-        configurable: true,
+        configurable: true
       });
       fireEvent(target, event);
     };
@@ -1156,6 +1157,26 @@ describe("GIVEN <BottomSheet />", () => {
       // the taller (80%, height 640) snap rather than getting stuck at 280.
       drag(500, 300);
 
+      expect(panel.style.height).toBe("640px");
+    });
+
+    it("THEN the grabber's touch target should be a 56px circle around the pill, not just the visible pill itself", () => {
+      dragSut(0);
+      const panel = screen.getByRole("dialog");
+      const grabber = screen.getByRole("separator");
+
+      // The interactive element itself is the enlarged target (well past
+      // Nimbus's 44px minimum) — no separate sibling extension, just the
+      // pill wrapper as its only child.
+      expect(grabber.children).toHaveLength(1);
+      expect(grabber.style.width).toBe("56px");
+      expect(grabber.style.height).toBe("56px");
+
+      // A press anywhere on this enlarged target — not just the visible
+      // 44x4 pill at its center — should still drive the drag.
+      firePointerEvent(grabber, "pointerdown", 500, 1);
+      firePointerEvent(document, "pointermove", 300, 201);
+      firePointerEvent(document, "pointerup", 300, 201);
       expect(panel.style.height).toBe("640px");
     });
 
@@ -1240,7 +1261,7 @@ describe("GIVEN <BottomSheet />", () => {
       act(() => {
         Object.defineProperty(window, "innerHeight", {
           value: 1000,
-          configurable: true,
+          configurable: true
         });
         window.dispatchEvent(new Event("resize"));
       });
@@ -1316,6 +1337,24 @@ describe("GIVEN <BottomSheet />", () => {
       expect(grabber).toHaveAttribute("aria-valuemax", "1"); // 2 snaps: indices 0-1
     });
 
+    it("THEN the grabber's aria-label should default to English but be overridable via grabberLabel", () => {
+      dragSut(0);
+      expect(screen.getByRole("separator")).toHaveAttribute(
+        "aria-label",
+        "Drag to resize or dismiss"
+      );
+
+      cleanup();
+      makeSut({
+        snapPoints: ["40%", "80%"],
+        grabberLabel: "Arrastrar para redimensionar o cerrar"
+      });
+      expect(screen.getByRole("separator")).toHaveAttribute(
+        "aria-label",
+        "Arrastrar para redimensionar o cerrar"
+      );
+    });
+
     it("THEN ArrowUp/ArrowDown on the grabber should step to the adjacent snap", () => {
       dragSut(0);
       const grabber = screen.getByRole("separator");
@@ -1364,14 +1403,14 @@ describe("GIVEN <BottomSheet />", () => {
     beforeEach(() => {
       Object.defineProperty(window, "innerHeight", {
         value: 800,
-        configurable: true,
+        configurable: true
       });
     });
 
     afterEach(() => {
       Object.defineProperty(window, "innerHeight", {
         value: originalInnerHeight,
-        configurable: true,
+        configurable: true
       });
     });
 

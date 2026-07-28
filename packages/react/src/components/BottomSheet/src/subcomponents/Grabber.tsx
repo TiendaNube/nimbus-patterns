@@ -1,6 +1,7 @@
 import React, { forwardRef } from "react";
 import { Box } from "@nimbus-ds/components";
 
+import { DEFAULT_GRABBER_LABEL } from "../bottomSheet.constants";
 import { clampIndex } from "../bottomSheet.utils";
 
 interface GrabberProps {
@@ -11,6 +12,9 @@ interface GrabberProps {
   snapCount: number;
   /** Same setter BottomSheet's drag gesture uses to change the active snap. */
   onSnapChange: (index: number) => void;
+  /** Accessible name (`aria-label`). Forwarded from BottomSheet's `grabberLabel` prop. */
+  // eslint-disable-next-line react/require-default-props
+  label?: string;
   /**
    * Hides the visible pill (opacity only — the drag/keyboard-resize target
    * itself keeps its full size and stays interactive) once the panel is
@@ -45,7 +49,14 @@ interface GrabberProps {
  */
 export const Grabber = forwardRef<HTMLDivElement, GrabberProps>(
   (
-    { onPointerDown, snapIndex, snapCount, onSnapChange, pillHidden = false },
+    {
+      onPointerDown,
+      snapIndex,
+      snapCount,
+      onSnapChange,
+      pillHidden = false,
+      label = DEFAULT_GRABBER_LABEL
+    },
     ref
   ) => {
     const maxIndex = Math.max(snapCount - 1, 0);
@@ -99,7 +110,7 @@ export const Grabber = forwardRef<HTMLDivElement, GrabberProps>(
           a drag handle), overlapping 8px above the sheet's own top edge into
           the backdrop — confirmed safe since BottomSheet's panel has no
           `overflow: hidden` (see BottomSheet.tsx's comment on that).
-          Deliberately a circle, not the old full-width band: narrows the
+          Deliberately a circle, not a full-width band: narrows the
           draggable area to right around the pill for precision, trading off
           edge-to-edge dragging.
         */}
@@ -110,7 +121,7 @@ export const Grabber = forwardRef<HTMLDivElement, GrabberProps>(
           onKeyDown={handleKeyDown}
           role="separator"
           aria-orientation="horizontal"
-          aria-label="Drag to resize or dismiss"
+          aria-label={label}
           aria-valuenow={snapIndex}
           aria-valuemin={0}
           aria-valuemax={maxIndex}

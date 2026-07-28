@@ -50,7 +50,7 @@ export const SETTLE_TRANSITION =
  */
 export const PADDING_TOKEN_MAP = {
   none: "none",
-  base: "4",
+  base: "4"
 } as const;
 
 /**
@@ -68,3 +68,6 @@ export const DEFAULT_IGNORE_ATTRIBUTE_NAME = "data-nimbus-outside-press-ignore";
  * this ever changes, instead of each hardcoding its own copy of the literal.
  */
 export const FLOATING_UI_PORTAL_SELECTOR = "[data-floating-ui-portal]";
+
+/** Default accessible name for the Grabber when the consumer doesn't override it via `grabberLabel`. */
+export const DEFAULT_GRABBER_LABEL = "Drag to resize or dismiss";

@@ -62,6 +62,12 @@ export interface BottomSheetProperties {
    */
   needRemoveScroll?: boolean;
   /**
+   * Accessible name (`aria-label`) for the drag grabber. Override for
+   * non-English locales, since the built-in default is English-only.
+   * @default "Drag to resize or dismiss"
+   */
+  grabberLabel?: string;
+  /**
    * Explicit z-index for the sheet layer. Omitted by default: like Nimbus's
    * own Sidebar/Modal/Popover, the sheet relies on DOM mount order rather
    * than a z-index. Its portal mounts into the nearest Nimbus
