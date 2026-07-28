@@ -38,10 +38,11 @@ export const VELOCITY_IDLE_RESET_MS = 100;
  * CSS transition used when the panel settles to a snap point, dismisses, or
  * repositions above the on-screen keyboard. The panel's visible size is
  * driven by `height` (anchored via `bottom`), not `transform`, so both are
- * transitioned together.
+ * transitioned together — plus the top corners' own radius, which animates
+ * in sync as the panel reaches (or leaves) flush-with-the-top ("full").
  */
 export const SETTLE_TRANSITION =
-  "height 300ms cubic-bezier(0.32, 0.72, 0, 1), bottom 300ms cubic-bezier(0.32, 0.72, 0, 1)";
+  "height 300ms cubic-bezier(0.32, 0.72, 0, 1), bottom 300ms cubic-bezier(0.32, 0.72, 0, 1), border-radius 300ms cubic-bezier(0.32, 0.72, 0, 1)";
 
 /**
  * Maps the public "none" | "base" padding scale (matching the Sidebar/Modal

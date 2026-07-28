@@ -11,6 +11,21 @@ interface GrabberProps {
   snapCount: number;
   /** Same setter BottomSheet's drag gesture uses to change the active snap. */
   onSnapChange: (index: number) => void;
+  /**
+   * Hides the visible pill (opacity only — the drag/keyboard-resize target
+   * itself keeps its full size and stays interactive) once the panel is
+   * flush with the viewport's top edge: with no room left to drag further
+   * up, the handle reads as a leftover "sheet" artifact instead of a
+   * deliberate full-screen surface.
+   */
+  // eslint-plugin-react's require-default-props expects a runtime
+  // `defaultProps` static, which TypeScript's ForwardRefExoticComponent type
+  // (this component's own type, from `forwardRef` below) doesn't declare —
+  // assigning one is a type error. The destructured default in the
+  // implementation below (`pillHidden = false`) is the correct TS pattern
+  // for an optional prop on a forwardRef component.
+  // eslint-disable-next-line react/require-default-props
+  pillHidden?: boolean;
 }
 
 /**
@@ -29,7 +44,10 @@ interface GrabberProps {
  * changes never dismiss — only a pointer drag past the threshold does.
  */
 export const Grabber = forwardRef<HTMLDivElement, GrabberProps>(
-  ({ onPointerDown, snapIndex, snapCount, onSnapChange }, ref) => {
+  (
+    { onPointerDown, snapIndex, snapCount, onSnapChange, pillHidden = false },
+    ref
+  ) => {
     const maxIndex = Math.max(snapCount - 1, 0);
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -86,12 +104,22 @@ export const Grabber = forwardRef<HTMLDivElement, GrabberProps>(
           boxSizing: "border-box",
         }}
       >
-        <Box
-          width="44px"
-          height="4px"
-          backgroundColor="neutral-surfaceHighlight"
-          borderRadius="full"
-        />
+        {/* Plain div wrapper, not Box: Box silently drops any caller-provided
+            `style` prop (see BottomSheet.tsx's own comment on the same
+            gotcha), and `opacity` isn't one of its sprinkle props either. */}
+        <div
+          style={{
+            opacity: pillHidden ? 0 : 1,
+            transition: "opacity 300ms cubic-bezier(0.32, 0.72, 0, 1)",
+          }}
+        >
+          <Box
+            width="44px"
+            height="4px"
+            backgroundColor="neutral-surfaceHighlight"
+            borderRadius="full"
+          />
+        </div>
       </div>
     );
   }

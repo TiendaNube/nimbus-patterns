@@ -122,6 +122,12 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
   if (!open) return null;
 
   const visibleHeight = Math.max(0, containerHeight - offset);
+  // Square off the top corners once the panel's own top edge reaches the
+  // viewport's top edge (the "full" snap, or any drag that reaches flush with
+  // it) — a rounded corner only reads as "a sheet" while there's visible
+  // background around it; flush with the top, on-screen it just looks like a
+  // rendering glitch instead of a deliberate full-screen transition.
+  const isFlushWithTop = offset <= 0;
   // Defaults to the nearest Nimbus <ThemeProvider>'s own wrapper element
   // (refThemeProvider), not document.body directly. This matches the
   // convention Sidebar/Modal/Popover already follow internally: they all
@@ -244,8 +250,12 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
           // them at either way.
           paddingBottom: keyboardInset,
           zIndex,
-          borderTopLeftRadius: "var(--nimbus-shape-border-radius-6)",
-          borderTopRightRadius: "var(--nimbus-shape-border-radius-6)",
+          borderTopLeftRadius: isFlushWithTop
+            ? 0
+            : "var(--nimbus-shape-border-radius-6)",
+          borderTopRightRadius: isFlushWithTop
+            ? 0
+            : "var(--nimbus-shape-border-radius-6)",
           transition: isDragging ? "none" : SETTLE_TRANSITION,
         }}
       >
@@ -255,6 +265,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
           snapIndex={snapIndex}
           snapCount={snaps.length}
           onSnapChange={setSnapIndex}
+          pillHidden={isFlushWithTop}
         />
         <Box display="flex" flexDirection="column" flex="1" minHeight="0">
           {labeledChildren}
