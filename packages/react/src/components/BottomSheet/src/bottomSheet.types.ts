@@ -4,7 +4,7 @@ export type BottomSheetPadding = "none" | "base";
 
 /**
  * A snap point expressed as a viewport-height percentage (e.g. "60%") or the
- * keyword "full" (which stops just below the status bar, not full-bleed).
+ * keyword "full" (edge-to-edge, covering the full viewport height).
  */
 export type BottomSheetSnapPoint = `${number}%` | "full";
 
