@@ -51,6 +51,10 @@
       "import": "./dist/AppShell/index.js",
       "require": "./dist/AppShell/index.js"
     },
+    "./BottomSheet": {
+      "import": "./dist/BottomSheet/index.js",
+      "require": "./dist/BottomSheet/index.js"
+    },
     "./Calendar": {
       "import": "./dist/Calendar/index.js",
       "require": "./dist/Calendar/index.js"
