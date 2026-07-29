@@ -1,7 +1,7 @@
 {
   "id": "bottomSheet",
   "name": "BottomSheet",
-  "totalProps": 10,
+  "totalProps": 11,
   "packageName": "@nimbus-ds/bottom-sheet",
   "version": "1.0.0",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/bottom-sheet",
@@ -72,6 +72,13 @@
       "default": true,
       "type": "boolean",
       "title": "needRemoveScroll",
+      "required": false
+    },
+    {
+      "description": "Accessible name (`aria-label`) for the drag grabber. Override for non-English locales, since the built-in default is English-only.",
+      "default": "Drag to resize or dismiss",
+      "type": "string",
+      "title": "grabberLabel",
       "required": false
     },
     {
