@@ -106,13 +106,19 @@ export const Grabber = forwardRef<HTMLDivElement, GrabberProps>(
           handling above), so the tabIndex and event handlers here are
           intentional, not an oversight.
 
-          Sized as a centered 56px circle (well past MD3's 48dp minimum for
-          a drag handle), overlapping 8px above the sheet's own top edge into
-          the backdrop — confirmed safe since BottomSheet's panel has no
-          `overflow: hidden` (see BottomSheet.tsx's comment on that).
-          Deliberately a circle, not a full-width band: narrows the
+          Sized around a comfortable fingertip contact area for grabbing and
+          dragging the pill — its footprint is meant to match how a finger
+          actually lands on the handle, not just the pill's own thin visual
+          size. Deliberately a circle, not a full-width band: narrows the
           draggable area to right around the pill for precision, trading off
           edge-to-edge dragging.
+
+          Overlaps 8px above the sheet's own top edge into the backdrop —
+          confirmed safe since BottomSheet's panel has no `overflow: hidden`
+          (see BottomSheet.tsx's comment on that). It also overlaps ~20px
+          below the row, into whatever the consumer renders next (Header,
+          or Body with no Header) — intentional, same reasoning as the
+          backdrop side: that centered band is the pill's own space.
         */}
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-noninteractive-tabindex */}
         <div

@@ -39,7 +39,7 @@ export const SETTLE_TRANSITION =
  */
 export const PADDING_TOKEN_MAP = {
   none: "none",
-  base: "4",
+  base: "4"
 } as const;
 
 /**

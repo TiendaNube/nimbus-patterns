@@ -16,40 +16,40 @@ const meta: Meta<typeof BottomSheet> = {
     open: {
       control: "boolean",
       description: "Controls the sheet visibility",
-      table: { type: { summary: "boolean" } },
+      table: { type: { summary: "boolean" } }
     },
     snapPoints: {
       control: "object",
       description: "Ordered list of heights the sheet can snap to",
-      table: { type: { summary: 'Array<"NN%" | "full">' } },
+      table: { type: { summary: 'Array<"NN%" | "full">' } }
     },
     defaultSnap: {
       control: "number",
       description: "Index within snapPoints used as the initial snap point",
-      table: { type: { summary: "number" } },
+      table: { type: { summary: "number" } }
     },
     closeOnOutsidePress: {
       control: "boolean",
       description:
         "Controls whether pressing outside should close the sheet (also accepts a predicate function, not editable via this control)",
-      table: { type: { summary: "boolean | (event) => boolean" } },
+      table: { type: { summary: "boolean | (event) => boolean" } }
     },
     needRemoveScroll: {
       control: "boolean",
       description:
         "Determines if background scroll is locked while the sheet is open",
-      table: { type: { summary: "boolean" } },
+      table: { type: { summary: "boolean" } }
     },
     ignoreAttributeName: {
       control: "text",
       description: "Attribute name to ignore when checking for outside presses",
-      table: { type: { summary: "string" } },
+      table: { type: { summary: "string" } }
     },
     zIndex: {
       control: "number",
       description: "Explicit z-index for the sheet layer",
-      table: { type: { summary: "number" } },
-    },
+      table: { type: { summary: "number" } }
+    }
   },
   tags: ["autodocs"],
   decorators: [
@@ -93,14 +93,14 @@ const meta: Meta<typeof BottomSheet> = {
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "flex-end",
+            justifyContent: "flex-end"
           }}
         >
           <Story />
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -145,8 +145,8 @@ export const basic: Story = {
         </BottomSheet.Header>
         <BottomSheet.Body>{placeholderBody}</BottomSheet.Body>
       </>
-    ),
-  },
+    )
+  }
 };
 
 export const withFooter: Story = {
@@ -164,16 +164,16 @@ export const withFooter: Story = {
           <Button appearance="primary">Confirm</Button>
         </BottomSheet.Footer>
       </>
-    ),
-  },
+    )
+  }
 };
 
 export const withoutTitle: Story = {
   render,
   args: {
     snapPoints: ["50%", "full"],
-    children: <BottomSheet.Body>{placeholderBody}</BottomSheet.Body>,
-  },
+    children: <BottomSheet.Body>{placeholderBody}</BottomSheet.Body>
+  }
 };
 
 export const startingFullScreen: Story = {
@@ -188,8 +188,8 @@ export const startingFullScreen: Story = {
         </BottomSheet.Header>
         <BottomSheet.Body>{placeholderBody}</BottomSheet.Body>
       </>
-    ),
-  },
+    )
+  }
 };
 
 export const twoSheetsCoexisting: Story = {
@@ -230,7 +230,7 @@ export const twoSheetsCoexisting: Story = {
         </BottomSheet>
       </>
     );
-  },
+  }
 };
 
 export const controlledByArgs: Story = {
@@ -253,6 +253,6 @@ export const controlledByArgs: Story = {
         </BottomSheet.Header>
         <BottomSheet.Body>{placeholderBody}</BottomSheet.Body>
       </>
-    ),
-  },
+    )
+  }
 };

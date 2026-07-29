@@ -8,7 +8,7 @@ import {
   DEFAULT_IGNORE_ATTRIBUTE_NAME,
   DEFAULT_SNAP_INDEX,
   DEFAULT_SNAP_POINTS,
-  SETTLE_TRANSITION,
+  SETTLE_TRANSITION
 } from "./bottomSheet.constants";
 import { BottomSheetComponents, BottomSheetProps } from "./bottomSheet.types";
 import { clampIndex, isValidAttributeName } from "./bottomSheet.utils";
@@ -107,7 +107,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
     snapIndex,
     containerHeight,
     onSnapChange: setSnapIndex,
-    onDismiss: handleRequestClose,
+    onDismiss: handleRequestClose
   });
 
   useScrollLock(open && needRemoveScroll, panelRef);
@@ -118,7 +118,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
     overlayRef,
     closeOnOutsidePress,
     ignoreAttributeName: safeIgnoreAttributeName,
-    onRequestClose: handleRequestClose,
+    onRequestClose: handleRequestClose
   });
 
   if (!open) return null;
@@ -208,7 +208,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
           bottom: 0,
           backgroundColor: "var(--nimbus-colors-neutral-textHigh)",
           opacity: 0.4,
-          zIndex,
+          zIndex
         }}
       />
       {/*
@@ -266,7 +266,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
           borderTopRightRadius: isFlushWithTop
             ? 0
             : "var(--nimbus-shape-border-radius-6)",
-          transition: isDragging ? "none" : SETTLE_TRANSITION,
+          transition: isDragging ? "none" : SETTLE_TRANSITION
         }}
       >
         <Grabber
