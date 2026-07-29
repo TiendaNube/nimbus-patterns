@@ -7,17 +7,6 @@ export const DEFAULT_SNAP_POINTS = ["60%", "90%", "full"] as const;
 /** Index of the initial snap point used when `defaultSnap` is not provided. */
 export const DEFAULT_SNAP_INDEX = 0;
 
-/**
- * Fraction of the viewport height kept as a gap at the top when the sheet is
- * at its "full" snap. Zero: "full" is edge-to-edge, matching Material Design
- * 3's own bottom sheet spec ("an expanding bottom sheet is full-screen on
- * mobile") and the mainstream mini-player-to-full-player pattern (e.g. Apple
- * Music) — consumers who need to keep the status bar clear for a specific
- * screen can still reserve that space themselves via a shorter custom snap
- * point (e.g. "94%") instead of "full".
- */
-export const FULL_TOP_GAP_RATIO = 0;
-
 /** Distance (px) dragged below the lowest snap that triggers a dismiss. */
 export const DISMISS_DISTANCE_THRESHOLD = 96;
 
@@ -50,7 +39,7 @@ export const SETTLE_TRANSITION =
  */
 export const PADDING_TOKEN_MAP = {
   none: "none",
-  base: "4"
+  base: "4",
 } as const;
 
 /**

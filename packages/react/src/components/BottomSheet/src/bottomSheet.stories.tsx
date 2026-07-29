@@ -76,15 +76,16 @@ const meta: Meta<typeof BottomSheet> = {
       // this repo).
       if (context.viewMode !== "docs") return <Story />;
       return (
-        // Sized to fit even the tallest "full" snap (see FULL_TOP_GAP_RATIO)
-        // without clipping. flexEnd anchors the trigger Button to this box's
-        // own bottom edge — the same edge the panel itself anchors to once
-        // open — so the Button stays right where the sheet appears instead
-        // of at the top of an 860px box, out of view once the sheet's own
-        // scroll-lock (see useScrollLock) blocks scrolling the rest of this
-        // Docs page into sight. Scoped to Docs only: Canvas's own per-story
-        // page has nothing else to scroll to anyway, so forcing this same
-        // height/flex there would just push the Button down for no reason.
+        // Sized to fit even the tallest "full" snap (edge-to-edge, see
+        // useSnapPoints' own "full" branch) without clipping. flexEnd anchors
+        // the trigger Button to this box's own bottom edge — the same edge
+        // the panel itself anchors to once open — so the Button stays right
+        // where the sheet appears instead of at the top of an 860px box, out
+        // of view once the sheet's own scroll-lock (see useScrollLock) blocks
+        // scrolling the rest of this Docs page into sight. Scoped to Docs
+        // only: Canvas's own per-story page has nothing else to scroll to
+        // anyway, so forcing this same height/flex there would just push the
+        // Button down for no reason.
         <div
           style={{
             position: "relative",

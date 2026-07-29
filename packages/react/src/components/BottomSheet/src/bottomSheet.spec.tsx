@@ -5,7 +5,7 @@ import {
   fireEvent,
   render,
   screen,
-  waitFor
+  waitFor,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Alert, Button, Modal, Popover, Text } from "@nimbus-ds/components";
@@ -50,7 +50,7 @@ beforeEach(() => {
   window.visualViewport = ORIGINAL_VISUAL_VIEWPORT;
   Object.defineProperty(window, "innerHeight", {
     value: ORIGINAL_INNER_HEIGHT,
-    configurable: true
+    configurable: true,
   });
 });
 
@@ -79,7 +79,7 @@ describe("GIVEN <BottomSheet />", () => {
     it("THEN should NOT set overflow: hidden on the panel, so floating content portaled into it (e.g. Popover) isn't clipped (relies on Body's own overflow/minHeight instead)", () => {
       makeSut();
       expect(screen.getByRole("dialog")).not.toHaveStyle({
-        overflow: "hidden"
+        overflow: "hidden",
       });
     });
 
@@ -303,7 +303,7 @@ describe("GIVEN <BottomSheet />", () => {
 
       const grabber = screen.getByRole("separator");
       const bodyButton = screen.getByRole("button", {
-        name: "Focusable body button"
+        name: "Focusable body button",
       });
       const confirmButton = screen.getByRole("button", { name: "Confirm" });
 
@@ -325,6 +325,76 @@ describe("GIVEN <BottomSheet />", () => {
       // Closing the sheet restores focus to the element that opened it.
       fireEvent.keyDown(document, { key: "Escape" });
       expect(opener).toHaveFocus();
+    });
+  });
+
+  describe("WHEN the container hasn't been measured yet", () => {
+    it("THEN should NOT render flush-with-top (squared corners, hidden grabber pill) at a non-full snap", () => {
+      // useSnapPoints starts containerHeight at 0 and only measures the real
+      // value inside a useEffect, so every snap's offset is 0 on that first
+      // render — the exact condition this test reproduces. jsdom never
+      // computes real layout, so Element.clientHeight is always 0; passing a
+      // `root` makes BottomSheet read containerHeight from that (always-0)
+      // clientHeight instead of window.innerHeight, holding it at 0
+      // indefinitely instead of just for one transient render, without
+      // needing to race React's effect-flush timing.
+      const root = document.createElement("div");
+      document.body.appendChild(root);
+      // defaultSnap 0 is "60%" (see DEFAULT_SNAP_INDEX/DEFAULT_SNAP_POINTS) —
+      // not the "full" snap, so isFlushWithTop must be false here.
+      makeSut({ root });
+
+      const dialog = screen.getByRole("dialog");
+      expect(dialog.style.borderTopLeftRadius).toBe(
+        "var(--nimbus-shape-border-radius-6)"
+      );
+      expect(dialog.style.borderTopRightRadius).toBe(
+        "var(--nimbus-shape-border-radius-6)"
+      );
+
+      const grabber = screen.getByRole("separator");
+      const pillWrapper = grabber.firstElementChild as HTMLElement;
+      expect(pillWrapper.style.opacity).toBe("1");
+    });
+  });
+
+  describe('WHEN the sheet opens directly at the "full" snap', () => {
+    const originalInnerHeight = window.innerHeight;
+
+    beforeEach(() => {
+      Object.defineProperty(window, "innerHeight", {
+        value: 800,
+        configurable: true,
+      });
+    });
+
+    afterEach(() => {
+      Object.defineProperty(window, "innerHeight", {
+        value: originalInnerHeight,
+        configurable: true,
+      });
+    });
+
+    it("THEN should render edge-to-edge (no top gap), with squared corners and a hidden grabber pill", () => {
+      // defaultSnap 2 is "full" (DEFAULT_SNAP_POINTS[2] — see
+      // bottomSheet.constants.ts). containerHeight resolves to
+      // window.innerHeight (800) since no `root` is provided.
+      makeSut({ defaultSnap: 2 });
+
+      const dialog = screen.getByRole("dialog");
+      // Edge-to-edge: the panel's own height covers the entire measured
+      // container height, no gap reserved at the top (see useSnapPoints'
+      // "full" branch).
+      expect(dialog.style.height).toBe("800px");
+      // Flush with the top: squared corners...
+      expect(dialog.style.borderTopLeftRadius).toBe("0");
+      expect(dialog.style.borderTopRightRadius).toBe("0");
+
+      // ...and the grabber pill hidden (still interactive, just invisible —
+      // see Grabber's own pillHidden doc comment).
+      const grabber = screen.getByRole("separator");
+      const pillWrapper = grabber.firstElementChild as HTMLElement;
+      expect(pillWrapper.style.opacity).toBe("0");
     });
   });
 
@@ -371,7 +441,7 @@ describe("GIVEN <BottomSheet />", () => {
 
     it("THEN should respect a custom ignoreAttributeName", () => {
       const { onRemove } = makeSut({
-        ignoreAttributeName: "data-custom-ignore"
+        ignoreAttributeName: "data-custom-ignore",
       });
       const ignored = document.createElement("div");
       ignored.setAttribute("data-custom-ignore", "");
@@ -391,7 +461,7 @@ describe("GIVEN <BottomSheet />", () => {
       // without sanitizing it first, just rendering this would already
       // throw before any interaction happens.
       const { onRemove } = makeSut({
-        ignoreAttributeName: "not a valid attr!"
+        ignoreAttributeName: "not a valid attr!",
       });
 
       // Falls back to the default ignore-attribute convention, so an
@@ -523,7 +593,7 @@ describe("GIVEN <BottomSheet />", () => {
     const fireTouchMove = (target: Element) => {
       const event = new Event("touchmove", {
         bubbles: true,
-        cancelable: true
+        cancelable: true,
       });
       target.dispatchEvent(event);
       return event;
@@ -565,7 +635,7 @@ describe("GIVEN <BottomSheet />", () => {
       // so it must never be blocked.
       makeSut();
       const bodyButton = screen.getByRole("button", {
-        name: "Focusable body button"
+        name: "Focusable body button",
       });
 
       const event = fireTouchMove(bodyButton);
@@ -682,7 +752,7 @@ describe("GIVEN <BottomSheet />", () => {
       const scrollToSpy = jest.spyOn(window, "scrollTo").mockImplementation();
       Object.defineProperty(window, "scrollY", {
         value: 240,
-        configurable: true
+        configurable: true,
       });
 
       makeSut();
@@ -691,7 +761,7 @@ describe("GIVEN <BottomSheet />", () => {
       // reason other than a touch gesture (e.g. Safari's own focus-scroll).
       Object.defineProperty(window, "scrollY", {
         value: 40,
-        configurable: true
+        configurable: true,
       });
       act(() => {
         window.dispatchEvent(new Event("scroll"));
@@ -722,7 +792,7 @@ describe("GIVEN <BottomSheet />", () => {
       // file that computes heights against window.innerHeight.
       Object.defineProperty(window, "innerHeight", {
         value: originalInnerHeight,
-        configurable: true
+        configurable: true,
       });
     });
 
@@ -743,7 +813,7 @@ describe("GIVEN <BottomSheet />", () => {
         height: 800,
         offsetTop: 0,
         addEventListener,
-        removeEventListener
+        removeEventListener,
       };
       // Plain assignment, not Object.defineProperty: CI's full parallel
       // test:ci run showed defineProperty's own attributes (configurable/
@@ -754,7 +824,7 @@ describe("GIVEN <BottomSheet />", () => {
       window.visualViewport = mockViewport as unknown as VisualViewport;
       Object.defineProperty(window, "innerHeight", {
         value: 800,
-        configurable: true
+        configurable: true,
       });
 
       makeSut();
@@ -815,12 +885,12 @@ describe("GIVEN <BottomSheet />", () => {
         addEventListener: (event: string, cb: () => void) => {
           listeners[event] = [...(listeners[event] ?? []), cb];
         },
-        removeEventListener: jest.fn()
+        removeEventListener: jest.fn(),
       };
       window.visualViewport = mockViewport as unknown as VisualViewport;
       Object.defineProperty(window, "innerHeight", {
         value: 800,
-        configurable: true
+        configurable: true,
       });
 
       makeSut();
@@ -832,7 +902,7 @@ describe("GIVEN <BottomSheet />", () => {
       mockViewport.height = 700;
       Object.defineProperty(window, "innerHeight", {
         value: 700,
-        configurable: true
+        configurable: true,
       });
 
       await waitFor(() => {
@@ -856,12 +926,12 @@ describe("GIVEN <BottomSheet />", () => {
         height: 800,
         offsetTop: 0,
         addEventListener: jest.fn(),
-        removeEventListener: jest.fn()
+        removeEventListener: jest.fn(),
       };
       window.visualViewport = mockViewport as unknown as VisualViewport;
       Object.defineProperty(window, "innerHeight", {
         value: 800,
-        configurable: true
+        configurable: true,
       });
 
       makeSut();
@@ -872,7 +942,7 @@ describe("GIVEN <BottomSheet />", () => {
       // now-smaller visible area — only window's own resize fires.
       Object.defineProperty(window, "innerHeight", {
         value: 700,
-        configurable: true
+        configurable: true,
       });
       mockViewport.height = 400;
 
@@ -911,12 +981,12 @@ describe("GIVEN <BottomSheet />", () => {
         addEventListener: (event: string, cb: () => void) => {
           listeners[event] = [...(listeners[event] ?? []), cb];
         },
-        removeEventListener: jest.fn()
+        removeEventListener: jest.fn(),
       };
       window.visualViewport = mockViewport as unknown as VisualViewport;
       Object.defineProperty(window, "innerHeight", {
         value: 800,
-        configurable: true
+        configurable: true,
       });
 
       makeSut();
@@ -926,7 +996,7 @@ describe("GIVEN <BottomSheet />", () => {
 
       Object.defineProperty(window, "innerHeight", {
         value: 600,
-        configurable: true
+        configurable: true,
       });
 
       await waitFor(() => {
@@ -955,7 +1025,7 @@ describe("GIVEN <BottomSheet />", () => {
       const listeners: Record<string, Array<(info?: unknown) => void>> = {};
       const removeSpies: Record<string, jest.Mock> = {
         keyboardWillShow: jest.fn(),
-        keyboardWillHide: jest.fn()
+        keyboardWillHide: jest.fn(),
       };
       const Keyboard = {
         addListener: jest.fn(
@@ -963,11 +1033,11 @@ describe("GIVEN <BottomSheet />", () => {
             listeners[eventName] = [...(listeners[eventName] ?? []), listener];
             return Promise.resolve({ remove: removeSpies[eventName] });
           }
-        )
+        ),
       };
       (window as { Capacitor?: unknown }).Capacitor = {
         isPluginAvailable: (name: string) => name === "Keyboard",
-        Plugins: { Keyboard }
+        Plugins: { Keyboard },
       };
       return { listeners, removeSpies, Keyboard };
     };
@@ -987,7 +1057,7 @@ describe("GIVEN <BottomSheet />", () => {
         height: 800,
         offsetTop: 0,
         addEventListener: jest.fn(),
-        removeEventListener: jest.fn()
+        removeEventListener: jest.fn(),
       };
       window.visualViewport = mockViewport as unknown as VisualViewport;
 
@@ -1078,14 +1148,14 @@ describe("GIVEN <BottomSheet />", () => {
     beforeEach(() => {
       Object.defineProperty(window, "innerHeight", {
         value: 800,
-        configurable: true
+        configurable: true,
       });
     });
 
     afterEach(() => {
       Object.defineProperty(window, "innerHeight", {
         value: originalInnerHeight,
-        configurable: true
+        configurable: true,
       });
     });
 
@@ -1122,11 +1192,11 @@ describe("GIVEN <BottomSheet />", () => {
       const event = new MouseEvent(type, {
         clientY,
         bubbles: true,
-        cancelable: true
+        cancelable: true,
       });
       Object.defineProperty(event, "timeStamp", {
         value: timeStamp,
-        configurable: true
+        configurable: true,
       });
       fireEvent(target, event);
     };
@@ -1261,7 +1331,7 @@ describe("GIVEN <BottomSheet />", () => {
       act(() => {
         Object.defineProperty(window, "innerHeight", {
           value: 1000,
-          configurable: true
+          configurable: true,
         });
         window.dispatchEvent(new Event("resize"));
       });
@@ -1347,7 +1417,7 @@ describe("GIVEN <BottomSheet />", () => {
       cleanup();
       makeSut({
         snapPoints: ["40%", "80%"],
-        grabberLabel: "Arrastrar para redimensionar o cerrar"
+        grabberLabel: "Arrastrar para redimensionar o cerrar",
       });
       expect(screen.getByRole("separator")).toHaveAttribute(
         "aria-label",
@@ -1403,14 +1473,14 @@ describe("GIVEN <BottomSheet />", () => {
     beforeEach(() => {
       Object.defineProperty(window, "innerHeight", {
         value: 800,
-        configurable: true
+        configurable: true,
       });
     });
 
     afterEach(() => {
       Object.defineProperty(window, "innerHeight", {
         value: originalInnerHeight,
-        configurable: true
+        configurable: true,
       });
     });
 

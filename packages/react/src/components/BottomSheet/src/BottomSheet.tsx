@@ -8,7 +8,7 @@ import {
   DEFAULT_IGNORE_ATTRIBUTE_NAME,
   DEFAULT_SNAP_INDEX,
   DEFAULT_SNAP_POINTS,
-  SETTLE_TRANSITION
+  SETTLE_TRANSITION,
 } from "./bottomSheet.constants";
 import { BottomSheetComponents, BottomSheetProps } from "./bottomSheet.types";
 import { clampIndex, isValidAttributeName } from "./bottomSheet.utils";
@@ -107,7 +107,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
     snapIndex,
     containerHeight,
     onSnapChange: setSnapIndex,
-    onDismiss: handleRequestClose
+    onDismiss: handleRequestClose,
   });
 
   useScrollLock(open && needRemoveScroll, panelRef);
@@ -118,7 +118,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
     overlayRef,
     closeOnOutsidePress,
     ignoreAttributeName: safeIgnoreAttributeName,
-    onRequestClose: handleRequestClose
+    onRequestClose: handleRequestClose,
   });
 
   if (!open) return null;
@@ -129,7 +129,15 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
   // it) — a rounded corner only reads as "a sheet" while there's visible
   // background around it; flush with the top, on-screen it just looks like a
   // rendering glitch instead of a deliberate full-screen transition.
-  const isFlushWithTop = offset <= 0;
+  //
+  // `containerHeight > 0` excludes the pre-measurement render: useSnapPoints
+  // starts containerHeight at 0 and only measures the real value inside a
+  // useEffect (after the first commit), so every snap's offset is 0 on that
+  // first render regardless of which one is active. Without this guard,
+  // every open — not just "full" — would start flush (square corners, hidden
+  // grabber pill) and animate to its real state once measured, instead of
+  // opening already correct.
+  const isFlushWithTop = containerHeight > 0 && offset <= 0;
   // Defaults to the nearest Nimbus <ThemeProvider>'s own wrapper element
   // (refThemeProvider), not document.body directly. This matches the
   // convention Sidebar/Modal/Popover already follow internally: they all
@@ -200,7 +208,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
           bottom: 0,
           backgroundColor: "var(--nimbus-colors-neutral-textHigh)",
           opacity: 0.4,
-          zIndex
+          zIndex,
         }}
       />
       {/*
@@ -258,7 +266,7 @@ const BottomSheetBase: React.FC<BottomSheetProps> = ({
           borderTopRightRadius: isFlushWithTop
             ? 0
             : "var(--nimbus-shape-border-radius-6)",
-          transition: isDragging ? "none" : SETTLE_TRANSITION
+          transition: isDragging ? "none" : SETTLE_TRANSITION,
         }}
       >
         <Grabber

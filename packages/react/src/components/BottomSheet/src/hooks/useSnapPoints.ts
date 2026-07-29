@@ -1,6 +1,5 @@
 import { RefObject, useCallback, useEffect, useState } from "react";
 
-import { FULL_TOP_GAP_RATIO } from "../bottomSheet.constants";
 import { BottomSheetSnapPoint } from "../bottomSheet.types";
 
 /**
@@ -21,7 +20,13 @@ const parseSnapPoint = (
   containerHeight: number
 ): number => {
   if (point === "full") {
-    return containerHeight * (1 - FULL_TOP_GAP_RATIO);
+    // Edge-to-edge, no top gap: matches Material Design 3's own bottom sheet
+    // spec ("an expanding bottom sheet is full-screen on mobile") and the
+    // mainstream mini-player-to-full-player pattern (e.g. Apple Music) —
+    // consumers who need to keep the status bar clear for a specific screen
+    // can still reserve that space themselves via a shorter custom snap
+    // point (e.g. "94%") instead of "full".
+    return containerHeight;
   }
   const match = /^(\d+(?:\.\d+)?)%$/.exec(point.trim());
   const ratio = match ? Number(match[1]) / 100 : 0;
