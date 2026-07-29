@@ -1,6 +1,0 @@
-releases:
-  "@nimbus-ds/bottom-sheet": major
-  "@nimbus-ds/patterns": minor
-
-declined:
-  - nimbus-patterns
