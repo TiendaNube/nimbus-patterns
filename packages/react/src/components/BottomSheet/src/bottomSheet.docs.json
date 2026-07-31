@@ -3,7 +3,7 @@
   "name": "BottomSheet",
   "totalProps": 10,
   "packageName": "@nimbus-ds/bottom-sheet",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/bottom-sheet",
   "props": [
     {
