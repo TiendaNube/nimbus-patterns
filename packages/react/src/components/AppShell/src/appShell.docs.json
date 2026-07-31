@@ -3,7 +3,7 @@
   "name": "AppShell",
   "totalProps": 9,
   "packageName": "@nimbus-ds/app-shell",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/app-shell",
   "props": [
     {
@@ -100321,7 +100321,7 @@
     },
     {
       "name": "AppShell.Chat",
-      "totalProps": 2,
+      "totalProps": 3,
       "props": [
         {
           "description": "Default expanded state for uncontrolled usage.",
@@ -100333,6 +100333,79 @@
           "description": "Whether the chat panel is expanded to overlay mode, filling the parent container area.\nThe overlay auto-detects the parent bounds (respecting menu and header).",
           "type": "boolean",
           "title": "expanded",
+          "required": false
+        },
+        {
+          "description": "Width of the chat panel in collapsed (non-expanded) mode.\nAccepts any valid CSS length value (e.g. \"300px\", \"25vw\") or a responsive\nobject keyed by breakpoint (e.g. `{ xs: \"300px\", xxl: \"378px\" }`).\nUseful for consumer-controlled resize interactions such as a drag handle.\nWhen omitted, defaults to the responsive `{ xs: \"300px\", xxl: \"378px\" }`.",
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "title": "focus"
+                },
+                "focusVisible": {
+                  "type": "string",
+                  "title": "focusVisible"
+                },
+                "focusWithin": {
+                  "type": "string",
+                  "title": "focusWithin"
+                },
+                "active": {
+                  "type": "string",
+                  "title": "active"
+                },
+                "hover": {
+                  "type": "string",
+                  "title": "hover"
+                },
+                "disabled": {
+                  "type": "string",
+                  "title": "disabled"
+                },
+                "xs": {
+                  "type": "string",
+                  "title": "xs"
+                },
+                "md": {
+                  "type": "string",
+                  "title": "md"
+                },
+                "lg": {
+                  "type": "string",
+                  "title": "lg"
+                },
+                "xl": {
+                  "type": "string",
+                  "title": "xl"
+                },
+                "xxl": {
+                  "type": "string",
+                  "title": "xxl"
+                }
+              },
+              "additionalProperties": false,
+              "propertyOrder": [
+                "focus",
+                "focusVisible",
+                "focusWithin",
+                "active",
+                "hover",
+                "disabled",
+                "xs",
+                "md",
+                "lg",
+                "xl",
+                "xxl"
+              ]
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "collapsedWidth",
           "required": false
         }
       ]
