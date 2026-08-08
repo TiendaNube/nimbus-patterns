@@ -155,7 +155,7 @@ const AppMenu = ({ menuExpanded }: { menuExpanded: boolean }) => {
     <Menu expanded={expanded}>
       <Menu.Header>
         {expanded ? (
-          <Icon source={tiendanubeLogo} color="primary-interactive" />
+          <Icon source={tiendanubeLogo} color="neutral-textHigh" />
         ) : (
           <Icon
             source={<TiendanubeIcon size={24} />}
@@ -226,7 +226,7 @@ const CollapsibleAppMenu = ({
             justifyContent="space-between"
             width="100%"
           >
-            <Icon source={tiendanubeLogo} color="primary-interactive" />
+            <Icon source={tiendanubeLogo} color="neutral-textHigh" />
             <Tooltip content="Close menu" arrow position="right">
               <Box
                 backgroundColor={{ hover: "primary-surface" }}
@@ -484,7 +484,7 @@ export const collapsibleMenuClick: Story = {
                 justifyContent="space-between"
                 width="100%"
               >
-                <Icon source={tiendanubeLogo} color="primary-interactive" />
+                <Icon source={tiendanubeLogo} color="neutral-textHigh" />
                 <Box
                   backgroundColor={{ hover: "primary-surface" }}
                   borderRadius="2"

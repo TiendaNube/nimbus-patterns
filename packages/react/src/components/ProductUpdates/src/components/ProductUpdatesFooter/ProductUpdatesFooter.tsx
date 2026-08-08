@@ -14,12 +14,7 @@ const ProductUpdatesFooter: React.FC<ProductUpdatesFooterProps> = ({
   <Box {...rest}>
     {renderDivider && (
       <Box>
-        <Divider
-          appearance="primary"
-          marginLeft="-16px"
-          marginRight="-16px"
-          width="auto"
-        />
+        <Divider />
       </Box>
     )}
     <Box
