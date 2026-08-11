@@ -1,0 +1,181 @@
+{
+  "id": "bottomSheet",
+  "name": "BottomSheet",
+  "totalProps": 10,
+  "packageName": "@nimbus-ds/bottom-sheet",
+  "version": "2.0.0",
+  "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/bottom-sheet",
+  "props": [
+    {
+      "description": "Determines if the bottom sheet is shown or not.",
+      "default": false,
+      "type": "boolean",
+      "title": "open",
+      "required": false
+    },
+    {
+      "description": "Callback fired when the component requests to be closed (overlay press,\nclose control, Escape, or a downward dismiss gesture).\n() => void;",
+      "type": "object",
+      "additionalProperties": false,
+      "propertyOrder": [],
+      "title": "onRemove",
+      "required": false
+    },
+    {
+      "description": "Ordered list of heights the sheet can snap to. Each entry is a\nviewport-height percentage (e.g. \"60%\") or the keyword \"full\".",
+      "default": [
+        "60%",
+        "90%",
+        "full"
+      ],
+      "type": "array",
+      "items": {
+        "description": "A snap point expressed as a viewport-height percentage (e.g. \"60%\") or the\nkeyword \"full\" (edge-to-edge, covering the full viewport height).",
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "enum": [
+              "full"
+            ],
+            "type": "string"
+          }
+        ]
+      },
+      "title": "snapPoints",
+      "required": false
+    },
+    {
+      "description": "Index within `snapPoints` used as the initial snap point.",
+      "default": 0,
+      "type": "number",
+      "title": "defaultSnap",
+      "required": false
+    },
+    {
+      "description": "Content of the sheet. Compose with BottomSheet.Header, BottomSheet.Body\nand BottomSheet.Footer.",
+      "type": "React.ReactNode",
+      "title": "children",
+      "required": false
+    },
+    {
+      "description": "Controls whether pressing outside should close the sheet.\n- boolean: enable/disable dismissal on outside press\n- function: receive the DOM event and return true to allow closing",
+      "default": true,
+      "anyOf": [
+        {
+          "description": "Predicate variant of `closeOnOutsidePress`: receives the DOM event and\nreturns `true` to allow closing, `false` to ignore the press.",
+          "type": "object",
+          "additionalProperties": false,
+          "propertyOrder": []
+        },
+        {
+          "type": "boolean"
+        }
+      ],
+      "title": "closeOnOutsidePress",
+      "required": false
+    },
+    {
+      "description": "The attribute name to ignore when checking for outside presses, so\nportaled Popover/Modal content does not close the sheet.",
+      "default": "data-nimbus-outside-press-ignore",
+      "type": "string",
+      "title": "ignoreAttributeName",
+      "required": false
+    },
+    {
+      "description": "Determines if background scroll is locked while the sheet is open.",
+      "default": true,
+      "type": "boolean",
+      "title": "needRemoveScroll",
+      "required": false
+    },
+    {
+      "description": "Accessible name (`aria-label`) for the drag grabber. Override for\nnon-English locales, since the built-in default is English-only.",
+      "default": "Drag to resize or dismiss",
+      "type": "string",
+      "title": "grabberLabel",
+      "required": false
+    },
+    {
+      "description": "Explicit z-index for the sheet layer. Omitted by default: like Nimbus's\nown Sidebar/Modal/Popover, the sheet relies on DOM mount order rather\nthan a z-index. Its portal mounts into the nearest Nimbus\n<ThemeProvider>'s own wrapper element (the same container\nSidebar/Modal/Popover portal into), falling back to document.body only\nwhen no ThemeProvider is present. In both cases, later-mounted siblings\npaint on top of earlier ones as long as neither sets a z-index, so this\nkeeps the sheet correctly stacked against Popover and other BottomSheet\ninstances. Only set this to force a specific stacking order against\nsomething outside that convention.",
+      "type": "number",
+      "title": "zIndex",
+      "required": false
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "BottomSheet.Header",
+      "totalProps": 2,
+      "props": [
+        {
+          "description": "The content of the sheet header. Accepts any node (title, actions, icons).",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": false
+        },
+        {
+          "description": "The padding around the header content area.",
+          "default": "base",
+          "enum": [
+            "base",
+            "none"
+          ],
+          "type": "string",
+          "title": "padding",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "BottomSheet.Body",
+      "totalProps": 2,
+      "props": [
+        {
+          "description": "The scrollable content of the sheet.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": true
+        },
+        {
+          "description": "The padding around the body content area.",
+          "default": "base",
+          "enum": [
+            "base",
+            "none"
+          ],
+          "type": "string",
+          "title": "padding",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "BottomSheet.Footer",
+      "totalProps": 2,
+      "props": [
+        {
+          "description": "The content of the sheet footer.",
+          "type": "React.ReactNode",
+          "title": "children",
+          "required": true
+        },
+        {
+          "description": "The padding around the footer content area.",
+          "default": "base",
+          "enum": [
+            "base",
+            "none"
+          ],
+          "type": "string",
+          "title": "padding",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

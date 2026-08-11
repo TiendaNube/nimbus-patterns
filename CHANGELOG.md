@@ -3,6 +3,12 @@
 This is the log of notable changes to the Nimbus Patterns that are developer-facing.
 Package-specific changes not released in any package will be added here just before the release. Until then, you can find them in changelogs of the individual packages (see [packages](./packages) directory).
 
+## 2026-07-30
+
+#### 🐛 Bug fixes
+
+- Re-triggered the release of `@nimbus-ds/patterns` as `1.38.0`. The `1.37.0` (`NavTabs.Item` `appearance`) and `1.38.0` (`BottomSheet`) releases never reached npm: the automated `feat: publish release` pull requests were left unmerged, so `master` stayed on `1.36.0` and every publish run recomputed the same `1.36.0`, which `--tolerate-republish` then skipped silently. ([#177](https://github.com/TiendaNube/nimbus-patterns/pull/177) by [@harrytiendanube](https://github.com/harrytiendanube))
+
 ## 2026-01-15
 
 #### 🎉 New features

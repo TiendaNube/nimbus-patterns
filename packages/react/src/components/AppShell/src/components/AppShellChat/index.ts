@@ -1,4 +1,4 @@
-export { AppShellChat } from "./AppShellChat";
+export { AppShellChat, APPSHELL_CHAT_DEFAULT_WIDTH } from "./AppShellChat";
 export type {
   AppShellChatProperties,
   AppShellChatProps,
