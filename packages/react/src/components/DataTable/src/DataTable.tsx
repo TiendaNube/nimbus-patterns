@@ -33,8 +33,9 @@ const DataTable: React.FC<DataTableProps> & DataTableComponents = ({
       borderColor="neutral-surfaceHighlight"
       borderStyle="solid"
       borderWidth="1"
+      backgroundColor="neutral-surface"
+      overflow="hidden"
       {...containerProps}
-      // overflow="hidden"
     >
       {bulkActions}
       <Table {...rest}>
