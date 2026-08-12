@@ -6,7 +6,7 @@ DataTable is a highly versatile component used to organize large quantities of t
 
 #### 🐛 Bug fixes
 
-- Fixed the `DataTable.BulkActions` sticky bar not matching the table container's rounded corners, which let the page background bleed through at the top of the table. ([#183](https://github.com/TiendaNube/nimbus-patterns/pull/183) by [@harrytiendanube](https://github.com/harrytiendanube))
+- Fixed the `DataTable.BulkActions` sticky bar not matching the table container's rounded corners, which let the page background bleed through at the top of the table. ([#183](https://github.com/TiendaNube/nimbus-patterns/pull/183) by [@claude[bot]](https://github.com/apps/claude))
 
 ## 2026-03-04 `1.4.1`
 
