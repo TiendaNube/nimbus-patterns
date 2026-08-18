@@ -10,6 +10,7 @@ import {
   PlanDisplayCardContent,
   PlanDisplayCardFooter,
   PlanDisplayCardHeader,
+  PlanDisplayCardPrice,
   PlanDisplayCardSpacing,
 } from "./components";
 
@@ -23,7 +24,7 @@ const PlanDisplay: React.FC<PlanDisplayProps> & PlanDisplayComponents = ({
     gridTemplateColumns={`repeat(auto-fit, minmax(${minPlanWidth}, 1fr))`}
     gap="6"
     justifyContent="center"
-    alignItems="flex-start"
+    alignItems="stretch"
     {...rest}
   >
     {children}
@@ -32,6 +33,7 @@ const PlanDisplay: React.FC<PlanDisplayProps> & PlanDisplayComponents = ({
 
 PlanDisplay.Card = PlanDisplayCard;
 PlanDisplay.Header = PlanDisplayCardHeader;
+PlanDisplay.Price = PlanDisplayCardPrice;
 PlanDisplay.Content = PlanDisplayCardContent;
 PlanDisplay.Spacing = PlanDisplayCardSpacing;
 PlanDisplay.Bullet = PlanDisplayBullet;
@@ -41,6 +43,7 @@ PlanDisplay.displayName = "PlanDisplay";
 PlanDisplay.Card.displayName = "PlanDisplay.Card";
 PlanDisplay.Bullet.displayName = "PlanDisplay.Bullet";
 PlanDisplay.Header.displayName = "PlanDisplay.CardHeader";
+PlanDisplay.Price.displayName = "PlanDisplay.Price";
 PlanDisplay.Content.displayName = "PlanDisplay.CardContent";
 PlanDisplay.Spacing.displayName = "PlanDisplay.CardSpacing";
 

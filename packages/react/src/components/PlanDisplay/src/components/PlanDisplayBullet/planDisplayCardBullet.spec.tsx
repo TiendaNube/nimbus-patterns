@@ -33,5 +33,16 @@ describe("GIVEN <PlanDisplayBullet />", () => {
       expect(screen.getByText("Plan display bullet")).toBeDefined();
       expect(screen.getByTestId("icon-id")).toBeDefined();
     });
+
+    it("SHOULD render the badge slot when provided", () => {
+      makeSut({
+        icon,
+        children: "Plan display bullet",
+        badge: <span data-testid="badge-id">Nuevo</span>,
+      });
+
+      expect(screen.getByText("Plan display bullet")).toBeDefined();
+      expect(screen.getByTestId("badge-id")).toBeDefined();
+    });
   });
 });

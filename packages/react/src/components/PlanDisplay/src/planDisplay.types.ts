@@ -7,6 +7,7 @@ import {
   PlanDisplayCardContent,
   PlanDisplayCardFooter,
   PlanDisplayCardHeader,
+  PlanDisplayCardPrice,
   PlanDisplayCardSpacing,
 } from "./components";
 
@@ -25,6 +26,11 @@ export interface PlanDisplayComponents {
    * an optional children where additional information can be displayed.
    */
   Header: typeof PlanDisplayCardHeader;
+
+  /**
+   * The price component of the plan display card. It renders the current price and optionally a previous price (with line-through), a billing period suffix and an annual note.
+   */
+  Price: typeof PlanDisplayCardPrice;
 
   /**
    * The content component of the plan display card. This component is used to display the main content of the plan, such as the plan bullet points.
