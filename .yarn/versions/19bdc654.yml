@@ -1,5 +1,5 @@
-declined:
-  - nimbus-patterns
-
 releases:
   "@nimbus-ds/plan-display": major
+
+declined:
+  - nimbus-patterns
