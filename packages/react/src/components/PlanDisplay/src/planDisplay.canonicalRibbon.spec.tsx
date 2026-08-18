@@ -106,6 +106,34 @@ describe("GIVEN the canonical ribbon visual-validation story", () => {
     expect(hiddenLabel.getAttribute("style") ?? "").toContain("absolute");
   });
 
+  // Issue #185 validation amendment — "Bullet icon color treatment": enabled
+  // bullet icons render `primary-interactive` (blue), never the legacy
+  // `success-interactive` (green); the disabled bullet keeps the neutral
+  // unavailable treatment.
+  it("SHOULD render the four enabled bullet icons with primary-interactive color, never success-interactive", () => {
+    const { container } = renderStory();
+
+    // One primary-interactive-colored <span> wrapper per enabled bullet icon
+    // (the four enabled bullets in the canonical fixture).
+    const primaryIconSpans = container.querySelectorAll(
+      "span[class*='color-primary-interactive']"
+    );
+    expect(primaryIconSpans.length).toBe(4);
+    expect(
+      container.querySelectorAll("span[class*='color-success-interactive']")
+        .length
+    ).toBe(0);
+  });
+
+  it("SHOULD render the disabled priority-support bullet icon with the neutral unavailable color", () => {
+    const { container } = renderStory();
+
+    const neutralIconSpans = container.querySelectorAll(
+      "span[class*='color-neutral-interactive']"
+    );
+    expect(neutralIconSpans.length).toBeGreaterThanOrEqual(1);
+  });
+
   it("SHOULD render the primary action and the footer's leading icon with its supporting offer text", () => {
     renderStory();
 

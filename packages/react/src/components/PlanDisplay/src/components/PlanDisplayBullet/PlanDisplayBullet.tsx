@@ -14,7 +14,7 @@ const PlanDisplayBullet: React.FC<PlanDisplayBulletProps> = ({
     <Box display="flex" alignItems="center">
       <Text
         as="span"
-        color={disabled ? "neutral-interactive" : "success-interactive"}
+        color={disabled ? "neutral-interactive" : "primary-interactive"}
       >
         <Box display="flex" alignItems="center">
           {icon}
