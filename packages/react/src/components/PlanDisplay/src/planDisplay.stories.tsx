@@ -52,33 +52,33 @@ export const twoPlans: Story = {
           <PlanDisplay.Bullet icon={<CheckIcon />}>
             Venta con envío
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Venta sin stock
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Registro de medio de pago
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Escaneo de producto
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Gestión de caja
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Asignación de vendedor
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Creación de productos durante la venta
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Guardar carritos
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Atajos de teclado
           </PlanDisplay.Bullet>
         </PlanDisplay.Content>
       </PlanDisplay.Card>
-      <PlanDisplay.Card highlighted>
+      <PlanDisplay.Card ribbonLabel="Más elegido">
         <PlanDisplay.Header
           subtitle="Punto de venta"
           title={
@@ -195,28 +195,28 @@ export const threePlans: Story = {
           <PlanDisplay.Bullet icon={<CheckIcon />}>
             Venta con envío
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Venta sin stock
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Registro de medio de pago
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Escaneo de producto
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Gestión de caja
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Asignación de vendedor
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Creación de productos durante la venta
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Guardar carritos
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Atajos de teclado
           </PlanDisplay.Bullet>
         </PlanDisplay.Content>
@@ -268,18 +268,18 @@ export const threePlans: Story = {
           <PlanDisplay.Bullet icon={<CheckIcon />}>
             Asignación de vendedor
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Creación de productos durante la venta
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Guardar carritos
           </PlanDisplay.Bullet>
-          <PlanDisplay.Bullet icon={<CloseIcon />} disabled>
+          <PlanDisplay.Bullet icon={<CloseIcon />} disabled unavailableLabel="No incluido">
             Atajos de teclado
           </PlanDisplay.Bullet>
         </PlanDisplay.Content>
       </PlanDisplay.Card>
-      <PlanDisplay.Card highlighted>
+      <PlanDisplay.Card ribbonLabel="Más elegido">
         <PlanDisplay.Header
           subtitle="Punto de venta"
           title={
@@ -358,5 +358,81 @@ export const threePlans: Story = {
         </PlanDisplay.Footer>
       </PlanDisplay.Card>
     </PlanDisplay>
+  ),
+};
+
+// AC-08 — Responsive composition: horizontal is a consumer composition
+// assembled from a single PlanDisplay.Card's existing subcomponents, laid
+// out in a row — not a new PlanDisplay prop or a new named runtime variant.
+export const horizontal: Story = {
+  render: () => (
+    <Box maxWidth="740px">
+      <PlanDisplay.Card ribbonLabel="Más elegido">
+        <Box display="flex" flexDirection="row" gap="4" alignItems="flex-start">
+          <PlanDisplay.Header title={<Title as="h4">Pro</Title>} subtitle="For growing stores" />
+          <PlanDisplay.Content>
+            <PlanDisplay.Price price="$29" period="/month" />
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Unlimited products
+            </PlanDisplay.Bullet>
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Priority support
+            </PlanDisplay.Bullet>
+          </PlanDisplay.Content>
+        </Box>
+        <PlanDisplay.Footer>
+          <Button appearance="primary">Choose plan</Button>
+        </PlanDisplay.Footer>
+      </PlanDisplay.Card>
+    </Box>
+  ),
+};
+
+// AC-08 — Responsive composition: horizontal-mobile arranges the same single
+// card's content and order as `horizontal` above, but vertically. No
+// automatic breakpoint transition between the two is implemented or
+// promised — each is a distinct, explicit usage example.
+export const horizontalMobile: Story = {
+  render: () => (
+    <Box maxWidth="361px">
+      <PlanDisplay.Card ribbonLabel="Más elegido">
+        <Box display="flex" flexDirection="column" gap="4" alignItems="stretch">
+          <PlanDisplay.Header title={<Title as="h4">Pro</Title>} subtitle="For growing stores" />
+          <PlanDisplay.Content>
+            <PlanDisplay.Price price="$29" period="/month" />
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Unlimited products
+            </PlanDisplay.Bullet>
+            <PlanDisplay.Bullet icon={<CheckIcon />}>
+              Priority support
+            </PlanDisplay.Bullet>
+          </PlanDisplay.Content>
+        </Box>
+        <PlanDisplay.Footer>
+          <Button appearance="primary">Choose plan</Button>
+        </PlanDisplay.Footer>
+      </PlanDisplay.Card>
+    </Box>
+  ),
+};
+
+// Migration example: the removed `highlighted` prop is replaced by
+// `ribbonLabel` (or `gradient`) for plan emphasis.
+export const migrationFromHighlighted: Story = {
+  render: () => (
+    <Box display="flex" gap="6">
+      <PlanDisplay.Card ribbonLabel="Most popular">
+        <PlanDisplay.Header title={<Title as="h4">Pro</Title>} subtitle="For growing stores" />
+        <PlanDisplay.Content>
+          <PlanDisplay.Price price="$29" period="/month" />
+        </PlanDisplay.Content>
+      </PlanDisplay.Card>
+      <PlanDisplay.Card gradient>
+        <PlanDisplay.Header title={<Title as="h4">Pro</Title>} subtitle="For growing stores" />
+        <PlanDisplay.Content>
+          <PlanDisplay.Price price="$29" period="/month" />
+        </PlanDisplay.Content>
+      </PlanDisplay.Card>
+    </Box>
   ),
 };

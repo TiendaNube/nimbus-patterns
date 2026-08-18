@@ -1,10 +1,13 @@
 import React from "react";
 import { Box, Text } from "@nimbus-ds/components";
 import { PlanDisplayBulletProps } from "./planDisplayBullet.types";
+import { VisuallyHidden } from "./VisuallyHidden";
 
 const PlanDisplayBullet: React.FC<PlanDisplayBulletProps> = ({
   icon,
+  badge,
   disabled,
+  unavailableLabel,
   children,
 }) => (
   <Box display="flex" gap="2">
@@ -24,6 +27,10 @@ const PlanDisplayBullet: React.FC<PlanDisplayBulletProps> = ({
     >
       {children}
     </Text>
+    {badge}
+    {disabled && unavailableLabel && (
+      <VisuallyHidden>{unavailableLabel}</VisuallyHidden>
+    )}
   </Box>
 );
 
