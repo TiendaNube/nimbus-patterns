@@ -1,0 +1,10 @@
+releases:
+  "@nimbus-ds/app-shell": patch
+  "@nimbus-ds/menu": patch
+  "@nimbus-ds/menubutton": patch
+  "@nimbus-ds/productupdates": patch
+
+declined:
+  - nimbus-patterns
+  - "@nimbus-ds/calendar"
+  - "@nimbus-ds/editor"
