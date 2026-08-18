@@ -4,10 +4,13 @@ import { canonicalRibbon } from "./planDisplay.stories";
 
 /**
  * Verifies the canonical visual-validation story (issue #185 validation
- * amendment — "ribbon visual contract") against the amendment's written
- * requirements, point by point. This renders the exact `canonicalRibbon`
- * story defined for Storybook — not a differently-content story — so this
- * is a direct check of the fixture referenced by AC-02 and AC-07.
+ * amendment — "ribbon visual contract" and "Canonical Plans 2.0 composition
+ * recipe") against the amendment's written requirements, point by point.
+ * This renders the exact `canonicalRibbon` story defined for Storybook —
+ * not a differently-content story — so this is a direct check of the
+ * fixture referenced by AC-02 and AC-07, and the only story labelled
+ * normative in this contribution (see the "Usage-example classification"
+ * validation expectation).
  *
  * This is a DOM/computed-style verification, not a rendered-pixel or
  * screenshot comparison: no headless browser was available in this
@@ -81,6 +84,24 @@ describe("GIVEN the canonical ribbon visual-validation story", () => {
     ).toBeDefined();
   });
 
+  // Canonical Plans 2.0 composition recipe: PlanDisplay.Header carries the
+  // plan name/metadata and PlanDisplay.Price, which places the price before
+  // PlanDisplay.Content's description in document order.
+  it("SHOULD render the price before the description, consistent with Price living in Header rather than Content", () => {
+    renderStory();
+
+    const price = screen.getByText("$219.999");
+    const description = screen.getByText(
+      "Gestión avanzada y control total para tu negocio."
+    );
+
+    const position =
+      // eslint-disable-next-line no-bitwise
+      price.compareDocumentPosition(description) &
+      Node.DOCUMENT_POSITION_FOLLOWING;
+    expect(position).toBeTruthy();
+  });
+
   it("SHOULD render the four enabled bullets with the badge on the wholesale price-tables bullet", () => {
     renderStory();
 
@@ -141,5 +162,60 @@ describe("GIVEN the canonical ribbon visual-validation story", () => {
       screen.getByRole("button", { name: "Subir de plan" })
     ).toBeDefined();
     expect(screen.getByText("Punto de venta Plus")).toBeDefined();
+  });
+
+  // Canonical Plans 2.0 composition recipe + validation expectations:
+  // "verify the CTA is inside PlanDisplay.Content, after the description
+  // and before the bullets".
+  describe("Canonical composition recipe — CTA placement", () => {
+    it("SHOULD render the primary CTA inside PlanDisplay.Content, after the description and before the first bullet", () => {
+      renderStory();
+
+      // Walk the DOM in document order and assert the relative ordering of
+      // the description, the CTA, and the first bullet text.
+      const description = screen.getByText(
+        "Gestión avanzada y control total para tu negocio."
+      );
+      const cta = screen.getByRole("button", { name: "Subir de plan" });
+      const firstBullet = screen.getByText(
+        "Funciones heredadas del plan anterior"
+      );
+
+      const position = (a: Node, b: Node) =>
+        // eslint-disable-next-line no-bitwise
+        a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING;
+
+      expect(position(description, cta)).toBeTruthy();
+      expect(position(cta, firstBullet)).toBeTruthy();
+    });
+
+    it("SHOULD NOT render the primary CTA inside PlanDisplay.Footer", () => {
+      const { container } = renderStory();
+
+      // The footer is identified by the leading icon + supporting-offer
+      // text; assert no <button> is a descendant of that subtree.
+      const offerText = screen.getByText("Punto de venta Plus");
+      const footer = offerText.closest("div")?.parentElement as HTMLElement;
+
+      expect(footer).toBeDefined();
+      expect(footer.querySelector("button")).toBeNull();
+      // Sanity check: the CTA exists elsewhere in the document (in Content).
+      expect(
+        container.querySelectorAll("button").length
+      ).toBeGreaterThanOrEqual(1);
+    });
+
+    it("SHOULD render PlanDisplay.Footer with only the supporting offer text and its leading icon — no other content", () => {
+      renderStory();
+
+      const offerText = screen.getByText("Punto de venta Plus");
+      const footerRow = offerText.parentElement as HTMLElement;
+
+      // The footer row is `<Box display="flex" alignItems="center" gap="2">
+      // {icon}<Box>{children}</Box></Box>` — the icon plus a single wrapper
+      // around the offer text, no button and no other text node.
+      expect(footerRow.querySelector("button")).toBeNull();
+      expect(footerRow.textContent).toBe("Punto de venta Plus");
+    });
   });
 });

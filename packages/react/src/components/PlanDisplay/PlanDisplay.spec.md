@@ -22,12 +22,14 @@ A `PlanDisplay` pattern already exists on the default branch (package `@nimbus-d
 - The responsive compositions named in AC-08 — two-plan, three-plan, horizontal, and horizontal-mobile — as the required usage examples for this contribution: two-plan and three-plan are built with the existing `PlanDisplay` auto-fit grid, and horizontal and horizontal-mobile are consumer compositions assembled from existing subcomponents. None of the four is a new `PlanDisplay` prop or a new named runtime layout variant, and the four are not necessarily an exhaustive set of every composition a consumer could build.
 - Preservation of accessible semantics and keyboard/screen-reader behavior for price, previous price, feature availability, headings, and interactive content (AC-09).
 - Removal of the legacy `highlighted` prop as a breaking, major-version change, with consumer migration to `ribbonLabel` or `gradient`.
+- **The canonical Plans 2.0 composition recipe (validation amendment — "Canonical Plans 2.0 composition recipe"):** a normative Header/Content/Footer content order and placement — Header carries plan name/metadata, `PlanDisplay.Price`, and the optional current-plan `tag`; Content carries the description, then the primary plan action immediately after the description, then the feature bullets; Footer carries only an optional supporting offer and its optional leading icon, with no primary plan-selection action — scoped specifically to the canonical Plans 2.0 comparison story and its visual validation (AC-02, AC-07). This recipe is in scope as a documentation and validation-story requirement; it is not a new prop, slot, runtime variant, or a restriction on what consumers may build with the existing public subcomponents in their own compositions.
 
 ## 3. Non-goals
 
 - Retaining or re-adding the legacy `highlighted` prop is out of scope: it is removed, and consumers migrate to `ribbonLabel` or `gradient`.
 - No public contract changes beyond the seven additions and one removal listed under "Public API" below are in scope for this contribution — this is a hard boundary, including the `PlanDisplay.Bullet.unavailableLabel` accessibility contract. Any additional public contract requires a new explicit issue decision.
 - The two-plan, three-plan, horizontal, and horizontal-mobile compositions named in AC-08 are the required usage examples for this contribution, built entirely from the resolved public contract rather than introducing new named layout props or runtime variants. A composition that would require a new public contract or a new layout API is out of scope here.
+- **The canonical Header/Content/Footer content order is normative only for the canonical Plans 2.0 comparison story** used for visual validation of AC-02 and AC-07. It is not a restriction on how consumers may compose `PlanDisplay` in their own product: `PlanDisplay` remains compositionally flexible, and consumers may place `PlanDisplay.Price`, a primary action, or `PlanDisplay.Footer` content in a different arrangement using the existing public subcomponents. Enforcing this order at the component API level is out of scope; it is a documentation and validation-story concern, not a component-level restriction.
 
 ## 4. Acceptance criteria
 
@@ -71,6 +73,12 @@ No further public contract changes are in scope: the seven items above (together
 - `PlanDisplay.Bullet`: enabled feature without `badge` (no `unavailableLabel` needed, since `disabled` is `false` or absent) — the icon renders in `primary-interactive` (blue), not the legacy `success-interactive` (green), while the bullet text stays `neutral-textLow`; enabled feature with `badge`, with the same `primary-interactive` icon treatment; disabled feature — `disabled: true`, where the consumer supplies the close icon through the existing `icon` prop and the required `unavailableLabel: string` per the discriminated union — the component itself never auto-renders a close icon, `unavailableLabel` is not optional once `disabled` is `true`, and the icon and text continue to use the approved neutral unavailable treatment. A custom consumer-supplied icon inherits the same enabled/disabled color treatment through the existing `icon: ReactNode` slot.
 - `PlanDisplay.Footer`: with `icon`; without `icon`.
 - Comparison sets of cards: ribbon space is reserved consistently across all cards in the set, including cards that do not themselves carry a `ribbonLabel`, so that comparable content and footers remain aligned (AC-07).
+- **Canonical Plans 2.0 composition recipe, normative for the canonical comparison story only:** within each canonical `PlanDisplay.Card`, content follows this order:
+  1. `PlanDisplay.Header` — plan name or metadata; `PlanDisplay.Price`; optional current-plan `tag`.
+  2. `PlanDisplay.Content` — plan description; the primary plan action ("Comenzar gratis" or "Subir de plan", per plan state) immediately after the description; feature bullets after the primary action. The primary action uses the appearance appropriate to each plan's state, and the featured plan's primary action uses the primary appearance.
+  3. `PlanDisplay.Footer` — optional secondary or supporting offer (e.g. "Punto de venta Plus") and its optional leading icon; no primary plan-selection action.
+
+  The footer is omitted entirely when a card has no supporting offer — cards without footer content preserve comparison alignment through the card's own equal-height/bottom-anchored-footer layout mechanism (AC-07), so consumers must not render an empty footer solely to force alignment. This is a normative composition recipe for the canonical validation story and does not add a new prop, slot, or runtime variant, and does not restrict other consumer compositions built from the same public subcomponents (see sections 2 and 3).
 
 ## 7. Responsive behavior
 
@@ -144,14 +152,20 @@ New stories and tests exercise each AC against the concrete contract in section 
 - a story/test for a multi-card comparison verifying reserved ribbon space and aligned, bottom-anchored footers (AC-07);
 - a story/test for each of the two-plan, three-plan, horizontal, and horizontal-mobile usage examples (AC-08);
 - accessibility assertions covering the requirements in section 8 (AC-09);
-- the canonical visual-validation story added by the validation amendment (`canonicalRibbon` in `planDisplay.stories.tsx`: `ribbonLabel: "Más escogido"`, plan "Avanzado", price "$219.999"/"/mes", the four enabled bullets, the `"Nuevo"` badge, the disabled priority-support bullet, and the footer icon and offer text), together with tests asserting the full ribbon visual contract against that exact story (`planDisplayCard.spec.tsx` and `planDisplay.canonicalRibbon.spec.tsx`) — full-width ribbon, `primary-interactive` background, centered `neutral-background` text, shared border radius/no seam with the card surface, `2px` `primary-interactive` border, suppressed level-2 shadow, and full gradient suppression when both `ribbonLabel` and `gradient` are supplied — plus the reserved, invisible ribbon-space alignment for cards without `ribbonLabel` in the same comparison (AC-02, AC-07);
+- the canonical visual-validation story added by the validation amendment (`canonicalRibbon` in `planDisplay.stories.tsx` — the only story labelled **normative** in this file: `ribbonLabel: "Más escogido"`, plan "Avanzado", Header containing the plan name and `PlanDisplay.Price` ("$219.999"/"/mes"), Content containing the description followed immediately by the primary action ("Subir de plan") and then the four enabled bullets, the `"Nuevo"` badge, and the disabled priority-support bullet, and Footer containing only the leading icon and the "Punto de venta Plus" supporting offer — per the canonical Plans 2.0 composition recipe in section 6), together with tests asserting the full ribbon visual contract against that exact story (`planDisplayCard.spec.tsx` and `planDisplay.canonicalRibbon.spec.tsx`) — full-width ribbon, `primary-interactive` background, centered `neutral-background` text, shared border radius/no seam with the card surface, `2px` `primary-interactive` border, suppressed level-2 shadow, and full gradient suppression when both `ribbonLabel` and `gradient` are supplied — plus the reserved, invisible ribbon-space alignment for cards without `ribbonLabel` in the same comparison (AC-02, AC-07);
 - tests against that same canonical story verifying the bullet icon color treatment (AC-05): the four enabled bullets' icons render `primary-interactive` and never the legacy `success-interactive`, and the disabled priority-support bullet's icon keeps the neutral unavailable treatment (`planDisplay.canonicalRibbon.spec.tsx`), plus unit tests at the `PlanDisplayBullet` level covering the enabled/disabled/custom-icon cases directly (`planDisplayCardBullet.spec.tsx`).
+- **Additional AC-07/AC-08 traceability from the canonical Plans 2.0 composition recipe and its validation expectations:**
+  - a test (`planDisplay.canonicalRibbon.spec.tsx`) verifying the primary CTA ("Subir de plan") renders inside `PlanDisplay.Content`, positioned after the description and before the first feature bullet in DOM order;
+  - a test verifying the primary CTA does **not** render inside `PlanDisplay.Footer`;
+  - a test verifying `PlanDisplay.Footer` contains only the optional supporting offer ("Punto de venta Plus") and its leading icon, and no other content;
+  - a test (`planDisplayCard.spec.tsx`) verifying that a card without supporting-offer content omits `PlanDisplay.Footer` entirely and still stretches/aligns with sibling cards via the card's existing equal-height layout mechanism, extending the AC-07 reserved-ribbon-space alignment tests to the footer-omission case;
+  - explicit normative/illustrative labelling of every story in `planDisplay.stories.tsx` (via each story's `parameters.docs.description.story` and a leading source comment), so that only the normative canonical story is used as evidence that the approved Plans 2.0 experience was implemented.
 
 ## 12. Usage examples
 
-The examples below are normative: each illustrates the actual, resolved public contract from section 5.
+Each example below is explicitly labelled **Normative** or **Illustrative**, per the validation amendment's "Usage-example classification": normative examples illustrate the resolved public contract from section 5, and — for the single canonical composition example — the canonical Plans 2.0 composition recipe (section 6); only that canonical example may be used as evidence that the approved Plans 2.0 experience was implemented. Illustrative examples demonstrate `PlanDisplay`'s compositional flexibility for a given public-contract prop and are not mandatory content placements.
 
-**Card with `ribbonLabel` — demonstrates AC-01, AC-02**
+**Card with `ribbonLabel` — Normative. Demonstrates AC-01, AC-02**
 
 ```tsx
 <PlanDisplay.Card ribbonLabel="Most popular">
@@ -162,7 +176,7 @@ The examples below are normative: each illustrates the actual, resolved public c
 </PlanDisplay.Card>
 ```
 
-**Card with `gradient` — demonstrates AC-01, AC-02**
+**Card with `gradient` — Normative. Demonstrates AC-01, AC-02**
 
 ```tsx
 <PlanDisplay.Card gradient>
@@ -173,7 +187,7 @@ The examples below are normative: each illustrates the actual, resolved public c
 </PlanDisplay.Card>
 ```
 
-**Card with both `ribbonLabel` and `gradient` — demonstrates AC-02's precedence rule**
+**Card with both `ribbonLabel` and `gradient` — Normative. Demonstrates AC-02's precedence rule**
 
 ```tsx
 {/* ribbonLabel takes precedence: the ribbon renders and gradient is fully suppressed */}
@@ -185,7 +199,7 @@ The examples below are normative: each illustrates the actual, resolved public c
 </PlanDisplay.Card>
 ```
 
-**`PlanDisplay.Price` with all four fields — demonstrates AC-03**
+**`PlanDisplay.Price` with all four fields — Normative. Demonstrates AC-03**
 
 ```tsx
 <PlanDisplay.Price
@@ -196,7 +210,7 @@ The examples below are normative: each illustrates the actual, resolved public c
 />
 ```
 
-**Header with `tag` — demonstrates AC-04**
+**Header with `tag` — Normative. Demonstrates AC-04**
 
 ```tsx
 <PlanDisplay.Header
@@ -206,7 +220,7 @@ The examples below are normative: each illustrates the actual, resolved public c
 />
 ```
 
-**Bullet with `badge` — demonstrates AC-05**
+**Bullet with `badge` — Normative. Demonstrates AC-05**
 
 ```tsx
 <PlanDisplay.Bullet icon={<CheckIcon />} badge={<Tag appearance="success">Upgraded</Tag>}>
@@ -214,7 +228,7 @@ The examples below are normative: each illustrates the actual, resolved public c
 </PlanDisplay.Bullet>
 ```
 
-**Disabled bullet with consumer-supplied icon and `unavailableLabel` — demonstrates AC-05, AC-09**
+**Disabled bullet with consumer-supplied icon and `unavailableLabel` — Normative. Demonstrates AC-05, AC-09**
 
 ```tsx
 // disabled only changes the visual treatment; the consumer supplies the icon
@@ -227,7 +241,7 @@ The examples below are normative: each illustrates the actual, resolved public c
 </PlanDisplay.Bullet>
 ```
 
-**Footer with `icon` — demonstrates AC-06**
+**Footer with `icon` — Normative. Demonstrates AC-06**
 
 ```tsx
 <PlanDisplay.Footer icon={<ArrowRightIcon />}>
@@ -235,7 +249,9 @@ The examples below are normative: each illustrates the actual, resolved public c
 </PlanDisplay.Footer>
 ```
 
-**Two-plan composition — demonstrates AC-01 through AC-09 as applicable, AC-08**
+**Two-plan composition — Illustrative (required usage example for AC-08). Demonstrates AC-01 through AC-09 as applicable, AC-08**
+
+This is one of the four required usage examples for AC-08, but it is classified **illustrative**: it demonstrates the existing auto-fit grid and `PlanDisplay`'s compositional flexibility with generic content, not a mandatory reproduction of the canonical Plans 2.0 composition recipe's content order. It must not be used as evidence of visual equivalence with the canonical reference; only the canonical example below is normative for that purpose.
 
 ```tsx
 {/* two-plan and three-plan use the existing PlanDisplay auto-fit grid */}
@@ -273,7 +289,9 @@ The examples below are normative: each illustrates the actual, resolved public c
 </PlanDisplay>
 ```
 
-**Three-plan composition — demonstrates AC-08**
+**Three-plan composition — Illustrative (required usage example for AC-08). Demonstrates AC-08**
+
+Same classification rationale as the two-plan composition above: required for AC-08, but illustrative of `PlanDisplay`'s flexibility, not a mandatory reproduction of the canonical recipe or evidence of visual equivalence with the canonical reference.
 
 ```tsx
 <PlanDisplay minPlanWidth="236px">
@@ -325,7 +343,9 @@ The examples below are normative: each illustrates the actual, resolved public c
 </PlanDisplay>
 ```
 
-**Horizontal composition (desktop) — demonstrates AC-08 as a consumer composition**
+**Horizontal composition (desktop) — Illustrative (required usage example for AC-08). Demonstrates AC-08 as a consumer composition**
+
+Same classification rationale as the two-plan composition above: required for AC-08, but illustrative of a consumer-assembled composition, not a mandatory reproduction of the canonical recipe or evidence of visual equivalence with the canonical reference.
 
 ```tsx
 {/* horizontal is a consumer composition assembled from a single PlanDisplay.Card's
@@ -353,7 +373,9 @@ The examples below are normative: each illustrates the actual, resolved public c
 </Box>
 ```
 
-**Horizontal-mobile composition — demonstrates AC-08 as a distinct consumer composition**
+**Horizontal-mobile composition — Illustrative (required usage example for AC-08). Demonstrates AC-08 as a distinct consumer composition**
+
+Same classification rationale as the horizontal composition above: required for AC-08, but illustrative, not a mandatory reproduction of the canonical recipe or evidence of visual equivalence with the canonical reference.
 
 ```tsx
 {/* horizontal-mobile arranges the same single card's content and order as the
@@ -381,9 +403,9 @@ The examples below are normative: each illustrates the actual, resolved public c
 </Box>
 ```
 
-**Canonical visual-validation example — demonstrates AC-02's full ribbon visual contract and AC-07's comparison alignment (validation amendment)**
+**Canonical visual-validation example — Normative. Demonstrates AC-02's full ribbon visual contract, AC-07's comparison alignment, and the canonical Plans 2.0 composition recipe (validation amendment)**
 
-This example is a validation fixture used to visually verify the ribbon treatment resolved in section 9, not a new public variant: it is built entirely from the existing public composition (`.Card`, `.Header`, `.Price`, `.Content`, `.Bullet`, `.Footer`), with no new prop. It matches the `canonicalRibbon` story in `planDisplay.stories.tsx`.
+This is the **only normative composition example** in this section: it is the sole usage example usable as evidence that the approved Plans 2.0 experience was implemented. It is a validation fixture used to visually verify the ribbon treatment resolved in section 9 and the canonical composition recipe resolved in section 6, not a new public variant: it is built entirely from the existing public composition (`.Card`, `.Header`, `.Price`, `.Content`, `.Bullet`, `.Footer`), with no new prop. It matches the `canonicalRibbon` story in `planDisplay.stories.tsx`. Content order follows the canonical recipe exactly: `PlanDisplay.Header` carries the plan name and `PlanDisplay.Price`; `PlanDisplay.Content` carries the description, then the primary action ("Subir de plan") immediately after the description and before the feature bullets; `PlanDisplay.Footer` carries only the leading icon and the "Punto de venta Plus" supporting offer — no primary action.
 
 ```tsx
 <PlanDisplay.Card ribbonLabel="Más escogido">
@@ -395,12 +417,14 @@ This example is a validation fixture used to visually verify the ribbon treatmen
         <Title as="h3" color="neutral-textHigh">Avanzado</Title>
       </Box>
     }
-  />
-  <PlanDisplay.Content>
+  >
     <PlanDisplay.Price price="$219.999" period="/mes" />
+  </PlanDisplay.Header>
+  <PlanDisplay.Content>
     <Text color="neutral-textLow">
       Gestión avanzada y control total para tu negocio.
     </Text>
+    <Button appearance="primary">Subir de plan</Button>
     <PlanDisplay.Bullet icon={<CheckIcon aria-hidden="true" />}>
       Funciones heredadas del plan anterior
     </PlanDisplay.Bullet>
@@ -425,15 +449,14 @@ This example is a validation fixture used to visually verify the ribbon treatmen
     </PlanDisplay.Bullet>
   </PlanDisplay.Content>
   <PlanDisplay.Footer icon={<StoreIcon aria-hidden="true" />}>
-    <Box display="flex" flexDirection="column" gap="2" width="100%">
-      <Button appearance="primary">Subir de plan</Button>
-      <Text fontSize="caption" color="neutral-textLow">Punto de venta Plus</Text>
-    </Box>
+    <Text fontSize="caption" color="neutral-textLow">Punto de venta Plus</Text>
   </PlanDisplay.Footer>
 </PlanDisplay.Card>
 ```
 
-**Migration example: `highlighted` (before) → `ribbonLabel`/`gradient` (after)**
+**Migration example: `highlighted` (before) → `ribbonLabel`/`gradient` (after) — Illustrative**
+
+Illustrative: it demonstrates the migration path from the removed `highlighted` prop, not the canonical Plans 2.0 composition recipe's content order.
 
 ```tsx
 // Before (removed)

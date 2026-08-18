@@ -183,5 +183,38 @@ describe("GIVEN <PlanDisplayCard />", () => {
         "border-width"
       );
     });
+
+    // Canonical Plans 2.0 composition recipe (issue #185 validation
+    // amendment): "cards without footer content preserve comparison
+    // alignment through the card layout — do not add empty footer content
+    // solely to force alignment." The equal-height sizing (height="100%")
+    // is applied unconditionally on the card's outer wrapper, independent
+    // of whether the card's children include a PlanDisplay.Footer, so a
+    // card that omits its Footer entirely still stretches to match a
+    // sibling card that renders one.
+    it("SHOULD apply the same equal-height sizing whether or not the card's children include a Footer", () => {
+      const withoutFooter = render(
+        <PlanDisplayCard>
+          <div>Card without a footer</div>
+        </PlanDisplayCard>
+      );
+      const withFooter = render(
+        <PlanDisplayCard>
+          <div>Card with a footer</div>
+          <div>Supporting offer</div>
+        </PlanDisplayCard>
+      );
+
+      const outerWrapper = (container: HTMLElement) =>
+        container.firstElementChild as HTMLElement;
+
+      const withoutFooterStyle =
+        outerWrapper(withoutFooter.container).getAttribute("style") ?? "";
+      const withFooterStyle =
+        outerWrapper(withFooter.container).getAttribute("style") ?? "";
+
+      expect(withoutFooterStyle).toContain("100%");
+      expect(withFooterStyle).toContain("100%");
+    });
   });
 });
