@@ -6,9 +6,18 @@ import { PlanDisplayCardProps } from "./planDisplayCard.types";
 
 const bodyChildren = <div>Body content</div>;
 
-const makeSut = (rest: Omit<PlanDisplayCardProps, "children">) => {
+const makeSut = (rest: Omit<PlanDisplayCardProps, "children">) =>
   render(<PlanDisplayCard {...rest}>{bodyChildren}</PlanDisplayCard>);
-};
+
+const getSurface = (container: HTMLElement) =>
+  container.querySelector(
+    '[data-testid="plan-display-card-surface"]'
+  ) as HTMLElement;
+
+const getRibbon = (container: HTMLElement) =>
+  container.querySelector(
+    '[data-testid="plan-display-card-ribbon"]'
+  ) as HTMLElement;
 
 describe("GIVEN <PlanDisplayCard />", () => {
   describe("WHEN rendered", () => {
@@ -22,20 +31,32 @@ describe("GIVEN <PlanDisplayCard />", () => {
   // AC-01 — Card hierarchy: level-2 shadow by default.
   describe("AC-01: card hierarchy", () => {
     it("SHOULD render with a level-2 shadow by default", () => {
-      const { container } = render(
-        <PlanDisplayCard>{bodyChildren}</PlanDisplayCard>
-      );
+      const { container } = makeSut({});
 
-      const surface = container.firstChild
-        ?.firstChild?.nextSibling as HTMLElement;
+      const surface = getSurface(container);
       expect(surface.getAttribute("style") ?? "").toContain(
         "shadow-level-2"
+      );
+    });
+
+    it("SHOULD NOT apply a border by default", () => {
+      const { container } = makeSut({});
+
+      const surface = getSurface(container);
+      expect(surface.getAttribute("style") ?? "").not.toContain(
+        "border-width"
       );
     });
   });
 
   // AC-02 — Plan emphasis: ribbonLabel / gradient, with ribbonLabel taking
-  // precedence when both are supplied.
+  // precedence when both are supplied. The concrete visual contract below
+  // (full-width ribbon, primary-interactive background, centered
+  // neutral-background text, 2px primary-interactive border, suppressed
+  // level-2 shadow, and full gradient suppression) is normative per the
+  // issue #185 validation amendment — "ribbon visual contract" — and is
+  // exercised by the canonical `planDisplay.stories.tsx` `canonicalRibbon`
+  // story (AC-02, AC-07).
   describe("AC-02: plan emphasis", () => {
     it("SHOULD render the ribbonLabel when provided", () => {
       makeSut({ ribbonLabel: "Most popular" });
@@ -50,12 +71,52 @@ describe("GIVEN <PlanDisplayCard />", () => {
     });
 
     it("SHOULD render correctly with gradient alone", () => {
-      makeSut({ gradient: true });
+      const { container } = makeSut({ gradient: true });
 
-      expect(screen.getByText("Body content")).toBeDefined();
+      const surfaceContent = container.querySelector(
+        '[data-testid="plan-display-card-surface"] > div:nth-child(2)'
+      ) as HTMLElement;
+      expect(surfaceContent.getAttribute("style") ?? "").toContain(
+        "linear-gradient"
+      );
     });
 
-    it("SHOULD render the ribbonLabel and suppress the gradient when both are supplied", () => {
+    it("SHOULD render a full-width ribbon with a primary-interactive background when ribbonLabel is provided", () => {
+      const { container } = makeSut({ ribbonLabel: "Most popular" });
+
+      const ribbon = getRibbon(container);
+      const style = ribbon.getAttribute("style") ?? "";
+      expect(style).toContain("100%");
+      expect(style).toContain("colors-primary-interactive");
+    });
+
+    it("SHOULD center the ribbon text and render it in neutral-background color", () => {
+      makeSut({ ribbonLabel: "Most popular" });
+
+      const label = screen.getByText("Most popular");
+      expect(label.className).toContain("textAlign-center");
+      expect(label.className).toContain("color-neutral-background");
+    });
+
+    it("SHOULD apply a 2px primary-interactive border to the card surface when ribbonLabel is provided", () => {
+      const { container } = makeSut({ ribbonLabel: "Most popular" });
+
+      const surface = getSurface(container);
+      const style = surface.getAttribute("style") ?? "";
+      expect(style).toContain("border-width-2");
+      expect(style).toContain("colors-primary-interactive");
+    });
+
+    it("SHOULD NOT render the default level-2 shadow when ribbonLabel is provided", () => {
+      const { container } = makeSut({ ribbonLabel: "Most popular" });
+
+      const surface = getSurface(container);
+      expect(surface.getAttribute("style") ?? "").not.toContain(
+        "shadow-level-2"
+      );
+    });
+
+    it("SHOULD render the ribbonLabel, suppress the gradient entirely, and apply the border when both are supplied", () => {
       const { container } = render(
         <PlanDisplayCard ribbonLabel="Best value" gradient>
           {bodyChildren}
@@ -64,10 +125,62 @@ describe("GIVEN <PlanDisplayCard />", () => {
 
       expect(screen.getByText("Best value")).toBeDefined();
 
-      const surface = container.firstChild
-        ?.firstChild?.nextSibling as HTMLElement;
-      expect(surface.getAttribute("style") ?? "").not.toContain(
+      const surface = getSurface(container);
+      expect(surface.getAttribute("style") ?? "").toContain(
+        "colors-primary-interactive"
+      );
+
+      const surfaceContent = container.querySelector(
+        '[data-testid="plan-display-card-surface"] > div:nth-child(2)'
+      ) as HTMLElement;
+      expect(surfaceContent.getAttribute("style") ?? "").not.toContain(
         "linear-gradient"
+      );
+    });
+  });
+
+  // AC-07 — Comparison alignment: cards without a ribbonLabel reserve the
+  // same, otherwise-invisible ribbon area, so comparable cards in the same
+  // comparison stay aligned.
+  describe("AC-07: comparison alignment", () => {
+    it("SHOULD reserve the same ribbon-area height for a card without a ribbonLabel as for one with a ribbonLabel", () => {
+      const { container: withoutRibbon } = makeSut({});
+      const { container: withRibbon } = makeSut({
+        ribbonLabel: "Most popular",
+      });
+
+      const emptyRibbon = getRibbon(withoutRibbon);
+      const filledRibbon = getRibbon(withRibbon);
+
+      // Both ribbon areas use the same fixed vertical padding (py="1"),
+      // applied regardless of ribbonLabel — this is what reserves an
+      // identical height whether or not a ribbon is rendered. Only the
+      // background color and text visibility differ between the two.
+      const paddingClasses = (el: HTMLElement) =>
+        el.className
+          .split(" ")
+          .filter(
+            (cls) => cls.includes("paddingTop") || cls.includes("paddingBottom")
+          )
+          .sort();
+
+      expect(paddingClasses(emptyRibbon).length).toBeGreaterThan(0);
+      expect(paddingClasses(emptyRibbon)).toEqual(paddingClasses(filledRibbon));
+      expect(emptyRibbon.getAttribute("style") ?? "").not.toContain(
+        "colors-primary-interactive"
+      );
+    });
+
+    it("SHOULD keep the reserved ribbon area free of a background and a border when ribbonLabel is absent", () => {
+      const { container } = makeSut({});
+
+      const ribbon = getRibbon(container);
+      const surface = getSurface(container);
+      expect(ribbon.getAttribute("style") ?? "").not.toContain(
+        "background-color"
+      );
+      expect(surface.getAttribute("style") ?? "").not.toContain(
+        "border-width"
       );
     });
   });

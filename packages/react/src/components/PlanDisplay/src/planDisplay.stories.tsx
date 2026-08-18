@@ -1,8 +1,8 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Box, Button, Text, Title } from "@nimbus-ds/components";
-import { CheckIcon, CloseIcon } from "@nimbus-ds/icons";
+import { Box, Button, Tag, Text, Title } from "@nimbus-ds/components";
+import { CheckIcon, CloseIcon, StoreIcon } from "@nimbus-ds/icons";
 import { PlanDisplay } from "./PlanDisplay";
 
 const meta: Meta<typeof PlanDisplay> = {
@@ -410,6 +410,73 @@ export const horizontalMobile: Story = {
         </Box>
         <PlanDisplay.Footer>
           <Button appearance="primary">Choose plan</Button>
+        </PlanDisplay.Footer>
+      </PlanDisplay.Card>
+    </Box>
+  ),
+};
+
+// Canonical visual-validation story (issue #185 validation amendment —
+// "ribbon visual contract"). This is the fixture used to validate AC-02's
+// ribbon treatment and AC-07's comparison alignment against the approved
+// visual reference: full-width ribbon, primary-interactive background,
+// centered neutral-background text, shared top border radius with the card
+// surface (no seam), 2px primary-interactive border, and no default
+// level-2 shadow. It is a validation fixture built entirely from the
+// existing public composition (`.Card`, `.Header`, `.Price`, `.Content`,
+// `.Bullet`, `.Footer`) — it does not introduce any new prop or variant.
+export const canonicalRibbon: Story = {
+  render: () => (
+    <Box maxWidth="320px">
+      <PlanDisplay.Card ribbonLabel="Más escogido">
+        <PlanDisplay.Header
+          subtitle="Punto de venta"
+          title={
+            <Box display="flex" gap="1">
+              <Title as="h3" color="neutral-textLow">
+                Plan
+              </Title>
+              <Title as="h3" color="neutral-textHigh">
+                Avanzado
+              </Title>
+            </Box>
+          }
+        />
+        <PlanDisplay.Content>
+          <PlanDisplay.Price price="$219.999" period="/mes" />
+          <Text fontWeight="regular" color="neutral-textLow">
+            Gestión avanzada y control total para tu negocio.
+          </Text>
+          <PlanDisplay.Bullet icon={<CheckIcon aria-hidden="true" />}>
+            Funciones heredadas del plan anterior
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon aria-hidden="true" />}>
+            Campos personalizados
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet
+            icon={<CheckIcon aria-hidden="true" />}
+            badge={<Tag appearance="success">Nuevo</Tag>}
+          >
+            Tablas de precios mayoristas
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet icon={<CheckIcon aria-hidden="true" />}>
+            Gestión con inteligencia artificial
+          </PlanDisplay.Bullet>
+          <PlanDisplay.Bullet
+            icon={<CloseIcon aria-hidden="true" />}
+            disabled
+            unavailableLabel="No incluido"
+          >
+            Soporte prioritario
+          </PlanDisplay.Bullet>
+        </PlanDisplay.Content>
+        <PlanDisplay.Footer icon={<StoreIcon aria-hidden="true" />}>
+          <Box display="flex" flexDirection="column" gap="2" width="100%">
+            <Button appearance="primary">Subir de plan</Button>
+            <Text fontSize="caption" color="neutral-textLow">
+              Punto de venta Plus
+            </Text>
+          </Box>
         </PlanDisplay.Footer>
       </PlanDisplay.Card>
     </Box>

@@ -15,6 +15,30 @@ export interface PlanDisplayCardProperties {
    */
   gradient?: boolean;
 }
-export type PlanDisplayCardProps =
-  PropsWithChildren<PlanDisplayCardProperties> &
-    Omit<BoxProps, "display" | "flexDirection" | "height">;
+// `...rest` lands only on the outer layout wrapper (height/flex column),
+// never on the card's visual surface — the ribbon and border/shadow
+// treatment described above own `boxShadow`, `border*`, `backgroundColor`,
+// and `backgroundImage` internally. Omitting them here keeps those props
+// from being type-valid while silently having no effect (or landing on the
+// wrong element) for consumers.
+export type PlanDisplayCardProps = PropsWithChildren<PlanDisplayCardProperties> &
+  Omit<
+    BoxProps,
+    | "display"
+    | "flexDirection"
+    | "height"
+    | "boxShadow"
+    | "border"
+    | "borderColor"
+    | "borderStyle"
+    | "borderWidth"
+    | "borderTopWidth"
+    | "borderBottomWidth"
+    | "borderLeftWidth"
+    | "borderRightWidth"
+    | "borderWidthX"
+    | "borderWidthY"
+    | "borderRadius"
+    | "backgroundColor"
+    | "backgroundImage"
+  >;

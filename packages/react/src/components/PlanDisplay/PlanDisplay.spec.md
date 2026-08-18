@@ -43,12 +43,14 @@ A `PlanDisplay` pattern already exists on the default branch (package `@nimbus-d
 | AC-08 | Responsive composition | The supported compositions are two-plan, three-plan, horizontal, and horizontal-mobile layouts. They preserve the content meaning and order across viewport sizes. |
 | AC-09 | Accessible behavior | Price, previous price, feature availability, headings, and interactive content preserve meaningful semantics and keyboard/screen-reader behavior. Engineering verifies this during implementation review. |
 
+**Verification note:** each AC is testable against the resolved contract in sections 5–9, as sharpened by the validation amendment's ribbon visual contract. AC-02's precedence rule is testable via the co-occurrence rule (when `ribbonLabel` is present, `gradient` is fully suppressed) and, concretely, via the ribbon visual contract in section 9 — a full-width ribbon with a `primary-interactive` background and centered `neutral-background` text, sharing the card's top border radius with the card surface so the two read as one continuous shape with no visible seam, a `2px` `primary-interactive` border on the card surface, and suppression of the default level-2 shadow whenever `ribbonLabel` is present, with the gradient fully suppressed (not layered underneath) whenever both are supplied. AC-07 is testable via the reserved ribbon-space requirement: cards without `ribbonLabel` reserve an equivalent, invisible ribbon area — no border, no background, the same height a rendered ribbon would occupy — so comparison alignment holds whether or not a given card carries a ribbon.
+
 ## 5. Public API, types, defaults, and precedence rules
 
 - **`PlanDisplay.Price`** (new subcomponent): `price: ReactNode` (required); `previousPrice?: ReactNode`; `period?: ReactNode`; `annualNote?: ReactNode`. All four are typed `ReactNode`. The component defines no defaults; formatting, currency, localization, and the final textual value are consumer-owned.
 - **`PlanDisplay.Card.ribbonLabel`**: `ribbonLabel?: ReactNode`. Renders in the card's top ribbon.
 - **`PlanDisplay.Card.gradient`**: `gradient?: boolean`. `true` selects one single, fixed Plans 2.0 gradient (see section 9); it is not a token or color the consumer can choose.
-- **Co-occurrence rule:** when `ribbonLabel` is present, `gradient` is fully suppressed. This is a valid, defined combination — not an error.
+- **Co-occurrence rule:** when `ribbonLabel` is present, `gradient` is fully suppressed. This is a valid, defined combination — not an error. The concrete, observable rendering this implies (ribbon geometry, background/text color, shared border radius with the card surface, the card-surface border, and shadow suppression) is specified once, in section 9's "Ribbon visual contract," rather than duplicated here — `ribbonLabel` and `gradient` remain the only two props in this contract.
 - **`PlanDisplay.Header.tag`**: `tag?: ReactNode`. Renders to the right of the header's supporting text. The pattern does not constrain its appearance or define a structured tag value.
 - **`PlanDisplay.Bullet.badge`**: `badge?: ReactNode`. Renders inline after the bullet content. The pattern does not constrain its appearance or define a structured badge value.
 - **`PlanDisplay.Bullet` disabled treatment and `unavailableLabel`:** the consumer continues to supply the visual icon manually through the existing required `icon: ReactNode` prop — the component does not automatically select or render a close icon. The contract is extended with a localized accessibility label, typed as a discriminated union:
@@ -63,7 +65,7 @@ No further public contract changes are in scope: the seven items above (together
 
 ## 6. Observable states and variants
 
-- `PlanDisplay.Card`: default state (level-2 shadow, no emphasis); emphasized with `ribbonLabel` only; emphasized with `gradient` only; both `ribbonLabel` and `gradient` supplied together (renders the ribbon; `gradient` is fully suppressed).
+- `PlanDisplay.Card`: default state (level-2 shadow, no emphasis, no border); emphasized with `ribbonLabel` only — the full ribbon visual contract (section 9) applies: the ribbon spans the full width of the card surface with a `primary-interactive` background and centered `neutral-background` text, shares the card's top border radius so the ribbon and card surface read as one continuous shape with no visible seam, the card surface carries a `2px` `primary-interactive` border, and the default level-2 shadow is not rendered; emphasized with `gradient` only (the fixed gradient background applies, level-2 shadow still renders, no border and no ribbon); both `ribbonLabel` and `gradient` supplied together — the full ribbon visual contract renders and `gradient` is fully suppressed, not layered underneath. A card without `ribbonLabel`, when participating in the same comparison as a card that has one, reserves an equivalent, invisible ribbon area — no border, no background — occupying the same height a rendered ribbon would, so comparable content and footers stay aligned regardless of which cards carry a ribbon (AC-07).
 - `PlanDisplay.Price`: renders the required current `price`; `previousPrice`, `period`, and `annualNote` may each independently be present or absent. Each being independently optional means each may or may not be supplied; no further combination-level validation is stated or implied.
 - `PlanDisplay.Header`: with `tag`; without `tag`.
 - `PlanDisplay.Bullet`: enabled feature without `badge` (no `unavailableLabel` needed, since `disabled` is `false` or absent); enabled feature with `badge`; disabled feature — `disabled: true`, where the consumer supplies the close icon through the existing `icon` prop and the required `unavailableLabel: string` per the discriminated union — the component itself never auto-renders a close icon, and `unavailableLabel` is not optional once `disabled` is `true`.
@@ -93,8 +95,18 @@ This is the concrete AC-09 contract:
 ## 9. Contractual tokens and design constraints
 
 - **A "level-2 shadow" is the default card treatment (AC-01):** the token literal `boxShadow="2"` is the established convention this repository already uses for base/default card-level elevation on comparable surfaces (e.g. `AppShell.tsx`, `InitialScreenCard.tsx`, `SummaryStats.tsx`). By contrast, `PlanDisplay.Card`'s previous `highlighted` (emphasized) treatment used `boxShadow="3"` — a different, higher-emphasis token. AC-01's "level-2 shadow" refers to the `boxShadow="2"` token as the new default (non-emphasized) card treatment, distinct from the emphasis-level shadow.
-- **Ribbon-space alignment (AC-07):** every card reserves the same top ribbon area, including cards without a `ribbonLabel`. The reference implementation uses spacing tokens `0-5` above the label and `2` below it, with a negative spacing-`2` overlap before the card surface. Equal-height flex cards with bottom-anchored footers keep comparable content and footers aligned across the set. The implementation may vary internally provided this observable alignment is preserved.
-- **Gradient design (AC-02):** the `gradient` emphasis treatment resolves to the fixed value `linear-gradient(194.55deg, var(--nimbus-colors-primary-surface) 4.18%, var(--nimbus-colors-neutral-background) 45.97%)`, applied only when `gradient` is `true` and no ribbon (`ribbonLabel`) is present.
+- **Ribbon visual contract (AC-02, AC-07), resolved by the issue's validation amendment ("Validation amendment — ribbon visual contract"):** when `ribbonLabel` is present:
+  - the ribbon spans the full width of the card surface;
+  - the ribbon uses `primary-interactive` as its background;
+  - its content is horizontally centered and uses `neutral-background` text;
+  - it shares the card's top border radius so the ribbon and card surface appear as one continuous component, with no visible seam or gap between them;
+  - the card surface uses a `2px` `primary-interactive` border;
+  - the emphasized card does not render the default level-2 shadow — the border, not the shadow, is the emphasis cue;
+  - cards without `ribbonLabel` reserve an equivalent, invisible ribbon area — no border, no background — occupying the same height a rendered ribbon would, when participating in the same comparison (AC-07); and
+  - when `ribbonLabel` and `gradient` are both supplied, this complete ribbon treatment renders and the gradient is fully suppressed — not layered underneath.
+
+  The implementation may vary internally, but the observable geometry, color treatment, border, shadow suppression, continuity, and comparison alignment above are contractual. This supersedes the earlier prototype-derived spacing-token description of ribbon-space alignment (spacing tokens `0-5` above the label, `2` below it, with a negative spacing-`2` overlap before the card surface): that spacing was evidence recovered from the prototype before visual validation. Equal-height flex cards with bottom-anchored footers continue to keep comparable content and footers aligned across the set (AC-07).
+- **Gradient design (AC-02):** the `gradient` emphasis treatment resolves to the fixed value `linear-gradient(194.55deg, var(--nimbus-colors-primary-surface) 4.18%, var(--nimbus-colors-neutral-background) 45.97%)`, applied only when `gradient` is `true` and no ribbon (`ribbonLabel`) is present. Per the ribbon visual contract above, if a ribbon is present the gradient does not apply at all — it is not layered underneath the ribbon.
 
 No other design tokens, spacing scales, or typography constraints are stated in the approved specification beyond those above.
 
@@ -124,7 +136,8 @@ New stories and tests exercise each AC against the concrete contract in section 
 - a story/test for `PlanDisplay.Footer` with and without `icon` (AC-06);
 - a story/test for a multi-card comparison verifying reserved ribbon space and aligned, bottom-anchored footers (AC-07);
 - a story/test for each of the two-plan, three-plan, horizontal, and horizontal-mobile usage examples (AC-08);
-- accessibility assertions covering the requirements in section 8 (AC-09).
+- accessibility assertions covering the requirements in section 8 (AC-09);
+- the canonical visual-validation story added by the validation amendment (`canonicalRibbon` in `planDisplay.stories.tsx`: `ribbonLabel: "Más escogido"`, plan "Avanzado", price "$219.999"/"/mes", the four enabled bullets, the `"Nuevo"` badge, the disabled priority-support bullet, and the footer icon and offer text), together with tests asserting the full ribbon visual contract against that exact story (`planDisplayCard.spec.tsx` and `planDisplay.canonicalRibbon.spec.tsx`) — full-width ribbon, `primary-interactive` background, centered `neutral-background` text, shared border radius/no seam with the card surface, `2px` `primary-interactive` border, suppressed level-2 shadow, and full gradient suppression when both `ribbonLabel` and `gradient` are supplied — plus the reserved, invisible ribbon-space alignment for cards without `ribbonLabel` in the same comparison (AC-02, AC-07).
 
 ## 12. Usage examples
 
@@ -358,6 +371,58 @@ The examples below are normative: each illustrates the actual, resolved public c
     </PlanDisplay.Footer>
   </PlanDisplay.Card>
 </Box>
+```
+
+**Canonical visual-validation example — demonstrates AC-02's full ribbon visual contract and AC-07's comparison alignment (validation amendment)**
+
+This example is a validation fixture used to visually verify the ribbon treatment resolved in section 9, not a new public variant: it is built entirely from the existing public composition (`.Card`, `.Header`, `.Price`, `.Content`, `.Bullet`, `.Footer`), with no new prop. It matches the `canonicalRibbon` story in `planDisplay.stories.tsx`.
+
+```tsx
+<PlanDisplay.Card ribbonLabel="Más escogido">
+  <PlanDisplay.Header
+    subtitle="Punto de venta"
+    title={
+      <Box display="flex" gap="1">
+        <Title as="h3" color="neutral-textLow">Plan</Title>
+        <Title as="h3" color="neutral-textHigh">Avanzado</Title>
+      </Box>
+    }
+  />
+  <PlanDisplay.Content>
+    <PlanDisplay.Price price="$219.999" period="/mes" />
+    <Text color="neutral-textLow">
+      Gestión avanzada y control total para tu negocio.
+    </Text>
+    <PlanDisplay.Bullet icon={<CheckIcon aria-hidden="true" />}>
+      Funciones heredadas del plan anterior
+    </PlanDisplay.Bullet>
+    <PlanDisplay.Bullet icon={<CheckIcon aria-hidden="true" />}>
+      Campos personalizados
+    </PlanDisplay.Bullet>
+    <PlanDisplay.Bullet
+      icon={<CheckIcon aria-hidden="true" />}
+      badge={<Tag appearance="success">Nuevo</Tag>}
+    >
+      Tablas de precios mayoristas
+    </PlanDisplay.Bullet>
+    <PlanDisplay.Bullet icon={<CheckIcon aria-hidden="true" />}>
+      Gestión con inteligencia artificial
+    </PlanDisplay.Bullet>
+    <PlanDisplay.Bullet
+      icon={<CloseIcon aria-hidden="true" />}
+      disabled
+      unavailableLabel="No incluido"
+    >
+      Soporte prioritario
+    </PlanDisplay.Bullet>
+  </PlanDisplay.Content>
+  <PlanDisplay.Footer icon={<StoreIcon aria-hidden="true" />}>
+    <Box display="flex" flexDirection="column" gap="2" width="100%">
+      <Button appearance="primary">Subir de plan</Button>
+      <Text fontSize="caption" color="neutral-textLow">Punto de venta Plus</Text>
+    </Box>
+  </PlanDisplay.Footer>
+</PlanDisplay.Card>
 ```
 
 **Migration example: `highlighted` (before) → `ribbonLabel`/`gradient` (after)**
