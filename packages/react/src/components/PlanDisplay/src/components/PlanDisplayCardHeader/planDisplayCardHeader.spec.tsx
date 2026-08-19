@@ -26,4 +26,26 @@ describe("GIVEN <PlanDisplayCardHeader />", () => {
       expect(screen.getByText("Title")).toBeDefined();
     });
   });
+
+  // AC-04 — Header metadata: an optional `tag` next to the supporting text.
+  describe("AC-04: header metadata", () => {
+    it("SHOULD render the tag next to the subtitle when provided", () => {
+      makeSut({
+        subtitle: "Subtitle",
+        title: <Text>Title</Text>,
+        tag: <Text>New</Text>,
+      });
+
+      expect(screen.getByText("New")).toBeDefined();
+    });
+
+    it("SHOULD render correctly without a tag", () => {
+      makeSut({
+        subtitle: "Subtitle",
+        title: <Text>Title</Text>,
+      });
+
+      expect(screen.queryByText("New")).toBeNull();
+    });
+  });
 });

@@ -3,7 +3,7 @@
   "name": "PlanDisplay",
   "totalProps": 2,
   "packageName": "@nimbus-ds/plan-display",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "docLink": "https://nimbus.nuvemshop.com.br/documentation/components-components/plan-display",
   "props": [
     {
@@ -21,35 +21,55 @@
   "subComponents": [
     {
       "name": "PlanDisplay.Card",
-      "totalProps": 1,
+      "totalProps": 2,
       "props": [
         {
+          "description": "Label rendered in the card's top ribbon, used to emphasize a plan (e.g. \"Most popular\").\nEvery card reserves the same top ribbon area whether or not it carries a `ribbonLabel`,\nso comparable cards stay aligned.",
+          "type": "React.ReactNode",
+          "title": "ribbonLabel",
+          "required": false
+        },
+        {
+          "description": "Applies the fixed Plans 2.0 gradient treatment to the card. Ignored (fully suppressed)\nwhenever `ribbonLabel` is present.",
           "type": "boolean",
-          "title": "highlighted",
+          "title": "gradient",
           "required": false
         }
       ]
     },
     {
       "name": "PlanDisplay.Bullet",
-      "totalProps": 2,
+      "totalProps": 4,
       "props": [
         {
-          "$ref": "#/definitions/React.ReactNode",
-          "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
+          "description": "Icon element to be rendered inside the bullet.",
+          "type": "React.ReactNode",
           "title": "icon",
+          "required": true
+        },
+        {
+          "description": "Badge rendered inline after the bullet's content.",
+          "type": "React.ReactNode",
+          "title": "badge",
           "required": false
         },
         {
+          "description": "Marks the feature as unavailable, applying the disabled visual treatment.",
           "type": "boolean",
           "title": "disabled",
+          "required": false
+        },
+        {
+          "description": "Localized text describing why the feature is unavailable. Required\nwhenever `disabled` is `true`. Exposed only to assistive technology —\nnever visibly rendered — and has no default.",
+          "type": "string",
+          "title": "unavailableLabel",
           "required": false
         }
       ]
     },
     {
       "name": "PlanDisplay.CardHeader",
-      "totalProps": 2,
+      "totalProps": 3,
       "props": [
         {
           "type": "string",
@@ -60,6 +80,12 @@
           "$ref": "#/definitions/React.ReactNode",
           "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
           "title": "title",
+          "required": false
+        },
+        {
+          "description": "Tag rendered to the right of the header's supporting text (`subtitle`).",
+          "type": "React.ReactNode",
+          "title": "tag",
           "required": false
         }
       ]
@@ -80,6 +106,36 @@
       "name": "PlanDisplay.CardSpacing",
       "totalProps": 0,
       "props": []
+    },
+    {
+      "name": "PlanDisplay.Price",
+      "totalProps": 4,
+      "props": [
+        {
+          "description": "Current price of the plan. Formatting, currency, and localization are\nconsumer-owned — the component provides presentation only.",
+          "type": "React.ReactNode",
+          "title": "price",
+          "required": true
+        },
+        {
+          "description": "Previous price shown alongside the current price (e.g. to convey a discount).",
+          "type": "React.ReactNode",
+          "title": "previousPrice",
+          "required": false
+        },
+        {
+          "description": "Billing period or cadence for the price (e.g. \"/month\").",
+          "type": "React.ReactNode",
+          "title": "period",
+          "required": false
+        },
+        {
+          "description": "Additional note about the price, such as an annual billing clarification.",
+          "type": "React.ReactNode",
+          "title": "annualNote",
+          "required": false
+        }
+      ]
     }
   ]
 }
