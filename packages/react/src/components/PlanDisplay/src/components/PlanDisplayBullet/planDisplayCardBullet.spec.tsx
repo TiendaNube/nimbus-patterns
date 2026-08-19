@@ -171,6 +171,31 @@ describe("GIVEN <PlanDisplayBullet />", () => {
     });
   });
 
+  // Issue #185 validation amendment — "Bullet typography": bullet text uses
+  // fontWeight="regular" in both the enabled and disabled states.
+  describe("AC-05: bullet typography", () => {
+    it('SHOULD render the text with fontWeight="regular" when enabled', () => {
+      makeSut({ icon, children: "Unlimited products" });
+
+      const text = screen.getByText("Unlimited products");
+      expect(text.className).toContain("fontWeight-regular");
+      expect(text.className).not.toContain("fontWeight-medium");
+    });
+
+    it('SHOULD render the text with fontWeight="regular" when disabled', () => {
+      makeSut({
+        icon,
+        disabled: true,
+        unavailableLabel: "Not included",
+        children: "Priority support",
+      });
+
+      const text = screen.getByText("Priority support");
+      expect(text.className).toContain("fontWeight-regular");
+      expect(text.className).not.toContain("fontWeight-medium");
+    });
+  });
+
   // Type-level check for the discriminated `disabled`/`unavailableLabel`
   // union: `disabled: true` requires `unavailableLabel`.
   describe("AC-05: disabled/unavailableLabel discriminated union", () => {

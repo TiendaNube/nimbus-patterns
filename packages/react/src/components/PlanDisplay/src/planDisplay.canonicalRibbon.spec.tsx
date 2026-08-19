@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 
 import { canonicalRibbon } from "./planDisplay.stories";
+import { ribbonRadiusToken } from "./components/PlanDisplayCard/PlanDisplayCard";
 
 /**
  * Verifies the canonical visual-validation story (issue #185 validation
@@ -58,19 +59,36 @@ describe("GIVEN the canonical ribbon visual-validation story", () => {
     expect(style).not.toContain("shadow-level-2");
   });
 
-  it("SHOULD render the ribbon and card surface as one continuous shape sharing a single border radius", () => {
+  it("SHOULD render the ribbon and card surface as two structurally distinct blocks connected by a shared radius token and a negative overlap", () => {
     const { container } = renderStory();
 
     const surface = container.querySelector(
       '[data-testid="plan-display-card-surface"]'
     ) as HTMLElement;
+    const ribbon = container.querySelector(
+      '[data-testid="plan-display-card-ribbon"]'
+    ) as HTMLElement;
 
-    // The ribbon and card content are direct children of the same
-    // borderRadius + overflow:hidden wrapper, so there is no separate
-    // radius (and no gap/seam) between them.
+    // Structurally distinct: the ribbon is never nested inside the
+    // card-body surface (validation amendment — "Card structure, divider,
+    // and bullet typography refinements").
+    expect(surface.contains(ribbon)).toBe(false);
     expect(surface.className).toContain("borderRadius");
-    expect(surface.className).toContain("overflow-hidden");
-    expect(surface.children).toHaveLength(2);
+
+    // Visually continuous: the ribbon's wrapper shares the same top
+    // border-radius token as the card-body surface's own radius.
+    const ribbonWrapperStyle = ribbon.parentElement?.getAttribute("style") ?? "";
+    expect(ribbonWrapperStyle).toContain(ribbonRadiusToken);
+    expect(ribbonWrapperStyle).toContain("--nimbus-shape-border-radius-2");
+
+    // The surface's wrapper is a distinct element from the ribbon (the
+    // negative spacing-2 overlap that pulls it up is asserted at the token
+    // level in planDisplayCard.spec.tsx — jsdom's CSS parser does not
+    // evaluate `calc()` for margin properties, so it cannot be read back
+    // from a rendered `style` attribute here even though it is valid,
+    // correctly-applied CSS in a real browser).
+    expect(surface.parentElement).not.toBeNull();
+    expect(surface.parentElement?.contains(ribbon)).toBe(false);
   });
 
   it("SHOULD render the plan name, price, and description", () => {

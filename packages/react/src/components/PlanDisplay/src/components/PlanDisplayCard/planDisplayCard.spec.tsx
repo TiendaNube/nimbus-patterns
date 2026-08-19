@@ -1,7 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 
-import { PlanDisplayCard } from "./PlanDisplayCard";
+import {
+  PlanDisplayCard,
+  bodySurfaceOverlap,
+} from "./PlanDisplayCard";
 import { PlanDisplayCardProps } from "./planDisplayCard.types";
 
 const bodyChildren = <div>Body content</div>;
@@ -73,10 +76,12 @@ describe("GIVEN <PlanDisplayCard />", () => {
     it("SHOULD render correctly with gradient alone", () => {
       const { container } = makeSut({ gradient: true });
 
-      const surfaceContent = container.querySelector(
-        '[data-testid="plan-display-card-surface"] > div:nth-child(2)'
-      ) as HTMLElement;
-      expect(surfaceContent.getAttribute("style") ?? "").toContain(
+      // The gradient background is applied directly on the card-body
+      // surface itself (validation amendment — two structurally distinct
+      // blocks, not a nested content wrapper inside a shared clipped
+      // surface).
+      const surface = getSurface(container);
+      expect(surface.getAttribute("style") ?? "").toContain(
         "linear-gradient"
       );
     });
@@ -129,11 +134,7 @@ describe("GIVEN <PlanDisplayCard />", () => {
       expect(surface.getAttribute("style") ?? "").toContain(
         "colors-primary-interactive"
       );
-
-      const surfaceContent = container.querySelector(
-        '[data-testid="plan-display-card-surface"] > div:nth-child(2)'
-      ) as HTMLElement;
-      expect(surfaceContent.getAttribute("style") ?? "").not.toContain(
+      expect(surface.getAttribute("style") ?? "").not.toContain(
         "linear-gradient"
       );
     });
@@ -152,9 +153,9 @@ describe("GIVEN <PlanDisplayCard />", () => {
       const emptyRibbon = getRibbon(withoutRibbon);
       const filledRibbon = getRibbon(withRibbon);
 
-      // Both ribbon areas use the same fixed vertical padding (py="1"),
-      // applied regardless of ribbonLabel — this is what reserves an
-      // identical height whether or not a ribbon is rendered. Only the
+      // Both ribbon areas use the same fixed vertical padding (pt="0-5",
+      // pb="2"), applied regardless of ribbonLabel — this is what reserves
+      // an identical height whether or not a ribbon is rendered. Only the
       // background color and text visibility differ between the two.
       const paddingClasses = (el: HTMLElement) =>
         el.className
@@ -215,6 +216,63 @@ describe("GIVEN <PlanDisplayCard />", () => {
 
       expect(withoutFooterStyle).toContain("100%");
       expect(withFooterStyle).toContain("100%");
+    });
+  });
+
+  // Issue #185 validation amendment — "Card structure, divider, and bullet
+  // typography refinements": the ribbon-reservation region and the
+  // card-body surface are two structurally distinct blocks, not one shared,
+  // clipped wrapper — the reservation region must never render as padding
+  // inside the default card-body surface, in either state.
+  describe("AC-02/AC-07: card structural block model", () => {
+    it("SHOULD render the ribbon-reservation region outside the card-body surface, in both the ribbon-present and ribbon-absent states", () => {
+      const { container: withoutRibbon } = makeSut({});
+      const { container: withRibbon } = makeSut({
+        ribbonLabel: "Most popular",
+      });
+
+      [withoutRibbon, withRibbon].forEach((container) => {
+        const surface = getSurface(container);
+        const ribbon = getRibbon(container);
+
+        // The reservation region is never a descendant of the card-body
+        // surface — it is a preceding sibling block, not padding nested
+        // inside it.
+        expect(surface.querySelector('[data-testid="plan-display-card-ribbon"]')).toBeNull();
+        expect(surface.contains(ribbon)).toBe(false);
+      });
+    });
+
+    it("SHOULD apply the shared top-corner radius token to the ribbon-reservation region", () => {
+      const { container } = makeSut({ ribbonLabel: "Most popular" });
+
+      const ribbonWrapper = getRibbon(container).parentElement as HTMLElement;
+      const style = ribbonWrapper.getAttribute("style") ?? "";
+
+      expect(style).toContain("border-top-left-radius");
+      expect(style).toContain("border-top-right-radius");
+      expect(style).toContain("--nimbus-shape-border-radius-2");
+    });
+
+    it("SHOULD apply the negative spacing-2 overlap between the ribbon-reservation region and the card-body surface", () => {
+      // jsdom's CSS parser does not evaluate `calc()` for margin
+      // properties, so a rendered element's `style` attribute cannot be
+      // used to assert this under jsdom even though the CSS is valid and
+      // correctly applied in a real browser (see PlanDisplayCard.tsx).
+      // Assert directly against the exact token expression the component
+      // wires onto the card-body surface's wrapper instead.
+      expect(bodySurfaceOverlap).toContain("--nimbus-spacing-2");
+      expect(bodySurfaceOverlap).toContain("-1");
+
+      const { container } = makeSut({ ribbonLabel: "Most popular" });
+      const surfaceWrapper = getSurface(container)
+        .parentElement as HTMLElement;
+
+      // Structural sanity: the card-body surface is wrapped in its own
+      // element distinct from the ribbon-reservation region, which is what
+      // the overlap is applied to.
+      expect(surfaceWrapper).not.toBeNull();
+      expect(surfaceWrapper.contains(getRibbon(container))).toBe(false);
     });
   });
 });

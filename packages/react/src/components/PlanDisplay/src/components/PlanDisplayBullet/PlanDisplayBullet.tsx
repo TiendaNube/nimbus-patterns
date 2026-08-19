@@ -22,7 +22,7 @@ const PlanDisplayBullet: React.FC<PlanDisplayBulletProps> = ({
       </Text>
     </Box>
     <Text
-      fontWeight="medium"
+      fontWeight="regular"
       color={disabled ? "neutral-interactive" : "neutral-textLow"}
     >
       {children}

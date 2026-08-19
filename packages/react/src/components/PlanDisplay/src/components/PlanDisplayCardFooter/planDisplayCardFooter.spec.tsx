@@ -6,11 +6,10 @@ import { PlanDisplayCardFooterProperties } from "./planDisplayCardFooter.types";
 
 const bodyChildren = <div>Body content</div>;
 
-const makeSut = (rest: Omit<PlanDisplayCardFooterProperties, "children">) => {
+const makeSut = (rest: Omit<PlanDisplayCardFooterProperties, "children">) =>
   render(
     <PlanDisplayCardFooter {...rest}>{bodyChildren}</PlanDisplayCardFooter>
   );
-};
 
 describe("GIVEN <PlanDisplayCardFooter />", () => {
   describe("WHEN rendered", () => {
@@ -33,6 +32,16 @@ describe("GIVEN <PlanDisplayCardFooter />", () => {
       makeSut({});
 
       expect(screen.queryByTestId("footer-icon")).toBeNull();
+    });
+  });
+
+  // Issue #185 validation amendment — "Divider primitive": the footer
+  // separator must render the Nimbus Divider, not a custom Box border.
+  describe("AC-02/AC-07: Divider primitive", () => {
+    it("SHOULD render its leading separator as a Nimbus Divider (<hr>)", () => {
+      const { container } = makeSut({});
+
+      expect(container.querySelector("hr")).not.toBeNull();
     });
   });
 });
