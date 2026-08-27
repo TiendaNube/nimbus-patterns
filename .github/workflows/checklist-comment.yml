@@ -4,13 +4,7 @@ on: pull_request
 
 jobs:
   checklist-comment:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Comment PR
-        uses: thollander/actions-comment-pull-request@v2
-        with:
-          filePath: ./.github/resources/checklist.txt
-          comment_tag: execution
+    # TODO: una vez mergeado y tageado TiendaNube/nimbus-design-system#<PR-fase1>,
+    # cambiar el ref de la rama a un tag (p. ej. @workflows-v1).
+    uses: TiendaNube/nimbus-design-system/.github/workflows/checklist-comment.yml@chore/reusable-workflows-phase1
+    secrets: inherit
