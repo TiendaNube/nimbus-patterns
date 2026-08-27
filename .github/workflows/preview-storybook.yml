@@ -27,10 +27,21 @@ jobs:
   build-and-deploy:
     needs: gate
     if: needs.gate.outputs.should_build == 'true'
+    # A called workflow can never get more than the caller grants: this must
+    # match the permissions declared on the called job itself. id-token:write
+    # in particular is never part of the default GITHUB_TOKEN permissions —
+    # without it, the AWS OIDC step in the called workflow fails to mint a
+    # token and the preview deploy breaks for every PR.
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
     # TODO: una vez mergeado y tageado TiendaNube/nimbus-design-system#<PR-fase2>,
     # cambiar el ref de la rama a un tag (p. ej. @workflows-v1).
     uses: TiendaNube/nimbus-design-system/.github/workflows/preview-storybook-deploy.yml@chore/reusable-workflows-phase1
     with:
       s3-prefix: patterns
       build-tokens-icons: false
-    secrets: inherit
+    secrets:
+      AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+      AWS_DEPLOY_ROLE: ${{ secrets.AWS_DEPLOY_ROLE }}

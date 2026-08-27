@@ -4,7 +4,14 @@ on: workflow_dispatch
 
 jobs:
   send-slack-notification:
+    # A called workflow can never get more than the caller grants: this must
+    # match the permissions declared on the called job itself.
+    permissions:
+      contents: read
     # TODO: una vez mergeado y tageado TiendaNube/nimbus-design-system#<PR-fase1>,
     # cambiar el ref de la rama a un tag (p. ej. @workflows-v1).
     uses: TiendaNube/nimbus-design-system/.github/workflows/send-slack-notification.yml@chore/reusable-workflows-phase1
-    secrets: inherit
+    secrets:
+      SLACK_WEBHOOK_URL_NIMBUS_UPDATES: ${{ secrets.SLACK_WEBHOOK_URL_NIMBUS_UPDATES }}
+      SLACK_WEBHOOK_URL_DEPLOYING: ${{ secrets.SLACK_WEBHOOK_URL_DEPLOYING }}
+      SLACK_WEBHOOK_URL_TECH_PRODUCT_UPDATES: ${{ secrets.SLACK_WEBHOOK_URL_TECH_PRODUCT_UPDATES }}
