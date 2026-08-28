@@ -120,7 +120,13 @@ reviews:
           
           Cross-reference:
           1. Check if any package.json in PR has MAJOR version bump (x.0.0)
-          2. Check if breaking changes detected in code (props removed, exports removed, tokens changed, CSS modified)
+          2. Check if breaking changes detected in code: props removed, exports removed, a
+             shared/global token's value changed, or a genuine CSS breaking change — a removed
+             style/recipe/variant export, a removed variant option, a renamed CSS class or
+             variable identifier, a changed `defaultVariants`, or a token reference swapped for a
+             different token. A `*.css.ts` file being touched is never, by itself, a breaking
+             change — e.g. adding an explicit `height` to an existing style object, to fix a
+             component's conformance to an established contract, is not breaking on its own.
           3. Verify CHANGELOG.md contains "#### 🛠 Breaking changes" or "### 🛠 Breaking changes" section
           4. Verify each breaking change is documented with description and PR reference
           
