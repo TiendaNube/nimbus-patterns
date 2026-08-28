@@ -1,6 +1,17 @@
 name: "send-slack-notification"
 
-on: workflow_dispatch
+# Also callable locally — post-release.yml chains into this instead of
+# dispatching it by workflow ID with a PAT.
+on:
+  workflow_dispatch:
+  workflow_call:
+    secrets:
+      SLACK_WEBHOOK_URL_NIMBUS_UPDATES:
+        required: true
+      SLACK_WEBHOOK_URL_DEPLOYING:
+        required: true
+      SLACK_WEBHOOK_URL_TECH_PRODUCT_UPDATES:
+        required: true
 
 jobs:
   send-slack-notification:
