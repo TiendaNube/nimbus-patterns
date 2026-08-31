@@ -126,7 +126,15 @@ reviews:
           2. Removed variant options from recipe() (e.g., size: { small, medium, large } → { small, medium })
           3. Renamed CSS class identifiers or CSS variables (--nimbus-*)
           4. Changed defaultVariants in recipe()
-          5. Token reference changes (e.g., vars.colors.primary → vars.colors.brand)
+          5. A token reference deliberately remapped to a semantically different token (e.g.,
+             vars.colors.primary → vars.colors.brand) — replacing a hardcoded value, or an
+             incorrect token, with the token the component's contract already specifies is a
+             conformity fix, not this
+          6. Changed the *value* of an existing layout-affecting declaration — dimensions,
+             display, position, or overflow — on a public component's style, even with no
+             identifier removed or renamed (e.g. height: '32px' → '40px', display: 'block' →
+             'flex'); adding a previously-missing declaration that restores a documented contract
+             is a conformity fix, not this
 
           PASS if: No CSS breaking changes detected, OR all CSS breaking changes are documented in CHANGELOG.md with "🛠 Breaking changes" section
           FAIL if: CSS breaking changes found but CHANGELOG.md lacks documentation or "🛠 Breaking changes" section is missing
@@ -148,14 +156,17 @@ reviews:
              CSS breaking change per the "Undocumented CSS Breaking Changes" check above: removed
              `styleVariants`, `recipe`, `globalStyle`, or `createVar` declarations; removed
              variant options; renamed CSS class or CSS variable (`--nimbus-*`) identifiers; a
-             changed `defaultVariants`; or a token reference swapped for a different token. This
-             repository does not own token source (`@nimbus-ds/tokens` is an npm dependency), so
-             a token *key* being removed or renamed is not a criterion here — that is
-             `nimbus-design-system`'s check to make. A `*.css.ts` file being touched is never, by
-             itself, a breaking change — e.g. adding a property that was previously implicit or
-             inherited, such as an explicit `height` on an existing style object, removing and
-             renaming nothing, is not breaking. Conversely, a one-line change IS breaking if that
-             line matches any criterion above.
+             changed `defaultVariants`; a token reference deliberately remapped to a semantically
+             different token; or the *value* of an existing layout-affecting declaration
+             (dimensions, display, position, overflow) changed on a public component's style.
+             This repository does not own token source (`@nimbus-ds/tokens` is an npm
+             dependency), so a token *key* being removed or renamed is not a criterion here —
+             that is `nimbus-design-system`'s check to make. A `*.css.ts` file being touched is
+             never, by itself, a breaking change — e.g. adding a property that was previously
+             implicit or inherited, such as an explicit `height` on an existing style object,
+             removing and renaming nothing, is not breaking; nor is replacing a hardcoded value
+             or an incorrect token with the token the component's contract already specifies.
+             Conversely, a one-line change IS breaking if that line matches any criterion above.
           3. Verify CHANGELOG.md contains "#### 🛠 Breaking changes" or "### 🛠 Breaking changes" section
           4. Verify each breaking change is documented with description and PR reference
 
