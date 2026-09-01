@@ -43,8 +43,9 @@ PlanDisplay.displayName = "PlanDisplay";
 PlanDisplay.Card.displayName = "PlanDisplay.Card";
 PlanDisplay.Bullet.displayName = "PlanDisplay.Bullet";
 PlanDisplay.Header.displayName = "PlanDisplay.CardHeader";
-PlanDisplay.Price.displayName = "PlanDisplay.Price";
+PlanDisplay.Price.displayName = "PlanDisplay.CardPrice";
 PlanDisplay.Content.displayName = "PlanDisplay.CardContent";
 PlanDisplay.Spacing.displayName = "PlanDisplay.CardSpacing";
+PlanDisplay.Footer.displayName = "PlanDisplay.CardFooter";
 
 export { PlanDisplay };

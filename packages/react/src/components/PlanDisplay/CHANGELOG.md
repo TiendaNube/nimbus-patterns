@@ -4,13 +4,13 @@ PlanDisplay allows the user to present subscription plans and pricing. It featur
 
 ## 2026-06-11 `2.0.0`
 
-### ✨ Features
+#### 🛠 Breaking changes
 
-- Reworked `PlanDisplay` to the Plans 2.0 design as the canonical layout, matching the Figma master component. `PlanDisplay.Card` now renders the default card with a level-2 shadow, plus two opt-in variants: `ribbonLabel` (a "Más escogido" ribbon with a primary 2px border) and `gradient` (primary-surface → background gradient). Added a `tag` slot on `PlanDisplay.Header` (e.g. "Plan actual"), a new `PlanDisplay.Price` subcomponent (current price + optional previous price, period and annual note), a `badge` slot on `PlanDisplay.Bullet` (e.g. "Nuevo"), and an `icon` slot on `PlanDisplay.Footer` for add-on rows. (by [@noecondoleo](https://github.com/noecondoleo))
+- Removed the legacy `highlighted` prop on `PlanDisplay.Card`. Use `ribbonLabel` for the featured plan or `gradient` for the gradient variant. ([#170](https://github.com/TiendaNube/nimbus-patterns/pull/170) by [@noecondoleo](https://github.com/noecondoleo))
 
-### ⚠️ Breaking changes
+#### 🎉 New features
 
-- Removed the legacy `highlighted` prop on `PlanDisplay.Card`. Use `ribbonLabel` for the featured plan or `gradient` for the gradient variant. (by [@noecondoleo](https://github.com/noecondoleo))
+- Reworked `PlanDisplay` to the Plans 2.0 design as the canonical layout, matching the Figma master component. `PlanDisplay.Card` now renders the default card with a level-2 shadow, plus two opt-in variants: `ribbonLabel` (a "Más escogido" ribbon with a primary 2px border) and `gradient` (primary-surface → background gradient). Added a `tag` slot on `PlanDisplay.Header` (e.g. "Plan actual"), a new `PlanDisplay.Price` subcomponent (current price + optional previous price, period and annual note), a `badge` slot on `PlanDisplay.Bullet` (e.g. "Nuevo"), and an `icon` slot on `PlanDisplay.Footer` for add-on rows. ([#170](https://github.com/TiendaNube/nimbus-patterns/pull/170) by [@noecondoleo](https://github.com/noecondoleo))
 
 ## 2026-01-15 `1.1.1`
 

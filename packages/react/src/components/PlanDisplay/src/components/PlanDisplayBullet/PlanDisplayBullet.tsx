@@ -14,7 +14,8 @@ const PlanDisplayBullet: React.FC<PlanDisplayBulletProps> = ({
         as="span"
         color={disabled ? "neutral-interactive" : "primary-interactive"}
       >
-        <Box display="flex" alignItems="center">
+        {/* `as="span"`: a default Box renders a div, which is invalid nesting inside Text's span. */}
+        <Box as="span" display="flex" alignItems="center">
           {icon}
         </Box>
       </Text>

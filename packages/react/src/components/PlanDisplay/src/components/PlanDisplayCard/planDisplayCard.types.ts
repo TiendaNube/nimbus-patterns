@@ -15,6 +15,10 @@ export interface PlanDisplayCardProperties {
    */
   ribbonLabel?: ReactNode;
 }
+// The card owns its own surface treatment, so the border/shadow props are excluded rather
+// than silently overridden. `style` is excluded too: Box accepts it in its types but drops it
+// at runtime (it renders only sprinkle-generated styles), so leaving it in would type-check
+// while doing nothing. Use the `gradient` / `ribbonLabel` variants instead.
 export type PlanDisplayCardProps =
   PropsWithChildren<PlanDisplayCardProperties> &
     Omit<
@@ -24,4 +28,5 @@ export type PlanDisplayCardProps =
       | "borderStyle"
       | "borderWidth"
       | "boxShadow"
+      | "style"
     >;

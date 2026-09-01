@@ -1,23 +1,21 @@
 import React from "react";
-import { Box, Divider, Text } from "@nimbus-ds/components";
-import { PlanDisplayCardFooterProperties } from "./planDisplayCardFooter.types";
+import { Box, Text } from "@nimbus-ds/components";
+import { PlanDisplayCardFooterProps } from "./planDisplayCardFooter.types";
+import PlanDisplayCardSpacing from "../PlanDisplayCardSpacing";
 
-const PlanDisplayCardFooter: React.FC<PlanDisplayCardFooterProperties> = ({
+const PlanDisplayCardFooter: React.FC<PlanDisplayCardFooterProps> = ({
   icon,
   children,
 }) => (
-  // `marginTop: auto` pins the footer to the bottom of the (full-height, flex-column) card
-  // so footers stay aligned across cards in the same row. Native element on purpose: Box
-  // discards `style`, so the `margin-top: auto` would be a no-op on a Box.
-  <div style={{ display: "flex", flexDirection: "column", marginTop: "auto" }}>
-    <Box mt="3" mb="3">
-      <Divider />
-    </Box>
+  // `mt="auto"` pins the footer to the bottom of the (full-height, flex-column) card
+  // so footers stay aligned across cards in the same row.
+  <Box display="flex" flexDirection="column" mt="auto">
+    <PlanDisplayCardSpacing />
 
     {icon ? (
       <Box display="flex" gap="2" alignItems="flex-start">
         <Text as="span" color="primary-interactive">
-          <Box display="flex" alignItems="center">
+          <Box as="span" display="flex" alignItems="center">
             {icon}
           </Box>
         </Text>
@@ -26,7 +24,7 @@ const PlanDisplayCardFooter: React.FC<PlanDisplayCardFooterProperties> = ({
     ) : (
       <Box>{children}</Box>
     )}
-  </div>
+  </Box>
 );
 
 export { PlanDisplayCardFooter };

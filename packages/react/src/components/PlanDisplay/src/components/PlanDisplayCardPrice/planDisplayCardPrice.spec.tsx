@@ -29,5 +29,14 @@ describe("GIVEN <PlanDisplayCardPrice />", () => {
       expect(screen.getByText("/mes")).toBeDefined();
       expect(screen.getByText("$269.990/año")).toBeDefined();
     });
+
+    it("SHOULD NOT render previousPrice, period or annualNote when omitted", () => {
+      makeSut({ price: "$999" });
+
+      expect(screen.getByText("$999")).toBeDefined();
+      expect(screen.queryByText("$29.999")).toBeNull();
+      expect(screen.queryByText("/mes")).toBeNull();
+      expect(screen.queryByText("$269.990/año")).toBeNull();
+    });
   });
 });

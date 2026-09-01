@@ -14,14 +14,11 @@ const PlanDisplayCardPrice: React.FC<PlanDisplayCardPriceProps> = ({
         {price}
       </Title>
       {previousPrice && (
-        <Text as="span" fontSize="base">
-          {/* `neutral-interactivePressed` is not exposed by Text's `color` prop,
-              so the token is applied via its CSS variable. */}
+        <Text as="span" fontSize="base" textDecoration="line-through">
+          {/* `neutral-interactivePressed` is not exposed by Text's `color` prop, so this one
+              token is applied via its CSS variable. The line-through is a Text prop. */}
           <span
-            style={{
-              color: "var(--nimbus-colors-neutral-interactivePressed)",
-              textDecoration: "line-through",
-            }}
+            style={{ color: "var(--nimbus-colors-neutral-interactivePressed)" }}
           >
             {previousPrice}
           </span>
