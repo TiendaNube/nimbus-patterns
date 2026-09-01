@@ -9,7 +9,11 @@
 # .github/workflows/auto-versioning.yml, publish.yml, post-release.yml):
 # dependabot version-bump PRs and the automated release PRs.
 
-def is_bot_author: (.user.login | test("\\[bot\\]$")) or .user.login == "dependabot[bot]";
+# `dependabot[bot]` already matches the `[bot]$` suffix below, so there's no
+# separate literal check for it — the suffix alone covers it (and
+# github-actions[bot], the author of the release PRs excluded by
+# is_release_branch below too, belt-and-braces).
+def is_bot_author: .user.login | test("\\[bot\\]$");
 def is_release_branch: (.head.ref // "" | test("^release/publish-"));
 def has_skip_label: any(.labels[]?; .name == "no-autoreview");
 

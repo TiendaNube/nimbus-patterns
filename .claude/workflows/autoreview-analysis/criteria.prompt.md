@@ -25,6 +25,11 @@ over the same risk, not a rubber stamp of what CodeRabbit already said.
   added.) Adding a previously-missing declaration that restores a documented
   contract, or correcting a value to the token/behavior the component's
   contract already specifies, is a conformity fix, not a breaking change.
+- **Undocumented layout changes** — in a `*.css.ts` file, the *value* of an
+  existing layout-affecting declaration (dimensions, display, position,
+  overflow) changed on a public component's style, even with no identifier
+  removed or renamed (e.g. `height: '32px'` → `'40px'`). This does NOT need a
+  MAJOR bump — it needs a CHANGELOG entry, same format as above.
 - Any new external network call or third-party dependency.
 
 A trivial change that does not touch the public contract — an internal

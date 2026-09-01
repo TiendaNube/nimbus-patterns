@@ -18,11 +18,11 @@
 
 map(
   . as $pr
-  | ($pr.files | map(.path)) as $paths
+  | ($pr.files // [] | map(.path)) as $paths
   | ($pr.additions + $pr.deletions) as $loc
   | ($paths | length) as $nfiles
   | if $nfiles > 0 and $loc <= 20
-      and (all($paths[]; test("\\.md$")) or all($paths[]; test("\\.stories\\.tsx$"))) then
+      and all($paths[]; test("\\.md$") or test("\\.stories\\.tsx$")) then
       {verdict: "auto", reason: "small docs/story-only change",
        classes: ["docs"], loc: $loc, nfiles: $nfiles}
     elif $loc > 500 then
