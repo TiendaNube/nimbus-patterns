@@ -1,6 +1,11 @@
 name: "create-github-tag"
 
-on: workflow_dispatch
+# Runs on manual dispatch inside nimbus-patterns, and is also callable as a
+# reusable workflow — post-release.yml chains into it directly instead of
+# dispatching it by workflow ID over the API with a PAT.
+on:
+  workflow_dispatch:
+  workflow_call:
 
 jobs:
   create-github-tag:
@@ -24,13 +29,16 @@ jobs:
         with:
           tag: ${{ steps.calver.outputs.release }}
 
-  trigger-action-create-github-release:
+  # NOTE for reviewers: this used to be dispatched via curl against a
+  # hardcoded workflow ID, always as a standalone `workflow_dispatch` run —
+  # so `github.event_name` above was never 'push', and the `release` input
+  # to actions-calver always evaluated false. Chained like this from
+  # post-release.yml (triggered on the release PR's merge), `release` still
+  # won't be 'push', so this specific condition stays false either way —
+  # flagging in case that's not actually the intent.
+  create-github-release:
     needs: [create-github-tag]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger github action create github release
-        run: |
-          curl --request POST \
-          --url 'https://api.github.com/repos/tiendanube/nimbus-patterns/actions/workflows/59054496/dispatches' \
-          --header 'Authorization: token ${{ secrets.PAT_CHANGE_BRANCH_PROTECTION_RULES_FROM_JUNIOR_CONQUISTA }}' \
-          --data '{"ref":"master"}'
+    permissions:
+      contents: write
+      discussions: write
+    uses: ./.github/workflows/create-github-relase.yml

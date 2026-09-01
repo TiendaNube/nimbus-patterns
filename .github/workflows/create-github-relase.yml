@@ -1,6 +1,10 @@
 name: "create-github-relase"
 
-on: workflow_dispatch
+# Also callable locally — create-github-tag.yml chains into this after
+# creating the tag, instead of dispatching it by workflow ID with a PAT.
+on:
+  workflow_dispatch:
+  workflow_call:
 
 jobs:
   create-github-relase:
