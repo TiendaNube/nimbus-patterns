@@ -1,6 +1,6 @@
 releases:
-  "@nimbus-ds/plan-display": major
-  "@nimbus-ds/patterns": major
+  "@nimbus-ds/plan-display": minor
+  "@nimbus-ds/patterns": minor
 
 declined:
   - nimbus-patterns

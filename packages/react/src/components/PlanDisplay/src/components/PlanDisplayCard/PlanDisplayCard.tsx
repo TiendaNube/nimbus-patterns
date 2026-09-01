@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text } from "@nimbus-ds/components";
+import { Box, BoxProps, Text } from "@nimbus-ds/components";
 import { PlanDisplayCardProps } from "./planDisplayCard.types";
 
 const GRADIENT_BACKGROUND =
@@ -25,13 +25,44 @@ const RIBBON_WRAPPER_STYLE: React.CSSProperties = {
   overflow: "hidden",
 };
 
+type SurfaceTreatment = Partial<
+  Pick<BoxProps, "borderColor" | "borderStyle" | "borderWidth" | "boxShadow">
+>;
+
+const getSurfaceTreatment = (
+  hasRibbon: boolean,
+  hasLegacyHighlight: boolean
+): SurfaceTreatment => {
+  if (hasRibbon) {
+    return {
+      borderColor: "primary-interactive",
+      borderStyle: "solid",
+      borderWidth: "2",
+    };
+  }
+
+  if (hasLegacyHighlight) {
+    return {
+      borderColor: "primary-interactive",
+      borderStyle: "solid",
+      borderWidth: "3",
+      boxShadow: "3",
+    };
+  }
+
+  return { boxShadow: "2" };
+};
+
 const PlanDisplayCard: React.FC<PlanDisplayCardProps> = ({
+  highlighted,
   ribbonLabel,
   gradient,
   children,
   ...rest
 }) => {
   const hasRibbon = Boolean(ribbonLabel);
+  const hasLegacyHighlight = Boolean(highlighted && !hasRibbon && !gradient);
+  const surfaceTreatment = getSurfaceTreatment(hasRibbon, hasLegacyHighlight);
 
   return (
     <Box {...rest} display="flex" flexDirection="column" height="100%">
@@ -72,13 +103,7 @@ const PlanDisplayCard: React.FC<PlanDisplayCardProps> = ({
         }
         borderRadius="2"
         overflow="hidden"
-        {...(hasRibbon
-          ? {
-              borderColor: "primary-interactive",
-              borderStyle: "solid",
-              borderWidth: "2",
-            }
-          : { boxShadow: "2" })}
+        {...surfaceTreatment}
       >
         {children}
       </Box>

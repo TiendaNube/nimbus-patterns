@@ -1,8 +1,19 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { Box } from "@nimbus-ds/components";
 
 import { PlanDisplayCard } from "./PlanDisplayCard";
 import { PlanDisplayCardProps } from "./planDisplayCard.types";
+
+jest.mock("@nimbus-ds/components", () => {
+  const components = jest.requireActual("@nimbus-ds/components");
+  const react = jest.requireActual("react");
+
+  return {
+    ...components,
+    Box: jest.fn((props) => react.createElement(components.Box, props)),
+  };
+});
 
 const bodyChildren = <div>Body content</div>;
 
@@ -17,7 +28,13 @@ const makeSut = (rest: Omit<PlanDisplayCardProps, "children">) => {
   renderSut(rest);
 };
 
+const getBoxProps = () => jest.mocked(Box).mock.calls.map(([props]) => props);
+
 describe("GIVEN <PlanDisplayCard />", () => {
+  beforeEach(() => {
+    jest.mocked(Box).mockClear();
+  });
+
   describe("WHEN rendered", () => {
     it("SHOULD render children correctly", () => {
       makeSut({});
@@ -35,6 +52,22 @@ describe("GIVEN <PlanDisplayCard />", () => {
       makeSut({ ribbonLabel: "Más escogido" });
 
       expect(screen.getByText("Más escogido")).toBeDefined();
+      expect(screen.getByText("Body content")).toBeDefined();
+    });
+
+    it("SHOULD preserve the deprecated highlighted treatment", () => {
+      renderSut({ highlighted: true });
+
+      expect(getBoxProps()).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            borderColor: "primary-interactive",
+            borderStyle: "solid",
+            borderWidth: "3",
+            boxShadow: "3",
+          }),
+        ])
+      );
       expect(screen.getByText("Body content")).toBeDefined();
     });
 
@@ -73,6 +106,32 @@ describe("GIVEN <PlanDisplayCard />", () => {
 
       expect(screen.getByText("Más escogido")).toBeDefined();
       expect(container.innerHTML).not.toContain(GRADIENT_FRAGMENT);
+    });
+
+    it("SHOULD let the new variants take precedence over deprecated highlighted", () => {
+      renderSut({
+        highlighted: true,
+        ribbonLabel: "Más escogido",
+      });
+      const ribbonBoxProps = getBoxProps();
+
+      jest.mocked(Box).mockClear();
+      const { container: withGradient } = renderSut({
+        highlighted: true,
+        gradient: true,
+      });
+      const gradientBoxProps = getBoxProps();
+
+      expect(ribbonBoxProps).toEqual(
+        expect.arrayContaining([expect.objectContaining({ borderWidth: "2" })])
+      );
+      expect(ribbonBoxProps).not.toEqual(
+        expect.arrayContaining([expect.objectContaining({ borderWidth: "3" })])
+      );
+      expect(withGradient.innerHTML).toContain(GRADIENT_FRAGMENT);
+      expect(gradientBoxProps).not.toEqual(
+        expect.arrayContaining([expect.objectContaining({ borderWidth: "3" })])
+      );
     });
   });
 });

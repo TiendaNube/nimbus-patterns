@@ -3,6 +3,13 @@ import { PropsWithChildren, ReactNode } from "react";
 
 export interface PlanDisplayCardProperties {
   /**
+   * Renders the card with the legacy featured treatment (primary 3px border and level-3 shadow).
+   * New consumers should use `ribbonLabel` or `gradient` to express the intended emphasis.
+   * Ignored when either of those props is provided.
+   * @deprecated Use `ribbonLabel` or `gradient` instead. This prop will be removed in a future major release.
+   */
+  highlighted?: boolean;
+  /**
    * Renders the card with the Plans 2.0 gradient background (primary-surface → neutral-background).
    * Ignored when `ribbonLabel` is provided.
    */
@@ -16,9 +23,8 @@ export interface PlanDisplayCardProperties {
   ribbonLabel?: ReactNode;
 }
 // The card owns its own surface treatment, so the border/shadow props are excluded rather
-// than silently overridden. `style` is excluded too: Box accepts it in its types but drops it
-// at runtime (it renders only sprinkle-generated styles), so leaving it in would type-check
-// while doing nothing. Use the `gradient` / `ribbonLabel` variants instead.
+// than silently overridden. `style` remains accepted for backwards-compatible typing even
+// though Box currently drops it at runtime, matching the pre-Plans 2.0 public surface.
 export type PlanDisplayCardProps =
   PropsWithChildren<PlanDisplayCardProperties> &
     Omit<
@@ -28,5 +34,4 @@ export type PlanDisplayCardProps =
       | "borderStyle"
       | "borderWidth"
       | "boxShadow"
-      | "style"
     >;

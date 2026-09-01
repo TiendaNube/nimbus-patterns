@@ -21,8 +21,14 @@
   "subComponents": [
     {
       "name": "PlanDisplay.Card",
-      "totalProps": 2,
+      "totalProps": 3,
       "props": [
+        {
+          "description": "Renders the card with the legacy featured treatment (primary 3px border and level-3 shadow).\nNew consumers should use `ribbonLabel` or `gradient` to express the intended emphasis.\nIgnored when either of those props is provided.",
+          "type": "boolean",
+          "title": "highlighted",
+          "required": false
+        },
         {
           "description": "Renders the card with the Plans 2.0 gradient background (primary-surface → neutral-background).\nIgnored when `ribbonLabel` is provided.",
           "type": "boolean",

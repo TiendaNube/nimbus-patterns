@@ -16,7 +16,9 @@ $ npm install @nimbus-ds/plan-display
 
 - `PlanDisplay.Card` — wraps a single plan. By default it renders the card with a level-2 shadow.
   Pass `ribbonLabel` to render the featured ribbon on top (e.g. `"Más escogido"`) with a primary 2px
-  border, or `gradient` for the gradient background variant.
+  border, or `gradient` for the gradient background variant. The legacy `highlighted` prop remains
+  temporarily available for backwards compatibility, but is deprecated and will be removed in a
+  future major release.
 - `PlanDisplay.Header` — renders the plan `subtitle` and `title`. Pass an optional `tag` slot (e.g. a
   `<Tag>` like `"Plan actual"`) shown to the right of the subtitle.
 - `PlanDisplay.Price` — renders the `price` and optional `previousPrice` (line-through), `period`
@@ -49,7 +51,10 @@ import { CashierIcon, CheckIcon } from "@nimbus-ds/icons";
           Subir de plan
         </Button>
       </Box>
-      <PlanDisplay.Bullet icon={<CheckIcon />} badge={<Tag appearance="primary">Nuevo</Tag>}>
+      <PlanDisplay.Bullet
+        icon={<CheckIcon />}
+        badge={<Tag appearance="primary">Nuevo</Tag>}
+      >
         Hasta 3 tablas de precios mayoristas
       </PlanDisplay.Bullet>
     </PlanDisplay.Content>

@@ -17,7 +17,8 @@ import {
 export interface PlanDisplayComponents {
   /**
    * The card component used to display the plan. This component is used to wrap the header, content, and footer components, and it is able
-   * to receive a 'ribbonLabel' and/or a 'gradient' prop to feature a plan.
+   * to receive a 'ribbonLabel' and/or a 'gradient' prop to feature a plan. The legacy
+   * 'highlighted' prop remains available temporarily for backwards compatibility.
    */
   Card: typeof PlanDisplayCard;
 
