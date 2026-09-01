@@ -1,0 +1,43 @@
+name: PR Autoreview
+
+# CodeRabbit reports its review as a commit *status* (not a check run), so we trigger on `status`.
+# `pull_request_target: opened` lets us post an initial "queued" notice as soon as the PR
+# exists — it's `_target` (not `pull_request`) so it also works for fork PRs.
+#
+# Everything else — the actual jobs, concurrency, permissions — lives in
+# TiendaNube/pr-autoreview's pr-autoreview.yml. This file only wires up triggers,
+# this project's own review criteria, and secrets.
+on:
+  status:
+  pull_request_target:
+    types: [opened]
+
+jobs:
+  pr-judge:
+    # A reusable workflow's own job permissions (in pr-autoreview.yml) can only
+    # narrow, never widen, what the caller grants here — without this, a repo
+    # with restrictive default token permissions would silently cap posting
+    # comments, approving PRs, and updating check runs, and those steps would
+    # fail with a 403 instead of the review ever completing.
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: write
+    # TiendaNube/pr-autoreview has no version tags yet (README describes tagged
+    # releases as the intent, but `main` is the only released ref today) — pin
+    # to `main` for now and re-pin to a real tag once one exists (ONB-1193).
+    uses: TiendaNube/pr-autoreview/.github/workflows/pr-autoreview.yml@main
+    with:
+      # This project's own review conventions — required, no default. See
+      # pr-autoreview's README for why these can't be generic.
+      classifier-path: .claude/workflows/autoreview-analysis/classify.jq
+      criteria-path: .claude/workflows/autoreview-analysis/criteria.prompt.md
+      preamble-path: .claude/workflows/autoreview-analysis/preamble.prompt.md
+      filter-path: .claude/workflows/autoreview-analysis/filter.jq
+      # Must match the ref in the `uses:` line above — see pr-autoreview.yml's
+      # own comment on why this can't be inferred automatically.
+      version: main
+    secrets:
+      anthropic-api-key: ${{ secrets.NIMBUS_PATTERNS_PR_AUTOREVIEW_API_KEY }}
+      app-id: ${{ secrets.ID_AUTOREVIEW_APP }}
+      app-private-key: ${{ secrets.SECRET_AUTOREVIEW_APP }}
