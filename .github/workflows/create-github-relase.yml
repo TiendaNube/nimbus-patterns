@@ -4,38 +4,14 @@ on: workflow_dispatch
 
 jobs:
   create-github-relase:
-    runs-on: ubuntu-latest
+    # A called workflow can never get more than the caller grants: this must
+    # match the permissions declared on the called job itself. Without it,
+    # ncipollo/release-action fails to create the release depending on this
+    # org's default GITHUB_TOKEN permissions.
     permissions:
       contents: write
       discussions: write
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: "Get Previous tag"
-        id: previoustag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
-
-      - name: Get current PR
-        uses: 8BitJonny/gh-get-current-pr@2.2.0
-        id: PR
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: "Show return"
-        run: |
-          echo "Tag: ${{ steps.previoustag.outputs.tag }}"
-          echo "Body:  ${{ steps.PR.outputs.pr_body }}"
-
-      - name: Create Release
-        id: create_release
-        uses: ncipollo/release-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag: ${{ steps.previoustag.outputs.tag }}
-          name: ${{ steps.previoustag.outputs.tag }}
-          body: ${{ steps.PR.outputs.pr_body }}
-          draft: false
-          prerelease: false
+    # TODO: una vez mergeado y tageado TiendaNube/nimbus-design-system#<PR-fase1>,
+    # cambiar el ref de la rama a un tag (p. ej. @workflows-v1).
+    uses: TiendaNube/nimbus-design-system/.github/workflows/create-github-relase.yml@chore/reusable-workflows-phase1
+    # No secrets used by this workflow beyond the automatic GITHUB_TOKEN.
