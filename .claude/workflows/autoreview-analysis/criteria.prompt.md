@@ -12,14 +12,26 @@ over the same risk, not a rubber stamp of what CodeRabbit already said.
   `index.ts`, or a changed default value/behavior, without a MAJOR version
   bump in the affected package's `package.json`.
 - **Undocumented breaking changes** — a MAJOR version bump, or a breaking
-  change per the point above, without a "#### 🛠 Breaking changes" section
-  in the package's `CHANGELOG.md` (format: `- Description. ([#PR](url) by
-  [@author](url))`).
+  change per the point above, without a "### 🛠 Breaking changes" or
+  "#### 🛠 Breaking changes" section in the package's `CHANGELOG.md`
+  (format: `- Description. ([#PR](url) by [@author](url))`).
+- **Undocumented CSS breaking changes** — in a `*.css.ts` (Vanilla-Extract)
+  file: a removed `styleVariants`/`recipe`/`globalStyle`/`createVar` export, a
+  removed variant option, a renamed CSS class or CSS variable (`--nimbus-*`)
+  identifier, a changed `defaultVariants`, or a token reference remapped to a
+  different token — without a matching CHANGELOG entry as above. (This repo
+  has no `*.css.ts` files today; this rule exists for parity with
+  `.coderabbit.yaml`'s own check and applies automatically if one is ever
+  added.) Adding a previously-missing declaration that restores a documented
+  contract, or correcting a value to the token/behavior the component's
+  contract already specifies, is a conformity fix, not a breaking change.
 - Any new external network call or third-party dependency.
 
-A trivial change in one of these areas (rename, typo, log message, comment,
-test-only) is still exempt — the rule exists for behavior changes, not for
-touching the file.
+A trivial change that does not touch the public contract — an internal
+variable/helper rename, a typo, a log message, a comment, test-only code — is
+exempt. Renaming or removing an **exported** prop, function, CSS class, or CSS
+variable identifier is NOT exempt: `.coderabbit.yaml`'s own checks (and the
+hard rules above) treat those renames as breaking changes, not as trivia.
 
 ### General checks
 

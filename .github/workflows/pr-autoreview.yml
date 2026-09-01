@@ -14,6 +14,13 @@ on:
 
 jobs:
   pr-judge:
+    # This repo is public and accepts fork PRs. `pull_request_target` runs with
+    # this repo's own secrets (the Anthropic key and the App's private key) even
+    # for a fork PR — so on that event we only proceed if the PR's head repo is
+    # this same repo, never a fork. `status` events carry no PR/fork info at all
+    # (the reusable workflow resolves the PR from the commit SHA itself), so
+    # they're let through unconditionally here.
+    if: github.event_name != 'pull_request_target' || github.event.pull_request.head.repo.full_name == github.repository
     # A reusable workflow's own job permissions (in pr-autoreview.yml) can only
     # narrow, never widen, what the caller grants here — without this, a repo
     # with restrictive default token permissions would silently cap posting
