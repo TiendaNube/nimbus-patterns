@@ -9,7 +9,5 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-    # TODO: una vez mergeado y tageado TiendaNube/nimbus-design-system#<PR-fase1>,
-    # cambiar el ref de la rama a un tag (p. ej. @workflows-v1).
-    uses: TiendaNube/nimbus-design-system/.github/workflows/checklist-comment.yml@chore/reusable-workflows-phase1
+    uses: TiendaNube/nimbus-design-system/.github/workflows/checklist-comment.yml@workflows-v1
     # No secrets used by this workflow.
