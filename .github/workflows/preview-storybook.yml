@@ -36,9 +36,9 @@ jobs:
       contents: read
       id-token: write
       pull-requests: write
-    # TODO: una vez mergeado y tageado TiendaNube/nimbus-design-system#<PR-fase2>,
-    # cambiar el ref de la rama a un tag (p. ej. @workflows-v1).
-    uses: TiendaNube/nimbus-design-system/.github/workflows/preview-storybook-deploy.yml@chore/reusable-workflows-phase1
+    # Temporary branch-level bypass until nimbus-patterns#192 lands in master.
+    # The source branch was deleted after nimbus-design-system#519 merged.
+    uses: TiendaNube/nimbus-design-system/.github/workflows/preview-storybook-deploy.yml@workflows-v1
     with:
       s3-prefix: patterns
       build-tokens-icons: false
