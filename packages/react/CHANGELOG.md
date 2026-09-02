@@ -2,6 +2,14 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-09-02 `1.38.1`
+
+### 💡 Others
+
+- Test release para verificar el pipeline de publicación end-to-end tras la
+  unificación de workflows de GitHub Actions (ONB-1164). Sin cambios funcionales —
+  solo un comentario en el código. ([#194](https://github.com/TiendaNube/nimbus-patterns/pull/194) by [@EzeNube](https://github.com/EzeNube))
+
 ## 2026-07-24 `1.38.0`
 
 #### 🎉 New features
