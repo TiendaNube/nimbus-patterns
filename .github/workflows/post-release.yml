@@ -7,50 +7,32 @@ on:
       - master
 
 jobs:
-  trigger-action-create-github-tag:
+  create-tag-and-release:
     if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/publish-')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    permissions:
+      contents: write
+      discussions: write
+    uses: ./.github/workflows/create-github-tag.yml
 
-      - name: Trigger github action create github tag
-        run: |
-          curl --request POST \
-          --url 'https://api.github.com/repos/tiendanube/nimbus-patterns/actions/workflows/59054497/dispatches' \
-          --header 'Authorization: token ${{ secrets.PAT_CHANGE_BRANCH_PROTECTION_RULES_FROM_JUNIOR_CONQUISTA }}' \
-          --data '{"ref":"master"}'
-
-  trigger-action-send-slack-notifications:
-    needs: trigger-action-create-github-tag
+  send-slack-notification:
+    needs: [create-tag-and-release]
     if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/publish-')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    permissions:
+      contents: read
+    uses: ./.github/workflows/send-slack-notification.yml
+    secrets:
+      SLACK_WEBHOOK_URL_NIMBUS_UPDATES: ${{ secrets.SLACK_WEBHOOK_URL_NIMBUS_UPDATES }}
+      SLACK_WEBHOOK_URL_DEPLOYING: ${{ secrets.SLACK_WEBHOOK_URL_DEPLOYING }}
+      SLACK_WEBHOOK_URL_TECH_PRODUCT_UPDATES: ${{ secrets.SLACK_WEBHOOK_URL_TECH_PRODUCT_UPDATES }}
 
-      - name: Trigger github action send slack notifications
-        run: |
-          curl --request POST \
-          --url 'https://api.github.com/repos/tiendanube/nimbus-patterns/actions/workflows/59054498/dispatches' \
-          --header 'Authorization: token ${{ secrets.PAT_CHANGE_BRANCH_PROTECTION_RULES_FROM_JUNIOR_CONQUISTA }}' \
-          --data '{"ref":"master"}'
-
-  trigger-action-update-generate-documentation:
-    needs:
-      [
-        trigger-action-create-github-tag,
-        trigger-action-send-slack-notifications,
-      ]
+  generate-documentation:
+    needs: [create-tag-and-release, send-slack-notification]
     if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/publish-')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Trigger github action update documentation
-        run: |
-          curl --request POST \
-          --url 'https://api.github.com/repos/tiendanube/nimbus-patterns/actions/workflows/53869409/dispatches' \
-          --header 'Authorization: token ${{ secrets.PAT_CHANGE_BRANCH_PROTECTION_RULES_FROM_JUNIOR_CONQUISTA }}' \
-          --data '{"ref":"master"}'
+    permissions:
+      contents: write
+    uses: ./.github/workflows/generate-documentation.yml
+    # generate-documentation.yml doesn't declare a workflow_call secrets
+    # schema (its PAT and Turbo credentials are used directly in run: steps,
+    # not passed to a nested `uses:`), so explicit per-secret passthrough
+    # isn't an option here — inherit is the only way for them to arrive.
+    secrets: inherit

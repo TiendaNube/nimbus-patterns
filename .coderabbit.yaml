@@ -1,14 +1,13 @@
 # yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
 language: en-US
 tone_instructions: "Expert code reviewer specializing in TS, React, and Design Systems. Deep knowledge of monorepos and Nimbus. Focus on compound patterns, accessibility, and maintainability. Provide precise, actionable feedback on technical implementations."
-auto_resolve_threads: true
 reviews:
   profile: assertive
   high_level_summary: true
   high_level_summary_placeholder: "@autosummary"
   auto_title_placeholder: "@autotitle"
   auto_title_instructions: "Generate a concise PR title following the format 'chore/fix/feat(PackageName): Title' where the type is determined by the nature of changes (chore for maintenance, fix for bug fixes, feat for new features), PackageName is the affected package, if any, and Title is a brief description of the changes."
-  auto_apply_labels: true 
+  auto_apply_labels: true
   poem: false
   collapse_walkthrough: true
   labeling_instructions:
@@ -70,8 +69,8 @@ reviews:
         Highlight any deviations from these standards.
     - path: "**/CHANGELOG.md"
       instructions: |
-        Ensure CHANGELOG.md updates follow the established format: YYYY-MM-DD version with categorized entries (Breaking changes, New features, Bug fixes, Others). 
-        Each entry must include PR reference and author, and changes must be properly versioned (major/minor/patch). Changes MUST be documented in their respective package's CHANGELOG.md. 
+        Ensure CHANGELOG.md updates follow the established format: YYYY-MM-DD version with categorized entries (Breaking changes, New features, Bug fixes, Others).
+        Each entry must include PR reference and author, and changes must be properly versioned (major/minor/patch). Changes MUST be documented in their respective package's CHANGELOG.md.
         **CRITICAL: Clearly highlight and document the package bumps in the summary (or a comment, if unable), following exactly this structure: '@nimbus-ds/<package-name>@<bump-version>|<semver-type>: <Description>.' For example: '@nimbus-ds/patterns@9.18.0|minor: Added Layout new pattern...'. It is crucial to respect the requested structure.**
     - path: "**/package.json"
       instructions: "Verify version updates follow SemVer: major for breaking changes, minor for new features, patch for bug fixes. Ensure dependencies are properly versioned and peer dependencies are correctly specified."
@@ -103,30 +102,84 @@ reviews:
         mode: "error"
         instructions: |
           Pass/fail criteria: All breaking changes MUST have a MAJOR version bump (x.0.0) in package.json.
-          
+
           Detect breaking changes by scanning for:
           1. **Props API changes** in *.types.ts: Removed props, renamed props, type narrowing (e.g., `string | number` → `string`), optional→required changes
           2. **Export removals** in index.ts: Any previously exported symbol (component, type, hook, utility) removed
+          3. **CSS breaking changes**, per items 1-5 of the "Undocumented CSS Breaking Changes"
+             check below — a removed or renamed export/identifier, a removed variant option, a
+             changed `defaultVariants`, or a token reference remapped to a different token
           4. **Default value changes**: Changed defaultProps or default parameter values that alter behavior
-          
+
+          A `*.css.ts` file being touched is never, by itself, a breaking change — only actually
+          matching item 3 or item 4 above makes it breaking, and item 3 stops at its own item 5,
+          not the sibling check's item 6. That item 6 (a layout-affecting value changed with
+          nothing removed or renamed) requires CHANGELOG documentation there, not a MAJOR bump
+          here — whether it should is a separate, not-yet-made call; do not extend item 3 to
+          cover it without that decision.
+
           PASS if: No breaking changes detected, OR all breaking changes have corresponding MAJOR version bumps in package.json
           FAIL if: Breaking changes detected but package.json shows MINOR (0.x.0) or PATCH (0.0.x) bump, or no version bump at all
-          
+
           When failing, list each breaking change found and the expected MAJOR version.
+      - name: "Undocumented CSS Breaking Changes"
+        mode: "error"
+        instructions: |
+          Pass/fail criteria: All CSS/styling breaking changes MUST be documented in CHANGELOG.md under "🛠 Breaking changes" section.
+
+          Scan *.css.ts files (Vanilla-Extract) for:
+          1. Removed exports: styleVariants, recipe, globalStyle, createVar removals
+          2. Removed variant options from recipe() (e.g., size: { small, medium, large } → { small, medium })
+          3. Renamed CSS class identifiers or CSS variables (--nimbus-*)
+          4. Changed defaultVariants in recipe()
+          5. A token reference deliberately remapped to a semantically different token (e.g.,
+             vars.colors.primary → vars.colors.brand) — replacing a hardcoded value, or an
+             incorrect token, with the token the component's contract already specifies is a
+             conformity fix, not this
+          6. Changed the *value* of an existing layout-affecting declaration — dimensions,
+             display, position, or overflow — on a public component's style, even with no
+             identifier removed or renamed (e.g. height: '32px' → '40px', display: 'block' →
+             'flex'); adding a previously-missing declaration that restores a documented contract,
+             or correcting a value that drifted from what the component's contract already
+             specifies, is a conformity fix, not this
+
+          PASS if: No CSS breaking changes detected, OR all CSS breaking changes are documented in CHANGELOG.md with "🛠 Breaking changes" section
+          FAIL if: CSS breaking changes found but CHANGELOG.md lacks documentation or "🛠 Breaking changes" section is missing
+
+          This repository has no *.css.ts files today — this check exists for structural parity
+          with nimbus-design-system, whose sibling checks it is written to match. If it never
+          fires because the pattern never adopts Vanilla-Extract directly, that is expected; if
+          it does adopt it, coverage is already in place.
+
+          CSS breaking changes are often overlooked - this check ensures they are properly documented for consumers.
       - name: "Breaking Change Documentation Verification"
         mode: "error"
         instructions: |
           Pass/fail criteria: If package.json has MAJOR version bump OR code contains breaking changes, CHANGELOG.md MUST have "#### 🛠 Breaking changes" section.
-          
+
           Cross-reference:
           1. Check if any package.json in PR has MAJOR version bump (x.0.0)
-          2. Check if breaking changes detected in code (props removed, exports removed, tokens changed, CSS modified)
+          2. Check if breaking changes detected in code: props removed, exports removed, or a
+             CSS breaking change per the "Undocumented CSS Breaking Changes" check above: removed
+             `styleVariants`, `recipe`, `globalStyle`, or `createVar` declarations; removed
+             variant options; renamed CSS class or CSS variable (`--nimbus-*`) identifiers; a
+             changed `defaultVariants`; a token reference deliberately remapped to a semantically
+             different token; or the *value* of an existing layout-affecting declaration
+             (dimensions, display, position, overflow) changed on a public component's style.
+             This repository does not own token source (`@nimbus-ds/tokens` is an npm
+             dependency), so a token *key* being removed or renamed is not a criterion here —
+             that is `nimbus-design-system`'s check to make. A `*.css.ts` file being touched is
+             never, by itself, a breaking change — e.g. adding a property that was previously
+             implicit or inherited, such as an explicit `height` on an existing style object,
+             removing and renaming nothing, is not breaking; nor is replacing a hardcoded value
+             or an incorrect token with the token the component's contract already specifies.
+             Conversely, a one-line change IS breaking if that line matches any criterion above.
           3. Verify CHANGELOG.md contains "#### 🛠 Breaking changes" or "### 🛠 Breaking changes" section
           4. Verify each breaking change is documented with description and PR reference
-          
+
           PASS if: No breaking changes and no MAJOR bump, OR breaking changes exist with proper CHANGELOG documentation
           FAIL if: MAJOR bump without "🛠 Breaking changes" section, OR breaking changes in code without documentation
-          
+
           Documentation format required: "- Description of breaking change. ([#PR](url) by [@author](url))"
   abort_on_close: true
   auto_review:
