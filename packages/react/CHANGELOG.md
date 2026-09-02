@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-09-01 `1.39.0`
+
+#### 🎉 New features
+
+- Reworked `PlanDisplay` to the Plans 2.0 design: a `ribbonLabel` and a `gradient` variant on `PlanDisplay.Card`, a new `PlanDisplay.Price` subcomponent, a `tag` slot on `PlanDisplay.Header`, a `badge` slot on `PlanDisplay.Bullet`, and an `icon` slot on `PlanDisplay.Footer`. The legacy `highlighted` prop remains available with its original treatment for backwards compatibility, but is deprecated in favor of the new variants. ([#170](https://github.com/TiendaNube/nimbus-patterns/pull/170) by [@noecondoleo](https://github.com/noecondoleo))
+
 ## 2026-07-24 `1.38.0`
 
 #### 🎉 New features

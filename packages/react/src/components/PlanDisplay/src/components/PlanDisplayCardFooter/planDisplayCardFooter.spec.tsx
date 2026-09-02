@@ -18,5 +18,12 @@ describe("GIVEN <PlanDisplayCardFooter />", () => {
       makeSut({});
       expect(screen.getByText("Body content")).toBeDefined();
     });
+
+    it("SHOULD render the add-on icon and children when icon is provided", () => {
+      makeSut({ icon: <span data-testid="addon-icon">icon</span> });
+
+      expect(screen.getByTestId("addon-icon")).toBeDefined();
+      expect(screen.getByText("Body content")).toBeDefined();
+    });
   });
 });
