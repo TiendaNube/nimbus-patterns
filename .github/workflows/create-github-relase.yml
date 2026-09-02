@@ -15,7 +15,5 @@ jobs:
     permissions:
       contents: write
       discussions: write
-    # TODO: una vez mergeado y tageado TiendaNube/nimbus-design-system#<PR-fase1>,
-    # cambiar el ref de la rama a un tag (p. ej. @workflows-v1).
-    uses: TiendaNube/nimbus-design-system/.github/workflows/create-github-relase.yml@chore/reusable-workflows-phase1
+    uses: TiendaNube/nimbus-design-system/.github/workflows/create-github-relase.yml@workflows-v1
     # No secrets used by this workflow beyond the automatic GITHUB_TOKEN.
