@@ -16,6 +16,7 @@
     "build:packages": "babel-node -x .ts ./.scripts/build-packages",
     "build:storybook": "storybook build -c .storybook -o .build-storybook",
     "build:all": "yarn build:components && yarn build:packages && yarn build:storybook && yarn build:docs",
+    "preview:links": "babel-node -x .ts ./.scripts/storybook-preview-links",
     "bump:packages": "babel-node -x .ts ./.scripts/bump-packages",
     "bump:check": "yarn version check",
     "bump:next": "yarn version apply --all --prerelease",
