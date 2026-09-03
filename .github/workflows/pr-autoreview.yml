@@ -1,0 +1,67 @@
+name: PR Autoreview
+
+# CodeRabbit reports its review as a commit *status* (not a check run), so we trigger on `status`.
+# `pull_request_target: opened` lets us post an initial "queued" notice as soon as the PR
+# exists — it's `_target` (not `pull_request`) so it also works for fork PRs.
+#
+# Everything else — the actual jobs, concurrency, permissions — lives in
+# TiendaNube/pr-autoreview's pr-autoreview.yml. This file only wires up triggers,
+# this project's own review criteria, and secrets.
+on:
+  status:
+  pull_request_target:
+    types: [opened]
+
+# No default token grant for any job this file might grow to add later — the
+# one job below declares exactly the permissions it needs.
+permissions: {}
+
+jobs:
+  pr-judge:
+    # This repo is public and accepts fork PRs. `pull_request_target` runs with
+    # this repo's own secrets (the Anthropic key and the App's private key) even
+    # for a fork PR, so on that event we only proceed if the PR's head repo is
+    # this same repo, never a fork.
+    #
+    # `status` fires on every state CodeRabbit posts (`pending` then `success`),
+    # not just the finished review — without this we'd hand secrets to the
+    # reusable workflow on the half-finished `pending` update too. Restricting
+    # it here (not just relying on pr-autoreview.yml's own internal filter)
+    # means the unrelated invocation never even starts.
+    if: >-
+      (github.event_name == 'pull_request_target' &&
+       github.event.pull_request.head.repo.full_name == github.repository) ||
+      (github.event_name == 'status' &&
+       github.event.context == 'CodeRabbit' && github.event.state == 'success')
+    # A reusable workflow's own job permissions (in pr-autoreview.yml) can only
+    # narrow, never widen, what the caller grants here — without this, a repo
+    # with restrictive default token permissions would silently cap posting
+    # comments, approving PRs, and updating check runs, and those steps would
+    # fail with a 403 instead of the review ever completing. (In practice
+    # pr-autoreview posts and approves with the GitHub App's own token, and
+    # only falls back to this GITHUB_TOKEN — comment-only, since it can't
+    # mint an App-scoped approval — if the App token step comes back empty.)
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: write
+    # TiendaNube/pr-autoreview has no version tags yet (README describes tagged
+    # releases as the intent, but `main` is the only released ref today).
+    # Pinned to a commit SHA rather than `@main` so the reusable workflow can't
+    # change under us between runs — re-pin to a real tag once one exists
+    # (ONB-1193). `version:` below must be updated to the same SHA.
+    uses: TiendaNube/pr-autoreview/.github/workflows/pr-autoreview.yml@2b8a68f8631bec5f26bea602e7e6bdf17981f71c
+    with:
+      # This project's own review conventions — required, no default. See
+      # pr-autoreview's README for why these can't be generic.
+      classifier-path: .claude/workflows/autoreview-analysis/classify.jq
+      criteria-path: .claude/workflows/autoreview-analysis/criteria.prompt.md
+      preamble-path: .claude/workflows/autoreview-analysis/preamble.prompt.md
+      filter-path: .claude/workflows/autoreview-analysis/filter.jq
+      # Must match the ref in the `uses:` line above — see pr-autoreview.yml's
+      # own comment on why this can't be inferred automatically.
+      version: 2b8a68f8631bec5f26bea602e7e6bdf17981f71c
+    secrets:
+      anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY_AUTOREVIEW }}
+      app-id: ${{ secrets.ID_AUTOREVIEW_APP }}
+      app-private-key: ${{ secrets.SECRET_AUTOREVIEW_APP }}
