@@ -62,6 +62,6 @@ jobs:
       # own comment on why this can't be inferred automatically.
       version: 2b8a68f8631bec5f26bea602e7e6bdf17981f71c
     secrets:
-      anthropic-api-key: ${{ secrets.NIMBUS_PATTERNS_PR_AUTOREVIEW_API_KEY }}
+      anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY_AUTOREVIEW }}
       app-id: ${{ secrets.ID_AUTOREVIEW_APP }}
       app-private-key: ${{ secrets.SECRET_AUTOREVIEW_APP }}
