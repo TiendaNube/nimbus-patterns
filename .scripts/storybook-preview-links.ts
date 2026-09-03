@@ -268,7 +268,7 @@ const buildDecisionDetails = (
   lines.push(
     linkableCount > 0
       ? "**The links above** come from the `index.json` of this very build, picking the stories file closest to each changed file — so a change under a sub-component lands on the sub-component's page, not on its parent's."
-      : "**No link per component** because nothing under `packages/react/src/components` changed, so there is no component page to point at. The root link is the whole preview."
+      : "**No link per component** because no changed file resolved to a story in this build's index — either nothing under `packages/react/src/components` changed, or the matching story is missing from `index.json`. The root link is the whole preview."
   );
   lines.push("", "</details>");
 
