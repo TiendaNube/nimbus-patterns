@@ -66,7 +66,7 @@
     "@mdx-js/react": "^3.0.0",
     "@nimbus-ds/components": "5.56.1",
     "@nimbus-ds/icons": "^1.15.1",
-    "@nimbus-ds/scripts": "^1.8.2",
+    "@nimbus-ds/scripts": "^1.9.0",
     "@nimbus-ds/styles": "9.61.1",
     "@nimbus-ds/tokens": "^9.5.0",
     "@storybook/addon-docs": "^8.6.14",
