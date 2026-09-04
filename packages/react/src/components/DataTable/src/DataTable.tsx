@@ -1,3 +1,6 @@
+// Test comment: verifying the deep-link preview resolver end-to-end
+// (nimbus-design-system#547 / nimbus-patterns#198, ONB-1235). No functional
+// change — reverted once the preview comment confirms the link.
 import React from "react";
 
 import { Box, Table } from "@nimbus-ds/components";
