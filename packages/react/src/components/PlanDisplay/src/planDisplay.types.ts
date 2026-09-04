@@ -8,6 +8,7 @@ import {
   PlanDisplayCardFooter,
   PlanDisplayCardHeader,
   PlanDisplayCardSpacing,
+  PlanDisplayPrice,
 } from "./components";
 
 /**
@@ -16,7 +17,7 @@ import {
 export interface PlanDisplayComponents {
   /**
    * The card component used to display the plan. This component is used to wrap the header, content, and footer components, and it is able
-   * to receive a 'highlighted' prop to feature a plan.
+   * to receive a 'ribbonLabel' and/or a 'gradient' prop to feature a plan.
    */
   Card: typeof PlanDisplayCard;
 
@@ -37,14 +38,22 @@ export interface PlanDisplayComponents {
   Spacing: typeof PlanDisplayCardSpacing;
 
   /**
-   * The bullet component used to display the plan bullet points. It displays an icon and a text, and can receive a 'disabled' prop to show the bullet point as disabled.
+   * The bullet component used to display the plan bullet points. It displays an icon, a text, and an optional badge, and can receive a
+   * 'disabled' prop (together with a required, accessible-only 'unavailableLabel') to show the bullet point as unavailable.
    */
   Bullet: typeof PlanDisplayBullet;
 
   /**
-   * The footer component of the plan display card. This component is used to display the footer of the plan, such as the CTA button.
+   * The footer component of the plan display card. This component is used to display the footer of the plan, such as the CTA button, and
+   * can receive an optional 'icon' rendered before its content.
    */
   Footer: typeof PlanDisplayCardFooter;
+
+  /**
+   * The price component used to display the plan's pricing information: the current price, and optionally a previous price, a billing
+   * period, and an annual note.
+   */
+  Price: typeof PlanDisplayPrice;
 }
 
 export interface PlanDisplayProperties {

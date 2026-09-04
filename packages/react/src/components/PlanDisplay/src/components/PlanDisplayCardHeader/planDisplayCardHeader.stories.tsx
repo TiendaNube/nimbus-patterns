@@ -1,7 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Text, Title } from "@nimbus-ds/components";
+import { Tag, Text, Title } from "@nimbus-ds/components";
 import { PlanDisplay } from "../../PlanDisplay";
 
 const meta: Meta<typeof PlanDisplay.Header> = {
@@ -30,5 +30,13 @@ export const base: Story = {
     subtitle: "Plan display subtitle",
     title: "Plan display title",
     children: "Plan display header children",
+  },
+};
+
+// AC-04 — Header metadata: an optional `tag` rendered next to the subtitle.
+export const withTag: Story = {
+  args: {
+    ...base.args,
+    tag: <Tag appearance="primary">New</Tag>,
   },
 };

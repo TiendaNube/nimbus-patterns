@@ -1,17 +1,20 @@
 import React from "react";
 import { Box, Text } from "@nimbus-ds/components";
 import { PlanDisplayBulletProps } from "./planDisplayBullet.types";
+import { VisuallyHidden } from "./VisuallyHidden";
 
 const PlanDisplayBullet: React.FC<PlanDisplayBulletProps> = ({
   icon,
+  badge,
   disabled,
+  unavailableLabel,
   children,
 }) => (
   <Box display="flex" gap="2">
     <Box display="flex" alignItems="center">
       <Text
         as="span"
-        color={disabled ? "neutral-interactive" : "success-interactive"}
+        color={disabled ? "neutral-interactive" : "primary-interactive"}
       >
         <Box display="flex" alignItems="center">
           {icon}
@@ -19,11 +22,15 @@ const PlanDisplayBullet: React.FC<PlanDisplayBulletProps> = ({
       </Text>
     </Box>
     <Text
-      fontWeight="medium"
+      fontWeight="regular"
       color={disabled ? "neutral-interactive" : "neutral-textLow"}
     >
       {children}
     </Text>
+    {badge}
+    {disabled && unavailableLabel && (
+      <VisuallyHidden>{unavailableLabel}</VisuallyHidden>
+    )}
   </Box>
 );
 
