@@ -1,0 +1,65 @@
+# GENERATED FILE — do not edit by hand.
+# Regenerate with: yarn source-map
+
+schema: 1
+
+repo:
+  name: nimbus-patterns
+  package_manager: yarn
+
+commands:
+  build_all: "yarn build:all"
+  build_one: "yarn workspace {package} build"
+  build_storybook: "yarn build:storybook"
+  install: "yarn install --immutable"
+  lint: "yarn lint"
+  storybook: "yarn storybook"
+  test_all: "yarn test"
+  test_one: "yarn jest {path}"
+  types_check: "yarn types:check"
+
+conventions:
+  contexts: "src/contexts/*/"
+  docs: "src/*.docs.json"
+  entry: src/index.ts
+  implementation: "src/*.tsx"
+  nested: "src/components/*/"
+  stories: "src/*.stories.tsx"
+  test: "src/*.spec.tsx"
+  types: "src/*.types.ts"
+
+groups:
+  patterns: packages/react/src/components
+
+components:
+  - { name: AppShell, group: patterns, package: @nimbus-ds/app-shell, nested: [AppShellBody, AppShellChat, AppShellHeader], contexts: [AppShellMenuContext] }
+  - { name: BottomSheet, group: patterns, package: @nimbus-ds/bottom-sheet, extras: [src/bottomSheet.constants.ts, src/bottomSheet.utils.ts, src/hooks/, src/subcomponents/] }
+  - { name: Calendar, group: patterns, package: @nimbus-ds/calendar, nested: [CustomCaptionLabel, CustomDay, Weekdays, Wrapper], extras: [src/calendar.utils.tsx, src/utils/] }
+  - { name: CalloutCard, group: patterns, package: @nimbus-ds/callout-card, extras: [src/calloutCard.definitions.ts] }
+  - { name: ChatInput, group: patterns, package: @nimbus-ds/chat-input, nested: [ChatInputActions, ChatInputField, ChatInputPopover, ChatInputPopoverButton] }
+  - { name: DataList, group: patterns, package: @nimbus-ds/data-list, nested: [DataListRow], extras: [src/dataList.utils.ts] }
+  - { name: DataTable, group: patterns, package: @nimbus-ds/data-table, nested: [DataTableBulkActions, DataTableCell, DataTableDropdown, DataTableDropdownAction, DataTableDropdownDivider, DataTableDropdownSection, DataTableFooter, DataTableHeader, DataTableRow], extras: [src/dataTable.utils.tsx] }
+  - { name: Editor, group: patterns, package: @nimbus-ds/editor, nested: [Button, Divider, Placeholder, Toolbar], contexts: [EditorContext, TranslateContext], extras: [index.d.ts, src/actions/, src/editor.definitions.ts, src/hooks/, src/nodes/, src/plugins/, src/utils/] }
+  - { name: EmptyApp, group: patterns, package: @nimbus-ds/empty-app, nested: [EmptyAppContentImageElement, EmptyAppContentSection, EmptyAppContentTextElement, EmptyAppHeroSection, EmptyAppPlanCard, EmptyAppPlanItem] }
+  - { name: EmptyMessage, group: patterns, package: @nimbus-ds/empty-message }
+  - { name: FormField, group: patterns, package: @nimbus-ds/formfield, nested: [FormFieldInput, FormFieldSelect, FormFieldTextarea], extras: [src/formField.definitions.ts] }
+  - { name: HelpLink, group: patterns, package: @nimbus-ds/help-link }
+  - { name: InitialScreen, group: patterns, package: @nimbus-ds/initial-screen, nested: [InitialScreenBullet, InitialScreenCard, InitialScreenFeature, InitialScreenHero, InitialScreenModule, InitialScreenSection] }
+  - { name: InteractiveList, group: patterns, package: @nimbus-ds/interactive-list, nested: [InteractiveListButtonItem, InteractiveListButtonItemSkeleton, InteractiveListCheckboxItem, InteractiveListCheckboxItemSkeleton, InteractiveListRadioItem, InteractiveListRadioItemSkeleton, InteractiveListRow, InteractiveListStructure, InteractiveListStructureSkeleton, InteractiveListToggleItem, InteractiveListToggleItemSkeleton], extras: [src/interactiveList.definitions.ts] }
+  - { name: Layout, group: patterns, package: @nimbus-ds/layout, nested: [LayoutSection], extras: [src/layout.definitions.ts] }
+  - { name: Menu, group: patterns, package: @nimbus-ds/menu, nested: [MenuBody, MenuFooter, MenuHeader, MenuSection], extras: [src/menu.utils.tsx] }
+  - { name: MenuButton, group: patterns, package: @nimbus-ds/menubutton, nested: [MenuButtonAccordion, MenuButtonContent] }
+  - { name: NavTabs, group: patterns, package: @nimbus-ds/nav-tabs, nested: [NavTabsItem] }
+  - { name: Page, group: patterns, package: @nimbus-ds/page, nested: [PageBody, PageHeader] }
+  - { name: PlanDisplay, group: patterns, package: @nimbus-ds/plan-display, nested: [PlanDisplayBullet, PlanDisplayCard, PlanDisplayCardContent, PlanDisplayCardFooter, PlanDisplayCardHeader, PlanDisplayCardSpacing] }
+  - { name: ProductDataList, group: patterns, package: @nimbus-ds/product-data-list, nested: [ProductDataListItem, ProductDataListItemDivider, ProductDataListProducts, ProductDataListSection] }
+  - { name: ProductUpdates, group: patterns, package: @nimbus-ds/productupdates, nested: [ProductUpdatesFooter, ProductUpdatesPaginator] }
+  - { name: SideModal, group: patterns, package: @nimbus-ds/sidemodal }
+  - { name: Sortable, group: patterns, package: @nimbus-ds/sortable, nested: [SortableItem, SortableItemHandle], extras: [src/Sortable.definitions.ts] }
+  - { name: SummaryStats, group: patterns, package: @nimbus-ds/summary-stats, nested: [SummaryStatsItem, SummaryStatsTrendIndicator], contexts: [SummaryStatsContext] }
+  - { name: ThumbnailWithAction, group: patterns, package: @nimbus-ds/thumbnail-with-action, extras: [src/thumbnailWithAction.definitions.ts, src/thumbnailWithAction.utils.ts] }
+
+shared:
+
+new_component:
+  reference: packages/react/src/components/AppShell
