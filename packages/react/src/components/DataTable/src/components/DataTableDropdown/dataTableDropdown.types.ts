@@ -3,9 +3,16 @@ import { ReactNode } from "react";
 
 export interface DataTableDropdownProperties {
   /**
-   * Placeholder text displayed in the dropdown trigger button.
+   * Placeholder text displayed in the default dropdown trigger button.
+   * Ignored when `trigger` is provided.
    */
-  placeholder: string;
+  placeholder?: string;
+  /**
+   * Custom node to render as the dropdown trigger. When provided, replaces
+   * the default trigger built from `placeholder`.
+   * @TJS-type React.ReactNode
+   */
+  trigger?: ReactNode;
   /**
    * Content to be rendered inside the dropdown popover.
    * Typically DataTable.DropdownAction and DataTable.DropdownDivider components.
