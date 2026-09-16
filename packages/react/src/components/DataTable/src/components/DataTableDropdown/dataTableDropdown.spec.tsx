@@ -59,7 +59,10 @@ describe("GIVEN <DataTableDropdown />", () => {
 
     it("THEN should render the custom trigger instead of the default one", () => {
       render(
-        <DataTableDropdown trigger={<button type="button">{customTriggerLabel}</button>}>
+        <DataTableDropdown
+          placeholder={placeholderText}
+          trigger={<button type="button">{customTriggerLabel}</button>}
+        >
           <DataTableDropdownAction label={actionLabel} />
         </DataTableDropdown>
       );
@@ -76,6 +79,22 @@ describe("GIVEN <DataTableDropdown />", () => {
       );
 
       const trigger = screen.getByRole("button", { name: customTriggerLabel });
+      fireEvent.click(trigger);
+      expect(screen.getByText(actionLabel)).toBeDefined();
+    });
+
+    it("THEN the custom trigger should be keyboard-accessible", () => {
+      render(
+        <DataTableDropdown trigger={<button type="button">{customTriggerLabel}</button>}>
+          <DataTableDropdownAction label={actionLabel} />
+        </DataTableDropdown>
+      );
+
+      const trigger = screen.getByRole("button", { name: customTriggerLabel });
+      trigger.focus();
+      expect(document.activeElement).toBe(trigger);
+
+      fireEvent.keyDown(trigger, { key: "Enter", code: "Enter" });
       fireEvent.click(trigger);
       expect(screen.getByText(actionLabel)).toBeDefined();
     });

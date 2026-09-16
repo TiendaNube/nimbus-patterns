@@ -11,12 +11,26 @@ import {
 
 import { DataTable } from "../../DataTable";
 
+const linkTrigger = (
+  <Link textDecoration="none" as="button">
+    More actions
+    <Icon color="currentColor" source={<ChevronDownIcon />} />
+  </Link>
+);
+
 const meta: Meta<typeof DataTable.Dropdown> = {
   title: "Patterns/DataTable/DataTable.Dropdown",
   component: DataTable.Dropdown,
   argTypes: {
     children: { control: { disable: true } },
-    trigger: { control: { disable: true } },
+    trigger: {
+      control: { type: "select" },
+      options: ["default", "linkWithChevron"],
+      mapping: {
+        default: undefined,
+        linkWithChevron: linkTrigger,
+      },
+    },
   },
   tags: ["autodocs"],
 };
@@ -55,12 +69,7 @@ export const basic: Story = {
 
 export const withCustomTrigger: Story = {
   args: {
-    trigger: (
-      <Link textDecoration="none" as="button">
-        More actions
-        <Icon color="currentColor" source={<ChevronDownIcon />} />
-      </Link>
-    ),
+    trigger: linkTrigger,
   },
   render: (args) => (
     <Box padding="4">

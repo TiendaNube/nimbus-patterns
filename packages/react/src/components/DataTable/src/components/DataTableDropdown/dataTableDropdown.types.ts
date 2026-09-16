@@ -4,12 +4,18 @@ import { ReactNode } from "react";
 export interface DataTableDropdownProperties {
   /**
    * Placeholder text displayed in the default dropdown trigger button.
-   * Ignored when `trigger` is provided.
+   * Required unless `trigger` is provided. Ignored when `trigger` is set.
    */
   placeholder?: string;
   /**
    * Custom node to render as the dropdown trigger. When provided, replaces
-   * the default trigger built from `placeholder`.
+   * the default trigger built from `placeholder`. Required unless
+   * `placeholder` is provided.
+   *
+   * Must be a keyboard-accessible interactive element (e.g. `<button>`,
+   * `<Link as="button">`, or `<a>`). Non-interactive nodes like `<span>`
+   * or `<div>` will not receive keyboard focus and cannot open the
+   * dropdown via keyboard.
    * @TJS-type React.ReactNode
    */
   trigger?: ReactNode;
