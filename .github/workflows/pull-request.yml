@@ -26,6 +26,9 @@ jobs:
           export NODE_OPTIONS="--max_old_space_size=12288"
           yarn build:all
 
+      - name: Check nimbus-source-map.yml is up to date
+        run: yarn source-map:check
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
