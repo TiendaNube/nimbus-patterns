@@ -19,9 +19,7 @@ jobs:
     # match the permissions declared on the called job itself.
     permissions:
       contents: read
-    # TODO: una vez mergeado y tageado TiendaNube/nimbus-design-system#<PR-fase1>,
-    # cambiar el ref de la rama a un tag (p. ej. @workflows-v1).
-    uses: TiendaNube/nimbus-design-system/.github/workflows/send-slack-notification.yml@chore/reusable-workflows-phase1
+    uses: TiendaNube/nimbus-design-system/.github/workflows/send-slack-notification.yml@workflows-v1
     secrets:
       SLACK_WEBHOOK_URL_NIMBUS_UPDATES: ${{ secrets.SLACK_WEBHOOK_URL_NIMBUS_UPDATES }}
       SLACK_WEBHOOK_URL_DEPLOYING: ${{ secrets.SLACK_WEBHOOK_URL_DEPLOYING }}

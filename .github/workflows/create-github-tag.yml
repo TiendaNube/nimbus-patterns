@@ -19,7 +19,20 @@ jobs:
         id: calver
         with:
           date_format: "%Y.%m.%d"
-          release: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+          # `release` only gates whether this action itself creates a GitHub
+          # Release — the version string in `outputs.release` (used below to
+          # tag) is computed either way. This used to read
+          # `github.event_name == 'push' && github.ref == 'refs/heads/master'`,
+          # left over from when this workflow was dispatched standalone by
+          # curl against a hardcoded workflow ID. Chained via `workflow_call`
+          # from post-release.yml (triggered on `pull_request: closed`), that
+          # condition can never be true — `github.event_name` here is always
+          # `pull_request`, never `push`. Hardcoded to match what it always
+          # evaluated to in practice, and what nimbus-design-system's own
+          # create-github-tag.yml already does explicitly: this action never
+          # creates the release; the separate create-github-release job below
+          # does that.
+          release: false
           release_branch: master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -29,13 +42,6 @@ jobs:
         with:
           tag: ${{ steps.calver.outputs.release }}
 
-  # NOTE for reviewers: this used to be dispatched via curl against a
-  # hardcoded workflow ID, always as a standalone `workflow_dispatch` run —
-  # so `github.event_name` above was never 'push', and the `release` input
-  # to actions-calver always evaluated false. Chained like this from
-  # post-release.yml (triggered on the release PR's merge), `release` still
-  # won't be 'push', so this specific condition stays false either way —
-  # flagging in case that's not actually the intent.
   create-github-release:
     needs: [create-github-tag]
     permissions:
