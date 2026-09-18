@@ -21,45 +21,102 @@
   "subComponents": [
     {
       "name": "PlanDisplay.Card",
-      "totalProps": 1,
+      "totalProps": 3,
       "props": [
         {
+          "description": "Renders the card with the legacy featured treatment (primary 3px border and level-3 shadow).\nNew consumers should use `ribbonLabel` or `gradient` to express the intended emphasis.\nIgnored when either of those props is provided.",
           "type": "boolean",
           "title": "highlighted",
+          "required": false
+        },
+        {
+          "description": "Renders the card with the Plans 2.0 gradient background (primary-surface → neutral-background).\nIgnored when `ribbonLabel` is provided.",
+          "type": "boolean",
+          "title": "gradient",
+          "required": false
+        },
+        {
+          "description": "Label shown in a ribbon on top of the card (e.g. \"Más escogido\"). When provided, the card\nis rendered with the featured style (primary ribbon + 2px primary border, no shadow),\ntaking precedence over `gradient`.",
+          "type": "React.ReactNode",
+          "title": "ribbonLabel",
           "required": false
         }
       ]
     },
     {
       "name": "PlanDisplay.Bullet",
-      "totalProps": 2,
+      "totalProps": 3,
       "props": [
         {
-          "$ref": "#/definitions/React.ReactNode",
-          "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
+          "description": "Icon rendered to the left of the bullet text.",
+          "type": "React.ReactNode",
           "title": "icon",
+          "required": true
+        },
+        {
+          "description": "Renders the bullet with the disabled treatment, to show a feature the plan does not include.",
+          "type": "boolean",
+          "title": "disabled",
           "required": false
         },
         {
-          "type": "boolean",
-          "title": "disabled",
+          "description": "Optional slot rendered inline after the bullet text (e.g. a `<Tag>` like \"Nuevo\").",
+          "type": "React.ReactNode",
+          "title": "badge",
           "required": false
         }
       ]
     },
     {
       "name": "PlanDisplay.CardHeader",
-      "totalProps": 2,
+      "totalProps": 3,
       "props": [
         {
+          "description": "Supporting text rendered above the title (e.g. the plan family name).",
           "type": "string",
           "title": "subtitle",
           "required": true
         },
         {
-          "$ref": "#/definitions/React.ReactNode",
-          "description": "Represents all of the things React can render.\n\nWhere {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.",
+          "description": "Main content of the header, typically the plan name and its price block.",
+          "type": "React.ReactNode",
           "title": "title",
+          "required": true
+        },
+        {
+          "description": "Optional slot rendered to the right of the subtitle (e.g. a `<Tag>` like \"Plan actual\").\nWhen provided, the subtitle row is laid out with space between the subtitle and the tag.",
+          "type": "React.ReactNode",
+          "title": "tag",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "PlanDisplay.CardPrice",
+      "totalProps": 4,
+      "props": [
+        {
+          "description": "The current price of the plan (e.g. \"$999\"). Rendered as the main, prominent value.",
+          "type": "React.ReactNode",
+          "title": "price",
+          "required": true
+        },
+        {
+          "description": "Optional previous price, rendered with a line-through next to the current price.",
+          "type": "React.ReactNode",
+          "title": "previousPrice",
+          "required": false
+        },
+        {
+          "description": "Optional billing period suffix (e.g. \"/mes\") rendered next to the price.",
+          "type": "React.ReactNode",
+          "title": "period",
+          "required": false
+        },
+        {
+          "description": "Optional annual note rendered below the price (e.g. \"R$696/año. Economiza R$132.\").\nAccepts a ReactNode so it can mix colors (e.g. an emphasized savings span).",
+          "type": "React.ReactNode",
+          "title": "annualNote",
           "required": false
         }
       ]
@@ -80,6 +137,18 @@
       "name": "PlanDisplay.CardSpacing",
       "totalProps": 0,
       "props": []
+    },
+    {
+      "name": "PlanDisplay.CardFooter",
+      "totalProps": 1,
+      "props": [
+        {
+          "description": "Optional leading icon for an add-on style footer row (e.g. a point-of-sale icon next to a link).\nWhen provided, the footer renders the icon and children side by side.",
+          "type": "React.ReactNode",
+          "title": "icon",
+          "required": false
+        }
+      ]
     }
   ]
 }

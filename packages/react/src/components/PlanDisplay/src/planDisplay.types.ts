@@ -7,6 +7,7 @@ import {
   PlanDisplayCardContent,
   PlanDisplayCardFooter,
   PlanDisplayCardHeader,
+  PlanDisplayCardPrice,
   PlanDisplayCardSpacing,
 } from "./components";
 
@@ -16,7 +17,8 @@ import {
 export interface PlanDisplayComponents {
   /**
    * The card component used to display the plan. This component is used to wrap the header, content, and footer components, and it is able
-   * to receive a 'highlighted' prop to feature a plan.
+   * to receive a 'ribbonLabel' and/or a 'gradient' prop to feature a plan. The legacy
+   * 'highlighted' prop remains available temporarily for backwards compatibility.
    */
   Card: typeof PlanDisplayCard;
 
@@ -25,6 +27,11 @@ export interface PlanDisplayComponents {
    * an optional children where additional information can be displayed.
    */
   Header: typeof PlanDisplayCardHeader;
+
+  /**
+   * The price component of the plan display card. It renders the current price and optionally a previous price (with line-through), a billing period suffix and an annual note.
+   */
+  Price: typeof PlanDisplayCardPrice;
 
   /**
    * The content component of the plan display card. This component is used to display the main content of the plan, such as the plan bullet points.

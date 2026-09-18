@@ -146,7 +146,6 @@ jobs:
       contents: read
       id-token: write
       pull-requests: write
-
     # Pinned to workflows-v1 — that tag needs to move forward to include
     # nimbus-design-system's changed-files/matched-files/preview-trigger
     # inputs before this can go green. See ONB-1164 follow-up.

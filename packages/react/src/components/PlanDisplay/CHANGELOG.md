@@ -1,6 +1,12 @@
 # Changelog
 
-EmptyApp allows the user to build marketing-style landing pages for apps. It features internal components meant to build hero sections, content sections with images and text with features, and payment plans.
+PlanDisplay allows the user to present subscription plans and pricing. It features internal components to build plan cards with headers, prices, feature bullets, and footers — including featured-plan and gradient variants.
+
+## 2026-09-01 `1.2.0`
+
+#### 🎉 New features
+
+- Reworked `PlanDisplay` to the Plans 2.0 design as the canonical layout, matching the Figma master component. `PlanDisplay.Card` now renders the default card with a level-2 shadow, plus two opt-in variants: `ribbonLabel` (a "Más escogido" ribbon with a primary 2px border) and `gradient` (primary-surface → background gradient). The legacy `highlighted` prop remains available with its original treatment for backwards compatibility, but is deprecated in favor of the new variants. Added a `tag` slot on `PlanDisplay.Header` (e.g. "Plan actual"), a new `PlanDisplay.Price` subcomponent (current price + optional previous price, period and annual note), a `badge` slot on `PlanDisplay.Bullet` (e.g. "Nuevo"), and an `icon` slot on `PlanDisplay.Footer` for add-on rows. ([#170](https://github.com/TiendaNube/nimbus-patterns/pull/170) by [@noecondoleo](https://github.com/noecondoleo))
 
 ## 2026-01-15 `1.1.1`
 

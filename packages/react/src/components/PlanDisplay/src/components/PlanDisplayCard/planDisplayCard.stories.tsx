@@ -26,3 +26,10 @@ type Story = StoryObj<typeof PlanDisplay.Card>;
 export const base: Story = {
   args: {},
 };
+
+/** @deprecated Migration reference only. New consumers should use ribbonLabel or gradient. */
+export const legacyHighlighted: Story = {
+  args: {
+    highlighted: true,
+  },
+};

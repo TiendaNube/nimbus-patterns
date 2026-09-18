@@ -5,25 +5,46 @@ import { PlanDisplayBulletProps } from "./planDisplayBullet.types";
 const PlanDisplayBullet: React.FC<PlanDisplayBulletProps> = ({
   icon,
   disabled,
+  badge,
   children,
 }) => (
-  <Box display="flex" gap="2">
+  <Box display="flex" gap="2" alignItems="center">
     <Box display="flex" alignItems="center">
       <Text
         as="span"
-        color={disabled ? "neutral-interactive" : "success-interactive"}
+        color={disabled ? "neutral-interactive" : "primary-interactive"}
       >
-        <Box display="flex" alignItems="center">
+        {/* `as="span"`: a default Box renders a div, which is invalid nesting inside Text's span. */}
+        <Box as="span" display="flex" alignItems="center">
           {icon}
         </Box>
       </Text>
     </Box>
-    <Text
-      fontWeight="medium"
-      color={disabled ? "neutral-interactive" : "neutral-textLow"}
-    >
-      {children}
-    </Text>
+    {badge ? (
+      <Text
+        fontWeight="regular"
+        color={disabled ? "neutral-interactive" : "neutral-textLow"}
+      >
+        {children}{" "}
+        {/* Native span: Box drops `style`, so `vertical-align` would never apply on a Box. */}
+        <span
+          style={{
+            display: "inline-flex",
+            gap: "var(--nimbus-spacing-2)",
+            verticalAlign: "middle",
+          }}
+        >
+          {badge}
+        </span>
+      </Text>
+    ) : (
+      <Text
+        fontWeight="regular"
+        color={disabled ? "neutral-interactive" : "neutral-textLow"}
+      >
+        {children}
+      </Text>
+    )}
   </Box>
 );
 
