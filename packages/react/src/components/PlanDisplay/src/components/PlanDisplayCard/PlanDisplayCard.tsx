@@ -29,29 +29,25 @@ type SurfaceTreatment = Partial<
   Pick<BoxProps, "borderColor" | "borderStyle" | "borderWidth" | "boxShadow">
 >;
 
-const getSurfaceTreatment = (
-  hasRibbon: boolean,
-  hasLegacyHighlight: boolean
-): SurfaceTreatment => {
-  if (hasRibbon) {
-    return {
-      borderColor: "primary-interactive",
-      borderStyle: "solid",
-      borderWidth: "2",
-    };
-  }
-
-  if (hasLegacyHighlight) {
-    return {
-      borderColor: "primary-interactive",
-      borderStyle: "solid",
-      borderWidth: "3",
-      boxShadow: "3",
-    };
-  }
-
-  return { boxShadow: "2" };
+// Plain constants rather than a helper function on purpose: once the package is bundled and
+// minified, a single-use helper gets inlined into the component as an IIFE, and a consumer
+// minifier (SWC with `swcMinify`) then re-inlines that IIFE by declaring its parameters as
+// `var`s inside the component. In production that has produced a local variable shadowing the
+// module's React import (`TypeError: ... reading 'createElement'`).
+const RIBBON_SURFACE: SurfaceTreatment = {
+  borderColor: "primary-interactive",
+  borderStyle: "solid",
+  borderWidth: "2",
 };
+
+const LEGACY_HIGHLIGHT_SURFACE: SurfaceTreatment = {
+  borderColor: "primary-interactive",
+  borderStyle: "solid",
+  borderWidth: "3",
+  boxShadow: "3",
+};
+
+const DEFAULT_SURFACE: SurfaceTreatment = { boxShadow: "2" };
 
 const PlanDisplayCard: React.FC<PlanDisplayCardProps> = ({
   highlighted,
@@ -62,7 +58,13 @@ const PlanDisplayCard: React.FC<PlanDisplayCardProps> = ({
 }) => {
   const hasRibbon = Boolean(ribbonLabel);
   const hasLegacyHighlight = Boolean(highlighted && !hasRibbon && !gradient);
-  const surfaceTreatment = getSurfaceTreatment(hasRibbon, hasLegacyHighlight);
+  // Precedence: ribbon, then the deprecated highlight, then the default surface.
+  let surfaceTreatment = DEFAULT_SURFACE;
+  if (hasRibbon) {
+    surfaceTreatment = RIBBON_SURFACE;
+  } else if (hasLegacyHighlight) {
+    surfaceTreatment = LEGACY_HIGHLIGHT_SURFACE;
+  }
 
   return (
     <Box {...rest} display="flex" flexDirection="column" height="100%">
