@@ -67,4 +67,4 @@ jobs:
           fi
           echo "✅ All packages published successfully"
         env:
-          YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION_FROM_JUNIOR_CONQUISTA }}
+          YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION_PUBLISH }}
