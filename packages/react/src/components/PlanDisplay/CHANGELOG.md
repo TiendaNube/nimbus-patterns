@@ -2,6 +2,12 @@
 
 PlanDisplay allows the user to present subscription plans and pricing. It features internal components to build plan cards with headers, prices, feature bullets, and footers — including featured-plan and gradient variants.
 
+## 2026-10-13 `1.2.1`
+
+### 🐛 Bug fixes
+
+- Fixed `PlanDisplay.Card` crashing in production with `TypeError: Cannot read properties of undefined (reading 'createElement')` in applications that minify the package with SWC (e.g. Next.js with `swcMinify: true`). The surface treatment (ribbon, deprecated `highlighted`, default) is now selected from module-level constants instead of a helper function, so the published bundle no longer contains the inlined function that SWC re-inlined with a local variable shadowing the React import. No visual or API changes. ([#203](https://github.com/TiendaNube/nimbus-patterns/pull/203) by [@prescillahurbin-tiendanube](https://github.com/prescillahurbin-tiendanube))
+
 ## 2026-09-01 `1.2.0`
 
 #### 🎉 New features
