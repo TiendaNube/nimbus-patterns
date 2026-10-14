@@ -4,11 +4,15 @@ import type { StorybookConfig } from "@storybook/react-webpack5";
 import { VanillaExtractPlugin } from "@vanilla-extract/webpack-plugin";
 import { convertTsConfigPathsToWebpackAliases } from "./utils";
 
+const prototypePreview = process.env.STORYBOOK_PROTOTYPE_ONLY === "true";
+
 const config: StorybookConfig = {
-  stories: [
-    "../packages/react/**/*.stories.@(js|jsx|ts|tsx)",
-    "stories/templates/*.stories.@(js|jsx|ts|tsx)",
-  ],
+  stories: prototypePreview
+    ? ["../packages/react/src/prototypes/**/*.stories.@(js|jsx|ts|tsx)"]
+    : [
+        "../packages/react/**/*.stories.@(js|jsx|ts|tsx)",
+        "stories/templates/*.stories.@(js|jsx|ts|tsx)",
+      ],
   refs: {
     components: {
       title: "@nimbus-ds/components",

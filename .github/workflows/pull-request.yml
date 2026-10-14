@@ -2,6 +2,10 @@ name: check-quality
 
 on: [pull_request]
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   pipeline-quality:
     runs-on: ubuntu-latest
@@ -20,11 +24,25 @@ jobs:
 
       - name: Run tests
         run: yarn test:ci
-      
+
       - name: Run build all
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
         run: |
           export NODE_OPTIONS="--max_old_space_size=12288"
-          yarn build:all
+          # Keep production checks for mixed diffs and unavailable file lists.
+          if [[ "$GITHUB_HEAD_REF" == prototype/* ]] && \
+            changed_files=$(gh api --paginate "repos/$REPO/pulls/$PR_NUMBER/files" --jq '.[].filename') && \
+            [ -n "$changed_files" ] && \
+            ! printf '%s\n' "$changed_files" | grep -qvE '^packages/react/src/prototypes/|^\.github/PULL_REQUEST_TEMPLATE/prototype\.md$'; then
+            echo "Prototype-only pull request; skipping production package builds."
+            # A full Storybook build also handles deletion of the last prototype.
+            yarn build:storybook
+          else
+            yarn build:all
+          fi
 
       - name: Check nimbus-source-map.yml is up to date
         run: yarn source-map:check

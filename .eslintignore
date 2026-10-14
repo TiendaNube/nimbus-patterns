@@ -2,3 +2,4 @@ dist
 index.d.ts
 webpack.config.ts
 alias.ts
+packages/react/src/prototypes

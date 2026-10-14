@@ -4,6 +4,7 @@ on: pull_request
 
 jobs:
   checklist-comment:
+    if: ${{ !startsWith(github.head_ref, 'prototype/') }}
     # A called workflow can never get more than the caller grants: this must
     # match the permissions declared on the called job itself.
     permissions:

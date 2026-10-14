@@ -29,6 +29,7 @@ jobs:
     outputs:
       should_build: ${{ steps.preview_scope.outputs.should_build }}
       trigger: ${{ steps.preview_scope.outputs.trigger }}
+      build_mode: ${{ steps.preview_scope.outputs.build_mode }}
       changed_files: ${{ steps.preview_scope.outputs.changed_files }}
       matched_files: ${{ steps.preview_scope.outputs.matched_files }}
 
@@ -97,6 +98,7 @@ jobs:
             : > "$RUNNER_TEMP/matched-files.txt"
             echo "should_build=true" >> "$GITHUB_OUTPUT"
             echo "trigger=unavailable-diff" >> "$GITHUB_OUTPUT"
+            echo "build_mode=full" >> "$GITHUB_OUTPUT"
             emit_file_lists
             exit 0
           fi
@@ -106,8 +108,17 @@ jobs:
             : > "$RUNNER_TEMP/matched-files.txt"
             echo "should_build=true" >> "$GITHUB_OUTPUT"
             echo "trigger=label" >> "$GITHUB_OUTPUT"
+            echo "build_mode=full" >> "$GITHUB_OUTPUT"
             emit_file_lists
             exit 0
+          fi
+
+          REMOVED_PROTOTYPES=false
+          if ! removed_files=$(gh api --paginate "repos/$REPO/pulls/$PR_NUMBER/files" \
+            --jq '.[] | select(.status == "removed" or .status == "renamed") | .filename'); then
+            REMOVED_PROTOTYPES=true
+          elif printf '%s\n' "$removed_files" | grep -qE '^packages/react/src/prototypes/'; then
+            REMOVED_PROTOTYPES=true
           fi
 
           relevant=$(grep -vE "$NON_VISUAL" "$RUNNER_TEMP/changed-files.txt" || true)
@@ -122,6 +133,15 @@ jobs:
             echo "trigger=build-inputs" >> "$GITHUB_OUTPUT"
             echo "Building because these files feed the Storybook bundle:"
             cat "$RUNNER_TEMP/matched-files.txt"
+
+            # Removed stories require a full build: the last prototype may have
+            # been deleted, leaving no stories for a focused build.
+            if grep -qvE '^packages/react/src/prototypes/' \
+              "$RUNNER_TEMP/matched-files.txt" || [ "$REMOVED_PROTOTYPES" = "true" ]; then
+              echo "build_mode=full" >> "$GITHUB_OUTPUT"
+            else
+              echo "build_mode=prototype" >> "$GITHUB_OUTPUT"
+            fi
           else
             echo "should_build=false" >> "$GITHUB_OUTPUT"
             {
@@ -146,13 +166,12 @@ jobs:
       contents: read
       id-token: write
       pull-requests: write
-    # Pinned to workflows-v1 — that tag needs to move forward to include
-    # nimbus-design-system's changed-files/matched-files/preview-trigger
-    # inputs before this can go green. See ONB-1164 follow-up.
+    # The shared workflow supports focused prototype builds and direct links.
     uses: TiendaNube/nimbus-design-system/.github/workflows/preview-storybook-deploy.yml@workflows-v1
     with:
       s3-prefix: patterns
       build-tokens-icons: false
+      build-mode: ${{ needs.gate.outputs.build_mode }}
       changed-files: ${{ needs.gate.outputs.changed_files }}
       matched-files: ${{ needs.gate.outputs.matched_files }}
       preview-trigger: ${{ needs.gate.outputs.trigger }}

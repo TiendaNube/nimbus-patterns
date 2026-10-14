@@ -16,6 +16,13 @@ We use [Storybook](https://storybook.js.org) as our front-end library to provide
 
 You can browse through our [playground](https://tiendanube.github.io/nimbus-patterns) to test and see our components in action.
 
+## 🧪 Disposable prototypes
+
+Use the [Nimbus Playground](packages/react/src/prototypes/README.md) to explore
+interactions with temporary Storybook previews. Prototypes live under
+`packages/react/src/prototypes`, use draft `prototype/<slug>` pull requests, and
+are excluded from production packages and quality checks.
+
 ## 🚀 Installation
 
 - **Install**

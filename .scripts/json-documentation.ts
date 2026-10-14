@@ -12,11 +12,11 @@ import tsconfig from "../tsconfig.json";
 try {
   const paths = {
     components: glob.sync(
-      path.join("packages/react/src/*/*/src/!(*.spec|*.stories).types.ts")
+      path.join("packages/react/src/components/*/src/!(*.spec|*.stories).types.ts")
     ),
     subComponents: glob.sync(
       path.join(
-        "packages/react/src/*/*/src/components/*/!(*.spec|*.stories).types.ts"
+        "packages/react/src/components/*/src/components/*/!(*.spec|*.stories).types.ts"
       )
     ),
   };

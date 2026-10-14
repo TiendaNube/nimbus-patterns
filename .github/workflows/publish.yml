@@ -9,6 +9,7 @@ on:
       - "**/package.json"
       - ".yarn/versions/**"
       - "**/*.docs.json"
+      - "packages/react/src/prototypes/**"
 
 jobs:
   publish-packages-npm:
