@@ -2,6 +2,10 @@ name: check-quality
 
 on: [pull_request]
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   pipeline-quality:
     runs-on: ubuntu-latest
@@ -20,13 +24,40 @@ jobs:
 
       - name: Run tests
         run: yarn test:ci
-      
+
       - name: Run build all
+        id: build_scope
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
         run: |
           export NODE_OPTIONS="--max_old_space_size=12288"
-          yarn build:all
+          # Keep production checks for mixed diffs and unavailable file lists.
+          if [[ "$GITHUB_HEAD_REF" == prototype/* ]] && \
+            changed_files=$(gh api --paginate "repos/$REPO/pulls/$PR_NUMBER/files" --jq '.[].filename') && \
+            [ -n "$changed_files" ] && \
+            ! printf '%s\n' "$changed_files" | grep -qvE '^packages/react/src/prototypes/|^\.github/PULL_REQUEST_TEMPLATE/prototype\.md$'; then
+            echo "Prototype-only pull request; skipping production package builds."
+            echo "prototype_only=true" >> "$GITHUB_OUTPUT"
+            # Deleting the last prototype leaves no stories for a focused build.
+            prototype_story=$(find packages/react/src/prototypes -type f \
+              \( -name '*.stories.js' -o -name '*.stories.jsx' \
+                 -o -name '*.stories.ts' -o -name '*.stories.tsx' \) \
+              -print -quit)
+            if [ -n "$prototype_story" ]; then
+              STORYBOOK_PROTOTYPE_ONLY=true yarn build:storybook
+            else
+              yarn build:storybook
+            fi
+          else
+            yarn build:all
+          fi
 
+      # A focused index omits production stories. A prototype-only diff cannot
+      # change the production source map; mixed diffs retain the full check.
       - name: Check nimbus-source-map.yml is up to date
+        if: steps.build_scope.outputs.prototype_only != 'true'
         run: yarn source-map:check
 
       - name: Upload coverage to Codecov

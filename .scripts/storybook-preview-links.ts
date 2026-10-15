@@ -15,5 +15,6 @@ import { runPreviewLinksCli } from "@nimbus-ds/scripts";
  *   STORYBOOK_URL=https://host/index.html yarn preview:links changed-files.txt
  */
 runPreviewLinksCli({
+  prototypeRootPattern: /^packages\/react\/src\/prototypes\/[^/]+/,
   componentRootPattern: /^packages\/react\/src\/components\/[^/]+/,
 });

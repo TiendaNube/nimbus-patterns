@@ -7,7 +7,8 @@ const config: Config.InitialOptions = {
     ".+\\.(ts|tsx)$": "ts-jest",
   },
   setupFilesAfterEnv: ["./setupTests.ts"],
-  coveragePathIgnorePatterns: ["dist"],
+  testPathIgnorePatterns: ["/node_modules/", "/packages/react/src/prototypes/"],
+  coveragePathIgnorePatterns: ["dist", "/packages/react/src/prototypes/"],
   moduleNameMapper: {
     "@common(.*)$": "<rootDir>/packages/react/src/common$1",
     // components

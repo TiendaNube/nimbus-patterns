@@ -1,4 +1,5 @@
 {
+  "exclude": ["packages/react/src/prototypes"],
   "include": ["packages", "setupTests.ts"],
   "compilerOptions": {
     "target": "esnext",

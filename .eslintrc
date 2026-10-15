@@ -102,6 +102,17 @@
       }
     ],
     "no-console": "warn",
-    "no-void": "off"
+    "no-void": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["**/prototypes", "**/prototypes/**"],
+            "message": "Production code must not import disposable Playground prototypes."
+          }
+        ]
+      }
+    ]
   }
 }
