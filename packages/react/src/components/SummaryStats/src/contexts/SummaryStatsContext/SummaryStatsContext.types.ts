@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, RefObject } from "react";
 
 /**
  * Layout variant for the SummaryStats container.
@@ -15,6 +15,21 @@ export type SummaryStatsLayout = "horizontal" | "grid";
  * Invariants: `activeId` is `null` when no stat is expanded; stat registration and ordering
  * are reflected in `statIds`.
  */
+/**
+ * Registry entry kept by SummaryStats for each mounted stat. Holds the content
+ * rendered in the expanded area and the effective expandable state of the stat.
+ */
+export interface SummaryStatsRegistryEntry {
+  /**
+   * Content rendered in the expanded area when the stat is active.
+   */
+  content: ReactNode;
+  /**
+   * Whether the stat is interactive (effective per-cell expandable value).
+   */
+  expandable: boolean;
+}
+
 export interface SummaryStatsContextValue {
   /**
    * The id of the currently active stat (for expandable variant).
@@ -37,13 +52,14 @@ export interface SummaryStatsContextValue {
    */
   isScrollPaneBlock?: boolean;
   /**
-   * Registers a stat and its expandable content. Pass isScrollPane true when inside the ScrollPane block.
+   * Registers a stat id on mount. Pass isScrollPane true when inside the ScrollPane block.
    */
-  registerStat: (
-    id: string,
-    content: ReactNode,
-    isScrollPane?: boolean
-  ) => void;
+  registerStat: (id: string, isScrollPane?: boolean) => void;
+  /**
+   * Updates the content and effective expandable state of a registered stat.
+   * Does not change the stat order and never clears the active stat.
+   */
+  updateStat: (id: string, entry: SummaryStatsRegistryEntry) => void;
   /**
    * Removes a stat from the registry and ID lists on unmount.
    */
@@ -60,4 +76,13 @@ export interface SummaryStatsContextValue {
    * Array of stat IDs that are visible. Used for conditional rendering or filtering.
    */
   visibleStatIds: string[];
+  /**
+   * Id of the rendered expanded area. Only defined while the area is rendered.
+   */
+  panelId?: string;
+  /**
+   * Ref to the element that contains the cells of the current row. Used to
+   * move focus between interactive cells with the arrow keys.
+   */
+  rowRef?: RefObject<HTMLDivElement | null>;
 }

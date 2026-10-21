@@ -2,6 +2,20 @@
 
 Summary Stats component is intended for displaying key statistics and metrics in a visually organized manner.
 
+## 2026-10-21 `1.1.0`
+
+#### 🎉 New features
+
+- Added an `expandable` prop to `SummaryStats.Item` that overrides the container `expandable` value for a single stat, so one horizontal row can mix static and interactive stats. Static stats have no button role, focus stop, chevron, pointer or hover surface. ([#204](https://github.com/TiendaNube/nimbus-patterns/issues/204))
+- Added Arrow Left and Arrow Right navigation between the interactive stats of a row; static stats are skipped and focus stops at the row edges. ([#204](https://github.com/TiendaNube/nimbus-patterns/issues/204))
+- Added `aria-controls` on the active stat, pointing to the expanded area while it is rendered. ([#204](https://github.com/TiendaNube/nimbus-patterns/issues/204))
+
+#### 🐛 Bug fixes
+
+- Fixed the active stat being reset in uncontrolled mode when its children changed on a re-render. ([#204](https://github.com/TiendaNube/nimbus-patterns/issues/204))
+- Fixed the expanded area staying visible when the active stat loses its children or becomes static; the active stat is kept and its area returns when it becomes expandable again. ([#204](https://github.com/TiendaNube/nimbus-patterns/issues/204))
+- Changed the expanded area spacing to 12px padding with a 4px inset and no margin. ([#204](https://github.com/TiendaNube/nimbus-patterns/issues/204))
+
 ## 2026-03-04 `1.0.4`
 
 #### 🐛 Bug fixes

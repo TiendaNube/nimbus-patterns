@@ -4,9 +4,9 @@ import { SummaryStatsContextValue } from "./SummaryStatsContext.types";
  * Default/fallback context value when SummaryStatsContext is consumed outside a provider.
  * @type {SummaryStatsContextValue}
  * - activeId: null (no stat active)
- * - onToggle, registerStat: no-op functions
+ * - onToggle, registerStat, updateStat, unregisterStat: no-op functions
  * - expandable: false; layout: "horizontal"; statIds: []; isHorizontalLayout: false
- * - isScrollPaneBlock: undefined; visibleStatIds: []
+ * - isScrollPaneBlock, panelId, rowRef: undefined; visibleStatIds: []
  */
 export const initialSummaryStatsContextValue: SummaryStatsContextValue = {
   activeId: null,
@@ -19,10 +19,15 @@ export const initialSummaryStatsContextValue: SummaryStatsContextValue = {
   registerStat: () => {
     /* noop */
   },
+  updateStat: () => {
+    /* noop */
+  },
   unregisterStat: () => {
     /* noop */
   },
   statIds: [],
   isHorizontalLayout: false,
   visibleStatIds: [],
+  panelId: undefined,
+  rowRef: undefined
 };

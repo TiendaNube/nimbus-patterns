@@ -19,17 +19,17 @@ const meta: Meta<typeof SummaryStats> = {
   component: SummaryStats,
   argTypes: {
     children: {
-      control: { disable: true },
+      control: { disable: true }
     },
     layout: {
       control: { type: "inline-radio" },
-      options: ["horizontal", "grid"],
+      options: ["horizontal", "grid"]
     },
     expandable: {
-      control: { type: "boolean" },
-    },
+      control: { type: "boolean" }
+    }
   },
-  tags: ["autodocs"],
+  tags: ["autodocs"]
 };
 
 export default meta;
@@ -63,12 +63,12 @@ export const Basic: Story = {
         description="Conversion"
       />
     </SummaryStats>
-  ),
+  )
 };
 
 export const WithInfoTooltip: Story = {
   args: {
-    layout: "horizontal",
+    layout: "horizontal"
   },
 
   render: (args) => (
@@ -102,7 +102,7 @@ export const WithInfoTooltip: Story = {
         infoTooltip="Percentage of visitors who completed a purchase"
       />
     </SummaryStats>
-  ),
+  )
 };
 
 export const Expandable: Story = {
@@ -145,7 +145,7 @@ export const Expandable: Story = {
         <ChartMockup color="success-interactive" />
       </SummaryStats.Item>
     </SummaryStats>
-  ),
+  )
 };
 
 export const SixStats: Story = {
@@ -194,7 +194,7 @@ export const SixStats: Story = {
         infoTooltip="Metric explanation"
       />
     </SummaryStats>
-  ),
+  )
 };
 
 export const WithDownTrends: Story = {
@@ -229,7 +229,7 @@ export const WithDownTrends: Story = {
         infoTooltip="Lower conversion this month"
       />
     </SummaryStats>
-  ),
+  )
 };
 
 export const LayoutHorizontal: Story = {
@@ -264,7 +264,7 @@ export const LayoutHorizontal: Story = {
         infoTooltip="Metric explanation"
       />
     </SummaryStats>
-  ),
+  )
 };
 
 export const LayoutGridFourItems: Story = {
@@ -299,7 +299,7 @@ export const LayoutGridFourItems: Story = {
         infoTooltip="Metric explanation"
       />
     </SummaryStats>
-  ),
+  )
 };
 
 export const LayoutGridTwoItems: Story = {
@@ -320,5 +320,79 @@ export const LayoutGridTwoItems: Story = {
         infoTooltip="Metric explanation"
       />
     </SummaryStats>
-  ),
+  )
+};
+
+/**
+ * An expandable container where one stat opts out with `expandable={false}`.
+ * Stats without children should opt out so they stay static.
+ */
+export const MixedStaticAndInteractive: Story = {
+  args: {
+    layout: "horizontal",
+    expandable: true
+  },
+  render: (args) => (
+    <SummaryStats {...args}>
+      <SummaryStats.Item
+        value="$12,450.00"
+        trend="up"
+        trendText="15%"
+        description="Total Sales"
+      >
+        <ChartMockup color="success-interactive" />
+      </SummaryStats.Item>
+      <SummaryStats.Item
+        value="3.2%"
+        trend="up"
+        trendText="0.5%"
+        description="Conversion"
+        infoTooltip="Static stat: it has no expanded content."
+        expandable={false}
+      />
+      <SummaryStats.Item
+        value="156"
+        trend="down"
+        trendText="8%"
+        description="Orders"
+      >
+        <ChartMockup color="danger-interactive" />
+      </SummaryStats.Item>
+    </SummaryStats>
+  )
+};
+
+/**
+ * A static container where a single stat opts in with `expandable`.
+ */
+export const OptInUnderStaticContainer: Story = {
+  args: {
+    layout: "horizontal",
+    expandable: false
+  },
+  render: (args) => (
+    <SummaryStats {...args}>
+      <SummaryStats.Item
+        value="$12,450.00"
+        trend="up"
+        trendText="15%"
+        description="Total Sales"
+        expandable
+      >
+        <ChartMockup color="success-interactive" />
+      </SummaryStats.Item>
+      <SummaryStats.Item
+        value="89"
+        trend="neutral"
+        trendText="0%"
+        description="Customers"
+      />
+      <SummaryStats.Item
+        value="3.2%"
+        trend="up"
+        trendText="0.5%"
+        description="Conversion"
+      />
+    </SummaryStats>
+  )
 };
