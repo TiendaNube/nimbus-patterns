@@ -38,6 +38,8 @@ export interface SummaryStatsProperties {
   layout?: SummaryStatsLayout;
   /**
    * Enables expandable mode where stats can be clicked to show additional content.
+   * This is the default for every SummaryStats.Item; an item can override it with
+   * its own `expandable` prop. Ignored in the "grid" layout.
    * @default false
    */
   expandable?: boolean;
@@ -48,8 +50,10 @@ export interface SummaryStatsProperties {
    */
   activeStatId?: string | null;
   /**
-   * Callback fired when the active stat changes (controlled mode).
-   * Receives the new active stat id, or `null` when the active stat is deselected.
+   * Callback fired when the user toggles a stat, in both controlled and
+   * uncontrolled modes. Receives the new active stat id, or `null` when the
+   * active stat is deselected. It is not fired when the active stat unmounts,
+   * loses its children, or becomes static.
    */
   onActiveStatIdChange?: (activeStatId: string | null) => void;
 }

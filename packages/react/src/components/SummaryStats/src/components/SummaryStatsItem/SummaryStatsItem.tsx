@@ -8,7 +8,9 @@ import { useSummaryStatsContext } from "../../contexts";
 import { SummaryStatsTrendIndicator } from "../SummaryStatsTrendIndicator";
 import {
   ExpandableChevron,
-  getSeparatorConfig,
+  getCellInteractionProps,
+  handleInteractiveCellKeyDown,
+  getSeparatorConfig
 } from "./summaryStatsItem.definitions";
 import { SummaryStatsItemProps } from "./summaryStatsItem.types";
 
@@ -17,14 +19,16 @@ import { SummaryStatsItemProps } from "./summaryStatsItem.types";
  * primary value and description, an optional trend indicator (up/down/neutral with
  * text), and an optional info icon with tooltip. When used inside an expandable
  * SummaryStats, the stat is clickable and reveals additional content (children) in
- * an expandable area below the stats row.
+ * an expandable area below the stats row. The `expandable` prop overrides the
+ * container value for this stat only, so a row can mix static and interactive
+ * stats. Arrow Left/Right move focus between the interactive stats of a row.
  *
  * **Returns:** A stat display (Box-based layout) showing value and description,
  * with optional trend indicator and info tooltip. In expandable mode it behaves as
  * a button that toggles the expanded content.
  *
  * **Required props:** `value`, `description`.
- * **Optional props:** `trend`, `trendText`, `infoTooltip`, `children`,
+ * **Optional props:** `expandable`, `trend`, `trendText`, `infoTooltip`, `children`,
  * and any valid HTML element attributes (rest props).
  *
  * @param props - SummaryStatsItemProps
@@ -32,6 +36,9 @@ import { SummaryStatsItemProps } from "./summaryStatsItem.types";
  *   Type: `string`.
  * @param props.description - **Required.** Short label for the metric (e.g. "Total Sales").
  *   Type: `string`.
+ * @param props.expandable - **Optional.** Whether this stat is interactive. When unset it
+ *   inherits the container `expandable` value; `true`/`false` override it. Ignored in the
+ *   "grid" layout. Type: `boolean`.
  * @param props.trend - **Optional.** Trend direction for the indicator. Type: `"up" | "down" | "neutral"`.
  *   When set, a trend icon and optional `trendText` are shown next to the value.
  * @param props.trendText - **Optional.** Text shown next to the trend icon (e.g. "15%", "-8%").
@@ -80,6 +87,7 @@ const SummaryStatsItem: React.FC<SummaryStatsItemProps> = ({
   children,
   value,
   description,
+  expandable: expandableProp,
   trend,
   trendText,
   infoTooltip,
@@ -93,12 +101,16 @@ const SummaryStatsItem: React.FC<SummaryStatsItemProps> = ({
     expandable,
     layout,
     registerStat,
+    updateStat,
     unregisterStat,
     statIds,
     isHorizontalLayout,
     isScrollPaneBlock,
+    panelId,
+    rowRef
   } = useSummaryStatsContext(false);
-  const isActive = activeId === id;
+  const isInteractive = isHorizontalLayout && (expandableProp ?? expandable);
+  const isActive = isInteractive && activeId === id;
   const statIndex = statIds.indexOf(id);
   const isLastStatInOddGrid =
     layout === "grid" &&
@@ -119,26 +131,31 @@ const SummaryStatsItem: React.FC<SummaryStatsItemProps> = ({
   );
 
   useEffect(() => {
-    registerStat(id, children, isScrollPaneBlock);
+    registerStat(id, isScrollPaneBlock);
     return () => {
       unregisterStat(id);
     };
-  }, [children, id, registerStat, unregisterStat, isScrollPaneBlock]);
+  }, [id, registerStat, unregisterStat, isScrollPaneBlock]);
+
+  useEffect(() => {
+    updateStat(id, { content: children, expandable: isInteractive });
+  }, [children, id, isInteractive, updateStat]);
 
   const handleClick = useCallback(() => {
-    if (expandable) {
+    if (isInteractive) {
       onToggle(id);
     }
-  }, [expandable, onToggle, id]);
+  }, [isInteractive, onToggle, id]);
 
   const handleKeyDown = useCallback(
-    (event: React.KeyboardEvent) => {
-      if (expandable && (event.key === "Enter" || event.key === " ")) {
-        event.preventDefault();
-        onToggle(id);
+    (event: React.KeyboardEvent<HTMLElement>) => {
+      if (isInteractive) {
+        handleInteractiveCellKeyDown(event, rowRef?.current, () =>
+          onToggle(id)
+        );
       }
     },
-    [expandable, onToggle, id]
+    [isInteractive, onToggle, id, rowRef]
   );
 
   return (
@@ -163,19 +180,10 @@ const SummaryStatsItem: React.FC<SummaryStatsItemProps> = ({
           gap="1"
           padding="2"
           flex="1"
-          backgroundColor={{
-            xs: isActive ? "primary-surface" : "neutral-background",
-            ...(expandable && {
-              hover: isActive ? "primary-surface" : "neutral-surface",
-            }),
-          }}
           borderRadius="2"
-          cursor={expandable ? "pointer" : undefined}
+          {...getCellInteractionProps(isInteractive, isActive, panelId)}
           onClick={handleClick}
           onKeyDown={handleKeyDown}
-          tabIndex={expandable ? 0 : undefined}
-          role={expandable ? "button" : undefined}
-          aria-expanded={expandable ? isActive : undefined}
           aria-label={ariaLabel}
         >
           <Box
@@ -196,7 +204,7 @@ const SummaryStatsItem: React.FC<SummaryStatsItemProps> = ({
                 <SummaryStatsTrendIndicator trend={trend} text={trendText} />
               )}
             </Box>
-            {expandable && <ExpandableChevron isActive={isActive} />}
+            {isInteractive && <ExpandableChevron isActive={isActive} />}
           </Box>
 
           <Box display="flex" alignItems="center" gap="1">
@@ -238,7 +246,7 @@ const SummaryStatsItem: React.FC<SummaryStatsItemProps> = ({
             ? { xs: "block" as const, md: "block" as const }
             : separator.showHorizontalSeparator || {
                 xs: "none" as const,
-                md: "none" as const,
+                md: "none" as const
               }
         }
         width="100%"

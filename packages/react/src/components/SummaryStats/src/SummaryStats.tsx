@@ -1,13 +1,15 @@
-import React, { useState, useMemo, useCallback, ReactNode } from "react";
+import React, { useState, useMemo, useCallback, useRef } from "react";
 
 import { Box, ScrollPane } from "@nimbus-ds/components";
 
+import { useRandomId } from "@common/hooks";
 import { SummaryStatsItem } from "./components";
 import { SummaryStatsContext } from "./contexts";
+import type { SummaryStatsRegistryEntry } from "./contexts/SummaryStatsContext/SummaryStatsContext.types";
 
 import {
   SummaryStatsProps,
-  SummaryStatsComponents,
+  SummaryStatsComponents
 } from "./summaryStats.types";
 
 /**
@@ -18,6 +20,9 @@ import {
  * Layout can be horizontal (single row, optionally with scroll/expand) or grid
  * (2-column). When layout is "horizontal" and expandable is true, clicking a
  * stat toggles an expanded area below showing that stat's extra content.
+ * Each SummaryStats.Item can override the container value with its own
+ * `expandable` prop, so static and interactive stats can share a row. Arrow
+ * keys move focus between the interactive stats of the same row.
  *
  * @param props - See SummaryStatsProps
  * @param props.className - Optional CSS class for the root element
@@ -44,9 +49,9 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
   const [internalActiveId, setInternalActiveId] = useState<string | null>(null);
   const activeId = isControlled ? activeStatId ?? null : internalActiveId;
 
-  const [statsRegistry, setStatsRegistry] = useState<Map<string, ReactNode>>(
-    new Map()
-  );
+  const [statsRegistry, setStatsRegistry] = useState<
+    Map<string, SummaryStatsRegistryEntry>
+  >(new Map());
   const [statIds, setStatIds] = useState<string[]>([]);
   const [scrollPaneStatIds, setScrollPaneStatIds] = useState<string[]>([]);
 
@@ -61,46 +66,63 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
     [activeId, isControlled, onActiveStatIdChange]
   );
 
-  const registerStat = useCallback(
-    (id: string, content: ReactNode, isScrollPane?: boolean) => {
-      setStatsRegistry((prev) => new Map(prev).set(id, content));
-      if (isScrollPane) {
-        setScrollPaneStatIds((prev) => {
-          if (prev.includes(id)) return prev;
-          return [...prev, id];
-        });
-      } else {
-        setStatIds((prev) => {
-          if (prev.includes(id)) return prev;
-          return [...prev, id];
-        });
-      }
+  const panelId = useRandomId();
+  const scrollRowRef = useRef<HTMLDivElement>(null);
+  const rowRef = useRef<HTMLDivElement>(null);
+
+  const registerStat = useCallback((id: string, isScrollPane?: boolean) => {
+    if (isScrollPane) {
+      setScrollPaneStatIds((prev) => {
+        if (prev.includes(id)) return prev;
+        return [...prev, id];
+      });
+    } else {
+      setStatIds((prev) => {
+        if (prev.includes(id)) return prev;
+        return [...prev, id];
+      });
+    }
+  }, []);
+
+  const updateStat = useCallback(
+    (id: string, entry: SummaryStatsRegistryEntry) => {
+      setStatsRegistry((prev) => {
+        const current = prev.get(id);
+        if (
+          current?.content === entry.content &&
+          current?.expandable === entry.expandable
+        ) {
+          return prev;
+        }
+        return new Map(prev).set(id, entry);
+      });
     },
     []
   );
 
-  const unregisterStat = useCallback(
-    (id: string) => {
-      setStatsRegistry((prev) => {
-        const next = new Map(prev);
-        next.delete(id);
-        return next;
-      });
-      setStatIds((prev) => prev.filter((sid) => sid !== id));
-      setScrollPaneStatIds((prev) => prev.filter((sid) => sid !== id));
-      if (!isControlled) {
-        setInternalActiveId((current) => (current === id ? null : current));
-      }
-    },
-    [isControlled]
-  );
-
-  const activeContent = useMemo(() => {
-    if (!isExpandable || activeId === null) return null;
-    return statsRegistry.get(activeId) ?? null;
-  }, [isExpandable, activeId, statsRegistry]);
+  const unregisterStat = useCallback((id: string) => {
+    setStatsRegistry((prev) => {
+      if (!prev.has(id)) return prev;
+      const next = new Map(prev);
+      next.delete(id);
+      return next;
+    });
+    setStatIds((prev) => prev.filter((sid) => sid !== id));
+    setScrollPaneStatIds((prev) => prev.filter((sid) => sid !== id));
+    setInternalActiveId((current) => (current === id ? null : current));
+  }, []);
 
   const isHorizontalLayout = layout === "horizontal";
+
+  const activeContent = useMemo(() => {
+    if (!isHorizontalLayout || activeId === null) return null;
+    const activeEntry = statsRegistry.get(activeId);
+    if (!activeEntry?.expandable) return null;
+    if (React.Children.toArray(activeEntry.content).length === 0) return null;
+    return activeEntry.content;
+  }, [isHorizontalLayout, activeId, statsRegistry]);
+
+  const showPanel = activeContent !== null;
 
   const baseContextValue = useMemo(
     () => ({
@@ -109,10 +131,12 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
       expandable: isExpandable,
       layout,
       registerStat,
+      updateStat,
       unregisterStat,
       statIds,
       isHorizontalLayout,
       visibleStatIds: statIds,
+      panelId: showPanel ? panelId : undefined
     }),
     [
       activeId,
@@ -120,9 +144,12 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
       isExpandable,
       layout,
       registerStat,
+      updateStat,
       unregisterStat,
       statIds,
       isHorizontalLayout,
+      showPanel,
+      panelId
     ]
   );
 
@@ -132,6 +159,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
       isScrollPaneBlock: true as const,
       statIds: scrollPaneStatIds,
       visibleStatIds: scrollPaneStatIds,
+      rowRef: scrollRowRef
     }),
     [baseContextValue, scrollPaneStatIds]
   );
@@ -140,6 +168,7 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
     () => ({
       ...baseContextValue,
       isScrollPaneBlock: false as const,
+      rowRef
     }),
     [baseContextValue]
   );
@@ -156,22 +185,16 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
         borderRadius="2"
         overflow="hidden"
       >
-        {layout === "grid" && (
-          <Box
-            display="grid"
-            alignItems="stretch"
-            gridTemplateColumns="1fr 1fr"
-            padding="1"
-          >
-            {children}
-          </Box>
-        )}
-
-        {layout === "horizontal" && (
+        {isHorizontalLayout && (
           <SummaryStatsContext.Provider value={scrollPaneContextValue}>
             <Box display={{ xs: "block", md: "none" }}>
               <ScrollPane showGradients enableGrabScroll>
-                <Box display="flex" flexDirection="row" alignItems="stretch">
+                <Box
+                  ref={scrollRowRef}
+                  display="flex"
+                  flexDirection="row"
+                  alignItems="stretch"
+                >
                   {children}
                 </Box>
               </ScrollPane>
@@ -179,28 +202,30 @@ const SummaryStats: React.FC<SummaryStatsProps> & SummaryStatsComponents = ({
           </SummaryStatsContext.Provider>
         )}
 
-        {layout === "horizontal" && (
-          <SummaryStatsContext.Provider value={desktopContextValue}>
-            <Box
-              display={{ xs: "none", md: "flex" }}
-              flexDirection="row"
-              alignItems="stretch"
-              padding="1"
-            >
-              {children}
-            </Box>
-          </SummaryStatsContext.Provider>
-        )}
-
-        {activeContent && (
+        <SummaryStatsContext.Provider value={desktopContextValue}>
           <Box
-            display="flex"
-            flexDirection="column"
-            padding="4"
-            margin="4"
-            backgroundColor="neutral-background"
+            ref={rowRef}
+            display={isHorizontalLayout ? { xs: "none", md: "flex" } : "grid"}
+            flexDirection={isHorizontalLayout ? "row" : undefined}
+            gridTemplateColumns={isHorizontalLayout ? undefined : "1fr 1fr"}
+            alignItems="stretch"
+            padding="1"
           >
-            {activeContent}
+            {children}
+          </Box>
+        </SummaryStatsContext.Provider>
+
+        {showPanel && (
+          <Box paddingLeft="1" paddingRight="1" paddingBottom="1">
+            <Box
+              id={panelId}
+              display="flex"
+              flexDirection="column"
+              padding="3"
+              backgroundColor="neutral-background"
+            >
+              {activeContent}
+            </Box>
           </Box>
         )}
       </Box>

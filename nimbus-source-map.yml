@@ -56,7 +56,7 @@ components:
   - { name: "ProductUpdates", group: "patterns", package: "@nimbus-ds/productupdates", story: "patterns-productupdates--docs", nested: ["ProductUpdatesFooter", "ProductUpdatesPaginator"] }
   - { name: "SideModal", group: "patterns", package: "@nimbus-ds/sidemodal", story: "patterns-sidemodal--docs" }
   - { name: "Sortable", group: "patterns", package: "@nimbus-ds/sortable", story: "patterns-sortable--vertical", nested: ["SortableItem", "SortableItemHandle"], extras: ["src/Sortable.definitions.ts"] }
-  - { name: "SummaryStats", group: "patterns", package: "@nimbus-ds/summary-stats", story: "patterns-summarystats--docs", nested: ["SummaryStatsItem", "SummaryStatsTrendIndicator"], contexts: ["SummaryStatsContext"] }
+  - { name: "SummaryStats", group: "patterns", package: "@nimbus-ds/summary-stats", story: "patterns-summarystats--docs", nested: ["SummaryStatsItem", "SummaryStatsTrendIndicator"], contexts: ["SummaryStatsContext"], extras: ["summaryStats.spec.md"] }
   - { name: "ThumbnailWithAction", group: "patterns", package: "@nimbus-ds/thumbnail-with-action", story: "patterns-thumbnailwithaction--docs", extras: ["src/thumbnailWithAction.definitions.ts", "src/thumbnailWithAction.utils.ts"] }
 
 shared:

@@ -13,7 +13,7 @@ const meta: Meta<typeof SummaryStatsItem> = {
       <SummaryStats>
         <Story />
       </SummaryStats>
-    ),
+    )
   ],
   tags: ["autodocs"],
   argTypes: {
@@ -22,14 +22,14 @@ const meta: Meta<typeof SummaryStatsItem> = {
       control: "text",
       description:
         "The main numeric or formatted value shown in the stat (e.g. currency, count).",
-      table: { category: "Data" },
+      table: { category: "Data" }
     },
     description: {
       name: "Label",
       control: "text",
       description:
         "Brief label identifying the metric (e.g. Total Sales, Orders).",
-      table: { category: "Data" },
+      table: { category: "Data" }
     },
     trend: {
       name: "Trend",
@@ -37,30 +37,37 @@ const meta: Meta<typeof SummaryStatsItem> = {
       options: ["up", "down", "neutral"],
       description:
         "Direction of the trend indicator. Use with trendText to show change: up (positive), down (negative), or neutral. Controls icon and color in the UI.",
-      table: { category: "Appearance" },
+      table: { category: "Appearance" }
     },
     trendText: {
       name: "Trend text",
       control: "text",
       description:
         'Text shown next to the trend icon (e.g. "15%", "-8%", "0%"). Displayed when trend is set.',
-      table: { category: "Data" },
+      table: { category: "Data" }
     },
     infoTooltip: {
       name: "Info tooltip",
       control: "text",
       description:
         "If set, shows an info icon; hovering displays this tooltip content.",
-      table: { category: "Appearance" },
+      table: { category: "Appearance" }
+    },
+    expandable: {
+      name: "Expandable",
+      control: "boolean",
+      description:
+        "Overrides the container expandable value for this stat. When unset, the stat inherits the SummaryStats value. Ignored in the grid layout. Set it to false on stats without children so they stay static.",
+      table: { category: "Expandable" }
     },
     children: {
       name: "Expandable content",
       control: { disable: true },
       description:
         "Optional content rendered when the stat is expanded (requires SummaryStats expandable mode).",
-      table: { category: "Expandable" },
-    },
-  },
+      table: { category: "Expandable" }
+    }
+  }
 };
 
 export default meta;
@@ -69,8 +76,8 @@ type Story = StoryObj<typeof SummaryStatsItem>;
 export const Basic: Story = {
   args: {
     value: "$12,450.00",
-    description: "Total Sales",
-  },
+    description: "Total Sales"
+  }
 };
 
 export const WithTrendUp: Story = {
@@ -78,8 +85,8 @@ export const WithTrendUp: Story = {
     value: "$12,450.00",
     description: "Total Sales",
     trend: "up",
-    trendText: "15%",
-  },
+    trendText: "15%"
+  }
 };
 
 export const WithTrendDown: Story = {
@@ -87,8 +94,8 @@ export const WithTrendDown: Story = {
     value: "156",
     description: "Orders",
     trend: "down",
-    trendText: "8%",
-  },
+    trendText: "8%"
+  }
 };
 
 export const WithTrendNeutral: Story = {
@@ -96,8 +103,8 @@ export const WithTrendNeutral: Story = {
     value: "89",
     description: "Customers",
     trend: "neutral",
-    trendText: "0%",
-  },
+    trendText: "0%"
+  }
 };
 
 export const WithInfoTooltip: Story = {
@@ -107,8 +114,8 @@ export const WithInfoTooltip: Story = {
     trend: "up",
     trendText: "15%",
     infoTooltip:
-      "Total revenue from all completed orders in the selected period",
-  },
+      "Total revenue from all completed orders in the selected period"
+  }
 };
 
 export const Complete: Story = {
@@ -125,13 +132,13 @@ export const Complete: Story = {
           Expandable content: chart or details for this stat.
         </Text>
       </Box>
-    ),
+    )
   },
   decorators: [
     (StoryFn) => (
       <SummaryStats layout="horizontal" expandable>
         <StoryFn />
       </SummaryStats>
-    ),
-  ],
+    )
+  ]
 };

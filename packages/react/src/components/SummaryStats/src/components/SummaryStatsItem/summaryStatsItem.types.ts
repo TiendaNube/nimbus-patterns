@@ -23,6 +23,13 @@ export interface SummaryStatsItemProperties {
    */
   description: string;
   /**
+   * Whether this stat is expandable (interactive). When unset, the stat
+   * inherits the `expandable` value of the SummaryStats container. An explicit
+   * `true` or `false` overrides the container value. Ignored in the "grid"
+   * layout. Set it to `false` on stats without children so they stay static.
+   */
+  expandable?: boolean;
+  /**
    * Trend indicator showing the change direction.
    */
   trend?: TrendDirection;
