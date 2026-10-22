@@ -24,7 +24,7 @@
       "required": false
     },
     {
-      "description": "Enables expandable mode where stats can be clicked to show additional content.",
+      "description": "Enables expandable mode where stats can be clicked to show additional content.\nThis is the default for every SummaryStats.Item; an item can override it with\nits own `expandable` prop. Ignored in the \"grid\" layout.",
       "default": false,
       "type": "boolean",
       "title": "expandable",
@@ -40,7 +40,7 @@
       "required": false
     },
     {
-      "description": "Callback fired when the active stat changes (controlled mode).\nReceives the new active stat id, or `null` when the active stat is deselected.",
+      "description": "Callback fired when the user toggles a stat, in both controlled and\nuncontrolled modes. Receives the new active stat id, or `null` when the\nactive stat is deselected. It is not fired when the active stat unmounts,\nloses its children, or becomes static.",
       "type": "object",
       "additionalProperties": false,
       "propertyOrder": [],
@@ -51,7 +51,7 @@
   "subComponents": [
     {
       "name": "SummaryStats.Item",
-      "totalProps": 6,
+      "totalProps": 7,
       "props": [
         {
           "description": "The main value to display (e.g., \"$0.00\", \"156\").",
@@ -64,6 +64,12 @@
           "type": "string",
           "title": "description",
           "required": true
+        },
+        {
+          "description": "Whether this stat is expandable (interactive). When unset, the stat\ninherits the `expandable` value of the SummaryStats container. An explicit\n`true` or `false` overrides the container value. Ignored in the \"grid\"\nlayout. Set it to `false` on stats without children so they stay static.",
+          "type": "boolean",
+          "title": "expandable",
+          "required": false
         },
         {
           "description": "Trend indicator showing the change direction.",
