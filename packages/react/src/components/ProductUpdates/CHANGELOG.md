@@ -2,6 +2,12 @@
 
 ProductUpdates component allows the user to showcase new features or updates in a non-distractive way by displaying the information in a floating popover with a high-contrast setting that catches the eye of the user.
 
+## 2026-10-24 `1.7.0`
+
+#### 🎉 New features
+
+- Added an optional `appearance` input (`"primary"` by default, or `"neutral"`) to `ProductUpdates.Paginator` so the dots can be used on a `neutral-background` surface. The default output is unchanged. ([#202](https://github.com/TiendaNube/nimbus-patterns/issues/202))
+
 ## 2026-03-04 `1.6.1`
 
 #### 🐛 Bug fixes

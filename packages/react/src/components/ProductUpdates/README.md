@@ -11,3 +11,12 @@ $ yarn add @nimbus-ds/productupdates
 # or
 $ npm install @nimbus-ds/productupdates
 ```
+
+## Paginator appearance
+
+`ProductUpdates.Paginator` accepts an optional `appearance` input:
+
+- `"primary"` (default): dots for the primary popover surface (`neutral-background` active dot, `primary-textLow` inactive dots).
+- `"neutral"`: dots for a `neutral-background` surface (`primary-interactive` active dot, `neutral-interactiveHover` inactive dots).
+
+The dots are decorative: the row is a single image named by `aria-label` (default `Step N of M`) and is not interactive.
