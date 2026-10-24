@@ -6,26 +6,33 @@ import {
   CashierIcon,
   CheckIcon,
   CloseIcon,
-  GenerativeStarsIcon,
+  GenerativeStarsIcon
 } from "@nimbus-ds/icons";
 import { PlanDisplay } from "./PlanDisplay";
+import { MobilePlanCarousel } from "./compositions/MobilePlanCarousel/MobilePlanCarousel";
 
 const meta: Meta<typeof PlanDisplay> = {
   title: "Patterns/PlanDisplay",
   component: PlanDisplay,
   argTypes: {
-    children: { control: { disable: true } },
+    children: { control: { disable: true } }
   },
-  tags: ["autodocs"],
+  tags: ["autodocs"]
 };
 
 export default meta;
 type Story = StoryObj<typeof PlanDisplay>;
 
-export const Default: Story = {
-  render: () => (
-    <PlanDisplay minPlanWidth="236px">
-      {/* Default card */}
+const getPositionLabel = (index: number, total: number) =>
+  `Plan ${index + 1} de ${total}`;
+
+/**
+ * Plans shared by the Default, Mobile and Responsive stories.
+ */
+const defaultPlans: { name: string; card: React.ReactNode }[] = [
+  {
+    name: "Inicial",
+    card: (
       <PlanDisplay.Card>
         <PlanDisplay.Header
           subtitle="Inicial"
@@ -53,8 +60,11 @@ export const Default: Story = {
           </PlanDisplay.Bullet>
         </PlanDisplay.Content>
       </PlanDisplay.Card>
-
-      {/* Card with tag */}
+    )
+  },
+  {
+    name: "Esencial",
+    card: (
       <PlanDisplay.Card>
         <PlanDisplay.Header
           subtitle="Esencial"
@@ -97,8 +107,11 @@ export const Default: Story = {
           </PlanDisplay.Bullet>
         </PlanDisplay.Content>
       </PlanDisplay.Card>
-
-      {/* Featured card with ribbon */}
+    )
+  },
+  {
+    name: "Avanzado",
+    card: (
       <PlanDisplay.Card ribbonLabel="Más escogido">
         <PlanDisplay.Header
           subtitle="Avanzado"
@@ -145,8 +158,11 @@ export const Default: Story = {
           </Text>
         </PlanDisplay.Footer>
       </PlanDisplay.Card>
-
-      {/* Gradient card */}
+    )
+  },
+  {
+    name: "Evolución",
+    card: (
       <PlanDisplay.Card gradient>
         <PlanDisplay.Header
           subtitle="Evolución"
@@ -168,8 +184,60 @@ export const Default: Story = {
           </PlanDisplay.Bullet>
         </PlanDisplay.Content>
       </PlanDisplay.Card>
+    )
+  }
+];
+
+export const Default: Story = {
+  render: () => (
+    <PlanDisplay minPlanWidth="236px">
+      {defaultPlans.map((plan) => (
+        <React.Fragment key={plan.name}>{plan.card}</React.Fragment>
+      ))}
     </PlanDisplay>
-  ),
+  )
+};
+
+/**
+ * Mobile composition (below the `md` breakpoint, 672px) in a 393px frame: one plan rests fully
+ * visible with a 16px peek of its neighbours, and non-interactive dots show the position.
+ * It uses only ScrollPane and `ProductUpdates.Paginator` with the `neutral` appearance.
+ */
+export const Mobile: Story = {
+  render: () => (
+    <div style={{ maxWidth: 393 }}>
+      <MobilePlanCarousel
+        scrollAreaLabel="Planes"
+        getPositionLabel={getPositionLabel}
+        plans={defaultPlans}
+      />
+    </div>
+  )
+};
+
+/**
+ * Consumer-owned switch at 672px (`md`): the carousel below it and the PlanDisplay grid from it up.
+ * Box `display` hides the other arrangement from assistive technologies and keyboard focus.
+ */
+export const Responsive: Story = {
+  render: () => (
+    <>
+      <Box display={{ xs: "block", md: "none" }}>
+        <MobilePlanCarousel
+          scrollAreaLabel="Planes"
+          getPositionLabel={getPositionLabel}
+          plans={defaultPlans}
+        />
+      </Box>
+      <Box display={{ xs: "none", md: "block" }}>
+        <PlanDisplay minPlanWidth="236px">
+          {defaultPlans.map((plan) => (
+            <React.Fragment key={plan.name}>{plan.card}</React.Fragment>
+          ))}
+        </PlanDisplay>
+      </Box>
+    </>
+  )
 };
 
 /**
@@ -236,7 +304,7 @@ export const TwoPlans: Story = {
         </PlanDisplay.Content>
       </PlanDisplay.Card>
     </PlanDisplay>
-  ),
+  )
 };
 
 /**
@@ -332,7 +400,7 @@ export const ThreePlans: Story = {
         </PlanDisplay.Content>
       </PlanDisplay.Card>
     </PlanDisplay>
-  ),
+  )
 };
 
 /**
@@ -351,7 +419,7 @@ export const Horizontal: Story = {
               flexDirection: "column",
               gap: "var(--nimbus-spacing-3)",
               justifyContent: "center",
-              flex: "0 0 253px",
+              flex: "0 0 253px"
             }}
           >
             <PlanDisplay.Header
@@ -370,7 +438,7 @@ export const Horizontal: Story = {
               alignSelf: "stretch",
               backgroundColor: "var(--nimbus-colors-neutral-surfaceHighlight)",
               width: "1px",
-              flexShrink: 0,
+              flexShrink: 0
             }}
           />
 
@@ -380,7 +448,7 @@ export const Horizontal: Story = {
               display: "flex",
               flexDirection: "column",
               gap: "var(--nimbus-spacing-3)",
-              flex: "1 1 0",
+              flex: "1 1 0"
             }}
           >
             <PlanDisplay.Bullet icon={<CheckIcon />}>
@@ -399,7 +467,7 @@ export const Horizontal: Story = {
         </Box>
       </PlanDisplay.Card>
     </div>
-  ),
+  )
 };
 
 /**
@@ -441,7 +509,7 @@ export const HorizontalMobile: Story = {
         </Box>
       </PlanDisplay.Card>
     </div>
-  ),
+  )
 };
 
 type PlaygroundArgs = {
@@ -468,7 +536,7 @@ export const Playground: StoryObj<PlaygroundArgs> = {
     showSuffix: true,
     showDescription: true,
     showButton: true,
-    showFooter: true,
+    showFooter: true
   },
   argTypes: {
     showRibbon: { control: "boolean" },
@@ -478,7 +546,7 @@ export const Playground: StoryObj<PlaygroundArgs> = {
     showSuffix: { control: "boolean" },
     showDescription: { control: "boolean" },
     showButton: { control: "boolean" },
-    showFooter: { control: "boolean" },
+    showFooter: { control: "boolean" }
   },
   render: ({
     showRibbon,
@@ -488,7 +556,7 @@ export const Playground: StoryObj<PlaygroundArgs> = {
     showSuffix,
     showDescription,
     showButton,
-    showFooter,
+    showFooter
   }) => (
     <PlanDisplay minPlanWidth="236px">
       <PlanDisplay.Card
@@ -497,7 +565,9 @@ export const Playground: StoryObj<PlaygroundArgs> = {
       >
         <PlanDisplay.Header
           subtitle="Avanzado"
-          tag={showTag ? <Tag appearance="neutral">Plan actual</Tag> : undefined}
+          tag={
+            showTag ? <Tag appearance="neutral">Plan actual</Tag> : undefined
+          }
           title={
             <PlanDisplay.Price
               price="$24.999"
@@ -559,5 +629,5 @@ export const Playground: StoryObj<PlaygroundArgs> = {
         )}
       </PlanDisplay.Card>
     </PlanDisplay>
-  ),
+  )
 };

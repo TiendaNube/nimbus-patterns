@@ -51,9 +51,9 @@ components:
   - { name: "MenuButton", group: "patterns", package: "@nimbus-ds/menubutton", story: "patterns-menubutton--docs", nested: ["MenuButtonAccordion", "MenuButtonContent"] }
   - { name: "NavTabs", group: "patterns", package: "@nimbus-ds/nav-tabs", story: "patterns-navtabs--docs", nested: ["NavTabsItem"] }
   - { name: "Page", group: "patterns", package: "@nimbus-ds/page", story: "patterns-page--docs", nested: ["PageBody", "PageHeader"] }
-  - { name: "PlanDisplay", group: "patterns", package: "@nimbus-ds/plan-display", story: "patterns-plandisplay--docs", nested: ["PlanDisplayBullet", "PlanDisplayCard", "PlanDisplayCardContent", "PlanDisplayCardFooter", "PlanDisplayCardHeader", "PlanDisplayCardPrice", "PlanDisplayCardSpacing"] }
+  - { name: "PlanDisplay", group: "patterns", package: "@nimbus-ds/plan-display", story: "patterns-plandisplay--docs", nested: ["PlanDisplayBullet", "PlanDisplayCard", "PlanDisplayCardContent", "PlanDisplayCardFooter", "PlanDisplayCardHeader", "PlanDisplayCardPrice", "PlanDisplayCardSpacing"], extras: ["planDisplay.spec.md", "src/compositions/"] }
   - { name: "ProductDataList", group: "patterns", package: "@nimbus-ds/product-data-list", story: "patterns-productdatalist--docs", nested: ["ProductDataListItem", "ProductDataListItemDivider", "ProductDataListProducts", "ProductDataListSection"] }
-  - { name: "ProductUpdates", group: "patterns", package: "@nimbus-ds/productupdates", story: "patterns-productupdates--docs", nested: ["ProductUpdatesFooter", "ProductUpdatesPaginator"] }
+  - { name: "ProductUpdates", group: "patterns", package: "@nimbus-ds/productupdates", story: "patterns-productupdates--docs", nested: ["ProductUpdatesFooter", "ProductUpdatesPaginator"], extras: ["productUpdatesPaginator.spec.md"] }
   - { name: "SideModal", group: "patterns", package: "@nimbus-ds/sidemodal", story: "patterns-sidemodal--docs" }
   - { name: "Sortable", group: "patterns", package: "@nimbus-ds/sortable", story: "patterns-sortable--vertical", nested: ["SortableItem", "SortableItemHandle"], extras: ["src/Sortable.definitions.ts"] }
   - { name: "SummaryStats", group: "patterns", package: "@nimbus-ds/summary-stats", story: "patterns-summarystats--docs", nested: ["SummaryStatsItem", "SummaryStatsTrendIndicator"], contexts: ["SummaryStatsContext"], extras: ["summaryStats.spec.md"] }
