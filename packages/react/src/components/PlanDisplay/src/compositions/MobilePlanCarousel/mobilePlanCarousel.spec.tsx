@@ -51,7 +51,8 @@ const makeCarousel = (props: Partial<MobilePlanCarouselProps> = {}) => (
 let areaWidth = 393;
 let scrollPosition = 0;
 let planCount = 4;
-const resizeCallbacks: ResizeObserverCallback[] = [];
+const resizeCallbacks: Array<(entries: [], observer: ResizeObserver) => void> =
+  [];
 const scrollToMock = jest.fn();
 
 const restFor = (index: number, width = areaWidth, total = planCount) =>
