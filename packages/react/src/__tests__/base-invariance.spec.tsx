@@ -26,9 +26,12 @@ beforeAll(() => {
 const normalizeDynamicIds = (html: string): string =>
   html.replace(/«r[0-9a-zA-Z]+»|:r[0-9a-zA-Z]+:/g, ":r_id:");
 
-const renderUnderTheme = (theme: Theme, node: React.ReactElement): string => {
+const renderUnderTheme = (
+  theme: Theme | "next-norteui" | "next-norteui-dark",
+  node: React.ReactElement
+): string => {
   const { container, unmount } = render(
-    <ThemeProvider theme={theme}>{node}</ThemeProvider>
+    <ThemeProvider theme={theme as Theme}>{node}</ThemeProvider>
   );
   const providerRoot = container.firstElementChild as HTMLElement | null;
   const innerHtml = providerRoot ? providerRoot.innerHTML : container.innerHTML;
@@ -145,13 +148,22 @@ describe("Base Theme Invariance (E1)", () => {
     }
   );
 
-  it("supports all 4 themes in ThemeProvider without mutating child pattern markup", () => {
+  it("supports all 6 themes (base, dark, next, next-dark, next-norteui, next-norteui-dark) in ThemeProvider without mutating child pattern markup", () => {
     const sample = <HelpLink>Theme check</HelpLink>;
-    const themes: Theme[] = ["base", "dark", "next", "next-dark"];
+    const themes: Array<Theme | "next-norteui" | "next-norteui-dark"> = [
+      "base",
+      "dark",
+      "next",
+      "next-dark",
+      "next-norteui",
+      "next-norteui-dark",
+    ];
     const snapshots = themes.map((t) => renderUnderTheme(t, sample));
 
     expect(snapshots[1]).toEqual(snapshots[0]);
     expect(snapshots[2]).toEqual(snapshots[0]);
     expect(snapshots[3]).toEqual(snapshots[0]);
+    expect(snapshots[4]).toEqual(snapshots[0]);
+    expect(snapshots[5]).toEqual(snapshots[0]);
   });
 });

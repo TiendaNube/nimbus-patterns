@@ -7,27 +7,36 @@ import { Box } from "@nimbus-ds/components";
 
 import light, { dark } from "./theme.definitions";
 
-export type NimbusToolbarTheme = "auto" | Theme;
+export type NimbusThemeName = Theme | "next-norteui" | "next-norteui-dark";
+
+export type NimbusToolbarTheme = "auto" | NimbusThemeName;
 
 export interface ResolveNimbusThemeInput {
   toolbarTheme?: NimbusToolbarTheme;
   isDarkMode?: boolean;
-  storyThemeParam?: Theme;
+  storyThemeParam?: NimbusThemeName;
   fileName?: string;
   globals?: {
     nimbusTheme?: NimbusToolbarTheme;
   };
   parameters?: {
-    nimbusTheme?: Theme;
+    nimbusTheme?: NimbusThemeName;
     fileName?: string;
   };
 }
 
-const VALID_EXPLICIT_THEMES: Theme[] = ["base", "dark", "next", "next-dark"];
+const VALID_EXPLICIT_THEMES: NimbusThemeName[] = [
+  "base",
+  "dark",
+  "next",
+  "next-dark",
+  "next-norteui",
+  "next-norteui-dark",
+];
 
 export const resolveNimbusTheme = (
   input: ResolveNimbusThemeInput = {}
-): Theme => {
+): NimbusThemeName => {
   const toolbarTheme = input.toolbarTheme ?? input.globals?.nimbusTheme;
   const isDarkMode = Boolean(input.isDarkMode);
   const storyThemeParam =
@@ -43,12 +52,19 @@ export const resolveNimbusTheme = (
   }
 
   const normalizedFileName = (fileName ?? "").replace(/\\/g, "/");
-  const isNextGeneration =
-    storyThemeParam === "next" ||
-    storyThemeParam === "next-dark" ||
+  const isNorteUiGeneration =
+    storyThemeParam === "next-norteui" ||
+    storyThemeParam === "next-norteui-dark" ||
     normalizedFileName.includes("/src/next/");
 
-  if (isNextGeneration) {
+  if (isNorteUiGeneration) {
+    if (storyThemeParam === "next-norteui-dark") {
+      return "next-norteui-dark";
+    }
+    return isDarkMode ? "next-norteui-dark" : "next-norteui";
+  }
+
+  if (storyThemeParam === "next" || storyThemeParam === "next-dark") {
     if (storyThemeParam === "next-dark") {
       return "next-dark";
     }
@@ -97,7 +113,7 @@ export const ThemeDocsProvider: React.FC<any> = (props) => {
     context?.store?.userGlobals?.globals?.nimbusTheme ??
     context?.globals?.nimbusTheme;
   let primaryStoryParams:
-    | { nimbusTheme?: Theme; fileName?: string }
+    | { nimbusTheme?: NimbusThemeName; fileName?: string }
     | undefined;
   try {
     primaryStoryParams = context?.storyById?.()?.parameters;
@@ -112,11 +128,13 @@ export const ThemeDocsProvider: React.FC<any> = (props) => {
     fileName: storyParameters?.fileName,
   });
   const isResolvedDark =
-    resolvedTheme === "dark" || resolvedTheme === "next-dark";
+    resolvedTheme === "dark" ||
+    resolvedTheme === "next-dark" ||
+    resolvedTheme === "next-norteui-dark";
 
   return (
     <DocsContainer {...props} theme={isResolvedDark ? dark : light}>
-      <ThemeProvider theme={resolvedTheme}>
+      <ThemeProvider theme={resolvedTheme as Theme}>
         <div data-nimbus-theme={resolvedTheme}>
           <Box backgroundColor="neutral-background" color="neutral-textHigh">
             {children}
@@ -141,7 +159,7 @@ export const ThemeNimbusProvider: React.FC<{
   });
 
   return (
-    <ThemeProvider theme={resolvedTheme}>
+    <ThemeProvider theme={resolvedTheme as Theme}>
       <div data-nimbus-theme={resolvedTheme} style={{ minHeight: "100%" }}>
         <Box
           backgroundColor="neutral-background"

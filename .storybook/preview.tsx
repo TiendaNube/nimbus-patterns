@@ -9,16 +9,18 @@ export const globalTypes = {
   nimbusTheme: {
     name: "Nimbus Theme",
     description:
-      "Nimbus theme generation and mode (auto, base, dark, next, next-dark)",
+      "Nimbus theme generation and mode (auto, base, dark, next, next-dark, next-norteui, next-norteui-dark)",
     defaultValue: "auto",
     toolbar: {
       icon: "paintbrush",
       items: [
-        { value: "auto", title: "Auto (Base / Next)" },
+        { value: "auto", title: "Auto (Base / Norte UI)" },
         { value: "base", title: "base" },
         { value: "dark", title: "dark" },
         { value: "next", title: "next" },
         { value: "next-dark", title: "next-dark" },
+        { value: "next-norteui", title: "next-norteui" },
+        { value: "next-norteui-dark", title: "next-norteui-dark" },
       ],
       dynamicTitle: true,
     },

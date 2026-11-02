@@ -142,8 +142,8 @@ describe("Next-Evolution Enablers (E0, E1, E2, E3, E8)", () => {
     });
   });
 
-  describe("E2 — Storybook 4-Theme deterministic resolution (resolveNimbusTheme)", () => {
-    it("resolves auto to base/dark for legacy stories and next/next-dark for /src/next/ stories", () => {
+  describe("E2 — Storybook 6-Theme deterministic resolution (resolveNimbusTheme)", () => {
+    it("resolves auto to base/dark for legacy stories and next-norteui/next-norteui-dark for /src/next/ stories", () => {
       expect(
         resolveNimbusTheme({
           toolbarTheme: "auto",
@@ -169,7 +169,7 @@ describe("Next-Evolution Enablers (E0, E1, E2, E3, E8)", () => {
           fileName:
             "packages/react/src/next/DataTable/src/dataTable.stories.tsx",
         })
-      ).toBe("next");
+      ).toBe("next-norteui");
 
       expect(
         resolveNimbusTheme({
@@ -178,10 +178,10 @@ describe("Next-Evolution Enablers (E0, E1, E2, E3, E8)", () => {
           fileName:
             "packages/react/src/next/DataTable/src/dataTable.stories.tsx",
         })
-      ).toBe("next-dark");
+      ).toBe("next-norteui-dark");
     });
 
-    it("honors explicit theme selections (base, dark, next, next-dark)", () => {
+    it("honors explicit theme selections (base, dark, next, next-dark, next-norteui, next-norteui-dark)", () => {
       expect(
         resolveNimbusTheme({ toolbarTheme: "base", isDarkMode: false })
       ).toBe("base");
@@ -194,6 +194,15 @@ describe("Next-Evolution Enablers (E0, E1, E2, E3, E8)", () => {
       expect(
         resolveNimbusTheme({ toolbarTheme: "next-dark", isDarkMode: false })
       ).toBe("next-dark");
+      expect(
+        resolveNimbusTheme({ toolbarTheme: "next-norteui", isDarkMode: false })
+      ).toBe("next-norteui");
+      expect(
+        resolveNimbusTheme({
+          toolbarTheme: "next-norteui-dark",
+          isDarkMode: false,
+        })
+      ).toBe("next-norteui-dark");
     });
   });
 
