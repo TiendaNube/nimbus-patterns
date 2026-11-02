@@ -1,11 +1,12 @@
 /**
  * Created by: Júnior Conquista (junior.conquista@nuvemshop.com.br)
  */
-import { rules, utils, configuration, plugins } from "@nimbus-ds/webpack";
+import { rules, utils, configuration } from "@nimbus-ds/webpack";
 import merge from "webpack-merge";
 import { Configuration } from "webpack";
 
 import { WebpackBaseConfig } from "@nimbus-ds/webpack/dist/utils";
+import { plugins } from "../plugins";
 import { externalItems } from "./external";
 import { aliasItems } from "./alias";
 
@@ -32,7 +33,7 @@ const webpack = ({
     rules: utils.arrayFilterEmpty([rules.typescriptRule, rules.svgRule]),
   },
   plugins: [
-    plugins.dtsBundleGeneratorPlugin(dtsBundleConfig),
+    plugins.dtsBundleGeneratorPlugin(dtsBundleConfig) as any,
     new plugins.MoveFilesIntoDistFolderPlugin(packageJsonConfig),
     new plugins.UseClientInjectionPlugin(useClientInjectionOptions),
   ],
@@ -51,6 +52,6 @@ export const getConfiguration = (
 ) =>
   utils.isProduction
     ? merge(webpack(extraParams), configuration.production, config || {})
-    : merge(webpack(), configuration.development, config || {});
+    : merge(webpack(extraParams), configuration.development, config || {});
 
 export default getConfiguration();
