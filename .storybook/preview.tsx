@@ -8,19 +8,26 @@ import "./static/style.css";
 export const globalTypes = {
   nimbusTheme: {
     name: "Nimbus Theme",
-    description:
-      "Nimbus theme generation and mode (auto, base, dark, next, next-dark, next-norteui, next-norteui-dark)",
+    description: "Active Nimbus theme generation and color mode",
     defaultValue: "auto",
     toolbar: {
       icon: "paintbrush",
       items: [
-        { value: "auto", title: "Auto (Base / Norte UI)" },
-        { value: "base", title: "base" },
-        { value: "dark", title: "dark" },
-        { value: "next", title: "next" },
-        { value: "next-dark", title: "next-dark" },
-        { value: "next-norteui", title: "next-norteui" },
-        { value: "next-norteui-dark", title: "next-norteui-dark" },
+        { value: "auto", title: "Auto (Base / Norte UI by story)" },
+        { value: "base", title: "Base (Light)" },
+        { value: "dark", title: "Dark (Base Dark)" },
+        { value: "next", title: "Next (Premium Plan Light)" },
+        { value: "next-dark", title: "Next Dark (Premium Plan Dark)" },
+        { value: "next-norteui", title: "Next Norte UI (Light)" },
+        { value: "next-norteui-dark", title: "Next Norte UI Dark" },
+        {
+          value: "side-by-side",
+          title: "Side-by-Side (Base vs Next Norte UI)",
+        },
+        {
+          value: "side-by-side-dark",
+          title: "Side-by-Side (Dark vs Next Norte UI Dark)",
+        },
       ],
       dynamicTitle: true,
     },
@@ -52,7 +59,7 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ["Atomic", "Composite", "Skeleton"],
+        order: ["Foundations", "Atomic", "Composite", "Next", "Skeleton"],
       },
     },
     backgrounds: {

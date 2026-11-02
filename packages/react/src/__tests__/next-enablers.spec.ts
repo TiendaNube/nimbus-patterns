@@ -203,6 +203,18 @@ describe("Next-Evolution Enablers (E0, E1, E2, E3, E8)", () => {
           isDarkMode: false,
         })
       ).toBe("next-norteui-dark");
+      expect(
+        resolveNimbusTheme({
+          toolbarTheme: "side-by-side",
+          isDarkMode: false,
+        })
+      ).toBe("base");
+      expect(
+        resolveNimbusTheme({
+          toolbarTheme: "side-by-side-dark",
+          isDarkMode: true,
+        })
+      ).toBe("dark");
     });
   });
 
@@ -245,7 +257,9 @@ describe("Next-Evolution Enablers (E0, E1, E2, E3, E8)", () => {
 
       const result = generateNextIndex(tmpDir);
       expect(result.components).toEqual(["AppShell", "Page"]);
-      expect(result.content).toContain('export * from "./AppShell/src";\nexport * from "./Page/src";');
+      expect(result.content).toContain(
+        'export * from "./AppShell/src";\nexport * from "./Page/src";'
+      );
 
       // Introduce duplicate identifier collision
       fs.writeFileSync(
@@ -253,7 +267,9 @@ describe("Next-Evolution Enablers (E0, E1, E2, E3, E8)", () => {
         "export const AppShell = () => null;\n",
         "utf8"
       );
-      expect(() => generateNextIndex(tmpDir)).toThrow(/Duplicate export "AppShell"/);
+      expect(() => generateNextIndex(tmpDir)).toThrow(
+        /Duplicate export "AppShell"/
+      );
     });
   });
 

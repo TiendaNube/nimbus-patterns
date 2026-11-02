@@ -6,10 +6,15 @@ import { ThemeProvider, Theme } from "@nimbus-ds/styles";
 import { Box } from "@nimbus-ds/components";
 
 import light, { dark } from "./theme.definitions";
+import { themeVars, toProviderTheme } from "./themeVars";
 
 export type NimbusThemeName = Theme | "next-norteui" | "next-norteui-dark";
 
-export type NimbusToolbarTheme = "auto" | NimbusThemeName;
+export type NimbusToolbarTheme =
+  | "auto"
+  | NimbusThemeName
+  | "side-by-side"
+  | "side-by-side-dark";
 
 export interface ResolveNimbusThemeInput {
   toolbarTheme?: NimbusToolbarTheme;
@@ -46,6 +51,8 @@ export const resolveNimbusTheme = (
   if (
     toolbarTheme &&
     toolbarTheme !== "auto" &&
+    toolbarTheme !== "side-by-side" &&
+    toolbarTheme !== "side-by-side-dark" &&
     VALID_EXPLICIT_THEMES.includes(toolbarTheme)
   ) {
     return toolbarTheme;
@@ -128,13 +135,14 @@ export const ThemeDocsProvider: React.FC<any> = (props) => {
     fileName: storyParameters?.fileName,
   });
   const isResolvedDark =
+    toolbarTheme === "side-by-side-dark" ||
     resolvedTheme === "dark" ||
     resolvedTheme === "next-dark" ||
     resolvedTheme === "next-norteui-dark";
 
   return (
     <DocsContainer {...props} theme={isResolvedDark ? dark : light}>
-      <ThemeProvider theme={resolvedTheme as Theme}>
+      <ThemeProvider theme={toProviderTheme(resolvedTheme)}>
         <div data-nimbus-theme={resolvedTheme}>
           <Box backgroundColor="neutral-background" color="neutral-textHigh">
             {children}
@@ -149,17 +157,71 @@ export const ThemeNimbusProvider: React.FC<{
   children: React.ReactNode;
   context?: any;
   theme?: NimbusToolbarTheme;
-}> = ({ children, context, theme }) => {
+  selectedTheme?: NimbusToolbarTheme;
+  storyParameters?: { nimbusTheme?: NimbusThemeName; fileName?: string };
+}> = ({ children, context, theme, selectedTheme, storyParameters }) => {
   const isDark = useDarkMode();
+  const activeToolbarTheme: NimbusToolbarTheme | undefined =
+    theme ?? selectedTheme ?? context?.globals?.nimbusTheme;
+  const activeParameters = storyParameters ?? context?.parameters;
+
+  if (
+    activeToolbarTheme === "side-by-side" ||
+    activeToolbarTheme === "side-by-side-dark"
+  ) {
+    const isDarkComparison = activeToolbarTheme === "side-by-side-dark";
+    const leftTheme: NimbusThemeName = isDarkComparison ? "dark" : "base";
+    const rightTheme: NimbusThemeName = isDarkComparison
+      ? "next-norteui-dark"
+      : "next-norteui";
+
+    return (
+      <div
+        data-nimbus-theme={activeToolbarTheme}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "16px",
+          width: "100%",
+        }}
+      >
+        <ThemeProvider
+          theme={toProviderTheme(leftTheme)}
+          data-nimbus-theme={leftTheme}
+          style={{
+            backgroundColor: themeVars.colors.neutral.background,
+            color: themeVars.colors.neutral.textHigh,
+            padding: "16px",
+            borderRadius: "8px",
+          }}
+        >
+          {children}
+        </ThemeProvider>
+        <ThemeProvider
+          theme={toProviderTheme(rightTheme)}
+          data-nimbus-theme={rightTheme}
+          style={{
+            backgroundColor: themeVars.colors.neutral.background,
+            color: themeVars.colors.neutral.textHigh,
+            padding: "16px",
+            borderRadius: "8px",
+          }}
+        >
+          {children}
+        </ThemeProvider>
+      </div>
+    );
+  }
+
   const resolvedTheme = resolveNimbusTheme({
-    toolbarTheme: theme ?? context?.globals?.nimbusTheme,
+    toolbarTheme: activeToolbarTheme,
     isDarkMode: isDark,
-    storyThemeParam: context?.parameters?.nimbusTheme,
-    fileName: context?.parameters?.fileName,
+    storyThemeParam: activeParameters?.nimbusTheme,
+    fileName: activeParameters?.fileName,
   });
 
   return (
-    <ThemeProvider theme={resolvedTheme as Theme}>
+    <ThemeProvider theme={toProviderTheme(resolvedTheme)}>
       <div data-nimbus-theme={resolvedTheme} style={{ minHeight: "100%" }}>
         <Box
           backgroundColor="neutral-background"
