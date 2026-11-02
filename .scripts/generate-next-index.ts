@@ -115,6 +115,12 @@ export interface GenerateNextIndexResult {
   content: string;
 }
 
+const compareStrings = (a: string, b: string): number => {
+  if (a < b) return -1;
+  if (a > b) return 1;
+  return 0;
+};
+
 export const generateNextIndex = (
   rootDir: string = path.resolve(__dirname, "..")
 ): GenerateNextIndexResult => {
@@ -136,7 +142,7 @@ export const generateNextIndex = (
       return fs.existsSync(componentIndex);
     })
     .map((dirent) => dirent.name)
-    .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
+    .sort(compareStrings);
 
   const seenExports = new Map<string, string>();
   const duplicates: string[] = [];

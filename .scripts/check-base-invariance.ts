@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { execSync } from "child_process";
+import { execFileSync } from "child_process";
 
 /* eslint no-console: "off" */
 
@@ -10,6 +10,33 @@ export interface BaseInvarianceOptions {
   allowBaseChanges?: boolean;
   skipJest?: boolean;
 }
+
+const resolveDefaultBaseRef = (rootDir: string): string => {
+  try {
+    execFileSync("git", ["rev-parse", "--verify", "origin/master^{commit}"], {
+      cwd: rootDir,
+      stdio: ["ignore", "pipe", "ignore"],
+    });
+    return "origin/master";
+  } catch {
+    return "HEAD";
+  }
+};
+
+const validateGitRef = (rootDir: string, ref: string): string => {
+  if (!ref || ref.startsWith("-")) {
+    throw new Error(`Invalid git ref argument: "${ref}"`);
+  }
+  try {
+    execFileSync("git", ["rev-parse", "--verify", `${ref}^{commit}`], {
+      cwd: rootDir,
+      stdio: ["ignore", "pipe", "ignore"],
+    });
+    return ref;
+  } catch {
+    throw new Error(`Unable to resolve git commit for ref "${ref}"`);
+  }
+};
 
 export const extractCssCustomProperties = (cssContent: string): Set<string> => {
   const props = new Set<string>();
@@ -72,19 +99,28 @@ export const verifyNoUnexpectedBaseComponentChanges = (
     return [];
   }
 
+  const validRef = validateGitRef(rootDir, baseRef);
   let diffOutput = "";
   try {
-    diffOutput = execSync(`git diff --name-only ${baseRef}...HEAD`, {
-      cwd: rootDir,
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "pipe"],
-    });
+    diffOutput = execFileSync(
+      "git",
+      ["diff", "--no-renames", "--name-only", `${validRef}...HEAD`],
+      {
+        cwd: rootDir,
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "pipe"],
+      }
+    );
   } catch {
-    diffOutput = execSync(`git diff --name-only ${baseRef}`, {
-      cwd: rootDir,
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "pipe"],
-    });
+    diffOutput = execFileSync(
+      "git",
+      ["diff", "--no-renames", "--name-only", validRef],
+      {
+        cwd: rootDir,
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "pipe"],
+      }
+    );
   }
 
   const changedFiles = diffOutput
@@ -114,20 +150,25 @@ export const runBaseInvarianceCheck = (
   options: BaseInvarianceOptions = {}
 ): void => {
   const rootDir = options.rootDir ?? path.resolve(__dirname, "..");
+  const baseRef = options.baseRef ?? resolveDefaultBaseRef(rootDir);
 
-  if (options.baseRef) {
-    verifyNoUnexpectedBaseComponentChanges(
-      rootDir,
-      options.baseRef,
-      options.allowBaseChanges
-    );
-  }
+  verifyNoUnexpectedBaseComponentChanges(
+    rootDir,
+    baseRef,
+    options.allowBaseChanges
+  );
 
   verifyStylesThemeContracts(rootDir);
 
   if (!options.skipJest) {
-    execSync(
-      "npx jest packages/react/src/__tests__/base-invariance.spec.tsx --no-cache --runInBand",
+    execFileSync(
+      "yarn",
+      [
+        "jest",
+        "packages/react/src/__tests__/base-invariance.spec.tsx",
+        "--no-cache",
+        "--runInBand",
+      ],
       {
         cwd: rootDir,
         stdio: "inherit",
@@ -157,8 +198,9 @@ if (require.main === module) {
       skipJest,
     });
     console.log("✅ Base invariance check passed.");
-  } catch (error: any) {
-    console.error(`❌ ${error?.message || String(error)}`);
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error(`❌ ${message}`);
     process.exit(1);
   }
 }

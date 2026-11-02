@@ -27,6 +27,9 @@ export const globalTypes = {
 
 const preview: Preview = {
   globalTypes,
+  initialGlobals: {
+    nimbusTheme: "auto",
+  },
   parameters: {
     controls: {
       matchers: {

@@ -1,10 +1,43 @@
 import fs from "fs";
+import os from "os";
 import path from "path";
-import { execSync } from "child_process";
-import ts from "typescript";
+import { execFileSync } from "child_process";
 import { extractExportedIdentifiers } from "./generate-next-index";
 
 /* eslint no-console: "off" */
+
+const compareStrings = (a: string, b: string): number => {
+  if (a < b) return -1;
+  if (a > b) return 1;
+  return 0;
+};
+
+const resolveDefaultBaseRef = (rootDir: string): string => {
+  try {
+    execFileSync("git", ["rev-parse", "--verify", "origin/master^{commit}"], {
+      cwd: rootDir,
+      stdio: ["ignore", "pipe", "ignore"],
+    });
+    return "origin/master";
+  } catch {
+    return "HEAD";
+  }
+};
+
+const validateGitRef = (rootDir: string, ref: string): string => {
+  if (!ref || ref.startsWith("-")) {
+    throw new Error(`Invalid git ref argument: "${ref}"`);
+  }
+  try {
+    execFileSync("git", ["rev-parse", "--verify", `${ref}^{commit}`], {
+      cwd: rootDir,
+      stdio: ["ignore", "pipe", "ignore"],
+    });
+    return ref;
+  } catch {
+    throw new Error(`Unable to resolve git commit for ref "${ref}"`);
+  }
+};
 
 export interface NextSurfaceDiff {
   removedExports: string[];
@@ -34,8 +67,8 @@ export const compareNextSurface = (
   });
 
   return {
-    removedExports: removedExports.sort(),
-    addedExports: addedExports.sort(),
+    removedExports: removedExports.sort(compareStrings),
+    addedExports: addedExports.sort(compareStrings),
   };
 };
 
@@ -61,73 +94,58 @@ export const collectCurrentNextExports = (rootDir: string): Set<string> => {
   return exportsSet;
 };
 
-const extractDirectlyExportedIdentifiersFromSource = (
-  sourceText: string,
-  fileName = "index.ts"
-): Set<string> => {
-  const sf = ts.createSourceFile(
-    fileName,
-    sourceText,
-    ts.ScriptTarget.ESNext,
-    true
-  );
-  const ids = new Set<string>();
-
-  sf.forEachChild((node) => {
-    if (
-      ts.isExportDeclaration(node) &&
-      node.exportClause &&
-      ts.isNamedExports(node.exportClause)
-    ) {
-      node.exportClause.elements.forEach((el) => ids.add(el.name.text));
-    }
-  });
-
-  return ids;
-};
-
 export const collectBaselineNextExports = (
   rootDir: string,
   baseRef: string
 ): Set<string> => {
-  const exportsSet = new Set<string>();
+  const validRef = validateGitRef(rootDir, baseRef);
+  let filesOut = "";
   try {
-    const filesOut = execSync(
-      `git ls-tree -r --name-only ${baseRef} packages/react/src/next`,
+    filesOut = execFileSync(
+      "git",
+      ["ls-tree", "-r", "--name-only", validRef, "--", "packages/react/src/next"],
       {
         cwd: rootDir,
         encoding: "utf8",
         stdio: ["ignore", "pipe", "pipe"],
       }
     );
-    const files = filesOut
-      .split("\n")
-      .map((f) => f.trim())
-      .filter((f) =>
-        /^packages\/react\/src\/next\/[^/]+\/src\/index\.ts$/.test(f)
-      );
+  } catch {
+    return new Set<string>();
+  }
 
+  const files = filesOut
+    .split("\n")
+    .map((f) => f.trim())
+    .filter((f) => f.startsWith("packages/react/src/next/"));
+
+  if (files.length === 0) {
+    return new Set<string>();
+  }
+
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "nimbus-next-base-"));
+  try {
     files.forEach((relFile) => {
-      const content = execSync(`git show ${baseRef}:${relFile}`, {
+      const content = execFileSync("git", ["show", `${validRef}:${relFile}`], {
         cwd: rootDir,
         encoding: "utf8",
         stdio: ["ignore", "pipe", "pipe"],
       });
-      const ids = extractDirectlyExportedIdentifiersFromSource(
-        content,
-        relFile
-      );
-      ids.forEach((id) => exportsSet.add(id));
+      const destPath = path.join(tmpDir, relFile);
+      fs.mkdirSync(path.dirname(destPath), { recursive: true });
+      fs.writeFileSync(destPath, content, "utf8");
     });
-  } catch {
-    // Baseline ref does not have packages/react/src/next yet
+
+    return collectCurrentNextExports(tmpDir);
+  } finally {
+    fs.rmSync(tmpDir, { recursive: true, force: true });
   }
-  return exportsSet;
 };
 
 if (require.main === module) {
+  const rootDir = path.resolve(__dirname, "..");
   const args = process.argv.slice(2);
-  let baseRef = "master";
+  let baseRef = resolveDefaultBaseRef(rootDir);
   for (let i = 0; i < args.length; i += 1) {
     if (args[i] === "--base-ref" && args[i + 1]) {
       baseRef = args[i + 1];
@@ -137,7 +155,6 @@ if (require.main === module) {
     }
   }
   const allowBreaking = args.includes("--allow-breaking");
-  const rootDir = path.resolve(__dirname, "..");
 
   const baseline = collectBaselineNextExports(rootDir, baseRef);
   const current = collectCurrentNextExports(rootDir);

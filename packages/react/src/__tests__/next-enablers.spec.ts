@@ -69,6 +69,16 @@ describe("Next-Evolution Enablers (E0, E1, E2, E3, E8)", () => {
   });
 
   describe("E0 — DtsBundleGeneratorWebpackPlugin & MoveFilesIntoDistFolderPlugin error propagation", () => {
+    let tmpDir: string;
+
+    beforeEach(() => {
+      tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "nimbus-dts-plugin-"));
+    });
+
+    afterEach(() => {
+      fs.rmSync(tmpDir, { recursive: true, force: true });
+    });
+
     it("rejects and pushes to compilation.errors when a DTS command fails or output is missing", async () => {
       const plugin = new DtsBundleGeneratorWebpackPlugin({
         entries: [
@@ -79,7 +89,7 @@ describe("Next-Evolution Enablers (E0, E1, E2, E3, E8)", () => {
 
       let tappedCallback: ((compilation: any) => Promise<void>) | undefined;
       const fakeCompiler: any = {
-        context: process.cwd(),
+        context: tmpDir,
         hooks: {
           afterEmit: {
             tapPromise: (
@@ -107,10 +117,10 @@ describe("Next-Evolution Enablers (E0, E1, E2, E3, E8)", () => {
 
       let tappedCallback: ((compilation: any) => Promise<void>) | undefined;
       const fakeCompiler: any = {
-        context: process.cwd(),
+        context: tmpDir,
         options: {
           output: {
-            path: path.join(os.tmpdir(), "dist"),
+            path: path.join(tmpDir, "dist"),
           },
         },
         hooks: {

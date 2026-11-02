@@ -11,8 +11,13 @@ try {
   const args = process.argv.slice(2);
   const buildAll = args.includes("--all") || args.includes("--all-packages");
 
+  const compareStrings = (a: string, b: string): number => {
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
+  };
   const packageBuilder = new PackageBuilder();
-  const paths = glob.sync(path.join(".yarn/versions/*.yml")).sort();
+  const paths = glob.sync(path.join(".yarn/versions/*.yml")).sort(compareStrings);
 
   const removePackages = [
     "nimbus-patterns",

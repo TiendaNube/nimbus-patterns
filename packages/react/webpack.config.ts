@@ -1,7 +1,9 @@
 import path from "path";
 import webpack, { configuration } from "@nimbus-ds/patterns-webpack/src";
+import { generateNextIndex } from "../../.scripts/generate-next-index";
 
 const baseDir = path.resolve(__dirname, "src");
+generateNextIndex(path.resolve(__dirname, "../.."));
 
 const { dtsCommands, packageExports, webpackEntries } =
   webpack.utils.getComponentsPackageExports(baseDir, ["components"]);

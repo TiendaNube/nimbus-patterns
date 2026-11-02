@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { DocsContainer } from "@storybook/blocks";
 import { addons } from "@storybook/preview-api";
 import { DARK_MODE_EVENT_NAME } from "storybook-dark-mode";
-import * as nimbusStyles from "@nimbus-ds/styles";
 import { ThemeProvider, Theme } from "@nimbus-ds/styles";
+import { Box } from "@nimbus-ds/components";
 
 import light, { dark } from "./theme.definitions";
 
@@ -23,69 +23,16 @@ export interface ResolveNimbusThemeInput {
   };
 }
 
-export const vars: {
-  color: {
-    neutral: {
-      background: string;
-      textHigh: string;
-    };
-  };
-} = {
-  color: {
-    neutral: {
-      background:
-        (nimbusStyles as any).varsThemeBase?.color?.neutral?.background ??
-        (nimbusStyles as any).vars?.color?.neutral?.background ??
-        nimbusStyles.box?.properties?.backgroundColor?.["neutral-background"] ??
-        "var(--nimbus-colors-neutral-background)",
-      textHigh:
-        (nimbusStyles as any).varsThemeBase?.color?.neutral?.textHigh ??
-        (nimbusStyles as any).vars?.color?.neutral?.textHigh ??
-        nimbusStyles.box?.properties?.color?.["neutral-textHigh"] ??
-        "var(--nimbus-colors-neutral-textHigh)",
-    },
-  },
-};
-
 const VALID_EXPLICIT_THEMES: Theme[] = ["base", "dark", "next", "next-dark"];
 
 export const resolveNimbusTheme = (
-  inputOrToolbarTheme?: ResolveNimbusThemeInput | NimbusToolbarTheme,
-  isDarkModeArg?: boolean,
-  contextArg?: {
-    parameters?: {
-      nimbusTheme?: Theme;
-      fileName?: string;
-    };
-  }
+  input: ResolveNimbusThemeInput = {}
 ): Theme => {
-  let toolbarTheme: NimbusToolbarTheme | undefined;
-  let isDarkMode = false;
-  let storyThemeParam: Theme | undefined;
-  let fileName: string | undefined;
-
-  if (
-    typeof inputOrToolbarTheme === "object" &&
-    inputOrToolbarTheme !== null
-  ) {
-    toolbarTheme =
-      inputOrToolbarTheme.toolbarTheme ??
-      inputOrToolbarTheme.globals?.nimbusTheme;
-    isDarkMode =
-      typeof isDarkModeArg === "boolean"
-        ? isDarkModeArg
-        : Boolean(inputOrToolbarTheme.isDarkMode);
-    storyThemeParam =
-      inputOrToolbarTheme.storyThemeParam ??
-      inputOrToolbarTheme.parameters?.nimbusTheme;
-    fileName =
-      inputOrToolbarTheme.fileName ?? inputOrToolbarTheme.parameters?.fileName;
-  } else {
-    toolbarTheme = inputOrToolbarTheme;
-    isDarkMode = Boolean(isDarkModeArg);
-    storyThemeParam = contextArg?.parameters?.nimbusTheme;
-    fileName = contextArg?.parameters?.fileName;
-  }
+  const toolbarTheme = input.toolbarTheme ?? input.globals?.nimbusTheme;
+  const isDarkMode = Boolean(input.isDarkMode);
+  const storyThemeParam =
+    input.storyThemeParam ?? input.parameters?.nimbusTheme;
+  const fileName = input.fileName ?? input.parameters?.fileName;
 
   if (
     toolbarTheme &&
@@ -149,11 +96,20 @@ export const ThemeDocsProvider: React.FC<any> = (props) => {
   const toolbarTheme: NimbusToolbarTheme | undefined =
     context?.store?.userGlobals?.globals?.nimbusTheme ??
     context?.globals?.nimbusTheme;
+  let primaryStoryParams:
+    | { nimbusTheme?: Theme; fileName?: string }
+    | undefined;
+  try {
+    primaryStoryParams = context?.storyById?.()?.parameters;
+  } catch {
+    primaryStoryParams = undefined;
+  }
+  const storyParameters = primaryStoryParams ?? context?.parameters;
   const resolvedTheme = resolveNimbusTheme({
     toolbarTheme,
     isDarkMode: isDark,
-    storyThemeParam: context?.parameters?.nimbusTheme,
-    fileName: context?.parameters?.fileName,
+    storyThemeParam: storyParameters?.nimbusTheme,
+    fileName: storyParameters?.fileName,
   });
   const isResolvedDark =
     resolvedTheme === "dark" || resolvedTheme === "next-dark";
@@ -161,14 +117,10 @@ export const ThemeDocsProvider: React.FC<any> = (props) => {
   return (
     <DocsContainer {...props} theme={isResolvedDark ? dark : light}>
       <ThemeProvider theme={resolvedTheme}>
-        <div
-          data-nimbus-theme={resolvedTheme}
-          style={{
-            backgroundColor: vars.color.neutral.background,
-            color: vars.color.neutral.textHigh,
-          }}
-        >
-          {children}
+        <div data-nimbus-theme={resolvedTheme}>
+          <Box backgroundColor="neutral-background" color="neutral-textHigh">
+            {children}
+          </Box>
         </div>
       </ThemeProvider>
     </DocsContainer>
@@ -190,15 +142,14 @@ export const ThemeNimbusProvider: React.FC<{
 
   return (
     <ThemeProvider theme={resolvedTheme}>
-      <div
-        data-nimbus-theme={resolvedTheme}
-        style={{
-          backgroundColor: vars.color.neutral.background,
-          color: vars.color.neutral.textHigh,
-          minHeight: "100%",
-        }}
-      >
-        {children}
+      <div data-nimbus-theme={resolvedTheme} style={{ minHeight: "100%" }}>
+        <Box
+          backgroundColor="neutral-background"
+          color="neutral-textHigh"
+          minHeight="100%"
+        >
+          {children}
+        </Box>
       </div>
     </ThemeProvider>
   );
