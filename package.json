@@ -43,6 +43,7 @@
     "pre-push": "yarn lint && yarn types:check",
     "start:dev": "yarn storybook",
     "storybook": "yarn generate:next-index && storybook dev -p 6006",
+    "watch:admin": "ts-node .scripts/watch-admin.ts",
     "prepare-husky": "husky install",
     "publish:next": "yarn bump:next && npm run build && yarn publish:npm:next",
     "publish:stable": "npm run build && yarn build:docs && yarn bump:stable && yarn publish:npm:stable",
