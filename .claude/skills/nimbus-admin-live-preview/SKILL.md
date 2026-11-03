@@ -35,6 +35,12 @@ Use this skill whenever a Designer or Engineer wants to:
 
 ---
 
+## Visual Iteration vs. Formal Closure
+
+Apply the canonical [Visual Iteration vs. Formal Closure](../../../.agents/skills/nimbus-admin-live-preview/SKILL.md#visual-iteration-vs-formal-closure) timing rule: while exploring, apply the edit using the running preview and return control for manual visual confirmation by the designer. Automatic browser verification requires an explicit user request. Run formal validation and handoff requirements against the final diff when closure is requested.
+
+---
+
 ## Step-by-Step Workflow
 
 ### Step 0 — Verify or Bootstrap Local Admin Environment (`./admin setup`)
