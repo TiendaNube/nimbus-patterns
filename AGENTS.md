@@ -6,12 +6,12 @@ Canonical agent brief for Claude Desktop, Claude Code, Codex Desktop, Cursor, an
 
 Read the matching skill before starting that kind of work:
 
-| Skill file                                                    | Read it when                                                                                                                          |
-| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `.agents/skills/nimbus-admin-live-preview/SKILL.md`           | Connecting local `nimbus-patterns` and `nimbus-design-system` to `services-new-admin` (`NIMBUS_LOCAL=true`) for live preview.         |
-| `.agents/skills/nimbus-next-component-approximation/SKILL.md` | Prototyping or refining a Path C or Path D (`packages/react/src/next/<Pattern>`) pattern for Norte UI.                                |
-| `.agents/skills/nimbus-next-token-studio/SKILL.md`            | Adding or updating `next-norteui` / `next-norteui-dark` tokens in `nimbus-design-system` (`@nimbus-ds/tokens` / `@nimbus-ds/styles`). |
-| `.agents/skills/nimbus-next-admin-adoption/SKILL.md`          | Adopting Norte UI patterns (`@nimbus-ds/patterns/next`) or Path C props inside `services-new-admin` (`stratus`).                      |
+| Skill file                                                    | Read it when                                                                                                                                                                                  |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.agents/skills/nimbus-admin-live-preview/SKILL.md`           | Connecting local `nimbus-patterns` and `nimbus-design-system` to `services-new-admin` (`NIMBUS_LOCAL=true`) for live preview.                                                                 |
+| `.agents/skills/nimbus-next-component-approximation/SKILL.md` | Prototyping or refining a Path B, Path C, or Path D (`packages/react/src/next/<Pattern>`) pattern for Norte UI, or creating the `approx/*` Draft PR and GitHub Issue for formal construction. |
+| `.agents/skills/nimbus-next-token-studio/SKILL.md`            | Adding or updating `next-norteui` / `next-norteui-dark` tokens in `nimbus-design-system` (`@nimbus-ds/tokens` / `@nimbus-ds/styles`).                                                         |
+| `.agents/skills/nimbus-next-admin-adoption/SKILL.md`          | Adopting Norte UI patterns (`@nimbus-ds/patterns/next`) or Path C props inside `services-new-admin` (`stratus`).                                                                              |
 
 ## Live Local Preview with Admin (`services-new-admin`)
 
