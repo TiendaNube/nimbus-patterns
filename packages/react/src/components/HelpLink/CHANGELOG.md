@@ -2,6 +2,12 @@
 
 Help Link component is intended for adding helpful links with tutorials or educational content on the UI.
 
+## 2026-11-04 `1.1.6`
+
+#### 💡 Others
+
+- Updated `HelpLink` colors to match the Norte UI design: the icon container background is now `neutral-surfaceDisabled` and the icon color is `neutral-textLow`. Use a `Link` with `appearance="neutral"` as children so the text also renders in `neutral-textLow`.
+
 ## 2026-03-04 `1.1.5`
 
 #### 🐛 Bug fixes

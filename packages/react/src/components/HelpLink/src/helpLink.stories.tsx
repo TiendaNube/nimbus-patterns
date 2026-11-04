@@ -24,7 +24,7 @@ export const basic: Story = {
         as="a"
         href="https://nimbus.tiendanube.com/"
         target="_blank"
-        appearance="primary"
+        appearance="neutral"
         textDecoration="none"
       >
         Help link <Icon color="currentColor" source={<ExternalLinkIcon />} />

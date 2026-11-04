@@ -26,9 +26,9 @@ const HelpLink: React.FC<HelpLinkProps> = ({
       height="2rem"
       minWidth="2rem"
       minHeight="2rem"
-      backgroundColor="primary-surface"
+      backgroundColor="neutral-surfaceDisabled"
     >
-      <Icon source={<QuestionCircleIcon />} color="primary-textLow" />
+      <Icon source={<QuestionCircleIcon />} color="neutral-textLow" />
     </Box>
     {children}
   </Box>
