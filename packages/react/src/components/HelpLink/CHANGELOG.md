@@ -6,7 +6,7 @@ Help Link component is intended for adding helpful links with tutorials or educa
 
 #### 💡 Others
 
-- Updated `HelpLink` colors to match the Norte UI design: the icon container background is now `neutral-surfaceDisabled` and the icon color is `neutral-textLow`. Use a `Link` with `appearance="neutral"` as children so the text also renders in `neutral-textLow`.
+- Updated `HelpLink` colors to match the Norte UI design: the icon container background is now `neutral-surfaceDisabled` and the icon color is `neutral-textLow`. Use a `Link` with `appearance="neutral"` as children so the text also renders in `neutral-textLow`. ([#219](https://github.com/TiendaNube/nimbus-patterns/pull/219) by [@FedeTrevi-se](https://github.com/FedeTrevi-se))
 
 ## 2026-03-04 `1.1.5`
 
