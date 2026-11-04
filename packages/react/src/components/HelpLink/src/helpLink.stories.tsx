@@ -1,7 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Icon, Link } from "@nimbus-ds/components";
-import { ExternalLinkIcon } from "@nimbus-ds/icons";
+import { Link } from "@nimbus-ds/components";
 
 import { HelpLink } from "./HelpLink";
 
@@ -27,7 +26,7 @@ export const basic: Story = {
         appearance="neutral"
         textDecoration="none"
       >
-        Help link <Icon color="currentColor" source={<ExternalLinkIcon />} />
+        Help link
       </Link>
     ),
   },
