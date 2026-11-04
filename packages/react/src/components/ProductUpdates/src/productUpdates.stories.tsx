@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Thumbnail, Text, Tag, Button, Link } from "@nimbus-ds/components";
+import { Box, Thumbnail, Text, Tag, Button, Link } from "@nimbus-ds/components";
 import { ProductUpdates } from "./ProductUpdates";
 
 const meta: Meta<typeof ProductUpdates> = {
@@ -8,7 +8,7 @@ const meta: Meta<typeof ProductUpdates> = {
   component: ProductUpdates,
   argTypes: {
     bodyContent: { control: { disable: true } },
-    tag: { control: { disable: true } },
+    tag: { control: { disable: true } }
   },
   tags: ["autodocs"],
   render: (args) => (
@@ -18,7 +18,7 @@ const meta: Meta<typeof ProductUpdates> = {
         component
       </Text>
     </ProductUpdates>
-  ),
+  )
 };
 
 export default meta;
@@ -28,8 +28,8 @@ export const basic: Story = {
   args: {
     title: "Title",
     text: "Content text",
-    visible: true,
-  },
+    visible: true
+  }
 };
 
 export const withDismissLink: Story = {
@@ -37,16 +37,16 @@ export const withDismissLink: Story = {
     title: "Title",
     text: "Content text",
     dismissLink: "Dismiss Popover",
-    visible: true,
-  },
+    visible: true
+  }
 };
 
 export const withDismissButton: Story = {
   args: {
     title: "Title",
     text: "Content text",
-    visible: true,
-  },
+    visible: true
+  }
 };
 
 export const withCustomContent: Story = {
@@ -61,8 +61,8 @@ export const withCustomContent: Story = {
         alt="Thumbnail component"
         src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2299&q=80"
       />
-    ),
-  },
+    )
+  }
 };
 
 export const withTag: Story = {
@@ -71,8 +71,8 @@ export const withTag: Story = {
     text: "Content text",
     tag: <Tag appearance="primary">Novo</Tag>,
     dismissLink: "Link",
-    visible: true,
-  },
+    visible: true
+  }
 };
 
 export const withTagAndDismissButton: Story = {
@@ -80,8 +80,8 @@ export const withTagAndDismissButton: Story = {
     title: "Title text",
     text: "Content text",
     tag: <Tag appearance="primary">Novo</Tag>,
-    visible: true,
-  },
+    visible: true
+  }
 };
 
 export const withLink: Story = {
@@ -109,7 +109,7 @@ export const withLink: Story = {
         component
       </Text>
     </ProductUpdates>
-  ),
+  )
 };
 
 export const withFooter: Story = {
@@ -136,7 +136,7 @@ export const withFooter: Story = {
         component
       </Text>
     </ProductUpdates>
-  ),
+  )
 };
 
 export const multiStepWizard: Story = {
@@ -146,24 +146,24 @@ export const multiStepWizard: Story = {
     const steps = [
       {
         title: "Informes detallados",
-        text: "Genera informes de pagos personalizados que te ayuden a analizar el comportamiento de tus clientes y optimizar tus estrategias.",
+        text: "Genera informes de pagos personalizados que te ayuden a analizar el comportamiento de tus clientes y optimizar tus estrategias."
       },
       {
         title: "Nuevas métricas",
-        text: "Accede a métricas avanzadas para entender mejor el rendimiento de tu tienda.",
+        text: "Accede a métricas avanzadas para entender mejor el rendimiento de tu tienda."
       },
       {
         title: "Filtros mejorados",
-        text: "Utiliza filtros más precisos para encontrar exactamente la información que necesitas.",
+        text: "Utiliza filtros más precisos para encontrar exactamente la información que necesitas."
       },
       {
         title: "Exportar datos",
-        text: "Exporta tus reportes en múltiples formatos para compartir con tu equipo.",
+        text: "Exporta tus reportes en múltiples formatos para compartir con tu equipo."
       },
       {
         title: "Empieza ahora",
-        text: "Todo listo para que aproveches al máximo estas nuevas herramientas.",
-      },
+        text: "Todo listo para que aproveches al máximo estas nuevas herramientas."
+      }
     ];
 
     return (
@@ -217,5 +217,23 @@ export const multiStepWizard: Story = {
         </Text>
       </ProductUpdates>
     );
-  },
+  }
+};
+
+/**
+ * Paginator with the `neutral` appearance on a `neutral-background` surface, outside the
+ * primary popover: the active dot uses `primary-interactive` and the others
+ * `neutral-interactiveHover`.
+ */
+export const neutralAppearance: Story = {
+  render: () => (
+    <Box backgroundColor="neutral-background" padding="4">
+      <ProductUpdates.Paginator
+        appearance="neutral"
+        totalItems={4}
+        activeIndex={1}
+        aria-label="Plan 2 de 4"
+      />
+    </Box>
+  )
 };

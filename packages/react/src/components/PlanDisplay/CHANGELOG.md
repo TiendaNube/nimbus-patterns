@@ -2,6 +2,12 @@
 
 PlanDisplay allows the user to present subscription plans and pricing. It features internal components to build plan cards with headers, prices, feature bullets, and footers — including featured-plan and gradient variants.
 
+## 2026-10-24 `1.2.2`
+
+#### 💡 Others
+
+- Documented the mobile composition of `PlanDisplay` (a `ScrollPane` of plan cards with neutral position dots, switched by the consumer at the `md` breakpoint) and added the `Mobile` and `Responsive` stories. `PlanDisplay` itself and its exports are unchanged. ([#202](https://github.com/TiendaNube/nimbus-patterns/issues/202))
+
 ## 2026-10-13 `1.2.1`
 
 ### 🐛 Bug fixes

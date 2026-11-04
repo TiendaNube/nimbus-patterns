@@ -70,3 +70,18 @@ import { CashierIcon, CheckIcon } from "@nimbus-ds/icons";
   </PlanDisplay.Card>
 </PlanDisplay>;
 ```
+
+## Mobile composition
+
+`PlanDisplay` always renders the grid and has no mobile, carousel or dots API. Below the `md` breakpoint (672px) the consumer swaps it for a composition of existing Nimbus pieces; the switch is owned by the consumer, with Box responsive `display` so that only the visible arrangement is exposed to assistive technologies and keyboard focus (see the `Responsive` story).
+
+The reference composition (`src/compositions/MobilePlanCarousel`, used by the `Mobile` and `Responsive` stories; it is **not** exported by the package) uses:
+
+- `ScrollPane` from `@nimbus-ds/components` with `showArrows`, `showScrollbar` and `scrollToItemOnClick` off, edge gradients on, no `enableGrabScroll`, and `contentContainerProps` of `margin="none"`, `gap="4"` and `px="4"` (16px gutters and gap). Nothing about `ScrollPane` changes.
+- One `ScrollPane.Item` per plan with `role="group"` named for the plan and no tab stop; the card goes inside it.
+- Scroll snapping set on the scroller reached through `scrollContainerRef` (`scroll-snap-type: x mandatory`, `scroll-padding-inline: 16px`), with item width equal to the scroll area minus 64px, so one plan rests fully visible with 16px of its neighbours peeking (the first plan at the start, the last with a 16px trailing gutter).
+- `ArrowLeft` and `ArrowRight` on the focused scroll area (`role="region"`, `tabIndex={0}`), which move one plan (smoothly, or instantly under `prefers-reduced-motion`); focus moving into a plan with the keyboard brings it into view.
+- `ProductUpdates.Paginator` with `appearance="neutral"` as non-interactive position dots below the scroll area, shown only with two or more plans, named by the localized position label.
+- A polite live region that announces the settled plan once per settle.
+
+The consumer supplies the strings: `scrollAreaLabel` (region name), `getPositionLabel(index, total)` (dots name and announcement, for example `Plan 2 de 4`) and each plan's `name`.

@@ -2,6 +2,16 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-10-24 `1.41.0`
+
+#### 🎉 New features
+
+- Added an optional `appearance` input (`"primary"` by default, or `"neutral"`) to `ProductUpdates.Paginator` (`@nimbus-ds/productupdates`) for use on a `neutral-background` surface. The default output is unchanged. ([#202](https://github.com/TiendaNube/nimbus-patterns/issues/202))
+
+#### 💡 Others
+
+- Documented the mobile composition of `PlanDisplay` (`@nimbus-ds/plan-display`) and added its `Mobile` and `Responsive` stories. ([#202](https://github.com/TiendaNube/nimbus-patterns/issues/202))
+
 ## 2026-10-21 `1.40.0`
 
 #### 🎉 New features
