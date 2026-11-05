@@ -6,6 +6,8 @@ export const externalLibs = {
   "@floating-ui/react": "@floating-ui/react",
   "@nimbus-ds/styles": "@nimbus-ds/styles",
   "@nimbus-ds/components": "@nimbus-ds/components",
+  "@nimbus-ds/components/next": "@nimbus-ds/components/next",
+  "@nimbus-ds/patterns/next": "@nimbus-ds/patterns/next",
   "@nimbus-ds/icons": "@nimbus-ds/icons",
   react: "react",
   "react-dom": "react-dom",

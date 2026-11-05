@@ -24,7 +24,9 @@ export const convertTsConfigPathsToWebpackAliases = () => {
       aliases[realPath] = aliasPath;
       return aliases;
     },
-    {} as Record<string, string>
+    {
+      "@nimbus-ds/patterns/next": path.join(rootDir, "packages/react/src/next"),
+    } as Record<string, string>
   );
 
   return paths;
