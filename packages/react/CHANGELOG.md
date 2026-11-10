@@ -2,6 +2,12 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-11-04 `1.40.1`
+
+#### 💡 Others
+
+- Updated `HelpLink` (`@nimbus-ds/help-link`) colors to match the Norte UI design: the icon container background is now `neutral-surfaceDisabled` and the icon color is `neutral-textLow`. Use a `Link` with `appearance="neutral"` as children so the text also renders in `neutral-textLow`. ([#219](https://github.com/TiendaNube/nimbus-patterns/pull/219) by [@FedeTrevi-se](https://github.com/FedeTrevi-se))
+
 ## 2026-10-21 `1.40.0`
 
 #### 🎉 New features
