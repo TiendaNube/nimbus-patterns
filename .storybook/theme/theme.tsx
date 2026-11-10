@@ -6,7 +6,33 @@ import { ThemeProvider, Theme } from "@nimbus-ds/styles";
 import { Box } from "@nimbus-ds/components";
 
 import light, { dark } from "./theme.definitions";
-import { themeVars, toProviderTheme } from "./themeVars";
+import {
+  hasNativeNorteUiThemes,
+  isNorteUiFallbackTheme,
+  themeVars,
+  toProviderTheme,
+} from "./themeVars";
+
+const NorteUiUnavailableNotice: React.FC = () => (
+  <div
+    role="alert"
+    data-nimbus-norteui-unavailable="true"
+    style={{
+      padding: "8px 12px",
+      marginBottom: "8px",
+      borderRadius: "4px",
+      border: "1px solid #b45309",
+      background: "#fffbeb",
+      color: "#78350f",
+      fontSize: "12px",
+    }}
+  >
+    Norte UI is unavailable: the installed <code>@nimbus-ds/styles</code> does
+    not include the native <code>next-norteui</code> /{" "}
+    <code>next-norteui-dark</code> themes yet. The legacy <code>next</code> /{" "}
+    <code>next-dark</code> themes are rendered instead.
+  </div>
+);
 
 export type NimbusThemeName = Theme | "next-norteui" | "next-norteui-dark";
 
@@ -134,6 +160,7 @@ export const ThemeDocsProvider: React.FC<any> = (props) => {
     storyThemeParam: storyParameters?.nimbusTheme,
     fileName: storyParameters?.fileName,
   });
+  const docsProviderTheme = toProviderTheme(resolvedTheme);
   const isResolvedDark =
     toolbarTheme === "side-by-side-dark" ||
     resolvedTheme === "dark" ||
@@ -142,8 +169,16 @@ export const ThemeDocsProvider: React.FC<any> = (props) => {
 
   return (
     <DocsContainer {...props} theme={isResolvedDark ? dark : light}>
-      <ThemeProvider theme={toProviderTheme(resolvedTheme)}>
-        <div data-nimbus-theme={resolvedTheme}>
+      <ThemeProvider theme={docsProviderTheme}>
+        <div
+          data-nimbus-theme={docsProviderTheme}
+          data-nimbus-requested-theme={resolvedTheme}
+          data-nimbus-provider-theme={docsProviderTheme}
+        >
+          {(isNorteUiFallbackTheme(resolvedTheme) ||
+            isNorteUiFallbackTheme(toolbarTheme)) && (
+            <NorteUiUnavailableNotice />
+          )}
           <Box backgroundColor="neutral-background" color="neutral-textHigh">
             {children}
           </Box>
@@ -175,9 +210,38 @@ export const ThemeNimbusProvider: React.FC<{
       ? "next-norteui-dark"
       : "next-norteui";
 
+    if (!hasNativeNorteUiThemes) {
+      // Norte UI themes are not installed: block the comparison instead of
+      // rendering `next` pretending to be `next-norteui`.
+      const leftProviderTheme = toProviderTheme(leftTheme);
+      return (
+        <ThemeProvider theme={leftProviderTheme}>
+          <div
+            data-nimbus-theme={leftProviderTheme}
+            data-nimbus-requested-theme={activeToolbarTheme}
+            data-nimbus-provider-theme={leftProviderTheme}
+            data-nimbus-comparison-blocked="true"
+            style={{ minHeight: "100%" }}
+          >
+            <NorteUiUnavailableNotice />
+            <Box
+              backgroundColor="neutral-background"
+              color="neutral-textHigh"
+              minHeight="100%"
+            >
+              {children}
+            </Box>
+          </div>
+        </ThemeProvider>
+      );
+    }
+
     return (
       <div
         data-nimbus-theme={activeToolbarTheme}
+        data-nimbus-provider-theme={`${toProviderTheme(
+          leftTheme
+        )}|${toProviderTheme(rightTheme)}`}
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
@@ -185,6 +249,11 @@ export const ThemeNimbusProvider: React.FC<{
           width: "100%",
         }}
       >
+        {isNorteUiFallbackTheme(activeToolbarTheme) && (
+          <div style={{ gridColumn: "1 / -1" }}>
+            <NorteUiUnavailableNotice />
+          </div>
+        )}
         <ThemeProvider
           theme={toProviderTheme(leftTheme)}
           data-nimbus-theme={leftTheme}
@@ -220,9 +289,17 @@ export const ThemeNimbusProvider: React.FC<{
     fileName: activeParameters?.fileName,
   });
 
+  const providerTheme = toProviderTheme(resolvedTheme);
+
   return (
-    <ThemeProvider theme={toProviderTheme(resolvedTheme)}>
-      <div data-nimbus-theme={resolvedTheme} style={{ minHeight: "100%" }}>
+    <ThemeProvider theme={providerTheme}>
+      <div
+        data-nimbus-theme={providerTheme}
+        data-nimbus-requested-theme={resolvedTheme}
+        data-nimbus-provider-theme={providerTheme}
+        style={{ minHeight: "100%" }}
+      >
+        {isNorteUiFallbackTheme(resolvedTheme) && <NorteUiUnavailableNotice />}
         <Box
           backgroundColor="neutral-background"
           color="neutral-textHigh"

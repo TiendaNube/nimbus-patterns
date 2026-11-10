@@ -119,6 +119,11 @@ const FALLBACK_THEME_VARS = {
       "5": "var(--nimbus-shadow-level-5)",
     },
   },
+  components: {
+    thumbnail: {
+      background: "var(--nimbus-components-thumbnail-background)",
+    },
+  },
   shape: {
     border: {
       radius: {
@@ -203,7 +208,7 @@ export const themeVars =
   (stylesModule as unknown as { themeVars?: typeof FALLBACK_THEME_VARS })
     .themeVars ?? FALLBACK_THEME_VARS;
 
-const hasNativeNorteUiThemes = Boolean(
+export const hasNativeNorteUiThemes = Boolean(
   (stylesModule as unknown as Record<string, unknown>).useNextThemeWarning
 );
 
@@ -221,3 +226,15 @@ export const toProviderTheme = (
   }
   return theme;
 };
+
+/**
+ * True when the theme requires Norte UI but the installed `@nimbus-ds/styles`
+ * has no native `next-norteui` / `next-norteui-dark` themes, so the provider
+ * would silently render the legacy `next` / `next-dark` themes instead.
+ */
+export const isNorteUiFallbackTheme = (theme?: string): boolean =>
+  !hasNativeNorteUiThemes &&
+  (theme === "next-norteui" ||
+    theme === "next-norteui-dark" ||
+    theme === "side-by-side" ||
+    theme === "side-by-side-dark");

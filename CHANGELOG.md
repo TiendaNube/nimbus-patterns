@@ -3,6 +3,18 @@
 This is the log of notable changes to the Nimbus Patterns that are developer-facing.
 Package-specific changes not released in any package will be added here just before the release. Until then, you can find them in changelogs of the individual packages (see [packages](./packages) directory).
 
+## 2026-11-10
+
+#### 🎉 New features
+
+- Exported the `@nimbus-ds/patterns/next` subpath (`@nimbus-ds/patterns` minor). ([#215](https://github.com/TiendaNube/nimbus-patterns/pull/215))
+- Storybook: 6-theme selector with side-by-side mode and an interactive token catalog. ([#215](https://github.com/TiendaNube/nimbus-patterns/pull/215))
+- Added the base-invariance gates `check:base-invariance`, `check:next-breaking` and `check:no-rc-deps`. ([#215](https://github.com/TiendaNube/nimbus-patterns/pull/215))
+
+#### 🐛 Bug fixes
+
+- Webpack aliases now register an exact match (`$`) for parent paths that have subpaths, avoiding prefix collisions between `@nimbus-ds/patterns` and `@nimbus-ds/patterns/next`. ([#215](https://github.com/TiendaNube/nimbus-patterns/pull/215))
+
 ## 2026-07-30
 
 #### 🐛 Bug fixes

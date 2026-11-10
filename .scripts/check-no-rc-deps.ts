@@ -35,7 +35,7 @@ const isForbiddenSpecifier = (
     return `Forbidden local protocol specifier "${trimmed}"`;
   }
 
-  if (/-rc\.|-alpha\.|-beta\.|-next\./i.test(trimmed)) {
+  if (/-(?:rc|alpha|beta|next)(?:[.\-0-9]|\b)/i.test(trimmed)) {
     if (allowLegacyBuildToolRc && LEGACY_ALLOWED_RC_PACKAGES.has(pkgName)) {
       return null;
     }
@@ -90,7 +90,10 @@ export const checkNoRcDeps = (
         continue;
       }
       for (const [depName, specifier] of Object.entries(deps)) {
-        if (!depName.startsWith("@nimbus-ds/") || typeof specifier !== "string") {
+        if (
+          !depName.startsWith("@nimbus-ds/") ||
+          typeof specifier !== "string"
+        ) {
           continue;
         }
         const reason = isForbiddenSpecifier(
@@ -157,5 +160,7 @@ if (require.main === module) {
     });
     process.exit(1);
   }
-  console.log("✅ No forbidden RC or file: dependencies on @nimbus-ds/* found.");
+  console.log(
+    "✅ No forbidden RC or file: dependencies on @nimbus-ds/* found."
+  );
 }

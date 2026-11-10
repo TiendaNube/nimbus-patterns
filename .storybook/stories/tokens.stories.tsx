@@ -1,8 +1,13 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { Meta, StoryObj } from "@storybook/react";
 import tokens from "@nimbus-ds/tokens/dist/js/tokens";
 import { ThemeProvider } from "@nimbus-ds/styles";
-import { themeVars, toProviderTheme } from "../theme/themeVars";
+import {
+  hasNativeNorteUiThemes,
+  themeVars,
+  toProviderTheme,
+} from "../theme/themeVars";
 
 type CatalogCategory =
   | "all"
@@ -583,8 +588,8 @@ const TokenCatalog: React.FC<TokenCatalogProps> = ({
       !darkProbeRef.current ||
       !nextProbeRef.current ||
       !nextDarkProbeRef.current ||
-      !nextNorteuiProbeRef.current ||
-      !nextNorteuiDarkProbeRef.current
+      (hasNativeNorteUiThemes &&
+        (!nextNorteuiProbeRef.current || !nextNorteuiDarkProbeRef.current))
     ) {
       return;
     }
@@ -593,12 +598,12 @@ const TokenCatalog: React.FC<TokenCatalogProps> = ({
     const darkStyle = window.getComputedStyle(darkProbeRef.current);
     const nextStyle = window.getComputedStyle(nextProbeRef.current);
     const nextDarkStyle = window.getComputedStyle(nextDarkProbeRef.current);
-    const nextNorteuiStyle = window.getComputedStyle(
-      nextNorteuiProbeRef.current
-    );
-    const nextNorteuiDarkStyle = window.getComputedStyle(
-      nextNorteuiDarkProbeRef.current
-    );
+    const nextNorteuiStyle = nextNorteuiProbeRef.current
+      ? window.getComputedStyle(nextNorteuiProbeRef.current)
+      : null;
+    const nextNorteuiDarkStyle = nextNorteuiDarkProbeRef.current
+      ? window.getComputedStyle(nextNorteuiDarkProbeRef.current)
+      : null;
 
     const varNames = collectAllCssVarNames(themeVars);
     const nextComputed: Record<string, ThemeValueMap> = {};
@@ -609,10 +614,14 @@ const TokenCatalog: React.FC<TokenCatalogProps> = ({
         dark: darkStyle.getPropertyValue(varName).trim(),
         next: nextStyle.getPropertyValue(varName).trim(),
         "next-dark": nextDarkStyle.getPropertyValue(varName).trim(),
-        "next-norteui": nextNorteuiStyle.getPropertyValue(varName).trim(),
+        // Without native Norte UI themes the probes fall back to next/next-dark,
+        // so keep the static token values instead of the computed fallback.
+        "next-norteui": nextNorteuiStyle
+          ? nextNorteuiStyle.getPropertyValue(varName).trim()
+          : "",
         "next-norteui-dark": nextNorteuiDarkStyle
-          .getPropertyValue(varName)
-          .trim(),
+          ? nextNorteuiDarkStyle.getPropertyValue(varName).trim()
+          : "",
       };
     }
 
@@ -674,7 +683,9 @@ const TokenCatalog: React.FC<TokenCatalogProps> = ({
     if (onlyNextDiff) {
       return primitiveRamps.filter(
         (ramp) =>
-          (ramp.group === "next" || ramp.group === "primary") &&
+          (ramp.group === "next" ||
+            ramp.group === "primary" ||
+            ramp.group.startsWith("norteui-")) &&
           matchesQuery([
             ramp.group,
             ...ramp.steps.map((s) => `${s.step} ${s.value}`),
@@ -764,6 +775,44 @@ const TokenCatalog: React.FC<TokenCatalogProps> = ({
     { id: "typography-motion", label: "Typography & Motion" },
   ];
 
+  const probes = (
+    <div
+      aria-hidden="true"
+      data-testid="nimbus-tokens-probes-portal"
+      style={{
+        position: "absolute",
+        width: 0,
+        height: 0,
+        overflow: "hidden",
+        pointerEvents: "none",
+        opacity: 0,
+      }}
+    >
+      <ThemeProvider theme="base">
+        <div ref={baseProbeRef} data-nimbus-base-probe="true" />
+      </ThemeProvider>
+      <ThemeProvider theme="dark">
+        <div ref={darkProbeRef} />
+      </ThemeProvider>
+      <ThemeProvider theme="next">
+        <div ref={nextProbeRef} />
+      </ThemeProvider>
+      <ThemeProvider theme="next-dark">
+        <div ref={nextDarkProbeRef} />
+      </ThemeProvider>
+      {hasNativeNorteUiThemes && (
+        <>
+          <ThemeProvider theme={toProviderTheme("next-norteui")}>
+            <div ref={nextNorteuiProbeRef} />
+          </ThemeProvider>
+          <ThemeProvider theme={toProviderTheme("next-norteui-dark")}>
+            <div ref={nextNorteuiDarkProbeRef} />
+          </ThemeProvider>
+        </>
+      )}
+    </div>
+  );
+
   return (
     <div
       style={{
@@ -778,37 +827,12 @@ const TokenCatalog: React.FC<TokenCatalogProps> = ({
         gap: themeVars.spacing["6"],
       }}
     >
-      {/* Hidden 0x0 probes to read live CSS custom properties across all 6 themes */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          width: 0,
-          height: 0,
-          overflow: "hidden",
-          pointerEvents: "none",
-          opacity: 0,
-        }}
-      >
-        <ThemeProvider theme="base">
-          <div ref={baseProbeRef} />
-        </ThemeProvider>
-        <ThemeProvider theme="dark">
-          <div ref={darkProbeRef} />
-        </ThemeProvider>
-        <ThemeProvider theme="next">
-          <div ref={nextProbeRef} />
-        </ThemeProvider>
-        <ThemeProvider theme="next-dark">
-          <div ref={nextDarkProbeRef} />
-        </ThemeProvider>
-        <ThemeProvider theme={toProviderTheme("next-norteui")}>
-          <div ref={nextNorteuiProbeRef} />
-        </ThemeProvider>
-        <ThemeProvider theme={toProviderTheme("next-norteui-dark")}>
-          <div ref={nextNorteuiDarkProbeRef} />
-        </ThemeProvider>
-      </div>
+      {/* Hidden 0x0 probes to read live CSS custom properties across all 6 themes.
+          Portaled to document.body so they never inherit variables from the
+          outer Storybook ThemeProvider (e.g. dark). */}
+      {typeof document !== "undefined"
+        ? createPortal(probes, document.body)
+        : probes}
 
       {/* Header & Summary */}
       <div
@@ -1435,9 +1459,14 @@ const TokenCatalog: React.FC<TokenCatalogProps> = ({
                     textTransform: "capitalize",
                   }}
                 >
-                  {ramp.group}
+                  {ramp.group === "next"
+                    ? "Next (Legacy) Primary Ramp"
+                    : ramp.group === "norteui-primary"
+                    ? "Norte UI Primary Ramp"
+                    : ramp.group}
                 </strong>
-                {ramp.group === "next" && (
+                {(ramp.group === "next" ||
+                  ramp.group === "norteui-primary") && (
                   <span
                     style={{
                       padding: "2px 8px",
@@ -1448,7 +1477,7 @@ const TokenCatalog: React.FC<TokenCatalogProps> = ({
                       fontWeight: 600,
                     }}
                   >
-                    Norte UI Primary Ramp
+                    {ramp.group === "next" ? "Legacy" : "Norte UI"}
                   </span>
                 )}
               </div>
@@ -1751,6 +1780,12 @@ const TokenCatalog: React.FC<TokenCatalogProps> = ({
                     <div style={{ fontWeight: 700 }}>
                       next: {entry.values.next}
                     </div>
+                    {entry.values["next-norteui"].toLowerCase() !==
+                      entry.values.base.toLowerCase() && (
+                      <div style={{ fontWeight: 700 }}>
+                        next-norteui: {entry.values["next-norteui"]}
+                      </div>
+                    )}
                   </div>
                 )}
 
@@ -1853,6 +1888,21 @@ const TokenCatalog: React.FC<TokenCatalogProps> = ({
                     {entry.values.base}
                   </code>
                 </div>
+
+                {entry.hasNextDiff &&
+                  entry.values["next-norteui"].toLowerCase() !==
+                    entry.values.base.toLowerCase() && (
+                    <div
+                      style={{
+                        fontFamily: themeVars.fontFamily.mono,
+                        fontSize: "11px",
+                        fontWeight: 700,
+                        color: themeVars.colors.neutral.textLow,
+                      }}
+                    >
+                      next-norteui: {entry.values["next-norteui"]}
+                    </div>
+                  )}
 
                 {(entry.subcategory.startsWith("fontSize") ||
                   entry.subcategory === "fontFamily" ||

@@ -100,33 +100,52 @@ export const verifyNoUnexpectedBaseComponentChanges = (
   }
 
   const validRef = validateGitRef(rootDir, baseRef);
-  let diffOutput = "";
+  const runGit = (args: string[]): string =>
+    execFileSync("git", args, {
+      cwd: rootDir,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+
+  let committedOutput = "";
   try {
-    diffOutput = execFileSync(
-      "git",
-      ["diff", "--no-renames", "--name-only", `${validRef}...HEAD`],
-      {
-        cwd: rootDir,
-        encoding: "utf8",
-        stdio: ["ignore", "pipe", "pipe"],
-      }
-    );
+    committedOutput = runGit([
+      "diff",
+      "--no-renames",
+      "--name-only",
+      `${validRef}...HEAD`,
+    ]);
   } catch {
-    diffOutput = execFileSync(
-      "git",
-      ["diff", "--no-renames", "--name-only", validRef],
-      {
-        cwd: rootDir,
-        encoding: "utf8",
-        stdio: ["ignore", "pipe", "pipe"],
-      }
-    );
+    committedOutput = runGit(["diff", "--no-renames", "--name-only", validRef]);
   }
 
-  const changedFiles = diffOutput
-    .split("\n")
-    .map((line) => line.trim())
-    .filter(Boolean);
+  // Staged, unstaged and untracked changes are collected separately so a
+  // staged change reverted only in the working tree ("MM") is still detected.
+  const stagedOutput = runGit([
+    "diff",
+    "--no-renames",
+    "--name-only",
+    "--cached",
+  ]);
+  const unstagedOutput = runGit(["diff", "--no-renames", "--name-only"]);
+  const untrackedOutput = runGit([
+    "ls-files",
+    "--others",
+    "--exclude-standard",
+    "--",
+    "packages/react/src/components",
+    "packages/react/src/next",
+  ]);
+
+  const changedFiles = Array.from(
+    new Set(
+      [committedOutput, stagedOutput, unstagedOutput, untrackedOutput]
+        .join("\n")
+        .split("\n")
+        .map((line) => line.trim())
+        .filter(Boolean)
+    )
+  );
 
   const hasNextChanges = changedFiles.some((f) =>
     f.startsWith("packages/react/src/next/")
