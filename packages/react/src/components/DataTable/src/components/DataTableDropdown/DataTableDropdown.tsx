@@ -12,6 +12,7 @@ import { DataTableDropdownProps } from "./dataTableDropdown.types";
  */
 const DataTableDropdown: React.FC<DataTableDropdownProps> = ({
   placeholder,
+  trigger,
   children,
   ...rest
 }: DataTableDropdownProps) => {
@@ -40,30 +41,32 @@ const DataTableDropdown: React.FC<DataTableDropdownProps> = ({
         onVisibility={setDropdownVisibility}
         width={{ xs: "180px", md: "240px" }}
       >
-        <Box
-          {...rest}
-          as="button"
-          type="button"
-          cursor="pointer"
-          backgroundColor="neutral-background"
-          boxShadow={{ focusWithin: "focusRing" }}
-          borderWidth="1"
-          borderStyle="solid"
-          borderColor="neutral-interactive"
-          borderRadius="2"
-          display="flex"
-          alignItems="center"
-          justifyContent="space-between"
-          gap="2"
-          py="1"
-          px="2"
-          width={{ xs: "180px", md: "240px" }}
-        >
-          <Text color="neutral-textLow" fontSize="base" lineHeight="base">
-            {placeholder}
-          </Text>
-          <Icon source={<ChevronDownIcon />} color="neutral-textLow" />
-        </Box>
+        {trigger ?? (
+          <Box
+            {...rest}
+            as="button"
+            type="button"
+            cursor="pointer"
+            backgroundColor="neutral-background"
+            boxShadow={{ focusWithin: "focusRing" }}
+            borderWidth="1"
+            borderStyle="solid"
+            borderColor="neutral-interactive"
+            borderRadius="2"
+            display="flex"
+            alignItems="center"
+            justifyContent="space-between"
+            gap="2"
+            py="1"
+            px="2"
+            width={{ xs: "180px", md: "240px" }}
+          >
+            <Text color="neutral-textLow" fontSize="base" lineHeight="base">
+              {placeholder}
+            </Text>
+            <Icon source={<ChevronDownIcon />} color="neutral-textLow" />
+          </Box>
+        )}
       </Popover>
     </DataTableDropdownContext.Provider>
   );
