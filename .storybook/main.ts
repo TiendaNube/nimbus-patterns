@@ -10,6 +10,7 @@ const config: StorybookConfig = {
   stories: prototypePreview
     ? ["../packages/react/src/prototypes/**/*.stories.@(js|jsx|ts|tsx)"]
     : [
+        "./stories/*.stories.@(js|jsx|ts|tsx)",
         "../packages/react/**/*.stories.@(js|jsx|ts|tsx)",
         "stories/templates/*.stories.@(js|jsx|ts|tsx)",
       ],

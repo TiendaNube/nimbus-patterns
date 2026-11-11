@@ -7,6 +7,8 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist",
+    "next",
+    "CHANGELOG.md",
     "README.md"
   ],
   "sideEffects": false,
@@ -42,6 +44,11 @@
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.js"
+    },
+    "./next": {
+      "types": "./dist/next/index.d.ts",
+      "import": "./dist/next/index.js",
+      "require": "./dist/next/index.js"
     },
     "./components-props.json": {
       "import": "./dist/components-props.json",
@@ -150,6 +157,13 @@
     "./ThumbnailWithAction": {
       "import": "./dist/ThumbnailWithAction/index.js",
       "require": "./dist/ThumbnailWithAction/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "next": [
+        "./dist/next/index.d.ts"
+      ]
     }
   }
 }

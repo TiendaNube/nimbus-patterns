@@ -16,11 +16,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - uses: ./.github/actions/setup-node-deps
 
       - name: Run lint
         run: yarn lint
+
+      - name: Check next-evolution gates
+        run: |
+          yarn check:base-invariance --base-ref "origin/${{ github.base_ref }}" --skip-jest
+          yarn check:next-breaking --base-ref "origin/${{ github.base_ref }}"
+          yarn check:no-rc-deps
 
       - name: Run tests
         run: yarn test:ci

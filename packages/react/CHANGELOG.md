@@ -2,6 +2,17 @@
 
 Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team to empower and enhance more stories every day, with simplicity, accessibility, consistency and performance.
 
+## 2026-11-10
+
+#### 🎉 New features
+
+- Added the `@nimbus-ds/patterns/next` subpath export so Norte UI evolution patterns can be consumed separately from the stable entry point. ([#215](https://github.com/TiendaNube/nimbus-patterns/pull/215))
+
+#### 💡 Others
+
+- Added a 6-theme selector (`base`, `dark`, `next`, `next-dark`, `next-norteui`, `next-norteui-dark`), a side-by-side comparison mode and an interactive token catalog to Storybook. ([#215](https://github.com/TiendaNube/nimbus-patterns/pull/215))
+- Added the base-invariance gates `check:base-invariance`, `check:next-breaking` and `check:no-rc-deps`. ([#215](https://github.com/TiendaNube/nimbus-patterns/pull/215))
+
 ## 2026-11-04 `1.40.1`
 
 #### 💡 Others

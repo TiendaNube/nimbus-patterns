@@ -10,6 +10,8 @@ const config: Config.InitialOptions = {
   testPathIgnorePatterns: ["/node_modules/", "/packages/react/src/prototypes/"],
   coveragePathIgnorePatterns: ["dist", "/packages/react/src/prototypes/"],
   moduleNameMapper: {
+    "^@nimbus-ds/patterns/next(.*)$": "<rootDir>/packages/react/src/next$1",
+    "^@nimbus-ds/patterns$": "<rootDir>/packages/react/src",
     "@common(.*)$": "<rootDir>/packages/react/src/common$1",
     // components
     "@nimbus-ds/app-shell":

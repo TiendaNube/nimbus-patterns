@@ -1,11 +1,11 @@
 import {
   utils,
   rules,
-  plugins,
   configuration as baseConfiguration,
 } from "@nimbus-ds/webpack";
 
 import { externalLibs, base, getConfiguration } from "./config";
+import { plugins } from "./plugins";
 
 export const configuration = {
   ...baseConfiguration,
