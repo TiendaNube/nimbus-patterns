@@ -47,11 +47,14 @@ export class MoveFilesIntoDistFolderPlugin {
             ? trailingWhitespaceMatch[1]
             : "";
 
-          // Overwrite package.json in the root project, preserving trailing whitespace if it had it.
+          // Overwrite package.json in the root project only when content changed,
+          // so concurrent workspace processes and file watchers never see a truncated file.
           const newPackageJsonContent =
             JSON.stringify(transformedPackageJson, null, 2) +
             trailingWhitespace;
-          await fs.writeFile(pkgPath, newPackageJsonContent);
+          if (newPackageJsonContent !== packageJsonRaw) {
+            await fs.writeFile(pkgPath, newPackageJsonContent);
+          }
 
           // Move additional files (defaults: CHANGELOG.md, README.md)
           const filesToMove = this.options.files || [
