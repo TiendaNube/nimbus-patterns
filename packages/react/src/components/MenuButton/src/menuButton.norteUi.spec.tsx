@@ -66,6 +66,20 @@ describe("GIVEN <MenuButton /> under each theme", () => {
           "neutral-background"
         );
       });
+
+      it("SHOULD render the accordion items without gap", () => {
+        render(
+          <MenuButton.Accordion
+            open
+            contentid="content-id"
+            menuButton={{ label: labelText }}
+          >
+            {contentText}
+          </MenuButton.Accordion>
+        );
+        const items = screen.getByText(contentText);
+        expect(tokensOf(items)).toMatch(/--gap-xs__\w+: 0;/);
+      });
     }
   );
 
@@ -95,6 +109,21 @@ describe("GIVEN <MenuButton /> under each theme", () => {
         );
         expect(tokensOf(screen.getByTestId("accordion-element"))).toContain(
           "primary-surface"
+        );
+      });
+
+      it("SHOULD keep the 0-5 gap between accordion items", () => {
+        render(
+          <MenuButton.Accordion
+            open
+            contentid="content-id"
+            menuButton={{ label: labelText }}
+          >
+            {contentText}
+          </MenuButton.Accordion>
+        );
+        expect(tokensOf(screen.getByText(contentText))).toContain(
+          "var(--nimbus-spacing-0-5)"
         );
       });
     }

@@ -6,7 +6,7 @@ MenuButton component is meant to be used inside Menus and navigation, and allows
 
 #### 💡 Others
 
-- Under the `next-norteui` and `next-norteui-dark` themes only, `MenuButton` and `MenuButton.Accordion` use the Norte UI tokens: rest text and icon `neutral-textLow`, hover and pressed background `neutral-surfaceHighlight`, active background `neutral-background`. `base`, `dark`, `next` and `next-dark` are unchanged.
+- Under the `next-norteui` and `next-norteui-dark` themes only, `MenuButton` and `MenuButton.Accordion` use the Norte UI tokens: rest text and icon `neutral-textLow`, hover and pressed background `neutral-surfaceHighlight`, active background `neutral-background`, no gap between Accordion items. `base`, `dark`, `next` and `next-dark` are unchanged.
 
 ## 2026-03-04 `2.0.3`
 

@@ -64,6 +64,7 @@ const MenuButtonAccordion = forwardRef(
     );
 
     const isNorteUi = useIsNorteUiTheme();
+    const itemsGap = isNorteUi ? "none" : "0-5";
 
     const getBackgroundColor = () => {
       if (isNorteUi) {
@@ -103,7 +104,7 @@ const MenuButtonAccordion = forwardRef(
             overflow="hidden"
             display="flex"
             flexDirection="column"
-            gap="0-5"
+            gap={itemsGap}
             pl="6"
             pb="1"
             pr="1"
@@ -123,7 +124,7 @@ const MenuButtonAccordion = forwardRef(
                 minWidth="200px"
                 display="flex"
                 flexDirection="column"
-                gap="0-5"
+                gap={itemsGap}
               >
                 {children}
               </Box>
