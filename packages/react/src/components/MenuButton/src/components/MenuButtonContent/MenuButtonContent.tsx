@@ -4,6 +4,7 @@ import { Icon, Box, Text, type BoxProperties } from "@nimbus-ds/components";
 import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
 import { MenuButtonContentProps } from "./menuButtonContent.types";
+import { useIsNorteUiTheme } from "../../hooks";
 
 const MenuButtonContent = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
@@ -23,6 +24,7 @@ const MenuButtonContent = forwardRef<
     },
     ref
   ) => {
+    const isNorteUi = useIsNorteUiTheme();
     const collapsedProps: BoxProperties = !expanded
       ? {
           justifyContent: "center",
@@ -39,12 +41,21 @@ const MenuButtonContent = forwardRef<
         onClick={onClick}
         alignItems="center"
         textDecoration="none"
-        backgroundColor={{
-          xs: active ? "primary-surface" : "transparent",
-          hover: "primary-surface",
-          active: "primary-surfaceHighlight",
-          disabled: "neutral-surfaceDisabled",
-        }}
+        backgroundColor={
+          isNorteUi
+            ? {
+                xs: active ? "neutral-background" : "transparent",
+                hover: "neutral-surfaceHighlight",
+                active: "neutral-surfaceHighlight",
+                disabled: "neutral-surfaceDisabled",
+              }
+            : {
+                xs: active ? "primary-surface" : "transparent",
+                hover: "primary-surface",
+                active: "primary-surfaceHighlight",
+                disabled: "neutral-surfaceDisabled",
+              }
+        }
         borderRadius="2"
         borderWidth="none"
         cursor={{
