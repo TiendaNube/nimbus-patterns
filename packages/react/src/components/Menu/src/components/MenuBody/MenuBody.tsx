@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { Box, BoxProperties } from "@nimbus-ds/components";
 import { useMenuExpandContext } from "@common/contexts";
+import { useIsNorteUiTheme } from "../../hooks";
 
 import { MenuBodyProps } from "./menuBody.types";
 
@@ -10,20 +11,14 @@ const MenuBody: React.FC<MenuBodyProps> = ({
   ...rest
 }: MenuBodyProps) => {
   const { expanded } = useMenuExpandContext(false);
+  const isNorteUi = useIsNorteUiTheme();
 
-  const dynamicProps: BoxProperties = useMemo(
-    () =>
-      expanded
-        ? {
-            pb: "4",
-            px: "2",
-          }
-        : {
-            alignItems: "center",
-            pl: "1",
-          },
-    [expanded]
-  );
+  const dynamicProps: BoxProperties = useMemo(() => {
+    if (expanded) return { pb: "4", px: "2" };
+    return isNorteUi
+      ? { alignItems: "center", pb: "4", px: "2" }
+      : { alignItems: "center", pl: "1" };
+  }, [expanded, isNorteUi]);
 
   return (
     <Box
