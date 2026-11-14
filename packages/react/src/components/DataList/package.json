@@ -29,6 +29,6 @@
     "url": "https://github.com/TiendaNube/nimbus-patterns/issues"
   },
   "devDependencies": {
-    "@faker-js/faker": "^7.6.0"
+    "@faker-js/faker": "^10.6.0"
   }
 }
