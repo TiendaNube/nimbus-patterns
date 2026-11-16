@@ -1,0 +1,1 @@
+export { useIsNorteUiTheme } from "./useIsNorteUiTheme";
