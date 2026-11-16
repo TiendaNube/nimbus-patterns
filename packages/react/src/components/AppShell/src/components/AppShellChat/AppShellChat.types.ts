@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { BoxProps } from "@nimbus-ds/components";
 
 /**
@@ -21,6 +22,12 @@ export interface AppShellChatProperties {
    * When omitted, defaults to the responsive `{ xs: "300px", xxl: "378px" }`.
    */
   collapsedWidth?: NonNullable<BoxProps["maxWidth"]>;
+  /**
+   * Optional consumer-owned resize handle rendered right before the chat panel.
+   * Under the Norte UI card layout it is placed in the gap between the content
+   * card and the chat card; otherwise it is rendered inline before the panel.
+   */
+  resizeHandle?: ReactNode;
 }
 
 export type AppShellChatProps = AppShellChatProperties &

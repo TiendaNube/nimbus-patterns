@@ -16,6 +16,7 @@ import { AppShellHeader, AppShellBody, AppShellChat } from "./components";
 
 import { AppShellProps, AppShellComponents } from "./appShell.types";
 import { AppShellMenuContext } from "./contexts/AppShellMenuContext";
+import { AppShellLayoutContext } from "./contexts/AppShellLayoutContext";
 import { useIsNorteUiTheme } from "./hooks";
 
 const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
@@ -90,6 +91,9 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
     []
   );
 
+  const hasMenu = !!menu;
+  const appShellLayoutContext = useMemo(() => ({ hasMenu }), [hasMenu]);
+
   const popoverAppShellMenuContext = useMemo(
     () => ({
       isMenuPopover: true,
@@ -135,7 +139,9 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         // Fully customizable due to client needs
         {...contentProperties}
       >
-        {children}
+        <AppShellLayoutContext.Provider value={appShellLayoutContext}>
+          {children}
+        </AppShellLayoutContext.Provider>
       </Box>
       {isPopoverMode && flyoutOpen && (
         <AppShellMenuContext.Provider value={popoverAppShellMenuContext}>

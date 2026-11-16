@@ -3,6 +3,7 @@ import React, { useMemo, useState } from "react";
 import { Box } from "@nimbus-ds/components";
 
 import { useIsNorteUiTheme } from "../../hooks";
+import { useAppShellLayoutContext } from "../../contexts/AppShellLayoutContext";
 import { AppShellBodyContext } from "./AppShellBody.context";
 import { AppShellBodyProps } from "./AppShellBody.types";
 
@@ -11,18 +12,21 @@ const AppShellBody: React.FC<AppShellBodyProps> = ({
   ...rest
 }: AppShellBodyProps) => {
   const isNorteUi = useIsNorteUiTheme();
+  const { hasMenu } = useAppShellLayoutContext();
+  /** Norte UI draws the content card only when a menu sits next to it. */
+  const isCardLayout = isNorteUi && hasMenu;
   const [bodyElement, setBodyElement] = useState<HTMLDivElement | null>(null);
   const [chatSlot, setChatSlot] = useState<HTMLDivElement | null>(null);
 
   const contextValue = useMemo(
-    () => ({ chatSlot, bodyElement }),
+    () => ({ isCardLayout: true, chatSlot, bodyElement }),
     [chatSlot, bodyElement]
   );
 
-  if (!isNorteUi) {
+  if (!isCardLayout) {
     return (
       <Box
-        backgroundColor="neutral-surface"
+        backgroundColor={isNorteUi ? "neutral-background" : "neutral-surface"}
         width="100%"
         overflow="auto"
         height="100%"
@@ -39,6 +43,7 @@ const AppShellBody: React.FC<AppShellBodyProps> = ({
    * Norte UI: the page content lives inside a rounded "content card" that is
    * the scroll container. AppShell.Chat portals into the slot rendered next
    * to the card, so it becomes a sibling card wherever it is nested.
+   * Below `md` (where AppShell hides the menu) the card chrome is removed.
    */
   return (
     <AppShellBodyContext.Provider value={contextValue}>
@@ -48,9 +53,9 @@ const AppShellBody: React.FC<AppShellBodyProps> = ({
         height="100%"
         minHeight="0"
         overflow="hidden"
-        gap="2"
-        paddingRight="2"
-        paddingBottom="2"
+        gap={{ xs: "none", md: "2" }}
+        paddingRight={{ xs: "none", md: "2" }}
+        paddingBottom={{ xs: "none", md: "2" }}
         {...rest}
         ref={setBodyElement}
         flex="1 1 auto"
@@ -64,9 +69,9 @@ const AppShellBody: React.FC<AppShellBodyProps> = ({
           overflow="auto"
           backgroundColor="neutral-background"
           borderStyle="solid"
-          borderWidth="1"
+          borderWidth={{ xs: "none", md: "1" }}
           borderColor="neutral-surfaceHighlight"
-          borderRadius="3"
+          borderRadius={{ xs: "none", md: "3" }}
         >
           {children}
         </Box>

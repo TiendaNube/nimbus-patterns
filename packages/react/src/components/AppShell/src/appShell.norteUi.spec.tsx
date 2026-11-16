@@ -94,7 +94,7 @@ describe("GIVEN <AppShell /> under each theme", () => {
         </div>
       );
       render(
-        <AppShell>
+        <AppShell menu={<div>Menu</div>}>
           <AppShell.Body data-testid="body-element">
             <div data-testid="page-content">Page</div>
             <ChatWrapper />
@@ -105,6 +105,63 @@ describe("GIVEN <AppShell /> under each theme", () => {
       expect(screen.getByTestId("chat-wrapper").contains(chat)).toBe(false);
       expect(getContentCard()?.contains(chat)).toBe(false);
       expect(screen.getByTestId("body-element").contains(chat)).toBe(true);
+    });
+  });
+
+  describe("WHEN AppShell.Chat receives a resizeHandle", () => {
+    const renderWithHandle = () =>
+      render(
+        <AppShell menu={<div>Menu</div>}>
+          <AppShell.Body data-testid="body-element">
+            <div data-testid="page-content">Page</div>
+            <AppShell.Chat
+              data-testid="chat-element"
+              resizeHandle={<div data-testid="resize-handle" />}
+            >
+              Chat
+            </AppShell.Chat>
+          </AppShell.Body>
+        </AppShell>
+      );
+
+    it("SHOULD place the handle in the gap outside the content card under Norte UI", () => {
+      setTheme("next-norteui");
+      renderWithHandle();
+      const handle = screen.getByTestId("resize-handle");
+      const chat = screen.getByTestId("chat-element");
+      expect(getContentCard()?.contains(handle)).toBe(false);
+      expect(screen.getByTestId("body-element").contains(handle)).toBe(true);
+      expect(handle.parentElement?.nextElementSibling).toBe(chat);
+    });
+
+    it("SHOULD render the handle inline right before the chat in other themes", () => {
+      setTheme("base");
+      renderWithHandle();
+      const handle = screen.getByTestId("resize-handle");
+      expect(handle.parentElement).toBe(screen.getByTestId("body-element"));
+      expect(handle.nextElementSibling).toBe(
+        screen.getByTestId("chat-element")
+      );
+    });
+  });
+
+  describe("WHEN the theme is next-norteui and there is no menu", () => {
+    beforeEach(() => setTheme("next-norteui"));
+
+    it("SHOULD not draw the content card nor portal the chat", () => {
+      render(
+        <AppShell>
+          <AppShell.Body data-testid="body-element">
+            <div data-testid="page-content">Page</div>
+            <AppShell.Chat data-testid="chat-element">Chat</AppShell.Chat>
+          </AppShell.Body>
+        </AppShell>
+      );
+      const body = screen.getByTestId("body-element");
+      expect(screen.getByTestId("page-content").parentElement).toBe(body);
+      expect(screen.getByTestId("chat-element").parentElement).toBe(body);
+      expect(tokensOf(body)).toContain("neutral-background");
+      expect(tokensOf(body)).not.toContain("nimbus-shape-border-radius-3");
     });
   });
 

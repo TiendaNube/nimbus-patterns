@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 
 import { Box } from "@nimbus-ds/components";
 
-import { useIsNorteUiTheme } from "../../hooks";
 import { useAppShellBodyContext } from "../AppShellBody/AppShellBody.context";
 import { AppShellChatProps } from "./AppShellChat.types";
 
@@ -21,18 +20,20 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
   expanded: controlledExpanded,
   defaultExpanded = false,
   collapsedWidth,
+  resizeHandle,
   ...rest
 }: AppShellChatProps) => {
-  const isNorteUi = useIsNorteUiTheme();
-  const { chatSlot, bodyElement } = useAppShellBodyContext();
+  /** Norte UI card layout (provided by AppShell.Body). */
+  const { isCardLayout, chatSlot, bodyElement } = useAppShellBodyContext();
   const placeholderRef = useRef<HTMLDivElement>(null);
   /**
    * Norte UI: measure against the AppShell.Body (the chat itself is portaled
    * into a `display: contents` slot that has no box of its own).
    */
   const getMeasureTarget = useCallback(
-    () => (isNorteUi && bodyElement) || placeholderRef.current?.parentElement,
-    [isNorteUi, bodyElement]
+    () =>
+      (isCardLayout && bodyElement) || placeholderRef.current?.parentElement,
+    [isCardLayout, bodyElement]
   );
   const [uncontrolledExpanded] = useState(defaultExpanded);
   const isExpanded = controlledExpanded ?? uncontrolledExpanded;
@@ -118,8 +119,8 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
     minWidth: collapsedWidth ?? COLLAPSED_WIDTH,
     top: "0",
     flex: "1",
-    py: isNorteUi ? undefined : "2",
-    mx: isNorteUi ? undefined : "2",
+    py: isCardLayout ? undefined : "2",
+    mx: isCardLayout ? undefined : "2",
   } as const;
 
   const expandedProps = {
@@ -159,21 +160,45 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
   } as const;
 
   const baseProps = portalMounted ? expandedProps : collapsedProps;
-  const norteUiProps = portalMounted
+  const cardLayoutProps = portalMounted
     ? { ...norteUiExpandedProps, ...norteUiCardProps }
     : { ...collapsedProps, ...norteUiCardProps };
-  const activeProps = isNorteUi ? norteUiProps : baseProps;
+  const activeProps = isCardLayout ? cardLayoutProps : baseProps;
+
+  /**
+   * Norte UI: the handle sits in the gap between the content card and the
+   * chat card. The negative margins cancel its width so the gap stays the
+   * same as without a handle.
+   */
+  const handle =
+    isCardLayout && resizeHandle ? (
+      <div
+        style={{
+          display: "flex",
+          alignSelf: "stretch",
+          justifyContent: "center",
+          flexShrink: 0,
+          width: NORTE_UI_SHELL_GUTTER,
+          margin: `0 calc(-1 * ${NORTE_UI_SHELL_GUTTER})`,
+        }}
+      >
+        {resizeHandle}
+      </div>
+    ) : (
+      resizeHandle
+    );
 
   const content = (
     <>
+      {handle}
       {portalMounted && (
         <Box
           height="100%"
           maxWidth={collapsedWidth ?? DEFAULT_COLLAPSED_MAX_WIDTH}
           minWidth={collapsedWidth ?? COLLAPSED_WIDTH}
           flex="1"
-          py={isNorteUi ? undefined : "2"}
-          mx={isNorteUi ? undefined : "2"}
+          py={isCardLayout ? undefined : "2"}
+          mx={isCardLayout ? undefined : "2"}
           pointerEvents="none"
           aria-hidden="true"
         />
@@ -184,7 +209,7 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
     </>
   );
 
-  return isNorteUi && chatSlot ? createPortal(content, chatSlot) : content;
+  return isCardLayout && chatSlot ? createPortal(content, chatSlot) : content;
 };
 
 AppShellChat.displayName = "AppShellChat";
