@@ -20,6 +20,13 @@ const contentText = "Accordion content";
 const tokensOf = (element: Element | null | undefined) =>
   `${element?.className ?? ""} ${element?.getAttribute("style") ?? ""}`;
 
+const stateValue = (element: HTMLElement, property: string) => {
+  const name = Array.from(element.style).find((prop) =>
+    prop.startsWith(`--${property}__`)
+  );
+  return name ? element.style.getPropertyValue(name) : undefined;
+};
+
 const getButton = () => screen.getByTestId("button-element");
 const getLabel = () => screen.getByText(labelText);
 
@@ -38,8 +45,17 @@ describe("GIVEN <MenuButton /> under each theme", () => {
 
       it("SHOULD use neutral-surfaceHighlight on hover", () => {
         render(<MenuButton label={labelText} data-testid="button-element" />);
-        expect(tokensOf(getButton())).toContain("neutral-surfaceHighlight");
+        expect(stateValue(getButton(), "backgroundColor-hover")).toContain(
+          "neutral-surfaceHighlight"
+        );
         expect(tokensOf(getButton())).not.toContain("primary-surface");
+      });
+
+      it("SHOULD use neutral-surfaceHighlight when pressed", () => {
+        render(<MenuButton label={labelText} data-testid="button-element" />);
+        expect(stateValue(getButton(), "backgroundColor-active")).toContain(
+          "neutral-surfaceHighlight"
+        );
       });
 
       it("SHOULD render the active button with neutral-background and primary-interactive", () => {

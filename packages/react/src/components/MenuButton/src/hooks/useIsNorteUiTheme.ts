@@ -1,6 +1,6 @@
 import { useTheme } from "@nimbus-ds/styles";
 
-const NORTE_UI_THEMES = ["next-norteui", "next-norteui-dark"];
+const NORTE_UI_THEMES = new Set(["next-norteui", "next-norteui-dark"]);
 
 /**
  * Returns true only under the Norte UI themes (Path B, Decision 0081).
@@ -10,5 +10,5 @@ const NORTE_UI_THEMES = ["next-norteui", "next-norteui-dark"];
  */
 export const useIsNorteUiTheme = (): boolean => {
   const { currentTheme } = useTheme();
-  return NORTE_UI_THEMES.includes(currentTheme as string);
+  return NORTE_UI_THEMES.has(currentTheme as string);
 };
