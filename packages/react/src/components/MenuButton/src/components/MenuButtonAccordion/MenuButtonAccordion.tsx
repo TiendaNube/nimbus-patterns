@@ -11,6 +11,7 @@ import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 import { MenuExpandContext, useMenuExpandContext } from "@common/contexts";
 import { MenuButtonAccordionBaseProps } from "./menuButtonAccordion.types";
 import { MenuButton } from "../../MenuButton";
+import { useIsNorteUiTheme } from "../../hooks";
 
 const MenuButtonAccordion = forwardRef(
   (
@@ -62,7 +63,13 @@ const MenuButtonAccordion = forwardRef(
       [popoverPosition]
     );
 
+    const isNorteUi = useIsNorteUiTheme();
+    const itemsGap = isNorteUi ? "none" : "0-5";
+
     const getBackgroundColor = () => {
+      if (isNorteUi) {
+        return active ? "neutral-background" : "transparent";
+      }
       if (active) {
         return "primary-surface";
       }
@@ -97,7 +104,7 @@ const MenuButtonAccordion = forwardRef(
             overflow="hidden"
             display="flex"
             flexDirection="column"
-            gap="0-5"
+            gap={itemsGap}
             pl="6"
             pb="1"
             pr="1"
@@ -117,7 +124,7 @@ const MenuButtonAccordion = forwardRef(
                 minWidth="200px"
                 display="flex"
                 flexDirection="column"
-                gap="0-5"
+                gap={itemsGap}
               >
                 {children}
               </Box>
