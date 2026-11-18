@@ -1,0 +1,7 @@
+releases:
+  "@nimbus-ds/menu": minor
+  "@nimbus-ds/patterns": minor
+
+declined:
+  - nimbus-patterns
+  - "@nimbus-ds/app-shell"

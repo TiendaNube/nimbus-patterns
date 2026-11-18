@@ -2,6 +2,13 @@
 
 The Menu component allows the user to create in-app menus that navigate through different sections of an application.
 
+## Unreleased (Norte UI approximation, Path B)
+
+#### 💡 Others
+
+- Under the `next-norteui` and `next-norteui-dark` themes only, `Menu` uses the Norte UI tokens: menu background `neutral-surfaceDisabled`, `Menu.Section` gap `1` (4px), `Menu.Footer` rest icon `neutral-textLow` with `px 2`, and collapsed `Menu.Header` / `Menu.Body` with `px 2` (8px on both sides). `base`, `dark`, `next` and `next-dark` are unchanged. ([#224](https://github.com/TiendaNube/nimbus-patterns/pull/224) by [@FedeTrevi-se](https://github.com/FedeTrevi-se))
+- Added `@nimbus-ds/styles` (`^9`) as a peer dependency, required by the new `useIsNorteUiTheme` hook. ([#224](https://github.com/TiendaNube/nimbus-patterns/pull/224) by [@FedeTrevi-se](https://github.com/FedeTrevi-se))
+
 ## 2026-03-04 `2.0.3`
 
 #### 🐛 Bug fixes

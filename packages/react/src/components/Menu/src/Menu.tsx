@@ -5,6 +5,7 @@ import { MenuExpandContext } from "@common/contexts";
 import { MenuButton } from "@nimbus-ds/menubutton";
 import { MenuProps, MenuComponents } from "./menu.types";
 import { MenuSection, MenuHeader, MenuBody, MenuFooter } from "./components";
+import { useIsNorteUiTheme } from "./hooks";
 
 const Menu: React.FC<MenuProps> & MenuComponents = ({
   style: _style,
@@ -14,6 +15,7 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
   popoverPosition = "right",
   ...rest
 }: MenuProps) => {
+  const isNorteUi = useIsNorteUiTheme();
   const [activeAccordionPopover, setActiveAccordionPopover] = useState<
     string | null
   >(null);
@@ -53,7 +55,9 @@ const Menu: React.FC<MenuProps> & MenuComponents = ({
         display="flex"
         flexDirection="column"
         height="100%"
-        backgroundColor="neutral-background"
+        backgroundColor={
+          isNorteUi ? "neutral-surfaceDisabled" : "neutral-background"
+        }
         boxSizing="border-box"
         {...dynamicProps}
       >

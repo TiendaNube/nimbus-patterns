@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 
 import { Text, Box, BoxProperties } from "@nimbus-ds/components";
 import { useMenuExpandContext } from "@common/contexts";
+import { useIsNorteUiTheme } from "../../hooks";
 
 import { MenuSectionProps } from "./menuSection.types";
 
@@ -12,6 +13,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   ...rest
 }: MenuSectionProps) => {
   const { expanded } = useMenuExpandContext(false);
+  const isNorteUi = useIsNorteUiTheme();
 
   const dynamicProps: BoxProperties = useMemo(
     () =>
@@ -29,7 +31,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
       {...rest}
       display="flex"
       flexDirection="column"
-      gap="1-5"
+      gap={isNorteUi ? "1" : "1-5"}
     >
       {title &&
         (expanded ? (
