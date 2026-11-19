@@ -1,27 +1,55 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 import { Box } from "@nimbus-ds/components";
 
+import { useAppShellBodyContext } from "../AppShellBody/AppShellBody.context";
 import { AppShellChatProps } from "./AppShellChat.types";
 
 export const APPSHELL_CHAT_DEFAULT_WIDTH = "360px";
 const COLLAPSED_WIDTH = APPSHELL_CHAT_DEFAULT_WIDTH;
+/** Matches the AppShell.Body right/bottom padding (`spacing-2`) under Norte UI. */
+const NORTE_UI_SHELL_GUTTER = "var(--nimbus-spacing-2, 8px)";
 const DEFAULT_COLLAPSED_MAX_WIDTH = {
   xs: APPSHELL_CHAT_DEFAULT_WIDTH,
   xxl: "378px",
 } as const;
+
+/**
+ * Nearest ancestor that renders a box. Skips `display: contents` wrappers
+ * (such as the one AppShell.Body keeps around its content), which have no
+ * box and would measure as zero.
+ */
+const getBoxedParent = (element: HTMLElement | null | undefined) => {
+  let current = element?.parentElement ?? null;
+  while (current && getComputedStyle(current).display === "contents") {
+    current = current.parentElement;
+  }
+  return current;
+};
 
 const AppShellChat: React.FC<AppShellChatProps> = ({
   children,
   expanded: controlledExpanded,
   defaultExpanded = false,
   collapsedWidth,
+  resizeHandle,
   ...rest
 }: AppShellChatProps) => {
+  /** Norte UI card layout (provided by AppShell.Body). */
+  const { isCardLayout, chatSlot, bodyElement } = useAppShellBodyContext();
+  const placeholderRef = useRef<HTMLDivElement>(null);
+  /**
+   * Norte UI: measure against the AppShell.Body (the chat itself is portaled
+   * into a `display: contents` slot that has no box of its own).
+   */
+  const getMeasureTarget = useCallback(
+    () =>
+      (isCardLayout && bodyElement) || getBoxedParent(placeholderRef.current),
+    [isCardLayout, bodyElement]
+  );
   const [uncontrolledExpanded] = useState(defaultExpanded);
   const isExpanded = controlledExpanded ?? uncontrolledExpanded;
-
-  const placeholderRef = useRef<HTMLDivElement>(null);
 
   const [portalMounted, setPortalMounted] = useState(false);
   const [portalFullWidth, setPortalFullWidth] = useState(false);
@@ -31,24 +59,25 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
     collapsedWidth: COLLAPSED_WIDTH,
   });
 
-  const measureBounds = () => {
-    if (placeholderRef.current?.parentElement) {
+  const measureBounds = useCallback(() => {
+    const measureTarget = getMeasureTarget();
+    if (placeholderRef.current && measureTarget) {
       const placeholderRect = placeholderRef.current.getBoundingClientRect();
-      const rect = placeholderRef.current.parentElement.getBoundingClientRect();
+      const rect = measureTarget.getBoundingClientRect();
       setBounds({
         collapsedWidth: `${placeholderRect.width}px`,
         parentLeft: rect.left,
         parentTop: rect.top,
       });
     }
-  };
+  }, [getMeasureTarget]);
 
   useEffect(() => {
     if (!isExpanded) return undefined;
 
     measureBounds();
 
-    const parentElement = placeholderRef.current?.parentElement;
+    const parentElement = getMeasureTarget();
     const resizeObserver =
       parentElement && typeof ResizeObserver !== "undefined"
         ? new ResizeObserver(measureBounds)
@@ -63,7 +92,7 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
       resizeObserver?.disconnect();
       window.removeEventListener("resize", measureBounds);
     };
-  }, [isExpanded]);
+  }, [isExpanded, getMeasureTarget, measureBounds]);
 
   useEffect(() => {
     if (isExpanded) {
@@ -78,7 +107,7 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
       setPortalFullWidth(false);
       setPortalMounted(false);
     }
-  }, [isExpanded]);
+  }, [isExpanded, measureBounds]);
 
   useEffect(() => {
     if (!isExpanded || typeof document === "undefined") return undefined;
@@ -103,8 +132,8 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
     minWidth: collapsedWidth ?? COLLAPSED_WIDTH,
     top: "0",
     flex: "1",
-    py: "2",
-    mx: "2",
+    py: isCardLayout ? undefined : "2",
+    mx: isCardLayout ? undefined : "2",
   } as const;
 
   const expandedProps = {
@@ -120,29 +149,88 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
     p: "2",
   } as const;
 
-  return (
+  /**
+   * Norte UI: the chat is a card with the same radius as the content card.
+   * Spacing comes from the AppShell.Body gap/padding instead of margins.
+   */
+  const norteUiCardProps = {
+    backgroundColor: "neutral-background",
+    borderStyle: "solid",
+    borderWidth: "1",
+    borderColor: "neutral-surfaceHighlight",
+    borderRadius: "3",
+    overflow: "hidden",
+  } as const;
+
+  const norteUiExpandedProps = {
+    ...expandedProps,
+    p: "none",
+    right: NORTE_UI_SHELL_GUTTER,
+    width: portalFullWidth
+      ? `calc(100% - ${safeParentLeft}px - ${NORTE_UI_SHELL_GUTTER})`
+      : bounds.collapsedWidth,
+    height: `calc(100vh - ${safeParentTop}px - ${NORTE_UI_SHELL_GUTTER})`,
+  } as const;
+
+  const baseProps = portalMounted ? expandedProps : collapsedProps;
+  const cardLayoutProps = portalMounted
+    ? { ...norteUiExpandedProps, ...norteUiCardProps }
+    : { ...collapsedProps, ...norteUiCardProps };
+  const activeProps = isCardLayout ? cardLayoutProps : baseProps;
+
+  /**
+   * Norte UI: the handle sits in the gap between the content card and the
+   * chat card. The negative margins cancel its width so the gap stays the
+   * same as without a handle.
+   */
+  const handle =
+    isCardLayout && resizeHandle ? (
+      <div
+        style={{
+          display: "flex",
+          alignSelf: "stretch",
+          justifyContent: "center",
+          flexShrink: 0,
+          width: NORTE_UI_SHELL_GUTTER,
+          margin: `0 calc(-1 * ${NORTE_UI_SHELL_GUTTER})`,
+        }}
+      >
+        {resizeHandle}
+      </div>
+    ) : (
+      resizeHandle
+    );
+
+  const content = (
     <>
+      {handle}
       {portalMounted && (
         <Box
           height="100%"
           maxWidth={collapsedWidth ?? DEFAULT_COLLAPSED_MAX_WIDTH}
           minWidth={collapsedWidth ?? COLLAPSED_WIDTH}
           flex="1"
-          py="2"
-          mx="2"
+          py={isCardLayout ? undefined : "2"}
+          mx={isCardLayout ? undefined : "2"}
           pointerEvents="none"
           aria-hidden="true"
         />
       )}
-      <Box
-        {...(portalMounted ? expandedProps : collapsedProps)}
-        {...rest}
-        ref={placeholderRef}
-      >
+      <Box {...activeProps} {...rest} ref={placeholderRef}>
         {children}
       </Box>
     </>
   );
+
+  /**
+   * Norte UI: wait for the slot (set on AppShell.Body's first commit) instead
+   * of rendering inline first, so the chat content mounts only once.
+   */
+  if (isCardLayout) {
+    return chatSlot ? createPortal(content, chatSlot) : null;
+  }
+
+  return content;
 };
 
 AppShellChat.displayName = "AppShellChat";

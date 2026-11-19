@@ -16,6 +16,8 @@ import { AppShellHeader, AppShellBody, AppShellChat } from "./components";
 
 import { AppShellProps, AppShellComponents } from "./appShell.types";
 import { AppShellMenuContext } from "./contexts/AppShellMenuContext";
+import { AppShellLayoutContext } from "./contexts/AppShellLayoutContext";
+import { useIsNorteUiTheme } from "./hooks";
 
 const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   style: _style,
@@ -36,6 +38,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
   ...rest
 }: AppShellProps) => {
   const isPopoverMode = menuBehavior === "popover";
+  const isNorteUi = useIsNorteUiTheme();
 
   const {
     trigger: flyoutTrigger = "hover",
@@ -88,6 +91,9 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
     []
   );
 
+  const hasMenu = !!menu;
+  const appShellLayoutContext = useMemo(() => ({ hasMenu }), [hasMenu]);
+
   const popoverAppShellMenuContext = useMemo(
     () => ({
       isMenuPopover: true,
@@ -107,7 +113,7 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
           left="0"
           borderStyle="solid"
           borderWidth="none"
-          borderRightWidth="1"
+          borderRightWidth={isNorteUi ? "none" : "1"}
           borderColor="neutral-surfaceDisabled"
           transitionProperty="width"
           transitionDuration="fast"
@@ -127,11 +133,15 @@ const AppShell: React.FC<AppShellProps> & AppShellComponents = ({
         flex="1 1 auto"
         height="100vh"
         width="100%"
-        backgroundColor="neutral-surface"
+        backgroundColor={
+          isNorteUi ? "neutral-surfaceDisabled" : "neutral-surface"
+        }
         // Fully customizable due to client needs
         {...contentProperties}
       >
-        {children}
+        <AppShellLayoutContext.Provider value={appShellLayoutContext}>
+          {children}
+        </AppShellLayoutContext.Provider>
       </Box>
       {isPopoverMode && flyoutOpen && (
         <AppShellMenuContext.Provider value={popoverAppShellMenuContext}>

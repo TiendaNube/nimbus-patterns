@@ -2,6 +2,16 @@
 
 The AppShell component is the main outer frame of an application. It provides the basic architecture to build an application inside of our admin.
 
+## Unreleased (Norte UI approximation, Paths B + C)
+
+#### 🎉 New features
+
+- Added optional `resizeHandle` prop to `AppShell.Chat` to render a consumer-owned resize handle right before the chat panel. Under the Norte UI card layout it is placed in the gap between the content card and the chat card; in other themes it renders inline before the panel.
+
+#### 💡 Others
+
+- Under the `next-norteui` and `next-norteui-dark` themes only, `AppShell` renders the Norte UI "content card" layout: the shell (menu area, `AppShell.Header` and `AppShell.Body`) uses `neutral-surfaceDisabled`, the menu loses its right border, and the page content lives inside a rounded card (`neutral-background`, 1px `neutral-surfaceHighlight` border, radius `3`) that is the scroll container. The card is only drawn when the AppShell renders a menu, and its border, radius and gutters apply from the `md` breakpoint (below it the content is edge to edge). `AppShell.Chat` is portaled next to that card as a sibling rounded card, even when nested in consumer wrappers. `base`, `dark`, `next` and `next-dark` are unchanged.
+
 ## 2026-06-25 `1.10.0`
 
 #### 🎉 New features
