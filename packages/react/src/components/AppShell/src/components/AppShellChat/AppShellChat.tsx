@@ -15,6 +15,19 @@ const DEFAULT_COLLAPSED_MAX_WIDTH = {
   xxl: "378px",
 } as const;
 
+/**
+ * Nearest ancestor that renders a box. Skips `display: contents` wrappers
+ * (such as the one AppShell.Body keeps around its content), which have no
+ * box and would measure as zero.
+ */
+const getBoxedParent = (element: HTMLElement | null | undefined) => {
+  let current = element?.parentElement ?? null;
+  while (current && getComputedStyle(current).display === "contents") {
+    current = current.parentElement;
+  }
+  return current;
+};
+
 const AppShellChat: React.FC<AppShellChatProps> = ({
   children,
   expanded: controlledExpanded,
@@ -32,7 +45,7 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
    */
   const getMeasureTarget = useCallback(
     () =>
-      (isCardLayout && bodyElement) || placeholderRef.current?.parentElement,
+      (isCardLayout && bodyElement) || getBoxedParent(placeholderRef.current),
     [isCardLayout, bodyElement]
   );
   const [uncontrolledExpanded] = useState(defaultExpanded);

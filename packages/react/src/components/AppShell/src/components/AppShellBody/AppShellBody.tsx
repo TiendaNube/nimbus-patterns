@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 
 import { Box } from "@nimbus-ds/components";
 import { box } from "@nimbus-ds/styles";
+import { useMergeRefs } from "@floating-ui/react";
 
 import { useIsNorteUiTheme } from "../../hooks";
 import { useAppShellLayoutContext } from "../../contexts/AppShellLayoutContext";
@@ -14,6 +15,7 @@ const CONTENTS_STYLE: React.CSSProperties = { display: "contents" };
 const AppShellBody: React.FC<AppShellBodyProps> = ({
   children,
   onScroll,
+  ref,
   ...rest
 }: AppShellBodyProps) => {
   const isNorteUi = useIsNorteUiTheme();
@@ -22,6 +24,8 @@ const AppShellBody: React.FC<AppShellBodyProps> = ({
   const isCardLayout = isNorteUi && hasMenu;
   const [bodyElement, setBodyElement] = useState<HTMLDivElement | null>(null);
   const [chatSlot, setChatSlot] = useState<HTMLDivElement | null>(null);
+  /** Keep the consumer ref (a regular prop in React 19) next to ours. */
+  const bodyRef = useMergeRefs<HTMLDivElement>([setBodyElement, ref]);
 
   const contextValue = useMemo(
     () => ({ isCardLayout, chatSlot, bodyElement }),
@@ -85,7 +89,7 @@ const AppShellBody: React.FC<AppShellBodyProps> = ({
         {...outerProps}
         {...rest}
         onScroll={isCardLayout ? undefined : onScroll}
-        ref={setBodyElement}
+        ref={bodyRef}
         flex="1 1 auto"
         display="flex"
       >

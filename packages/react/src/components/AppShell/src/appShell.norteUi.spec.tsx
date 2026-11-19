@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { useTheme } from "@nimbus-ds/styles";
 
 import { AppShell } from "./AppShell";
@@ -290,6 +290,99 @@ describe("GIVEN <AppShell /> under each theme", () => {
       renderWithScroll(onScroll);
       fireEvent.scroll(screen.getByTestId("body-element"));
       expect(onScroll).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("WHEN AppShell.Chat is expanded outside the card layout", () => {
+    const rects: Record<string, { left: number; top: number }> = {
+      "body-element": { left: 240, top: 56 },
+      "chat-wrapper": { left: 300, top: 80 },
+    };
+
+    beforeEach(() => {
+      setTheme("base");
+      jest
+        .spyOn(HTMLElement.prototype, "getBoundingClientRect")
+        .mockImplementation(function getRect(this: HTMLElement) {
+          const rect = rects[this.dataset.testid ?? ""] ?? {
+            left: 0,
+            top: 0,
+          };
+          return { ...rect, width: 0, height: 0 } as DOMRect;
+        });
+    });
+
+    afterEach(() => jest.restoreAllMocks());
+
+    const expectOverlayOffsets = async (left: number, top: number) => {
+      const getStyle = () =>
+        screen.getByTestId("chat-element").getAttribute("style") ?? "";
+      expect(getStyle()).toContain(`calc(100vh - ${top}px)`);
+      expect(getStyle()).toContain(`${top}px;`);
+      await waitFor(() =>
+        expect(getStyle()).toContain(`calc(100% - ${left}px)`)
+      );
+    };
+
+    it("SHOULD measure AppShell.Body, not the display: contents wrapper", async () => {
+      render(
+        <AppShell menu={<div>Menu</div>}>
+          <AppShell.Body data-testid="body-element">
+            <div>Page</div>
+            <AppShell.Chat data-testid="chat-element" expanded>
+              Chat
+            </AppShell.Chat>
+          </AppShell.Body>
+        </AppShell>
+      );
+      await expectOverlayOffsets(240, 56);
+    });
+
+    it("SHOULD measure the consumer wrapper when the chat is nested", async () => {
+      render(
+        <AppShell menu={<div>Menu</div>}>
+          <AppShell.Body data-testid="body-element">
+            <div>Page</div>
+            <div data-testid="chat-wrapper">
+              <AppShell.Chat data-testid="chat-element" expanded>
+                Chat
+              </AppShell.Chat>
+            </div>
+          </AppShell.Body>
+        </AppShell>
+      );
+      await expectOverlayOffsets(300, 80);
+    });
+  });
+
+  describe("WHEN AppShell.Body receives a ref", () => {
+    const renderWithRef = (ref: React.RefObject<HTMLDivElement | null>) =>
+      render(
+        <AppShell menu={<div>Menu</div>}>
+          <AppShell.Body ref={ref} data-testid="body-element">
+            <div data-testid="page-content">Page</div>
+            <AppShell.Chat data-testid="chat-element">Chat</AppShell.Chat>
+          </AppShell.Body>
+        </AppShell>
+      );
+
+    it.each(["base", "next-norteui"])(
+      "SHOULD forward the ref to the body element under %s",
+      (theme) => {
+        setTheme(theme);
+        const ref = React.createRef<HTMLDivElement>();
+        renderWithRef(ref);
+        expect(ref.current).toBe(screen.getByTestId("body-element"));
+      }
+    );
+
+    it("SHOULD keep the internal ref working under Norte UI", () => {
+      setTheme("next-norteui");
+      renderWithRef(React.createRef<HTMLDivElement>());
+      const chat = screen.getByTestId("chat-element");
+      // The chat is still portaled into the slot next to the card.
+      expect(getContentCard()?.contains(chat)).toBe(false);
+      expect(screen.getByTestId("body-element").contains(chat)).toBe(true);
     });
   });
 });
