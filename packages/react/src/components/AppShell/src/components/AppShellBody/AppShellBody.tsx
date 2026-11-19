@@ -1,14 +1,19 @@
 import React, { useMemo, useState } from "react";
 
 import { Box } from "@nimbus-ds/components";
+import { box } from "@nimbus-ds/styles";
 
 import { useIsNorteUiTheme } from "../../hooks";
 import { useAppShellLayoutContext } from "../../contexts/AppShellLayoutContext";
 import { AppShellBodyContext } from "./AppShellBody.context";
 import { AppShellBodyProps } from "./AppShellBody.types";
 
+/** Layout-neutral wrapper used when the content card is not drawn. */
+const CONTENTS_STYLE: React.CSSProperties = { display: "contents" };
+
 const AppShellBody: React.FC<AppShellBodyProps> = ({
   children,
+  onScroll,
   ...rest
 }: AppShellBodyProps) => {
   const isNorteUi = useIsNorteUiTheme();
@@ -19,63 +24,79 @@ const AppShellBody: React.FC<AppShellBodyProps> = ({
   const [chatSlot, setChatSlot] = useState<HTMLDivElement | null>(null);
 
   const contextValue = useMemo(
-    () => ({ isCardLayout: true, chatSlot, bodyElement }),
-    [chatSlot, bodyElement]
+    () => ({ isCardLayout, chatSlot, bodyElement }),
+    [isCardLayout, chatSlot, bodyElement]
   );
 
-  if (!isCardLayout) {
-    return (
-      <Box
-        backgroundColor={isNorteUi ? "neutral-background" : "neutral-surface"}
-        width="100%"
-        overflow="auto"
-        height="100%"
-        {...rest}
-        flex="1 1 auto"
-        display="flex"
-      >
-        {children}
-      </Box>
-    );
-  }
+  /**
+   * Norte UI: rounded "content card" that is the scroll container.
+   * Below `md` (where AppShell hides the menu) the card chrome is removed.
+   * Built with `box.sprinkle` on a plain `div` so the element is the same in
+   * every layout: switching theme or adding/removing the menu only changes
+   * its styles and never remounts the page.
+   */
+  const cardStyles = useMemo(
+    () =>
+      isCardLayout
+        ? box.sprinkle({
+            boxSizing: "border-box",
+            display: "flex",
+            flex: "1 1 auto",
+            minWidth: "0",
+            height: "100%",
+            overflow: "auto",
+            backgroundColor: "neutral-background",
+            borderStyle: "solid",
+            borderWidth: { xs: "none", md: "1" },
+            borderColor: "neutral-surfaceHighlight",
+            borderRadius: { xs: "none", md: "3" },
+          })
+        : null,
+    [isCardLayout]
+  );
+
+  const outerProps = isCardLayout
+    ? ({
+        backgroundColor: "neutral-surfaceDisabled",
+        width: "100%",
+        height: "100%",
+        minHeight: "0",
+        overflow: "hidden",
+        gap: { xs: "none", md: "2" },
+        paddingRight: { xs: "none", md: "2" },
+        paddingBottom: { xs: "none", md: "2" },
+      } as const)
+    : ({
+        backgroundColor: isNorteUi ? "neutral-background" : "neutral-surface",
+        width: "100%",
+        overflow: "auto",
+        height: "100%",
+      } as const);
 
   /**
-   * Norte UI: the page content lives inside a rounded "content card" that is
-   * the scroll container. AppShell.Chat portals into the slot rendered next
-   * to the card, so it becomes a sibling card wherever it is nested.
-   * Below `md` (where AppShell hides the menu) the card chrome is removed.
+   * The tree is identical in every layout (outer Box > content wrapper +
+   * chat slot) so React keeps the page state. Outside the card layout both
+   * inner elements are `display: contents` and the layout is unchanged.
+   * `onScroll` goes to whichever element actually scrolls.
    */
   return (
     <AppShellBodyContext.Provider value={contextValue}>
       <Box
-        backgroundColor="neutral-surfaceDisabled"
-        width="100%"
-        height="100%"
-        minHeight="0"
-        overflow="hidden"
-        gap={{ xs: "none", md: "2" }}
-        paddingRight={{ xs: "none", md: "2" }}
-        paddingBottom={{ xs: "none", md: "2" }}
+        {...outerProps}
         {...rest}
+        onScroll={isCardLayout ? undefined : onScroll}
         ref={setBodyElement}
         flex="1 1 auto"
         display="flex"
       >
-        <Box
-          display="flex"
-          flex="1 1 auto"
-          minWidth="0"
-          height="100%"
-          overflow="auto"
-          backgroundColor="neutral-background"
-          borderStyle="solid"
-          borderWidth={{ xs: "none", md: "1" }}
-          borderColor="neutral-surfaceHighlight"
-          borderRadius={{ xs: "none", md: "3" }}
+        <div
+          className={cardStyles?.className}
+          style={cardStyles ? cardStyles.style : CONTENTS_STYLE}
+          onScroll={isCardLayout ? onScroll : undefined}
         >
           {children}
-        </Box>
-        <div ref={setChatSlot} style={{ display: "contents" }} />
+        </div>
+        <div ref={setChatSlot} style={CONTENTS_STYLE} />
       </Box>
     </AppShellBodyContext.Provider>
   );

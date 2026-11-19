@@ -1,5 +1,5 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+import React, { useEffect, useState } from "react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { useTheme } from "@nimbus-ds/styles";
 
 import { AppShell } from "./AppShell";
@@ -34,6 +34,17 @@ const renderAppShell = () =>
 const getMenuWrapper = () => screen.getByTestId("menu-content").parentElement;
 
 const getContentCard = () => screen.getByTestId("page-content").parentElement;
+
+/**
+ * Outside the card layout the content sits in a `display: contents` wrapper
+ * (kept so the tree never changes between layouts), which is layout-neutral.
+ */
+const expectLayoutNeutralWrapper = (element: Element, body: Element) => {
+  const wrapper = element.parentElement as HTMLElement;
+  expect(wrapper.parentElement).toBe(body);
+  expect(wrapper.style.display).toBe("contents");
+  expect(wrapper.className).toBe("");
+};
 
 describe("GIVEN <AppShell /> under each theme", () => {
   afterEach(() => mockedUseTheme.mockReset());
@@ -138,7 +149,7 @@ describe("GIVEN <AppShell /> under each theme", () => {
       setTheme("base");
       renderWithHandle();
       const handle = screen.getByTestId("resize-handle");
-      expect(handle.parentElement).toBe(screen.getByTestId("body-element"));
+      expectLayoutNeutralWrapper(handle, screen.getByTestId("body-element"));
       expect(handle.nextElementSibling).toBe(
         screen.getByTestId("chat-element")
       );
@@ -158,8 +169,8 @@ describe("GIVEN <AppShell /> under each theme", () => {
         </AppShell>
       );
       const body = screen.getByTestId("body-element");
-      expect(screen.getByTestId("page-content").parentElement).toBe(body);
-      expect(screen.getByTestId("chat-element").parentElement).toBe(body);
+      expectLayoutNeutralWrapper(screen.getByTestId("page-content"), body);
+      expectLayoutNeutralWrapper(screen.getByTestId("chat-element"), body);
       expect(tokensOf(body)).toContain("neutral-background");
       expect(tokensOf(body)).not.toContain("nimbus-shape-border-radius-3");
     });
@@ -173,8 +184,8 @@ describe("GIVEN <AppShell /> under each theme", () => {
       it("SHOULD keep the current layout without a content card", () => {
         renderAppShell();
         const body = screen.getByTestId("body-element");
-        expect(screen.getByTestId("page-content").parentElement).toBe(body);
-        expect(screen.getByTestId("chat-element").parentElement).toBe(body);
+        expectLayoutNeutralWrapper(screen.getByTestId("page-content"), body);
+        expectLayoutNeutralWrapper(screen.getByTestId("chat-element"), body);
         expect(tokensOf(body)).toContain("neutral-surface");
         expect(tokensOf(body)).not.toContain("neutral-surfaceDisabled");
         expect(tokensOf(screen.getByTestId("header-element"))).not.toContain(
@@ -189,4 +200,96 @@ describe("GIVEN <AppShell /> under each theme", () => {
       });
     }
   );
+
+  describe("WHEN the layout changes after mount", () => {
+    const mountCounter = jest.fn();
+    const StatefulPage = () => {
+      const [value] = useState(() => Math.random());
+      useEffect(() => {
+        mountCounter();
+      }, []);
+      return <div data-testid="page-content">{value}</div>;
+    };
+    const ChatContent = () => {
+      useEffect(() => {
+        mountCounter("chat");
+      }, []);
+      return <span>Chat</span>;
+    };
+    const renderShell = (withMenu: boolean) => (
+      <AppShell menu={withMenu ? <div>Menu</div> : undefined}>
+        <AppShell.Body data-testid="body-element">
+          <StatefulPage />
+          <AppShell.Chat data-testid="chat-element">
+            <ChatContent />
+          </AppShell.Chat>
+        </AppShell.Body>
+      </AppShell>
+    );
+
+    beforeEach(() => mountCounter.mockClear());
+
+    it("SHOULD mount the chat content only once under Norte UI", () => {
+      setTheme("next-norteui");
+      render(renderShell(true));
+      expect(
+        mountCounter.mock.calls.filter(([kind]) => kind === "chat")
+      ).toHaveLength(1);
+    });
+
+    it("SHOULD keep the page state when the theme switches to and from Norte UI", () => {
+      setTheme("base");
+      const { rerender } = render(renderShell(true));
+      const initial = screen.getByTestId("page-content").textContent;
+      setTheme("next-norteui");
+      rerender(renderShell(true));
+      setTheme("base");
+      rerender(renderShell(true));
+      expect(screen.getByTestId("page-content").textContent).toBe(initial);
+      expect(
+        mountCounter.mock.calls.filter(([kind]) => kind !== "chat")
+      ).toHaveLength(1);
+    });
+
+    it("SHOULD keep the page state when the menu is added or removed", () => {
+      setTheme("next-norteui");
+      const { rerender } = render(renderShell(false));
+      const initial = screen.getByTestId("page-content").textContent;
+      rerender(renderShell(true));
+      rerender(renderShell(false));
+      expect(screen.getByTestId("page-content").textContent).toBe(initial);
+      expect(
+        mountCounter.mock.calls.filter(([kind]) => kind !== "chat")
+      ).toHaveLength(1);
+    });
+  });
+
+  describe("WHEN AppShell.Body receives onScroll", () => {
+    const renderWithScroll = (onScroll: jest.Mock) =>
+      render(
+        <AppShell menu={<div>Menu</div>}>
+          <AppShell.Body data-testid="body-element" onScroll={onScroll}>
+            <div data-testid="page-content">Page</div>
+          </AppShell.Body>
+        </AppShell>
+      );
+
+    it("SHOULD call it when the content card scrolls under Norte UI", () => {
+      setTheme("next-norteui");
+      const onScroll = jest.fn();
+      renderWithScroll(onScroll);
+      fireEvent.scroll(getContentCard() as HTMLElement);
+      expect(onScroll).toHaveBeenCalledTimes(1);
+      fireEvent.scroll(screen.getByTestId("body-element"));
+      expect(onScroll).toHaveBeenCalledTimes(1);
+    });
+
+    it("SHOULD call it when the body scrolls in other themes", () => {
+      setTheme("base");
+      const onScroll = jest.fn();
+      renderWithScroll(onScroll);
+      fireEvent.scroll(screen.getByTestId("body-element"));
+      expect(onScroll).toHaveBeenCalledTimes(1);
+    });
+  });
 });

@@ -209,7 +209,15 @@ const AppShellChat: React.FC<AppShellChatProps> = ({
     </>
   );
 
-  return isCardLayout && chatSlot ? createPortal(content, chatSlot) : content;
+  /**
+   * Norte UI: wait for the slot (set on AppShell.Body's first commit) instead
+   * of rendering inline first, so the chat content mounts only once.
+   */
+  if (isCardLayout) {
+    return chatSlot ? createPortal(content, chatSlot) : null;
+  }
+
+  return content;
 };
 
 AppShellChat.displayName = "AppShellChat";
