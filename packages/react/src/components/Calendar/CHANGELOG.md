@@ -7,7 +7,7 @@ It extends the properties of the ReactDayPicker component. Refer to the [documen
 
 #### 💡 Others
 
-- Updated the bundled `MenuButton`, so the range buttons follow its Norte UI appearance under the `next-norteui` and `next-norteui-dark` themes, and added `@nimbus-ds/styles` as a peer dependency.
+- Updated the bundled `MenuButton`, so the range buttons follow its Norte UI appearance under the `next-norteui` and `next-norteui-dark` themes, and added `@nimbus-ds/styles` as a peer dependency. ([#228](https://github.com/TiendaNube/nimbus-patterns/pull/228) by [@FedeTrevi-se](https://github.com/FedeTrevi-se))
 
 ## 2026-03-04 `1.1.3`
 

@@ -6,11 +6,11 @@ Nimbus is an open-source Design System created by Tiendanube / Nuvesmhop's team 
 
 #### 🎉 New features
 
-- Added the Norte UI appearance to `MenuButton` (`@nimbus-ds/menubutton`) and `Menu` (`@nimbus-ds/menu`) under the `next-norteui` and `next-norteui-dark` themes. Other themes render as before.
+- Added the Norte UI appearance to `MenuButton` (`@nimbus-ds/menubutton`) and `Menu` (`@nimbus-ds/menu`) under the `next-norteui` and `next-norteui-dark` themes. Other themes render as before. ([#228](https://github.com/TiendaNube/nimbus-patterns/pull/228) by [@FedeTrevi-se](https://github.com/FedeTrevi-se))
 
 #### 💡 Others
 
-- Updated the `MenuButton` bundled in `Calendar` (`@nimbus-ds/calendar`), so the range buttons follow its Norte UI appearance.
+- Updated the `MenuButton` bundled in `Calendar` (`@nimbus-ds/calendar`), so the range buttons follow its Norte UI appearance. ([#228](https://github.com/TiendaNube/nimbus-patterns/pull/228) by [@FedeTrevi-se](https://github.com/FedeTrevi-se))
 
 ## 2026-11-10
 

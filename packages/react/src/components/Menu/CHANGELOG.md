@@ -6,12 +6,12 @@ The Menu component allows the user to create in-app menus that navigate through 
 
 #### 🎉 New features
 
-- Added the Norte UI appearance under the `next-norteui` and `next-norteui-dark` themes: 4px between section entries, 8px horizontal padding on the collapsed Header, Body and Footer and on the expanded Footer, and 16px bottom padding on the collapsed Body. Under `next-norteui` the background is `neutral-surfaceDisabled` and the footer chevron at rest is `neutral-textLow`. Other themes render as before.
-- Updated the bundled `MenuButton` to its Norte UI appearance.
+- Added the Norte UI appearance under the `next-norteui` and `next-norteui-dark` themes: 4px between section entries, 8px horizontal padding on the collapsed Header, Body and Footer and on the expanded Footer, and 16px bottom padding on the collapsed Body. Under `next-norteui` the background is `neutral-surfaceDisabled` and the footer chevron at rest is `neutral-textLow`. Other themes render as before. ([#228](https://github.com/TiendaNube/nimbus-patterns/pull/228) by [@FedeTrevi-se](https://github.com/FedeTrevi-se))
+- Updated the bundled `MenuButton` to its Norte UI appearance. ([#228](https://github.com/TiendaNube/nimbus-patterns/pull/228) by [@FedeTrevi-se](https://github.com/FedeTrevi-se))
 
 #### 💡 Others
 
-- Added `@nimbus-ds/styles` as a peer dependency to read the theme in effect.
+- Added `@nimbus-ds/styles` as a peer dependency to read the theme in effect. ([#228](https://github.com/TiendaNube/nimbus-patterns/pull/228) by [@FedeTrevi-se](https://github.com/FedeTrevi-se))
 
 ## 2026-03-04 `2.0.3`
 
