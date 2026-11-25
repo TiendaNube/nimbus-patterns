@@ -12,6 +12,8 @@ import { NavTabs } from "../components/NavTabs/src";
 import { DataList } from "../components/DataList/src";
 import { SummaryStats } from "../components/SummaryStats/src";
 import { ThumbnailWithAction } from "../components/ThumbnailWithAction/src";
+import { MenuButton } from "../components/MenuButton/src";
+import { Menu } from "../components/Menu/src";
 
 beforeAll(() => {
   global.ResizeObserver =
@@ -133,6 +135,71 @@ describe("Base Theme Invariance (E1)", () => {
           >
             <div>Action</div>
           </ThumbnailWithAction>
+        ),
+      },
+      {
+        name: "MenuButton rest",
+        element: <MenuButton label="Inicio" />,
+      },
+      {
+        name: "MenuButton active",
+        element: <MenuButton label="Inicio" active />,
+      },
+      {
+        name: "MenuButton disabled",
+        element: <MenuButton label="Inicio" disabled />,
+      },
+      {
+        name: "MenuButton.Accordion open",
+        element: (
+          <MenuButton.Accordion
+            contentid="content-1"
+            open
+            menuButton={{ label: "Ventas" }}
+          >
+            <MenuButton label="Lista de ventas" />
+          </MenuButton.Accordion>
+        ),
+      },
+      {
+        name: "MenuButton.Accordion active",
+        element: (
+          <MenuButton.Accordion
+            contentid="content-1"
+            open
+            active
+            menuButton={{ label: "Ventas" }}
+          >
+            <MenuButton label="Lista de ventas" />
+          </MenuButton.Accordion>
+        ),
+      },
+      {
+        name: "Menu expanded",
+        element: (
+          <Menu>
+            <Menu.Header>Logo</Menu.Header>
+            <Menu.Body>
+              <Menu.Section title="Administrar">
+                <Menu.Button label="Ventas" />
+              </Menu.Section>
+            </Menu.Body>
+            <Menu.Footer label="Ajustes" />
+          </Menu>
+        ),
+      },
+      {
+        name: "Menu collapsed",
+        element: (
+          <Menu expanded={false} showPopoversWhenCollapsed={false}>
+            <Menu.Header>Logo</Menu.Header>
+            <Menu.Body>
+              <Menu.Section title="Administrar">
+                <Menu.Button label="Ventas" />
+              </Menu.Section>
+            </Menu.Body>
+            <Menu.Footer label="Ajustes" />
+          </Menu>
         ),
       },
     ];

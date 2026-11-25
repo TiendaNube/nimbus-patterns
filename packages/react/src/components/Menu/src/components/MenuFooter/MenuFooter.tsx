@@ -4,6 +4,7 @@ import { Box, BoxProperties, Icon } from "@nimbus-ds/components";
 import { MenuButton } from "@nimbus-ds/menubutton";
 
 import { useMenuExpandContext } from "@common/contexts";
+import { useNorteUiTheme } from "@common/hooks";
 import { MenuFooterProps } from "./menuFooter.types";
 
 const MenuFooter: React.FC<MenuFooterProps> = ({
@@ -12,18 +13,21 @@ const MenuFooter: React.FC<MenuFooterProps> = ({
   ...rest
 }: MenuFooterProps) => {
   const { expanded } = useMenuExpandContext(false);
-  const activeColor = rest.active ? "primary-interactive" : "neutral-textHigh";
+  const { isNorteUi, isNorteUiLight } = useNorteUiTheme();
+  const restColor = isNorteUiLight ? "neutral-textLow" : "neutral-textHigh";
+  const activeColor = rest.active ? "primary-interactive" : restColor;
   const disabledColor = rest.disabled ? "neutral-textDisabled" : activeColor;
 
-  const dynamicProps: BoxProperties = useMemo(
-    () =>
-      expanded
-        ? {
-            pl: "2",
-          }
-        : { justifyContent: "center", pl: "1" },
-    [expanded]
-  );
+  const dynamicProps: BoxProperties = useMemo(() => {
+    if (isNorteUi) {
+      return expanded ? { px: "2" } : { justifyContent: "center", px: "2" };
+    }
+    return expanded
+      ? {
+          pl: "2",
+        }
+      : { justifyContent: "center", pl: "1" };
+  }, [expanded, isNorteUi]);
 
   return (
     <Box
