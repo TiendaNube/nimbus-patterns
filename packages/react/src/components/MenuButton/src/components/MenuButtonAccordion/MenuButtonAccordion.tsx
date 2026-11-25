@@ -9,6 +9,7 @@ import { Box, Popover } from "@nimbus-ds/components";
 import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
 import { MenuExpandContext, useMenuExpandContext } from "@common/contexts";
+import { useNorteUiTheme } from "@common/hooks";
 import { MenuButtonAccordionBaseProps } from "./menuButtonAccordion.types";
 import { MenuButton } from "../../MenuButton";
 
@@ -27,6 +28,8 @@ const MenuButtonAccordion = forwardRef(
     ref
   ) => {
     const accordionId = useId();
+    const { isNorteUi, isNorteUiLight } = useNorteUiTheme();
+    const itemsGap = isNorteUi ? "none" : "0-5";
     const {
       expanded: contextExpanded,
       popoverPosition,
@@ -63,6 +66,9 @@ const MenuButtonAccordion = forwardRef(
     );
 
     const getBackgroundColor = () => {
+      if (isNorteUiLight) {
+        return active ? "neutral-background" : "transparent";
+      }
       if (active) {
         return "primary-surface";
       }
@@ -97,7 +103,7 @@ const MenuButtonAccordion = forwardRef(
             overflow="hidden"
             display="flex"
             flexDirection="column"
-            gap="0-5"
+            gap={itemsGap}
             pl="6"
             pb="1"
             pr="1"
@@ -117,7 +123,7 @@ const MenuButtonAccordion = forwardRef(
                 minWidth="200px"
                 display="flex"
                 flexDirection="column"
-                gap="0-5"
+                gap={itemsGap}
               >
                 {children}
               </Box>

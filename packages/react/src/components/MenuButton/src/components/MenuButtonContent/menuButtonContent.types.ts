@@ -11,6 +11,7 @@ export interface MenuButtonContentProperties {
   disabledColor:
     | "primary-interactive"
     | "neutral-textHigh"
+    | "neutral-textLow"
     | "neutral-textDisabled";
   /**
    * Controls the expanded state of the menu button content.
