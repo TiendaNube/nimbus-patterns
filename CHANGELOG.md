@@ -3,6 +3,16 @@
 This is the log of notable changes to the Nimbus Patterns that are developer-facing.
 Package-specific changes not released in any package will be added here just before the release. Until then, you can find them in changelogs of the individual packages (see [packages](./packages) directory).
 
+## 2026-11-25
+
+#### 📚 3rd party library updates
+
+- Updated the `@nimbus-ds/styles` devDependency to `9.74.0`, so Storybook renders the `next-norteui` and `next-norteui-dark` themes.
+
+#### 🐛 Bug fixes
+
+- The Jest module mapping now resolves `@nimbus-ds/menubutton` to its own source instead of the `Menu` package.
+
 ## 2026-11-10
 
 #### 🎉 New features

@@ -3,6 +3,12 @@
 The Calendar component allows the user to select a date or range of dates in a simple, straitforward and flexible UI thats based off of [ReactDayPicker](https://react-day-picker.js.org/).
 It extends the properties of the ReactDayPicker component. Refer to the [documentation site](https://react-day-picker.js.org/reference) for a complete reference of the component's API.
 
+## 2026-11-25 `1.1.4`
+
+#### 💡 Others
+
+- Updated the bundled `MenuButton`, so the range buttons follow its Norte UI appearance under the `next-norteui` and `next-norteui-dark` themes, and added `@nimbus-ds/styles` as a peer dependency.
+
 ## 2026-03-04 `1.1.3`
 
 #### 🐛 Bug fixes
