@@ -69,6 +69,33 @@ describe("GIVEN <MenuSection />", () => {
   });
 
   describe("WHEN rendered under a theme", () => {
+    it.each<Theme>(allThemes)(
+      "Menu AC-013: SHOULD color the collapsed section divider under %s",
+      (theme) => {
+        render(
+          <ThemeProvider theme={theme}>
+            <MenuExpandContext.Provider
+              value={{
+                expanded: false,
+                activeAccordionPopover: null,
+                setActiveAccordionPopover: noop,
+              }}
+            >
+              <MenuSection title={sectionTitle}>{sectionChildren}</MenuSection>
+            </MenuExpandContext.Provider>
+          </ThemeProvider>
+        );
+        const divider = screen.getByTestId("menu-section--collapsed");
+        const expected =
+          theme === "next-norteui"
+            ? "neutral-interactive"
+            : "neutral-surfaceHighlight";
+        expect(styleVar(divider, "borderColor-xs")).toBe(
+          `var(--nimbus-colors-${expected})`
+        );
+      }
+    );
+
     it.each<[Theme, boolean]>(
       allThemes.flatMap(
         (theme): Array<[Theme, boolean]> => [

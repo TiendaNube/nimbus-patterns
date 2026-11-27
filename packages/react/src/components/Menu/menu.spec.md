@@ -125,7 +125,7 @@ The footer MUST behave as a Menu Button with a trailing chevron.
 
 ### B-007 - Appearance under base, dark, next and next-dark
 
-Under these themes, the Menu MUST keep the appearance it had before this contract revision: background `neutral-background`; 6px (`1-5`) between entries of a section; footer chevron at rest `neutral-textHigh`; when collapsed, Header, Body and Footer have 4px left padding and no right padding.
+Under these themes, the Menu MUST keep the appearance it had before this contract revision: background `neutral-background`; 6px (`1-5`) between entries of a section; footer chevron at rest `neutral-textHigh`; collapsed section divider `neutral-surfaceHighlight`; when collapsed, Header, Body and Footer have 4px left padding and no right padding.
 
 ### B-008 - Appearance under Norte UI
 
@@ -138,9 +138,10 @@ Under both `next-norteui` and `next-norteui-dark`:
 Under `next-norteui` only:
 
 - Menu background `neutral-surfaceDisabled`;
-- footer chevron at rest `neutral-textLow`.
+- footer chevron at rest `neutral-textLow`;
+- collapsed section divider `neutral-interactive`.
 
-Under `next-norteui-dark`, background and chevron colors MUST be the ones of B-007.
+Under `next-norteui-dark`, background, chevron and divider colors MUST be the ones of B-007.
 
 ### B-009 - Unchanged expanded Header and Body
 
@@ -266,7 +267,8 @@ The collapsed Header MUST NOT show a shadow in any theme.
 ### Visual Accessibility
 
 - Under `next-norteui`, entry labels and the footer chevron meet WCAG AA contrast on the `neutral-surfaceDisabled` background.
-- Under `next-norteui`, the section title (`neutral-textDisabled`, caption size) reaches about 3:1 and the collapsed divider is barely visible on the new background. These are known limitations of this revision.
+- Under `next-norteui`, the section title (`neutral-textDisabled`, caption size) reaches about 3:1 on the new background. This is a known limitation of this revision.
+- Under `next-norteui`, the collapsed section divider uses `neutral-interactive` so it stays visible on the `neutral-surfaceDisabled` background.
 - Under `next-norteui-dark` the colors of B-007 apply, so contrast is the same as under `dark`.
 
 ---
@@ -358,6 +360,12 @@ The collapsed Header MUST NOT show a shadow in any theme.
 **When** it is rendered
 **Then** it shows the appearance of B-007 (B-004).
 
+### AC-013 - Collapsed section divider color
+
+**Given** a collapsed Menu with a titled Section
+**When** it is rendered under each of the six themes
+**Then** the divider uses `neutral-interactive` under `next-norteui` and `neutral-surfaceHighlight` under every other theme (B-007, B-008).
+
 ---
 
 ## 14. Origin of Guarantees
@@ -370,26 +378,27 @@ Sources (revision-pinned):
 - S4: Published Nimbus documentation, Menu page (modes, header and footer always visible, Body scroll) and App Shell page (48px collapsed rail by default).
 - R: Request and design decisions recorded on TiendaNube/nimbus-patterns#225 (Norte UI changes, invariance of the other themes, Header shadow not implemented).
 
-| Acceptance Criterion | Behavior or contract section           | Origin        | Contract basis | Source or proposal rationale                                                                                |
-| -------------------- | -------------------------------------- | ------------- | -------------- | ----------------------------------------------------------------------------------------------------------- |
-| AC-001               | B-001                                  | Supported     | reconstructed  | S1 menu.spec.tsx (passes settings to context; default values)                                               |
-| AC-002               | B-002                                  | Supported     | reconstructed  | S1 menuSection.spec.tsx (title expanded, not collapsed; collapsed divider); menuBody.spec.tsx               |
-| AC-003               | B-003                                  | Supported     | reconstructed  | S4 Menu page (header and footer always visible, Body scrolls); S2 stories                                   |
-| AC-004               | B-004                                  | Supported     | established    | R: other themes stay unchanged                                                                              |
-| AC-004               | B-007 (collapsed paddings)             | Supported     | reconstructed  | S3 #133 collapsed alignment                                                                                 |
-| AC-004               | B-007 (background, gap, chevron color) | Design choice | —              | Serves R invariance; records the previous-release values the invariance test compares against               |
-| AC-005               | B-008 (spacing)                        | Supported     | established    | R: proposed contract delta on #225; Section gap 4px confirmed                                               |
-| AC-005               | B-008 (spacing also under dark)        | Supported     | established    | Design decision for this revision: Norte UI dark applies the spacing changes only                           |
-| AC-006               | B-008 (light colors)                   | Supported     | established    | R: proposed contract delta on #225                                                                          |
-| AC-007               | B-008 (dark keeps B-007 colors)        | Supported     | established    | Design decision for this revision: Norte UI dark keeps the dark colors until a Norte UI dark palette exists |
-| AC-008               | B-004                                  | Supported     | established    | R: exact theme keys; `next` and `next-dark` unchanged                                                       |
-| AC-009               | B-005, B-006                           | Supported     | reconstructed  | S2 types (Footer takes Menu Button inputs); S2 stories (footer entry)                                       |
-| AC-009               | B-005 (disabled over active)           | Design choice | —              | Serves the Menu Button disabled rule; one precedence for chevron and label                                  |
-| AC-010               | B-009                                  | Supported     | established    | R: only collapsed Header and Body, and the Footer, change                                                   |
-| AC-010               | B-010                                  | Supported     | established    | R: the collapsed Header shadow is not implemented                                                           |
-| AC-011               | B-008, §9                              | Supported     | reconstructed  | S2 AppShell default 48px; S4 App Shell 48px rail                                                            |
-| AC-011               | §9 (narrower rails not supported)      | Design choice | —              | Serves R collapsed geometry; 32px entries plus 8px on each side need 48px                                   |
-| AC-012               | B-004                                  | Design choice | —              | Serves R invariance; a missing provider is not a Norte UI theme                                             |
+| Acceptance Criterion | Behavior or contract section           | Origin        | Contract basis | Source or proposal rationale                                                                                                                           |
+| -------------------- | -------------------------------------- | ------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| AC-001               | B-001                                  | Supported     | reconstructed  | S1 menu.spec.tsx (passes settings to context; default values)                                                                                          |
+| AC-002               | B-002                                  | Supported     | reconstructed  | S1 menuSection.spec.tsx (title expanded, not collapsed; collapsed divider); menuBody.spec.tsx                                                          |
+| AC-003               | B-003                                  | Supported     | reconstructed  | S4 Menu page (header and footer always visible, Body scrolls); S2 stories                                                                              |
+| AC-004               | B-004                                  | Supported     | established    | R: other themes stay unchanged                                                                                                                         |
+| AC-004               | B-007 (collapsed paddings)             | Supported     | reconstructed  | S3 #133 collapsed alignment                                                                                                                            |
+| AC-004               | B-007 (background, gap, chevron color) | Design choice | —              | Serves R invariance; records the previous-release values the invariance test compares against                                                          |
+| AC-005               | B-008 (spacing)                        | Supported     | established    | R: proposed contract delta on #225; Section gap 4px confirmed                                                                                          |
+| AC-005               | B-008 (spacing also under dark)        | Supported     | established    | Design decision for this revision: Norte UI dark applies the spacing changes only                                                                      |
+| AC-006               | B-008 (light colors)                   | Supported     | established    | R: proposed contract delta on #225                                                                                                                     |
+| AC-007               | B-008 (dark keeps B-007 colors)        | Supported     | established    | Design decision for this revision: Norte UI dark keeps the dark colors until a Norte UI dark palette exists                                            |
+| AC-008               | B-004                                  | Supported     | established    | R: exact theme keys; `next` and `next-dark` unchanged                                                                                                  |
+| AC-009               | B-005, B-006                           | Supported     | reconstructed  | S2 types (Footer takes Menu Button inputs); S2 stories (footer entry)                                                                                  |
+| AC-009               | B-005 (disabled over active)           | Design choice | —              | Serves the Menu Button disabled rule; one precedence for chevron and label                                                                             |
+| AC-010               | B-009                                  | Supported     | established    | R: only collapsed Header and Body, and the Footer, change                                                                                              |
+| AC-010               | B-010                                  | Supported     | established    | R: the collapsed Header shadow is not implemented                                                                                                      |
+| AC-011               | B-008, §9                              | Supported     | reconstructed  | S2 AppShell default 48px; S4 App Shell 48px rail                                                                                                       |
+| AC-011               | §9 (narrower rails not supported)      | Design choice | —              | Serves R collapsed geometry; 32px entries plus 8px on each side need 48px                                                                              |
+| AC-012               | B-004                                  | Design choice | —              | Serves R invariance; a missing provider is not a Norte UI theme                                                                                        |
+| AC-013               | B-007, B-008                           | Supported     | established    | Design decision for this revision: under `next-norteui` the collapsed section divider uses `neutral-interactive` to stay visible on the new background |
 
 ---
 
@@ -400,7 +409,7 @@ Sources (revision-pinned):
 | Public API                     | None                                                                                                        | §3                          |
 | Behavior and defaults          | None                                                                                                        | B-001 to B-003              |
 | Layout and content             | Under Norte UI themes only: tighter section spacing, symmetric collapsed padding, collapsed rail needs 48px | B-008, §9                   |
-| Accessibility and interactions | Under `next-norteui` only: new background; section title and divider less visible                           | §11                         |
+| Accessibility and interactions | Under `next-norteui` only: new background; section title less visible                                       | §11                         |
 | Supported composition          | Consumers using a collapsed rail narrower than 48px with a Norte UI theme must widen it                     | §9                          |
 
 - Backward compatibility: output under `base`, `dark`, `next` and `next-dark` is unchanged (B-004).
@@ -425,3 +434,4 @@ Sources (revision-pinned):
 | AC-010               | B-009, B-010                 | Compare expanded Header and Body paddings across six themes; check no shadow on the collapsed Header                                              | —                                                    | `menuHeader.spec.tsx`: "Menu AC-010: SHOULD keep the expanded padding in all six themes and never show a shadow"; `menuBody.spec.tsx`: "Menu AC-010: SHOULD keep the expanded padding in all six themes"                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | AC-011               | B-008, §9                    | Browser check: collapsed Menu in a 48px App Shell rail under `next-norteui`; entries centered, not clipped                                        | `menu.stories.tsx` `norteUiCollapsedRail`            | —                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | AC-012               | B-004                        | Render without a theme provider; B-007 appearance                                                                                                 | —                                                    | `menu.spec.tsx`: "Menu AC-012: SHOULD use the previous appearance without a ThemeProvider"; `__tests__/menu-previous-release.spec.tsx`: "MenuButton AC-011, AC-016, Menu AC-008, AC-012: SHOULD render next, next-dark and no provider exactly as base"                                                                                                                                                                                                                                                                                                                                                                                                  |
+| AC-013               | B-007, B-008                 | Render a collapsed titled Section under six themes; check the divider color                                                                       | `menu.stories.tsx` `norteUiCollapsedRail`            | `menuSection.spec.tsx`: "Menu AC-013: SHOULD color the collapsed section divider under %s"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |

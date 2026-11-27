@@ -61,16 +61,16 @@ Related components: Menu (the container that provides the expanded/collapsed sta
 
 ### Inputs — Menu Button Accordion
 
-| Name              | Type                                    | Required | Default                      | Description                                                            |
-| ----------------- | --------------------------------------- | -------: | ---------------------------- | ---------------------------------------------------------------------- |
-| `menuButton`      | Menu Button inputs (without `expanded`) |      Yes | —                            | Inputs of the header entry                                             |
-| `children`        | node                                    |      Yes | —                            | The grouped items, usually Menu Buttons                                |
-| `contentid`       | string                                  |      Yes | —                            | Identifier that links the header to its items for assistive technology |
-| `open`            | boolean                                 |       No | uncontrolled (starts closed) | Controls whether the group is open                                     |
-| `active`          | boolean                                 |       No | `false`                      | Marks the group as containing the selected entry                       |
-| `expanded`        | boolean                                 |       No | from the enclosing Menu      | Overrides the expanded/collapsed state                                 |
-| `as`              | `"button"` \| `"a"`                     |       No | —                            | Element rendered for the container                                     |
-| native attributes | element attributes                      |       No | —                            | Forwarded to the container                                             |
+| Name              | Type                                    | Required | Default                      | Description                                                                                                                                                                 |
+| ----------------- | --------------------------------------- | -------: | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `menuButton`      | Menu Button inputs (without `expanded`) |      Yes | —                            | Inputs of the header entry                                                                                                                                                  |
+| `children`        | node                                    |      Yes | —                            | The grouped items, usually Menu Buttons                                                                                                                                     |
+| `contentid`       | string                                  |      Yes | —                            | Identifier reserved for linking the header to its items; required by the type. It does not currently set the identifier of the items container (§11 Screen Reader Behavior) |
+| `open`            | boolean                                 |       No | uncontrolled (starts closed) | Controls whether the group is open                                                                                                                                          |
+| `active`          | boolean                                 |       No | `false`                      | Marks the group as containing the selected entry                                                                                                                            |
+| `expanded`        | boolean                                 |       No | from the enclosing Menu      | Overrides the expanded/collapsed state                                                                                                                                      |
+| `as`              | `"button"` \| `"a"`                     |       No | —                            | Element rendered for the container                                                                                                                                          |
+| native attributes | element attributes                      |       No | —                            | Forwarded to the container                                                                                                                                                  |
 
 ### Events
 
@@ -183,6 +183,7 @@ Size, padding, radius, row height, icon size and the one-line label MUST be the 
 - A button entry is a native button: it is reachable with Tab and activated with Enter and Space by the browser; the component adds no key handlers and does not stop propagation.
 - A link entry (`as="a"`) follows native link behavior (Enter activates).
 - The collapsed popover follows the Nimbus Popover behavior with hover opening; the component adds no keyboard binding to it.
+- When collapsed, the popover does not open on keyboard focus, and activating a collapsed Accordion header does not show its items. Accordion items are therefore not reachable with the keyboard alone while the menu is collapsed; expanding the menu makes them reachable. This is a known limitation in every theme, unchanged by this revision.
 
 ### Touch
 
@@ -284,7 +285,8 @@ Size, padding, radius, row height, icon size and the one-line label MUST be the 
 
 ### Screen Reader Behavior
 
-- The Accordion header exposes `aria-expanded` (B-004) and is linked to its items through the consumer-provided identifier.
+- The Accordion header exposes `aria-expanded` (B-004).
+- The component does not guarantee a programmatic link between the Accordion header and its items: it sets no `aria-controls` on the header, and the items container does not take its identifier from `contentid`. Consumers can pass `aria-controls` through `menuButton`, but with several open Accordions the target is not unique. This is a known limitation in every theme, unchanged by this revision.
 
 ### Visual Accessibility
 
@@ -297,16 +299,18 @@ Size, padding, radius, row height, icon size and the one-line label MUST be the 
 
 ## 12. Edge Cases
 
-| Case                                                        | Expected behavior                                                                        |
-| ----------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Long label                                                  | Clamped to one line (§8)                                                                 |
-| No label, collapsed                                         | Icon only; accessible name provided by the consumer (§11)                                |
-| No start icon, collapsed                                    | Empty centered entry; consumers should provide an icon in collapsed menus                |
-| Disabled and active                                         | Disabled appearance wins (B-010) and `onClick` is not called                             |
-| Disabled under Norte UI on a `neutral-surfaceDisabled` menu | Disabled background equals the menu background; the disabled text color still applies    |
-| Controlled `open` `true` while collapsed                    | Items are not rendered under the header (B-004); the popover shows them on hover (B-006) |
-| No enclosing Menu                                           | Treated as expanded, popovers enabled, popover on the right (B-002, B-006)               |
-| No theme provider                                           | Treated as a non-Norte theme (B-007)                                                     |
+| Case                                                        | Expected behavior                                                                                                      |
+| ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Long label                                                  | Clamped to one line (§8)                                                                                               |
+| No label, collapsed                                         | Icon only; accessible name provided by the consumer (§11)                                                              |
+| No start icon, collapsed                                    | Empty centered entry; consumers should provide an icon in collapsed menus                                              |
+| Disabled and active                                         | Disabled appearance wins (B-010) and `onClick` is not called                                                           |
+| Disabled under Norte UI on a `neutral-surfaceDisabled` menu | Disabled background equals the menu background; the disabled text color still applies                                  |
+| Controlled `open` `true` while collapsed                    | Items are not rendered under the header (B-004); the popover shows them on hover (B-006)                               |
+| Keyboard only, menu collapsed                               | Entries are reachable and can be activated; Accordion items are not reachable until the menu is expanded (§7 Keyboard) |
+| Two open Accordions                                         | Each header exposes its own `aria-expanded`; no unique header-to-items link is guaranteed (§11 Screen Reader Behavior) |
+| No enclosing Menu                                           | Treated as expanded, popovers enabled, popover on the right (B-002, B-006)                                             |
+| No theme provider                                           | Treated as a non-Norte theme (B-007)                                                                                   |
 
 ---
 

@@ -13,7 +13,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   ...rest
 }: MenuSectionProps) => {
   const { expanded } = useMenuExpandContext(false);
-  const { isNorteUi } = useNorteUiTheme();
+  const { isNorteUi, isNorteUiLight } = useNorteUiTheme();
 
   const dynamicProps: BoxProperties = useMemo(
     () =>
@@ -44,7 +44,11 @@ const MenuSection: React.FC<MenuSectionProps> = ({
           <Box
             borderTopWidth="1"
             borderBottomWidth="none"
-            borderColor="neutral-surfaceHighlight"
+            borderColor={
+              isNorteUiLight
+                ? "neutral-interactive"
+                : "neutral-surfaceHighlight"
+            }
             borderStyle="solid"
             width="100%"
             // Margin to approximate to the same height of the Section expanded title
