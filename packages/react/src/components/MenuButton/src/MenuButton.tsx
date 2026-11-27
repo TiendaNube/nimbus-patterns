@@ -9,6 +9,7 @@ import { Popover } from "@nimbus-ds/components";
 import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
 import { useMenuExpandContext } from "@common/contexts";
+import { useNorteUiTheme } from "@common/hooks";
 import { MenuButtonBaseProps, MenuButtonComponents } from "./menuButton.types";
 import { MenuButtonAccordion, MenuButtonContent } from "./components";
 
@@ -29,6 +30,7 @@ const MenuButton = forwardRef(
     ref
   ) => {
     const menuButtonId = useId();
+    const { isNorteUiLight } = useNorteUiTheme();
     const {
       expanded: contextExpanded,
       showPopoversWhenCollapsed: contextShowPopoversWhenCollapsed,
@@ -48,7 +50,8 @@ const MenuButton = forwardRef(
         activeAccordionPopover === menuButtonId,
       [expanded, activeAccordionPopover, menuButtonId]
     );
-    const activeColor = active ? "primary-interactive" : "neutral-textHigh";
+    const restColor = isNorteUiLight ? "neutral-textLow" : "neutral-textHigh";
+    const activeColor = active ? "primary-interactive" : restColor;
     const disabledColor = rest.disabled ? "neutral-textDisabled" : activeColor;
 
     const content = (

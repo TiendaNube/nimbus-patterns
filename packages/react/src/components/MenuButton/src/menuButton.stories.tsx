@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useArgs } from "@storybook/preview-api";
 
-import { ChevronRightIcon, HomeIcon } from "@nimbus-ds/icons";
+import { ChevronRightIcon, HomeIcon, TagIcon } from "@nimbus-ds/icons";
 import { Tag, Badge, Icon, Box } from "@nimbus-ds/components";
 
 import { MenuExpandContext } from "@common/contexts";
@@ -208,4 +208,106 @@ export const accordionNavigationPattern: Story = {
       </MenuExpandContext.Provider>
     );
   },
+};
+
+/**
+ * Renders the entries on the Menu surface of each theme so the selected
+ * background is visible against it, as inside a Menu.
+ */
+const NorteUiStates: React.FC<{
+  surface: "neutral-surfaceDisabled" | "neutral-background";
+}> = ({ surface }) => {
+  const [activeAccordionPopover, setActiveAccordionPopover] = useState<
+    string | null
+  >(null);
+  const collapsedContextValue = useMemo(
+    () => ({
+      expanded: false,
+      showPopoversWhenCollapsed: true,
+      activeAccordionPopover,
+      setActiveAccordionPopover,
+    }),
+    [activeAccordionPopover]
+  );
+
+  return (
+    <Box
+      display="flex"
+      gap="6"
+      flexWrap="wrap"
+      alignItems="flex-start"
+      backgroundColor={surface}
+      padding="4"
+    >
+      <Box display="flex" flexDirection="column" gap="1" width="240px">
+        <MenuButton label="Rest" startIcon={HomeIcon}>
+          <Tag appearance="primary">New</Tag>
+        </MenuButton>
+        <MenuButton label="Selected" startIcon={HomeIcon} active />
+        <MenuButton label="Disabled" startIcon={HomeIcon} disabled />
+        <MenuButton
+          label="Disabled and selected"
+          startIcon={HomeIcon}
+          disabled
+          active
+        />
+      </Box>
+      <Box display="flex" flexDirection="column" gap="1" width="240px">
+        <MenuButton.Accordion
+          contentid="accordion-closed"
+          menuButton={{ label: "Accordion closed", startIcon: TagIcon }}
+        >
+          <MenuButton label="First item" />
+          <MenuButton label="Second item" />
+        </MenuButton.Accordion>
+        <MenuButton.Accordion
+          contentid="accordion-open"
+          open
+          menuButton={{ label: "Accordion open", startIcon: TagIcon }}
+        >
+          <MenuButton label="First item" />
+          <MenuButton label="Second item" />
+        </MenuButton.Accordion>
+        <MenuButton.Accordion
+          contentid="accordion-selected"
+          open
+          active
+          menuButton={{ label: "Accordion selected", startIcon: TagIcon }}
+        >
+          <MenuButton label="First item" active />
+          <MenuButton label="Second item" />
+        </MenuButton.Accordion>
+      </Box>
+      <MenuExpandContext.Provider value={collapsedContextValue}>
+        <Box display="flex" flexDirection="column" gap="1" width="32px">
+          <MenuButton
+            label="Collapsed entry"
+            aria-label="Collapsed entry"
+            startIcon={HomeIcon}
+          />
+          <MenuButton.Accordion
+            contentid="accordion-collapsed"
+            menuButton={{
+              label: "Collapsed accordion",
+              "aria-label": "Collapsed accordion",
+              startIcon: TagIcon,
+            }}
+          >
+            <MenuButton label="First item" />
+            <MenuButton label="Second item" />
+          </MenuButton.Accordion>
+        </Box>
+      </MenuExpandContext.Provider>
+    </Box>
+  );
+};
+
+export const norteUiStates: Story = {
+  render: () => <NorteUiStates surface="neutral-surfaceDisabled" />,
+  parameters: { nimbusTheme: "next-norteui" },
+};
+
+export const norteUiDarkStates: Story = {
+  render: () => <NorteUiStates surface="neutral-background" />,
+  parameters: { nimbusTheme: "next-norteui-dark" },
 };

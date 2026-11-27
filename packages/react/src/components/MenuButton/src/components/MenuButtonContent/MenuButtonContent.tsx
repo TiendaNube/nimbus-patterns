@@ -3,7 +3,33 @@ import React, { forwardRef } from "react";
 import { Icon, Box, Text, type BoxProperties } from "@nimbus-ds/components";
 import { PolymorphicForwardRefComponent } from "@nimbus-ds/typings";
 
+import { useNorteUiTheme } from "@common/hooks";
 import { MenuButtonContentProps } from "./menuButtonContent.types";
+
+/**
+ * Background colors of the entry per state. Under `next-norteui` the hover,
+ * pressed and selected states use the Norte UI neutral surfaces; every other
+ * theme keeps the previous primary surfaces.
+ */
+const getBackgroundColor = (
+  active: boolean | undefined,
+  isNorteUiLight: boolean
+): BoxProperties["backgroundColor"] => {
+  if (isNorteUiLight) {
+    return {
+      xs: active ? "neutral-background" : "transparent",
+      hover: "neutral-surfaceHighlight",
+      active: "neutral-surfaceHighlight",
+      disabled: "neutral-surfaceDisabled",
+    };
+  }
+  return {
+    xs: active ? "primary-surface" : "transparent",
+    hover: "primary-surface",
+    active: "primary-surfaceHighlight",
+    disabled: "neutral-surfaceDisabled",
+  };
+};
 
 const MenuButtonContent = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
@@ -23,6 +49,7 @@ const MenuButtonContent = forwardRef<
     },
     ref
   ) => {
+    const { isNorteUiLight } = useNorteUiTheme();
     const collapsedProps: BoxProperties = !expanded
       ? {
           justifyContent: "center",
@@ -39,12 +66,7 @@ const MenuButtonContent = forwardRef<
         onClick={onClick}
         alignItems="center"
         textDecoration="none"
-        backgroundColor={{
-          xs: active ? "primary-surface" : "transparent",
-          hover: "primary-surface",
-          active: "primary-surfaceHighlight",
-          disabled: "neutral-surfaceDisabled",
-        }}
+        backgroundColor={getBackgroundColor(active, isNorteUiLight)}
         borderRadius="2"
         borderWidth="none"
         cursor={{

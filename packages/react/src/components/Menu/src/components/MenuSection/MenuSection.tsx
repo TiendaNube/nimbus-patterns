@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 
 import { Text, Box, BoxProperties } from "@nimbus-ds/components";
 import { useMenuExpandContext } from "@common/contexts";
+import { useNorteUiTheme } from "@common/hooks";
 
 import { MenuSectionProps } from "./menuSection.types";
 
@@ -12,6 +13,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   ...rest
 }: MenuSectionProps) => {
   const { expanded } = useMenuExpandContext(false);
+  const { isNorteUi, isNorteUiLight } = useNorteUiTheme();
 
   const dynamicProps: BoxProperties = useMemo(
     () =>
@@ -29,7 +31,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
       {...rest}
       display="flex"
       flexDirection="column"
-      gap="1-5"
+      gap={isNorteUi ? "1" : "1-5"}
     >
       {title &&
         (expanded ? (
@@ -42,7 +44,11 @@ const MenuSection: React.FC<MenuSectionProps> = ({
           <Box
             borderTopWidth="1"
             borderBottomWidth="none"
-            borderColor="neutral-surfaceHighlight"
+            borderColor={
+              isNorteUiLight
+                ? "neutral-interactive"
+                : "neutral-surfaceHighlight"
+            }
             borderStyle="solid"
             width="100%"
             // Margin to approximate to the same height of the Section expanded title

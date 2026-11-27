@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Sidebar, Button, Box } from "@nimbus-ds/components";
+import { CogIcon } from "@nimbus-ds/icons";
 
 import { Menu } from "./Menu";
 import { MenuStories as DefaultMenu } from "./menu.utils";
@@ -88,4 +89,38 @@ export const menuCollapsed: Story = {
   args: {
     expanded: false,
   },
+};
+
+export const norteUi: Story = {
+  render: (args) => (
+    <Box display="flex" gap="6" alignItems="flex-start">
+      <Box display="flex" width="240px" height="640px">
+        <DefaultMenu {...args} expanded />
+      </Box>
+      <Box display="flex" width="48px" height="640px">
+        <DefaultMenu {...args} expanded={false} />
+      </Box>
+      <Box display="flex" flexDirection="column" gap="2" width="240px">
+        <Menu>
+          <Menu.Footer label="Configuración" startIcon={CogIcon} active />
+        </Menu>
+        <Menu>
+          <Menu.Footer label="Configuración" startIcon={CogIcon} disabled />
+        </Menu>
+      </Box>
+    </Box>
+  ),
+  parameters: { nimbusTheme: "next-norteui" },
+};
+
+export const norteUiCollapsedRail: Story = {
+  render: (args) => (
+    <Box display="flex" width="48px" height="640px">
+      <DefaultMenu {...args} expanded={false} />
+    </Box>
+  ),
+  args: {
+    expanded: false,
+  },
+  parameters: { nimbusTheme: "next-norteui" },
 };

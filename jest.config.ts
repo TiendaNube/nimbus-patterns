@@ -33,9 +33,9 @@ const config: Config.InitialOptions = {
     "@nimbus-ds/interactive-list":
       "<rootDir>/packages/react/src/components/InteractiveList/src",
     "@nimbus-ds/layout": "<rootDir>/packages/react/src/components/Layout/src",
-    "@nimbus-ds/menu": "<rootDir>/packages/react/src/components/Menu/src",
     "@nimbus-ds/menubutton":
       "<rootDir>/packages/react/src/components/MenuButton/src",
+    "@nimbus-ds/menu": "<rootDir>/packages/react/src/components/Menu/src",
     "@nimbus-ds/nav-tabs":
       "<rootDir>/packages/react/src/components/NavTabs/src",
     "@nimbus-ds/page": "<rootDir>/packages/react/src/components/Page/src",

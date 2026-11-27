@@ -2,6 +2,16 @@
 
 MenuButton component is meant to be used inside Menus and navigation, and allows the user to navigate between different sections of an application.
 
+## 2026-11-25 `2.1.0`
+
+#### 🎉 New features
+
+- Added the Norte UI appearance under the `next-norteui` theme: rest text and icon use `neutral-textLow`, hover and pressed use `neutral-surfaceHighlight`, the selected entry uses `neutral-background` with `primary-interactive`, and the Accordion container is transparent unless `active`. Under `next-norteui` and `next-norteui-dark`, Accordion items have no gap, both under the header and in the collapsed popover. Other themes render as before. ([#228](https://github.com/TiendaNube/nimbus-patterns/pull/228) by [@FedeTrevi-se](https://github.com/FedeTrevi-se))
+
+#### 💡 Others
+
+- Added `@nimbus-ds/styles` as a peer dependency to read the theme in effect. ([#228](https://github.com/TiendaNube/nimbus-patterns/pull/228) by [@FedeTrevi-se](https://github.com/FedeTrevi-se))
+
 ## 2026-03-04 `2.0.3`
 
 #### 🐛 Bug fixes
